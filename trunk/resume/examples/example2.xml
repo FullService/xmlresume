@@ -43,8 +43,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- This person is using the untagged style address (lives in Cuba). -->
     <address>Reina #35, apt. 4a, e/ Gervasio y Escobar
 Cuidad de la Habana, CP 11900
-CUBA
-</address>
+CUBA</address>
+    <contact>
+      <phone location="home">+1-55-4362-4562</phone>
+      <email>alexis@finecooks.xyz</email>
+      <instantMessage service="aim">alexis2755263</instantMessage>
+    </contact>
   </header>
 
   <objective>
@@ -59,11 +63,11 @@ CUBA
     <skillset>
       <title>General Experience</title>
       <skill>Gastronomy</skill>
-      <skill>Culinary math</skill>
+      <skill level="expert">Culinary math</skill>
       <skill>Nutrition</skill>
       <skill>Sanitation</skill>
       <skill>Culinary French</skill>
-      <skill>Meat identification</skill>
+      <skill level="2 years' experience">Meat identification</skill>
       <skill>Wines</skill>
       <skill>Restaurant Law</skill>
       <skill><citation>Brodeger's Sanitation</citation> science background</skill>
@@ -226,29 +230,44 @@ CUBA
 
   <pubs>
     <pub>
-      <artTitle>High speed reduction of wine based sauces</artTitle>
+      <artTitle>
+        <link href="http://www.ocf-pub.com/2000/articles/hsrwbs/">High speed reduction of wine based sauces</link>
+      </artTitle>
       <bookTitle>Journal of the Occidental Culinary Federation</bookTitle>
       <author name="a.kernighan"/>
       <author>Charles Bell</author>
       <author>Kassandra Kassis</author>
       <pageNums>132-136</pageNums>
-      <pubDate>
+      <date>
 	<month>February</month>
 	<year>2000</year>
-      </pubDate>
+      </date>
       <publisher>OCF, New York, New York</publisher>
     </pub>
 
     <pub>
       <author name="a.kernighan"/>
-      <pubDate>
+      <date>
 	<year>1998</year>
-      </pubDate>
+      </date>
       <publisher>Deltoid Press, <url>http://www.deltoid.co/</url></publisher>
       <bookTitle>The Texas Ranger Chow Book</bookTitle>
     </pub>
 	
   </pubs>
+
+  <interests>
+    <title>Hobbies</title>
+
+    <interest>
+      <title>Kite Flying</title>
+      <description>
+        <para>Two-time Cuban national champion.</para>
+      </description>
+    </interest>
+    <interest><title>High-speed driving</title></interest>
+    <interest><title>Woodworking</title></interest>
+  </interests>
 
   <referees>
     <referee>
@@ -256,8 +275,12 @@ CUBA
 	<firstname>Indiana</firstname>
 	<surname>O'Brien</surname>
       </name>
+      <title>Head Chef</title>
+      <organization>The Four Seasons</organization>
       <contact>
 	<phone>408.555.1296</phone>
+	<fax location="work">552.762.8024</fax>
+	<pager>408.737.5375</pager>
       </contact>
     </referee>
     <referee>
@@ -265,7 +288,7 @@ CUBA
 	<firstname>Web</firstname>
 	<surname>Melgood</surname>
       </name>
-      <address>
+      <address format="standard">
 	<street>3090 Deltoid</street>
 	<city>Santa Yorba</city>
 	<state>CA</state>
@@ -274,5 +297,12 @@ CUBA
       </address>
     </referee>
   </referees>
+
+  <lastModified>
+    <date>
+      <month>May</month>
+      <year>2002</year>
+    </date>
+  </lastModified>
 
 </resume>
