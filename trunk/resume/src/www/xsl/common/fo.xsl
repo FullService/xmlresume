@@ -120,7 +120,19 @@ $Id$
   </xsl:template>
   
   <!-- Header information -->
-  <xsl:template match="r:header">
+  <xsl:template match="r:header" mode="standard">
+    <fo:block space-after="{$para.break.space}">
+      <fo:block font-weight="{$header.name.font.weight}">
+        <xsl:apply-templates select="r:name"/>
+      </fo:block>
+      <xsl:apply-templates select="r:address"/>
+      <fo:block space-before="{$half.space}">
+        <xsl:apply-templates select="r:contact"/>
+      </fo:block>
+    </fo:block>
+  </xsl:template>
+
+  <xsl:template match="r:header" mode="centered">
     <fo:block
         space-after="{$para.break.space}"
         start-indent="{$header.margin-left}"

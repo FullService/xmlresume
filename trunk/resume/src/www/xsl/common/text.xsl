@@ -4,7 +4,7 @@
 text.xsl
 Transform XML resume into plain text.
 
-Copyright (c) 2000-2002 by Vlad Korolev and Sean Kelly
+Copyright (c) 2000-2002 by Vlad Korolev, Sean Kelly, and Bruce Christensen
 
 All rights reserved.
 
@@ -75,17 +75,6 @@ In general, each block is responsible for outputting a newline after itself.
     -->
   </xsl:template>
 
-  <xsl:template match="r:header">
-    <xsl:choose>
-      <xsl:when test="$header.format = 'centered'">
-        <xsl:apply-templates select="." mode="centered"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:apply-templates select="." mode="standard"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
   <xsl:template match="r:header" mode="centered">
     <xsl:call-template name="Center">
       <xsl:with-param name="Text">
@@ -96,8 +85,14 @@ In general, each block is responsible for outputting a newline after itself.
 
     <xsl:call-template name="CenterBlock">
       <xsl:with-param name="Text">
-        <xsl:apply-templates select="r:address"/>
-        <xsl:apply-templates select="r:contact"/>
+        <xsl:if test="r:address">
+          <xsl:call-template name="NewLine"/>
+          <xsl:apply-templates select="r:address"/>
+        </xsl:if>
+        <xsl:if test="r:contact">
+          <xsl:call-template name="NewLine"/>
+          <xsl:apply-templates select="r:contact"/>
+        </xsl:if>
       </xsl:with-param>
     </xsl:call-template>
 

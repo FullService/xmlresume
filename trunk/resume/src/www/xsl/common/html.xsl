@@ -100,17 +100,6 @@ $Id$
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="r:header">
-    <xsl:choose>
-      <xsl:when test="$header.format = 'centered'">
-        <xsl:apply-templates select="." mode="centered"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:apply-templates select="." mode="standard"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
   <!-- Output your name and the word "Resume". -->
   <xsl:template match="r:header" mode="standard">
     <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
