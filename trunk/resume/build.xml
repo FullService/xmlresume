@@ -178,8 +178,9 @@ $Id$
     <copy todir="${stage.dir}/examples"
       filtering="yes">
       <fileset dir="${basedir}/examples">
-	<include name="Makefile"/>
-	<include name="*.xml"/>
+	<include name="**/Makefile"/>
+	<include name="**/*.xml"/>
+        <include name="**/README"/>
       </fileset>
     </copy>
     <copy todir="${stage.dir}/dtd"
