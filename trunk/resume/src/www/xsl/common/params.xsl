@@ -48,9 +48,6 @@ $Id$
   <!-- Word to use for "Professional Objective" -->
   <xsl:param name="objective.word">Professional Objective</xsl:param>
 
-  <!-- Word to use for "Skills" *SE* -->
-  <xsl:param name="skills.word">Skills</xsl:param>
-
   <!-- Word to use for "Employment History" -->
   <xsl:param name="history.word">Employment History</xsl:param>
 

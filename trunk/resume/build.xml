@@ -101,7 +101,7 @@ $Id$
       filtering="yes"/>
     <copy todir="${stage.dir}/examples"
       filtering="yes">
-      <fileset dir="${src.dir}/examples"/>
+      <fileset dir="${basedir}/examples"/>
     </copy>
     <copy todir="${stage.dir}/dtd"
       filtering="yes">

@@ -36,7 +36,7 @@ $Id$
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
-  <xsl:output method="xml" omit-xml-declaration="no" indent="no"/>
+  <xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space elements="address"/>
 
@@ -215,11 +215,15 @@ $Id$
 
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="achievements">
-    <xsl:for-each select="achievement">
-      <xsl:call-template name="bulletListItem">
-        <xsl:with-param name="Text" select="."/>
-      </xsl:call-template>
-    </xsl:for-each>
+    <fo:list-block space-after="{$para.break.space}"
+      provisional-distance-between-starts="{$para.break.space}"
+      provisional-label-separation="{$bullet.space}">
+      <xsl:for-each select="achievement">
+        <xsl:call-template name="bulletListItem">
+          <xsl:with-param name="Text" select="."/>
+        </xsl:call-template>
+      </xsl:for-each>
+    </fo:list-block>
   </xsl:template>
 
   <!-- Format academics -->
@@ -249,11 +253,7 @@ $Id$
   </xsl:template>
 
   <!-- Format a skill area's title and the skillsets underneath it. -->
-  <!-- Added: display skills.word as title for the whole skills section *SE* -->
   <xsl:template match="skillareas">
-    <xsl:call-template name="heading">
-      <xsl:with-param name="text"><xsl:value-of select="$skills.word"/></xsl:with-param>
-    </xsl:call-template>
     <xsl:apply-templates select="skillarea"/>
   </xsl:template>
 

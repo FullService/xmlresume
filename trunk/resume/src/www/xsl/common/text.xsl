@@ -401,13 +401,8 @@ $Id$
   </xsl:template>
 
   <!-- Format the open-ended skills -->
-  <!-- Added: display skills.word as title for the skillareas section *SE* -->
   <xsl:template match="skillareas">
       <xsl:call-template name="NewLine"/>
-      <xsl:if test="$skills.word">
-        <xsl:call-template name="NewLine"/>
-        <xsl:value-of select="$skills.word"/>:
-      </xsl:if>
       <xsl:apply-templates />
   </xsl:template>
 

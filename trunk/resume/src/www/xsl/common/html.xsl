@@ -202,7 +202,7 @@ $Id$
       </span>
       <br/>
       <span class="employer">
-      <xsl:value-of select="employer"/>
+        <xsl:value-of select="employer"/>
       </span>
       <br/>
       <xsl:apply-templates select="period"/>
@@ -273,7 +273,6 @@ $Id$
   <!-- Format the open-ended skills -->
 
   <xsl:template match="skillareas">
-    <h2 class="skillareasHeading"><xsl:value-of select="$skills.word"/></h2>
     <xsl:apply-templates select="skillarea"/>
   </xsl:template>
 
