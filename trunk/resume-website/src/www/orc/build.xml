@@ -124,10 +124,10 @@ TODO
   <target name="compress" depends="-tar,-zip"
 	  description="Zip/Tar the formatted output."/>
   <target name="-tar" depends="convert" if="options.tgz">
-    <tar destfile="out/${resume}.tar" basedir=".">
+    <tar destfile="${resume}.tar" basedir=".">
       <patternset refid="output.files"/>
     </tar>
-    <gzip src="out/${resume}.tar" zipfile="out/${resume}.tgz"/>
+    <gzip src="${resume}.tar" zipfile="out/${resume}.tgz"/>
   </target>
   <target name="-zip" depends="convert" unless="options.tgz">
     <zip destfile="out/${resume}.zip" basedir=".">
@@ -145,7 +145,12 @@ TODO
 <!-- 		Target clean 		-->
   <target description="Clean all build products." name="clean">
     <echo message="This target must be run from ORC's root directory."/>
-    <delete dir="./incoming/" quiet="true"/>
+<!-- The delete target doesn't understand symlinks, so we use rm instead -->
+<!--    <delete dir="./incoming/" quiet="true"/> --> 
+    <exec executable="rm">
+      <arg value="-rf"/>
+      <arg value="incoming"/>
+    </exec>
     <mkdir dir="./incoming/"/>
     <mkdir dir="./incoming/DONE/"/>    
     <copy todir="./incoming/">
