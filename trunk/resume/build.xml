@@ -352,8 +352,8 @@ $Id$
   <property name="doc.manual.html-single.file" value="${doc.manual.build.dir}/manual.html"/>
   <property name="doc.manual.html-multiple.dir" value="${doc.manual.build.dir}/html"/>
   <property name="doc.manual.text.file" value="${doc.manual.build.dir}/manual.txt"/>
-  <!-- <property name="doc.manual.fo.file" value="${doc.manual.build.dir}/manual.fo"/> -->
-  <!-- <property name="doc.manual.pdf.file" value="${doc.manual.build.dir}/manual.pdf"/> -->
+  <property name="doc.manual.fo.file" value="${doc.manual.build.dir}/manual.fo"/>
+  <property name="doc.manual.pdf.file" value="${doc.manual.build.dir}/manual.pdf"/>
 
   <!-- Manual XSL stylesheet locations (XML Resume customized versions) -->
   <property name="doc.manual.xsl.dir" value="${doc.manual.build.dir}/xsl"/>
@@ -592,7 +592,6 @@ $Id$
     </java>
   </target>
 
-  <!--
   <target name="doc.manual.fo"
     description="Generate XSL-FO version of the manual"
     depends="doc.manual.prepare">
@@ -636,6 +635,5 @@ $Id$
       <arg value="${doc.manual.pdf.file}"/>
     </java>
   </target>
-  -->
 
 </project>
