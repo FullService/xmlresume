@@ -46,6 +46,7 @@ $Id$
   <xsl:strip-space elements="*"/>
 
   <xsl:include href="params.xsl"/>
+  <xsl:include href="common.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
@@ -413,6 +414,7 @@ $Id$
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="r:major"/>
       </span>
+      <xsl:apply-templates select="r:minor"/>
       <xsl:if test="r:date|r:period">
         <xsl:text>, </xsl:text>
         <xsl:apply-templates select="r:date|r:period"/>

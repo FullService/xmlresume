@@ -42,6 +42,7 @@ $Id$
   <xsl:strip-space elements="*"/>
 
   <xsl:include href="params.xsl"/>
+  <xsl:include href="common.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
@@ -461,22 +462,26 @@ $Id$
 
   <!-- Format a single degree -->
   <xsl:template match="r:degree">
-    <fo:block keep-with-next="always">
-      <fo:inline font-weight="bold"><xsl:apply-templates select="r:level"/>
-        <xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="r:major"/></fo:inline>
-      <xsl:if test="r:date|r:period">
-        <xsl:text>, </xsl:text>
-        <xsl:apply-templates select="r:date|r:period"/>
-      </xsl:if>
-      <xsl:if test="r:annotation">
-        <xsl:text>. </xsl:text>
-        <xsl:apply-templates select="r:annotation"/>
-      </xsl:if>
-    </fo:block>
     <fo:block space-after="{$para.break.space}">
-      <xsl:apply-templates select="r:institution"/>
+      <fo:block keep-with-next="always">
+        <fo:inline font-weight="bold"><xsl:apply-templates select="r:level"/>
+          <xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
+          <xsl:text> </xsl:text>
+          <xsl:apply-templates select="r:major"/>
+        </fo:inline>
+        <xsl:apply-templates select="r:minor"/>
+        <xsl:if test="r:date|r:period">
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="r:date|r:period"/>
+        </xsl:if>
+        <xsl:if test="r:annotation">
+          <xsl:text>. </xsl:text>
+          <xsl:apply-templates select="r:annotation"/>
+        </xsl:if>
+      </fo:block>
+      <fo:block>
+        <xsl:apply-templates select="r:institution"/>
+      </fo:block>
     </fo:block>
     <xsl:if test="r:subjects/r:subject">
       <fo:block space-after="{$para.break.space}">

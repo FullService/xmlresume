@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Help VIM: <!DOCTYPE DocBook -->
 
-<refentry id="element.major">
+<refentry id="element.minor">
   <refnamediv>
-    <refname>major</refname>
-    <refpurpose>A main course of study</refpurpose>
+    <refname>minor</refname>
+    <refpurpose>A minor course of study</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -25,7 +25,7 @@
 
     <refsect2><title>Parents</title>
       <para>
-        <sgmltag class="element">major</sgmltag> may be contained in these
+        <sgmltag class="element">minor</sgmltag> may be contained in these
         elements:
         <?resumevar PARENTS?>
       </para>
@@ -36,10 +36,11 @@
       <variablelist>
 
         <varlistentry>
-          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <term><sgmltag class="attribute">id</sgmltag></term>
           <listitem>
             <para>
-              DESCRIPTION
+              A string used to uniquely identify a ELEMENT. The ELEMENT may
+              then be referred to by this identifier.
             </para>
           </listitem>
         </varlistentry>
@@ -53,7 +54,7 @@
   <refsect1><title>See Also</title>
     <para>
       <simplelist type="inline">
-        <member><link linkend="element.minor"><sgmltag class="element">minor</sgmltag></link></member>
+        <member><link linkend="element.major"><sgmltag class="element">major</sgmltag></link></member>
       </simplelist>.
     </para>
   </refsect1>

@@ -160,10 +160,11 @@ in a future version. -->
 <!-- What academics, if any, you might possess. -->
 <!ELEMENT academics (degrees, note?)>
 <!ELEMENT degrees (degree+)>
-<!ELEMENT degree (level, major, (date|period)?, institution?, subjects?, annotation?)>
+<!ELEMENT degree (level, major+, minor*, (date|period)?, institution?, subjects?, annotation?)>
 <!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT major (#PCDATA)>
+<!ELEMENT minor (#PCDATA)>
 <!ELEMENT institution (#PCDATA)>
 <!ATTLIST institution id ID #IMPLIED>
 <!ELEMENT subjects (subject+)>

@@ -89,6 +89,9 @@
 <degree>
   <level>BS</level>
   <major>Computer Science</major>
+  <major>English</major>
+  <minor>Graphic Design</minor>
+  <minor>Geography</minor>
   <subjects>
     <subject>
       <title>Compilers</title>
@@ -97,7 +100,11 @@
     <subject>
       <title>Data Structures</title>
       <result>B</result>
+    </subject>
     <subject>
+      <title>Classic Literature</title>
+      <result>A</result>
+    </subject>
   </subjects>
 </degree>
     ]]></programlisting></informalexample>

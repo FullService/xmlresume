@@ -70,6 +70,10 @@ $Id$
   <!-- Word to use for "in", as in "bachelor degree *in* political science" -->
   <xsl:param name="in.word">in</xsl:param>
 
+  <!-- Word to use for "and", as in "Minors in political science, English, *and*
+  business" -->
+  <xsl:param name="and.word">and</xsl:param>
+
   <!-- Word to use for "Copyright (c)" -->
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
 
@@ -107,6 +111,10 @@ $Id$
 
   <!-- Word to use for the "Projects:" heading in a job. -->
   <xsl:param name="projects.word">Projects:</xsl:param>
+
+  <!-- Word to use for Minor (lesser area of study), singluar and plural. -->
+  <xsl:param name="minor.word">minor</xsl:param>
+  <xsl:param name="minors.word">minors</xsl:param>
 
   <!-- Word to use for referees. -->
   <xsl:param name="referees.word">References</xsl:param>

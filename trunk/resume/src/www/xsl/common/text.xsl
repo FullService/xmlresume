@@ -48,6 +48,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:strip-space elements="*"/>
 
   <xsl:include href="params.xsl"/>
+  <xsl:include href="common.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
@@ -473,6 +474,7 @@ In general, each block is responsible for outputting a newline after itself.
         <xsl:value-of select="$in.word"/>
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="r:major"/>
+        <xsl:apply-templates select="r:minor"/>
         <xsl:if test="r:date|r:period">     
           <xsl:text>, </xsl:text>
           <xsl:apply-templates select="r:date|r:period"/>

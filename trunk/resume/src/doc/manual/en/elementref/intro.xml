@@ -34,6 +34,10 @@
     <section><title>Version 1.4.0</title>
       <itemizedlist>
         <listitem><para>
+          New element: <link linkend="element.minor"><sgmltag
+          class="element">minor</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
           New element: <link linkend="element.lastModified"><sgmltag
           class="element">lastModified</sgmltag></link>.
         </para></listitem>
@@ -69,6 +73,12 @@
           New attribute: the <link linkend="element.skill"><sgmltag
           class="element">skill</sgmltag></link> element now has a <sgmltag
           class="attribute">level</sgmltag> attribute.
+        </para></listitem>
+        <listitem><para>
+          Change: the <link linkend="element.degree"><sgmltag
+          class="element">degree</sgmltag></link> element may now contain
+          multiple <link linkend="element.major"><sgmltag
+          class="element">major</sgmltag></link> elements.
         </para></listitem>
         <listitem><para>
           Change: the <link linkend="element.pub"><sgmltag
