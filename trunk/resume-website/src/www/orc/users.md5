@@ -1,0 +1,4 @@
+# This is a log file that is used as a record of ORC users.
+# convert.sh will write a 1-way hash (md5) of each user's email address,
+# which allows us to get a count of how many people are using it, and how 
+# often, without exposing the users to spammers.

@@ -81,7 +81,7 @@ Subject: ORC: Your XML Resume has been processed
 Hello,
 
 This message is to notify you that the XML Résumé you
-submitted has been processed.  The results of this build, and a log
+submitted has been processed.  The results of this build and a log
 summary of the build process can be found at
 
 @WEBSERVER_ADDRESS@@WWW_ROOT@/orc/incoming/DONE/$dirname/out/
