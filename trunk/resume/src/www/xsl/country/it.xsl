@@ -49,6 +49,7 @@ $Id$
   <xsl:param name="by.word">di</xsl:param>
   <xsl:param name="present.word">presente</xsl:param>
   <xsl:param name="phone.word">Telefono</xsl:param>
+  <xsl:param name="phone.home.phrase"><xsl:value-of select="$phone.word"/> in casa</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
   <xsl:param name="achievements.word">Conseguimenti</xsl:param>

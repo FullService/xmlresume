@@ -61,26 +61,51 @@ $Id$
   </xsl:template>
 
   <!-- CONTACTS =========================================================== -->
-  <!-- Outputs the word for a contact location ("Home", "Work", etc.), followed
-  by a space. -->
-  <xsl:template match="r:contact/r:phone/@location | r:contact/r:fax/@location">
+  <xsl:template name="PhoneLocation">
+    <xsl:param name="Location"/>
     <xsl:choose>
-      <xsl:when test=". = 'home'">
-        <xsl:value-of select="$home.word"/>
-        <xsl:text> </xsl:text>
+      <xsl:when test="$Location = 'home'">
+	<xsl:value-of select="$phone.home.phrase"/>
       </xsl:when>
-      <xsl:when test=". = 'work'">
-        <xsl:value-of select="$work.word"/>
-        <xsl:text> </xsl:text>
+      <xsl:when test="$Location = 'work'">
+	<xsl:value-of select="$phone.work.phrase"/>
       </xsl:when>
-      <xsl:when test=". = 'mobile'">
-        <xsl:value-of select="$mobile.word"/>
-        <xsl:text> </xsl:text>
+      <xsl:when test="$Location = 'mobile'">
+	<xsl:value-of select="$phone.mobile.phrase"/>
+      </xsl:when>
+      <xsl:when test="string-length($Location) > 0">
+        <xsl:message>
+          <xsl:text>***** WARNING: Unknown phone location: '</xsl:text>
+          <xsl:value-of select="$Location"/>
+          <xsl:text>' (inserting literally into output)</xsl:text>
+        </xsl:message>
+        <xsl:value-of select="$Location"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>***UNKNOWN CONTACT LOCATION: '</xsl:text>
-        <xsl:value-of select="."/>
-        <xsl:text>'*** </xsl:text>
+	<xsl:value-of select="$phone.word"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="FaxLocation">
+    <xsl:param name="Location"/>
+    <xsl:choose>
+      <xsl:when test="$Location = 'home'">
+	<xsl:value-of select="$fax.home.phrase"/>
+      </xsl:when>
+      <xsl:when test="$Location = 'work'">
+	<xsl:value-of select="$fax.work.phrase"/>
+      </xsl:when>
+      <xsl:when test="string-length($Location) > 0">
+        <xsl:message>
+          <xsl:text>***** WARNING: Unknown fax location: '</xsl:text>
+          <xsl:value-of select="$Location"/>
+          <xsl:text>' (inserting literally into output)</xsl:text>
+        </xsl:message>
+        <xsl:value-of select="$Location"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="$fax.word"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

@@ -79,14 +79,15 @@ $Id$
 
   <xsl:param name="phone.word">Phone</xsl:param>
   <xsl:param name="fax.word">Fax</xsl:param>
+  <xsl:param name="phone.home.phrase">Home <xsl:value-of select="$phone.word"/></xsl:param>
+  <xsl:param name="phone.work.phrase">Work <xsl:value-of select="$phone.word"/></xsl:param>
+  <xsl:param name="phone.mobile.phrase">Mobile <xsl:value-of select="$phone.word"/></xsl:param>
+  <xsl:param name="fax.home.phrase">Home <xsl:value-of select="$fax.word"/></xsl:param>
+  <xsl:param name="fax.work.phrase">Work <xsl:value-of select="$fax.word"/></xsl:param>
+
   <xsl:param name="pager.word">Pager</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
-
-  <!-- Words for phone and fax locations, as in "Home Phone", or "Work Fax" -->
-  <xsl:param name="home.word">Home</xsl:param>
-  <xsl:param name="work.word">Work</xsl:param>
-  <xsl:param name="mobile.word">Mobile</xsl:param>
 
   <!-- Instant messenger service names -->
   <!-- (When you add or remove a service here, don't forget to update

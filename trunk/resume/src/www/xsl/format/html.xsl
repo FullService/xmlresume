@@ -135,15 +135,17 @@ $Id$
     </p>
   </xsl:template>
   <xsl:template match="r:contact/r:phone">
-    <xsl:apply-templates select="@location"/>
-    <xsl:value-of select="$phone.word"/>
+    <xsl:call-template name="PhoneLocation">	
+      <xsl:with-param name="Location" select="@location"/>
+    </xsl:call-template>    
     <xsl:text>: </xsl:text>
     <xsl:apply-templates/>
     <br/>
   </xsl:template>
   <xsl:template match="r:contact/r:fax">
-    <xsl:apply-templates select="@location"/>
-    <xsl:value-of select="$fax.word"/>
+    <xsl:call-template name="FaxLocation">
+      <xsl:with-param name="Location" select="@location"/>
+    </xsl:call-template>
     <xsl:text>: </xsl:text>
     <xsl:apply-templates/>
     <br/>

@@ -52,9 +52,13 @@ $Id$
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
   <xsl:param name="by.word">par</xsl:param>
   <xsl:param name="present.word">pr&#x00e9;sent</xsl:param>
+
   <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
-  <xsl:param name="mobile.word">GSM</xsl:param> 
-  <xsl:param name="home.word">priv&#x00e9;</xsl:param>
+  <xsl:param name="fax.word">Facsimile</xsl:param>
+  <xsl:param name="phone.mobile.phrase">GSM</xsl:param> 
+  <xsl:param name="phone.home.phrase"><xsl:value-of select="$phone.word"/> priv&#x00e9;</xsl:param>
+  <xsl:param name="fax.home.phrase"><xsl:value-of select="$fax.word"/> priv&#x00e9;</xsl:param>
+
   <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
   <xsl:param name="achievements.word">R&#x00e9;alisations:</xsl:param>

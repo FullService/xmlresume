@@ -302,8 +302,9 @@ $Id$
   <xsl:template match="r:contact/r:phone">
     <xsl:call-template name="contact">
       <xsl:with-param name="label">
-        <xsl:apply-templates select="@location"/>
-        <xsl:value-of select="$phone.word"/>
+        <xsl:call-template name="PhoneLocation">
+          <xsl:with-param name="Location" select="@location"/>
+        </xsl:call-template>
       </xsl:with-param>
       <xsl:with-param name="field">
         <xsl:apply-templates/>
@@ -314,8 +315,9 @@ $Id$
   <xsl:template match="r:contact/r:fax">
     <xsl:call-template name="contact">
       <xsl:with-param name="label">
-        <xsl:apply-templates select="@location"/>
-        <xsl:value-of select="$fax.word"/>
+        <xsl:call-template name="FaxLocation">
+          <xsl:with-param name="Location" select="@location"/>
+        </xsl:call-template>
       </xsl:with-param>
       <xsl:with-param name="field">
         <xsl:apply-templates/>
