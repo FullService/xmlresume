@@ -599,6 +599,16 @@ $Id$
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- Format the "last modified" date -->
+  <xsl:template match="r:lastModified">
+    <p class="lastModified">
+      <xsl:value-of select="$last-modified.phrase"/>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>.</xsl:text>
+    </p>
+  </xsl:template>
+
   <!-- Format the legalese -->
   <xsl:template match="r:copyright">
     <div class="copyright">

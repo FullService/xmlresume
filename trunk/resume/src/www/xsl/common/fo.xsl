@@ -743,6 +743,18 @@ $Id$
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- Format the "last modified" date -->
+  <xsl:template match="r:lastModified">
+    <fo:block
+        start-indent="{$heading.indent}"
+        space-after="{$para.break.space}">
+      <xsl:value-of select="$last-modified.phrase"/>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>.</xsl:text>
+    </fo:block>
+  </xsl:template>
+
   <!-- Format legalese. -->
   <xsl:template match="r:copyright">
     <fo:block start-indent="{$heading.indent}">

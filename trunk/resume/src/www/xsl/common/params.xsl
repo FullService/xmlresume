@@ -108,6 +108,9 @@ $Id$
   <!-- Word to use for referees. -->
   <xsl:param name="referees.word">References</xsl:param>
 
+  <!-- Phrase to use for "Last modified". -->
+  <xsl:param name="last-modified.phrase">Last modified</xsl:param>
+
   <!-- Default separator between authors in publication details.  -->
   <xsl:param name="pub.author.separator">, </xsl:param>
 

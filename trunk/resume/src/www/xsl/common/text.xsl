@@ -829,6 +829,23 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:call-template>
   </xsl:template>
 
+  <!-- Format the "last modified" date -->
+  <xsl:template match="r:lastModified">
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Width" select="$text.width"/>
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$last-modified.phrase"/>
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>.</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
+
+  </xsl:template>
+
   <!-- Format the legalese -->
   <xsl:template match="r:copyright">
     <xsl:call-template name="NewLine"/>

@@ -59,7 +59,7 @@ $Id$
 	xsi:schemaLocation CDATA #IMPLIED>
 
 <!-- A resume -->
-<!ELEMENT resume (docpath?, header?, (%sections;)*, copyright?)>
+<!ELEMENT resume (docpath?, header?, (%sections;)*, lastModified?, copyright?)>
 <!ATTLIST resume id ID #IMPLIED
 	xmlns     CDATA #FIXED "http://xmlresume.sourceforge.net/resume/0.0"
 	xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
@@ -215,6 +215,9 @@ chance to remove it from their resumes. It was deprecated in version 1.3.4. -->
 
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>
+
+<!-- The date the resume was last modified -->
+<!ELEMENT lastModified (date)>
 
 <!-- A copyright on a resume?  Absolutely.  This helps prevents -->
 <!-- particularly annoying headhunters from plastering your resume all -->

@@ -126,6 +126,13 @@
             </entry>
           </row>
           <row>
+            <entry><literal>lastModified</literal></entry>
+            <entry>
+              On the <sgmltag class="element">p</sgmltag> for the <quote>last
+              modified</quote> notice.
+            </entry>
+          </row>
+          <row>
             <entry><literal>level</literal></entry>
             <entry>
               On the <sgmltag class="element">acronym</sgmltag> for the level
