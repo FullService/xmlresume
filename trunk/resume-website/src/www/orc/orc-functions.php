@@ -11,7 +11,7 @@
 #  $ret[2]: the location of the build log file (only if $ret[0] == 0 or 2)
 #  $ret[3]: the location of the converted compressed resume file
 function process_upload() {   
-  global $ant_cmd, $dirname, $pathdirname, $time_stamp, $javaClassPath;
+  global $dirname, $pathdirname, $time_stamp;
 
 # Give rwx permission to EVERYONE, because otherwise the web server will
 # create files that the build system can't delete

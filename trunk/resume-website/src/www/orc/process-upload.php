@@ -6,18 +6,6 @@ $time_stamp = time();
 $dirname = "orc" . $time_stamp;
 $pathdirname  = "./incoming/" . $dirname;
 
-# Set the java classpath and the ant startup script location
-# (after building, this file will be in $HOME/htdocs/orc)
-$supporthome = "../../resume-support";
-$cp = $supporthome . "/fop.jar";
-$cp = $cp . ":" . $supporthome . "/xerces.jar";
-$cp = $cp . ":" . $supporthome . "/xalan.jar";
-$cp = $cp . ":" . $supporthome . "/batik.jar";
-$cp = $cp . ":" . $supporthome . "/avalon-framework-cvs-20020315.jar";
-$cp = $cp . ":" . $supporthome . "/xmlresume-filter.jar";
-$javaClassPath = $cp;
-$ant_cmd = $supporthome . "/ant/ant";
-
 include("../private/quicklinks.html");
 ?>
 <html>

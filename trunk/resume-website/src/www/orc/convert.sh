@@ -14,8 +14,8 @@
 ########################################################
 
 # You may need to change the following variables:
-#export SUPPORT_HOME="/home/groups/x/xm/xmlresume/resume-support"
-export SUPPORT_HOME="${HOME}/xmlresume/resume-support"
+export SUPPORT_HOME="/home/groups/x/xm/xmlresume/resume-support"
+#export SUPPORT_HOME="${HOME}/xmlresume/resume-support"
 JAVACMD=java
 ANTCMD="${SUPPORT_HOME}/ant/ant"
 
