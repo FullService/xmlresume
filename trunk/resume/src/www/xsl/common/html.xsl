@@ -45,6 +45,7 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="string.xsl"/>
 
   <xsl:template match="/">
     <html>
@@ -293,25 +294,15 @@ $Id$
 
   <!-- Preserve line breaks within a free format address -->
   <xsl:template match="r:address//text()">
-    <xsl:call-template name="PreserveLinebreaks">
+    <xsl:call-template name="String-Replace">
       <xsl:with-param name="Text" select="."/>
+      <xsl:with-param name="Search-For">
+        <xsl:text>&#xA;</xsl:text>
+      </xsl:with-param>
+      <xsl:with-param name="Replace-With">
+        <br/>
+      </xsl:with-param>
     </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="PreserveLinebreaks">
-    <xsl:param name="Text"/>
-    <xsl:choose>
-      <xsl:when test="contains($Text, '&#xA;')">
-         <xsl:value-of select="substring-before($Text, '&#xA;')"/>
-	 <br/>
-	 <xsl:call-template name="PreserveLinebreaks">
-	   <xsl:with-param name="Text" select="substring-after($Text, '&#xA;')"/>
-	 </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-         <xsl:value-of select="$Text"/>
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
   <!-- Objective, with level 2 heading. -->
@@ -428,7 +419,7 @@ $Id$
         <xsl:value-of select="r:institution"/>
       </xsl:if>
       <xsl:if test="r:annotation">
-        <xsl:text>, </xsl:text>
+        <xsl:text>. </xsl:text>
         <xsl:apply-templates select="r:annotation"/>
       </xsl:if>
       <xsl:if test="r:subjects/r:subject">

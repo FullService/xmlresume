@@ -2,7 +2,7 @@
 
 <!--
 string.xsl
-Library of string helper templates.
+Library of string processing templates.
 
 Copyright (c) 2000-2002 by Vlad Korolev, Sean Kelly, and Bruce Christensen
 
@@ -37,186 +37,6 @@ $Id$
 <xsl:stylesheet version="1.0"
          xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
          xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-  <xsl:template name="NewLine">
-<xsl:text>
-</xsl:text>
-  </xsl:template>
-  
-  <xsl:template name="NSpace">
-    <xsl:param name="n" select="0"/>
-    <xsl:if test="$n &gt; 0">
-    <xsl:text> </xsl:text>
-    <xsl:call-template name="NSpace">
-    <xsl:with-param name="n" select="$n - 1" />
-    </xsl:call-template>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template name="Indent">
-    <xsl:param name="Length" select="$text.indent"/>
-    <xsl:param name="Text"/>
-
-    <!-- Put Space -->
-    <xsl:call-template name="NSpace">
-      <xsl:with-param name="n" select="$Length"/>
-    </xsl:call-template>
-
-    <!-- Display One Line -->
-    <xsl:choose>
-      <xsl:when test="contains($Text,'&#xA;')">
-        <xsl:value-of select="substring-before($Text,'&#xA;')"/>
-        <xsl:call-template name="NewLine"/>
-        <xsl:call-template name="Indent">
-          <xsl:with-param name="Length" select="$Length"/>
-          <xsl:with-param name="Text" select="substring-after($Text,'&#xA;')"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$Text"/>
-      </xsl:otherwise>
-    </xsl:choose>
-
-    <!-- Continue with the rest -->
-  </xsl:template>
-  
-  <!-- Center a multi-line block of text -->
-  <xsl:template name="CenterBlock">
-    <xsl:param name="Width" select="$text.width"/>
-    <xsl:param name="Text" />
-    <xsl:choose>
-      <xsl:when test="contains($Text,'&#xA;')">
-        <xsl:call-template name="Center">
-          <xsl:with-param name="Text" select="substring-before($Text,'&#xA;')"/>
-          <xsl:with-param name="Width" select="$Width"/>
-        </xsl:call-template>
-        <xsl:call-template name="CenterBlock">
-          <xsl:with-param name="Width" select="$Width"/>
-          <xsl:with-param name="Text" select="substring-after($Text,'&#xA;')"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:call-template name="Center">
-          <xsl:with-param name="Text" select="$Text"/>
-          <xsl:with-param name="Width" select="$Width"/>
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- Center a single line of text -->
-  <xsl:template name="Center">
-    <xsl:param name="Width" select="$text.width"/>
-    <xsl:param name="Text" />
-    <xsl:call-template name="NSpace">
-    <xsl:with-param name="n" select="($Width - string-length($Text)) div 2" />
-    </xsl:call-template>
-    <xsl:value-of select="$Text"/>
-    <xsl:call-template name="NewLine"/>
-  </xsl:template>
-
-  <xsl:template name="FormatParagraph" >
-    <xsl:param name="Text"  />
-    <xsl:param name="Width" select="20"/>
-    <xsl:param name="CPos"  select="0" />
-
-    <!-- Put as many words on the line as possible -->
-    <!-- Do it till we run out of things -->
-    <xsl:if test="$CPos=0">
-      <xsl:call-template name="NewLine"/>
-    </xsl:if>
-    <xsl:if test="string-length($Text) > 0">
-      <xsl:variable name="Word">
-        <xsl:choose>
-          <xsl:when test="contains($Text,' ')">
-            <xsl:value-of select="substring-before($Text,' ')"/>
-          </xsl:when>
-          <xsl:otherwise>
-              <xsl:value-of select="$Text"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-
-      <xsl:choose>
-        <!-- If this word would cause the line to exceed $Width, -->
-        <!-- start a new line instead.                           -->
-        <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
-          <xsl:call-template name="FormatParagraph">
-            <xsl:with-param name="Text" select="$Text"/>
-            <xsl:with-param name="Width" select="$Width"/>
-            <xsl:with-param name="CPos" select="0"/>
-          </xsl:call-template>
-        </xsl:when> 
-        <!-- otherwise, there's room on the current line -->
-        <xsl:otherwise>
-          <xsl:if test="$CPos &gt; 0">
-            <xsl:text> </xsl:text>  
-          </xsl:if>
-          <xsl:value-of select="$Word"/>
-          <xsl:call-template name="FormatParagraph">
-            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-            <xsl:with-param name="Width" select="$Width"/>
-            <xsl:with-param name="CPos" select="$CPos + string-length($Word) + 1"/>
-          </xsl:call-template>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-  </xsl:template>
-
-  <!-- Named template for formatting a generic bullet list item *SE* -->
-  <xsl:template name="FormatBulletListItem" >
-    <xsl:param name="Text"  />
-    <xsl:param name="Width" select="20"/>
-    <xsl:param name="CPos" select="0"/>
-
-    <xsl:if test="$CPos=0">
-      <xsl:call-template name="NewLine"/>
-      <xsl:value-of select="$text.bullet.character"/>
-      <xsl:text> </xsl:text>
-    </xsl:if>
-
-    <!-- Put as many words on the line as possible -->
-    <!-- Do it till we run out of things -->
-    <xsl:if test="string-length($Text) > 0">
-
-      <xsl:variable name="Word">
-        <xsl:choose>
-          <xsl:when test="contains($Text,' ')">
-            <xsl:value-of select="substring-before($Text,' ')"/>
-          </xsl:when>
-             <!-- otherwise, this is the last word. -->
-          <xsl:otherwise>
-            <xsl:value-of select="$Text"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-      <xsl:choose>
-        <!-- If this word would exceed $Width, start a new line. -->
-        <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
-          <xsl:call-template name="NewLine"/>
-          <xsl:text>  </xsl:text>
-          <xsl:call-template name="FormatBulletListItem">
-            <xsl:with-param name="Text" select="$Text"/>
-            <xsl:with-param name="Width" select="$Width"/>
-            <xsl:with-param name="CPos" select="2"/>
-          </xsl:call-template>
-        </xsl:when> 
-        <!-- otherwise, there's room on the current line -->
-        <xsl:otherwise>
-          <xsl:if test="$CPos &gt; 2">
-            <xsl:text> </xsl:text>
-          </xsl:if>
-          <xsl:value-of select="$Word"/>
-          <xsl:variable name="NewPos" select="$CPos + string-length($Word) + 1"/>
-          <xsl:call-template name="FormatBulletListItem">
-            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-            <xsl:with-param name="Width" select="$Width"/>
-            <xsl:with-param name="CPos" select="$NewPos"/>
-          </xsl:call-template>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-  </xsl:template>
 
   <!-- Removes leading and trailing space -->
   <xsl:template name="Trim">
@@ -303,6 +123,45 @@ $Id$
         <xsl:value-of select="$Last"/>
       </xsl:if>
     </xsl:if>
+
+  </xsl:template>
+
+  <!--
+  Replaces $Max-Replacements occurrences (default: as many as possible) of
+  $Search-For in $Text with $Replace-With.
+
+  Based on Sean's PreserveLineBreaks. *BC*
+  -->
+  <xsl:template name="String-Replace">
+    <xsl:param name="Text"/>
+    <xsl:param name="Search-For"/>
+    <xsl:param name="Replace-With"/>
+    <!-- less than 0 = as many replacements as possible -->
+    <xsl:param name="Max-Replacements">-1</xsl:param>
+
+    <xsl:choose>
+      <xsl:when test="($Max-Replacements != 0) and contains($Text, $Search-For)">
+        <xsl:value-of select="substring-before($Text, $Search-For)"/>
+        <xsl:copy-of select="$Replace-With"/>
+        <xsl:call-template name="String-Replace">
+          <xsl:with-param
+            name="Text"
+            select="substring-after($Text, $Search-For)"/>
+          <xsl:with-param
+            name="Search-For"
+            select="$Search-For"/>
+          <xsl:with-param
+            name="Replace-With"
+            select="$Replace-With"/>
+          <xsl:with-param
+            name="Max-Replacements"
+            select="$Max-Replacements - 1"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$Text"/>
+      </xsl:otherwise>
+    </xsl:choose>
 
   </xsl:template>
 

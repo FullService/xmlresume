@@ -34,6 +34,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 $Id$
 -->
 
+<!--
+In general, each block is responsible for outputting a newline after itself.
+-->
+
 <xsl:stylesheet version="1.0"
          xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
          xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -47,6 +51,8 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="string.xsl"/>
+  <xsl:include href="textlayout.xsl"/>
+  <xsl:include href="interests.xsl"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="r:resume"/>
@@ -58,14 +64,16 @@ $Id$
   <xsl:template match="r:docpath"/>
 
   <xsl:template match="r:keyword">
+    <!--
     <xsl:value-of select="."/>
-  <!--
     <xsl:if test="position() != last()">
       <xsl:text>, </xsl:text>
-    </xsl:if> -->
+    </xsl:if>
+    -->
   </xsl:template>
 
   <xsl:template name="pathItem">
+    <!--
     <xsl:param name="style">unknown</xsl:param>
     <span class="{$style}">
       <a>
@@ -76,34 +84,41 @@ $Id$
       </a>
       <xsl:text> > </xsl:text>
     </span>
+    -->
   </xsl:template>
 
   <xsl:template match="r:head">
+    <!--
     <xsl:call-template name="pathItem">
       <xsl:with-param name="style">navHome</xsl:with-param>
     </xsl:call-template>
+    -->
   </xsl:template>
 
   <xsl:template match="r:node">
+    <!--
     <xsl:call-template name="pathItem">
       <xsl:with-param name="style">navItem</xsl:with-param>
     </xsl:call-template>
+    -->
   </xsl:template>
 
   <xsl:template match="r:tail">
+    <!--
     <span class="navTerminal">
       <xsl:value-of select="."/>
     </span>
+    -->
   </xsl:template>
 
   <xsl:template match="r:header">
     <xsl:choose>
-    <xsl:when test="$header.format = 'centered'">
-      <xsl:apply-templates select="." mode="centered"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:apply-templates select="." mode="standard"/>
-    </xsl:otherwise>
+      <xsl:when test="$header.format = 'centered'">
+        <xsl:apply-templates select="." mode="centered"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="standard"/>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -113,96 +128,70 @@ $Id$
         <xsl:apply-templates select="r:name"/>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
 
     <xsl:call-template name="CenterBlock">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:address"/>
+        <xsl:apply-templates select="r:contact"/>
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:if test="r:contact/r:phone">
-      <xsl:call-template name="Center">
-      <xsl:with-param name="Text">
-          <xsl:apply-templates select="r:contact/r:phone"/>
-      </xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-    <xsl:if test="r:contact/r:email">
-      <xsl:call-template name="Center">
-      <xsl:with-param name="Text">
-          <xsl:apply-templates select="r:contact/r:email"/>
-      </xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-    <xsl:if test="r:contact/r:url">
-      <xsl:call-template name="Center">
-      <xsl:with-param name="Text">
-          <xsl:apply-templates select="r:contact/r:url"/>
-      </xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template match="r:header" mode="standard">
     <!-- Your name, address, and stuff. -->
-   <xsl:call-template name="Center">
-   <xsl:with-param name="Text">
-      <xsl:apply-templates select="r:name"/>
-      <xsl:text>  - </xsl:text>
-      <xsl:value-of select="$resume.word"/>
-   </xsl:with-param>
-   </xsl:call-template>
-
-    <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
+    <xsl:call-template name="Center">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:name"/>
+        <xsl:text> - </xsl:text>
+        <xsl:value-of select="$resume.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:call-template name="NewLine"/>
 
-      <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="r:address"/> 
-      <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$contact.word"/>
+    </xsl:call-template>
 
-    <!-- Don't print phone/email labels if fields are empty. *SE* -->
-    <xsl:if test="r:contact/r:phone">
-      <xsl:apply-templates select="r:contact/r:phone"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:email">
-      <xsl:apply-templates select="r:contact/r:email"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:url">
-      <xsl:apply-templates select="r:contact/r:url"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
+    <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
+    <xsl:apply-templates select="r:address"/> 
+
+    <xsl:call-template name="NewLine"/>
+
+    <xsl:apply-templates select="r:contact"/>
   </xsl:template>
 
-    <!-- Objective, with level 2 heading. -->
-    <xsl:template match="r:objective">
-    <xsl:call-template name="NewLine"/>
-  <xsl:value-of select="$objective.word"/>
-  <xsl:text>:</xsl:text>
-  <xsl:call-template name="NewLine"/>
-  <xsl:call-template name="Indent">
-    <xsl:with-param name="Text">
-      <xsl:apply-templates/>
-    </xsl:with-param>
-  </xsl:call-template>
-  <xsl:call-template name="NewLine"/>
+  <!-- Objective, with level 2 heading. -->
+  <xsl:template match="r:objective">
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$objective.word"/>
+    </xsl:call-template>
+
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Contact information -->
   <xsl:template match="r:contact/r:phone">
     <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
     <xsl:value-of select="."/>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:email">
     <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
     <xsl:value-of select="."/>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:url">
     <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text>
     <xsl:value-of select="."/>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- Addresses, in various modes -->
@@ -310,49 +299,58 @@ $Id$
 
   <!-- Past jobs, with level 2 heading. -->
   <xsl:template match="r:history">
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="$history.word"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$history.word"/>
+    </xsl:call-template>
+
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
-          <xsl:apply-templates select="r:job"/>
+          <xsl:apply-templates/>
        </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
   <!-- Format each job -->
   <xsl:template match="r:job">
-      <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="r:jobtitle"/>
-      <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="r:employer"/>
-      <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="r:period"/>
+    <xsl:apply-templates select="r:jobtitle"/>
+    <xsl:apply-templates select="r:employer"/>
+    <xsl:apply-templates select="r:period"/>
+
+    <xsl:if test="r:description">
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="r:description"/>
-      <xsl:if test="r:projects/r:project">
-        <xsl:apply-templates select="r:projects"/>
-      </xsl:if>
-      <xsl:if test="r:achievements/r:achievement">
-        <xsl:apply-templates select="r:achievements"/>
-      </xsl:if>
+    </xsl:if>
+
+    <xsl:if test="r:projects">
+      <xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:projects"/>
+    </xsl:if>
+
+    <xsl:if test="r:achievements">
+      <xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:achievements"/>
+    </xsl:if>
+
+    <xsl:if test="following-sibling::*">
       <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
+    </xsl:if>
+
   </xsl:template>
 
-  <!-- format the job description -->
+  <!-- Format the job description -->
   <xsl:template match="r:description">
-      <xsl:apply-templates/>
-      <xsl:call-template name="NewLine"/>
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Format the projects section as a bullet list -->
   <xsl:template match="r:projects">
-    <xsl:call-template name="NewLine"/><xsl:value-of select="$projects.word"/>
-    <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="r:project"/>
+    <xsl:if test="r:project">
+      <xsl:value-of select="$projects.word"/>
+      <xsl:call-template name="NewLine"/>
+
+      <xsl:apply-templates select="r:project"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="r:project">
@@ -363,18 +361,21 @@ $Id$
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="64"/>
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
     </xsl:call-template>
+
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="r:achievements">
-    <xsl:if test="string-length($achievements.word) > 0">
-      <xsl:call-template name="NewLine"/>
-      <xsl:value-of select="$achievements.word"/>
+    <xsl:if test="r:achievement">
+      <xsl:if test="string-length($achievements.word) > 0">
+        <xsl:value-of select="$achievements.word"/>
+        <xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:apply-templates select="r:achievement"/>
     </xsl:if>
-    <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="r:achievement"/>
   </xsl:template>
 
   <xsl:template match="r:achievement">
@@ -385,15 +386,22 @@ $Id$
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="72"/>
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
     </xsl:call-template>
+
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
                 
   <xsl:template match="r:period">
     <xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:date">
+    <xsl:if test="r:dayOfMonth">
+      <xsl:apply-templates select="r:dayOfMonth"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates select="r:month"/>
     <xsl:text> </xsl:text>
     <xsl:apply-templates select="r:year"/>
@@ -401,29 +409,34 @@ $Id$
 
   <xsl:template match="r:present"><xsl:value-of select="$present.word"/></xsl:template>
 
-  <xsl:template match="r:year | r:month | r:jobtitle | r:employer | r:title | r:skill | r:annotation">
+  <xsl:template match="r:jobtitle | r:employer">
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <xsl:template match="r:year | r:month | r:title | r:skill | r:annotation">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
   <!-- Degrees and stuff -->
   <xsl:template match="r:academics">
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="$academics.word"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$academics.word"/>
+    </xsl:call-template>
+
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:degrees"/>
-        <xsl:apply-templates select="r:note"/>
+        <xsl:if test="r:note">
+          <xsl:call-template name="NewLine"/>
+          <xsl:apply-templates select="r:note"/>
+        </xsl:if>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="r:degrees">
-      <xsl:apply-templates select="r:degree"/>
-      <xsl:apply-templates select="r:note"/>
+    <xsl:apply-templates select="r:degree"/>
   </xsl:template>
 
   <xsl:template match="r:note">
@@ -431,8 +444,8 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:degree">
-    <xsl:call-template name="FormatParagraph">
-      <xsl:with-param name="Width" select="$text.width - $text.indent"/>
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:value-of select="r:level"/>
         <xsl:text> </xsl:text>
@@ -448,7 +461,7 @@ $Id$
           <xsl:value-of select="r:institution"/>
         </xsl:if>
         <xsl:if test="r:annotation">
-          <xsl:text>, </xsl:text>
+          <xsl:text>. </xsl:text>
           <xsl:apply-templates select="r:annotation"/>
         </xsl:if>
       </xsl:with-param>
@@ -460,33 +473,39 @@ $Id$
       <xsl:apply-templates select="r:subjects"/>
     </xsl:if>
 
-    <xsl:call-template name="NewLine"/>
+    <xsl:if test="following-sibling::*">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
   </xsl:template>
 
-  <!-- Format the subjects -->
+  <!-- Format the subjects as a 2-column table -->
   <xsl:template match="r:subjects">
     <xsl:param name="MaxChars">
       <xsl:call-template name="MaxSubjectTitleLength"/>
     </xsl:param>
 
     <xsl:call-template name="Indent">
-    <xsl:with-param name="Text">
+      <xsl:with-param name="Text">
 
-      <xsl:for-each select="r:subject">
-        <xsl:value-of select="r:title"/>
-        <!-- Pad over to the second column -->
-        <xsl:call-template name="NSpace">
-          <xsl:with-param
-            name="n"
-            select="2 + $MaxChars - string-length(r:title)"/>
-        </xsl:call-template>
+        <xsl:for-each select="r:subject">
+          <xsl:value-of select="r:title"/>
+          <!-- Pad over to the second column -->
+          <xsl:call-template name="NSpace">
+            <xsl:with-param
+              name="n"
+              select="2 + $MaxChars - string-length(r:title)"/>
+          </xsl:call-template>
 
-        <xsl:value-of select="r:result"/>
-        <xsl:call-template name="NewLine"/>
-      </xsl:for-each>
+          <xsl:value-of select="r:result"/>
+          <xsl:if test="following-sibling::*">
+            <xsl:call-template name="NewLine"/>
+          </xsl:if>
+        </xsl:for-each>
 
-    </xsl:with-param>
+      </xsl:with-param>
     </xsl:call-template>
+
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- When called with an r:subjects as the context node, returns an integer
@@ -522,23 +541,22 @@ $Id$
 
   </xsl:template>
 
-  <!-- Format the open-ended skills -->
-  <xsl:template match="r:skillareas">
-      <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates />
+  <xsl:template match="r:skillarea">
+    <xsl:apply-templates select="r:title"/>
+
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Length" select="2"/>
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:skillset"/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="r:skillarea">
-      <xsl:call-template name="NewLine"/>
-    <xsl:if test="r:title">
-      <xsl:apply-templates select="r:title"/><xsl:text>:</xsl:text>
-      <xsl:call-template name="NewLine"/>
-    </xsl:if>
-    <xsl:call-template name="Indent">
+  <xsl:template match="r:skillarea/r:title">
+    <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
-              <xsl:apply-templates select="r:skillset"/>
+        <xsl:apply-templates/>
       </xsl:with-param>
-      <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -553,31 +571,36 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
-    <!-- format a skillset as comma-separated lists.  Need to use -->
-    <!-- FormatParagraph so long lists wrap onto multiple lines.  -->
+  <!-- format a skillset as comma-separated lists.  Need to use -->
+  <!-- Wrap so long lists wrap onto multiple lines.  -->
   <xsl:template match="r:skillset" mode="comma">
     <xsl:call-template name="Indent">
-      <xsl:with-param name="Text">
-        <xsl:call-template name="FormatParagraph">
-          <xsl:with-param name="Text">
-        <xsl:if test="r:title">
-          <xsl:apply-templates select="r:title"/>
-          <xsl:text>: </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="r:skills" mode="comma"/>
-      </xsl:with-param>
-      <xsl:with-param name="Width" select="72"/>
-      </xsl:call-template>
-      </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
+      <xsl:with-param name="Text">
+        <xsl:call-template name="Wrap">
+          <xsl:with-param name="Text">
+            <xsl:if test="r:title">
+              <xsl:apply-templates select="r:title"/>
+              <xsl:text>: </xsl:text>
+            </xsl:if>
+
+            <xsl:apply-templates select="r:skills" mode="comma"/>
+          </xsl:with-param>
+          <xsl:with-param name="Width" select="72"/>
+        </xsl:call-template>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="following-sibling::*">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="r:skillset" mode="bullet">
     <xsl:if test="r:title">
-      <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="r:title"/>
+      <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
     </xsl:if>
     <xsl:call-template name="Indent">
@@ -586,17 +609,18 @@ $Id$
       </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
-    <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="following-sibling::*">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
   </xsl:template>
 
   <!-- format skills as a comma-separated list -->
   <xsl:template match="r:skills" mode="comma">
-    <span class="skills">
-      <xsl:for-each select="r:skill[position() != last()]">
-        <xsl:apply-templates select="."/><xsl:text>, </xsl:text>
-      </xsl:for-each>
-      <xsl:apply-templates select="r:skill[position() = last()]"/>
-    </span>
+    <xsl:for-each select="r:skill[position() != last()]">
+      <xsl:apply-templates select="."/><xsl:text>, </xsl:text>
+    </xsl:for-each>
+    <xsl:apply-templates select="r:skill[position() = last()]"/>
   </xsl:template>
 
   <!-- Format individual skill as a bullet list -->
@@ -610,44 +634,49 @@ $Id$
       </xsl:with-param>
       <xsl:with-param name="Width" select="72"/>
     </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
 
   <!-- Format publications -->
   <xsl:template match="r:pubs">
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="$publications.word"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$publications.word"/>
+    </xsl:call-template>
+
     <xsl:apply-templates select="r:pub"/>
-    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:pub">
-    <xsl:variable name="text">   
+    <xsl:variable name="Text">   
       <xsl:call-template name="r:formatPub"/>
     </xsl:variable>
 
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:call-template name="FormatParagraph">
+        <xsl:call-template name="Wrap">
+          <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
           <xsl:with-param name="Text">
-            <xsl:value-of select="normalize-space($text)"/>
+            <xsl:value-of select="normalize-space($Text)"/>
           </xsl:with-param>
-          <xsl:with-param name="Width" select="72"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="following-sibling::*">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
   </xsl:template>
 
   <!-- Format memberships. -->
   <xsl:template match="r:memberships">
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="r:title"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+      </xsl:with-param>
+    </xsl:call-template>
+
     <xsl:apply-templates select="r:membership"/>
   </xsl:template>
 
@@ -657,35 +686,89 @@ $Id$
         <xsl:apply-templates/>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="following-sibling::*">
+      <xsl:call-template name="NewLine"/>
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
+      
   </xsl:template>
 
   <xsl:template match="r:membership/r:title">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="r:membership/r:organization">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="r:membership/r:description">
+    <xsl:if test="preceding-sibling::*">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <!-- Format interests section. -->
+  <xsl:template match="r:interests">
+
+    <xsl:call-template name="InterestsTitle"/>
+    <xsl:text>:</xsl:text>
+    <xsl:call-template name="NewLine"/>
+
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:interest"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- A single interest. -->
+  <xsl:template match="r:interest">
+    <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+
+        <xsl:if test="$interest.description.format = 'single-line' and r:description">
+          <xsl:text>. </xsl:text>
+        </xsl:if>
+
+        <xsl:apply-templates select="r:description"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- Format an interest description -->
+  <!--
+  <xsl:template match="r:interest/r:description">
+    <xsl:call-template name="r:description">
+      <xsl:with-param name="paragraph.format"
+        select="$interest.description.format"/>
+      <xsl:with-param name="css.class">interestDescription</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  -->
+
   <!-- Format the misc info -->
   <xsl:template match="r:misc">
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="$miscellany.word"/>:
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$miscellany.word"/>
+    </xsl:call-template>
+
     <xsl:variable name="Text">
       <xsl:apply-templates/>
     </xsl:variable>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:value-of select="$Text"/>
-        </xsl:with-param>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
@@ -707,17 +790,6 @@ $Id$
       <xsl:value-of select="r:legalnotice"/>
   </xsl:template>
 
-  <!-- Center the Name on the first line -->
-  <xsl:template match="r:name" mode="title">
-    <xsl:call-template name="Center">
-      <xsl:with-param name="Text">
-        <xsl:apply-templates/>
-        <xsl:text>  - </xsl:text>
-        <xsl:value-of select="$resume.word"/>
-      </xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-
   <xsl:template match="r:name">
     <xsl:apply-templates select="r:firstname"/>
     <xsl:text> </xsl:text>
@@ -731,7 +803,6 @@ $Id$
       <xsl:value-of select="r:suffix"/>
     </xsl:if>
   </xsl:template>
-  
 
   <!-- para -> p -->
   <xsl:template match="r:para">
@@ -739,22 +810,15 @@ $Id$
     <xsl:variable name="Text">
       <xsl:apply-templates/>
     </xsl:variable>
-    <xsl:call-template name="FormatParagraph">
+    <xsl:call-template name="Wrap">
       <xsl:with-param name="Width" select="72"/>
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
     </xsl:call-template>
-  </xsl:template>
-
-  <!-- Normalize whitespace on <para> text -->
-  <xsl:template match="r:para/text()">
-    <xsl:if test="preceding-sibling::*">
-      <xsl:text> </xsl:text>
-    </xsl:if>
-    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:call-template name="NewLine"/>
     <xsl:if test="following-sibling::*">
-      <xsl:text> </xsl:text>
+      <xsl:call-template name="NewLine"/>
     </xsl:if>
   </xsl:template>
 
@@ -777,43 +841,30 @@ $Id$
 
   <!-- Format the referees -->
   <xsl:template match="r:referees">
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="$referees.word"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text" select="$referees.word"/>
+    </xsl:call-template>
+
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:referee"/>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:referee">
     <!-- Your name, address, and stuff. -->
-      <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
+    <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
 
-      <xsl:if test="r:address">
-        <xsl:apply-templates select="r:address"/>
-        <xsl:call-template name="NewLine"/>
-      </xsl:if>
+    <xsl:if test="r:address">
+      <xsl:apply-templates select="r:address"/>
+    </xsl:if>
 
-      <!-- Don't print phone/email labels if fields are empty. *SE -->
-      <xsl:if test="r:contact/r:phone">
-        <xsl:apply-templates select="r:contact/r:phone"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:email">
-        <xsl:apply-templates select="r:contact/r:phone"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:url">
-        <xsl:apply-templates select="r:contact/r:phone"/>
-	<xsl:call-template name="NewLine"/>
-      </xsl:if>
+    <xsl:apply-templates select="r:contact"/>
+
+    <xsl:if test="following-sibling::*">
       <xsl:call-template name="NewLine"/>
-   </xsl:template>
+    </xsl:if>
+ </xsl:template>
 
 </xsl:stylesheet>
