@@ -14,8 +14,8 @@
       name-value pairs in the element. The <emphasis role="bold">emphasized</emphasis> parts of this
       example are attributes:</para>
       <informalexample><programlisting><![CDATA[
-<author ]]><emphasis role="bold"><![CDATA[name="a.kernighan"]]></emphasis><![CDATA[>
-<resume ]]><emphasis role="bold"><![CDATA[id="r25a4"]]></emphasis><![CDATA[>
+<author]]> <emphasis role="bold"><![CDATA[name="a.kernighan"]]></emphasis><![CDATA[>
+<resume]]> <emphasis role="bold"><![CDATA[id="r25a4"]]></emphasis><![CDATA[>
       ]]></programlisting></informalexample>
     </glossdef>
   </glossentry>
