@@ -154,7 +154,7 @@ $Id$
   <!-- Format for skills lists; available values are: -->
   <!-- 'bullet' for bulleted lists -->
   <!-- 'comma' for comma-separated lists -->
-  <xsl:param name="skills.format">comma</xsl:param>
+  <xsl:param name="skills.format">bullet</xsl:param>
 
   <!-- Settings for lines around the header of the print resume -->
   <xsl:param name="header.line.length">3.0in</xsl:param>
