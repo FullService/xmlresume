@@ -50,7 +50,7 @@
           class="element">possible</sgmltag></link>.
         </para></listitem>
         <listitem><para>
-          New elements:
+          New element:
           <link linkend="element.location"><sgmltag
           class="element">location</sgmltag></link>.
           It may be contained in 
