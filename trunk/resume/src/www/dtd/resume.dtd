@@ -49,7 +49,7 @@ $Id$
 <!ENTITY % inlines "#PCDATA | emphasis | citation | url | link">
 
 <!-- Sections of a resume -->
-<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|referees|keywords|memberships)">
+<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|referees|keywords|memberships|interests)">
 
 <!-- A collection of resumes -->
 <!ELEMENT resumes (resume*)>
@@ -88,14 +88,17 @@ $Id$
 <!ELEMENT birth (date)>
 
 <!-- Your address is free-form text formatted as is proper for your -->
-<!-- mailing standards.  To insert a line break, put a <break/> -->
-<!-- element, PLUS a newline in your document.  Mark up any other -->
-<!-- postal items with the element from addrElements. -->
+<!-- mailing standards.  To insert a line break, simply put a newline -->
+<!-- in your document.  Mark up any other postal items with the element -->
+<!-- from addrElements. -->
 <!ENTITY % addrElements "street | street2 | suburb | ward | city | state | province | county | prefecture | zip | postalCode | country">
 <!ELEMENT address (#PCDATA | %addrElements; | break)*>
-<!ATTLIST address format (standard|european|italian) #IMPLIED id ID #IMPLIED>
+<!ATTLIST address
+    format (standard|european|italian) #IMPLIED
+    id ID #IMPLIED>
 <!ELEMENT street (#PCDATA)>
 <!ATTLIST street id ID #IMPLIED>
+<!-- Deprecated. Use multiple <street>s instead. -->
 <!ELEMENT street2 (#PCDATA)>
 <!ATTLIST street2 id ID #IMPLIED>
 <!ELEMENT suburb (#PCDATA)>
@@ -118,6 +121,7 @@ $Id$
 <!ATTLIST postalCode id ID #IMPLIED>
 <!ELEMENT country (#PCDATA)>
 <!ATTLIST country id ID #IMPLIED>
+<!-- Deprecated. -->
 <!ELEMENT break EMPTY>
 <!ELEMENT contact (phone?, email?, url?)>
 <!ELEMENT phone (#PCDATA)>
@@ -192,17 +196,21 @@ $Id$
 <!ELEMENT organization (#PCDATA)>
 <!ATTLIST organization id ID #IMPLIED>
 
+<!-- Interests and/or hobbies. -->
+<!ELEMENT interests (title?, interest+)>
+<!ELEMENT interest (title, description?)>
+
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>
 
 <!-- A copyright on a resume?  Absolutely.  This helps prevents -->
 <!-- particularly annoying headhunters from plastering your resume all -->
-<!-- over the place, and preventing you from being hired at a place -->
+<!-- over the place, and also prevents you from being hired at a place -->
 <!-- that would otherwise want you, but does not want to pay tribute -->
 <!-- to the particularly annoying headhunter who plastered your resume -->
 <!-- there after grabbing it off the net. -->
 <!ELEMENT copyright (year, name?, legalnotice?)>
-<!ELEMENT company (#PCDATA)>
+<!ELEMENT company (#PCDATA)> <!-- Deprecated. -->
 <!ELEMENT legalnotice (para+)>
 
 <!-- For database retrieval (and web page insertion), some keywords. -->
