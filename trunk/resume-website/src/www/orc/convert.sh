@@ -45,10 +45,10 @@ cd @WWW_ROOT_FS@/orc/incoming
 for resume in `ls -1 | grep '^orc'`; 
 do
   cd $resume
-    grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.email
+    grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.md5
     ${ANTCMD} -verbose -propertyfile user.props \
     -find build.xml dispatch >& ./out/antlog.txt
-  sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
-  cd ..
-  mv $resume DONE/$resume
+#    sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
+    cd ..
+    mv $resume DONE/$resume
 done
