@@ -573,26 +573,8 @@ $Id$
 	  <xsl:with-param name="Width" select="72"/>
 	</xsl:call-template>
       </xsl:with-param>
-      <xsl:with-param name="Length" select="4"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
-  </xsl:template>
-
-  <!-- Title of article -->
-  <xsl:template match="r:artTitle">
-      <!-- having the &quot; encodings outside of <xsl:text> instructions 
-      caused odd formatting with extra newlines inserted. Not sure why
-      but this fixes it. *SE* -->
-    <xsl:text>&quot;</xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text>&quot;</xsl:text>
-    <xsl:value-of select="$pub.item.separator"/>
-    
-  </xsl:template>
-
-  <!-- Title of book -->
-  <xsl:template match="r:bookTitle">
-    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format memberships. -->
