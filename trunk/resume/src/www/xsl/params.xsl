@@ -136,7 +136,7 @@ $Id$
   <!-- Make sure the path to the css file is correct! -->
   <xsl:param name="css.href">../../src/www/css/compact.css</xsl:param>
 
-  <!-- Should style sheets be embedded within the html file?
+  <!-- Should style sheets be embedded within the html file? -->
   <!-- '1' to embed the css in the html (allows for easy emailing) -->
   <!-- '0' to link to the css in a seperate file -->
   <xsl:param name="css.embed">1</xsl:param>
