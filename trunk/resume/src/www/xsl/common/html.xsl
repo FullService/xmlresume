@@ -710,22 +710,24 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:referee">
-    <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
+    <div class="referee">
+      <div class="refereeName"><xsl:apply-templates select="r:name"/></div>
 
-    <xsl:if test="r:title or r:organization">
-      <p>
-        <xsl:apply-templates select="r:title"/>
-        <xsl:if test="r:title and r:organization">
-          <xsl:text>, </xsl:text>
-        </xsl:if>
-        <xsl:apply-templates select="r:organization"/>
-      </p>
-    </xsl:if>
+      <xsl:if test="r:title or r:organization">
+        <div>
+          <xsl:apply-templates select="r:title"/>
+          <xsl:if test="r:title and r:organization">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+          <xsl:apply-templates select="r:organization"/>
+        </div>
+      </xsl:if>
 
-    <p>
-      <xsl:apply-templates select="r:address"/>
-      <xsl:apply-templates select="r:contact"/>
-    </p>
+      <div class="refereeContact">
+        <xsl:apply-templates select="r:address"/>
+        <xsl:apply-templates select="r:contact"/>
+      </div>
+    </div>
   </xsl:template>
 
   <!-- Format a description as either a block (div) or a single line (span) -->

@@ -234,6 +234,25 @@
             </entry>
           </row>
           <row>
+            <entry><literal>referee</literal></entry>
+            <entry>
+              On the <sgmltag class="element">div</sgmltag> of a referee.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>refereeName</literal></entry>
+            <entry>
+              On the <sgmltag class="element">div</sgmltag> of a referee name.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>refereeContact</literal></entry>
+            <entry>
+              On the <sgmltag class="element">div</sgmltag> of a referee
+              contact.
+            </entry>
+          </row>
+          <row>
             <entry><literal>resume</literal></entry>
             <entry>
               On the <sgmltag class="element">body</sgmltag> of the entire HTML
