@@ -326,7 +326,7 @@ $Id$
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:value-of select="r:employer"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
-      <fo:inline font-style="italic"><xsl:apply-templates select="r:period"/></fo:inline>
+      <fo:inline wrap-option="no-wrap" font-style="italic"><xsl:apply-templates select="r:period"/></fo:inline>
       </fo:block>
       <xsl:if test="r:description">
         <fo:block
