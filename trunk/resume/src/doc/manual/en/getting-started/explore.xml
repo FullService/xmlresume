@@ -61,6 +61,7 @@
 
   <section id="getting-started.explore.features">
     <title>Advanced Features of the &library.name;</title>
+
     <section id="getting-started.explore.features.filter">
       <title>Filtering to target your resume</title>
       <para>
@@ -145,14 +146,14 @@
 	"foo" is not included in the targets list during the filtering
 	process, then the entire history section will be filtered out, 
 	even if there are subelements of history that do not have the
-	 'targets="foo"' attribute.
+	 'targets="foo"' attribute.  
       </para>
 
       <para>
-	Now, keep in mind that defining targets is entirely up to you.  
+	How you define your targets is entirely up to you.  
 	You can use the targets attribute in any element, and you can 
-	specify any number of values for the target&mdash; just keep in 
-	mind that comma (,) and plus (+) represent OR and AND, 
+	specify any number of values for the target&mdash; just remember
+	that comma (,) and plus (+) represent OR and AND, 
 	respectively, as per the example above.  If the list of possible
 	targets starts to pile up, just look at the end of a filtered
 	resume.xml file: a list of the possible and selected targets is
@@ -180,9 +181,8 @@
 
     </section>
 
-	
     <section id="getting-started.explore.features.customizing">
-      <title>Customizing your &resume;</title>
+      <title>Customizing the format your &resume;</title>
 
       <para>
 	With just a few tweaks, you can dramatically change the look
