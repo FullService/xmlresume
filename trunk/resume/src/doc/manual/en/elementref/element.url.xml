@@ -25,9 +25,52 @@
 
     <refsect2><title>Formatting</title>
       <para>
-        URLs are formatted as un-linked (non-hyperlinked) plain text. In HTML
-        and FO/PDF output formats, they are rendered in a fixed-width typeface.
+        There are two contexts in which a URL is formatted. The first is as an
+        inline (e.g. when contained in a <link linkend="element.para"><sgmltag
+        class="element">para</sgmltag></link>). The second is as contact
+        element (contained in a <link linkend="element.contact"><sgmltag
+        class="element">contact</sgmltag></link>).
       </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>HTML</term>
+          <listitem>
+            <para>
+              When an inline, displayed as a hyperlink in a fixed-width font
+              (enclosed in <sgmltag class="element">code</sgmltag> tags). The
+              <quote>hot</quote> text is the value of the element.
+            </para>
+            <para>
+              When a contact element, displayed the same as when an inline,
+              except not enclosed in <sgmltag class="element">code</sgmltag>
+              tags.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>FO/PDF</term>
+          <listitem>
+            <para>
+              When an inline, displayed as non-hyperlinked text, using the font
+              specified by the <parameter>url.font.family</parameter> parameter.
+              (Default: <literal>monospace</literal>
+            </para>
+            <para>
+              When a contact element, displayed as non-hyperlinked text, using
+              the normal font.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Plain text</term>
+          <listitem>
+            <para>
+              Formatted as the value of the element.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </refsect2>
 
     <refsect2><title>Parents</title>
