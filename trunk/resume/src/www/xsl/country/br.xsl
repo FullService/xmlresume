@@ -37,7 +37,7 @@ $Id$
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
-  <xsl:param name="page.word">p&#x00c1;e1gina</xsl:param>
+  <xsl:param name="page.word">p&#x00e1;gina</xsl:param>
   <xsl:param name="contact.word">Dados para Contato</xsl:param>
   <xsl:param name="objective.word">Objetivo Profissional</xsl:param>
   <xsl:param name="history.word">Experi&#x00ea;ncia Profissional</xsl:param>
