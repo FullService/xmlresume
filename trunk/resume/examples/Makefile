@@ -53,7 +53,7 @@ resume = resume
 #------------------------------------------------------------------------------
 # Stylesheets
 #------------------------------------------------------------------------------
-# Options: fr it uk us
+# Options: br de fr it nl uk us
 country = us
 # Options: letter for country=us, a4 for others
 papersize = letter
