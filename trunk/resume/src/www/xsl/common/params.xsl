@@ -58,6 +58,9 @@ $Id$
   <!-- Word to use for "Publications" -->
   <xsl:param name="publications.word">Publications</xsl:param>
 
+  <!-- Word to use for "Interests" -->
+  <xsl:param name="interests.word">Interests</xsl:param>
+
   <!-- Word to use for "Miscellany" -->
   <xsl:param name="miscellany.word">Miscellany</xsl:param>
 
@@ -172,5 +175,14 @@ $Id$
   <xsl:param name="header.line.length">3.0in</xsl:param>
   <xsl:param name="header.line.pattern">rule</xsl:param>
   <xsl:param name="header.line.thickness">2pt</xsl:param>
+
+  <!-- Separator between <para>s in a description formatted as a single line -->
+  <!-- &#x2014; == em-dash -->
+  <xsl:param name="description.para.separator.text"> &#x2014; </xsl:param>
+
+  <!-- Format of interest descriptions. Available values are: -->
+  <!-- 'single-line' for <para>s on same line as title, separated by dashes -->
+  <!-- 'block' for typical block-style paragraphs -->
+  <xsl:param name="interest.description.format">single-line</xsl:param>
 
 </xsl:stylesheet>
