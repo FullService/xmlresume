@@ -1,18 +1,31 @@
-<!-- 
+<?php
+/*******************************************************************
 Include this file by setting the $pagetitle variable and then
 calling include_once("private/header.php") in PHP tags at the top
 of your HTML document.  It includes header declarations, the CSS
 stylesheet, the quicklinks sidebar, and a table element.  Use
 include_once("private/footer.php") at the end of your HTML file to
 close the table and take care of other loose ends. 
--->
+
+OTHER VARIABLES (optional):
+$meta_redirect_to : a href to the page to redirect this page to
+$meta_redirect_delay : the delay prior to redirection (in seconds)
+*********************************************************************/
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
   <head>
     <title>XML R&eacute;sum&eacute; Library:: <?php echo $pagetitle?> </title>
-    <meta name="keywords" content="XML, resume, curricula, vitae, DTD,
-    schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS">
+    <meta 
+	name="keywords" content="XML, resume, curricula, vitae, DTD, schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS"
+	<?php if( isset( $meta_redirect_to)) {
+		if( !isset( $meta_redirect_delay)) $meta_redirect_delay = "0";
+		print "http-equiv=\"refresh\" content=\"";
+		print $meta_redirect_delay . ";URL=" . $meta_redirect_to . "\"";
+	}
+	?>
+    />
     <link rel="stylesheet" href="@WWW_ROOT@/site.css" type="text/css">
   </head>
   <body>

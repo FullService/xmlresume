@@ -44,11 +44,14 @@ ANT_OPTS="${ANT_OPTS} -classpath ${LOCALCLASSPATH}"
 cd @WWW_ROOT_FS@/orc/incoming
 for resume in `ls -1 | grep '^orc'`; 
 do
-  cd $resume
-    grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.md5
-    ${ANTCMD} -verbose -propertyfile user.props \
-    -find build.xml dispatch >& ./out/antlog.txt
-#    sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
-    cd ..
-    mv $resume DONE/$resume
+	# If the lockfile does not exist, then 
+	if [ ! -e .$resume ]; then
+		cd $resume
+		grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.md5
+		${ANTCMD} -verbose -propertyfile user.props \
+		-find build.xml dispatch >& ./out/antlog.txt
+#		sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
+ 		cd ..
+  		mv $resume DONE/$resume
+	fi
 done

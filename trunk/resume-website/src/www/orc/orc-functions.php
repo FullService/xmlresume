@@ -14,7 +14,7 @@ function process_upload() {
 
 # Give rwx permission to EVERYONE, because otherwise the web server will
 # create files that the build system can't delete
-  umask(0000); 
+  umask(0000);
 
 # Create the working directories
   if( !mkdir( $pathdirname, 0770)) return array(1, "Couldn't create directory $pathdirname");
@@ -77,7 +77,8 @@ function process_upload() {
   symlink( "../../../xsl/output/", $pathdirname . "/output");
   symlink( "../../../xsl/paper/", $pathdirname . "/paper");
 
-  #Create an email message body (to be sent later)
+# Create an email message body.  This may or may not be used depending 
+# on the installation.  To use, run "sendmail -t < reply.email"
   if( !$fpEmail = fopen( $pathdirname . "/reply.email", 'w'))
     return( array( 1, "Internal: could not create reply.email file"));
   fwrite($fpEmail,
