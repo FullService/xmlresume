@@ -72,7 +72,7 @@ logins= # login names for people we know fullnames and mailaddrs of
 loginFullnameMailaddrs="seankelly	Sean Kelly	kelly@ad1440.net
 sargent	Paul Sargent	sargent@users.sourceforge.net
 stewarte	Stewart Evans	stewarte@users.sourceforge.net
-bruckie	Bruce Christensen	bruce at iname.com
+bruckie	Bruce Christensen	bruce@iname.com
 robert_dubinski	Robert Dubinski	rsd@dubinski-family.org"
 # login<tab>fullname<tab>mailaddr triplets
 logTZ= # time zone for log dates (if empty, use local time)
