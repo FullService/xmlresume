@@ -12,7 +12,7 @@
 <!ENTITY library.version "@VERSION_DOTS@">
 
 <!-- Book meta-information -->
-<!ENTITY book.title "&library.name; User's Guide">
+<!ENTITY book.title "&library.name; User Guide">
 <!ENTITY book.pubdate "@RELEASE_DATE@">
 <!ENTITY book.copyright.years "<year>2002</year>">
 
