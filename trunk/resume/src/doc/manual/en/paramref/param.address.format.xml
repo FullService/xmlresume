@@ -58,12 +58,12 @@
           <para>
             Formats addresses in European layout:
 
-            <literallayout><computeroutput><![CDATA[
+            <informalexample><literallayout><computeroutput><![CDATA[
 <street>
 <street2>
 <suburb | ward>
 <zip | postalCode> <city>, <state | province | county > <country>
-            ]]></computeroutput></literallayout>
+            ]]></computeroutput></literallayout></informalexample>
           </para>
         </listitem>
       </varlistentry>
@@ -74,12 +74,12 @@
           <para>
             Formats addresses in Italian layout:
 
-            <literallayout><computeroutput><![CDATA[
+            <informalexample><literallayout><computeroutput><![CDATA[
 <street>
 <street2>
 <postalCode> <city> (<province>)
 <country>
-            ]]></computeroutput></literallayout>
+            ]]></computeroutput></literallayout></informalexample>
 
           </para>
         </listitem>
