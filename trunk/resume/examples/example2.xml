@@ -39,10 +39,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <firstname>Alexis</firstname>
       <surname>Kernighan</surname>
     </name>
-    <!-- This person is using the internationally-compatible style address (lives in Cuba). -->
-    <address><street>Reina</street> #<number>35</number>, apt. <apartment>4a</apartment>, e/ <street>Gervasio</street> y <street>Escobar</street><break/>
-<city>Cuidad de la Habana</city>, CP <postalCode>11900</postalCode><break/>
-<country>CUBA</country></address>
+    <!-- This person is using the untagged style address (lives in Cuba). -->
+    <address>Reina #35, apt. 4a, e/ Gervasio y Escobar
+Cuidad de la Habana, CP 11900
+CUBA
+</address>
   </header>
 
   <objective>
