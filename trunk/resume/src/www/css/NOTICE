@@ -1,10 +1,3 @@
-/*
-resume3.css
-Sample Cascading Stylesheet (CSS) for HTML formatted resumes.
-
-Copyright (c) 2001 Stewart Evans, Bruce Christensen
-All rights reserved.
-
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
@@ -27,38 +20,5 @@ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-.resume { 
-    background-color: #eeeeee;
-    padding-left: 30pt;
-    padding-right: 30pt;
-}
-h2 {
-    margin-left: -20pt;
-    font-family: sans-serif;
-    color: black;
-    border-bottom: solid 1pt black;
-}
-p {
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-}
 
 
-.awardTitle { font-weight: bold }
-.bookTitle { font-style: italic }
-.citation { font-style: italic }
-.clearanceLevel { font-weight: bold }
-.copyright { font-size: 75% }
-li.degree { margin-bottom: 0.5em; }
-.degreeTitle { font-weight: bold }
-.employer { font-style: italic }
-.headerBlock { text-align: center }
-.jobTitle { font-weight: bold }
-.lastModified { font-size: 75% }
-.nameHeading { text-align: center; font-family: sans-serif }
-div.referee { margin-bottom: 1em; }
-.refereeName { font-weight: bold }
-.skillsetTitle { font-weight: bold }
-.urlA { font-family:sans-serif; color:red; }

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-		<STYLE>
-<!-- These styles come from the original HTML document of professional resume, with a few alternate names here and there (div.Name, p.Name, etc.) *RK*-->
+
+/*
+ * professional.css -- similar to MS Word's "professional" resume style.
+ *
+ * http://xmlresume.sourceforge.net
+ */
+
+// This dummy style must be here because the xml tags above cause some
+// browsers (Konqueror, Mozilla) to ignore the first style
+.dummy { background-color: white }
+
  /* Font Definitions */
  @font-face
 	{font-family:Wingdings;
