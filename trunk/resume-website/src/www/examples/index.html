@@ -1,24 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-  <head>
-    <title>Examples - XML Resume Library</title>
-    <link rel="stylesheet" href="/site.css" type="text/css">
-  </head>
-  <body>
-    <h1 class="pageTitle">
-      <a href="/" class="pageTitle"
-      ><span style="color: red;">XML</span
-      ><span style="font-weight: bold;">R&eacute;sum&eacute;</span
-      ><span style="color: red;">Library</span></a>
-      : Examples
-    </h1>
-    <table cellpadding="4">
-      <tbody>
-        <tr valign="top">
-          <td bgcolor="#eeffee">
-            <?php include("../private/quicklinks.html"); ?>
-          </td>
-          <td>
+<?php
+$pagetitle= "Examples";
+include_once("../private/header.php");
+?>
             <h2>How it Works</h2>
             <p>The XML R&eacute;sum&eacute; Library converts a
               r&eacute;sum&eacute; in <a href="http://www.w3.org/XML/">XML</a>
@@ -29,6 +12,7 @@
             <table width="100%"><tbody><tr>
 
             <td>
+
               <h2>Example 1</h2>
               <ul>
                 <li><a href="example1.xml">XML</a> (input)</li>
@@ -50,9 +34,5 @@
 
             </tr></tbody></table>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+<?php include_once("./private/footer.php"); ?>
+
