@@ -45,27 +45,30 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Deprecated in 1.3.3 -->
   <xsl:template match="r:break">
     <xsl:message>
-      WARNING: The break element is deprecated as of version 1.3.3 of the XML
-      Resume Library. It will be removed in a future version. It is recommended
-      that you remove all break elements.
+      WARNING: break deprecated
+        The break element is deprecated as of version 1.3.3 of the XML Resume
+        Library. It will be removed in a future version. It is recommended that
+        you remove all break elements.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="r:company">
     <xsl:message>
-      WARNING: The company element is deprecated as of version 1.3.3 of the XML
-      Resume Library. It will be removed in a future version. It is recommended
-      that you remove all company elements.
+      WARNING: company deprecated
+        The company element is deprecated as of version 1.3.3 of the XML Resume
+        Library. It will be removed in a future version. It is recommended that
+        you remove all company elements.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="r:street2">
     <xsl:message>
-      WARNING: The street2 element is deprecated as of version 1.3.3 of the XML
-      Resume Library. It will be removed in a future version. It is recommended
-      that you convert all street2 elements to street elements.
+      WARNING: street2 deprecated
+        The street2 element is deprecated as of version 1.3.3 of the XML Resume
+        Library. It will be removed in a future version. It is recommended that
+        you convert all street2 elements to street elements.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
@@ -73,20 +76,22 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Deprecated in 1.3.4 -->
   <xsl:template match="r:skillareas">
     <xsl:message>
-      WARNING: The skillareas element is deprecated as of version 1.3.4 of the
-      XML Resume Library. It will be removed in a future version. It is
-      recommended that you remove all skillareas elements. skillarea elements
-      may now be direct children of resume.
+      WARNING: skillareas deprecated
+        The skillareas element is deprecated as of version 1.3.4 of the XML
+        Resume Library. It will be removed in a future version. It is
+        recommended that you remove all skillareas elements. skillarea elements
+        may now be direct children of resume.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template name="SkillsDeprecatedMessage">
     <xsl:message>
-      WARNING: The skills element is deprecated as of version 1.3.4 of the XML
-      Resume Library. It will be removed in a future version. It is recommended
-      that you remove all skills elements. skill elements may now be direct
-      children of skillset.
+      WARNING: skills deprecated
+        The skills element is deprecated as of version 1.3.4 of the XML Resume
+        Library. It will be removed in a future version. It is recommended that
+        you remove all skills elements. skill elements may now be direct
+        children of skillset.
     </xsl:message>
   </xsl:template>
   <xsl:template match="r:skills">
@@ -104,29 +109,31 @@ In general, each block is responsible for outputting a newline after itself.
 
   <xsl:template match="r:pubDate">
     <xsl:message>
-      WARNING: The pubDate element is deprecated as of version 1.3.4 of the XML
-      Resume Library. It will be removed in a future version. It is recommended
-      that you replace pubDate elements with date elements.
+      WARNING: pubDate deprecated
+        The pubDate element is deprecated as of version 1.3.4 of the XML Resume
+        Library. It will be removed in a future version. It is recommended that
+        you replace pubDate elements with date elements.
     </xsl:message>
     <xsl:call-template name="FormatPubDate"/>
   </xsl:template>
 
   <xsl:template match="r:docpath | r:head | r:node | r:tail | r:label | r:uri">
     <xsl:message>
-      WARNING: The docpath, head, node, tail, label, and uri elements are
-      deprecated as of version 1.3.4 of the XML Resume Library. They will be
-      removed in a future version. It is recommended that you remove all of
-      these elements.
+      WARNING: docpath, head, node, tail, label, and uri deprecated
+        The docpath, head, node, tail, label, and uri elements are deprecated as
+        of version 1.3.4 of the XML Resume Library. They will be removed in a
+        future version. It is recommended that you remove all of these elements.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="r:publisher/r:url">
     <xsl:message>
-      WARNING: Use of the url element as a child of the publisher element is
-      deprecated as of version 1.3.4 of the XML Resume Library. It will be
-      removed in a future version. It is recommended that you replace url
-      element children of publisher elements with link elements.
+      WARNING: url in publisher deprecated
+        Use of the url element as a child of the publisher element is deprecated
+        as of version 1.3.4 of the XML Resume Library. It will be removed in a
+        future version. It is recommended that you replace url element children
+        of publisher elements with link elements.
     </xsl:message>
     <xsl:call-template name="FormatUrl"/>
   </xsl:template>
