@@ -38,35 +38,47 @@ $Id$
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-
   <!-- It would be nice if XSLT allowed variable reference in mode --> 
   <!-- selection; then instead of the ugly template below, we'd have -->
   <!-- '<xsl:apply-templates select="address" mode="$address.format"/>'-->
   <!-- But it doesn't, so we need this. -->
   <xsl:template match="r:address">
 
+    <!-- Determine formatting method from format attr of this element if -->
+    <!-- it exists, otherwise use $address.format parameter. -->
+    <xsl:variable name="format">
+      <xsl:choose>
+        <xsl:when test="@format">
+          <xsl:value-of select="@format"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$address.format"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
     <xsl:choose>
-      		<!-- If the first child is a text node, assume that we -->
-		<!-- have a preformatted address and bypass the address -->
-		<!-- formatting below. -->
+      <!-- If the first child is a text node, assume that we -->
+      <!-- have a preformatted address and bypass the address -->
+      <!-- formatting below. -->
       <xsl:when test="node()[1][not(self::*)]">
          <xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-    <xsl:choose>
-      <xsl:when test="$address.format = 'standard'">
-         <xsl:apply-templates select="." mode="standard"/>
-      </xsl:when>
-      <xsl:when test="$address.format = 'european'">
-         <xsl:apply-templates select="." mode="european"/>
-      </xsl:when>
-      <xsl:when test="$address.format = 'italian'">
-         <xsl:apply-templates select="." mode="italian"/>
-      </xsl:when>
-         <!-- If the first element is not a node - i.e. is text -
-	      then output the address without formatting. -->
-    </xsl:choose>
-    </xsl:otherwise>
+
+        <xsl:choose>
+          <xsl:when test="$format = 'standard'">
+            <xsl:apply-templates select="." mode="standard"/>
+          </xsl:when>
+          <xsl:when test="$format = 'european'">
+            <xsl:apply-templates select="." mode="european"/>
+          </xsl:when>
+          <xsl:when test="$format = 'italian'">
+            <xsl:apply-templates select="." mode="italian"/>
+          </xsl:when>
+        </xsl:choose>
+
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
