@@ -75,9 +75,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <xsl:value-of select="refnamediv/refpurpose"/>
         <!-- Begin added code -->
         <xsl:if test="refnamediv/refclass">
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="refnamediv/refclass"/>
-          <xsl:text>)</xsl:text>
+          <b>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="refnamediv/refclass"/>
+            <xsl:text>)</xsl:text>
+          </b>
         </xsl:if>
         <!-- End added code -->
       </xsl:if>
