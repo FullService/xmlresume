@@ -140,7 +140,7 @@ $Id$
 <!-- What academics, if any, you might possess. -->
 <!ELEMENT academics (degrees, note?)>
 <!ELEMENT degrees (degree+)>
-<!ELEMENT degree (level, major, date, institution?, subjects?, annotation?)>
+<!ELEMENT degree (level, major, date?, institution?, subjects?, annotation?)>
 <!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT major (#PCDATA)>

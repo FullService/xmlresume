@@ -378,7 +378,9 @@ $Id$
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
         <xsl:value-of select="major"/></fo:inline>,
-      <xsl:apply-templates select="date"/>,
+      <xsl:if test="date">
+	<xsl:apply-templates select="date"/>,
+      </xsl:if>
       <xsl:apply-templates select="annotation"/>
     </fo:block>
     <fo:block space-after="{$para.break.space}">

@@ -402,8 +402,10 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:value-of select="major"/>
       <xsl:text>, </xsl:text>
-      <xsl:apply-templates select="date"/>
-      <xsl:text>, </xsl:text>
+      <xsl:if test="date">
+	<xsl:apply-templates select="date"/>
+	<xsl:text>, </xsl:text>
+      </xsl:if>
       <xsl:value-of select="institution"/>
       <xsl:text>.</xsl:text>     
       <xsl:if test="subjects/subject">

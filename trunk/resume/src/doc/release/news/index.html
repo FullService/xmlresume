@@ -30,6 +30,10 @@
 	  <code>&lt;major&gt;</code> element.
 	</p>
       </li>
+      <li>The <code>&lt;name&gt;</code> under a
+	<code>&lt;copyright&gt;</code> is now optional.  If omitted,
+	the name will be taken from the <code>&lt;header&gt;</code>.
+      </li>
       <li>You can specify whether HTML and plain text headings should
 	be standard (flush left) or centered with the
 	<code>header.format</code> parameter.
@@ -47,7 +51,8 @@
 	element.
       </li>
       <li>You can list subjects and levels achieved under each degree
-	with the <code>&lt;subjects&gt;</code> element.
+	with the <code>&lt;subjects&gt;</code> element.  Subjects are
+	formatted for print and web, but not yet for text.
       </li>
       <li>You can list personal references with the
 	<code>&lt;referees&gt;</code> element.
@@ -60,7 +65,12 @@
       <li>You can list projects at a job with the new
 	<code>&lt;projects&gt;</code> element.
       </li>
+      <li>The graduation <code>&lt;date&gt;</code> on a degree is
+	optional now.
+      </li>
     </ul>
+
+    <p>Additionally, we've fixed some bugs in the XSL files.</p>
 
     <h2>Release 1.2.4</h2>
 
