@@ -28,7 +28,8 @@ done
 export CLASSPATH=$cp
 
 # Add option for the CLASSPATH
-ANT_OPTS="${ANT_OPTS} -classpath ${LOCALCLASSPATH}"
+ANT_OPTS="${ANT_OPTS} -cp ${CLASSPATH}"
+ANT_OPTS="${ANT_OPTS} -Dant.home=${SUPPORT_HOME}/ant"
 
 cd @WWW_ROOT_FS@/orc/
 ${JAVACMD} ${ANT_OPTS} org.apache.tools.ant.Main clean > cleanlog.txt
