@@ -4,39 +4,12 @@
     <title>XML Resume Library</title>
     <meta name="keywords" content="XML, resume, curricula, vitae, DTD,
     schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS">
+    <link rel="stylesheet" href="site.css" type="text/css">
     <style>
-body {
-      margin: 30pt 30pt 20pt 30pt;
-      font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
-}
-h1 {
-      border-width: 0 0 1px 0;
-      border-style: solid;
-}
-h2 {
-      font-size: medium;
-      font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
-}
-.xml {
-      font-family: Lucida Console, Courier New, Courier, monospace;
-}
-.elem {
-      color: rgb(20%, 30%, 100%);
-}
-.example {
-      background: rgb(90%, 90%, 90%);
-      padding: 6px 6px 6px 6px;
-}
-.date {
-      font-family: Lucida Console, Courier New, Courier, monospace;
-      font-size: 80%;
-      background: rgb(100%, 100%, 90%);
-}
-</style>
+    </style>
   </head>
   <body>
-    <h1 style="margin-top: 10pt; font-family: Verdana, Tahoma, Arial,
-      Helvetica, sans-serif; font-size: x-large; font-weight: normal;">
+    <h1 class="pageTitle">
       <span style="color: red;">XML</span><span style="font-weight:
       bold;">R&eacute;sum&eacute;</span><span style="color: red;">Library</span>
     </h1>
@@ -49,6 +22,7 @@ h2 {
 
 	    <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_ZIP_NAME@">Download ZIP</a></p>
 	    <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_TGZ_NAME@">Download GZIP TAR</a></p>
+	    <p><a href="user-guide/index.html">User Guide</a></p>
 	    <p><a href="http://sourceforge.net/projects/xmlresume">Project Page</a></p>
 	    <p><a href="license/index.html">License</a></p>
 	    <p><a href="dtd/resume.dtd">The DTD</a></p>
@@ -126,7 +100,7 @@ h2 {
 
 	    <p>Gives you this HTML:</p>
 
-	    <div class="example">
+	    <div class="output">
 	      Manager<br>
 	      Acme, Inc.<br>
 	      June 1992-August 1998<br><br>
@@ -139,7 +113,7 @@ h2 {
 
 	    <p>Or this plain text:</p>
 
-	    <div class="example">
+	    <div class="output">
 	      <code>
 		Manager<br>
 		Acme, Inc.<br>
