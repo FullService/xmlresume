@@ -174,7 +174,7 @@ class ResumeTest {
 				String stylesheetKey = t.nextToken().trim();
 				pathToStylesheet = System.getProperty("user.dir") 
 						+ "/src/www/xsl/output/" + props.getProperty(stylesheetKey + ".file");
-				URL stylesheetURL ResumeTest.class.getResource(pathToStylesheet);
+				URL stylesheetURL  = ResumeTest.class.getResource(pathToStylesheet);
 				if (stylesheetURL == null)
 					throw new IllegalStateException("Can't find " + pathToStylesheet);
 				Transformer transformer

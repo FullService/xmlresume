@@ -23,4 +23,6 @@ javadoc -sourcepath ./ -d ./doc \
          -doctitle 'XMLResume<sup><font size="-2">C</font>\
           </sup> API Specification'\
 	*/*.java
+echo "Creating compressed documentation file doc.tgz..."
 tar zcf doc.tgz doc
+echo "done."
