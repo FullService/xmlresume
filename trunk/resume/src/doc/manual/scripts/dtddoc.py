@@ -485,7 +485,7 @@ for op in ops:
                 out_text = in_text
                 for token in replacements.keys():
                     out_text = re.sub(
-                        r"<\$"+token+r"\$>",
+                        r"<\?resumevar "+token+r"\?>",
                         replacements[token],
                         out_text,
                         )

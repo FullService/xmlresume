@@ -9,10 +9,10 @@
 
   <refsynopsisdiv><title>Synopsis</title>
     <refsect2><title>Content Model</title>
-      <synopsis><$CONTENT_MODEL$></synopsis>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
     </refsect2>
     <refsect2><title>Attributes</title>
-      <$ATTRIBUTES_TABLE$>
+      <?resumevar ATTRIBUTES_TABLE?>
     </refsect2>
   </refsynopsisdiv>
 
@@ -25,7 +25,7 @@
       <para>
         <sgmltag class="element">tail</sgmltag> may be contained in these
         elements:
-        <$PARENTS$>
+        <?resumevar PARENTS?>
       </para>
     </refsect2>
 
