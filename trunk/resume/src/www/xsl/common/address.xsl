@@ -46,6 +46,9 @@ $Id$
   <xsl:template match="r:address">
 
     <xsl:choose>
+      		<!-- If the first child is a text node, assume that we -->
+		<!-- have a preformatted address and bypass the address -->
+		<!-- formatting below. -->
       <xsl:when test="node()[1][not(self::*)]">
          <xsl:apply-templates/>
       </xsl:when>
