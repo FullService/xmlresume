@@ -180,6 +180,11 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   <!-- Addresses, in various modes -->
+  <xsl:template match="r:address" mode="free-form">
+    <xsl:apply-templates/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
   <xsl:template match="r:address" mode="standard">
     <xsl:variable name="AdminDivision">
       <xsl:call-template name="AdminDivision"/>
