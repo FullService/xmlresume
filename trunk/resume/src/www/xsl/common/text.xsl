@@ -624,15 +624,13 @@ $Id$
   <xsl:template match="misc">
     <xsl:call-template name="NewLine"/>
     <xsl:value-of select="$miscellany.word"/>:
+    <xsl:variable name="Text">
+         <xsl:apply-templates/>
+    </xsl:variable>
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
-	  <xsl:call-template name="FormatParagraph">
-            <xsl:with-param name="Text">
-              <xsl:value-of select="."/>
-            </xsl:with-param>
-	    <xsl:with-param name="Width" select="64"/>
-          </xsl:call-template>
-       </xsl:with-param>
+            <xsl:value-of select="$Text"/>
+        </xsl:with-param>
      </xsl:call-template>
   </xsl:template>
 
