@@ -125,7 +125,7 @@ $Id$
   </xsl:template>
 
   <!-- Output your name and the word "Resume". -->
-  <xsl:template match="header">
+  <xsl:template match="standard.header">
     <h1 class="nameHeading"><xsl:apply-templates select="name"/>
       <xsl:text> - </xsl:text>
       <xsl:value-of select="$resume.word"/>
@@ -159,6 +159,48 @@ $Id$
         </a>
       </xsl:if>
     </p>
+  </xsl:template>
+
+  <!-- Alternate formatting for the page header. -->
+  <!-- Display the name and contact information in a single centered block. -->
+  <!-- Since the 'align' attribute is deprecated, we rely on a CSS -->
+  <!-- stylesheet to center the headerBlock. -->
+  <xsl:template name="centered.header">
+    <div class="headerBlock">
+      <h1 class="nameHeading"><xsl:apply-templates select="name"/></h1>
+      <xsl:apply-templates select="address"/><br/>
+      <xsl:if test="contact/phone">
+        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><br/>
+      </xsl:if>
+      <xsl:if test="contact/email">
+        <xsl:value-of select="$email.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:text>mailto:</xsl:text>
+            <xsl:value-of select="contact/email"/>
+          </xsl:attribute>
+          <xsl:value-of select="contact/email"/>
+        </a><br/>
+      </xsl:if>
+      <xsl:if test="contact/url">
+        <xsl:value-of select="$url.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:value-of select="contact/url"/>
+          </xsl:attribute>
+          <xsl:value-of select="contact/url"/>
+        </a>
+      </xsl:if>
+      </div>
+  </xsl:template>
+
+  <xsl:template match="header">
+    <xsl:choose>
+    <xsl:when test="$header.format = 'centered'">
+       <xsl:call-template name="centered.header"/>
+    </xsl:when>
+    <xsl:otherwise>
+       <xsl:call-template name="std.header"/>
+    </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="address">
