@@ -266,4 +266,19 @@ $Id$
     </xsl:if>
   </xsl:template>
 
+  <!-- Call subjects template in appropriate mode -->
+  <xsl:template match="r:subjects">
+    <xsl:if test="r:subject">
+      <xsl:choose>
+        <xsl:when test="$subjects.format = 'table'">
+          <xsl:apply-templates select="." mode="table"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="." mode="comma"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template>
+
 </xsl:stylesheet>
+

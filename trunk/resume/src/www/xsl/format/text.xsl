@@ -515,9 +515,9 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format a GPA -->
   <xsl:template match="r:gpa">
     <xsl:call-template name="Wrap">
-      <xsl:with-param name="Width" select="$text.width - 2*$text.indent.width"/>
-      <xsl:with-param name="FirstIndent" select="$text.indent.width"/>
-      <xsl:with-param name="Indent" select="2*$text.indent.width"/>
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width -
+        floor($text.indent.width div 2)"/>
+      <xsl:with-param name="Indent" select="floor($text.indent.width div 2)"/>
 
       <xsl:with-param name="Text">
 
@@ -549,13 +549,47 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <!-- Format the subjects as a comma-separated list -->
+  <xsl:template match="r:subjects" mode="comma">
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width -
+        floor($text.indent.width div 2)"/>
+      <xsl:with-param name="Indent" select="floor($text.indent.width div 2)"/>
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$subjects.word"/>
+        <xsl:value-of select="$subjects.title.separator"/>
+        <xsl:apply-templates select="r:subject" mode="comma"/>
+        <xsl:value-of select="$subjects.suffix"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <!-- Format a subject as part of comma-separated list -->
+  <xsl:template match="r:subject" mode="comma">
+    <xsl:value-of select="normalize-space(r:title)"/>
+    <xsl:if test="$subjects.result.display = 1">
+      <xsl:if test="r:result">
+        <xsl:value-of select="$subjects.result.start"/>
+        <xsl:value-of select="normalize-space(r:result)"/>
+        <xsl:value-of select="$subjects.result.end"/>
+      </xsl:if>   
+    </xsl:if>   
+    <xsl:if test="following-sibling::*">
+      <xsl:value-of select="$subjects.separator"/>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Format the subjects as a 2-column table -->
-  <xsl:template match="r:subjects">
+  <xsl:template match="r:subjects" mode="table">
     <xsl:param name="MaxChars">
       <xsl:call-template name="MaxSubjectTitleLength"/>
     </xsl:param>
 
+    <!-- This block has to be a <param> (instead of a <with-param> within the
+    <call-template> below) to work around a bug in Xalan. -->
     <xsl:param name="Text">
+      <xsl:value-of select="$subjects.word"/>
       <xsl:for-each select="r:subject">
         <xsl:apply-templates select="r:title"/>
         <!-- Pad over to the second column -->
@@ -616,7 +650,11 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates select="r:title"/>
 
     <xsl:call-template name="Indent">
-      <xsl:with-param name="Length" select="floor($text.indent.width div 2)"/>
+      <!-- We use ceiling so that the total indent of skills from the margin
+      is exactly equal to $text.indent.width. If we used floor in both places
+      and text.indent.width was odd (e.g. 3), then the total skill indent would
+      be $text.indent.width - 1. -->
+      <xsl:with-param name="Length" select="ceiling($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:skillset"/>
       </xsl:with-param>
@@ -658,6 +696,8 @@ In general, each block is responsible for outputting a newline after itself.
         <xsl:apply-templates select="r:skill" mode="comma"/>
         <!-- The following line should be removed in a future version. -->
         <xsl:apply-templates select="r:skills" mode="comma"/>
+
+        <xsl:value-of select="$skills.suffix"/>
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>

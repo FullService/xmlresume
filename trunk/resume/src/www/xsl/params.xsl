@@ -87,6 +87,34 @@ $Id$
   <xsl:param name="skills.level.start"> (</xsl:param>
   <xsl:param name="skills.level.end">)</xsl:param>
 
+  <!-- Word to use for "subjects", eg "Courses" or "Coursework" -->
+  <xsl:param name="subjects.word">Subjects</xsl:param>
+
+  <!-- Format for subjects lists; available values are: -->
+  <!-- 'table' for a subjects table -->
+  <!-- 'comma' for comma-separated lists -->
+  <xsl:param name="subjects.format">comma</xsl:param>
+
+  <!-- Separator between individual subjects
+  (applies only when subjects.format = comma) -->
+  <xsl:param name="subjects.separator">, </xsl:param>
+
+  <!-- Separator between individual subjects
+  (applies only when subjects.format = comma) -->
+  <xsl:param name="subjects.title.separator">: </xsl:param>
+
+  <!-- Output after the last subject in a list
+  (applies only when subjects.format = comma) -->
+  <xsl:param name="subjects.suffix">.</xsl:param>
+
+  <!-- Should skill <result> elements be displayed when formatting? -->
+  <xsl:param name="subjects.result.display">1</xsl:param>
+
+  <!-- Text to use to indicate start and end of subject 
+  (applies only when subjects.format = comma -->
+  <xsl:param name="subjects.result.start"> (</xsl:param>
+  <xsl:param name="subjects.result.end">)</xsl:param>
+
   <!-- Text to use to indicate start and end of location in all formats -->
   <xsl:param name="location.start"> (</xsl:param>
   <xsl:param name="location.end">)</xsl:param>
@@ -117,7 +145,7 @@ $Id$
   <xsl:param name="text.emphasis.end">*</xsl:param>
 
   <!-- Max chars allowed on a line in plain text -->
-  <xsl:param name="text.width">80</xsl:param>
+  <xsl:param name="text.width">72</xsl:param>
 
   <!-- Number of characters to indent in plain text -->
   <xsl:param name="text.indent.width">4</xsl:param>

@@ -503,21 +503,50 @@ $Id$
     </p>
   </xsl:template>
 
-  <!-- Format the subjects -->
-  <xsl:template match="r:subjects">
-    <xsl:if test="r:subject">
-      <table>
-        <xsl:for-each select="r:subject">
-          <tr>
-            <td>
-              <xsl:apply-templates select="r:title"/>
-            </td>
+  <!-- Format the subjects as a table-->
+  <xsl:template match="r:subjects" mode="table">
+    <p class="subjectsHeading">
+      <xsl:value-of select="$subjects.word"/>
+    </p>
+    <table class="subjects">
+      <xsl:for-each select="r:subject">
+        <tr>
+          <td>
+            <xsl:apply-templates select="r:title"/>
+          </td>
+          <xsl:if test="$subjects.result.display = 1">
             <td>
               <xsl:apply-templates select="r:result"/>
             </td>
-          </tr>
-        </xsl:for-each>
-      </table>
+          </xsl:if>
+        </tr>
+      </xsl:for-each>
+    </table>
+  </xsl:template>
+
+  <!-- Format the subjects as a list -->
+  <xsl:template match="r:subjects" mode="comma">
+    <p>
+      <xsl:value-of select="$subjects.word"/>
+      <xsl:value-of select="$subjects.title.separator"/>
+
+      <xsl:apply-templates select="r:subject" mode="comma"/>
+      <xsl:value-of select="$subjects.suffix"/>
+    </p>
+  </xsl:template>
+
+  <!-- Format a subject -->
+  <xsl:template match="r:subject" mode="comma">
+    <xsl:value-of select="normalize-space(r:title)"/>
+    <xsl:if test="$subjects.result.display = 1">
+      <xsl:if test="r:result">
+        <xsl:value-of select="$subjects.result.start"/>
+        <xsl:value-of select="normalize-space(r:result)"/>
+        <xsl:value-of select="$subjects.result.end"/>
+      </xsl:if>
+    </xsl:if>
+    <xsl:if test="following-sibling::r:subject">
+      <xsl:value-of select="$subjects.separator"/>
     </xsl:if>
   </xsl:template>
 
@@ -541,6 +570,7 @@ $Id$
           <xsl:if test="r:skill">
             <span class="skills">
               <xsl:apply-templates select="r:skill" mode="comma"/>
+              <xsl:value-of select="$skills.suffix"/>
             </span>
           </xsl:if>
           <!-- The following block should be removed in a future version. -->
@@ -553,7 +583,6 @@ $Id$
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates select="r:title" mode="bullet"/>
-
         <xsl:if test="r:skill">
           <ul class="skills">
             <xsl:apply-templates select="r:skill" mode="bullet"/>
@@ -571,7 +600,8 @@ $Id$
 
   <xsl:template match="r:skillset/r:title" mode="comma">
     <span class="skillsetTitle">
-      <xsl:apply-templates/><xsl:text>: </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:value-of select="$skills.title.separator"/>
     </span>
   </xsl:template>
 
@@ -584,7 +614,7 @@ $Id$
     <xsl:apply-templates/>
     <xsl:apply-templates select="@level"/>
     <xsl:if test="following-sibling::r:skill">
-      <xsl:text>, </xsl:text>
+      <xsl:value-of select="$skills.separator"/>
     </xsl:if>
   </xsl:template>
 

@@ -514,13 +514,13 @@ $Id$
 
       <xsl:apply-templates select="r:gpa"/>
 
+      <xsl:if test="r:subjects/r:subject">
+        <fo:block space-before="{$half.space}">
+          <xsl:apply-templates select="r:subjects"/>
+        </fo:block>
+      </xsl:if>
     </fo:block>
 
-    <xsl:if test="r:subjects/r:subject">
-      <fo:block space-after="{$para.break.space}">
-        <xsl:apply-templates select="r:subjects"/>
-      </fo:block>
-    </xsl:if>
   </xsl:template>
 
   <!-- Format a GPA -->
@@ -555,11 +555,38 @@ $Id$
     </fo:block>
   </xsl:template>
 
+  <xsl:template match="r:subjects" mode="comma">
+    <fo:inline font-style="{$job-subheading.font.style}">
+      <xsl:value-of select="$subjects.word"/>
+      <xsl:value-of select="$subjects.title.separator"/>
+    </fo:inline>
+    <xsl:apply-templates select="r:subject" mode="comma"/>
+    <xsl:value-of select="$subjects.suffix"/>
+  </xsl:template>
+
+  <xsl:template match="r:subject" mode="comma">
+    <xsl:value-of select="normalize-space(r:title)"/>
+    <xsl:if test="$subjects.result.display = 1">
+      <xsl:if test="r:result">
+        <xsl:value-of select="$subjects.result.start"/>
+        <xsl:value-of select="normalize-space(r:result)"/>
+        <xsl:value-of select="$subjects.result.end"/>
+      </xsl:if>   
+    </xsl:if>   
+    <xsl:if test="following-sibling::*">
+      <xsl:value-of select="$subjects.separator"/>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Format the subjects section as a list-block -->
-  <xsl:template match="r:subjects">
+  <xsl:template match="r:subjects" mode="table">
+    <fo:inline font-style="{$job-subheading.font.style}">
+      <xsl:value-of select="$subjects.word"/>
+      <xsl:value-of select="$subjects.title.separator"/>
+    </fo:inline>
     <fo:list-block
-      start-indent="2.5in"
-      provisional-distance-between-starts="250pt"
+      start-indent="1.5in"
+      provisional-distance-between-starts="150pt"
       provisional-label-separation="0.5em"
     >
       <xsl:for-each select="r:subject">
@@ -568,7 +595,7 @@ $Id$
               end-indent="label-end()"
           >
             <fo:block>
-              <xsl:apply-templates select="r:title"/> 
+              <xsl:apply-templates select="r:title"/>
             </fo:block>
           </fo:list-item-label>
           <fo:list-item-body
