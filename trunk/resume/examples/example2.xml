@@ -33,7 +33,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
-<resume id="x9281cp35">
+<resume xmlns="http://xmlresume.sourceforge.net/resume/0.0">
 
   <header>
     <name id="a.kernighan">

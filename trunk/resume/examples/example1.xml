@@ -34,7 +34,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
 
-<resume>
+<resume xmlns="http://xmlresume.sourceforge.net/resume/0.0">
   <header>
     <name>
       <firstname>Jo</firstname>
