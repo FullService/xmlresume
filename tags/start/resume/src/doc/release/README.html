@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>XML Resume Library</title>
+  </head>
+  <body>
+    <h1>XML R&eacute;sum&eacute; Library</h1>
+
+    <p>The XML R&eacute;sum&eacute; Library is an XML Document Type
+      Definition (DTD), and Extensible Stylesheet Language (XSL) file
+      set for declaration, B2B exchange, and presentation of
+      r&eacute;sum&eacute;s.
+    </p>
+
+    <p>This library is copyrighted, &copy; 2000-2001 by Sean Kelly.
+      See the <code><a href="COPYING.html">COPYING.html</a></code>
+      file for copying conditions and disclaimer.
+    </p>
+
+    <p>This is version @VERSION_DOTS@.  For the latest version, please
+     visit <a href="http://xmlresume.sourceforge.net">the
+     website</a>.
+    </p>
+
+    <h2>What's Included</h2>
+
+    <p>The XML R&eacute;sum&eacute; Library includes the following files:
+    </p>
+
+    <ul>
+      <li><code><a href="resume.dtd">resume.dtd</a></code>
+
+	<p>An XML DTD for describing r&eacute;sum&eacute;s.</p>
+      </li>
+
+      <li><code><a href="html.xsl">html.xsl</a></code>
+
+	<p>An XSLT file for transforming XML documents using the
+	  r&eacute;sum&eacute; DTD into HTML, suitable for presentation
+	  on the World Wide Web.
+	</p>
+      </li>
+
+      <li><code><a href="pdf.xsl">pdf.xsl</a></code>
+
+	<p>An XSLT file for transforming XML documents using the
+	  r&eacute;sum&eacute; DTD into XML in the formatting object
+	  (FO) namespace, suitable for processing by an FO formatter
+	  for producing Portable Document Format (PDF) files.
+	</p>
+      </li>
+
+      <li><code><a href="ascii.xsl">ascii.xsl</a></code>
+
+	<p>An XSLT file for transforming XML documents using the
+	  r&eacute;sum&eacute; DTD into plain text.
+	</p>
+      </li>
+
+    </ul>
+
+    <p>In addition, there are two example r&eacute;sum&eacute;s and a
+      Makefile that automates production of HTML and PDF output from
+      an XML file using the Apache XML Project tools and/or RenderX's
+      XEP.
+    </p>
+
+    <p>The documentation files are as follows:</p>
+
+    <ul>
+      <li><a href="AUTHORS.html">AUTHORS</a> lists the authors and
+	contributors to the library.
+      </li>
+      <li><a href="COPYING.html">COPYING</a> lists the copying
+	conditions and license to use the library.  <strong>Definitely
+	read this file.</strong>
+      </li>
+      <li><a href="ChangeLog.html">ChangeLog</a> lists the
+	developer-level changes to the library.
+      </li>
+      <li><a href="NEWS.html">NEWS</a> lists the user-visible changes
+	to the library.
+      </li>
+      <li><a href="TODO.html">TODO</a> lists some things that need to
+	be done still to make this a world-class library.
+      </li>
+    </ul>
+
+    <h2>Requirements</h2>
+
+    <p>The XML R&eacute;sum&eacute; Library uses the XML 1.0 DTD
+      syntax.  The XSL files are version 1.0.  I have tested these
+      files with the <a href="http://xml.apache.org/">Apache XML
+      Project</a>'s tools:
+    </p>
+
+    <ul>
+      <li>Xerces 1.2 XML parser</li>
+      <li>Xalan 1.1 and Xalan 2.0 XSL processors</li>
+      <li>FOP 0.17.0 Formatting Objects print processor (although you
+	will see warning messages due to incomplete implementation of
+	the XSL specification).
+      </li>
+    </ul>
+
+    <p>In addition, the library works quite well with <a
+      href="http://www.renderx.com/">RenderX's XEP Formatting Objects
+      processor</a>.  I <strong>recommend</strong> this tool.
+    </p>
+
+    <h2>Using the Library</h2>
+
+    <p>You can use the library as a schema for r&eacute;sum&eacute;s by
+      using just the DTD, or to format r&eacute;sum&eacute;s for
+      presentation from a single source by using the XSL files.
+    </p>
+
+    <h3>Creating R&eacute;sum&eacute;s Using the DTD</h3>
+
+    <p>To create your own r&eacute;sum&eacute;s using the XML
+      R&eacute;sum&eacute; DTD, use the following FPI in your XML file:
+    </p>
+
+    <pre>&lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.2.0//EN"
+                           "http://xmlresume.sourceforge.net/resume.dtd"&gt;</pre>
+
+    <p>If you'd rather refer to a local copy of the DTD, change the
+      system-part of the DOCTYPE to refer to it with a
+      <code>file</code> URL, for example:
+    </p>
+
+    <pre>&lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.2.0//EN"
+                           "file:/usr/local/share/xml/dtd/resume.dtd"&gt;</pre>
+
+
+    <p>For an idea of how the tags work, see the comments in the
+      <code>resume.dtd</code> file and the example
+      r&eacute;sum&eacute; files.
+    </p>
+
+    <p>Note that the <code>iso-lat1.ent</code> file is referenced by
+      the <code>resume.dtd</code> file, so if you move one, be sure
+      you move the other, too.
+    </p>
+
+    <h3>Formatting R&eacute;sum&eacute;s</h3>
+
+    <p><strong>To create an HTML presentation</strong> of your
+      r&eacute;sum&eacute;, run your XSLT engine on the XML file
+      containing the r&eacute;sum&eacute; along with the
+      <code>html.xsl</code> file.
+
+    <p><strong>To create a PDF presentation</strong>, run your XSLT
+      engine on the r&eacute;sum&eacute; XML file and the
+      <code>pdf.xsl</code> file, and <strong>then</strong> run your FO
+      engine on the result of that.
+    </p>
+
+    <p><strong>To create a plain text presentation</strong>, run your
+      XSLT engine on the r&eacute;sum&eacute; XML file and the
+      <code>ascii.xsl</code> file.
+    </p>
+
+    <p>To automate this process, consider using the Makefile.  It uses
+      the Java versions of the Apache XML tools Xerces/Xalan/FOP to
+      create both web and print presentations of a
+      r&eacute;sum&eacute;.  By adjusting a commented-out line, you can
+      use XEP in place of FOP.
+    </p>
+  </body>
+</html>
+
