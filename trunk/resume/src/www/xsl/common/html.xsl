@@ -394,47 +394,48 @@ $Id$
 
   <xsl:template match="r:degree">
     <li class="degree">
-      <acronym class="level">
-        <xsl:apply-templates select="r:level"/>
-      </acronym>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$in.word"/>
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates select="r:major"/>
+      <span class="degreeTitle">
+        <acronym class="level">
+          <xsl:apply-templates select="r:level"/>
+        </acronym>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$in.word"/>
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="r:major"/>
+      </span>
       <xsl:if test="r:date|r:period">
-	<xsl:text>, </xsl:text>
-	<xsl:apply-templates select="r:date|r:period"/>
-      </xsl:if>
-      <xsl:if test="r:institution">
-	<xsl:text>, </xsl:text>
-        <xsl:apply-templates select="r:institution"/>
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="r:date|r:period"/>
       </xsl:if>
       <xsl:if test="r:annotation">
         <xsl:text>. </xsl:text>
         <xsl:apply-templates select="r:annotation"/>
       </xsl:if>
-      <xsl:if test="r:subjects/r:subject">
-        <xsl:apply-templates select="r:subjects"/>
+      <xsl:if test="r:institution">
+        <br/>
+        <xsl:apply-templates select="r:institution"/>
       </xsl:if>
+
+      <xsl:apply-templates select="r:subjects"/>
     </li>
   </xsl:template>
 
   <!-- Format the subjects -->
   <xsl:template match="r:subjects">
-    <table>
-      <xsl:for-each select="r:subject">
-        <tr>
-          <td></td>
-	  <td>
-            <xsl:apply-templates select="r:title"/>
-	  </td>
-          <td></td>
-	  <td>
-            <xsl:apply-templates select="r:result"/>
-	  </td>
-        </tr>
-      </xsl:for-each>
-    </table>
+    <xsl:if test="r:subject">
+      <table>
+        <xsl:for-each select="r:subject">
+          <tr>
+            <td>
+              <xsl:apply-templates select="r:title"/>
+            </td>
+            <td>
+              <xsl:apply-templates select="r:result"/>
+            </td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </xsl:if>
   </xsl:template>
 
   <!-- Format the open-ended skills -->

@@ -73,8 +73,16 @@
           <row>
             <entry><literal>degrees</literal></entry>
             <entry>
-              On the <sgmltag class="element">ul</sgmltag> for the list of degrees
-              you hold.
+              On the <sgmltag class="element">ul</sgmltag> for the list of
+              degrees you hold.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>degreeTitle</literal></entry>
+            <entry>
+              On the <sgmltag class="element">span</sgmltag> surrounding a
+              degree level and major, such as <quote>B.S. in Political
+              Science</quote>.
             </entry>
           </row>
           <row>

@@ -471,10 +471,6 @@ In general, each block is responsible for outputting a newline after itself.
           <xsl:text>, </xsl:text>
           <xsl:apply-templates select="r:date|r:period"/>
         </xsl:if>
-        <xsl:if test="r:institution">
-          <xsl:text>, </xsl:text>
-          <xsl:apply-templates select="r:institution"/>
-        </xsl:if>
         <xsl:if test="r:annotation">
           <xsl:text>. </xsl:text>
           <xsl:apply-templates select="r:annotation"/>
@@ -482,6 +478,16 @@ In general, each block is responsible for outputting a newline after itself.
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="r:institution">
+      <xsl:call-template name="Wrap">
+        <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
+        <xsl:with-param name="Text">
+          <xsl:apply-templates select="r:institution"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
 
     <xsl:if test="r:subjects/r:subject">
       <xsl:call-template name="NewLine"/>
