@@ -281,7 +281,7 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
-    depends="filter, doc.manual.html-multiple.web, doc.manual.pdf, examples.web"
+    depends="filter, doc.manual.html-multiple.web, examples.web"
     description="Install web server files">
 
     <!-- Copy WWW files -->
@@ -335,7 +335,7 @@ $Id$
       <arg value="resume=example1"/>
 
       <arg value="xsl_base=../../src/www/xsl"/>
-      <arg value="xsl_flags=-param css.href /css/resume3.css"/>
+      <arg value="xsl_flags=-param css.href ../../css/blueorange.css"/>
 
       <arg line="${make.examples.extra-args}"/>
     </exec>
@@ -350,7 +350,21 @@ $Id$
       <arg value="resume=example2"/>
 
       <arg value="xsl_base=../../src/www/xsl"/>
-      <arg value="xsl_flags=-param css.href /css/resume4.css"/>
+      <arg value="xsl_flags=-param css.href ../../css/compact.css"/>
+
+      <arg line="${make.examples.extra-args}"/>
+    </exec>
+
+    <exec executable="${make}"
+      dir="${build.dir}/examples.web"
+      vmlauncher="${make.vmlauncher}"
+      failonerror="${make.failonerror}">
+
+      <arg value="filter"/>
+      <arg value="resume=example2"/>
+
+      <arg value="xsl_base=../../src/www/xsl"/>
+      <arg value="xsl_flags=-param css.href ../../css/compact.css"/>
 
       <arg line="${make.examples.extra-args}"/>
     </exec>
