@@ -44,14 +44,14 @@ $Id$
   <xsl:param name="academics.word">Formation</xsl:param>
   <xsl:param name="publications.word">Publications</xsl:param>
   <xsl:param name="miscellany.word">Divers</xsl:param>
-  <xsl:param name="in.word">dans</xsl:param>
+  <xsl:param name="in.word">en</xsl:param>
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
   <xsl:param name="by.word">par</xsl:param>
   <xsl:param name="present.word">pr&#x00e9;sent</xsl:param>
   <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
   <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
-  <xsl:param name="achievements.word">Exploits:</xsl:param>
+  <xsl:param name="achievements.word">R&#x00e9;alisations:</xsl:param>
   <xsl:param name="projects.word">Projets:</xsl:param>
   <xsl:param name="referees.word">R&#x00e9;f&#x00e9;rences</xsl:param>
 
