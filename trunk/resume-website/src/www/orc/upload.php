@@ -1,17 +1,9 @@
-<html>
-
-<head>
-  <title>ORC - The Online R&eacute;sum&eacute; Converter</title>
-  <link href="../site.css" rel="STYLESHEET" type="text/css"/>
-</head>
-<table>
-  <tr><td class="quicklinks">
-    <?php include("../private/quicklinks.html"); ?>
-  </td>
-<td>
+<?php
+$pagetitle="ORC - The Online R&eacute;sum&eacute; Converter";
+include_once("../private/header.php");
+?>
 
 <h1>
- The XML R&eacute;sum&eacute; Library's
 Online R&eacute;sum&eacute; Converter (ORC)
 </h1>
 
@@ -86,6 +78,6 @@ Online R&eacute;sum&eacute; Converter (ORC)
     <input TYPE="SUBMIT" NAME="SUBMIT" VALUE="Submit R&eacute;sum&eacute;">
   </form>
 
-</td></tr>
-</table>
-</html>
+<?php
+include_once("../private/footer.php");;
+?>

@@ -1,3 +1,54 @@
 ORC - The XMLResume Library's Online Resume Converter
 
+============   TECHNICAL OVERVIEW  =========
 
+--- UPLOADING ---
+
+After reading the general disclaimers in index.html, users click to 
+<<upload.php>>, where they upload their resume files and fill out the form 
+about what kind of resume they want back.  
+
+upload.php sends its form information to <<process-upload.php>>, which is
+basically the HTML wrapper for the "process-upload" function in
+<<orc-functions.php>> (separate your data and your code, people!).  
+
+process-upload does some basic integrity checks, then creates a new 
+directory in the <<incoming>> directory with the name orc{$timestamp}.  
+Here's what a typical directory will look like after process-upload:
+
+[Mark@jobukii:118] ls -l incoming/orc1038185404/
+total 31
+lrwxrwxrwx  1 www  mjm     21 Nov 24 16:50 country@ -> ../../../xsl/country/
+lrwxrwxrwx  1 www  mjm     20 Nov 24 16:50 format@ -> ../../../xsl/format/
+-rw-rw-rw-  1 www  mjm      0 Nov 24 16:50 index.html
+lrwxrwxrwx  1 www  mjm     17 Nov 24 16:50 lib@ -> ../../../xsl/lib/
+drwxrwxrwx  2 www  mjm    512 Nov 24 16:50 out/
+lrwxrwxrwx  1 www  mjm     20 Nov 24 16:50 output@ -> ../../../xsl/output/
+lrwxrwxrwx  1 www  mjm     19 Nov 24 16:50 paper@ -> ../../../xsl/paper/
+-rwxrwxrwx  1 www  mjm   9924 Nov 24 16:50 params.xsl*
+-rw-rw-rw-  1 www  mjm    672 Nov 24 16:50 reply.email
+-rwxrwxrwx  1 www  mjm  17561 Nov 24 16:50 resume.xml*
+-rw-rw-rw-  1 www  mjm    189 Nov 24 16:50 user.props
+
+The symbolic links to ../../../xsl/* just have to be there.  
+<<index.html>> is an empty file to keep people from indexing the folder.
+<<out>> is where the compressed output and logfile are put
+<<params.xsl,resume.xml>> self-explanatory
+<<reply.email>> the email that will be sent after the resume is processed
+<<user.props>> Form-configurable options to the Ant build system.  
+
+--- PROCESSING ---
+
+The file <<convert.sh>> should be run on a cron.  It cds into incoming/ 
+and processes each incoming/orc* directory in turn, moving them into 
+<<incoming/DONE/>> after completion.  Processing means calling the Ant 
+build system, emailing the user to notify them of the build, and doing 
+some statistics collecting.  
+
+Currently, the only statistics it collects are md5 checksums of email
+addresses (piped into <<users.email>>) so we can see how many (unique)
+users we have.  I hate spam as much as the next guy, so a 1-way hash of 
+something we want to keep around for awhile seems like a safe idea.
+
+It's probably a good idea to run convert.sh at a low system priority to 
+keep it from bogging the server down.

@@ -14,8 +14,7 @@
 ########################################################
 
 # You may need to change the following variables:
-#export SUPPORT_HOME="/home/groups/x/xm/xmlresume/resume-support"
-export SUPPORT_HOME="${HOME}/xmlresume/resume-support"
+SUPPORT_HOME="/usr/home/mjm/xmlresume/resume-support"
 ANTCMD="${SUPPORT_HOME}/ant/ant"
 JAVACMD=java
 
@@ -45,8 +44,9 @@ cd incoming
 for resume in `ls -1 | grep '^orc'`; 
 do
   cd $resume
-	${ANTCMD} -debug -propertyfile user.props \
-	-find build.xml dispatch >> ./out/antlog.txt
+    grep '^email =' user.props | cut -f 3 -d" " | md5 >> ../../users.email
+    ${ANTCMD} -debug -propertyfile user.props \
+    -find build.xml dispatch >> ./out/antlog.txt
   sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..
   mv $resume DONE/$resume

@@ -1,19 +1,7 @@
-<html>
-
-<head>
-  <title>The XML R&eacute;sum&eacute; Online R&eacute;sum&eacute; Converter</title>
-  <link href="../site.css" rel="STYLESHEET" type="text/css"/>
-</head>
-
-<body>
-
-  <table><tr>
-    <td class="quicklinks">
-      <?php include("../private/quicklinks.html"); ?>
-    </td>
-    <td>
-
 <?php
+$pagetitle = "Resume Upload Confirmation";
+include_once("../private/header.php");
+
 require("orc-functions.php");
 
 #Set some global variables
@@ -39,9 +27,6 @@ conversion shortly.</p>
   print "<h1>ERROR</h1>\n";
   print "<p> $arrReturn[1] </p>";
 }
+
+include_once("../private/footer.php");
 ?>
-
-  </td></tr>
-</table>
-</body></html>
-
