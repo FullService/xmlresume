@@ -51,8 +51,12 @@ $Id$
 <!-- Sections of a resume -->
 <!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|keywords|memberships)">
 
+<!-- A collection of resumes -->
+<!ELEMENT resumes (resume*)>
+
 <!-- A resume -->
 <!ELEMENT resume (docpath?, header?, (%sections;)*, copyright?)>
+<!ATTLIST resume id ID #IMPLIED>
 
 <!-- A resume may be part of a hierarchy of documents with a single -->
 <!-- root.  This docpath element specifies that hierarchy, plus the -->
@@ -67,6 +71,7 @@ $Id$
 <!-- The header of the resume contains your name and address. -->
 <!ELEMENT header (name, address?, birth?, contact?)>
 <!ELEMENT name (firstname, middlenames?, surname, suffix?)>
+<!ATTLIST name id ID #IMPLIED>
 <!ELEMENT firstname (#PCDATA)>
 <!-- Use for one or more middle names or initials. -->
 <!ELEMENT middlenames (#PCDATA)>
@@ -81,18 +86,31 @@ $Id$
 <!-- postal items with the element from addrElements. -->
 <!ENTITY % addrElements "street | street2 | suburb | ward | city | state | province | county | prefecture | zip | postalCode | country">
 <!ELEMENT address (#PCDATA | %addrElements; | break)*>
+<!ATTLIST address id ID #IMPLIED>
 <!ELEMENT street (#PCDATA)>
+<!ATTLIST street id ID #IMPLIED>
 <!ELEMENT street2 (#PCDATA)>
+<!ATTLIST street2 id ID #IMPLIED>
 <!ELEMENT suburb (#PCDATA)>
+<!ATTLIST suburb id ID #IMPLIED>
 <!ELEMENT ward (#PCDATA)>
+<!ATTLIST ward id ID #IMPLIED>
 <!ELEMENT city (#PCDATA)>
+<!ATTLIST city id ID #IMPLIED>
 <!ELEMENT state (#PCDATA)>
+<!ATTLIST state id ID #IMPLIED>
 <!ELEMENT province (#PCDATA)>
+<!ATTLIST province id ID #IMPLIED>
 <!ELEMENT county (#PCDATA)>
+<!ATTLIST county id ID #IMPLIED>
 <!ELEMENT prefecture (#PCDATA)>
+<!ATTLIST prefecture id ID #IMPLIED>
 <!ELEMENT zip (#PCDATA)>
+<!ATTLIST zip id ID #IMPLIED>
 <!ELEMENT postalCode (#PCDATA)>
+<!ATTLIST postalCode id ID #IMPLIED>
 <!ELEMENT country (#PCDATA)>
+<!ATTLIST country id ID #IMPLIED>
 <!ELEMENT break EMPTY>
 <!ELEMENT contact (phone?, email?, url?)>
 <!ELEMENT phone (#PCDATA)>
@@ -101,12 +119,15 @@ $Id$
 
 <!-- Your lifelong objective. -->
 <!ELEMENT objective (para+)>
+<!ATTLIST objective id ID #IMPLIED>
 
 <!-- Your previous employment history. -->
 <!ELEMENT history (job+)>
 <!ELEMENT job (jobtitle, employer, period, description?, achievements?)>
+<!ATTLIST job id ID #IMPLIED>
 <!ELEMENT jobtitle (#PCDATA)>
 <!ELEMENT employer (#PCDATA)>
+<!ATTLIST employer id ID #IMPLIED>
 <!ELEMENT period (from, to)>
 <!ELEMENT from (date | present)>
 <!ELEMENT to (date | present)>
@@ -118,26 +139,34 @@ $Id$
 <!ELEMENT academics (degrees, note?)>
 <!ELEMENT degrees (degree+)>
 <!ELEMENT degree (level, subject, date, institution?, annotation?)>
+<!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT subject (#PCDATA)>
 <!ELEMENT institution (#PCDATA)>
+<!ATTLIST institution id ID #IMPLIED>
 <!ELEMENT annotation (#PCDATA)>
 <!ELEMENT note (para+)>
 
 <!-- Special skills you'd like to highlight, each in its own area. -->
 <!ELEMENT skillareas (skillarea+)>
 <!ELEMENT skillarea (title, skillset+)>
+<!ATTLIST skillarea id ID #IMPLIED>
 <!ELEMENT skillset (title?, skills)>
+<!ATTLIST skillset id ID #IMPLIED>
 <!ELEMENT skills (skill+)>
+<!ATTLIST skills id ID #IMPLIED>
 <!ELEMENT skill (%inlines;)*>
+<!ATTLIST skill id ID #IMPLIED>
 
 <!-- Have you published anything? -->
 <!ELEMENT pubs (pub+)>
 <!ENTITY % pubElements "(artTitle|bookTitle|author|pubDate|publisher|pageNums)">
 <!ELEMENT pub (para | %pubElements;)*>
+<!ATTLIST pub id ID #IMPLIED>
 <!ELEMENT artTitle (#PCDATA)>
 <!ELEMENT bookTitle (#PCDATA)>
 <!ELEMENT author (#PCDATA)>
+<!ATTLIST author name IDREF #IMPLIED>
 <!ELEMENT pubDate (month?, year)>
 <!ELEMENT publisher (#PCDATA | url)*>
 <!ELEMENT pageNums (#PCDATA)>
@@ -145,7 +174,9 @@ $Id$
 <!-- Professional memberships. -->
 <!ELEMENT memberships (title, membership+)>
 <!ELEMENT membership (title?, organization?, period?, description?)>
+<!ATTLIST membership id ID #IMPLIED>
 <!ELEMENT organization (#PCDATA)>
+<!ATTLIST organization id ID #IMPLIED>
 
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>
