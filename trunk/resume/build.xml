@@ -22,6 +22,9 @@ $Id$
   <!-- Root of all source code -->
   <property name="src.dir" value="${basedir}/src"/>
 
+  <!-- Web server's directory; where to install web-accessible files -->
+  <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
+
   <!-- DOCUMENTATION EXTRACTION =============================================================================================== -->
 
   <!-- Root of constructed documentation -->
@@ -50,17 +53,17 @@ $Id$
   <!-- Documentation generation -->
 
   <target name="doc"
-	  description="Generate all documentation"
-	  depends="doc.prepare, doc.manuals"/>
+    description="Generate all documentation"
+    depends="doc.prepare, doc.manuals"/>
 	  
   <target name="doc.prepare"
-	  description="Prepare the documentation directory">
+    description="Prepare the documentation directory">
     <mkdir dir="${doc.dir}"/>
   </target>
 
   <target name="doc.manuals"
-	  description="Generate manual files"
-	  depends="filter, doc.prepare">
+    description="Generate manual files"
+    depends="filter, doc.prepare">
     <copy todir="${doc.dir}"
 	  filtering="yes">
       <fileset dir="${src.dir}/doc/release"/>
@@ -70,15 +73,15 @@ $Id$
   <!-- Releasing to the public -->
 
   <target name="release"
-	  description="Build a complete public release"
-	  depends="doc, release.build, release.archive"/>
+    description="Build a complete public release"
+    depends="doc, release.build, release.archive"/>
 
   <target name="release.build"
-	  description="Build a release"
-	  depends="release.build.prepare, release.build.copy"/>
+    description="Build a release"
+    depends="release.build.prepare, release.build.copy"/>
     
   <target name="release.build.prepare"
-	  description="Prepare to stage the release">
+    description="Prepare to stage the release">
     <mkdir dir="${stage.dir}"/>
     <mkdir dir="${stage.dir}/lib"/>
     <mkdir dir="${stage.dir}/doc"/>
@@ -86,8 +89,8 @@ $Id$
   </target>    
 
   <target name="release.build.copy"
-	  description="Copy files into the staging area"
-	  depends="filter">
+    description="Copy files into the staging area"
+    depends="filter">
     <copy todir="${stage.dir}/doc">
       <fileset dir="${doc.dir}"/>
     </copy>
@@ -95,35 +98,35 @@ $Id$
       <fileset dir="${src.dir}"/>
     </copy>
     <copy tofile="${stage.dir}/README"
-	  file="${src.dir}/doc/README.src"
-	  filtering="yes"/>
+      file="${src.dir}/doc/README.src"
+      filtering="yes"/>
   </target>
 
   <target name="release.archive"
-	  description="Create archives of the staged release"
-	  depends="release.archive.zip, release.archive.tgz"/>
+    description="Create archives of the staged release"
+    depends="release.archive.zip, release.archive.tgz"/>
 
   <target name="release.archive.zip"
-	  description="Create the zip file release">
+    description="Create the zip file release">
     <zip zipfile="${release.zip}"
-	 basedir="${basedir}"
-	 includes="${release.dir}/**"/>
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
   </target>
 
   <target name="release.archive.tgz"
-	  description="Create the gzip'd tar file release">
+    description="Create the gzip'd tar file release">
     <tar tarfile="${release.tar}"
-	 basedir="${basedir}"
-	 includes="${release.dir}/**"/>
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
     <gzip zipfile="${release.tgz}"
-	  src="${release.tar}"/>
+      src="${release.tar}"/>
     <delete file="${release.tar}"/>
   </target>
 
   <!-- Housekeeping -->
 
   <target name="filter"
-	  description="Define filtering tokens">
+    description="Define filtering tokens">
     <filter token="VERSION_DOTS" value="${version.dots}"/>
     <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
     <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
@@ -131,16 +134,16 @@ $Id$
   </target>
 
   <target name="clean"
-	  description="Remove everything that can be rebuilt"
-	  depends="clean.doc, clean.release"/>
+    description="Remove everything that can be rebuilt"
+    depends="clean.doc, clean.release"/>
 
   <target name="clean.doc"
-	  description="Clean out documentation that can be rebuilt">
+    description="Clean out documentation that can be rebuilt">
     <delete dir="${doc.dir}"/>
   </target>
 
   <target name="clean.release"
-	  description="Remove the release archives and staging area">
+    description="Remove the release archives and staging area">
     <delete dir="${stage.dir}"/>
     <delete file="${release.zip}"/>
     <delete file="${release.tgz}"/>
