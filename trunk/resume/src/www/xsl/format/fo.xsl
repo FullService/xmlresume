@@ -189,7 +189,7 @@ $Id$
 
     <fo:block>
       <xsl:for-each select="r:street">
-        <fo:block><xsl:value-of select="."/></fo:block>
+        <fo:block><xsl:apply-templates/></fo:block>
       </xsl:for-each>
       <xsl:if test="r:street2">
         <fo:block><xsl:apply-templates select="r:street2"/></fo:block>
@@ -229,7 +229,7 @@ $Id$
 
     <fo:block>
       <xsl:for-each select="r:street">
-        <fo:block><xsl:value-of select="."/></fo:block>
+        <fo:block><xsl:apply-templates/></fo:block>
       </xsl:for-each>
       <xsl:if test="r:street2">
         <fo:block><xsl:apply-templates select="r:street2"/></fo:block>
@@ -260,7 +260,7 @@ $Id$
 
     <fo:block>
       <xsl:for-each select="r:street">
-        <fo:block><xsl:value-of select="."/></fo:block>
+        <fo:block><xsl:apply-templates/></fo:block>
       </xsl:for-each>
       <xsl:if test="r:street2">
         <fo:block><xsl:apply-templates select="r:street2"/></fo:block>
@@ -753,7 +753,7 @@ $Id$
 
   <!-- Title of book -->
   <xsl:template match="r:bookTitle" priority="1">
-    <fo:inline font-style="{$citation.font.style}"><xsl:value-of select="."/></fo:inline><xsl:value-of select="$pub.item.separator"/>
+    <fo:inline font-style="{$citation.font.style}"><xsl:apply-templates/></fo:inline><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format memberships. -->
@@ -775,14 +775,14 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:membership/r:title">
-    <fo:inline font-weight="{$emphasis.font.weight}"><xsl:value-of select="."/></fo:inline>
+    <fo:inline font-weight="{$emphasis.font.weight}"><xsl:apply-templates/></fo:inline>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="r:membership/r:organization">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -950,21 +950,21 @@ $Id$
   <!-- Format emphasized words in bold. -->
   <xsl:template match="r:emphasis">
     <fo:inline font-weight="{$emphasis.font.weight}">
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
 
   <!-- Format citations to other works. -->
   <xsl:template match="r:citation">
     <fo:inline font-style="{$citation.font.style}">
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
 
   <!-- Format a URL. -->
   <xsl:template match="r:url" name="FormatUrl">
     <fo:inline font-family="{$url.font.family}">
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
 
