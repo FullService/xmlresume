@@ -41,6 +41,35 @@ If you want to know what each of the Ant targets do, run
 
    ant -projecthelp
 
+DTD Changes
+===========
+
+If you change (add, remove, modify, or deprecate elements or attributes) the
+DTD, please also do the following:
+
+1. Update src/doc/manual/en/elementref.intro.xml, which is user-visible DTD
+   change documentation.
+
+2. Write or modify appropriate reference pages. If you've added elements, run
+   "ant doc.manual.create-missing" to automatically generate skeleton
+   documentation files. Then search for "TODO" in the generated files, replacing
+   with appropriate content.
+
+Deprecating elements takes a bit more work than adding or changing them:
+
+1. Elements that are deprecated should be documented as so in the appropriate
+   parts of the user guide. Specific information on doing so is in
+   src/doc/manual/AUTHORING.
+
+2. In addition, the XSLT stylesheets for resume generation should emit a message
+   to the user upon encountering a deprecated element. (However, the element
+   should still be formatted properly.) This message should be in
+   src/www/xsl/lib/deprecated.xsl.
+
+3. If possible, an "upgrade" XSLT file should be produced that automatically
+   removes or converts deprecated elements in a user's resume. See
+   src/www/xsl/misc/13x-140.xsl for an example.
+
 Cutting a Release
 =================
 
