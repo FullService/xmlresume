@@ -636,7 +636,7 @@ $Id$
         <xsl:apply-templates select="." mode="comma"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="." mode="comma"/>
+        <xsl:apply-templates select="." mode="bullet"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
