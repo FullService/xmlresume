@@ -2,6 +2,7 @@
 
 <head>
   <title>The XML R&eacute;sum&eacute; Online R&eacute;sum&eacute; Converter</title>
+  <link href="../site.css" rel="STYLESHEET" type="text/css"/>
 </head>
 
 <body>
