@@ -65,6 +65,12 @@ $Id$
   <xsl:param name="minor.word">minor</xsl:param>
   <xsl:param name="minors.word">minors</xsl:param>
   <xsl:param name="referees.word">References</xsl:param>
+  <!-- Word to use for "Overall GPA", as in "*Overall GPA*: 3.3" -->
+  <xsl:param name="overall-gpa.word">Overall GPA</xsl:param>
+  <!-- Word to use for "GPA in Major", as in "*GPA in Major*: 3.3" -->
+  <xsl:param name="major-gpa.word">GPA in Major</xsl:param>
+  <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
+  <xsl:param name="out-of.word"> out of </xsl:param>
 
   <!-- Phrase to display when referees are hidden. -->
   <xsl:param name="referees.hidden.phrase">Available upon request.</xsl:param>

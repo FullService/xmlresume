@@ -31,6 +31,20 @@
       </para>
     </warning>
 
+    <section><title>Version 1.4.1</title>
+      <itemizedlist>
+        <listitem><para>
+          New elements:
+          <link linkend="element.gpa"><sgmltag
+          class="element">gpa</sgmltag></link>,
+          <link linkend="element.score"><sgmltag
+          class="element">score</sgmltag></link>, and
+          <link linkend="element.possible"><sgmltag
+          class="element">possible</sgmltag></link>.
+        </para></listitem>
+      </itemizedlist>
+    </section>
+
     <section><title>Version 1.4.0</title>
       <itemizedlist>
         <listitem><para>

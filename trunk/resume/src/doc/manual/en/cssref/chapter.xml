@@ -110,6 +110,13 @@
             </entry>
           </row>
           <row>
+            <entry><literal>gpaPreamble</literal></entry>
+            <entry>
+              On the <sgmltag class="element">span</sgmltag> around the preamble
+              to a GPA, such as <quote>Overall GPA</quote>.
+            </entry>
+          </row>
+          <row>
             <entry><literal>heading</literal></entry>
             <entry>
               On the <sgmltag class="element">h2</sgmltag> of &resume; section
@@ -171,8 +178,7 @@
           <row>
             <entry><literal>note</literal></entry>
             <entry>
-              On the <sgmltag class="element">div</sgmltag> used as the admonition
-              below the list of held degrees.
+              On the <sgmltag class="element">span</sgmltag> of a note.
             </entry>
           </row>
           <row>

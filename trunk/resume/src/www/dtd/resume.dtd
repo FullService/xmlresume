@@ -160,13 +160,17 @@ in a future version. -->
 <!-- What academics, if any, you might possess. -->
 <!ELEMENT academics (degrees, note?)>
 <!ELEMENT degrees (degree+)>
-<!ELEMENT degree (level, major+, minor*, (date|period)?, institution?, subjects?, annotation?)>
+<!ELEMENT degree (level, major+, minor*, (date|period)?, institution?, gpa?, subjects?, annotation?)>
 <!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT major (#PCDATA)>
 <!ELEMENT minor (#PCDATA)>
 <!ELEMENT institution (#PCDATA)>
 <!ATTLIST institution id ID #IMPLIED>
+<!ELEMENT gpa (score, possible?, note?)>
+<!ATTLIST gpa type (overall|major) "overall">
+<!ELEMENT score (#PCDATA)>
+<!ELEMENT possible (#PCDATA)>
 <!ELEMENT subjects (subject+)>
 <!ELEMENT subject (title,result)>
 <!ELEMENT result (#PCDATA)>

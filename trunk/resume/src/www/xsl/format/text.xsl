@@ -460,7 +460,6 @@ In general, each block is responsible for outputting a newline after itself.
 
   <xsl:template match="r:degree">
     <xsl:call-template name="Wrap">
-      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:level"/>
         <xsl:if test="r:major">
@@ -484,12 +483,16 @@ In general, each block is responsible for outputting a newline after itself.
 
     <xsl:if test="r:institution">
       <xsl:call-template name="Wrap">
-        <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
         <xsl:with-param name="Text">
           <xsl:apply-templates select="r:institution"/>
         </xsl:with-param>
       </xsl:call-template>
       <xsl:call-template name="NewLine"/>
+    </xsl:if>
+
+    <xsl:if test="r:gpa">
+      <xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:gpa"/>
     </xsl:if>
 
     <xsl:if test="r:subjects/r:subject">
@@ -500,6 +503,43 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:if test="following-sibling::*">
       <xsl:call-template name="NewLine"/>
     </xsl:if>
+  </xsl:template>
+
+  <!-- Format a GPA -->
+  <xsl:template match="r:gpa">
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Width" select="$text.width - 2*$text.indent.width"/>
+      <xsl:with-param name="FirstIndent" select="$text.indent.width"/>
+      <xsl:with-param name="Indent" select="2*$text.indent.width"/>
+
+      <xsl:with-param name="Text">
+
+        <xsl:choose>
+          <xsl:when test="@type = 'major'">
+            <xsl:value-of select="$major-gpa.word"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$overall-gpa.word"/>
+          </xsl:otherwise>
+        </xsl:choose>
+
+        <xsl:text>: </xsl:text>
+
+        <xsl:apply-templates select="r:score"/>
+
+        <xsl:if test="r:possible">
+          <xsl:value-of select="$out-of.word"/>
+          <xsl:apply-templates select="r:possible"/>
+        </xsl:if>
+
+        <xsl:if test="r:note">
+          <xsl:text>. </xsl:text>
+          <xsl:apply-templates select="r:note"/>
+        </xsl:if>
+
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- Format the subjects as a 2-column table -->
@@ -691,16 +731,13 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:call-template name="FormatPub"/>
     </xsl:variable>
 
-    <xsl:call-template name="Indent">
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Indent" select="$text.indent.width"/>
       <xsl:with-param name="Text">
-        <xsl:call-template name="Wrap">
-          <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
-          <xsl:with-param name="Text">
-            <xsl:value-of select="normalize-space($Text)"/>
-          </xsl:with-param>
-        </xsl:call-template>
+        <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
     </xsl:call-template>
+
     <xsl:call-template name="NewLine"/>
 
     <xsl:if test="following-sibling::*">

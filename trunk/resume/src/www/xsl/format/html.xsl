@@ -414,9 +414,9 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:note">
-    <div class="note">
+    <span class="note">
       <xsl:apply-templates/>
-    </div>
+    </span>
   </xsl:template>
 
   <xsl:template match="r:degree">
@@ -444,8 +444,40 @@ $Id$
         <xsl:apply-templates select="r:institution"/>
       </xsl:if>
 
+      <xsl:apply-templates select="r:gpa"/>
+
       <xsl:apply-templates select="r:subjects"/>
     </li>
+  </xsl:template>
+
+  <!-- Format a GPA -->
+  <xsl:template match="r:gpa">
+    <p>
+      <span class="gpaPreamble">
+        <xsl:choose>
+          <xsl:when test="@type = 'major'">
+            <xsl:value-of select="$major-gpa.word"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$overall-gpa.word"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </span>
+
+      <xsl:text>: </xsl:text>
+
+      <xsl:apply-templates select="r:score"/>
+
+      <xsl:if test="r:possible">
+        <xsl:value-of select="$out-of.word"/>
+        <xsl:apply-templates select="r:possible"/>
+      </xsl:if>
+
+      <xsl:if test="r:note">
+        <xsl:text>. </xsl:text>
+        <xsl:apply-templates select="r:note"/>
+      </xsl:if>
+    </p>
   </xsl:template>
 
   <!-- Format the subjects -->

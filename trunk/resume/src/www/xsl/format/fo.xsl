@@ -525,12 +525,48 @@ $Id$
       <fo:block>
         <xsl:apply-templates select="r:institution"/>
       </fo:block>
+
+      <xsl:apply-templates select="r:gpa"/>
+
     </fo:block>
+
     <xsl:if test="r:subjects/r:subject">
       <fo:block space-after="{$para.break.space}">
         <xsl:apply-templates select="r:subjects"/>
       </fo:block>
     </xsl:if>
+  </xsl:template>
+
+  <!-- Format a GPA -->
+  <xsl:template match="r:gpa">
+    <fo:block space-before="{$half.space}">
+      <fo:inline
+          font-weight="{$gpa-preamble.font.weight}"
+          font-style="{$gpa-preamble.font.style}">
+        <xsl:choose>
+          <xsl:when test="@type = 'major'">
+            <xsl:value-of select="$major-gpa.word"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$overall-gpa.word"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </fo:inline>
+
+      <xsl:text>: </xsl:text>
+
+      <xsl:apply-templates select="r:score"/>
+
+      <xsl:if test="r:possible">
+        <xsl:value-of select="$out-of.word"/>
+        <xsl:apply-templates select="r:possible"/>
+      </xsl:if>
+
+      <xsl:if test="r:note">
+        <xsl:text>. </xsl:text>
+        <xsl:apply-templates select="r:note"/>
+      </xsl:if>
+    </fo:block>
   </xsl:template>
 
   <!-- Format the subjects section as a list-block -->
