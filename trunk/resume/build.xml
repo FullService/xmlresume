@@ -281,7 +281,7 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
-    depends="filter, doc.manual.html-multiple.web, examples.web"
+    depends="filter, doc.manual.html-multiple.web, examples.web, doc.manual.pdf"
     description="Install web server files">
 
     <!-- Copy WWW files -->
@@ -800,7 +800,7 @@ $Id$
     description="Generate PDF version of the manual"
     depends="doc.manual.fo">
 
-    <!-- This section isn't needed with docbook-xsl-1.52.2 and FOP 0.20.3
+    <!-- This section isn't needed with docbook-xsl-1.52.2 and FOP 0.20.3 -->
     <java
       classname="com.icl.saxon.StyleSheet"
       classpathref="saxon.classpath"
@@ -812,7 +812,6 @@ $Id$
       <arg value="${doc.manual.fo.file}"/>
       <arg value="${doc.manual.docbook-xsl.dir}/fo/fo-patch-for-fop.xsl"/>
     </java>
-    -->
 
     <java 
       classname="org.apache.fop.apps.Fop"
