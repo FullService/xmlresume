@@ -492,7 +492,6 @@ $Id$
       <xsl:apply-templates select="period"/>
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="description"/>
-      <xsl:call-template name="NewLine"/>
       <xsl:if test="projects/project">
         <xsl:apply-templates select="projects"/>
       </xsl:if>
@@ -500,6 +499,12 @@ $Id$
         <xsl:apply-templates select="achievements"/>
       </xsl:if>
       <xsl:call-template name="NewLine"/>
+      <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <!-- format the job description -->
+  <xsl:template match="description">
+      <xsl:apply-templates/>
       <xsl:call-template name="NewLine"/>
   </xsl:template>
 
@@ -524,7 +529,9 @@ $Id$
 
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="achievements">
-     <xsl:call-template name="NewLine"/><xsl:value-of select="$achievements.word"/>
+     <xsl:if test="string-length($achievements.word) > 0">
+       <xsl:call-template name="NewLine"/><xsl:value-of select="$achievements.word"/>
+     </xsl:if>
      <xsl:call-template name="NewLine"/>
      <xsl:apply-templates select="achievement"/>
   </xsl:template>
@@ -641,15 +648,22 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
+    <!-- format a skillset as comma-separated lists.  Need to use -->
+    <!-- FormatParagraph so long lists wrap onto multiple lines.  -->
   <xsl:template match="skillset" mode="comma">
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
+	<xsl:call-template name="FormatParagraph">
+          <xsl:with-param name="Text">
         <xsl:if test="title">
           <xsl:apply-templates select="title"/>
           <xsl:text>: </xsl:text>
         </xsl:if>
         <xsl:apply-templates select="skills" mode="comma"/>
        </xsl:with-param>
+      <xsl:with-param name="Width" select="72"/>
+      </xsl:call-template>
+      </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
