@@ -66,9 +66,13 @@ $Id$
 
 <!-- The header of the resume contains your name and address. -->
 <!ELEMENT header (name, address?, birth?, contact?)>
-<!ELEMENT name (firstname, surname)>
+<!ELEMENT name (firstname, middlenames?, surname, suffix?)>
 <!ELEMENT firstname (#PCDATA)>
+<!-- Use for one or more middle names or initials. -->
+<!ELEMENT middlenames (#PCDATA)>
 <!ELEMENT surname (#PCDATA)>
+<!-- suffix is intended for Jr., Sr., III, etc. -->
+<!ELEMENT suffix (#PCDATA)>
 <!ELEMENT birth (date)>
 
 <!-- Your address is free-form text formatted as is proper for your -->

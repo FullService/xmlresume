@@ -447,7 +447,15 @@ $Id$
   <xsl:template match="name">
     <xsl:value-of select="firstname"/>
     <xsl:text> </xsl:text>
+    <xsl:if test="middlenames">
+      <xsl:value-of select="middlenames"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:value-of select="surname"/>
+    <xsl:if test="suffix">
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="suffix"/>
+    </xsl:if>
   </xsl:template>
 
   <!-- para -> p -->
