@@ -225,12 +225,13 @@
           <row>
             <entry><literal>skills</literal></entry>
             <entry>
-              If <parameter>skills.format</parameter> is
-              <literal>bullet</literal>, on the <sgmltag
-              class="element">ul</sgmltag> for a list of skills.
-              If <parameter>skills.format</parameter> is
-              <literal>comma</literal>, on the <sgmltag
-              class="element">span</sgmltag> for a list of skills.
+              If <link
+              linkend="param.skills.format"><parameter>skills.format</parameter></link>
+              is <literal>bullet</literal>, on the <sgmltag
+              class="element">ul</sgmltag> for a list of skills.  If
+              <parameter>skills.format</parameter> is <literal>comma</literal>,
+              on the <sgmltag class="element">span</sgmltag> for a list of
+              skills.
             </entry>
           </row>
           <row>
