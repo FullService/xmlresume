@@ -300,11 +300,11 @@ $Id$
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:if test="r:contact/r:phone">
+    <xsl:if test="contact/phone">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
         <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="r:contact/r:phone"/>
+	<xsl:value-of select="contact/phone"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
@@ -342,9 +342,9 @@ $Id$
       <xsl:call-template name="NewLine"/>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
-      <xsl:if test="r:contact/r:phone">
+      <xsl:if test="contact/phone">
         <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="r:contact/r:phone"/>
+	<xsl:value-of select="contact/phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:if test="r:contact/r:email">
@@ -596,7 +596,7 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="major"/>
+      <xsl:value-of select="r:major"/>
       <xsl:if test="r:date">     
          <xsl:text>, </xsl:text>
          <xsl:apply-templates select="r:date"/>

@@ -380,7 +380,7 @@ $Id$
       <fo:inline font-weight="bold"><xsl:value-of select="level"/>
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
-        <xsl:value-of select="major"/></fo:inline>
+        <xsl:value-of select="r:major"/></fo:inline>
       <xsl:if test="r:date">
         <xsl:text>, </xsl:text>
 	<xsl:apply-templates select="r:date"/>
