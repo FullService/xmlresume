@@ -82,7 +82,7 @@
       <programlisting><![CDATA[
 <address>
   <street>123 Pickle St.</street>
-  <street2>Apt. #12</street2>
+  <street>Apt. #12</street>
   <city>Sourville</city>
   <state>NX</state>
   <zip>99999-9999</zip>
