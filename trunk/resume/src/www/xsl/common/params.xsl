@@ -127,6 +127,12 @@ $Id$
   <xsl:param name="text.emphasis.start">*</xsl:param>
   <xsl:param name="text.emphasis.end">*</xsl:param>
 
+  <!-- Max chars allowed on a line in plain text -->
+  <xsl:param name="text.width">80</xsl:param>
+
+  <!-- Number of characters to indent in plain text -->
+  <xsl:param name="text.indent">4</xsl:param>
+
   <!-- Space between bullet and its text in bulleted item -->
   <xsl:param name="bullet.space">10pt</xsl:param>
 
