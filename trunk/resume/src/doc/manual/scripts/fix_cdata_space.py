@@ -57,7 +57,7 @@ def fix_cdata(pattern, dir, files=None):
                 text = start_re.sub("", text)
                 text = end_re.sub("", text)
                 open(filename, "w").write(text)
-                print "%s fixed" % filename
+                print "%s CDATA trimmed" % filename
 
 #------------------------------------------------------------------------------
 
