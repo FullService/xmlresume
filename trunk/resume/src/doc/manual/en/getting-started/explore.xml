@@ -299,6 +299,15 @@
       </para>
 
       <para>
+        If you're having trouble installing the &library.name; on your own
+	computer, you might want to try using the Online &Resume; Converter,
+	located at <ulink url="http://xmlresume.sourceforge.net/orc"/>.  All
+	you need to do is upload your XML&Resume; and select the formatting 
+	options to have a beautiful &resume;&mdash; no software installation
+	required.
+      </para>
+
+      <para>
         The online support forum is located at <ulink
         url="&xmlresume.support.url;"/>.
       </para>
