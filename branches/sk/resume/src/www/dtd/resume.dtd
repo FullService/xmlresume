@@ -1,0 +1,139 @@
+<!--
+resume.dtd - Resume Document Type Definition for XML
+
+Copyright (c) 2000-2001 Sean Kelly
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The doctype with unofficial FPI for this DTD is:
+
+  <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.0.1//EN"
+                          "http://ad1440.net/~kelly/resume.dtd">
+
+$Id$
+-->
+
+<!-- Grab a bunch of additional Latin characters courtesy of Norman -->
+<!-- Walsh's extraction of the ISO 8879 set for DocBook XML. -->
+<!ENTITY % ISOlat1.module "INCLUDE">
+<![%ISOlat1.module;[
+<!ENTITY % ISOlat1 PUBLIC
+"ISO 8879:1986//ENTITIES Added Latin 1//EN//XML"
+"iso-lat1.ent">
+%ISOlat1;
+<!--end of ISOlat1.module-->]]>
+
+<!-- Sections of a resume -->
+<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|keywords)">
+
+<!-- A resume -->
+<!ELEMENT resume (docpath?, header?, (%sections;)*, copyright?)>
+
+<!-- A resume may be part of a hierarchy of documents with a single -->
+<!-- root.  This docpath element specifies that hierarchy, plus the -->
+<!-- URIs to the documents. -->
+<!ELEMENT docpath (head?, node*, tail)>
+<!ELEMENT head (label, uri)>
+<!ELEMENT node (label, uri)>
+<!ELEMENT tail (#PCDATA)>
+<!ELEMENT label (#PCDATA)>
+<!ELEMENT uri (#PCDATA)>
+
+<!-- The header of the resume contains your name and address.  A -->
+<!-- better version would allow for international addresses. -->
+<!ELEMENT header (name, address?, contact?)>
+<!ELEMENT name (firstname, surname)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT address (street, city, state, zip)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+<!ELEMENT contact (phone?, email?, url?)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+
+<!-- Your lifelong objective. -->
+<!ELEMENT objective (para+)>
+
+<!-- Your previous employment history. -->
+<!ELEMENT history (job+)>
+<!ELEMENT job (jobtitle, employer, period, description)>
+<!ELEMENT jobtitle (#PCDATA)>
+<!ELEMENT employer (#PCDATA)>
+<!ELEMENT period (from, to)>
+<!ELEMENT from (date | present)>
+<!ELEMENT to (date | present)>
+<!ELEMENT description (para+)>
+
+<!-- What academics, if any, you might possess. -->
+<!ELEMENT academics (degrees, note?)>
+<!ELEMENT degrees (degree+)>
+<!ELEMENT degree (level, subject, date, institution?, annotation?)>
+<!ELEMENT level (#PCDATA)>
+<!ELEMENT subject (#PCDATA)>
+<!ELEMENT institution (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)>
+<!ELEMENT note (para+)>
+
+<!-- Special skills you'd like to highlight, each in its own area.  -->
+<!ELEMENT skillareas (skillarea+)>
+<!ELEMENT skillarea (title, skillset+)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT skillset (title?, skills)>
+<!ELEMENT skills (skill+)>
+<!ELEMENT skill (#PCDATA)>
+
+<!-- Have you published anything? -->
+<!ELEMENT pubs (pub+)>
+<!ELEMENT pub (para+)>
+
+<!-- Final remarks. -->
+<!ELEMENT misc (para+)>
+
+<!-- A copyright on a resume?  Absolutely.  This helps prevents -->
+<!-- particularly annoying headhunters from plastering your resume all -->
+<!-- over the place, and preventing you from being hired at a place -->
+<!-- that would otherwise want you, but does not want to pay tribute -->
+<!-- to the particularly annoying headhunter who plastered your resume -->
+<!-- there after grabbing it off the net. -->
+<!ELEMENT copyright (year, name, legalnotice?)>
+<!ELEMENT company (#PCDATA)>
+<!ELEMENT legalnotice (para+)>
+
+<!-- For database retrieval (and web page insertion), some keywords. -->
+<!ELEMENT keywords (keyword+)>
+<!ELEMENT keyword (#PCDATA)>
+
+<!-- Miscellaneous elements part of larger constructs. -->
+<!ELEMENT para (#PCDATA | emphasis | citation | url)*>
+<!ELEMENT emphasis (#PCDATA)>
+<!ELEMENT citation (#PCDATA)>
+<!ELEMENT date (month, year)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT present EMPTY>
