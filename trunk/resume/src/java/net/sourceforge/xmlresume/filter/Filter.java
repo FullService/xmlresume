@@ -75,10 +75,9 @@ public class Filter {
 		}
 		i += 2;
 		out = new PrintStream(
-                    new FileOutputStream(outfile,
-                        false, // auto-flush data?
-                        "UTF-8" // character set
-                    )
+                    new FileOutputStream(outfile),
+                    false, // auto-flush data?
+                    "UTF-8" // character set
                 );
 	    } else {
 		categoryList.addElement(argv[i]);
