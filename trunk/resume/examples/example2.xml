@@ -58,7 +58,7 @@ CUBA</address>
     </para>
   </objective>
 
-  <skillarea>
+  <skillarea targets="foodservice">
     <title>Cooking Skills</title>
     <skillset>
       <title>General Experience</title>
@@ -94,8 +94,49 @@ CUBA</address>
     </skillset>
   </skillarea>
 
+  <skillarea targets="compsci">
+    <title>Computer Skills</title>
+    <skillset>
+      <skill targets="sysadmin">Perl</skill>
+      <skill targets="java">J2EE</skill>
+      <skill targets="java">XML Parsing</skill>
+ <!-- This applies to all CompSci, so there's no separate target -->
+      <skill>Debugging</skill>
+    </skillset>
+  </skillarea>
+
+  <skillarea targets="construction">
+    <title>Construction Skills</title>
+    <skillset>
+      <skill targets="carpentry">Hammering</skill>
+      <skill targets="carpentry">Drilling</skill>
+      <skill targets="carpentry">Sawing</skill>
+      <skill targets="electrical">Wiring</skill>
+      <skill targets="plumbing">Plunging</skill>
+    </skillset>
+  </skillarea>
+
+
   <history>
-    <job>
+
+ <!-- This job applies to both the construction and electrical targets -->
+    <job targets="construction,electrical">
+      <jobtitle>Electrician's Assistant</jobtitle>
+      <employer>Mike's Wiring Co.</employer>
+	<projects>
+	  <project>Rewired the city of Phoenix</project>
+        </projects>
+    </job>
+
+    <job targets="sysadmin">
+      <jobtitle>Senior System Administrator</jobtitle>
+      <employer>SysOps4Cheap.com</employer>
+      <projects>
+	<project>Ran a beowulf cluster of Commodore 64s</project>
+      </projects>
+    </job>
+
+    <job targets="foodservice">
       <jobtitle>Sous Chef</jobtitle>
       <employer>The Four Seasons</employer>
       <period>
@@ -120,7 +161,7 @@ CUBA</address>
 	  procurement</achievement>
       </achievements>
     </job>
-    <job>
+    <job targets="foodservice">
       <jobtitle>Assistant Chef</jobtitle>
       <employer>Zolo</employer>
       <period>
@@ -173,10 +214,6 @@ CUBA</address>
       food, but dealing with people.  I'm told I make nearly every
       kitchen run more smoothly because I know how to manage and make
       people want to <emphasis>do their best</emphasis>.
-    </para>
-    <para>I'm listed in <citation>Who's Who in American
-	Restaurants</citation> as well as <citation>La
-	Rubach&ograve;n</citation>.
     </para>
   </misc>
 
