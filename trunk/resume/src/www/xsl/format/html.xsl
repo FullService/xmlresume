@@ -34,7 +34,7 @@ $Id$
 <xsl:stylesheet xmlns:r="http://xmlresume.sourceforge.net/resume/0.0" 
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0" 
  exclude-result-prefixes="r">
-  <xsl:output method="html" omit-xml-declaration="yes" indent="no" encoding="UTF-8" 
+  <xsl:output method="xml" omit-xml-declaration="yes" indent="no" encoding="UTF-8" 
    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" 
    doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"/>
    
@@ -42,6 +42,7 @@ $Id$
   <xsl:include href="../params.xsl"/>
   <xsl:include href="../lib/common.xsl"/>
   <xsl:include href="../lib/string.xsl"/>
+
   <xsl:template name="Heading">
     <xsl:param name="Text">HEADING NOT DEFINED</xsl:param>
     <h2 class="heading">
@@ -50,8 +51,9 @@ $Id$
       </span>
     </h2>
   </xsl:template>
+
   <xsl:template match="/">
-    <html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
       <head>
         <title>
           <xsl:apply-templates select="r:resume/r:header/r:name"/>
@@ -60,7 +62,7 @@ $Id$
         </title>
         <xsl:choose>
           <xsl:when test="$css.embed = 1">
-            <style>
+            <style type="text/css">
               <xsl:value-of select="document($css.href)"/>
             </style>
           </xsl:when>
@@ -72,6 +74,7 @@ $Id$
             </link>
           </xsl:otherwise>
         </xsl:choose>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <xsl:apply-templates select="r:resume/r:keywords" mode="header"/>
       </head>
       <body>
@@ -79,6 +82,8 @@ $Id$
       </body>
     </html>
   </xsl:template>
+
+<!-- Format a resume -->
   <xsl:template match="r:resume">
     <div class="resume">
       <xsl:apply-templates/>
@@ -87,7 +92,6 @@ $Id$
 
 <!-- Suppress the keywords in the main body of the document -->
   <xsl:template match="r:keywords"/>
-
 <!-- But put them into the HTML header. -->
   <xsl:template match="r:keywords" mode="header">
     <meta name="keywords">
@@ -457,10 +461,12 @@ $Id$
     </ul>
     <xsl:apply-templates select="r:note"/>
   </xsl:template>
+
+<!-- Format a Note -->
   <xsl:template match="r:note">
-    <span class="note">
+    <div class="note">
       <xsl:apply-templates/>
-    </span>
+    </div>
   </xsl:template>
 
 <!-- Format a degree -->
@@ -657,6 +663,7 @@ $Id$
       <xsl:call-template name="FormatPub"/>
     </li>
   </xsl:template>
+
 <!-- Memberships, with level 2 heading. -->
   <xsl:template match="r:memberships">
     <xsl:call-template name="Heading">
