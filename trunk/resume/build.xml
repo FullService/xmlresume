@@ -259,21 +259,29 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
-    depends="filter, doc.manual.html-multiple.web, examples.web"
+    depends="filter, doc.manual.html-multiple.web, doc.manual.pdf, examples.web"
     description="Install web server files">
 
+    <!-- Copy WWW files -->
     <mkdir dir="${resume.web.publish.dir}"/>
     <copy todir="${resume.web.publish.dir}" filtering="yes">
       <fileset dir="${src.dir}/www"/>
     </copy>
 
+    <!-- Copy user guide -->
     <mkdir dir="${resume.web.publish.dir}/user-guide"/>
     <!-- The user guide should have been filtered when it was built, so we don't
     filter it again. -->
     <copy todir="${resume.web.publish.dir}/user-guide" filtering="no">
       <fileset dir="${doc.manual.html-multiple.web.dir}"/>
     </copy>
+    <copy
+      file="${doc.manual.pdf.file}"
+      tofile="${resume.web.publish.dir}/user-guide.pdf"
+      filtering="no"
+    />
 
+    <!-- Copy examples -->
     <mkdir dir="${resume.web.publish.dir}/examples"/>
     <copy todir="${resume.web.publish.dir}/examples">
       <fileset dir="${build.dir}/examples.web">
