@@ -215,6 +215,26 @@ $Id$
     <delete file="${release.tar}"/>
   </target>
 
+  <!-- Note: This target depends on netcomponents.jar, available from
+  http://www.savarese.org/oro/downloads/index.html#NetComponents -->
+  <target name="release.upload"
+    description="Upload release zip and tgz files to SourceForge. Be sure to run release first!">
+
+    <ftp
+      server="upload.sf.net"
+      userid="anonymous"
+      password="xmlresume@sf.net"
+      remotedir="incoming">
+
+      <fileset dir="${basedir}">
+        <include name="${release.tgz}"/>
+        <include name="${release.zip}"/>
+      </fileset>
+
+    </ftp>
+
+  </target>
+
   <!-- Unit and regression tests -->
 
   <target name="test"
@@ -239,7 +259,7 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
-    depends="filter,  examples.web"
+    depends="filter, doc.manual.html-multiple.web, examples.web"
     description="Install web server files">
 
     <mkdir dir="${resume.web.publish.dir}"/>
