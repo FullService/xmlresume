@@ -91,18 +91,21 @@ following:
 4. Update the changelog with rcs2log | cltohtml and
    pasting in the HTML formatted changelog.
 
-5. Tag the release with "cvs tag X.Y.Z" where X.Y.Z is
+5. Edit src/doc/release/*/index.html to reflect any major changes
+   you have made.
+
+6. Tag the release with "cvs tag release-X.Y.Z" where X.Y.Z is
    the version number.
 
-6. Run "ant release" to create the ZIP and TGZ archives.
+7. Run "ant release" to create the ZIP and TGZ archives.
 
-7. Run "ant install.web" to publish the new release to the
+8. Run "ant install.web" to publish the new release to the
    web server.
 
-8. Upload the ZIP and TGZ archives to
+9. Upload the ZIP and TGZ archives to
    ftp://ftp.sourceforge.net/pub/incoming/
 
-9. Add a new release to the SourceForge project page.
+10. Add a new release to the SourceForge project page.
 
 Cleaning Up
 ===========
