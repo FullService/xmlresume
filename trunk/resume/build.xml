@@ -94,10 +94,6 @@ $Id$
     <copy todir="${stage.dir}/src">
       <fileset dir="${src.dir}"/>
     </copy>
-    <filter token="VERSION_DOTS" value="${version.dots}"/>
-    <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
-    <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
-    <filter token="RELEASE_DIR" value="${release.dir}"/>
     <copy tofile="${stage.dir}/README"
 	  file="${src.dir}/doc/README.src"
 	  filtering="yes"/>
