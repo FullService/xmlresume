@@ -40,25 +40,22 @@ h2 {
     color: black;
     border-bottom: solid 1pt black;
 }
-
-div {
-}
 p {
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-}
-li.degree {
-    margin-bottom: 0.5em;
 }
 
 .bookTitle { font-style: italic }
 .citation { font-style: italic }
 .copyright { font-size: 75% }
+li.degree { margin-bottom: 0.5em; }
 .degreeTitle { font-weight: bold }
 .employer { font-style: italic }
 .headerBlock { text-align: center }
 .jobTitle { font-weight: bold }
 .lastModified { font-size: 75% }
 .nameHeading { text-align: center; font-family: sans-serif }
+div.referee { margin-bottom: 1em; }
+.refereeName { font-weight: bold }
 .skillsetTitle { font-weight: bold }
 .urlA { font-family:sans-serif; color:red; }
