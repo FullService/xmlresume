@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!--
-address.html
+address.xsl
 Defines some common templates for address processing that are 
 shared by all the stylesheets. 
 
@@ -40,7 +40,7 @@ $Id$
 
   <!-- It would be nice if XSLT allowed variable reference in mode --> 
   <!-- selection; then instead of the ugly template below, we'd have -->
-  <!-- '<xsl:apply-templates select="address" mode="$address.format"/>'-->
+  <!-- '<xsl:apply-templates select="r:address" mode="$address.format"/>'-->
   <!-- But it doesn't, so we need this. -->
   <xsl:template match="r:address">
 
