@@ -58,16 +58,16 @@ clean:
 	-rm -f $(RESUME).html $(RESUME).pdf $(RESUME).fo $(RESUME).txt *~
 
 $(RESUME).html: $(RESUME).xml
-	java org.apache.xalan.xslt.Process -in $(RESUME).xml -xsl $(HTML_STYLE) -out $(RESUME).html
+	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(HTML_STYLE) -out $(RESUME).html
 
 $(RESUME).txt: $(RESUME).xml
-	java org.apache.xalan.xslt.Process -in $(RESUME).xml -xsl $(TXT_STYLE) -out $(RESUME).txt
+	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(TXT_STYLE) -out $(RESUME).txt
 
 $(RESUME).fo: $(RESUME).xml
-	java org.apache.xalan.xslt.Process -in $(RESUME).xml -xsl $(FO_STYLE) -out $(RESUME).fo
+	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(FO_STYLE) -out $(RESUME).fo
 
 $(RESUME).pdf: $(RESUME).fo
-	java org.apache.fop.apps.Fop $(RESUME).fo $(RESUME).pdf
+	java org.apache.fop.apps.Fop $(FOFLAGS) $(RESUME).fo $(RESUME).pdf
 
 # The stylesheet also works great with XEP; uncomment and modify the
 # below line for your XEP installation to give it a try.
