@@ -86,6 +86,12 @@ $Id$
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
 
+  <!-- Format for address; available values are: -->
+  <!-- 'standard' for US/Canadian/UK style addresses -->
+  <!-- 'european' for European format (with postal code preceding city). -->
+  <!-- 'italian' for Italian format (postal code city (province) ). -->
+  <xsl:param name="address.format">standard</xsl:param>
+
   <!-- Instant messenger service names -->
   <!-- (When you add or remove a service here, don't forget to update
   ../../lib/common.xsl and element.instantMessage.xml in the user guide.)

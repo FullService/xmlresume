@@ -59,12 +59,6 @@ $Id$
   <!-- 'block' for typical block-style paragraphs -->
   <xsl:param name="interest.description.format">single-line</xsl:param>
 
-  <!-- Format for address; available values are: -->
-  <!-- 'standard' for US/Canadian/UK style addresses -->
-  <!-- 'european' for European format (with postal code preceding city). -->
-  <!-- 'italian' for Italian format (postal code city (province) ). -->
-  <xsl:param name="address.format">standard</xsl:param>
-
   <!-- SEPARATORS AND DELIMITERS (all formats) ============================ -->
 
   <!-- Separator between a list title and its list -->
