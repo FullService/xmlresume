@@ -404,7 +404,7 @@ $Id$
     </copy>
   </target>
 
-  <!-- Manual preparatory targets -->
+  <!-- Manual consistentcy maintenance targets -->
   <target name="doc.manual.check"
     description="Check if there are elements in the DTD that lack a refpage">
 
@@ -413,6 +413,17 @@ $Id$
       failonerror="${python.failonerror}">
       <arg file="${doc.manual.script.dir}/dtddoc.py"/>
       <arg value="--check"/>
+    </exec>
+  </target>
+
+  <target name="doc.manual.create-missing"
+    description="Create refpages for elements in the DTD without refpages">
+
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/dtddoc.py"/>
+      <arg value="--create-missing"/>
     </exec>
   </target>
 
