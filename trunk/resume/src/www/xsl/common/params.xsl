@@ -134,16 +134,6 @@ $Id$
   <!-- Default separator between items in publication details.  -->
   <xsl:param name="pub.item.separator">. </xsl:param>
 
-  <!-- Default page size -->
-  <xsl:param name="page.height">11in</xsl:param>
-  <xsl:param name="page.width">8.5in</xsl:param>
-
-  <!-- Default page margins -->
-  <xsl:param name="margin.top">1in</xsl:param>
-  <xsl:param name="margin.left">1in</xsl:param>
-  <xsl:param name="margin.right">1in</xsl:param>
-  <xsl:param name="margin.bottom">1in</xsl:param>
-
   <!-- Space betwixt paragraphs -->
   <xsl:param name="para.break.space">1.0em</xsl:param>
 
@@ -151,12 +141,6 @@ $Id$
   <!-- than a full paragraph break; between comma-separated skills lists, -->
   <!-- between job header and description/achievements. -->
   <xsl:param name="half.space">0.5em</xsl:param>
-
-  <!-- Body text indent -->
-  <xsl:param name="body.indent">1in</xsl:param>
-
-  <!-- Heading text indent -->
-  <xsl:param name="heading.indent">0in</xsl:param>
 
   <!-- Bullet symbol -->
   <xsl:param name="bullet.glyph">&#x2022;</xsl:param>
@@ -267,17 +251,6 @@ $Id$
   <!-- Settings for lines around the header of the print resume -->
   <xsl:param name="header.line.pattern">rule</xsl:param>
   <xsl:param name="header.line.thickness">1pt</xsl:param>
-
-  <!-- Margins for the header box. It would be nice to just specify a width
-  attribute for the header block, but neither FOP nor XEP use it. Instead, we
-  force the width using these two properties. To center the header box, they
-  should each be:
-    ($page.width - $margin.left - $margin.right - [desired header width]) div 2
-  We can't do that using an XPath expression because the numbers have associated
-  units. Grrr. There has to be a better way to do this.
-  -->
-  <xsl:param name="header.margin-left">1.75in</xsl:param>
-  <xsl:param name="header.margin-right" select="$header.margin-left"/>
 
   <!-- Format of interest descriptions. Available values are: -->
   <!-- 'single-line' for <para>s on same line as title, separated by dashes -->

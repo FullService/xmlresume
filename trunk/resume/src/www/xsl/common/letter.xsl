@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-usletter.xsl
+letter.xsl
 Parameters for US-Letter size paper.
 
-Copyright (c) 2001 Sean Kelly
+Copyright (c) 2001 Sean Kelly, Bruce Christensen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-$ I d: usletter.xsl,v 1.2 2002/03/28 00:45:38  b may Exp $
+$Id$
 -->
 
 <xsl:stylesheet version="1.0"
@@ -45,12 +45,31 @@ $ I d: usletter.xsl,v 1.2 2002/03/28 00:45:38  b may Exp $
        GH: 2002/05/05
     -->
 
-  <xsl:param name="page.height">11.0in</xsl:param>
+  <!-- Default page size -->
+  <xsl:param name="page.height">11in</xsl:param>
   <xsl:param name="page.width">8.5in</xsl:param>
-  <xsl:param name="margin.top">1.0in</xsl:param>
-  <xsl:param name="margin.left">1.0in</xsl:param>
-  <xsl:param name="margin.right">1.0in</xsl:param>
-  <xsl:param name="margin.bottom">1.0in</xsl:param>
-  <xsl:param name="body.indent">2.0in</xsl:param>
+
+  <!-- Default page margins -->
+  <xsl:param name="margin.top">1in</xsl:param>
+  <xsl:param name="margin.left">1in</xsl:param>
+  <xsl:param name="margin.right">1in</xsl:param>
+  <xsl:param name="margin.bottom">1in</xsl:param>
+
+  <!-- Body text indent -->
+  <xsl:param name="body.indent">1in</xsl:param>
+
+  <!-- Heading text indent -->
+  <xsl:param name="heading.indent">0in</xsl:param>
+
+  <!-- Margins for the header box. It would be nice to just specify a width
+  attribute for the header block, but neither FOP nor XEP use it. Instead, we
+  force the width using these two properties. To center the header box, they
+  should each be:
+    ($page.width - $margin.left - $margin.right - [desired header width]) div 2
+  We can't do that using an XPath expression because the numbers have associated
+  units. Grrr. There has to be a better way to do this.
+  -->
+  <xsl:param name="header.margin-left">1.75in</xsl:param>
+  <xsl:param name="header.margin-right" select="$header.margin-left"/>
 
 </xsl:stylesheet>
