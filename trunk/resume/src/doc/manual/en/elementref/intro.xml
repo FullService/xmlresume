@@ -5,7 +5,214 @@
   <para>
     XML &Resume; files are <acronym>XML</acronym> files composed
     mostly of <glossterm linkend="gloss.element">elements</glossterm>. This
-    section documents the semantics (meaning) and syntax (structure) of all
-    of the elements that you can use to construct a &resume;.
+    part of the user guide documents the semantics (meaning) and syntax
+    (structure) of all of the elements that you can use to construct a &resume;.
   </para>
+
+  <section><title>Changes to the DTD</title>
+
+    <para>
+      This sections documents changes to the &library.name; DTD.
+    </para>
+
+    <warning>
+      <para>
+        Deprecated elements will still be formatted, and are still valid
+        elements in an XML &resume;. However, their use is discouraged, and they
+        will be removed in a future version of the DTD.
+      </para>
+    </warning>
+
+    <section><title>Version 1.3.4</title>
+      <itemizedlist>
+        <listitem><para>
+          New element: <link linkend="element.lastModified"><sgmltag
+          class="element">lastModified</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          New elements: <link linkend="element.interests"><sgmltag
+          class="element">interests</sgmltag></link> and
+          <link linkend="element.interest"><sgmltag
+          class="element">interest</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          New elements:
+          <link linkend="element.fax"><sgmltag
+          class="element">fax</sgmltag></link>,
+          <link linkend="element.pager"><sgmltag
+          class="element">pager</sgmltag></link>, and
+          <link linkend="element.instantMessage"><sgmltag
+          class="element">instantMessage</sgmltag></link>.
+          These may be contained in <link linkend="element.contact"><sgmltag
+          class="element">contact</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          New attribute: the <link linkend="element.phone"><sgmltag
+          class="element">phone</sgmltag></link> element now has a <sgmltag
+          class="attribute">location</sgmltag> attribute.
+        </para></listitem>
+        <listitem><para>
+          New attribute: the <link linkend="element.skill"><sgmltag
+          class="element">skill</sgmltag></link> element now has a <sgmltag
+          class="attribute">level</sgmltag> attribute.
+        </para></listitem>
+        <listitem><para>
+          Change: the <sgmltag class="element">contact</sgmltag> element may now
+          contain any number of its allowed child elements, and they may appear
+          in any order.
+        </para></listitem>
+        <listitem><para>
+          Change: the <link linkend="element.resume"><sgmltag
+          class="element">resume</sgmltag></link> element may now directly
+          contain<link linkend="element.skillarea"><sgmltag
+          class="element">skillarea</sgmltag></link> elements.
+        </para></listitem>
+        <listitem><para>
+          Change: the <link linkend="element.skillset"><sgmltag
+          class="element">skillset</sgmltag></link> element may now directly
+          contain <link linkend="element.skill"><sgmltag
+          class="element">skill</sgmltag></link> elements.
+        </para></listitem>
+        <listitem><para>
+          Change: <link linkend="element.degree"><sgmltag
+          class="element">degree</sgmltag></link> element may now contain either
+          a
+          <link linkend="element.period"><sgmltag
+          class="element">period</sgmltag></link> or a 
+          <link linkend="element.date"><sgmltag
+          class="element">date</sgmltag></link> element. It could previously
+          contain only a 
+          <link linkend="element.date"><sgmltag
+          class="element">date</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          Change: the <link linkend="element.artTitle"><sgmltag
+          class="element">artTitle</sgmltag></link> and
+          The <link linkend="element.bookTitle"><sgmltag
+          class="element">bookTitle</sgmltag></link> elements may now contain
+          <link linkend="element.link"><sgmltag
+          class="element">link</sgmltag></link> elements.
+        </para></listitem>
+        <listitem><para>
+          Change: <link linkend="element.referee"><sgmltag
+          class="element">referee</sgmltag></link> element may now contain an
+          optional
+          <link linkend="element.title"><sgmltag
+          class="element">title</sgmltag></link> element and an optional
+          <link linkend="element.organization"><sgmltag
+          class="element">organization</sgmltag></link> element.
+        </para></listitem>
+        <listitem><para>
+          Change: the <link linkend="element.month"><sgmltag
+          class="element">month</sgmltag></link> element is no longer required
+          in the
+          <link linkend="element.date"><sgmltag
+          class="element">date</sgmltag></link> element.
+          (However, it must appear if the <sgmltag
+          class="element">date</sgmltag> contains a
+          <link linkend="element.dayOfMonth"><sgmltag
+          class="element">dayOfMonth</sgmltag></link> element.)
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.skillareas"><sgmltag
+          class="element">skillareas</sgmltag></link>.
+          You may simply remove the start and end tags from your &resume;.
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.skills"><sgmltag
+          class="element">skills</sgmltag></link>.
+          You may simply remove the start and end tags from your &resume;.
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.pubDate"><sgmltag
+          class="element">pubDate</sgmltag></link>.
+          Replace it with a <link linkend="element.date"><sgmltag
+          class="element">date</sgmltag></link> element.
+        </para></listitem>
+        <listitem><para>
+          Deprecated elements: <link linkend="element.docpath"><sgmltag
+          class="element">docpath</sgmltag></link>,
+          <link linkend="element.head"><sgmltag
+          class="element">head</sgmltag></link>,
+          <link linkend="element.node"><sgmltag
+          class="element">node</sgmltag></link>,
+          <link linkend="element.tail"><sgmltag
+          class="element">tail</sgmltag></link>,
+          <link linkend="element.label"><sgmltag
+          class="element">label</sgmltag></link>, and
+          <link linkend="element.uri"><sgmltag
+          class="element">uri</sgmltag></link>.
+          Instances of these elements should be removed.
+        </para></listitem>
+        <listitem><para>
+          Deprecated: the use of <link linkend="element.url"><sgmltag
+          class="element">url</sgmltag></link> as a child of
+          <link linkend="element.publisher"><sgmltag
+          class="element">publisher</sgmltag></link>. 
+          <sgmltag class="element">url</sgmltag> elements may be replaced
+          with <link linkend="element.link"><sgmltag
+          class="element">link</sgmltag></link> elements.
+        </para></listitem>
+      </itemizedlist>
+    </section>
+
+    <section><title>Version 1.3.3</title>
+      <itemizedlist>
+        <listitem><para>
+          New element: <link linkend="element.link"><sgmltag
+          class="element">link</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          New attribute: the <link linkend="element.address"><sgmltag
+          class="element">address</sgmltag></link> element now has an optional
+          <sgmltag class="attribute">format</sgmltag> attribute.
+        </para></listitem>
+        <listitem><para>
+          New attributes: Added namespace support. More specifically, added
+          <sgmltag class="attribute">xmlns</sgmltag>, <sgmltag
+          class="attribute">xmlns:xsi</sgmltag>, and <sgmltag
+          class="attribute">xsi:schemaLocation</sgmltag> attributes to the <link
+          linkend="element.resumes"><sgmltag
+          class="element">resumes</sgmltag></link> and <link
+          linkend="element.resume"><sgmltag
+          class="element">resume</sgmltag></link> elements.
+        </para></listitem>
+        <listitem><para>
+          Change: <link linkend="element.employer"><sgmltag
+          class="element">employer</sgmltag></link> may now contain inline
+          elements
+          (<link linkend="element.emphasis"><sgmltag
+          class="element">emphasis</sgmltag></link>,
+          <link linkend="element.citation"><sgmltag
+          class="element">citation</sgmltag></link>,
+          <link linkend="element.url"><sgmltag
+          class="element">url</sgmltag></link>, and
+          <link linkend="element.link"><sgmltag
+          class="element">link</sgmltag></link>).
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.break"><sgmltag
+          class="element">break</sgmltag></link>. Instances of this element
+          should be removed.
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.company"><sgmltag
+          class="element">company</sgmltag></link>. Instances of this element
+          should be removed.
+        </para></listitem>
+        <listitem><para>
+          Deprecated element: <link linkend="element.street2"><sgmltag
+          class="element">street2</sgmltag></link>. These elements should be
+          converted to <link linkend="element.street2"><sgmltag
+          class="element">street</sgmltag></link> elements.
+        </para></listitem>
+      </itemizedlist>
+    </section>
+    <section><title>Version 1.3.2</title>
+      <para>
+        No DTD changes.
+      </para>
+    </section>
+
+  </section>
 </partintro>
