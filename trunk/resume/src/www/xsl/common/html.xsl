@@ -178,97 +178,106 @@ $Id$
   </xsl:template>
 
   <!-- Address, in various formats -->
+  <xsl:template match="r:address" mode="free-form">
+    <p class="address">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+
   <xsl:template match="r:address" mode="standard">
 
-     <!-- templates defined in address.xsl for setting standard fields -->
-     <xsl:variable name="AdminDivision">
-       <xsl:call-template name="AdminDivision"/>
-     </xsl:variable>
-     <xsl:variable name="CityDivision">
-       <xsl:call-template name="CityDivision"/>
-     </xsl:variable>
-     <xsl:variable name="PostCode">
-       <xsl:call-template name="PostCode"/>
-     </xsl:variable>
+    <p class="address">
+      <!-- templates defined in address.xsl for setting standard fields -->
+      <xsl:variable name="AdminDivision">
+        <xsl:call-template name="AdminDivision"/>
+      </xsl:variable>
+      <xsl:variable name="CityDivision">
+        <xsl:call-template name="CityDivision"/>
+      </xsl:variable>
+      <xsl:variable name="PostCode">
+        <xsl:call-template name="PostCode"/>
+      </xsl:variable>
 
-     <xsl:for-each select="r:street">
-       <xsl:apply-templates select="."/><br/>
-     </xsl:for-each>
-     <xsl:if test="r:street2">
-       <xsl:apply-templates select="r:street2"/><br/>
-     </xsl:if>
-     <xsl:if test="string-length($CityDivision) &gt; 0">
-       <xsl:value-of select="$CityDivision"/><br/>
-     </xsl:if>
-     <xsl:apply-templates select="r:city"/>
-     <xsl:if test="string-length($AdminDivision) &gt; 0">
-       <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
-     </xsl:if>
-     <xsl:if test="string-length($PostCode) &gt; 0">
-       <xsl:text> </xsl:text><xsl:value-of select="$PostCode"/> 
-     </xsl:if>
-     <xsl:if test="r:country">
-       <br/><xsl:apply-templates select="r:country"/>
-     </xsl:if>
-     <br/>
+      <xsl:for-each select="r:street">
+        <xsl:apply-templates select="."/><br/>
+      </xsl:for-each>
+      <xsl:if test="r:street2">
+        <xsl:apply-templates select="r:street2"/><br/>
+      </xsl:if>
+      <xsl:if test="string-length($CityDivision) &gt; 0">
+        <xsl:value-of select="$CityDivision"/><br/>
+      </xsl:if>
+      <xsl:apply-templates select="r:city"/>
+      <xsl:if test="string-length($AdminDivision) &gt; 0">
+        <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
+      </xsl:if>
+      <xsl:if test="string-length($PostCode) &gt; 0">
+        <xsl:text> </xsl:text><xsl:value-of select="$PostCode"/> 
+      </xsl:if>
+      <xsl:if test="r:country">
+        <br/><xsl:apply-templates select="r:country"/>
+      </xsl:if>
+    </p>
   </xsl:template>
 
   <xsl:template match="r:address" mode="european">
 
-     <!-- templates defined in address.xsl for setting standard fields -->
-     <xsl:variable name="AdminDivision">
-       <xsl:call-template name="AdminDivision"/>
-     </xsl:variable>
-     <xsl:variable name="CityDivision">
-       <xsl:call-template name="CityDivision"/>
-     </xsl:variable>
-     <xsl:variable name="PostCode">
-       <xsl:call-template name="PostCode"/>
-     </xsl:variable>
+    <p class="address">
+      <!-- templates defined in address.xsl for setting standard fields -->
+      <xsl:variable name="AdminDivision">
+        <xsl:call-template name="AdminDivision"/>
+      </xsl:variable>
+      <xsl:variable name="CityDivision">
+        <xsl:call-template name="CityDivision"/>
+      </xsl:variable>
+      <xsl:variable name="PostCode">
+        <xsl:call-template name="PostCode"/>
+      </xsl:variable>
 
-     <xsl:for-each select="r:street">
-       <xsl:apply-templates select="."/><br/>
-     </xsl:for-each>
-     <xsl:if test="r:street2">
-       <xsl:apply-templates select="r:street2"/><br/>
-     </xsl:if>
-     <xsl:if test="string-length($CityDivision) &gt; 0">
-       <xsl:value-of select="$CityDivision"/><br/>
-     </xsl:if>
-     <xsl:if test="string-length($PostCode) &gt; 0">
-       <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text> 
-     </xsl:if>
-     <xsl:apply-templates select="r:city"/>
-     <xsl:if test="string-length($AdminDivision) &gt; 0">
-       <br/><xsl:value-of select="$AdminDivision"/>
-     </xsl:if>
-     <xsl:if test="r:country">
-       <br/><xsl:apply-templates select="r:country"/>
-     </xsl:if>
-     <br/>
+      <xsl:for-each select="r:street">
+        <xsl:apply-templates select="."/><br/>
+      </xsl:for-each>
+      <xsl:if test="r:street2">
+        <xsl:apply-templates select="r:street2"/><br/>
+      </xsl:if>
+      <xsl:if test="string-length($CityDivision) &gt; 0">
+        <xsl:value-of select="$CityDivision"/><br/>
+      </xsl:if>
+      <xsl:if test="string-length($PostCode) &gt; 0">
+        <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text> 
+      </xsl:if>
+      <xsl:apply-templates select="r:city"/>
+      <xsl:if test="string-length($AdminDivision) &gt; 0">
+        <br/><xsl:value-of select="$AdminDivision"/>
+      </xsl:if>
+      <xsl:if test="r:country">
+        <br/><xsl:apply-templates select="r:country"/>
+      </xsl:if>
+    </p>
   </xsl:template>
 
   <xsl:template match="r:address" mode="italian">
 
-    <xsl:for-each select="r:street">
-      <xsl:apply-templates select="."/><br/>
-    </xsl:for-each>
-     <xsl:if test="r:street2">
-       <xsl:apply-templates select="r:street2"/><br/>
-     </xsl:if>
-     <xsl:if test="r:postalCode">
-       <xsl:apply-templates select="r:postalCode"/><xsl:text> </xsl:text> 
-     </xsl:if>
-     <xsl:apply-templates select="r:city"/>
-     <xsl:if test="r:province">
-       <xsl:text> (</xsl:text>
-       <xsl:apply-templates select="r:province"/>
-       <xsl:text>)</xsl:text>
-     </xsl:if>
-     <xsl:if test="r:country">
-       <br/><xsl:apply-templates select="r:country"/>
-     </xsl:if>
-     <br/>
+    <p class="address">
+      <xsl:for-each select="r:street">
+        <xsl:apply-templates select="."/><br/>
+      </xsl:for-each>
+      <xsl:if test="r:street2">
+        <xsl:apply-templates select="r:street2"/><br/>
+      </xsl:if>
+      <xsl:if test="r:postalCode">
+        <xsl:apply-templates select="r:postalCode"/><xsl:text> </xsl:text> 
+      </xsl:if>
+      <xsl:apply-templates select="r:city"/>
+      <xsl:if test="r:province">
+        <xsl:text> (</xsl:text>
+        <xsl:apply-templates select="r:province"/>
+        <xsl:text>)</xsl:text>
+      </xsl:if>
+      <xsl:if test="r:country">
+        <br/><xsl:apply-templates select="r:country"/>
+      </xsl:if>
+    </p>
   </xsl:template>
 
   <!-- Preserve line breaks within a free format address -->

@@ -62,7 +62,7 @@ $Id$
       <!-- have a preformatted address and bypass the address -->
       <!-- formatting below. -->
       <xsl:when test="node()[1][not(self::*)]">
-         <xsl:apply-templates/>
+         <xsl:apply-templates select="." mode="free-form"/>
       </xsl:when>
       <xsl:otherwise>
 
