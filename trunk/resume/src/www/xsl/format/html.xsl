@@ -517,6 +517,7 @@ $Id$
       <xsl:value-of select="$subjects.suffix"/>
     </p>
   </xsl:template>
+
 <!-- Format a subject -->
   <xsl:template match="r:subject" mode="comma">
     <xsl:value-of select="normalize-space(r:title)"/>
@@ -531,6 +532,7 @@ $Id$
       <xsl:value-of select="$subjects.separator"/>
     </xsl:if>
   </xsl:template>
+
 <!-- Format the open-ended skills -->
   <xsl:template match="r:skillarea">
     <xsl:call-template name="Heading">
@@ -540,6 +542,8 @@ $Id$
     </xsl:call-template>
     <xsl:apply-templates select="r:skillset"/>
   </xsl:template>
+
+<!-- Format a skillset -->
   <xsl:template match="r:skillset">
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
@@ -575,17 +579,22 @@ $Id$
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <!-- Format a skillset title as a comma-separated list -->
   <xsl:template match="r:skillset/r:title" mode="comma">
     <span class="skillsetTitle">
       <xsl:apply-templates/>
       <xsl:value-of select="$skills.title.separator"/>
     </span>
   </xsl:template>
+
+  <!-- Format a skillset title as a bulleted list -->
   <xsl:template match="r:skillset/r:title" mode="bullet">
     <h3 class="skillsetTitle">
       <xsl:apply-templates/>
     </h3>
   </xsl:template>
+
 <!-- Format a skill as part of a comma-separated list -->
   <xsl:template match="r:skill" mode="comma">
     <xsl:apply-templates/>
@@ -594,6 +603,7 @@ $Id$
       <xsl:value-of select="$skills.separator"/>
     </xsl:if>
   </xsl:template>
+
 <!-- Format a skill as part of a bulleted list -->
   <xsl:template match="r:skill" mode="bullet">
     <li class="skill">
@@ -601,6 +611,7 @@ $Id$
       <xsl:apply-templates select="@level"/>
     </li>
   </xsl:template>
+
 <!-- Format a skill level -->
   <xsl:template match="r:skill/@level">
     <xsl:if test="$skills.level.display = 1">
@@ -609,6 +620,7 @@ $Id$
       <xsl:value-of select="$skills.level.end"/>
     </xsl:if>
   </xsl:template>
+
 <!-- Format publications -->
   <xsl:template match="r:pubs">
     <xsl:call-template name="Heading">
