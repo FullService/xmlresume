@@ -664,19 +664,17 @@ $Id$
 
   <!-- url -> monospace along with href -->
   <xsl:template match="r:url" name="FormatUrl">
-    <code class="urlCode">
-      <a class="urlA">
-        <xsl:attribute name="href">
-          <xsl:value-of select="."/>
-	</xsl:attribute>
+    <a class="urlA">
+      <xsl:attribute name="href">
         <xsl:value-of select="."/>
-      </a>
-    </code>
+      </xsl:attribute>
+      <xsl:value-of select="."/>
+    </a>
   </xsl:template>
 
   <!-- link -> make link from href attribute -->
   <xsl:template match="r:link">
-    <a>
+    <a class="linkA">
       <xsl:attribute name="href">
 	<xsl:value-of select="@href"/>
       </xsl:attribute>

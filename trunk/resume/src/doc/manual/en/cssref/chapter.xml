@@ -140,6 +140,14 @@
             </entry>
           </row>
           <row>
+            <entry><literal>linkA</literal></entry>
+            <entry>
+              On the <sgmltag class="element">a</sgmltag> of a hyperlink
+              generated from a <sgmltag class="element">link</sgmltag> element
+              in a &resume;.
+            </entry>
+          </row>
+          <row>
             <entry><literal>membershipsHeading</literal></entry>
             <entry>
               On the <sgmltag class="element">h2</sgmltag> for the memberships
@@ -259,15 +267,9 @@
           <row>
             <entry><literal>urlA</literal></entry>
             <entry>
-              On the <sgmltag class="element">a</sgmltag> of a generated
-              hyperlink.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>urlCode</literal></entry>
-            <entry>
-              On <sgmltag class="element">code</sgmltag> sections used to mark up
-              URLs.
+              On the <sgmltag class="element">a</sgmltag> of a hyperlink
+              generated from a <sgmltag class="element">url</sgmltag> element in
+              a &resume;.
             </entry>
           </row>
         </tbody>

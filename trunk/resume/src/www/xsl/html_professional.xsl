@@ -591,12 +591,10 @@ solid windowtext .75pt;padding:0in 0pt 0pt 0in">
 	</xsl:template>
 	<!-- url -> monospace along with href -->
 	<xsl:template match="url">
-		<code class="urlCode">
-			<a class="urlA">
-				<xsl:attribute name="href"><xsl:value-of select="."/></xsl:attribute>
-				<xsl:value-of select="."/>
-			</a>
-		</code>
+		<a class="urlA">
+			<xsl:attribute name="href"><xsl:value-of select="."/></xsl:attribute>
+			<xsl:value-of select="."/>
+		</a>
 	</xsl:template>
 	<!-- citation -> cite -->
 	<xsl:template match="citation">

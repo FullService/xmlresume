@@ -595,12 +595,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	</xsl:template>
 	<!-- url -> monospace along with href -->
 	<xsl:template match="url">
-		<code class="urlCode">
 			<a class="urlA">
-				<xsl:attribute name="href"><xsl:value-of select="."/></xsl:attribute>
-				<xsl:value-of select="."/>
-			</a>
-		</code>
+			<xsl:attribute name="href"><xsl:value-of select="."/></xsl:attribute>
+			<xsl:value-of select="."/>
+		</a>
 	</xsl:template>
 	<!-- citation -> cite -->
 	<xsl:template match="citation">
