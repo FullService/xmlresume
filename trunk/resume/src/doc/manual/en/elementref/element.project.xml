@@ -31,22 +31,21 @@
       </para>
     </refsect2>
 
-    <!-- Use this section to describe element attributes, if any
+    <!-- Use this section to describe element attributes, if any -->
     <refsect2><title>Attributes</title>
       <variablelist>
 
         <varlistentry>
-          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <term><sgmltag class="attribute">title</sgmltag></term>
           <listitem>
             <para>
-              DESCRIPTION
+              The title of the project.
             </para>
           </listitem>
         </varlistentry>
 
       </variablelist>
     </refsect2>
-    -->
 
   </refsect1>
 

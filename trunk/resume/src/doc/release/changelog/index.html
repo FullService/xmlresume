@@ -19,6 +19,51 @@
 
 <!-- BEGIN CHANGELOG (do not remove this line) -->
 <pre>
+2002-11-05  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl,
+/cvsroot/xmlresume/resume/src/www/xsl /format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl,
+/cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl, /cvsroot/xmlresume/resu me/src/www/xsl/params.xsl:
+        Allow for a title attribute in the project element.
+        $skills.title.separator and $subjects.title.separator have been replaced by
+        $title.separator
+
+2002-11-04  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl:
+        whitespace stuff
+
+        * /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+        "degree" element no longer requires a "major" element (feature req 594173)
+        because not all international universities require a major.  Support for
+        optional majors has been in xsl for awhile, this just changes the dtd to
+        reflect that.
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl:
+        bug 601475, changed &lt;xsl:output method="html" ...&gt; (was method="xml").
+        This allows us to skip the forced output of the
+        &lt;META http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl:
+        The "period" element can now be used in place of "date" in "award" and
+        "clearance".  Also fixed a bug in fo.xsl that forced 2-column referee
+        layout on people, and some minor whitespace fixes that are only partially
+        done.
+
+        * /cvsroot/xmlresume/resume/README:
+        it's cvs tag release-X_Y_Z, not release-X.Y.Z
+
+        * /cvsroot/xmlresume/resume/README: updated release procedure
+
+        * /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/doc/release/todo/index.html,
+/cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html,
+/cvsroot/xmlresume/resume/src/doc/release/index.html:
+        doc changes for release 1.5.0
+
+        * /cvsroot/xmlresume/resume/examples/Makefile:
+        Added $(resume).rtf to list of files to rm during clean.
+
 2002-11-04  brandondoyle
 	* /cvsroot/xmlresume/resume/example/Makefile, 
 /cvsroot/xmlresume/resume/example/example2.xml
