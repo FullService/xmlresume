@@ -75,7 +75,7 @@ public class FileWriterHandler extends DefaultHandler {
     public void startDocument() throws SAXException { 
 	debug("Received startDocument event");
 	output.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-	output.println("<!DOCTYPE resume PUBLIC \"-//Sean Kelly//DTD Resume 1.5.0//EN\" \"http://xmlresume.sourceforge.net/dtd/resume.dtd\">");
+	output.println("<!DOCTYPE resume PUBLIC \"-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN\" \"http://xmlresume.sourceforge.net/dtd/resume.dtd\">");
 	output.println("<!-- THIS FILE WAS GENERATED AUTOMATICALLY BY XMLResume's Targeting Filter. -->");
 	indent = "";
     }
