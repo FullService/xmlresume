@@ -94,9 +94,9 @@ $Id$
   </xsl:template>
   
   <xsl:template name="Center">
-    <xsl:call-template name="NewLine"/>
     <xsl:param name="Width" select="80"/>
     <xsl:param name="Text" />
+    <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NSpace">
     <xsl:with-param name="n" select="($Width - string-length($Text)) div 2" />
     </xsl:call-template>
