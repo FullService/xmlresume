@@ -34,18 +34,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
 <resume>
-
   <header>
     <name>
       <firstname>Alexis</firstname>
       <surname>Kernighan</surname>
     </name>
-    <!-- This person is using the internationally-compatible style address. -->
-    <address><number>9030</number> <street>Garnish Court</street><break/>
-      <locality>Princeville</locality>, <building>3</building>-<room>126</room>.<break/>
-      <city>Ahi Tunaville</city>, <state>CA</state> <zip>95051</zip><break/>
-      <country>US</country>
-    </address>
+    <!-- This person is using the internationally-compatible style address (lives in Cuba). -->
+    <address><street>Reina</street> #<number>35</number>, apt. <apartment>4a</apartment>, e/ <street>Gervasio</street> y <street>Escobar</street><break/>
+<city>Cuidad de la Habana</city>, CP <postalCode>11900</postalCode><break/>
+<country>CUBA</country></address>
   </header>
 
   <objective>
@@ -69,6 +66,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	  <skill>Meat identification</skill>
 	  <skill>Wines</skill>
 	  <skill>Restaurant Law</skill>
+	  <skill><citation>Brodeger's Sanitation</citation> science background</skill>
 	</skills>
       </skillset>
       <skillset>
@@ -113,12 +111,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	  <present/>
 	</to>
       </period>
-      <description>
-	<para>Served as executive chef's &quot;right-hand woman,&quot;
-	  assisting with menu preparation, as saucier, and overseer of
-	  assistant chefs.
-	</para>
-      </description>
+      <achievements>
+	<achievement>Developed <emphasis>13</emphasis> new menu items</achievement>
+	<achievement>Prepared daily operations plan</achievement>
+        <achievement>Streamlined procedures for fresh foods
+	  procurement</achievement>
+      </achievements>
     </job>
     <job>
       <jobtitle>Assistant Chef</jobtitle>
