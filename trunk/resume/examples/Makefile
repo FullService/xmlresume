@@ -32,16 +32,16 @@
 # To create example.html, example.txt, example.fo, and example.pdf from
 # example.xml, with Italian localization and a4 paper size, use this command:
 #
-# 	make resume=example country=it papersize=a4
+# 	gmake resume=example country=it papersize=a4
 #
 # To generate just the html version of cv.xml with UK localization, use this
 # command:
 #
-# 	make html resume=cv country=uk
+# 	gmake html resume=cv country=uk
 #
 # To remove all generated files, run:
 #
-# 	make clean
+# 	gmake clean
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
@@ -76,6 +76,11 @@ xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $(in) -xsl $(xsl)
 fo_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
 #fo_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
 
+# RTF generation currently requires you download a separate, closed source jar 
+# file and add it to your java classpath: 	
+# http://www.xmlmind.com/foconverter/downloadperso.shtml
+rtf_proc = java com.xmlmind.fo.converter.Driver $(in) $(out)
+
 #------------------------------------------------------------------------------
 # End configurable parameters
 #------------------------------------------------------------------------------
@@ -88,6 +93,7 @@ text: $(resume).txt
 fo: $(resume).fo
 pdf: $(resume).pdf
 13x-140: $(resume)-140.xml
+rtf: $(resume).rtf
 
 clean:
 	rm -f $(resume).html
@@ -117,6 +123,10 @@ $(resume).pdf: in = $(resume).fo
 $(resume).pdf: out = $(resume).pdf
 $(resume).pdf: $(resume).fo
 	$(fo_proc)
+
+$(resume).rtf: in = $(resume).fo
+$(resume).rtf: out = $(resume).rtf
+$(resume).rtf: $(resume).fo
 
 $(resume)-140.xml: in = $(resume).xml
 $(resume)-140.xml: out = $(resume)-140.xml
