@@ -57,3 +57,6 @@ li.degree { margin-bottom: 0.5em; }
 div.referee { margin-bottom: 1em; }
 .refereeName { font-weight: bold }
 .skillsetTitle { font-weight: bold }
+table.referees { width: 80% ; }
+
+</xsl:stylesheet>

@@ -44,3 +44,6 @@ div.referee { margin-bottom: 1em; }
 .refereeName { font-weight: bold }
 .skillsetTitle { font-weight: bold }
 .urlA { font-family:sans-serif; color:red; }
+table.referees { width: 80% ; }
+
+</xsl:stylesheet>

@@ -55,6 +55,7 @@ li.degree { margin-bottom: 0.2cm; }
 .lastModified { font-size: 75% }
 .nameHeading { font-family: sans-serif; font-size: 125%; }
 div.referee { margin-bottom: 0.5cm; }
+table.referees { width: 60%; }
 .refereeName { font-weight: bold }
 .skillsetTitle { font-weight: bold }
 .urlA { font-family:sans-serif; color:red; }
