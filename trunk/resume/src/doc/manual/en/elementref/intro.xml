@@ -50,6 +50,19 @@
           class="element">possible</sgmltag></link>.
         </para></listitem>
         <listitem><para>
+          New elements:
+          <link linkend="element.location"><sgmltag
+          class="element">location</sgmltag></link>.
+          It may be contained in 
+          <link linkend="element.job"><sgmltag
+          class="element">job</sgmltag></link>,
+          <link linkend="element.degree"><sgmltag
+          class="element">degree</sgmltag></link>,
+          or
+          <link linkend="element.membership"><sgmltag
+          class="element">membership</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
           Change:
           <link linkend="element.name"><sgmltag
           class="element">name</sgmltag></link>
