@@ -74,7 +74,12 @@ public class Filter {
 		    System.exit(1);
 		}
 		i += 2;
-		out = new PrintStream(new FileOutputStream(outfile));
+		out = new PrintStream(
+                    new FileOutputStream(outfile,
+                        false, // auto-flush data?
+                        "UTF-8" // character set
+                    )
+                );
 	    } else {
 		categoryList.addElement(argv[i]);
 		i++;

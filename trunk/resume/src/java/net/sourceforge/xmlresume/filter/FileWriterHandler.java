@@ -124,16 +124,7 @@ public class FileWriterHandler extends DefaultHandler {
 	String data = new String(ch, start, length);
 	debug("Received characters event: " + data);
 
-        // Escape all characters that aren't US-ASCII with hex entities
-        for (int i = start; i < start+length; i++) {
-            if (ch[i] >= 128) {
-                output.print("&#x");
-                output.print(Integer.toHexString(ch[i]));
-                output.print(";");
-            } else {
-                output.print(ch[i]);
-            }
-        }
+        output.print(data);
     }
     
     /** 
