@@ -35,10 +35,15 @@
 #
 RESUME = example1
 #
-# Replace this with the country and paper size stylesheet file you 
-# wish to use.
+# Replace this with the country and paper size stylesheets you 
+# wish to use.  Current choices for FO (which gives you PDF)
+# are us-letter.xsl or uk-a4.xsl.  For HTML, choices include
+# us-html.xsl or uk-html.xsl.  And for plain text, choose
+# either us-text.xsl or uk-text.xsl.
 #
 FO_STYLE = http://xmlresume.sourceforge.net/xsl/us-letter.xsl
+HTML_STYLE = http://xmlresume.sourceforge.net/xsl/us-html.xsl
+TXT_STYLE = http://xmlresume.sourceforge.net/xsl/us-text.xsl
 #
 #------------------------------------------------------------------------
 
@@ -46,8 +51,6 @@ FO_STYLE = http://xmlresume.sourceforge.net/xsl/us-letter.xsl
 
 .PHONY: all clean
 .SUFFIXES: .html .fo .pdf .xml .xsl .txt
-HTML_STYLE = http://xmlresume.sourceforge.net/xsl/html.xsl
-TXT_STYLE = http://xmlresume.sourceforge.net/xsl/text.xsl
 
 all:	$(RESUME).html $(RESUME).pdf $(RESUME).txt
 

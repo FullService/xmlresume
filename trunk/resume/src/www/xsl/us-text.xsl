@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-uk-a4.xsl
-Convert XML Resume into FO(PDF) using UK terminology and A4 paper.
+us-text.xsl
+Convert XML Resume into plaint text using US terminology.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -36,8 +36,9 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="common/fo.xsl"/>
-  <xsl:import href="common/a4.xsl"/>
-  <xsl:import href="uk-params.xsl"/>
+  <xsl:import href="common/text.xsl"/>
+
+  <!-- No other overrides needed, since the default parameters are all
+  US English and US-Letter size paper already. -->
 
 </xsl:stylesheet>

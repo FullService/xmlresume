@@ -24,45 +24,48 @@
 
     <h2>What's Included</h2>
 
-    <p>The XML R&eacute;sum&eacute; Library includes the following files:
+    <p>The XML R&eacute;sum&eacute; Library includes the following:
     </p>
 
     <ul>
-      <li><code>dtd/resume.dtd</code>
-
-	<p>An XML DTD for describing r&eacute;sum&eacute;s.</p>
+      <li><code>dtd/resume.dtd</code> - An XML DTD for describing
+	  r&eacute;sum&eacute;s.  To make your own
+	  r&eacute;sum&eacute;, create an XML document that validates
+	  to this DTD.
       </li>
 
-      <li><code>xsl/html.xsl</code>
-
-	<p>An XSLT file for transforming XML documents using the
-	  r&eacute;sum&eacute; DTD into HTML, suitable for presentation
-	  on the World Wide Web.
-	</p>
+      <li><code>xsl/us-html.xsl</code>, <code>xsl/us-text.xsl</code>,
+	<code>xsl/us-letter.xsl</code> - XSLT files for transforming
+	XML r&eacute;sum&eacute;s into HTML, plain text, and XSL
+	Formatting Objects (FO) with letter-size paper, respectively,
+	using terminology common to r&eacute;sum&eacute;s in the
+	United States.  These files let you present your
+	r&eacute;sum&eacute;s on the web using HTML, in email or entry
+	forms that require plain text, or (after formatting with a FO
+	processor), as Portable Document Format (PDF) files suitable
+	for printing.
       </li>
 
-      <li><code>xsl/fo.xsl</code>
-
-	<p>An XSLT file for transforming XML documents using the
-	  r&eacute;sum&eacute; DTD into XML in the formatting object
-	  (FO) namespace, suitable for processing by an FO formatter
-	  for producing Portable Document Format (PDF) files.
-	</p>
+      <li><code>xsl/uk-html.xsl</code>, <code>xsl/uk-text.xsl</code>,
+	<code>xsl/uk-a4.xsl</code> - As above, but using A4 size paper
+	and terminology common to r&eacute;sum&eacute;s in the United
+	Kingdom (such as "CV" instead of "r&eacute;sum&eacute;").
       </li>
 
-      <li><code>xsl/text.xsl</code>
-
-	<p>An XSLT file for transforming XML documents using the
-	  r&eacute;sum&eacute; DTD into plain text.
-	</p>
+      <li><code>xsl/fr-html.xsl</code>, <code>xsl/fr-text.xsl</code>,
+	  <code>xsl/fr-a4.xsl</code> - As above with A4 size paper,
+	  but with terminology common to r&eacute;sum&eacute;s in
+	  France (such as "objectif professionnel" instead of
+	  "professional objective").
       </li>
 
     </ul>
 
     <p>In addition, there are two example r&eacute;sum&eacute;s and a
-      <code>Makefile</code> that automates production of HTML and PDF
-      output from an XML file using the Apache XML Project tools
-      and/or RenderX's XEP.  See the <code>examples</code> directory.
+      <code>Makefile</code> that automates production of HTML, plain
+      text, and PDF output from an XML file using the Apache XML
+      Project tools and/or RenderX's XEP.  See the
+      <code>examples</code> directory.
     </p>
 
     <p>The following documents are available:</p>
@@ -118,7 +121,8 @@
     <h3>Creating R&eacute;sum&eacute;s Using the DTD</h3>
 
     <p>To create your own r&eacute;sum&eacute;s using the XML
-      R&eacute;sum&eacute; DTD, use the following FPI in your XML file:
+      R&eacute;sum&eacute; DTD, use the following document type
+      declaration in your XML file:
     </p>
 
     <pre>&lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
@@ -132,43 +136,79 @@
     <pre>&lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
                         "file:/usr/local/share/xml/dtd/resume.dtd"&gt;</pre>
 
+    <p>Note that the <code>iso-lat1.ent</code> file is referenced by
+      the <code>resume.dtd</code> file, so if you move one, be sure
+      you move the other, too.
+    </p>
 
     <p>For an idea of how the tags work, see the comments in the
       <code>resume.dtd</code> file and the example
       r&eacute;sum&eacute; files.
     </p>
 
-    <p>Note that the <code>iso-lat1.ent</code> file is referenced by
-      the <code>resume.dtd</code> file, so if you move one, be sure
-      you move the other, too.
-    </p>
-
     <h3>Formatting R&eacute;sum&eacute;s</h3>
 
     <p><strong>To create an HTML presentation</strong> of your
       r&eacute;sum&eacute;, run your XSLT engine on the XML file
-      containing the r&eacute;sum&eacute; along with the
-      <code>html.xsl</code> file.
+      containing the r&eacute;sum&eacute; along with the one of the
+      HTML stylesheet files:
+    </p>
+    <ul>
+      <li><code>us-html.xsl</code> for US English
+	r&eacute;sum&eacute;s.
+      </li>
+      <li><code>uk-html.xsl</code> for UK English CVs.</li>
+      <li><code>fr-html.xsl</code> for French
+	r&eacute;sum&eacute;s.</li>
+    </ul>
+    <p>The stylesheet will turn your XML r&eacute;sum&eacute; into
+      HTML using appropriate phrasing and terminology.
+    </p>
 
-    <p><strong>To create a PDF presentation</strong>, run your XSLT
-      engine on the r&eacute;sum&eacute; XML file and the
-      <code>fo.xsl</code> file, and <strong>then</strong> run your FO
-      engine on the result of that.
+    <p><strong>To create a PDF presentation</strong>, <em>first</em>
+      run your XSLT engine on the r&eacute;sum&eacute; XML file along
+      with one of the FO stylesheet files:
+    </p>
+
+    <ul>
+      <li><code>us-letter.xsl</code> for US English
+	r&eacute;sum&eacute;s on US-Letter size paper.
+      </li>
+      <li><code>uk-a4.xsl</code> for UK English CVs on A4 size paper.
+      </li>
+      <li><code>fr-a4.xsl</code> for French r&eacute;sum&eacute;s on
+	A4 size paper.
+      </li>
+    </ul>
+
+    <p><em>Then</em> run the output of that through your FO engine to
+      render it.
     </p>
 
     <p><strong>To create a plain text presentation</strong>, run your
-      XSLT engine on the r&eacute;sum&eacute; XML file and the
-      <code>text.xsl</code> file.
+      XSLT engine on the r&eacute;sum&eacute; XML file and one of the
+      following:
     </p>
 
-    <p>To automate this process, consider using the <code>Makefile</code>.  It uses
-      the Java versions of the Apache XML tools Xerces/Xalan/FOP to
-      create both web and print presentations of a
-      r&eacute;sum&eacute;.  Adjust the <code>RESUME</code> value
-      inthe <code>Makefile</code> to point to the file name of the
-      r&eacute;sume&eacute; you want to format, without the
-      <code>.xml</code> extension.
+    <ul>
+      <li><code>us-text.xsl</code> for US English plain text
+	r&eacute;sum&eacute;s.
+      </li>
+      <li><code>uk-text.xsl</code> for UK English plain text CVs.
+      </li>
+      <li><code>fr-text.xsl</code> for French plain text
+	r&eacute;sum&eacute;s.
+      </li>
+    </ul>
+
+    <p>To automate this process, consider using the
+      <code>Makefile</code>.  It uses the Java versions of the Apache
+      XML tools Xerces/Xalan/FOP to create both web and print
+      presentations of a r&eacute;sum&eacute;.  Adjust the
+      <code>RESUME</code> value inthe <code>Makefile</code> to point
+      to the file name of the r&eacute;sume&eacute; you want to
+      format, without the <code>.xml</code> extension.
     </p>
+
   </body>
 </html>
-

@@ -2,6 +2,7 @@
 
 <!--
 fo.xsl
+Transform XML resume into XSL-FO, for formatting into PDF.
 
 Copyright (c) 2000-2001 Sean Kelly
 All rights reserved.
@@ -92,6 +93,7 @@ $Id$
     <fo:block start-indent="{$heading.indent}"
       font-family="{$heading.font.family}"
       font-weight="{$heading.font.weight}"
+      space-before="{$para.break.space}"
       space-after="{$para.break.space}"
       keep-with-next="always">
       <xsl:value-of select="$text"/>

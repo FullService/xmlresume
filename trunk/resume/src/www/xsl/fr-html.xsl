@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-uk-a4.xsl
-Convert XML Resume into FO(PDF) using UK terminology and A4 paper.
+fr-html.xsl
+Convert XML Resume into HTML using French terminology.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -36,8 +36,7 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="common/fo.xsl"/>
-  <xsl:import href="common/a4.xsl"/>
-  <xsl:import href="uk-params.xsl"/>
+  <xsl:import href="common/html.xsl"/>
+  <xsl:import href="fr-params.xsl"/>
 
 </xsl:stylesheet>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-uk-a4.xsl
-Convert XML Resume into FO(PDF) using UK terminology and A4 paper.
+a4.xsl
+Parameters for A4 size paper.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -36,8 +36,14 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="common/fo.xsl"/>
-  <xsl:import href="common/a4.xsl"/>
-  <xsl:import href="uk-params.xsl"/>
+  <!-- Measurements for A4-sized paper. -->
+
+  <xsl:param name="page.height">297mm</xsl:param>
+  <xsl:param name="page.width">210mm</xsl:param>
+  <xsl:param name="margin.top">20mm</xsl:param>
+  <xsl:param name="margin.left">33mm</xsl:param>
+  <xsl:param name="margin.right">20mm</xsl:param>
+  <xsl:param name="margin.bottom">20mm</xsl:param>
+  <xsl:param name="body.indent">20mm</xsl:param>
 
 </xsl:stylesheet>

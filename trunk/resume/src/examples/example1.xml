@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN">
-                        "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
+  "http://xmlresume.sourceforge.net/dtd/resume.dtd">
 
 <!--
 example.xml

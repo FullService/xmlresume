@@ -2,6 +2,7 @@
 
 <!--
 text.xsl
+Transform XML resume into plain text.
 
 Copyright (c) 2001 Vlad Korolev
 Copyright (c) 2000 Sean Kelly

@@ -2,6 +2,7 @@
 
 <!--
 html.xsl
+Transform XML resume into HTML.
 
 Copyright (c) 2000-2001 Sean Kelly
 All rights reserved.

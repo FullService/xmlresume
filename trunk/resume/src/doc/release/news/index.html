@@ -18,23 +18,28 @@
     <h2>Release 1.2.3</h2>
 
     <ul>
-      <li><strong>Internationalization support</strong>.  The DTD and
+      <li><em>Internationalization support</em>.  The DTD and
 	the stylesheets support formatting international addresses
 	with a rich set of metadata.  See the
 	<code>example2.xml</code> r&eacute;sum&eacute; for an
 	example.  Older r&eacute;sum&eacute;s using the US address
-	schema are still compatible.
+	schema are still compatible.  <strong>Note that FOP 0.19.0
+	does not handle line breaks in addresses correctly yet.  Use
+	XEP from <a href="http://www.renderx.com/">RenderX</a> until
+	the Apache XML Project can fix this bug!</strong>
       </li>
 
-      <li><strong>Localization support</strong>.  We've replaced
+      <li><em>Localization support</em>.  We've replaced
 	hard-coded words like "Professional Objective" and
-	"r&eacute;sum&eacute;" as well as paper sizes and margins
-	with configurable parameters.  Two driver files are 
+	"r&eacute;sum&eacute;" as well as paper sizes and margins with
+	configurable parameters.  Driver files set these parameters
+	and format r&eacute;sum&eacute;s appropriately.  Support for
+	US English, UK English, and French are included.
+      </li>
 
-
-      <li>The DTD supports a <code>&lt;birth&gt;</code> element to
-	record date of birth.  This element is currently not
-	formatted.
+      <li><em>Date of birth</em>.  The DTD supports a
+	<code>&lt;birth&gt;</code> element to record date of birth.
+	This element is currently not formatted.
       </li>
     </ul>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-uk-a4.xsl
-Convert XML Resume into FO(PDF) using UK terminology and A4 paper.
+uk-params.xsl
+Parameters for UK resumes.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -36,8 +36,10 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="common/fo.xsl"/>
-  <xsl:import href="common/a4.xsl"/>
-  <xsl:import href="uk-params.xsl"/>
+  <!-- In the UK, it's a CV (curricula vita).  And perhaps it's a
+  "Telephone", not a "Phone". -->
+
+  <xsl:param name="resume.word">CV</xsl:param>
+  <xsl:param name="phone.word">Telephone</xsl:param>
 
 </xsl:stylesheet>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
-                        "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+  "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+
 <!--
 example2.xml
 
@@ -42,7 +43,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- This person is using the internationally-compatible style address. -->
     <address><number>9030</number> <street>Garnish Court</street><break/>
       <locality>Princeville</locality>, <building>3</building>-<room>126</room>.<break/>
-      <city>Ahi Tunaville</city> <state>CA</state> <zip>95051</zip><break/>
+      <city>Ahi Tunaville</city>, <state>CA</state> <zip>95051</zip><break/>
       <country>US</country>
     </address>
   </header>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-usletter.xsl
+us-letter.xsl
+Convert XML Resume into HTML using US terminology and letter size paper.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -35,7 +36,7 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:import href="fo.xsl"/>
+  <xsl:import href="common/fo.xsl"/>
 
   <!-- No other overrides needed, since the default parameters are all
   US English and US-Letter size paper already. -->

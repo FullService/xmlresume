@@ -2,6 +2,7 @@
 
 <!--
 params.xsl
+Default XML resume transformation parameters.
 
 Copyright (c) 2000-2001 Sean Kelly
 All rights reserved.
