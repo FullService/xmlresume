@@ -907,7 +907,7 @@ $Id$
 
   <xsl:template match="r:referee" mode="compact">
     <tr>
-      <td>
+      <td class="referee">
         <div class="refereeName">
           <xsl:apply-templates select="r:name"/>
           <xsl:if test="r:title or r:organization">
