@@ -93,8 +93,8 @@ some-dir/resume-website
 			# (cleaning up any merge conflicts)
 
 **** Confirm functionality by: 
-  ant run.generate	# to generate the regression test date
   ant run.test		# to run regression tests
+  ant run.generate	# to generate new regression test data (optional)
 Format the example résumés
 Format the address test résumés
 Format your own résumé

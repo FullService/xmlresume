@@ -415,7 +415,7 @@ $Id$
   <target name="run.test"
     description="Run the test"
     depends="build">
-    <java classname="net.sourceforge.xmlresume.ResumeTest"
+    <java classname="net.sourceforge.xmlresume.test.ResumeTest"
       fork="yes"
       classpathref="test.classpath">
       <arg value="-test"/>
@@ -425,9 +425,9 @@ $Id$
   <target name="run.generate"
     description="Generate the test target data"
     depends="build">
-    <java classname="net.sourceforge.xmlresume.ResumeTest"
-      fork="yes"
-      classpathref="test.classpath">
+    <java classname="net.sourceforge.xmlresume.test.ResumeTest"
+      fork="yes">
+<!--      classpathref="test.classpath" -->
       <arg value="-generate"/>
       <arg file="${target.data.dir}"/>
     </java>

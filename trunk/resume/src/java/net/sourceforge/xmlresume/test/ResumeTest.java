@@ -167,14 +167,16 @@ class ResumeTest {
 	private static void generateTestData(File outputDir) throws Throwable {
 		Properties props = readProperties();
   		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		String pathToStylesheet;
 		for (Iterator i = getInputURLs(props).iterator(); i.hasNext();) {
 			URL inputURL = (URL) i.next();
 			for (StringTokenizer t = new StringTokenizer(props.getProperty("stylesheets"), ","); t.hasMoreTokens();) {
 				String stylesheetKey = t.nextToken().trim();
-				URL stylesheetURL = ResumeTest.class.getResource("xsl/output/" + props.getProperty(stylesheetKey
-					+ ".file"));
+				pathToStylesheet = System.getProperty("user.dir") 
+						+ "/src/www/xsl/output/" + props.getProperty(stylesheetKey + ".file");
+				URL stylesheetURL ResumeTest.class.getResource(pathToStylesheet);
 				if (stylesheetURL == null)
-					throw new IllegalStateException("Stylesheet " + stylesheetKey + " missing");
+					throw new IllegalStateException("Can't find " + pathToStylesheet);
 				Transformer transformer
 					= transformerFactory.newTransformer(new StreamSource(stylesheetURL.toString()));
 				String ext = props.getProperty(stylesheetKey + ".ext");
@@ -203,14 +205,15 @@ class ResumeTest {
 	private static void test() throws Throwable {
 		Properties props = readProperties();
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		String pathToStylesheet;
 		for (Iterator i = getInputURLs(props).iterator(); i.hasNext();) {
 			URL inputURL = (URL) i.next();
 			for (StringTokenizer t = new StringTokenizer(props.getProperty("stylesheets"), ","); t.hasMoreTokens();) {
 				String stylesheetKey = t.nextToken().trim();
-				URL stylesheetURL = ResumeTest.class.getResource("/xsl/" + props.getProperty(stylesheetKey
-					+ ".file"));
+				pathToStylesheet = "../../../../../www/xsl/output/" + props.getProperty(stylesheetKey + ".file");
+				URL stylesheetURL = ResumeTest.class.getResource(pathToStylesheet);
 				if (stylesheetURL == null)
-					throw new IllegalStateException("Stylesheet " + stylesheetKey + " missing");
+					throw new IllegalStateException("Can't find " + pathToStylesheet);
 				Transformer transformer
 					= transformerFactory.newTransformer(new StreamSource(stylesheetURL.toString()));
 				String ext = props.getProperty(stylesheetKey + ".ext");
