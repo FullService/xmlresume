@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<chapter id="getting-started.explore">
+  <chapterinfo>
+    <title>Exploring the Features of &library.name;</title>
+    <authorgroup>
+      <author>
+        <firstname>Peter</firstname>
+        <surname>Hutnick</surname>
+        <email>&peter.email;</email>
+      </author>
+      <author>
+        <firstname>Mark</firstname>
+        <surname>Miller</surname>
+        <email>&mark.email;</email>
+      </author>
+      <editor>
+        <firstname>Bruce</firstname>
+        <surname>Christensen</surname>
+        <email>&bruce.email;</email>
+      </editor>
+    </authorgroup>
+    <copyright>
+      <year>2002</year>
+      <holder>Peter Hutnick</holder>
+    </copyright>
+  </chapterinfo>
+
+  <!-- ==================================================================== -->
+  <para>
+    This chapter provides an overview of the features and usage of 
+    the &library.name;, an Open Source, XML
+    based &resume; management system, on UNIX systems. 
+  </para>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.explore.testing">
+    <title>Formatting an example resume</title>
+
+    <section id="getting-started.explore.testing.converting">
+      <title>Converting to other formats</title>
+
+      <para>
+	To get a feel for the power of the &library.name; you should run
+	the example &resume;s through their paces and see how they turn 
+	out after processing.  You can do this by renaming the file 
+	<filename>example2.xml</filename>
+        to <filename>resume.xml</filename> with the command <command>mv
+        example2.xml resume.xml</command>. Then simply issue the command
+        <command>gmake</command> while connected to the internet. This 
+	should generate the files
+        <filename>resume.txt</filename>,
+        <filename>resume.html</filename>,
+        <filename>resume.fo</filename>, and
+        <filename>resume.pdf</filename>
+        &mdash; all versions of Alexis Kernighan's &resume;.
+      </para>
+    </section>
+  </section>
+
+  <section id="getting-started.explore.features">
+    <title>Advanced Features of the &library.name;</title>
+    <section id="getting-started.explore.features.filter">
+      <title>Filtering to target your resume</title>
+      <para>
+	Filtering allows you to maintain a single, complete resume.xml
+	file that represents the entirety of your career/academic record, 
+	while allowing for the simple creation of targeted resumes.
+      </para>
+
+      <para>
+	Consider the following snippet of Jane Doe's resume:
+      </para>
+
+       <informalexample><programlisting><![CDATA[
+          <skillset>
+            <skill>Carpentry</skill>
+            <skill>Welding</skill>
+            <skill>Java Programming</skill>
+            <skill>XML</skill>
+            <skill>C++</skill>
+	    <skill>Good communicator</skill>
+            <skill>Gourmet Pastry Creation</skill>
+            <skill>Cooking for construction workers</skill>
+          </skillset>
+       ]]></programlisting></informalexample>
+
+      <para>
+	The problem here is that Jane needs to maintain a record of all
+	her skills, but she doesn't need to tell a potential employer 
+	about all of those skills.  Sure, Jane could selectively 
+	comment out portions of her resume, but this can be tedious.  
+	Instead, she should use attributes to describe which categories of
+	resume a given element applies to:
+      </para>
+
+       <informalexample><programlisting><![CDATA[
+          <skillset>
+            <skill targets="construction,woodworking">Carpentry</skill>
+            <skill targets="construction">Welding</skill>
+            <skill targets="programming">Java Programming</skill>
+            <skill targets="programming">XML</skill>
+            <skill targets="programming">C++</skill>
+	    <skill>Good communicator</skill>
+            <skill targets="foodservice">Gourmet Pastry Creation</skill>
+            <skill targets="foodservice+construction">Cooking for construction workers</skill>
+          </skillset>
+       ]]></programlisting></informalexample>
+
+      <para>
+	After defining her targets, Jane can filter her resume to produce 
+	beautifully-formatted, well-focused resumes to send to employers.
+	Her "construction" resume will contain only those elements 
+	applicable to the construction industry, and the job foreman won't 
+	have to read about her vast knowledge of meringues and bundt 
+	cakes, or her experience coding up an application server in Java.
+      </para>	
+
+      <para>
+	You may have noticed that some of Jane's skills apply to more than
+	one target, or apply only when two (or more) targets are defined.
+	By specifying a list of targets (separated by commas), Jane can 
+	ensure that her Carpentry skill will be included in both 
+	"construction" and "woodworking" resumes.  Similarly, her "Cooking 
+	for construction workers" skill will apply only to resumes where
+	both "foodservice" AND "construction" are targeted.  
+      </para>
+
+      <para>
+	Elements that have no "targets" attribute are always included in 
+	the filtered output.  Thus Jane's communications skills will apply
+	to every resume.
+      </para>
+
+      <para>
+	To get a better idea of how this all works, take a look at
+	<filename>examples/example2.xml</filename>.  Trying making 
+	the complete resume (with <command>make all resume=example2</command>),
+	and then the filtered version (<command>make filter 
+	resume=example2</command>).  Then compare 
+	<filename>example2.txt</filename> with 
+	<filename>example2-filtered.txt</filename>.  To create resumes 
+	targeted to other purposes, change <command>filter_targets</command>
+	in <filename>Makefile</filename>.
+      </para>
+    </section>
+	
+    <section id="getting-started.explore.features.customizing">
+      <title>Customizing your &resume;</title>
+
+      <para>
+	With just a few tweaks, you can dramatically change the look
+	of your &resume;s.
+      </para>
+
+      <section id="getting-started.explore.features.customizing.params">
+	<title>Modifying the XSL Parameters</title>
+
+	<para> 
+	  The first thing to do to customize your resume is to 
+	  check out the parameters files.  The main file is
+	  <filename>xsl/params.xsl</filename>, which contains general
+	  parameters that you can change.  We suggest making a backup of
+	  this file by issuing the command <command>cp params.xsl
+	  params.xsl.dist</command>, and then playing around with the values
+	  inside <filename>params.xsl</filename> to see how they affect
+	  the output of your resumes.  
+	</para>
+	<note><para>
+	  You will need to change <literal>xsl_base</literal> in
+	  <filename>Makefile</filename> to point to your local xsl directory
+	  before any of your changes can take effect.
+	</para></note>
+
+	<para>
+	  Located in the <filename class="directory">xsl/paper</filename> directory 
+	  are the <filename>a4.xsl</filename> and 
+	  <filename>letter.xsl</filename> files.  These files specify 
+	  things like margin size and indent size for their respective 
+	  paper formats.
+	</para>
+
+	<para>
+	  The <filename class="directory">xsl/country</filename> directory contains 
+	  country-specific parameter files, which contain translations for
+	  everything from "&Resume;" to "Mobile Telephone".  If you would 
+	  prefer your &resume; to be called a Curriculum Vitae, this is 
+	  where to look.  The files are sorted by a 2-letter country code
+	  (e.g., nl.xsl for the Netherlands).  If you don't see your 
+	  country there, or if there are errors/omissions in the 
+	  translations, please attempt a translation and submit the 
+	  changes back to the project-- while XML may work across all 
+	  languages, the gentle developers of the &library.name; Project
+	  do not.
+	</para>
+      </section>
+
+      <section id="getting-started.explore.features.customizing.css">
+	<title>Modifying the look of your HTML &Resume;</title>
+
+	<para>
+	  Cascading Style Sheets (CSS) are a powerful way to format the 
+	  look of your HTML &Resume;.  A selection of sample CSS files are
+	  provided in the <filename class="directory">css</filename> directory.  If you 
+          have not already done so, try changing the value of 
+	  <literal>css.href</literal> in <filename>params.xsl</filename>
+	  to a different stylesheet (you may have to adjust the location
+	  of the stylesheets).  Once you find one you like, you can tweak 
+	  it by editing the CSS file by hand, or create one that is 
+	  entirely your own.
+	</para>
+      </section>
+    </section>
+  </section>  
+
+  <section id="getting-started.explore.create">
+    <title>Writing your first XML &Resume;</title>
+
+      <para>
+        This is the fun part. Take a look at both example &resume;s and choose
+        which one is most like what you want. Then replace the existing
+        information with your own. You may also be able to find example
+        &resume;s of real people by search for <literal>XML resume</literal> on
+        the internet.
+      </para>
+
+      <para>
+        For complete information on the elements valid for the &library.name;
+        see <xref linkend="elementref"/>.
+      </para>
+
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.explore.next-steps">
+    <title>Where to Go from Here</title>
+
+    <section id="getting-started.explore.next-steps.docs">
+      <title>Documentation</title>
+
+      <para>
+        More detailed information about creating and building &resume;s is
+        available in other sections of this user guide.
+      </para>
+
+      <para>
+        For more information about the &library.name;, see the HTML
+        documentation included in the <filename
+        class="directory">doc/</filename> directory.
+      </para>
+
+    </section>
+    <section id="getting-started.explore.next-steps.support">
+      <title>Support</title>
+
+      <para>
+        For questions about the package and the DTD, there is a mailing list and
+        a support forum web site.
+      </para>
+
+      <para>
+        The online support forum is located at <ulink
+        url="&xmlresume.support.url;"/>.
+      </para>
+
+      <para>
+        To join the mailing list, either visit <ulink
+        url="&xmlresume.list.devel.url;"/> or send a message with
+        <literal>subscribe
+        <replaceable>[youraddress@yourdomain.tld]</replaceable></literal> in the
+        body to <email>&xmlresume.list.devel.bot.email;</email>.
+      </para>
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.explore.about">
+    <title>About this chapter</title>
+
+    <para>
+      This chapter was originally written by Peter Hutnick. It was edited and
+      converted to DocBook format by Bruce Christensen.  Further editing 
+      and additions were done by Mark Miller
+    </para>
+
+    <para>
+      Please send comments, suggestions, and especially corrections for
+      this chapter to <email>&peter.email;</email>.
+    </para>
+
+  </section>
+
+
+</chapter>
