@@ -934,7 +934,22 @@ In general, each block is responsible for outputting a newline after itself.
 
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:apply-templates select="r:referee"/>
+        <xsl:choose>
+
+          <xsl:when test="$referees.display = 1">
+            <xsl:apply-templates select="r:referee"/>
+          </xsl:when>
+
+          <xsl:otherwise>
+            <xsl:call-template name="Wrap">
+              <xsl:with-param name="Text">
+                <xsl:value-of select="$referees.hidden.phrase"/>
+              </xsl:with-param>
+            </xsl:call-template>
+            <xsl:call-template name="NewLine"/>
+          </xsl:otherwise>
+
+        </xsl:choose>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>

@@ -108,6 +108,12 @@ $Id$
   <!-- Word to use for referees. -->
   <xsl:param name="referees.word">References</xsl:param>
 
+  <!-- Should referees be displayed when formatting? -->
+  <!-- '1' to display referees -->
+  <!-- '0' to display referees.hidden.phrase instead. -->
+  <xsl:param name="referees.display">1</xsl:param>
+  <xsl:param name="referees.hidden.phrase">Available upon request.</xsl:param>
+
   <!-- Phrase to use for "Last modified". -->
   <xsl:param name="last-modified.phrase">Last modified</xsl:param>
 

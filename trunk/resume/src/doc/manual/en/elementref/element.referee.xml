@@ -26,6 +26,14 @@
       the job seeker's character.
     </para>
 
+    <refsect2><title>Formatting</title>
+      <para>
+        The display of <sgmltag class="element">referee</sgmltag> is influenced
+        by the <link linkend="param.referees.display"
+        ><parameter>referees.display</parameter></link> parameter.
+      </para>
+    </refsect2>
+
     <refsect2><title>Parents</title>
       <para>
         <sgmltag class="element">referee</sgmltag> may be contained in these

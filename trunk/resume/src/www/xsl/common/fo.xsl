@@ -854,7 +854,15 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$referees.word"/></xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="r:referee"/>
+
+    <xsl:choose>
+      <xsl:when test="$referees.display = 1">
+        <xsl:apply-templates select="r:referee"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <fo:block><xsl:value-of select="$referees.hidden.phrase"/></fo:block>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="r:referee">

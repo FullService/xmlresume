@@ -699,7 +699,14 @@ $Id$
   <!-- Format the referees -->
   <xsl:template match="r:referees">
     <h2 class="refereesHeading"><xsl:value-of select="$referees.word"/></h2>
-    <xsl:apply-templates select="r:referee"/>
+    <xsl:choose>
+      <xsl:when test="$referees.display = 1">
+        <xsl:apply-templates select="r:referee"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <p><xsl:value-of select="$referees.hidden.phrase"/></p>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="r:referee">
