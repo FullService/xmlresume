@@ -86,11 +86,13 @@ rtf_proc = java com.xmlmind.fo.converter.Driver $(in) $(out)
 
 # Element filtering allows you to create targeted resumes.  
 # You can create your own targets; just specify them in your resume.xml 
-# file with the "targets" attribute.  In this example, the construction 
+# file with the "targets" attribute.  In this example, the foodservice
 # AND carpentry elements will be included in the output, but not the 
 # elements targeted to other jobs.  Untargeted elements (those with no 
-# "targets" attribute) are always included.
-filter_targets = construction carpentry
+# "targets" attribute) are always included.  
+# Take a look at example2.xml and try changing the filter targets to get a 
+# feel for how the filter works.
+filter_targets = foodservice carpentry
 filter_proc = java net.sourceforge.xmlresume.filter.Filter -in $(in) -out $(out) $(filter_targets)
 
 #------------------------------------------------------------------------------

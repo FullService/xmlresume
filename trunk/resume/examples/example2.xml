@@ -46,12 +46,13 @@ Cuidad de la Habana, CP 11900
 CUBA</address>
     <contact>
       <phone location="home">+1-55-4362-4562</phone>
+      <phone location="mobile">+1-55-5252-4356</phone>
       <email>alexis@finecooks.xyz</email>
       <instantMessage service="aim">alexis2755263</instantMessage>
     </contact>
   </header>
 
-  <objective>
+  <objective targets="foodservice">
     <para>To achieve my Master Chef certification and become
       <emphasis>executive chef</emphasis> at a fine restaurant in the
       Hawaiian islands.
@@ -122,17 +123,28 @@ CUBA</address>
  <!-- This job applies to both the construction and electrical targets -->
     <job targets="construction,electrical">
       <jobtitle>Electrician's Assistant</jobtitle>
+      <date><month>May</month><year>1993</year></date>
       <employer>Mike's Wiring Co.</employer>
 	<projects>
-	  <project>Rewired the city of Phoenix</project>
+	  <project title="Electrify Phoenix">Rewired the city of Phoenix</project>
+	  <project>Fixed my mom's living room lamp</project>
         </projects>
     </job>
 
     <job targets="sysadmin">
       <jobtitle>Senior System Administrator</jobtitle>
       <employer>SysOps4Cheap.com</employer>
+      <date><year>1987</year></date>
+      <description>
+        <para>SysOps4Cheap.com was a small startup whose aim was to supply
+	      sysadmins over the web.  The business failed because the 
+	      very few sysadmins could survive the process of being overnighted
+	      by FedEx.
+        </para>
+      </description>
       <projects>
 	<project>Ran a beowulf cluster of Commodore 64s</project>
+	<project title="Oxygen For SysOps">Used scuba tanks to keep sysadmins fresh in the mail</project>
       </projects>
     </job>
 
@@ -151,7 +163,7 @@ CUBA</address>
 	</to>
       </period>
       <projects>
-	<project>Fall Menu</project>
+	<project title="Fall Menu">Created an extensive menu for our fall offerings</project>
 	<project>Revamping of Grill Area</project>
       </projects>
       <achievements>
@@ -194,6 +206,7 @@ CUBA</address>
     <membership>
       <title>Grand Poobah</title>
       <organization>Stonecutters</organization>
+      <date><year>1934</year></date>
     </membership>
     <membership>
       <title>Senior Fellow</title>
@@ -207,6 +220,35 @@ CUBA</address>
       </description>
     </membership>
   </memberships>
+
+  <awards><title>Honors and Recognition</title>
+    <award targets="foodservice"><title>Cooking Honor Roll</title>
+	<organization>Culinary Institute of America</organization>
+	<period>
+	  <from><date><month>January</month><year>1992</year></date></from>
+         <to><date><month>May</month><year>1995</year></date></to>
+        </period>
+    </award>
+
+<!-- This award should only included if BOTH sysadmin AND foodservice is targeted -->
+    <award targets="sysadmin+foodservice"><title>Sysop's Choice Award for Best Cook</title>
+	<organization>Usenix</organization>
+	<date><month>May</month><year>1987</year></date>
+    </award>    
+  </awards>
+
+
+  <clearances>
+     <clearance targets="foodservice"><level>Top Secret Cook</level>
+        <date><month>June</month><year>1994</year></date>
+     </clearance>
+     <clearance><level>Junior Mothball Inspector</level>
+        <period><from><date><month>June</month><year>1994</year></date></from>
+                <to><date><month>January</month><year>2004</year></date></to></period>
+        <organization>USMBIA</organization>
+     </clearance>
+  </clearances>
+
 
   <misc>
     <para>What can't be captured on a r&eacute;sum&eacute; is my sheer
