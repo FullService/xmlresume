@@ -207,6 +207,16 @@ $Id$
     <br/>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:instantMessage">
+    <xsl:call-template name="IMServiceName">
+      <xsl:with-param name="Service" select="@service"/>
+    </xsl:call-template>
+    <xsl:text>: </xsl:text>
+
+    <xsl:apply-templates/>
+    <br/>
+  </xsl:template>
+
   <!-- Address, in various formats -->
   <xsl:template match="r:address" mode="standard">
 

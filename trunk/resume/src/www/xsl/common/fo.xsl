@@ -351,6 +351,19 @@ $Id$
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:instantMessage">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:call-template name="IMServiceName">
+          <xsl:with-param name="Service" select="@service"/>
+        </xsl:call-template>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
   <!-- Format the objective with the heading "Professional Objective." -->
   <xsl:template match="r:objective">
     <xsl:call-template name="heading">

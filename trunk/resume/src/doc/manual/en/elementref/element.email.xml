@@ -53,6 +53,7 @@
     <para>
       <simplelist type="inline">
         <member><link linkend="element.fax"><sgmltag class="element">fax</sgmltag></link></member>
+        <member><link linkend="element.instantMessage"><sgmltag class="element">instantMessage</sgmltag></link></member>
         <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
         <member><link linkend="element.url"><sgmltag class="element">url</sgmltag></link></member>
       </simplelist>.

@@ -210,6 +210,15 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:instantMessage">
+    <xsl:call-template name="IMServiceName">
+      <xsl:with-param name="Service" select="@service"/>
+    </xsl:call-template>
+    <xsl:text>: </xsl:text>
+    <xsl:apply-templates/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
   <!-- Addresses, in various modes -->
   <xsl:template match="r:address" mode="standard">
     <xsl:variable name="AdminDivision">

@@ -83,6 +83,17 @@ $Id$
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
 
+  <!-- Instant messenger service names -->
+  <!-- (When you add or remove a service here, don't forget to update
+  contact.xsl in this dir, and element.instantMessage.xml in the user guide.)
+  -->
+  <xsl:param name="im.aim.service">AIM</xsl:param>
+  <xsl:param name="im.icq.service">ICQ</xsl:param>
+  <xsl:param name="im.irc.service">IRC</xsl:param>
+  <xsl:param name="im.jabber.service">Jabber</xsl:param>
+  <xsl:param name="im.msn.service">MSN Messenger</xsl:param>
+  <xsl:param name="im.yahoo.service">Yahoo! Messenger</xsl:param>
+
   <!-- Words for phone and fax locations, as in "Home Phone", or "Work Fax" -->
   <xsl:param name="home.word">Home</xsl:param>
   <xsl:param name="work.word">Work</xsl:param>

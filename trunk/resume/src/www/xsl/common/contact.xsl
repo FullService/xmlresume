@@ -61,4 +61,38 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="IMServiceName">
+    <xsl:param name="Service"/>
+
+    <xsl:choose>
+      <xsl:when test="$Service = 'aim'">
+        <xsl:value-of select="$im.aim.service"/>
+      </xsl:when>
+      <xsl:when test="$Service = 'icq'">
+        <xsl:value-of select="$im.icq.service"/>
+      </xsl:when>
+      <xsl:when test="$Service = 'irc'">
+        <xsl:value-of select="$im.irc.service"/>
+      </xsl:when>
+      <xsl:when test="$Service = 'jabber'">
+        <xsl:value-of select="$im.jabber.service"/>
+      </xsl:when>
+      <xsl:when test="$Service = 'msn'">
+        <xsl:value-of select="$im.msn.service"/>
+      </xsl:when>
+      <xsl:when test="$Service = 'yahoo'">
+        <xsl:value-of select="$im.yahoo.service"/>
+      </xsl:when>
+      <xsl:when test="string-length($Service) > 0">
+        <xsl:message>
+          <xsl:text>***** WARNING: Unknown instantMessage service: '</xsl:text>
+          <xsl:value-of select="$Service"/>
+          <xsl:text>' (inserting literally into output)</xsl:text>
+        </xsl:message>
+        <xsl:value-of select="$Service"/>
+      </xsl:when>
+      <xsl:otherwise>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 </xsl:stylesheet>
