@@ -44,4 +44,45 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   </xsl:attribute-set>
   -->
 
+  <!-- This override puts the refclass in parenthesis after refentry's in the
+  toc. It makes "Deprecated" class messages show up there. -->
+  <xsl:template match="refentry" mode="toc">
+    <xsl:variable name="refmeta" select=".//refmeta"/>
+    <xsl:variable name="refentrytitle" select="$refmeta//refentrytitle"/>
+    <xsl:variable name="refnamediv" select=".//refnamediv"/>
+    <xsl:variable name="refname" select="$refnamediv//refname"/>
+    <xsl:variable name="title">
+      <xsl:choose>
+        <xsl:when test="$refentrytitle">
+          <xsl:apply-templates select="$refentrytitle[1]" mode="title.markup"/>
+        </xsl:when>
+        <xsl:when test="$refname">
+          <xsl:apply-templates select="$refname[1]" mode="title.markup"/>
+        </xsl:when>
+        <xsl:otherwise></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:element name="{$toc.listitem.type}">
+      <a>
+        <xsl:attribute name="href">
+          <xsl:call-template name="href.target"/>
+        </xsl:attribute>
+        <xsl:copy-of select="$title"/>
+      </a>
+      <xsl:if test="$annotate.toc != 0">
+        <xsl:text> - </xsl:text>
+        <xsl:value-of select="refnamediv/refpurpose"/>
+        <!-- Begin added code -->
+        <xsl:if test="refnamediv/refclass">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="refnamediv/refclass"/>
+          <xsl:text>)</xsl:text>
+        </xsl:if>
+        <!-- End added code -->
+      </xsl:if>
+    </xsl:element>
+  </xsl:template>
+
+
 </xsl:stylesheet>
