@@ -36,20 +36,20 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:param name="resume.word">R&#x00e9;sum&#x00e9;</xsl:param>
+  <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
   <xsl:param name="page.word">page</xsl:param>
   <xsl:param name="contact.word">Information de Contact</xsl:param>
   <xsl:param name="objective.word">Objectif Professionnel</xsl:param>
-  <xsl:param name="history.word">Histoire D'Emploi</xsl:param>
-  <xsl:param name="academics.word">Scolaires</xsl:param>
+  <xsl:param name="history.word">Exp&#x00e9;rience Professionnelle</xsl:param>
+  <xsl:param name="academics.word">Formation</xsl:param>
   <xsl:param name="publications.word">Publications</xsl:param>
-  <xsl:param name="miscellany.word">Diverses</xsl:param>
+  <xsl:param name="miscellany.word">Divers</xsl:param>
   <xsl:param name="in.word">dans</xsl:param>
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
   <xsl:param name="by.word">par</xsl:param>
   <xsl:param name="present.word">pr&#x00e9;sent</xsl:param>
   <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
-  <xsl:param name="email.word">Email</xsl:param>
+  <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
 
 </xsl:stylesheet>
