@@ -32,12 +32,42 @@ USAGE:
   <property name="xsl.base" value="http://xmlresume.sourceforge.net/xsl"/>
 <!--  <property name="xsl.base" value="../xsl"/> -->
 <!--  <property name="xsl.base" value="../src/www/xsl"/> -->
+
+<!-- 
+================================================================
+     Filtering Options
+================================================================
+	Targeting Options:
+
+ Target filtering allows you to create targeted resumes.
+ You can create your own targets; just specify them in your resume.xml
+ file with the "targets" attribute.  In this example, the foodservice
+ AND carpentry elements will be included in the output, but not the
+ elements targeted to other jobs.  Untargeted elements (those with no
+ "targets" attribute) are always included.
+ Take a look at example2.xml and try changing the filter targets to get a
+ feel for how the filter works.  
+-->
+  <property name="filter.includeTargets" value="foodservice carpentry"/>
+
+<!--
+	Element / Attribute Filtering:
+
+ Element and Attribute filtering allows you to REMOVE some parts of your
+ resume.xml file prior to formatting: in this example, all email addresses
+ and references will hidden.  Attributes can be filtered out in the same way.
+-->
+  <property name="filter.excludeElements" value="email referees"/>
+  <property name="filter.excludeAttributes" value=""/>
+
 <!-- 
 ================================================================
      Processing Software:
 ================================================================ -->
   <property name="xsl.processor" value="org.apache.xalan.xslt.Process"/>
   <property name="pdf.processor" value="org.apache.fop.apps.Fop"/>
+  <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Main"/>
+  <property name="filter.extension" value="-filtered"/>
 <!-- 
 RTF generation currently requires you download a separate, 
 closed-source jar file and add it to your java classpath: 
@@ -45,19 +75,6 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
   <property name="rtf.processor" value="com.xmlmind.fo.converter.Driver"/>
 <!-- You may have some luck with JFOR, an open source FO to RTF Converter: -->
 <!--  <property name="rtf.processor" value="ch.codeconsult.jfor.main.CmdLineConverter"/> -->
-<!-- Targeting Options:
-
- Element filtering allows you to create targeted resumes.
- You can create your own targets; just specify them in your resume.xml
- file with the "targets" attribute.  In this example, the foodservice
- AND carpentry elements will be included in the output, but not the
- elements targeted to other jobs.  Untargeted elements (those with no
- "targets" attribute) are always included.
- Take a look at example2.xml and try changing the filter targets to get a
- feel for how the filter works. -->
-  <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Filter"/>
-  <property name="filter.targets" value="foodservice carpentry"/>
-  <property name="filter.extension" value="-filtered"/>
 <!--
 ================================================================
      Stylesheets:
@@ -119,7 +136,12 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
       <arg value="${resume}.${resume.extension}"/>
       <arg value="-out"/>
       <arg value="${resume}${filter.extension}.${resume.extension}"/>
-      <arg value="${filter.targets}"/>
+      <arg value="-includeTargets"/>
+      <arg value="${filter.includeTargets}"/>
+      <arg value="-excludeElements"/>
+      <arg value="${filter.excludeElements}"/>
+      <arg value="-excludeAttributes"/>
+      <arg value="${filter.excludeAttributes}"/>
     </java>
   </target>
 <!-- 		Target All 		-->

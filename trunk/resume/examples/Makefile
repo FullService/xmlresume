@@ -84,7 +84,7 @@ pdf_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
 rtf_proc = java com.xmlmind.fo.converter.Driver $(in) $(out)
 #rtf_proc = java ch.codeconsult.jfor.main.CmdLineConverter $(in) $(out)
 
-# Element filtering allows you to create targeted resumes.  
+# Target filtering allows you to create targeted resumes.  
 # You can create your own targets; just specify them in your resume.xml 
 # file with the "targets" attribute.  In this example, the foodservice
 # AND carpentry elements will be included in the output, but not the 
@@ -92,8 +92,18 @@ rtf_proc = java com.xmlmind.fo.converter.Driver $(in) $(out)
 # "targets" attribute) are always included.  
 # Take a look at example2.xml and try changing the filter targets to get a 
 # feel for how the filter works.
-filter_targets = foodservice carpentry
-filter_proc = java net.sourceforge.xmlresume.filter.Filter -in $(in) -out $(out) $(filter_targets)
+includeTargets = "foodservice carpentry"
+
+# Element and Attribute filtering allows you to REMOVE some parts of your
+# resume.xml file prior to formatting-- in this example, all email addresses
+# and references will hidden.  Attributes can be filtered out in the same way.
+excludeElements = "email referees"
+excludeAttributes = ""
+
+filter_proc = java net.sourceforge.xmlresume.filter.Main -in $(in) \
+	-out $(out) -includeTargets $(includeTargets) \
+	-excludeElements $(excludeElements) \
+	-excludeAttributes $(excludeAttributes)
 
 #------------------------------------------------------------------------------
 # End configurable parameters
