@@ -45,14 +45,18 @@ converted.</p>
             <option value="a4"> A4 </option>
 	  </select>
 	</td></tr>
-      <tr><td class="options.desc">Use Targeting Filter:</td>
-	<td class="options.value">
-	  <input type="checkbox" name="opt_filter" value="1" checked/>
-	</td></tr>
-      <tr><td class="options.desc">Filter Targets (separated by spaces):</td>
-	<td class="options.value">
-          <input type="text" name="opt_targets" size="40" maxlength="400"/>
-	</td></tr>
+      <tr><td class="options.desc">Use R&eacute;sum&eacute; Filter:
+	  <input type="checkbox" name="opt_useFilter" value="1" checked/>
+	</td>
+        Include Targets (separated by spaces):
+          <input type="text" name="opt_includeTargets" size="40" maxlength="400"/><br/>
+        Exclude Elements (separated by spaces):
+          <input type="text" name="opt_excludeElements" size="40" maxlength="400"/><br/>
+        Exclude Attributes (separated by spaces):
+          <input type="text" name="opt_excludeAttributes" size="40" maxlength="400"/><br/>
+	</td>
+      </tr>
+
       <tr><td class="options.desc">Generate Plain Text Output</td>
 	<td class="options.value">
           <input type="checkbox" name="opt_txt" value="1" checked/>

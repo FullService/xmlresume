@@ -58,8 +58,10 @@ function process_upload() {
   fwrite($fpProps, "email = " . $_POST["email"] . "\n");
   fwrite($fpProps, "country = " . $_POST["opt_country"] . "\n");
   fwrite($fpProps, "papersize = " . $_POST["opt_papersize"] . "\n");
-  fwrite($fpProps, "filter.targets = " . $_POST["opt_targets"] . "\n");
-  if ($_POST["opt_filter"] == 1) fwrite($fpProps, "options.filter = 1\n");
+  fwrite($fpProps, "filter.includeTargets = " . $_POST["opt_includeTargets"] . "\n");
+  fwrite($fpProps, "filter.excludeElements = " . $_POST["opt_excludeElements"] . "\n");
+  fwrite($fpProps, "filter.excludeAttributes = " . $_POST["opt_excludeAttributes"] . "\n");
+  if ($_POST["opt_useFilter"] == 1) fwrite($fpProps, "options.useFilter = 1\n");
   if ($_POST["opt_txt"] == 1) fwrite($fpProps, "options.txt = 1\n");
   if ($_POST["opt_html"] == 1) fwrite($fpProps, "options.html = 1\n");
   if ($_POST["opt_pdf"] == 1) fwrite($fpProps, "options.pdf = 1\n");

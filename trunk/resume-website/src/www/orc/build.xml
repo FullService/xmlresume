@@ -26,7 +26,7 @@ TODO
   <property name="resume" value="resume"/>
   <property name="resume.filtered" value="${resume}-filtered"/>
   <property name="xsl.base" value="."/>
-  <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Filter"/>
+  <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Main"/>
   <property name="pdf.processor" value="org.apache.fop.apps.Fop"/>
   <property name="xsl.processor" value="org.apache.xalan.xslt.Process"/>
   <property name="fo_style" value="${xsl.base}/output/${country}-${papersize}.xsl"/>
@@ -54,7 +54,7 @@ TODO
 <!--		Target Filter		-->
   <target name="filter" depends="-filter.target,-filter.copy" 
    	  description="Filter XML according to targets."/>
-  <target name="-filter.target" if="options.filter"
+  <target name="-filter.target" if="options.useFilter"
 	  depends="validate">
     <echo message="Running targeting filter"/>
     <java classname="${filter.processor}">
@@ -62,10 +62,15 @@ TODO
       <arg value="${resume}.xml"/>
       <arg value="-out"/>
       <arg value="${resume.filtered}.xml"/>
-      <arg value="${filter.targets}"/>
+      <arg value="-includeTargets"/>
+      <arg value="${filter.includeTargets}"/>
+      <arg value="-excludeElements"/>
+      <arg value="${filter.excludeElements}"/>
+      <arg value="-excludeAttributes"/>
+      <arg value="${filter.excludeAttributes}"/>
     </java>
   </target>
-  <target name="-filter.copy" unless="options.filter" 
+  <target name="-filter.copy" unless="options.useFilter" 
 	  depends="validate">
     <echo message="Skipping targeting filter step"/>
     <copy file="${resume}.xml" 
