@@ -448,7 +448,7 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   <!-- Format a date. -->
-  <xsl:template match="r:date">
+  <xsl:template match="r:date" name="FormatDate">
     <xsl:if test="r:dayOfMonth">
       <xsl:apply-templates select="r:dayOfMonth"/>
       <xsl:text> </xsl:text>

@@ -45,7 +45,8 @@ $Id$
     <xsl:apply-templates select="r:artTitle"/>
     <xsl:apply-templates select="r:bookTitle"/>
     <xsl:apply-templates select="r:publisher"/>
-    <xsl:apply-templates select="r:pubDate"/>
+    <xsl:apply-templates select="r:date"/>
+    <xsl:apply-templates select="r:pubDate"/> <!-- Deprecated as of 1.3.4. -->
     <xsl:apply-templates select="r:pageNums"/>
     <!-- And for those using free-form paragraphs, format those, too. -->
     <xsl:apply-templates select="r:para"/>
@@ -111,10 +112,11 @@ $Id$
   </xsl:template>
 
   <!-- Format the publication date -->
-  <xsl:template match="r:pubDate">
-    <xsl:value-of select="r:month"/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="r:year"/>
+  <!-- Note: the FormatPubDate name attr is used only so that this template can
+  be called from the r:pubDate deprecation message. The name can be removed when
+  r:pubDate is removed from the DTD. -->
+  <xsl:template match="r:pub/r:date" name="FormatPubDate">
+    <xsl:call-template name="FormatDate"/>
     <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 

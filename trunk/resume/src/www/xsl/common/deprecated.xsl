@@ -102,4 +102,13 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates select="r:skill" mode="bullet"/>
   </xsl:template>
 
+  <xsl:template match="r:pubDate">
+    <xsl:message>
+      WARNING: The pubDate element is deprecated as of version 1.3.4 of the XML
+      Resume Library. It will be removed in a future version. It is recommended
+      that you replace pubDate elements with date elements.
+    </xsl:message>
+    <xsl:call-template name="FormatPubDate"/>
+  </xsl:template>
+
 </xsl:stylesheet>

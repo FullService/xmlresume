@@ -5,6 +5,7 @@
   <refnamediv>
     <refname>pubDate</refname>
     <refpurpose>The date a work was published</refpurpose>
+    <refclass>Deprecated</refclass>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -17,6 +18,17 @@
   </refsynopsisdiv>
 
   <refsect1><title>Description</title>
+    <important>
+      <para>
+        This element is deprecated as of &library.name; version 1.3.4.
+        It should not be used.
+      </para>
+      <para>
+        <sgmltag class="element">date</sgmltag> elements should be used instead
+        of <sgmltag class="element">pubDate</sgmltag> elements.
+      </para>
+    </important>
+
     <para>
       The <sgmltag class="element">pubDate</sgmltag> element indicates when a
       literary, scholarly, or other work was published. It must contain a

@@ -387,7 +387,7 @@ $Id$
     <xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/>
   </xsl:template>
 
-  <xsl:template match="r:date">
+  <xsl:template match="r:date" name="FormatDate">
     <xsl:if test="r:dayOfMonth">
       <xsl:apply-templates select="r:dayOfMonth"/>
       <xsl:text> </xsl:text>

@@ -23,6 +23,13 @@
       most day-level granularity.
     </para>
 
+    <para>
+      When contained inside a <link linkend="element.pub"><sgmltag
+      class="element">pub</sgmltag></link> element, <sgmltag
+      class="element">date</sgmltag> represents the date that the work was
+      published.
+    </para>
+
     <note>
       <para>
         The <sgmltag class="element">month</sgmltag> element was made optional
