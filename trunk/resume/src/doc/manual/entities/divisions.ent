@@ -14,8 +14,8 @@ etc.). The only place these entities should be referenced is manual.xml. -->
 <!-- ====================================================================== -->
 <!-- Getting Started Guide -->
 <!-- ====================================================================== -->
-<!ENTITY guide.overview SYSTEM "../en/guide/overview.xml">
-<!ENTITY guide.create SYSTEM "../en/guide/create.xml">
+<!ENTITY getting-started.create SYSTEM "../en/getting-started/create.xml">
+<!ENTITY getting-started.convert SYSTEM "../en/getting-started/convert.xml">
 
 <!-- ====================================================================== -->
 <!-- Element reference -->

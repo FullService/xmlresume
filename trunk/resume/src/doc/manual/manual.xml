@@ -20,10 +20,10 @@
 
   &intro;
 
-  <part id="guide">
+  <part id="getting-started">
     <title>Getting Started</title>
-    &guide.overview;
-    &guide.create;
+    &getting-started.create;
+    &getting-started.convert;
   </part>
 
   <part id="ref">
@@ -38,7 +38,7 @@
     </reference>
 
     <reference id="paramref">
-      <title>Parameter Reference</title>
+      <title>XSL Parameter Reference</title>
       &paramref.intro;
       <!-- Ant replaces the following line with entities that include all
       param.*.xml files in the paramref directory. -->
