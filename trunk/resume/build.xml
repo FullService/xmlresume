@@ -293,7 +293,7 @@ $Id$
       fork="yes"
       classpathref="test.classpath">
       <arg value="-generate"/>
-      <arg file="c:/tmp/testdata"/>
+      <arg file="/tmp/testdata"/>
     </java>
   </target>
 
