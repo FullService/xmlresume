@@ -1054,12 +1054,12 @@ $Id$
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
         <xsl:choose>
-	  <xsl:when test="$referees.layout = '2-column'">
+	  <xsl:when test="$referees.layout = 'compact'">
             <fo:table table-layout="fixed" width="90%">
 	      <fo:table-column width="40%"/>
 	      <fo:table-column width="40%"/>
 	      <fo:table-body>
-                <xsl:apply-templates select="r:referee" mode="2-column"/>
+                <xsl:apply-templates select="r:referee" mode="compact"/>
 	      </fo:table-body>
             </fo:table>
 	  </xsl:when>
@@ -1078,7 +1078,7 @@ $Id$
 
   <!-- Format a referee with the name, title, organiation in the 
        left column and the address in the right column -->
-  <xsl:template match="r:referee" mode="2-column">
+  <xsl:template match="r:referee" mode="compact">
     <fo:table-row>
       <fo:table-cell padding-bottom="{$half.space}">
         <fo:block

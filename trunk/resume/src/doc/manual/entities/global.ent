@@ -35,8 +35,8 @@
 <!ENTITY j2se.url "http://java.sun.com/j2se/">
 
 <!-- E-mail addresses -->
-<!ENTITY bruce.email "bruce at iname.com">
-<!ENTITY peter.email "peter@hutnick.com">
-<!ENTITY mark.email  "joup@bnet.org">
+<!ENTITY bruce.email "bruce at iname dot com">
+<!ENTITY peter.email "peter at hutnick dot com">
+<!ENTITY mark.email  "joup at bnet dot org">
 
 <!ENTITY xmlresume.list.devel.bot.email "xmlresume-devel-request@lists.sourceforge.net">

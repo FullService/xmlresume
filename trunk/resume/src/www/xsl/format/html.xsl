@@ -877,9 +877,9 @@ $Id$
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
         <xsl:choose>
-	  <xsl:when test="$referees.layout = '2-column'">
+	  <xsl:when test="$referees.layout = 'compact'">
             <table class="referees">
-              <xsl:apply-templates select="r:referee" mode="2-column"/>
+              <xsl:apply-templates select="r:referee" mode="compact"/>
             </table>
           </xsl:when>
 	  <xsl:otherwise>
@@ -916,7 +916,7 @@ $Id$
     </div>
   </xsl:template>
 
-  <xsl:template match="r:referee" mode="2-column">
+  <xsl:template match="r:referee" mode="compact">
     <tr>
       <td>
         <div class="refereeName">

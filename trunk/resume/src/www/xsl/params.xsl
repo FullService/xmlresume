@@ -54,9 +54,9 @@ $Id$
   <!-- '0' to display referees.hidden.phrase instead. -->
   <xsl:param name="referees.display">1</xsl:param>
 
-  <!-- Layout of the referees section: "2-column" or "standard" -->
+  <!-- Layout of the referees section: "compact" or "standard" -->
   <!-- Does not affect the layout of the text output, only html and pdf -->
-  <xsl:param name="referees.layout">2-column</xsl:param>
+  <xsl:param name="referees.layout">compact</xsl:param>
 
   <!-- Format for name/contact header: 'standard' or 'centered' *SE* -->
   <!-- Set here or override on command line -->
