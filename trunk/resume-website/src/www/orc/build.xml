@@ -20,14 +20,9 @@ FUNCTIONALITY
 	moves the compressed archive into incoming/{timestamp}/out
 
 TODO
- * Make a "clean" target, called from the ORC_ROOT directory,
-   that removes 
 ==================================================================== -->
 
-
-<!-- Derived properties: -->
-  <property name="www_root" value="/home/mjm/www"/>
-  <property name="orc_root" value="/home/mjm/xmlresume/resume-website/src/www/orc"/>
+<!-- Common properties: -->
   <property name="resume" value="resume"/>
   <property name="resume.filtered" value="${resume}-filtered"/>
   <property name="xsl.base" value="."/>
@@ -38,7 +33,15 @@ TODO
   <property name="html_style" value="${xsl.base}/output/${country}-html.xsl"/>
   <property name="text_style" value="${xsl.base}/output/${country}-text.xsl"/>
 <!--									-->
-
+  <fileset id="output.files">
+    <include name="${resume}.xml"/>
+    <include name="${resume.filtered}.xml"/>
+    <include name="${resume}.txt"/>
+    <include name="${resume}.html"/>
+    <include name="${resume}.fo"/>
+    <include name="${resume}.pdf"/>
+  </fileset>
+<!--									-->
 <!--		Target Init 		-->
   <target name="init" description="Initialize the build system">
     <tstamp/>
@@ -121,37 +124,38 @@ TODO
   <target name="compress" depends="-tar,-zip"
 	  description="Zip/Tar the formatted output."/>
   <target name="-tar" depends="convert" if="options.tgz">
-     <tar destfile="${resume}.tar" basedir="."
-	  includes="${resume}.xml ${resume.filtered}.xml, ${resume}.txt,
-		    ${resume}.html, ${resume}.pdf"/>
-     <gzip src="${resume}.tar" zipfile="${resume}.tgz"/>
+    <mkdir dir="out"/>
+    <tar destfile="out/${resume}.tar" basedir=".">
+      <fileset refid="output.files"/>
+    </tar>
+    <gzip src="out/${resume}.tar" zipfile="out/${resume}.tgz"/>
   </target>
   <target name="-zip" depends="convert" unless="options.tgz">
-     <zip destfile="${resume}.zip" basedir="."
-	  includes="${resume}.xml ${resume.filtered}.xml, ${resume}.txt,
-		    ${resume}.html, ${resume}.pdf"/>
+    <mkdir dir="out"/>
+    <zip destfile="out/${resume}.zip" basedir=".">
+      <fileset refid="output.files"/>
+    </zip>
   </target>
 <!-- 		Target Dispatch		-->
   <target name="dispatch" depends="compress"
-          description="Prepare the zip/tgz file for transmission.">
-     <mkdir dir="out"/>
-     <move file="${resume}.zip" todir="out" failonerror="false"/>
-     <move file="${resume}.tgz" todir="out" failonerror="false"/>
+          description="Notify the user that the build is complete."/>
+<!-- FIXME -->
   </target>
 
 
 <!-- 		Target clean 		-->
   <target description="Clean all build products." name="clean">
-    <delete dir="${orc_root}/incoming/" quiet="true"/>
-    <mkdir dir="${orc_root}/incoming/"/>
-    <copy todir="${orc_root}/incoming/">
-      <fileset dir="${www_root}">
+    <echo message="This target must be run from ORC's root directory."/>
+    <delete dir="./incoming/" quiet="true"/>
+    <mkdir dir="./incoming/"/>
+    <copy todir="./incoming/">
+      <fileset dir="../">
 	<include name="css/*"/>
       </fileset>
       <fileset dir=".">
 	<include name=".htaccess"/>
       </fileset>
     </copy>
-    <chmod dir="${orc_root}/incoming" perm="ugo+rwx"/>
+    <chmod dir="./incoming" perm="ugo+rwx"/>
   </target>
 </project>

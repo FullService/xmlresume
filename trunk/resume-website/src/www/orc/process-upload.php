@@ -4,18 +4,21 @@ require("orc-functions.php");
 #Set some global variables
 $time_stamp = time();
 $dirname = "orc" . $time_stamp;
-$WWW_ROOT = "/usr/home/mjm/www";
-$ORC_ROOT = $WWW_ROOT . "/orc";
-$XSL_ROOT = $WWW_ROOT . "/xsl";
-$absdirname  = $ORC_ROOT . "/incoming/" . $dirname;
+$pathdirname  = "./incoming/" . $dirname;
 
-$cp = "/usr/home/mjm/xmlresume/jar/fop.jar";
-$cp = $cp . ":/usr/home/mjm/xmlresume/jar/xerces.jar";
-$cp = $cp . ":/usr/home/mjm/xmlresume/jar/xalan.jar";
-$cp = $cp . ":/usr/home/mjm/xmlresume/jar/avalon-framework-cvs-20020315.jar";
-$cp = $cp . ":/usr/home/mjm/xmlresume/resume/src/java/";
+# Set the java classpath and the ant startup script location
+# (after building, this file will be in $HOME/htdocs/orc)
+$supporthome = "../../resume-support";
+$cp = $supporthome . "/fop.jar";
+$cp = $cp . ":" . $supporthome . "/xerces.jar";
+$cp = $cp . ":" . $supporthome . "/xalan.jar";
+$cp = $cp . ":" . $supporthome . "/batik.jar";
+$cp = $cp . ":" . $supporthome . "/avalon-framework-cvs-20020315.jar";
+$cp = $cp . ":" . $supporthome . "/xmlresume-filter.jar";
 $javaClassPath = $cp;
+$ant_cmd = $supporthome . "/ant/ant";
 
+include("../private/quicklinks.html");
 ?>
 <html>
 
@@ -44,15 +47,15 @@ converted successfully.</p>
 
 # report pre-build failure
 } else if ($arrReturn[0] == 1) {
-  unlink ($absdirname . "/params.xml");
-  unlink ($absdirname . "/resume.xml");
-  unlink ($absdirname . "/user.props");
-  unlink ($absdirname . "/country");
-  unlink ($absdirname . "/format");
-  unlink ($absdirname . "/lib");
-  unlink ($absdirname . "/output");
-  unlink ($absdirname . "/paper");
-  rmdir ($absdirname);
+  unlink ($pathdirname . "/params.xml");
+  unlink ($pathdirname . "/resume.xml");
+  unlink ($pathdirname . "/user.props");
+  unlink ($pathdirname . "/country");
+  unlink ($pathdirname . "/format");
+  unlink ($pathdirname . "/lib");
+  unlink ($pathdirname . "/output");
+  unlink ($pathdirname . "/paper");
+  rmdir ($pathdirname);
   print "<h1>ERROR</h1>\n";
   print "<p> $arrReturn[1] </p>";
 
