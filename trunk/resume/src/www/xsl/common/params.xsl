@@ -114,12 +114,12 @@ $Id$
   <xsl:param name="margin.bottom">1in</xsl:param>
 
   <!-- Space betwixt paragraphs -->
-  <xsl:param name="para.break.space">10pt</xsl:param>
+  <xsl:param name="para.break.space">1.0em</xsl:param>
 
   <!-- Half space; for anywhere line spacing is needed but should be less -->
   <!-- than a full paragraph break; between comma-separated skills lists, -->
   <!-- between job header and description/achievements. -->
-  <xsl:param name="half.space">5pt</xsl:param>
+  <xsl:param name="half.space">0.5em</xsl:param>
 
   <!-- Body text indent -->
   <xsl:param name="body.indent">2in</xsl:param>
@@ -144,7 +144,7 @@ $Id$
   <xsl:param name="text.indent.width">4</xsl:param>
 
   <!-- Space between bullet and its text in bulleted item -->
-  <xsl:param name="bullet.space">10pt</xsl:param>
+  <xsl:param name="bullet.space">1.0em</xsl:param>
 
   <!-- Fonts --> 
   <xsl:param name="footer.font.size">8pt</xsl:param>
@@ -188,7 +188,7 @@ $Id$
   <!-- Settings for lines around the header of the print resume -->
   <xsl:param name="header.line.length">3.0in</xsl:param>
   <xsl:param name="header.line.pattern">rule</xsl:param>
-  <xsl:param name="header.line.thickness">2pt</xsl:param>
+  <xsl:param name="header.line.thickness">0.2em</xsl:param>
 
   <!-- Format of interest descriptions. Available values are: -->
   <!-- 'single-line' for <para>s on same line as title, separated by dashes -->

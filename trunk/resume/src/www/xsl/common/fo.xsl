@@ -380,7 +380,7 @@ $Id$
       <xsl:if test="r:description">
         <fo:block
           space-after="{$para.break.space}"
-          provisional-distance-between-starts="5pt">
+          provisional-distance-between-starts="0.5em">
           <xsl:apply-templates select="r:description"/>
         </fo:block>
       </xsl:if>
