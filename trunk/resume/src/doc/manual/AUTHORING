@@ -92,7 +92,7 @@ Style
 
 5.  Keep <title>s on the same line as their parents:
 
-    |<section id="guide.intro"><title>Introduction</title>
+    |<section id="getting-started.intro"><title>Introduction</title>
     |  ...
     |</section>
 
