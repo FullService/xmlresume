@@ -49,6 +49,14 @@ $Id$
   <xsl:include href="../lib/common.xsl"/>
   <xsl:include href="../lib/string.xsl"/>
 
+  <xsl:template name="Heading">
+    <xsl:param name="Text">HEADING NOT DEFINED</xsl:param>
+
+    <h2 class="heading"><span class="headingText">
+      <xsl:copy-of select="$Text"/>
+    </span></h2>
+  </xsl:template>
+
   <xsl:template match="/">
     <html>
       <head>
@@ -69,10 +77,16 @@ $Id$
 	</link>
         <xsl:apply-templates select="r:resume/r:keywords" mode="header"/>
       </head>
-      <body class="resume">
+      <body>
 	<xsl:apply-templates select="r:resume"/>
       </body>
     </html>
+  </xsl:template>
+
+  <xsl:template match="r:resume">
+    <div class="resume">
+      <xsl:apply-templates/>
+    </div>
   </xsl:template>
 
   <!-- Suppress the keywords in the main body of the document -->
@@ -96,19 +110,20 @@ $Id$
 
   <!-- Output your name and the word "Resume". -->
   <xsl:template match="r:header" mode="standard">
-    <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
-    <p>
+    <div class="header">
+      <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
+
       <xsl:apply-templates select="r:address"/>
       <xsl:apply-templates select="r:contact"/>
-    </p>
+    </div>
   </xsl:template>
 
   <!-- Alternate formatting for the page header. -->
   <!-- Display the name and contact information in a single centered block. -->
   <!-- Since the 'align' attribute is deprecated, we rely on a CSS -->
-  <!-- style to center the headerBlock. -->
+  <!-- style to center the header block. -->
   <xsl:template match="r:header" mode="centered">
-    <div class="headerBlock" style="text-align: center">
+    <div class="header" style="text-align: center">
       <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
       <xsl:apply-templates select="r:address"/>
       <xsl:apply-templates select="r:contact"/>
@@ -116,6 +131,12 @@ $Id$
   </xsl:template>
 
   <!-- Contact information -->
+  <xsl:template match="r:contact">
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+
   <xsl:template match="r:contact/r:phone">
     <xsl:apply-templates select="@location"/>
     <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
@@ -280,13 +301,21 @@ $Id$
 
   <!-- Objective, with level 2 heading. -->
   <xsl:template match="r:objective">
-    <h2 class="objectiveHeading"><xsl:value-of select="$objective.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$objective.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Past jobs, with level 2 heading. -->
   <xsl:template match="r:history">
-    <h2 class="historyHeading"><xsl:value-of select="$history.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$history.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:apply-templates select="r:job"/>
   </xsl:template>
 
@@ -368,7 +397,11 @@ $Id$
 
   <!-- Degrees and stuff -->
   <xsl:template match="r:academics">
-    <h2 class="academicsHeading"><xsl:value-of select="$academics.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$academics.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:apply-templates select="r:degrees"/>
     <xsl:apply-templates select="r:note"/>
   </xsl:template>
@@ -436,7 +469,11 @@ $Id$
   <!-- Format the open-ended skills -->
 
   <xsl:template match="r:skillarea">
-    <h2 class="skillareaHeading"><xsl:apply-templates select="r:title"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:apply-templates select="r:skillset"/>
   </xsl:template>
 
@@ -521,7 +558,11 @@ $Id$
 
   <!-- Format publications -->
   <xsl:template match="r:pubs">
-    <h2 class="pubsHeading"><xsl:value-of select="$publications.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$publications.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <ul class="pubs">
       <xsl:apply-templates select="r:pub"/>
     </ul>
@@ -536,7 +577,11 @@ $Id$
 
   <!-- Memberships, with level 2 heading. -->
   <xsl:template match="r:memberships">
-    <h2 class="membershipsHeading"><xsl:apply-templates select="r:title"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <ul>
       <xsl:apply-templates select="r:membership"/>
     </ul>
@@ -562,11 +607,13 @@ $Id$
 
   <!-- Format interests section. -->
   <xsl:template match="r:interests">
-    <h2 class="interestsHeading">
-      <xsl:call-template name="Title">
-        <xsl:with-param name="Default" select="$interests.word"/>
-      </xsl:call-template>
-    </h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="Title">
+          <xsl:with-param name="Default" select="$interests.word"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
 
     <ul>
       <xsl:apply-templates select="r:interest"/>
@@ -598,11 +645,13 @@ $Id$
 
   <!-- Format awards section. -->
   <xsl:template match="r:awards">
-    <h2 class="awardsHeading">
-      <xsl:call-template name="Title">
-        <xsl:with-param name="Default" select="$awards.word"/>
-      </xsl:call-template>
-    </h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="Title">
+          <xsl:with-param name="Default" select="$awards.word"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
 
     <ul>
       <xsl:apply-templates select="r:award"/>
@@ -626,7 +675,11 @@ $Id$
 
   <!-- Format the misc info -->
   <xsl:template match="r:misc">
-    <h2 class="miscHeading"><xsl:value-of select="$miscellany.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$miscellany.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:apply-templates/>
   </xsl:template>
 
@@ -714,7 +767,11 @@ $Id$
 
   <!-- Format the referees -->
   <xsl:template match="r:referees">
-    <h2 class="refereesHeading"><xsl:value-of select="$referees.word"/></h2>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$referees.word"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
         <xsl:apply-templates select="r:referee"/>

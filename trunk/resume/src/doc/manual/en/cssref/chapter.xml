@@ -24,13 +24,6 @@
         </thead>
         <tbody>
           <row>
-            <entry><literal>academicsHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for
-              your academics.
-            </entry>
-          </row>
-          <row>
             <entry><literal>achievement</literal></entry>
             <entry>
               On the <sgmltag class="element">li</sgmltag> for a single skill.
@@ -47,13 +40,6 @@
             <entry><literal>award</literal></entry>
             <entry>
               On the <sgmltag class="element">li</sgmltag> for a single award.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>awardsHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for
-              your awards.
             </entry>
           </row>
           <row>
@@ -74,13 +60,6 @@
             <entry>
               On all HTML <sgmltag class="element">cite</sgmltag>s generated from
               all XML <sgmltag class="element">citation</sgmltag>s.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>contactHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for the
-              contact information.
             </entry>
           </row>
           <row>
@@ -131,17 +110,21 @@
             </entry>
           </row>
           <row>
-            <entry><literal>historyHeading</literal></entry>
+            <entry><literal>heading</literal></entry>
             <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for the
-              employment history.
+              On the <sgmltag class="element">h2</sgmltag> of &resume; section
+              headings, such as <quote>Professional Objective</quote> or
+              <quote>Employment History</quote>.
             </entry>
           </row>
           <row>
-            <entry><literal>job</literal></entry>
+            <entry><literal>headingText</literal></entry>
             <entry>
-              On the <sgmltag class="element">p</sgmltag> of the paragraph
-              generating a single employer entry.
+              On the <sgmltag class="element">span</sgmltag> that contains
+              heading text. This element is contained directly within the
+              <sgmltag class="element">h2</sgmltag> with the
+              <literal>heading</literal> class, and allows style to be applied
+              to just the heading text, instead of the whole heading line.
             </entry>
           </row>
           <row>
@@ -174,23 +157,9 @@
             </entry>
           </row>
           <row>
-            <entry><literal>membershipsHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> for the memberships
-              heading.
-            </entry>
-          </row>
-          <row>
             <entry><literal>membershipTitle</literal></entry>
             <entry>
               On the position title in a membership.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>miscHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> for the miscellany
-              heading.
             </entry>
           </row>
           <row>
@@ -204,13 +173,6 @@
             <entry>
               On the <sgmltag class="element">div</sgmltag> used as the admonition
               below the list of held degrees.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>objectiveHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for the
-              professional objective.
             </entry>
           </row>
           <row>
@@ -246,13 +208,6 @@
             </entry>
           </row>
           <row>
-            <entry><literal>pubsHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> heading the
-              publications.
-            </entry>
-          </row>
-          <row>
             <entry><literal>referee</literal></entry>
             <entry>
               On the <sgmltag class="element">div</sgmltag> of a referee.
@@ -282,12 +237,6 @@
             <entry><literal>skill</literal></entry>
             <entry>
               On the <sgmltag class="element">li</sgmltag> for a single skill.
-            </entry>
-          </row>
-          <row>
-            <entry><literal>skillareaHeading</literal></entry>
-            <entry>
-              On the <sgmltag class="element">h2</sgmltag> for a skill area.
             </entry>
           </row>
           <row>
