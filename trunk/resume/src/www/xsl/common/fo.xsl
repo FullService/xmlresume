@@ -38,9 +38,9 @@ $Id$
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
   <xsl:strip-space elements="*"/>
-  <xsl:preserve-space elements="address"/>
 
   <xsl:include href="params.xsl"/>
+  <xsl:include href="address.xsl"/>
 
   <!-- Format the document. -->
   <xsl:template match="/">
@@ -127,29 +127,132 @@ $Id$
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="address">
-    <xsl:choose>
-      <!-- Compatibility with older resumes using US address schema -->
-      <xsl:when test="street[following-sibling::*[1][self::city]]">
-	<fo:block>
-	  <fo:block><xsl:value-of select="street"/></fo:block>
-	  <fo:block>
-	    <xsl:value-of select="city"/>,
-	    <xsl:value-of select="state"/><xsl:text> </xsl:text><xsl:value-of select="zip"/>
-	  </fo:block>
+  <xsl:template match="address" mode="standard">
+
+     <!-- templates defined in address.xsl for setting standard fields -->
+     <xsl:variable name="AdminDivision">
+       <xsl:call-template name="AdminDivision"/>
+     </xsl:variable>
+     <xsl:variable name="CityDivision">
+       <xsl:call-template name="CityDivision"/>
+     </xsl:variable>
+     <xsl:variable name="PostCode">
+       <xsl:call-template name="PostCode"/>
+     </xsl:variable>
+
+     <fo:block>
+       <fo:block><xsl:value-of select="street"/></fo:block>
+       <xsl:if test="street2">
+         <fo:block><xsl:value-of select="street2"/></fo:block>
+       </xsl:if>
+       <xsl:if test="string-length($CityDivision) &gt; 0">
+         <fo:block><xsl:value-of select="$CityDivision"/></fo:block>
+       </xsl:if>
+       <fo:block>
+         <xsl:value-of select="city"/>
+	 <xsl:if test="string-length($AdminDivision) &gt; 0">
+	    <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
+	 </xsl:if>
+	 <xsl:if test="string-length($PostCode) &gt; 0">
+	    <xsl:text> </xsl:text><xsl:value-of select="$PostCode"/>
+	 </xsl:if>
 	</fo:block>
+	<xsl:if test="country">
+	   <fo:block>
+	   <xsl:value-of select="country"/>
+	   </fo:block>
+	</xsl:if>
+      </fo:block>
+   </xsl:template>
+
+  <xsl:template match="address" mode="european">
+
+     <!-- templates defined in address.xsl for setting standard fields -->
+     <xsl:variable name="AdminDivision">
+       <xsl:call-template name="AdminDivision"/>
+     </xsl:variable>
+     <xsl:variable name="CityDivision">
+       <xsl:call-template name="CityDivision"/>
+     </xsl:variable>
+     <xsl:variable name="PostCode">
+       <xsl:call-template name="PostCode"/>
+     </xsl:variable>
+
+     <fo:block>
+       <fo:block><xsl:value-of select="street"/></fo:block>
+       <xsl:if test="street2">
+         <fo:block><xsl:value-of select="street2"/></fo:block>
+       </xsl:if>
+       <xsl:if test="string-length($CityDivision) &gt; 0">
+         <fo:block><xsl:value-of select="$CityDivision"/></fo:block>
+       </xsl:if>
+       <fo:block>
+	 <xsl:if test="string-length($PostCode) &gt; 0">
+	    <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text>
+	 </xsl:if>
+         <xsl:value-of select="city"/>
+	</fo:block>
+	 <xsl:if test="string-length($AdminDivision) &gt; 0">
+	    <fo:block>
+	    <xsl:value-of select="$AdminDivision"/>
+	    </fo:block>
+	 </xsl:if>
+	 <xsl:if test="country">
+	    <fo:block>
+	    <xsl:value-of select="country"/>
+	    </fo:block>
+	 </xsl:if>
+      </fo:block>
+   </xsl:template>
+
+  <xsl:template match="address" mode="italian">
+
+     <fo:block>
+       <fo:block><xsl:value-of select="street"/></fo:block>
+       <xsl:if test="street2">
+         <fo:block><xsl:value-of select="street2"/></fo:block>
+       </xsl:if>
+       <fo:block>
+	 <xsl:if test="postalCode">
+	    <xsl:value-of select="postalCode"/><xsl:text> </xsl:text>
+	 </xsl:if>
+         <xsl:value-of select="city"/>
+	 <xsl:if test="province">
+	    <xsl:text> (</xsl:text><xsl:value-of select="province"/>
+	    <xsl:text>)</xsl:text>
+	 </xsl:if>
+	</fo:block>
+	 <xsl:if test="country">
+	    <fo:block>
+	    <xsl:value-of select="country"/>
+	    </fo:block>
+	 </xsl:if>
+      </fo:block>
+   </xsl:template>
+
+  <!-- Preserve line breaks within a free format address -->
+  <xsl:template match="address//text()">
+    <xsl:call-template name="PreserveLinebreaks">
+      <xsl:with-param name="Text" select="."/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="PreserveLinebreaks">
+    <xsl:param name="Text"/>
+    <xsl:choose>
+      <xsl:when test="contains($Text, '&#xA;')">
+         <xsl:value-of select="substring-before($Text, '&#xA;')"/>
+	 <fo:block/>
+	 <xsl:call-template name="PreserveLinebreaks">
+	   <xsl:with-param name="Text" select="substring-after($Text, '&#xA;')"/>
+	 </xsl:call-template>
       </xsl:when>
-      <!-- International (including US) addresses -->
       <xsl:otherwise>
-	<fo:block linefeed-treatment="preserve"><xsl:apply-templates/></fo:block>
+         <xsl:value-of select="$Text"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <!-- Line break within an address -->
-  <xsl:template match="break">
-    <fo:character character="&#xa;"/>
-  </xsl:template>
 
 
   <!-- Named template to format a single contact field *SE* -->

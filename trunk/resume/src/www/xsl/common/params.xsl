@@ -136,4 +136,10 @@ $Id$
   <!-- Set here or override on command line -->
   <xsl:param name="header.format">standard</xsl:param>
 
+  <!-- Format for address; available values are: -->
+  <!-- 'standard' for US/Canadian/UK style addresses -->
+  <!-- 'european' for European format (with postal code preceding city). -->
+  <!-- 'italian' for Italian format (postal code city (province) ). -->
+  <xsl:param name="address.format">standard</xsl:param>
+
 </xsl:stylesheet>

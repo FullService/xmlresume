@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-fr-params.xsl
-Parameters for French resumes.
+it-text.xsl
+Convert XML Resume into plain text using Italian terminology.
 
 Copyright (c) 2001 Sean Kelly
 All rights reserved.
@@ -36,24 +36,7 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
-  <xsl:param name="page.word">page</xsl:param>
-  <xsl:param name="contact.word">Information de Contact</xsl:param>
-  <xsl:param name="objective.word">Objectif Professionnel</xsl:param>
-  <xsl:param name="history.word">Exp&#x00e9;rience Professionnelle</xsl:param>
-  <xsl:param name="academics.word">Formation</xsl:param>
-  <xsl:param name="publications.word">Publications</xsl:param>
-  <xsl:param name="miscellany.word">Divers</xsl:param>
-  <xsl:param name="in.word">dans</xsl:param>
-  <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
-  <xsl:param name="by.word">par</xsl:param>
-  <xsl:param name="present.word">pr&#x00e9;sent</xsl:param>
-  <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
-  <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
-  <xsl:param name="url.word">URL</xsl:param>
-
-  <!-- default is European address formatting.  For countries other -->
-  <!-- than France (e.g. Canada) "standard" formatting may be more correct. -->
-  <xsl:param name="address.format">european</xsl:param>
+  <xsl:import href="common/text.xsl"/>
+  <xsl:import href="it-params.xsl"/>
 
 </xsl:stylesheet>

@@ -41,9 +41,9 @@ $Id$
   <xsl:output method="text" omit-xml-declaration="yes" indent="no"/>
   <xsl:output doctype-public="-//W3C//DTD HTML 4.0//EN"/>
   <xsl:strip-space elements="*"/>
-  <xsl:preserve-space elements="address break"/>
 
   <xsl:include href="params.xsl"/>
+  <xsl:include href="address.xsl"/>
 
   <xsl:template match="/">
 	  <xsl:apply-templates select="resume"/>
@@ -93,6 +93,31 @@ $Id$
     <!-- Continue with the rest -->
   </xsl:template>
   
+  <!-- Center a multi-line block of text -->
+  <xsl:template name="CenterBlock">
+    <xsl:param name="Width" select="80"/>
+    <xsl:param name="Text" />
+     <xsl:choose>
+        <xsl:when test="contains($Text,'&#xA;')">
+	  <xsl:call-template name="Center">
+            <xsl:with-param name="Text" select="substring-before($Text,'&#xA;')"/>
+	    <xsl:with-param name="Width" select="$Width"/>
+	  </xsl:call-template>
+          <xsl:call-template name="CenterBlock">
+	     <xsl:with-param name="Width" select="$Width"/>
+	     <xsl:with-param name="Text" select="substring-after($Text,'&#xA;')"/>
+          </xsl:call-template>
+       </xsl:when>
+       <xsl:otherwise>
+	  <xsl:call-template name="Center">
+            <xsl:with-param name="Text" select="$Text"/>
+	    <xsl:with-param name="Width" select="$Width"/>
+          </xsl:call-template>
+       </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Center a single line of text -->
   <xsl:template name="Center">
     <xsl:param name="Width" select="80"/>
     <xsl:param name="Text" />
@@ -267,7 +292,11 @@ $Id$
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:apply-templates select="address" mode="centered"/>
+    <xsl:call-template name="CenterBlock">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="address"/>
+      </xsl:with-param>
+    </xsl:call-template>
 
     <xsl:if test="contact/phone">
       <xsl:call-template name="Center">
@@ -307,7 +336,8 @@ $Id$
 <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
 <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="address" mode="standard"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="address"/> 
+      <xsl:call-template name="NewLine"/>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
       <xsl:if test="contact/phone">
@@ -341,58 +371,100 @@ $Id$
   <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <xsl:template match="address" mode="centered">
-    <xsl:choose>
-      <!-- Compatibility with older resumes using US address schema -->
-      <xsl:when test="street[following-sibling::*[1][self::city]]">
-	<xsl:call-template name="Center">
-	  <xsl:with-param name="Text">
-	     <xsl:value-of select="normalize-space(street)"/>
-	  </xsl:with-param>
-	</xsl:call-template>
-	<xsl:call-template name="Center">
-	  <xsl:with-param name="Text">
-	    <xsl:value-of select="normalize-space(city)"/>
-	    <xsl:text>, </xsl:text><xsl:value-of select="normalize-space(state)"/>
-	    <xsl:text> </xsl:text>
-	    <xsl:value-of select="normalize-space(zip)"/><xsl:call-template name="NewLine"/>
-	  </xsl:with-param>
-	</xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-	<xsl:variable name="text">
-	  <xsl:apply-templates/>
-	</xsl:variable>
-	<xsl:call-template name="Center">
-	  <xsl:with-param name="Text">
-	    <xsl:value-of select="normalize-space($text)"/>
-	  </xsl:with-param>
-	</xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
   <xsl:template match="address" mode="standard">
-    <xsl:choose>
-      <!-- Compatibility with older resumes using US address schema -->
-      <xsl:when test="street[following-sibling::*[1][self::city]]">
-	<xsl:value-of select="normalize-space(street)"/><xsl:call-template name="NewLine"/>
-	<xsl:value-of select="normalize-space(city)"/>
-	<xsl:text>, </xsl:text><xsl:value-of select="normalize-space(state)"/>
-	<xsl:text> </xsl:text>
-	<xsl:value-of select="normalize-space(zip)"/><xsl:call-template name="NewLine"/>
-      </xsl:when>
-      <xsl:otherwise>
-	<xsl:variable name="text">
-	  <xsl:apply-templates/>
-	</xsl:variable>
-	<xsl:value-of select="normalize-space($text)"/>
-      </xsl:otherwise>
-    </xsl:choose>
+     <xsl:variable name="AdminDivision">
+       <xsl:call-template name="AdminDivision"/>
+     </xsl:variable>
+     <xsl:variable name="CityDivision">
+       <xsl:call-template name="CityDivision"/>
+     </xsl:variable>
+     <xsl:variable name="PostCode">
+       <xsl:call-template name="PostCode"/>
+     </xsl:variable>
+
+     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="street2">
+       <xsl:value-of select="normalize-space(street2)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+     <xsl:if test="string-length($CityDivision) &gt; 0">
+       <xsl:value-of select="$CityDivision"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+     <xsl:value-of select="normalize-space(city)"/>
+     <xsl:if test="string-length($AdminDivision) &gt; 0">
+       <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
+     </xsl:if>
+     <xsl:if test="string-length($PostCode) &gt; 0">
+       <xsl:text> </xsl:text>
+       <xsl:value-of select="$PostCode"/>
+     </xsl:if> 
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="country">
+       <xsl:value-of select="normalize-space(country)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="break">
-    <xsl:text> / </xsl:text>
+  <xsl:template match="address" mode="european">
+
+     <xsl:variable name="AdminDivision">
+       <xsl:call-template name="AdminDivision"/>
+     </xsl:variable>
+     <xsl:variable name="CityDivision">
+       <xsl:call-template name="CityDivision"/>
+     </xsl:variable>
+     <xsl:variable name="PostCode">
+       <xsl:call-template name="PostCode"/>
+     </xsl:variable>
+
+     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="street2">
+       <xsl:value-of select="normalize-space(street2)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+     <xsl:if test="string-length($CityDivision) &gt; 0">
+       <xsl:value-of select="$CityDivision"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+     <xsl:if test="string-length($PostCode) &gt; 0">
+       <xsl:value-of select="$PostCode"/>
+       <xsl:text> </xsl:text>
+     </xsl:if>
+     <xsl:value-of select="normalize-space(city)"/>
+     <xsl:if test="string-length($AdminDivision) &gt; 0">
+       <xsl:call-template name="NewLine"/>
+       <xsl:value-of select="$AdminDivision"/>
+     </xsl:if>
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="country">
+       <xsl:value-of select="normalize-space(country)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="address" mode="italian">
+     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="street2">
+       <xsl:value-of select="normalize-space(street2)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
+     <xsl:if test="postalCode">
+       <xsl:value-of select="normalize-space(postalCode)"/>
+       <xsl:text> </xsl:text>
+     </xsl:if>
+     <xsl:value-of select="normalize-space(city)"/>
+     <xsl:if test="province">
+       <xsl:text> (</xsl:text><xsl:value-of select="province"/><xsl:text>)</xsl:text>
+     </xsl:if>
+     <xsl:call-template name="NewLine"/>
+     <xsl:if test="country">
+       <xsl:value-of select="normalize-space(country)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:if>
   </xsl:template>
 
   <!-- Past jobs, with level 2 heading. -->

@@ -79,35 +79,20 @@ $Id$
 <!-- mailing standards.  To insert a line break, put a <break/> -->
 <!-- element, PLUS a newline in your document.  Mark up any other -->
 <!-- postal items with the element from addrElements. -->
-<!ENTITY % addrElements "street | city | state | zip | postalCode | number | country | locality | house | prefecture | burrough | parish | building | floor | room | flat | town | village | district | farm | community | society | metroplex | county | apartment | suite | unit | break">
-<!ELEMENT address (#PCDATA | %addrElements;)*>
+<!ENTITY % addrElements "street | street2 | suburb | ward | city | state | province | county | prefecture | zip | postalCode | country">
+<!ELEMENT address (#PCDATA | %addrElements; | break)*>
 <!ELEMENT street (#PCDATA)>
+<!ELEMENT street2 (#PCDATA)>
+<!ELEMENT suburb (#PCDATA)>
+<!ELEMENT ward (#PCDATA)>
 <!ELEMENT city (#PCDATA)>
 <!ELEMENT state (#PCDATA)>
+<!ELEMENT province (#PCDATA)>
+<!ELEMENT county (#PCDATA)>
+<!ELEMENT prefecture (#PCDATA)>
 <!ELEMENT zip (#PCDATA)>
 <!ELEMENT postalCode (#PCDATA)>
-<!ELEMENT number (#PCDATA)>
 <!ELEMENT country (#PCDATA)>
-<!ELEMENT locality (#PCDATA)>
-<!ELEMENT house (#PCDATA)>
-<!ELEMENT prefecture (#PCDATA)>
-<!ELEMENT burrough (#PCDATA)>
-<!ELEMENT parish (#PCDATA)>
-<!ELEMENT building (#PCDATA)>
-<!ELEMENT floor (#PCDATA)>
-<!ELEMENT room (#PCDATA)>
-<!ELEMENT flat (#PCDATA)>
-<!ELEMENT town (#PCDATA)>
-<!ELEMENT village (#PCDATA)>
-<!ELEMENT district (#PCDATA)>
-<!ELEMENT farm (#PCDATA)>
-<!ELEMENT community (#PCDATA)>
-<!ELEMENT society (#PCDATA)>
-<!ELEMENT metroplex (#PCDATA)>
-<!ELEMENT county (#PCDATA)>
-<!ELEMENT apartment (#PCDATA)>
-<!ELEMENT suite (#PCDATA)>
-<!ELEMENT unit (#PCDATA)>
 <!ELEMENT break EMPTY>
 <!ELEMENT contact (phone?, email?, url?)>
 <!ELEMENT phone (#PCDATA)>
