@@ -4,5 +4,5 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:import href="../format/fo.xsl"/>
   <xsl:import href="../paper/a4.xsl"/>
-  <xsl:import href="../country/it.xsl"/>
+  <xsl:import href="../country/es.xsl"/>
 </xsl:stylesheet>
