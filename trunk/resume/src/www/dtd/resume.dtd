@@ -46,7 +46,7 @@ $Id$
 <!--end of ISOlat1.module-->]]>
 
 <!-- Inline elements -->
-<!ENTITY % inlines "#PCDATA | emphasis | citation | url">
+<!ENTITY % inlines "#PCDATA | emphasis | citation | url | link">
 
 <!-- Sections of a resume -->
 <!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|referees|keywords|memberships)">
@@ -123,6 +123,8 @@ $Id$
 <!ELEMENT phone (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
 <!ELEMENT url (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
+<!ATTLIST link href CDATA #IMPLIED>
 
 <!-- Your lifelong objective. -->
 <!ELEMENT objective (para+)>
@@ -133,7 +135,7 @@ $Id$
 <!ELEMENT job (jobtitle, employer, period, description?, projects?, achievements?)>
 <!ATTLIST job id ID #IMPLIED>
 <!ELEMENT jobtitle (#PCDATA)>
-<!ELEMENT employer (#PCDATA)>
+<!ELEMENT employer (%inlines;)>
 <!ATTLIST employer id ID #IMPLIED>
 <!ELEMENT period (from, to)>
 <!ELEMENT from (date | present)>

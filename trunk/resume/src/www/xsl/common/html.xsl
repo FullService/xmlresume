@@ -601,6 +601,16 @@ $Id$
     </code>
   </xsl:template>
 
+  <!-- link -> make link from href attribute -->
+  <xsl:template match="link">
+    <a>
+      <xsl:attribute name="href">
+	<xsl:value-of select="@href"/>
+      </xsl:attribute>
+      <xsl:value-of select="."/>
+    </a>
+  </xsl:template>
+
   <!-- citation -> cite -->
   <xsl:template match="r:citation">
     <cite class="citation"><xsl:value-of select="."/></cite>
