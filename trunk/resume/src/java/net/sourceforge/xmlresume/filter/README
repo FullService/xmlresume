@@ -1,0 +1,102 @@
+Category Filter for XMLResume
+Author: Mark Miller <joup@bigfoot.com>
+
+-------------------------------------------------------------------------------
+Note (by Bruce Christensen)
+
+This file refers to the "categories" attribute. I've renamed this to "targets".
+Also, the "and" operator has been changed from colon (:) to plus (+).
+-------------------------------------------------------------------------------
+
+PURPOSE:
+--------
+
+To allow a user to maintain a single, *complete* resume.xml file that 
+represents a complete career/academic record, while allowing for 
+the simple creation of targetted resumes.
+
+Consider the following snippet of a resume:
+
+          <skills>
+            <skill>C/C++</skill>
+            <skill>Perl</skill>
+            <skill>Eiffel</skill>
+            <skill>MIPS Assembly</skill>
+            <skill>VHDL</skill>
+          </skills>
+
+The problem here is that the user needs to maintain a record of each 
+skill, but doesn't need to tell a potential employer about all of those 
+skills.  The user can thus selectively comment out the resume, but this 
+can be tedious.  Instead, the user can use attributes to describe which 
+categories of resume a given element applies to:
+
+          <skills>
+            <skill categories="cs">C/C++</skill>
+            <skill categories="admin">Perl</skill>
+            <skill categories="cs:academic">Eiffel</skill>
+            <skill categories="cs,hw">MIPS Assembly</skill>
+            <skill categories="hw">VHDL</skill>
+          </skills>
+...
+
+This way, the user can create a "hw" (hardware) resume that doesn't
+include her vast knowledge of perl, without having to edit her resume each
+time.  Skills that may apply to more than one category can be assigned to
+multiple categories using a comma (,) or a pipe (|).  Skills that apply
+only to a conjunction of resumes (eg, an academic resume in the field of
+computer science) can be denoted by a colon (:) (I tried ampersand 
+initially, but that is a special character for xml).
+
+TECHNICAL OVERVIEW:
+-------------------
+This package contains three classes
+
+* Filter, a front-end class that only exists to run main()
+
+* FileWriterHandler (extends org.xml.sax.helpers.DefaultHandler), a class 
+that writes events to a file
+
+* CategoryFilter (extends org.xml.sax.helpers.XMLFilterImpl), which 
+filters a resume based on the "categories" attribute of its elements
+
+USING:
+------
+
+java net.sourceforge.xmlresume.filter.Filter [--verbose] -in resume.xml \
+-out resume.tmp [category1 [category2 [...]]]
+
+COMMENTS:
+---------
+
+If an element has no categories attribute, it will be included by 
+default-- this should reduce the amount of extra typing people do.  I 
+suppose this behavior could be enabled/disabled by a command-line option, 
+but I haven't seen the value of that yet.
+
+Most of the time, elements will be assigned to categories using logical 
+OR-- for example, having knowledge of Perl applies to programming jobs as 
+well as IT/sysadmin jobs, so it should be included if either "cs" or 
+"admin" is listed on the command line.
+
+Less common (I think) is the case where logical AND is required.  This is 
+where the ":" comes in, and it's rather clunky.  I thought about using "^" 
+as well, but basically flipped a coin and chose ":".  Comments/suggestions 
+appreciated.
+
+To make the parsing simple, I don't consider any sort of grouping 
+hierarchy such as parentheses or brackets.  Instead, a compound boolean 
+statement is parsed in disjunctive form-- for example, 
+
+A:B:C|D|E:F|G:H|
+
+is parsed as
+
+((A AND B AND C) OR D OR (E AND F) OR (G AND H))
+
+Since I doubt a user will really need anything as complex as the above
+example, I went with this simple scheme, and it works fairly well for me.
+
+My choice of "categories" as the default attribute was also arbitrary, 
+other possibilities were includeIn, resumeTypes, targets, ...  If anyone 
+feels strongly about one or the other, please let me know.
