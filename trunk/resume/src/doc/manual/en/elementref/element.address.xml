@@ -60,6 +60,18 @@
           </listitem>
         </varlistentry>
 
+        <varlistentry>
+          <term><sgmltag class="attribute">format</sgmltag></term>
+          <listitem>
+            <para>
+              The address format. This attribute specifies the format of an
+              address, and overrides the global <link
+              linkend="param.address.format"><parameter>address.format</parameter></link>
+              parameter for each address that it appears in.
+            </para>
+          </listitem>
+        </varlistentry>
+
       </variablelist>
     </refsect2>
 
