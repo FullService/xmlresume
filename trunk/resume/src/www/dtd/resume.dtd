@@ -227,8 +227,8 @@ chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
 <!ELEMENT award (title, organization?, date?, description?)>
 
 <!-- Security Clearances -->
-<!ELEMENT clearances (clearance+)>
-<!ELEMENT clearance (title?, level, organization?, date?, note?)>
+<!ELEMENT clearances (title?, clearance+)>
+<!ELEMENT clearance (level, organization?, date?, note?)>
 
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>
