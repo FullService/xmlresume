@@ -481,7 +481,7 @@ $Id$
   </xsl:template>
 
   <!-- Format skills as a comma separated list. -->
-  <xsl:template match="skills" mode="comma">
+  <xsl:template match="r:skills" mode="comma">
     <xsl:for-each select="r:skill[position() != last()]">
       <xsl:apply-templates/><xsl:text>, </xsl:text>
     </xsl:for-each>
