@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>XML Resume Library NEWS</title>
+  </head>
+  <body>
+    <h1>XML R&eacute;sum&eacute; Library News</h1>
+
+    <p>The XML R&eacute;sum&eacute; Library copyrighted, &copy;
+      2000-2001 by Sean Kelly.  See the <a
+      href="../copying/index.html">copying conditions, license, and
+      disclaimer</a>.
+    </p>
+
+    <p>This document lists user-visible changes to the library.
+    </p>
+
+    <h2>Release 1.2.4</h2>
+
+    <p>Bugs fixed:</p>
+    <ul>
+      <li>Old style US addresses in HTML were coming out
+	"City,State".  Now there's a space after the comma:
+	"City,&nbsp;State".
+      </li>
+      <li>The <code>&lt;dayOfMonth&gt;</code> was missing a content
+	model; it has one now (PCDATA).
+      </li>
+      <li><code>&lt;fullDate&gt;</code> wasn't referenced anywhere.
+	It's gone.
+      </li>
+      <li>The plain text stylesheet <code>text.xsl</code>
+	contained an invalid template that Xalan allowed but 4Suite
+	correctly disallowed.  That's fixed now.
+      </li>
+      <li>The HTML output explicitly sets the character set to
+	UTF-8.
+      </li>
+      <li>Bullet lists in the text formatting have been greatly
+	improved.
+      </li>
+      <li>No more blank labels for telephone or email when there's no
+	telephone or email specified.
+      </li>
+      <li>The homepage URL now appears in the HTML formatting.
+      </li>
+    </ul>
+    <p>New features:</p>
+    <ul>
+      <li>Each job in the employment history may now contain a list of
+	achievements, which become formatted as a bullet-list.
+      </li>
+      <li>Achievements and skills now use the same markup model as
+	plain paragraphs, enabling richer semantics.
+      </li>
+      <li>Real en-dashes appear in periods of employment
+	in the FO rendering.
+      </li>
+      <li>Hyphens in the FO rendering separating employer, job title,
+	and period of employment use bullets now (those hyphens looked
+	funny).
+      </li>
+      <li>HTML output now includes Cascading Stylesheet (CSS) "class"
+	attributes, enabling you to customize the HTML appearance of
+	your r&eacute;sum&eacute;.  Two sample stylesheets,
+	<code>resume1.css</code> and <code>resume2.css</code> are in
+	the <code>css</code> directory.
+      </li>
+    </ul>
+
+    <h2>Release 1.2.3</h2>
+
+    <ul>
+      <li><em>Internationalization support</em>.  The DTD and
+	the stylesheets support formatting international addresses
+	with a rich set of metadata.  See the
+	<code>example2.xml</code> r&eacute;sum&eacute; for an
+	example.  Older r&eacute;sum&eacute;s using the US address
+	schema are still compatible.  <strong>Note that FOP 0.19.0
+	does not handle line breaks in addresses correctly yet.  Use
+	XEP from <a href="http://www.renderx.com/">RenderX</a> until
+	the Apache XML Project can fix this bug!</strong>
+      </li>
+
+      <li><em>Localization support</em>.  We've replaced
+	hard-coded words like "Professional Objective" and
+	"r&eacute;sum&eacute;" as well as paper sizes and margins with
+	configurable parameters.  Driver files set these parameters
+	and format r&eacute;sum&eacute;s appropriately.  Support for
+	US English, UK English, and French are included.
+      </li>
+
+      <li><em>Date of birth</em>.  The DTD supports a
+	<code>&lt;birth&gt;</code> element to record date of birth.
+	This element is currently not formatted.
+      </li>
+    </ul>
+
+    <h2>Release 1.2.2</h2>
+
+    <p>This release lets you specify rich content for publications in
+      addition to free-form paragraphs, including
+      <code>&lt;artTitle&gt;</code>, <code>&lt;bookTitle&gt;</code>,
+      <code>&lt;author&gt;</code>, <code>&lt;pubDate&gt;</code>,
+      <code>&lt;publisher&gt;</code>, and
+      <code>&lt;pageNums&gt;</code>.  The stylesheets will format
+      these elements appropriately.
+    </p>
+
+    <h2>Release 1.2.1</h2>
+
+    <ul>
+      <li>Now compatible with <a
+	  href="http://xml.apache.org/fop/index.html">FOP 1.19.0</a>.
+	  You can still expect to see warning messages from FOP, but
+	  these are harmless.
+      </li>
+      <li>Acute accents now appear in the word "r&eacute;sum&eacute;"
+	in the running footer in the FO output.
+      </li>
+
+    </ul>
+
+    <h2>Release 1.2.0</h2>
+
+    <p>The news document is new in this release, 1.2.0.
+    </p>
+
+  </body>
+</html>
