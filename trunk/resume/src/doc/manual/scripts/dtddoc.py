@@ -9,6 +9,8 @@ import re
 import getopt
 import glob
 
+from resumedoc import make_relative_path
+
 """Creates a set of skeleton documentation files for XML Resume DTD elements and
 maintains and checks those files"""
 
@@ -31,13 +33,13 @@ def attrs_to_docbook(elem):
         return "<para>None</para>"
 
     table = """
-<informaltable frame='all'>
-  <tgroup cols='3' align='left' colsep='1' rowsep='1'>
-    <colspec colname='name'/>
-    <colspec colname='type'/>
-    <colspec colname='default'/>
+<informaltable frame="all" pgwide="1">
+  <tgroup cols="3" align="left" colsep="1" rowsep="1">
+    <colspec colname="name"/>
+    <colspec colname="type"/>
+    <colspec colname="default"/>
     <thead>
-      <row>
+      <row valign="top">
       <entry>Name</entry>
       <entry>Type</entry>
       <entry>Default</entry>
@@ -47,18 +49,36 @@ def attrs_to_docbook(elem):
 """
 
     for attr_name in attrs:
-        table = table + "<row>"
+        table = table + """<row valign="top">"""
         attr = elem.get_attr(attr_name)        
 
         # Name
         table = table + "<entry>%s</entry>" % attr_name
         # Type
-        table = table + "<entry>%s</entry>" % attr.get_type()
+        table = table + "<entry>"
+        if type(attr.get_type()) == type([]):
+            table = table + "<para><type>Enumeration:</type>"
+            table = table + """<simplelist columns="1">"""
+
+            for val in attr.get_type():
+                table = table + "<member>"
+                table = table + """<sgmltag class="attvalue">%s</sgmltag>""" % val
+                table = table + "</member>"
+
+            table = table + "</simplelist>"
+            table = table + "</para>"
+        else:
+            table = table + str(attr.get_type())
+        table = table + "</entry>"
         # Default
         if attr.get_default() == None:
-            table = table + "<entry>None</entry>"
+            table = table + "<entry><emphasis>None</emphasis></entry>"
         else:
-            table = table + "<entry>%s</entry>" % attr.get_default()
+            table = table + "<entry>"
+            table = table + """<sgmltag class="attvalue">%s</sgmltag>""" % (
+                attr.get_default()
+                )
+            table = table + "</entry>"
 
         table = table + "</row>"
 
@@ -375,16 +395,18 @@ if ops == []:
 for op in ops:
     if "list-missing" == op:
 
-        print "Elements in %s for which this is no file matching %s:" % (
-            dtd_filename, pattern)
+        print "Elements in %s for which there is no file matching %s:" % (
+            make_relative_path(os.curdir,dtd_filename),
+            make_relative_path(os.curdir,pattern),
+            )
 
         missing_file_elements = find_missing_elements(elems, pattern)
 
         if len(missing_file_elements):
             for elem in missing_file_elements:
-                print elem
-        else:
-            print "(None)"
+                print "  " + elem
+#        else:
+#            print "(None)"
 
     elif "create-missing" == op:
         template_text = open(template_file, "r").read()
@@ -426,45 +448,48 @@ for op in ops:
     elif "list-unknown" == op:
 
         print "Files matching %s for which there is no element in %s:" % (
-            pattern, dtd_filename)
+            make_relative_path(os.curdir,pattern),
+            make_relative_path(os.curdir,dtd_filename),
+            )
 
         unknown_files = find_unknown_files(elems, pattern)
 
         if len(unknown_files):
             for file in unknown_files:
-                print file
-        else:
-            print "(None)"
+                print "  " + file
+#        else:
+#            print "(None)"
 
     elif "filter" == op:
         for elem_name in elems:
             in_file = re.sub(r"\*", elem_name, pattern)
             out_file = build_dir + os.sep + os.path.basename(in_file)
 
-            elem = dtd.get_elem(elem_name)
+            if os.path.exists(in_file):
+                elem = dtd.get_elem(elem_name)
 
-            replacements = {}
-            replacements["CONTENT_MODEL"] = content_model_to_docbook(
-                elem.get_content_model(),
-                id_prefix,
-                )
-            replacements["ATTRIBUTES_TABLE"] = attrs_to_docbook(elem)
-            replacements["PARENTS"] = parents_to_docbook(
-                elem_name,
-                parents,
-                id_prefix,
-                )
-
-            in_text = open(in_file, "r").read()
-
-            out_text = in_text
-            for token in replacements.keys():
-                out_text = re.sub(
-                    r"<\$"+token+r"\$>",
-                    replacements[token],
-                    out_text,
+                replacements = {}
+                replacements["CONTENT_MODEL"] = content_model_to_docbook(
+                    elem.get_content_model(),
+                    id_prefix,
+                    )
+                replacements["ATTRIBUTES_TABLE"] = attrs_to_docbook(elem)
+                replacements["PARENTS"] = parents_to_docbook(
+                    elem_name,
+                    parents,
+                    id_prefix,
                     )
 
-            out = open(out_file, "w")
-            out.write(out_text)
-            out.close()
+                in_text = open(in_file, "r").read()
+
+                out_text = in_text
+                for token in replacements.keys():
+                    out_text = re.sub(
+                        r"<\$"+token+r"\$>",
+                        replacements[token],
+                        out_text,
+                        )
+
+                out = open(out_file, "w")
+                out.write(out_text)
+                out.close()
