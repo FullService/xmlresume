@@ -18,7 +18,9 @@ mkdir ./doc
 #                @filelist
 
 javadoc -sourcepath ./ -d ./doc \
-	-windowtitle 'XMLResume Category Filter API Specification' \
+	 -private \
+	-windowtitle 'XMLResume Internal Java API Specification' \
          -doctitle 'XMLResume<sup><font size="-2">C</font>\
           </sup> API Specification'\
-	*.java
+	*/*.java
+tar zcf doc.tgz doc
