@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Help VIM: <!DOCTYPE DocBook -->
 
-<refentry id="element.email">
+<refentry id="element.pager">
   <refnamediv>
-    <refname>email</refname>
-    <refpurpose>An e-mail address</refpurpose>
+    <refname>pager</refname>
+    <refpurpose>A pager telephone number</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -18,13 +18,16 @@
 
   <refsect1><title>Description</title>
     <para>
-      The <sgmltag class="element">email</sgmltag> element specifies a single
-      e-mail address.
+      The <sgmltag class="element">pager</sgmltag> element contains a
+      telephone number that can be used to connect to a pager. The phone number
+      is not required to be in a specific format. (See <link
+      linkend="element.phone"><sgmltag class="element">phone</sgmltag></link>
+      for examples of numbers.)
     </para>
 
     <refsect2><title>Parents</title>
       <para>
-        <sgmltag class="element">email</sgmltag> may be contained in these
+        <sgmltag class="element">pager</sgmltag> may be contained in these
         elements:
         <?resumevar PARENTS?>
       </para>
@@ -35,10 +38,11 @@
       <variablelist>
 
         <varlistentry>
-          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <term><sgmltag class="attribute">id</sgmltag></term>
           <listitem>
             <para>
-              DESCRIPTION
+              A string used to uniquely identify a ELEMENT. The ELEMENT may
+              then be referred to by this identifier.
             </para>
           </listitem>
         </varlistentry>
@@ -52,9 +56,9 @@
   <refsect1><title>See Also</title>
     <para>
       <simplelist type="inline">
+        <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
         <member><link linkend="element.fax"><sgmltag class="element">fax</sgmltag></link></member>
-        <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
-        <member><link linkend="element.url"><sgmltag class="element">url</sgmltag></link></member>
+        <member><link linkend="element.phone"><sgmltag class="element">phone</sgmltag></link></member>
       </simplelist>.
     </para>
   </refsect1>
@@ -62,10 +66,11 @@
   <refsect1><title>Examples</title>
 
     <informalexample><programlisting><![CDATA[
-<contact>
-  <email>john@johnny.bob</email>
-  <phone>555-555-1212</phone>
-</contact>
+<pager>456-145-4468</pager>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<pager>736.272.4673 x 235</pager>
     ]]></programlisting></informalexample>
 
   </refsect1>

@@ -181,6 +181,12 @@ $Id$
     <br/>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:pager">
+    <xsl:value-of select="$pager.word"/><xsl:text>: </xsl:text>
+    <xsl:apply-templates/>
+    <br/>
+  </xsl:template>
+
   <xsl:template match="r:contact/r:email">
     <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
     <a href="mailto:{.}">

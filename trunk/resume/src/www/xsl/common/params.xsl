@@ -79,6 +79,7 @@ $Id$
   <!-- Word to use for phone, email, and URL for contact information. -->
   <xsl:param name="phone.word">Phone</xsl:param>
   <xsl:param name="fax.word">Fax</xsl:param>
+  <xsl:param name="pager.word">Pager</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
 

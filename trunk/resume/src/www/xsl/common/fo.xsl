@@ -318,6 +318,17 @@ $Id$
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:pager">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:value-of select="$pager.word"/>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template match="r:contact/r:email">
     <xsl:call-template name="contact">
       <xsl:with-param name="label">

@@ -77,6 +77,7 @@
         <member><link linkend="element.address"><sgmltag class="element">address</sgmltag></link></member>
         <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
         <member><link linkend="element.fax"><sgmltag class="element">fax</sgmltag></link></member>
+        <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
       </simplelist>.
     </para>
   </refsect1>

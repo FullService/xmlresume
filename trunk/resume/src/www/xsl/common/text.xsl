@@ -192,6 +192,12 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:pager">
+    <xsl:value-of select="$pager.word"/><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
   <xsl:template match="r:contact/r:email">
     <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
     <xsl:value-of select="."/>

@@ -55,6 +55,7 @@
     <para>
       <simplelist type="inline">
         <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
+        <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
         <member><link linkend="element.phone"><sgmltag class="element">phone</sgmltag></link></member>
       </simplelist>.
     </para>
