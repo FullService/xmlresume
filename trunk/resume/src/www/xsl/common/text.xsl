@@ -46,7 +46,6 @@ $Id$
   <xsl:include href="params.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
-
   <xsl:include href="string.xsl"/>
 
   <xsl:template match="/">
@@ -100,15 +99,15 @@ $Id$
   <xsl:template match="r:header">
     <xsl:choose>
     <xsl:when test="$header.format = 'centered'">
-       <xsl:call-template name="centered.header"/>
+      <xsl:apply-templates select="." mode="centered"/>
     </xsl:when>
     <xsl:otherwise>
-       <xsl:call-template name="standard.header"/>
+      <xsl:apply-templates select="." mode="standard"/>
     </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="centered.header">
+  <xsl:template match="r:header" mode="centered">
     <xsl:call-template name="Center">
       <xsl:with-param name="Text">
 	<xsl:apply-templates select="r:name"/>
@@ -121,33 +120,30 @@ $Id$
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:if test="contact/phone">
+    <xsl:if test="r:contact/r:phone">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
-        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="r:contact/r:phone"/>
+          <xsl:apply-templates select="r:contact/r:phone"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
     <xsl:if test="r:contact/r:email">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
-        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:email"/>
+          <xsl:apply-templates select="r:contact/r:email"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
     <xsl:if test="r:contact/r:url">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
-        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:url"/>
+          <xsl:apply-templates select="r:contact/r:url"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template name="standard.header">
+  <xsl:template match="r:header" mode="standard">
     <!-- Your name, address, and stuff. -->
    <xsl:call-template name="Center">
    <xsl:with-param name="Text">
@@ -156,26 +152,25 @@ $Id$
       <xsl:value-of select="$resume.word"/>
    </xsl:with-param>
    </xsl:call-template>
-<xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
-<xsl:call-template name="NewLine"/>
+
+    <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
+    <xsl:call-template name="NewLine"/>
+
       <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="r:address"/> 
       <xsl:call-template name="NewLine"/>
 
-      <!-- Don't print phone/email labels if fields are empty. *SE -->
-      <xsl:if test="contact/phone">
-        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="r:contact/r:phone"/>
+    <!-- Don't print phone/email labels if fields are empty. *SE* -->
+    <xsl:if test="r:contact/r:phone">
+      <xsl:apply-templates select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:if test="r:contact/r:email">
-        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:email"/>
+      <xsl:apply-templates select="r:contact/r:email"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:if test="r:contact/r:url">
-        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:url"/>
+      <xsl:apply-templates select="r:contact/r:url"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
   </xsl:template>
@@ -194,6 +189,23 @@ $Id$
   <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <!-- Contact information -->
+  <xsl:template match="r:contact/r:phone">
+    <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:email">
+    <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:url">
+    <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/>
+  </xsl:template>
+
+  <!-- Addresses, in various modes -->
   <xsl:template match="r:address" mode="standard">
      <xsl:variable name="AdminDivision">
        <xsl:call-template name="AdminDivision"/>
@@ -725,22 +737,23 @@ $Id$
   <xsl:template match="r:referee">
     <!-- Your name, address, and stuff. -->
       <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="r:address"/><xsl:call-template name="NewLine"/>
+
+      <xsl:if test="r:address">
+        <xsl:apply-templates select="r:address"/>
+        <xsl:call-template name="NewLine"/>
+      </xsl:if>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
       <xsl:if test="r:contact/r:phone">
-        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="r:contact/r:phone"/>
+        <xsl:apply-templates select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:if test="r:contact/r:email">
-        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:email"/>
+        <xsl:apply-templates select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:if test="r:contact/r:url">
-        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="r:contact/r:url"/>
+        <xsl:apply-templates select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:call-template name="NewLine"/>
