@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.employer">
+  <refnamediv>
+    <refname>employer</refname>
+    <refpurpose>A name of an employer</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">employer</sgmltag> element specifies the
+      name of a person, company, or other entity for whom a person works or
+      has worked.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">employer</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify an employer. The employer may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.institution"><sgmltag class="element">institution</sgmltag></link></member>
+        <member><link linkend="element.organization"><sgmltag class="element">organization</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<job>
+  <jobtitle>Angelfish Fitness Trainer</jobtitle>
+  <employer>Fish Fitness Systems, Inc.</employer>
+  <period>
+    <from><date><month>July</month><year>1998</year></date</from>
+    <to><present/></to>
+  </period>
+  <description>
+    <para>
+      Helped to ensure optimum fish health by training fish on weights and
+      and fin and tail exercises.
+    </para>
+  </description>
+</job>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<job>
+  <jobtitle>House Cleaner</jobtitle>
+  <employer>Mrs. Shirlock</employer>
+  <period>
+    <from><date><month>July</month><year>1954</year></date</from>
+    <to><date><month>January</month><year>1956</year></date</to>
+  </period>
+  <para>Dusted the blinds. That is all.</para>
+</job>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

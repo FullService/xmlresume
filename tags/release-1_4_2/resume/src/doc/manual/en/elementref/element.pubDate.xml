@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.pubDate">
+  <refnamediv>
+    <refname>pubDate</refname>
+    <refpurpose>The date a work was published</refpurpose>
+    <refclass>Deprecated</refclass>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <important>
+      <para>
+        This element is deprecated as of &library.name; version 1.4.0.
+        It should not be used.
+      </para>
+      <para>
+        <sgmltag class="element">date</sgmltag> elements should be used instead
+        of <sgmltag class="element">pubDate</sgmltag> elements.
+      </para>
+    </important>
+
+    <para>
+      The <sgmltag class="element">pubDate</sgmltag> element indicates when a
+      literary, scholarly, or other work was published. It must contain a
+      <link linkend="element.year"><sgmltag
+      class="element">year</sgmltag></link>, and may contain a <link
+      linkend="element.month"><sgmltag class="element">month</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">pubDate</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.date"><sgmltag class="element">date</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <bookTitle>How to Drink Water for Fun and Profit</bookTitle>
+  <pubdate>
+    <year>1996</year>
+  </pubdate>
+</pub>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <artTitle>Modern Neo-Classical Baroque Music</bookTitle>
+  <bookTitle>Journal of Classical Music</bookTitle>
+  <pubdate>
+    <month>July</month>
+    <year>1931</year>
+  </pubdate>
+</pub>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

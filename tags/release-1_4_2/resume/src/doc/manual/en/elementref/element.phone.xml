@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.phone">
+  <refnamediv>
+    <refname>phone</refname>
+    <refpurpose>A voice telephone number</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">phone</sgmltag> element contains a
+      telephone number. The number is not required to be in a specific format;
+      these are all valid phone numbers:
+
+      <itemizedlist spacing="compact">
+        <listitem><para>
+          <literal><![CDATA[555-555-1212]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[555.555.1212]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[(555) 555-1212]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[(555) 555-1212 x555]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[(011) 47 8931-858128]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[(011) 59-3331-8580]]></literal>
+        </para></listitem>
+      </itemizedlist>
+
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">phone</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">location</sgmltag></term>
+          <listitem>
+            <para>
+              Indicates the location that the phone number connects to. This
+              attribute is optional.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.address"><sgmltag class="element">address</sgmltag></link></member>
+        <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
+        <member><link linkend="element.fax"><sgmltag class="element">fax</sgmltag></link></member>
+        <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<phone>555.555.1212</phone>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<phone location="mobile">345-262-4567</phone>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<phone location="home">(261) 345-1616</phone>
+    ]]></programlisting></informalexample>
+
+    <para>
+      For additional examples, see <link linkend="element.contact"><sgmltag
+      class="element">contact</sgmltag></link>.
+    </para>
+
+  </refsect1>
+
+</refentry>

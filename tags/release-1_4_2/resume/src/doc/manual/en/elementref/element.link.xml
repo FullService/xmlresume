@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.link">
+  <refnamediv>
+    <refname>link</refname>
+    <refpurpose>A titled hyperlink</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">link</sgmltag> element defines a single
+      hyperlink, much like HTML's <sgmltag class="element">a</sgmltag> (anchor)
+      element.
+
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        In FO/PDF and plain text output formats, the text contained in the
+        <sgmltag class="element">link</sgmltag> element is formatted as if the
+        surrounding <sgmltag class="element">link</sgmltag> tags were not
+        present. The <sgmltag class="attribute">href</sgmltag> attribute is
+        ignored.
+      </para>
+      <para>
+        In the HTML output format, the <sgmltag class="element">link</sgmltag>
+        element is formatted as an <sgmltag class="element">a</sgmltag> (anchor)
+        hyperlink.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">link</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">href</sgmltag></term>
+          <listitem>
+            <para>
+              The URL that the link should point to.
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.uri"><sgmltag class="element">uri</sgmltag></link></member>
+        <member><link linkend="element.url"><sgmltag class="element">url</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<employer>
+  <link href="http://www.acme.bob/">Acme Corporation</link>
+</employer>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<para>
+  The <link href="http://xmlresume.sf.net/">XML R&eacute;sum&eacute;
+  Project</link> supplies tools that easily convert a single XML
+  r&eacute;sum&eacute; to multiple output formats.
+</employer>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<chapter id="getting-started.convert">
+  <chapterinfo>
+    <title>Converting an XML &Resume; to Other Formats</title>
+    <authorgroup>
+      <author>
+        <firstname>Peter</firstname>
+        <surname>Hutnick</surname>
+        <email>&peter.email;</email>
+      </author>
+      <editor>
+        <firstname>Bruce</firstname>
+        <surname>Christensen</surname>
+        <email>&bruce.email;</email>
+      </editor>
+    </authorgroup>
+    <copyright>
+      <year>2002</year>
+      <holder>Peter Hutnick</holder>
+    </copyright>
+  </chapterinfo>
+
+  <!-- ==================================================================== -->
+  <para>
+    This chapter explains how to install the &library.name;, an Open Source, XML
+    based &resume; management system, on UNIX systems. It is written based on
+    the author's experience installing on a Red Hat Linux system. Other systems
+    may vary somewhat.
+  </para>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.prereqs">
+    <title>Prerequisites</title>
+
+    <section id="getting-started.convert.prereqs.java">
+      <title>Java</title>
+
+      <para>
+        The &library.name; is, at its heart, a DTD, a Document Type Definition.
+        That means it is really someone's idea of how a &resume; should, or at
+        least could, be structured in XML. Beyond that, it comes with a few XSLT
+        style sheets (used to convert the XML version of a &resume; to other
+        formats) and a couple of CSS stylesheets, used to control the
+        presentation of the HTML version.
+      </para>
+
+      <para>
+        These resources are enough information to convert your XML &resume; to
+        HTML, PDF, and plain text. The programs to exploit these resources,
+        however, are not included. Any capable XML parser, XSLT stylesheet
+        processor and XSL formatting objects processor will get the job done.
+        Many of the &library.name; developers use the free tools produced by the
+        Apache XML Project, and we recommend that you do as well. These tools
+        include Xerces, Xalan, and FOP.
+      </para>
+
+      <para>
+        For the purposes of this document a functioning JRE (Java Runtime
+        Environment) is a requirement. Obtaining and installing a JRE is
+        outside the scope of this document. However, you might find Sun's <ulink
+        url="&j2se.url;">J2SE web site</ulink> a good starting point.
+      </para>
+
+    </section>
+
+    <section id="getting-started.convert.prereqs.xml-knowledge">
+      <title>XML</title>
+
+      <para>
+        A minimal understanding of XML is an asset for using the &library.name;.
+        Most users find that they can get by following the examples in the
+        absence of XML experience.
+      </para>
+
+      <para>
+        For a more in-depth tutorial on authoring a &resume; in XML, see <xref
+        linkend="getting-started.create"/>. For a reference on XML elements
+        available in the &library.name; DTD, see <xref linkend="elementref"/>.
+      </para>
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.software">
+    <title>Getting the Software</title>
+
+    <section id="getting-started.convert.software.xmlresume">
+      <title>&library.name;</title>
+
+      <para>
+        The &library.name; is available for download at <ulink
+        url="&xmlresume.download.url;"/> and is linked from the main
+        &library.name; page at <ulink url="&xmlresume.project.url;"/>.
+      </para>
+
+    </section>
+    <section id="getting-started.convert.software.xerces">
+      <title>Xerces</title>
+
+      <para>
+        Xerces is an XML parser, which is needed by the tools used in later
+        steps of processing. It converts an XML document into a format that
+        other computer programs can more easily use.
+      </para>
+      <para>
+        The main Xerces for Java2 page is <ulink url="&xerces.url;"/>, with the
+        download page at <ulink url="&xerces.download.url;"/>.
+      </para>
+
+    </section>
+    <section id="getting-started.convert.software.xalan">
+      <title>Xalan</title>
+
+      <para>
+        Xalan does the actual conversion of a &resume; from XML to other
+        formats. When combined with the XSL stylesheets provided by the
+        &library.name;, it produces directly usable HTML and plain text. It also
+        produces an intermediate format called XSL-FO (XSL Formatting Objects)
+        that can be converted to PDF by an FO processor.
+      </para>
+
+      <para>
+        The Xalan-Java project page is <ulink url="&xalan.url;"/>, with
+        downloads at <ulink url="&xalan.download.url;"/>.
+      </para>
+
+    </section>
+    <section id="getting-started.convert.software.fop">
+      <title>FOP</title>
+
+      <para>
+        FOP is a print formatter for XSL formatting objects. It converts XSL-FO
+        documents to PDF.
+      </para>
+      <para>
+        The main FOP page is <ulink url="&fop.url;"/>, and the download page is
+        <ulink url="&fop.download.url;"/>.
+      </para>
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.install">
+    <title>Installing and Configuring the Software</title>
+
+    <section id="getting-started.convert.install.xmlresume">
+      <title>&library.name;</title>
+
+      <para>
+        The &library.name; comes in a tarball (or zip archive aimed at Windows
+        users) that includes:
+        
+        <itemizedlist>
+          <listitem>
+            <para>The DTD</para>
+          </listitem>
+          <listitem>
+            <para>
+              XSL stylesheets, for converting your XML &resume; to plain text,
+              HTML, or XSL Formatting Objects (XSL-FO). (XSL-FO can then be
+              rendered to PDF by an FO processor like FOP.)
+            </para>
+          </listitem>
+          <listitem>
+            <para>Some sample &resume;s in XML format</para>
+          </listitem>
+          <listitem>
+            <para>
+              A Makefile, for generating &resume; formats with a simple
+              <command>make</command> command
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              A few CSS stylesheets that can be used to fine-tune the appearance
+              of the HTML version of your &resume;.
+            </para>
+          </listitem>
+        </itemizedlist>
+
+      </para>
+
+      <para>
+        The most straightforward way to make use of these resources is to
+        recursively copy the "examples" directory to where you want to work with
+        your &resume;. For instance:
+
+        <informalexample><screen><![CDATA[
+[resume-]]>&library.version.underscore;<![CDATA[]$ cp -a examples ~/resume
+        ]]></screen></informalexample>
+
+      </para>
+
+      <para>
+        The Makefile uses the filename <filename>resume.xml</filename> by
+        default. If this is unacceptable you will need to edit the line
+        <literal>resume = resume</literal> to match the filename you use, such
+        as <literal>resume = myresume</literal> if your &resume; is
+        <filename>myresume.xml</filename>.
+      </para>
+
+      <tip>
+        <para>You can also indicate your &resume; filename on the command line
+        when you build your &resume;, e.g.:
+        
+          <informalexample><screen><![CDATA[
+[resume]$ make resume=myresume
+          ]]></screen></informalexample>
+        </para>
+      </tip>
+
+      <note>
+        <para>
+          The DTD and XSL files you've downloaded to your computer aren't used
+          by default when building your &resume;. Instead, the versions on the
+          &library.name; web site are used. This ensures that you're always
+          using the most recent version; however, it also means that builds take
+          longer (since file have to be downloaded each time you build your
+          &resume;) and that you can't build a &resume; offline.
+        </para>
+        <para>
+          If you'd like to use your local copy of the XSL stylesheets, edit the
+          <varname>xsl_base</varname> variable in the example Makefile to point
+          to your local XSL directory. For example:
+
+          <informalexample><programlisting><![CDATA[
+xsl_base = ~/resume-]]>&library.version.underscore;<![CDATA[/xsl
+          ]]></programlisting></informalexample>
+        </para>
+        <para>
+          To use your local copy of the DTD, change the
+          <literal>DOCTYPE</literal> declaration at the top of your resume to
+          look like this:
+
+          <informalexample><programlisting><![CDATA[
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume]]> &library.version.dots;<![CDATA[//EN"
+  "~/resume-]]>&library.version.underscore;<![CDATA[/dtd/resume.dtd">
+          ]]></programlisting></informalexample>
+
+        </para>
+      </note>
+
+    </section>
+    <section id="getting-started.convert.install.xml-tools">
+      <title>Xerces, Xalan, and FOP</title>
+
+      <para>
+        Each of these three packages need to be untarred and their jar files
+        copied to your JRE's <filename class="directory">ext/</filename>
+        directory. This is typically <filename
+        class="directory">/usr/java/jdk1.3.1_02/jre/lib/ext/</filename>, but may
+        vary depending on who packaged your JRE. We will simply refer to it as
+        the <filename class="directory">ext/</filename> directory.
+      </para>
+
+      <para>
+        Xerces consists of the jars
+        <filename>xmlParserAPIs.jar</filename>,
+        <filename>xercesSamples.jar</filename>, and
+        <filename>xercesImpl.jar</filename>,
+        which are in the top directory of the Xerces zip archive.
+      </para>
+
+      <para>
+        Xalan consists of the jars
+        <filename>runtime.jar</filename>,
+        <filename>xalanservlet.jar</filename>,
+        <filename>xalansamples.jar</filename>,
+        <filename>regexp.jar</filename>,
+        <filename>JLex.jar</filename>,
+        <filename>java_cup.jar</filename>,
+        <filename>bsf.jar</filename>,
+        <filename>xml-apis.jar</filename>,
+        <filename>BCEL.jar</filename>,
+        <filename>xsltc.jar</filename>,
+        <filename>xalan.jar</filename>, and
+        <filename>xercesImpl.jar</filename>
+        in the <filename class="directory">bin/</filename>
+        directory. All of these need to be copied to the <filename
+        class="directory">ext/</filename> directory.
+      </para>
+
+<!--
+XXX TODO FIXME
+[this isn't true. Does anyone know what jars are actually needed?  In my experience the text, HTML and FO can be made with just the jars that come with FOP, but the FO to PDF conversion fails with the message:
+
+
+java org.apache.fop.apps.Fop  resume.fo resume.pdf
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/fop/apps/Fop
+make: *** [resume.pdf] Error 1
+
+does anyone know what specific .jars are needed?]
+-->
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.testing">
+    <title>Testing it all out</title>
+
+    <section id="getting-started.convert.testing.converting">
+      <title>Converting to other formats</title>
+
+      <para>
+        You can now test by renaming the file <filename>example1.xml</filename>
+        to <filename>resume.xml</filename> with the command <command>mv
+        example1.xml resume.xml</command>. Then simply issue the command
+        <command>make</command> while connected to the internet. This should
+        generate the files
+        <filename>resume.txt</filename>,
+        <filename>resume.html</filename>,
+        <filename>resume.fo</filename>, and
+        <filename>resume.pdf</filename>
+        &mdash; all versions of Joe Doe of Garbonzoville's &resume;.
+      </para>
+    </section>
+
+    <section id="getting-started.convert.testing.create">
+      <title>Writing your first XML &resume;</title>
+
+      <para>
+        This is the fun part. Take a look at both example &resume;s and choose
+        which one is most like what you want. Then replace the existing
+        information with your own. You may also be able to find example
+        &resume;s of real people by search for <literal>XML resume</literal> on
+        the internet.
+      </para>
+
+      <para>
+        For complete information on the elements valid for the &library.name;
+        see <xref linkend="elementref"/>.
+      </para>
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.next-steps">
+    <title>Where to Go from Here</title>
+
+    <section id="getting-started.convert.next-steps.docs">
+      <title>Documentation</title>
+
+      <para>
+        More detailed information about creating and building &resume;s is
+        available in other sections of this user guide.
+      </para>
+
+      <para>
+        For more information about the &library.name;, see the HTML
+        documentation included in the <filename
+        class="directory">doc/</filename> directory.
+      </para>
+
+    </section>
+    <section id="getting-started.convert.next-steps.support">
+      <title>Support</title>
+
+      <para>
+        For questions about the package and the DTD, there is a mailing list and
+        a support forum web site.
+      </para>
+
+      <para>
+        The online support forum is located at <ulink
+        url="&xmlresume.support.url;"/>.
+      </para>
+
+      <para>
+        To join the mailing list, either visit <ulink
+        url="&xmlresume.list.devel.url;"/> or send a message with
+        <literal>subscribe
+        <replaceable>[youraddress@yourdomain.tld]</replaceable></literal> in the
+        body to <email>&xmlresume.list.devel.bot.email;</email>.
+      </para>
+
+    </section>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section id="getting-started.convert.about">
+    <title>About this chapter</title>
+
+    <para>
+      This chapter was originally written by Peter Hutnick. It was edited and
+      converted to DocBook format by Bruce Christensen.
+    </para>
+
+    <para>
+      Please send comments, suggestions, and especially corrections for
+      this chapter to <email>&peter.email;</email>.
+    </para>
+
+  </section>
+
+
+</chapter>

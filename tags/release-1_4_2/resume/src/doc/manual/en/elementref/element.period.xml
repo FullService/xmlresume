@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.period">
+  <refnamediv>
+    <refname>period</refname>
+    <refpurpose>A period of time</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">period</sgmltag> element defines a specific
+      period in time by specifying the period's start time and end time.
+    </para>
+
+    <para>
+      If you want to specify an instant in time instead of a period, use
+      <link linkend="element.date"><sgmltag
+      class="element">date</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">period</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.date"><sgmltag class="element">element</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<period>
+  <from><date>
+    <dayOfMonth>10</dayOfMonth>
+    <month>February</month>
+    <year>1246</year>
+  </date></from>
+  <to><date>
+    <dayOfMonth>19</dayOfMonth>
+    <month>November</month>
+    <year>1351</year>
+  </date></to>
+</period>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<period>
+  <from><date>
+    <month>May</month>
+    <year>1985</year>
+  </date></from>
+  <to>
+    <present/>
+  </to>
+</period>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.skills.level.display">
+  <refnamediv>
+    <refname>skills.level.display</refname>
+    <refpurpose>Determines whether or not skill level attributes are visible in
+    formatted output</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+       This parameter controls the formatting of the <sgmltag
+       class="attribute">level</sgmltag> attribute of <link
+       linkend="element.skill"><sgmltag class="element">skill</sgmltag></link>
+       elements in all output formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>1</literal> (display the attribute) or
+      <literal>0</literal> (suppress the attribute).
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>1</literal> (true)</term>
+        <listitem>
+          <para>
+            <sgmltag class="attribute">level</sgmltag> attributes of
+            <sgmltag class="element">skill</sgmltag>s are displayed after all of
+            the rest of the content of the skill. The level is displayed
+            surrounded by <parameter>skills.level.start</parameter> and
+            <parameter>skills.level.end</parameter> (parenthesis, by default).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>0</literal> (false)</term>
+        <listitem>
+          <para>
+            <sgmltag class="attribute">level</sgmltag> attributes contained in
+            <sgmltag class="element">skill</sgmltag>s are suppressed; they are
+            treated as if the didn't exist for formatting purposes.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>

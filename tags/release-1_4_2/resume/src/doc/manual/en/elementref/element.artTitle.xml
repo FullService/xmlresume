@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.artTitle">
+  <refnamediv>
+    <refname>artTitle</refname>
+    <refpurpose>A title of an article or other work</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">artTitle</sgmltag> element marks the title
+      of a sub-work (such as an article or poem) in a book, journal, magazine,
+      newspaper, anthology, or other compilation.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">artTitle</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.bookTitle"><sgmltag class="element">bookTitle</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <artTitle>Lion Brainwashing During the Late 20th Century</artTitle>
+  <bookTitle>Journal of the American Feline Psychiatric Association</bookTitle>
+</pub>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <artTitle>Cucumber Pickling Process Management</artTitle>
+  <bookTitle>Proceedings of the European Brine Process Engineers' Group</bookTitle>
+</pub>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

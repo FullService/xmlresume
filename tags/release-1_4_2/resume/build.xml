@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Ant build.xml file for developers of the XML Resume Library.
+(c) 2000-2001 Sean Kelly and contributors.  All rights reserevd.
+
+$Id$
+-->
+
+<project name="xmlresume" default="release" basedir=".">
+
+  <!-- Load any user-overriding definitions -->
+  <property file="${user.home}/.ant.properties"/>
+
+  <!-- GENERAL PROPERTIES ===================================================================================================== -->
+
+  <!-- Current version number -->
+  <property name="version.underscore" value="1_4_2"/>
+  <property name="version.dots" value="1.4.2"/>
+
+  <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
+
+  <!-- Root of all source code -->
+  <property name="src.dir" value="${basedir}/src"/>
+  <property name="java.src.dir" value="${src.dir}/java"/>
+  <property name="www.src.dir" value="${src.dir}/www"/>
+
+  <!-- Where generated test target data should go -->
+  <property name="target.data.dir" value="${java.src.dir}/net/sourceforge/xmlresume/targetData"/>
+
+  <!-- Web server's directory; where to install web-accessible files -->
+  <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
+
+  <!-- Where built files go -->
+  <property name="build.dir" value="${basedir}/build"/>
+
+  <!-- Binary resource files that mustn't be modified -->
+  <patternset id="binary.resources">
+    <include name="**/*.exe"/>
+    <include name="**/*.jpg"/>
+    <include name="**/*.jpeg"/>
+    <include name="**/*.gif"/>
+    <include name="**/*.png"/>
+    <include name="**/*.pdf"/>
+    <include name="**/*.ico"/>
+    <include name="**/*.bmp"/>
+  </patternset>
+
+  <!-- Nonbinary resource files that may be filtered and modified -->
+  <patternset id="text.resources">
+    <include name="**/*.properties"/>
+    <include name="**/*.xml"/>
+    <include name="**/*.dtd"/>
+    <include name="**/*.ent"/>
+    <include name="**/*.xsl"/>
+    <include name="**/*.css"/>
+    <include name="**/*.fo"/>
+    <include name="**/*.html"/>
+    <include name="**/*.txt"/>
+  </patternset>
+
+  <!-- Java classpaths -->
+  <path id="test.classpath">
+    <pathelement path="${build.dir}"/>
+  </path>
+
+  <property name="saxon.home" value="/usr/local/share/java/saxon"/>
+  <path id="saxon.classpath">
+    <pathelement location="${saxon.home}/saxon.jar"/>
+    <pathelement location="${saxon.home}/saxon-fop.jar"/>
+  </path>
+
+  <!-- RELEASE CONSTRUCTION =================================================================================================== -->
+
+  <!-- Name of built release directory -->
+  <property name="release.dir" value="resume-${version.underscore}"/>
+
+  <!-- Release layout staging area -->
+  <property name="stage.dir" value="${basedir}/${release.dir}"/>
+
+  <!-- Release archive filenames -->
+  <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
+  <property name="release.tar.name" value="resume-${version.underscore}.tar"/>
+  <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
+
+  <!-- Release archive paths -->
+  <property name="release.zip" value="${basedir}/${release.zip.name}"/>
+  <property name="release.tar" value="${basedir}/${release.tar.name}"/>
+  <property name="release.tgz" value="${basedir}/${release.tgz.name}"/>
+
+  <!-- TARGETS TO BUILD ======================================================================================================= -->
+
+  <!-- Compilation -->
+  <target name="build"
+    description="Build the software"
+    depends="build.prepare, build.compile, build.resources"/>
+
+  <target name="build.prepare"
+    description="Prepare the build area">
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <target name="build.compile"
+    description="Compile source code"
+    depends="build.prepare">
+    <javac srcdir="${java.src.dir}"
+      destdir="${build.dir}"
+      debug="yes"
+      includes="**/*.java"/>
+  </target>
+
+  <target name="build.resources"
+    description="Copy resource files into build area">
+    <copy todir="${build.dir}"
+      filtering="no">
+      <fileset dir="${java.src.dir}">
+        <patternset refid="binary.resources"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.dir}"
+      filtering="yes">
+      <fileset dir="${java.src.dir}">
+        <patternset refid="text.resources"/>
+      </fileset>
+      <fileset dir="${www.src.dir}">
+        <patternset refid="text.resources"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Releasing to the public -->
+
+  <target name="release"
+    description="Build a complete public release"
+    depends="release.build, release.archive"/>
+
+  <target name="release.build"
+    description="Build a release"
+    depends="release.build.copy"/>
+
+  <target name="release.build.prepare"
+    description="Prepare to stage the release">
+    <mkdir dir="${stage.dir}"/>
+    <mkdir dir="${stage.dir}/doc"/>
+    <mkdir dir="${stage.dir}/doc/manual"/>
+    <mkdir dir="${stage.dir}/doc/manual/html"/>
+    <mkdir dir="${stage.dir}/examples"/>
+    <mkdir dir="${stage.dir}/dtd"/>
+    <mkdir dir="${stage.dir}/xsl"/>
+    <mkdir dir="${stage.dir}/css"/>
+  </target>    
+
+  <target name="release.build.copy"
+    description="Copy files into the staging area"
+    depends="release.build.prepare, filter, doc">
+
+    <!-- Documentation -->
+    <copy todir="${stage.dir}/doc">
+      <fileset dir="${doc.relnotes.build.dir}"/>
+    </copy>
+    <copy todir="${stage.dir}/doc/manual" file="${doc.manual.text.file}"/>
+    <copy todir="${stage.dir}/doc/manual" file="${doc.manual.html-single.file}"/>
+    <copy todir="${stage.dir}/doc/manual" file="${doc.manual.css.file}"/>
+    <copy todir="${stage.dir}/doc/manual/html">
+      <fileset dir="${doc.manual.html-multiple.dir}"/>
+    </copy>
+    <copy tofile="${stage.dir}/README"
+      file="${src.dir}/doc/README.src"
+      filtering="yes"/>
+
+    <!-- Examples -->
+    <copy todir="${stage.dir}/examples"
+      filtering="yes">
+      <fileset dir="${basedir}/examples">
+        <include name="**/Makefile"/>
+        <include name="**/*.xml"/>
+        <include name="**/README"/>
+      </fileset>
+    </copy>
+
+    <!-- Code -->
+    <copy todir="${stage.dir}/dtd"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/dtd"/>
+    </copy>
+    <copy todir="${stage.dir}/xsl"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/xsl"/>
+    </copy>
+    <copy todir="${stage.dir}/css"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/css"/>
+    </copy>
+  </target>
+
+  <target name="release.archive"
+    description="Create archives of the staged release"
+    depends="release.archive.zip, release.archive.tgz"/>
+
+  <target name="release.archive.zip"
+    description="Create the zip file release"
+    depends="release.build">
+    <zip zipfile="${release.zip}"
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
+  </target>
+
+  <target name="release.archive.tgz"
+    description="Create the gzip'd tar file release"
+    depends="release.build">
+    <tar tarfile="${release.tar}"
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
+    <gzip zipfile="${release.tgz}"
+      src="${release.tar}"/>
+    <delete file="${release.tar}"/>
+  </target>
+
+  <!-- Note: This target depends on netcomponents.jar, available from
+  http://www.savarese.org/oro/downloads/index.html#NetComponents -->
+  <target name="release.upload"
+    description="Upload release zip and tgz files to SourceForge. Be sure to run release first!">
+
+    <ftp
+      server="upload.sf.net"
+      userid="anonymous"
+      password="xmlresume@sf.net"
+      remotedir="incoming">
+
+      <fileset dir="${basedir}">
+        <include name="${release.tgz}"/>
+        <include name="${release.zip}"/>
+      </fileset>
+
+    </ftp>
+
+  </target>
+
+  <!-- Unit and regression tests -->
+
+  <target name="test"
+    description="Run the unit and regression tests"
+    depends="build">
+    <junit haltonfailure="no"
+      fork="yes">
+      <classpath refid="test.classpath"/>
+      <formatter type="plain"
+        usefile="no"/>
+      <batchtest>
+        <fileset dir="${build.dir}"
+          includes="**/*Test.class"/>
+      </batchtest>
+    </junit>
+  </target>
+
+  <!-- Installing -->
+
+  <target name="install"
+    description="Install installable components"
+    depends="install.web"/>
+
+  <target name="install.web"
+    depends="filter, doc.manual.html-multiple.web, doc.manual.pdf, examples.web"
+    description="Install web server files">
+
+    <!-- Copy WWW files -->
+    <mkdir dir="${resume.web.publish.dir}"/>
+    <copy todir="${resume.web.publish.dir}" filtering="yes">
+      <fileset dir="${src.dir}/www"/>
+    </copy>
+
+    <!-- Copy user guide -->
+    <mkdir dir="${resume.web.publish.dir}/user-guide"/>
+    <!-- The user guide should have been filtered when it was built, so we don't
+    filter it again. -->
+    <copy todir="${resume.web.publish.dir}/user-guide" filtering="no">
+      <fileset dir="${doc.manual.html-multiple.web.dir}"/>
+    </copy>
+    <copy
+      file="${doc.manual.pdf.file}"
+      tofile="${resume.web.publish.dir}/user-guide.pdf"
+      filtering="no"
+    />
+
+    <!-- Copy examples -->
+    <mkdir dir="${resume.web.publish.dir}/examples"/>
+    <copy todir="${resume.web.publish.dir}/examples">
+      <fileset dir="${build.dir}/examples.web">
+        <include name="example*.xml"/>
+        <include name="example*.html"/>
+        <include name="example*.txt"/>
+        <include name="example*.pdf"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="examples.web"
+    depends="filter"
+    description="Build example resumes for inclusion in web site">
+
+    <copy todir="${build.dir}/examples.web"
+      filtering="yes">
+      <fileset dir="${basedir}/examples"/>
+    </copy>
+
+    <exec executable="${make}"
+      dir="${build.dir}/examples.web"
+      vmlauncher="${make.vmlauncher}"
+      failonerror="${make.failonerror}">
+
+      <arg value="clean"/>
+      <arg value="all"/>
+      <arg value="resume=example1"/>
+
+      <arg value="xsl_base=../../src/www/xsl"/>
+      <arg value="xsl_flags=-param css.href /css/resume3.css"/>
+
+      <arg line="${make.examples.extra-args}"/>
+    </exec>
+
+    <exec executable="${make}"
+      dir="${build.dir}/examples.web"
+      vmlauncher="${make.vmlauncher}"
+      failonerror="${make.failonerror}">
+
+      <arg value="clean"/>
+      <arg value="all"/>
+      <arg value="resume=example2"/>
+
+      <arg value="xsl_base=../../src/www/xsl"/>
+      <arg value="xsl_flags=-param css.href /css/resume4.css"/>
+
+      <arg line="${make.examples.extra-args}"/>
+    </exec>
+
+  </target>
+
+  <!-- Housekeeping -->
+
+  <target name="filter"
+    description="Define global filtering tokens">
+
+    <!-- Today's date, in "15 March 1995" format -->
+    <tstamp>
+      <format property="release.date" pattern="d MMMM yyyy" locale="en, US"/>
+    </tstamp>
+
+    <filter token="VERSION_DOTS" value="${version.dots}"/>
+    <filter token="VERSION_UNDERSCORE" value="${version.underscore}"/>
+    <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
+    <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
+    <filter token="RELEASE_DIR" value="${release.dir}"/>
+    <filter token="RELEASE_DATE" value="${release.date}"/>
+  </target>
+
+  <target name="clean"
+    description="Remove everything that can be rebuilt"
+    depends="clean.doc, clean.release, clean.build"/>
+
+  <target name="clean.doc"
+    description="Clean out documentation that can be rebuilt">
+    <delete dir="${doc.relnotes.build.dir}"/>
+    <delete dir="${doc.manual.build.dir}"/>
+    <delete dir="${doc.build.dir}"/>
+  </target>
+
+  <target name="clean.release"
+    description="Remove the release archives and staging area">
+    <delete dir="${stage.dir}"/>
+    <delete file="${release.zip}"/>
+    <delete file="${release.tgz}"/>
+  </target>
+
+  <target name="clean.build"
+    description="Clean the compiled software area">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="run.test"
+    description="Run the test"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-test"/>
+    </java>
+  </target>
+
+  <target name="run.generate"
+    description="Generate the test target data"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-generate"/>
+      <arg file="${target.data.dir}"/>
+    </java>
+  </target>
+
+  <!-- ======================================================================================================================== -->
+  <!-- ======================================================================================================================== -->
+  <!-- ======================================================================================================================== -->
+  <!-- DOCUMENTATION ========================================================================================================== -->
+  <!-- ======================================================================================================================== -->
+  <!-- ======================================================================================================================== -->
+  <!-- ======================================================================================================================== -->
+
+  <!-- SOURCE LOCATIONS ======================================================================================================= --> 
+
+  <property name="doc.src.dir" value="${src.dir}/doc"/>
+
+  <!-- Release notes directories -->
+  <property name="doc.relnotes.src.dir" value="${doc.src.dir}/release"/>
+
+  <!-- Manual directories (should match corresponding *.build.dir properties below) -->
+  <property name="doc.manual.src.dir" value="${doc.src.dir}/manual"/>
+  <property name="doc.manual.entities.src.dir" value="${doc.manual.src.dir}/entities"/>
+  <property name="doc.manual.elementref.src.dir" value="${doc.manual.src.dir}/en/elementref"/>
+  <property name="doc.manual.paramref.src.dir" value="${doc.manual.src.dir}/en/paramref"/>
+
+  <!-- Manual script directory (contains scripts to automate manual build)  -->
+  <property name="doc.manual.script.dir" value="${doc.manual.src.dir}/scripts"/>
+
+  <!-- BUILD LOCATIONS ======================================================================================================== --> 
+
+  <property name="doc.build.dir" value="${build.dir}/doc"/>
+
+  <!-- Release notes directories -->
+  <property name="doc.relnotes.build.dir" value="${doc.build.dir}/relnotes"/>
+
+  <!-- Manual directories (should match corresponding *.src.dir properties above) -->
+  <property name="doc.manual.build.dir" value="${doc.build.dir}/manual"/>
+  <property name="doc.manual.css.file" value="${doc.manual.build.dir}/css/manual.css"/>
+  <property name="doc.manual.images.build.dir" value="${doc.manual.build.dir}/img"/>
+  <property name="doc.manual.entities.build.dir" value="${doc.manual.build.dir}/entities"/>
+  <property name="doc.manual.elementref.build.dir" value="${doc.manual.build.dir}/en/elementref"/>
+
+  <!-- Manual top-level DocBook file (includes all other files via entities) -->
+  <property name="doc.manual.file" value="${doc.manual.build.dir}/manual.xml"/>
+
+  <!-- Manual output formats -->
+  <property name="doc.manual.html-single.file" value="${doc.manual.build.dir}/manual.html"/>
+  <property name="doc.manual.html-multiple.dir" value="${doc.manual.build.dir}/html"/>
+  <property name="doc.manual.html-multiple.web.dir" value="${doc.manual.build.dir}/html-web"/>
+  <property name="doc.manual.text.file" value="${doc.manual.build.dir}/manual.txt"/>
+  <property name="doc.manual.fo.file" value="${doc.manual.build.dir}/manual.fo"/>
+  <property name="doc.manual.pdf.file" value="${doc.manual.build.dir}/manual.pdf"/>
+
+  <!-- Manual XSL stylesheet locations (XML Resume customized versions) -->
+  <property name="doc.manual.xsl.dir" value="${doc.manual.build.dir}/xsl"/>
+  <property name="doc.manual.xsl.html-single" value="${doc.manual.xsl.dir}/html-single.xsl"/>
+  <property name="doc.manual.xsl.html-multiple" value="${doc.manual.xsl.dir}/html-multiple.xsl"/>
+  <property name="doc.manual.xsl.html-multiple.web" value="${doc.manual.xsl.dir}/html-multiple.web.xsl"/>
+  <property name="doc.manual.xsl.fo" value="${doc.manual.xsl.dir}/fo.xsl"/>
+
+  <!-- DocBook XML DTD version 4.1.2 system location -->
+  <property name="doc.manual.docbook-xml.file" value="http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"/>
+
+  <!-- DocBook XSL Stylesheets version 1.50 system locations.
+  These are system-dependent, but don't change them here. Instead, override them
+  in your ${user.home}/.ant.properties file. (You probably need to override just
+  the first line.) -->
+  <property name="doc.manual.docbook-xsl.dir" value="/usr/share/sgml/docbook/stylesheet/xsl/nwalsh"/>
+  <property name="doc.manual.docbook-xsl.html-single" value="${doc.manual.docbook-xsl.dir}/html/docbook.xsl"/>
+  <property name="doc.manual.docbook-xsl.html-multiple" value="${doc.manual.docbook-xsl.dir}/html/chunk.xsl"/>
+  <property name="doc.manual.docbook-xsl.fo" value="${doc.manual.docbook-xsl.dir}/fo/docbook.xsl"/>
+
+  <!-- Tools -->
+  <property name="python" value="python"/>
+  <property name="python.vmlauncher" value="true"/>
+  <property name="python.failonerror" value="true"/>
+
+  <property name="make" value="make"/>
+  <property name="make.vmlauncher" value="true"/>
+  <property name="make.failonerror" value="true"/>
+  <!-- Override this in your ~/.ant.properties file if you need to pass
+  extra args to make when building the example resumes (for example, if you need
+  to customize the path for Xalan or FOP) -->
+  <property name="make.examples.extra-args" value=""/>
+
+  <!-- TARGETS TO BUILD ======================================================================================================= --> 
+
+  <target name="doc"
+    description="Generate all documentation"
+    depends="doc.relnotes, doc.manual"/>
+
+  <!-- Release notes -->
+  <target name="doc.relnotes"
+    description="Generate all release notes-type documentation"
+    depends="doc.relnotes.prepare, doc.relnotes.copy">
+  </target>
+
+  <target name="doc.relnotes.prepare"
+    description="Prepare the release notes build directory">
+    <mkdir dir="${doc.relnotes.build.dir}"/>
+  </target>
+
+  <target name="doc.relnotes.copy"
+    description="Copy and filter release notes files to the build directory"
+    depends="filter, doc.relnotes.prepare">
+    <copy todir="${doc.relnotes.build.dir}"
+          filtering="yes">
+      <fileset dir="${doc.relnotes.src.dir}"/>
+    </copy>
+  </target>
+
+  <!-- Manual consistentcy maintenance targets -->
+  <target name="doc.manual.check"
+    description="Check if there are elements in the DTD that lack a refpage">
+
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/dtddoc.py"/>
+      <arg value="--check"/>
+    </exec>
+  </target>
+
+  <target name="doc.manual.create-missing"
+    description="Create refpages for elements in the DTD without refpages">
+
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/dtddoc.py"/>
+      <arg value="--create-missing"/>
+    </exec>
+  </target>
+
+  <!-- Manual preparatory targets -->
+  <target name="doc.manual"
+    description="Generate all formats of the manual"
+    depends="doc.manual.html-single, doc.manual.html-multiple, doc.manual.text">
+  </target>
+
+  <target name="doc.manual.prepare"
+    description="Prepare the manual build directory"
+    depends="doc.manual.copy, doc.manual.fix-cdata-space, doc.manual.elementref.generate">
+    <mkdir dir="${doc.manual.build.dir}"/>
+  </target>
+
+  <target name="doc.manual.copy"
+    description="Filter and copy all manual source files to the build dir"
+    depends="doc.manual.filter">
+
+    <!-- These files contain filter tokens that may need to be updated even if
+    their source file isn't, so we delete them. This forces them to be
+    re-filtered.  -->
+    <delete file="${doc.manual.file}"/>
+    <delete file="${doc.manual.entities.build.dir}/global.ent"/>
+    <delete file="${doc.manual.entities.build.dir}/divisions.ent"/>
+
+    <!-- Copy filterable files -->
+    <copy todir="${doc.manual.build.dir}"
+      filtering="yes">
+      <fileset dir="${doc.manual.src.dir}">
+        <patternset refid="text.resources"/>
+      </fileset>
+    </copy>
+    <!-- Copy everything else. Only files that haven't already been copied
+    (i.e. all but text.resources) will be copied. -->
+    <copy todir="${doc.manual.build.dir}"
+      filtering="no">
+      <fileset dir="${doc.manual.src.dir}"/>
+    </copy>
+  </target>
+
+  <target name="doc.manual.fix-cdata-space"
+    description="Removes leading and trailing space from the contents of CDATA sections"
+    depends="doc.manual.copy">
+    <!-- Element reference entity defs -->
+
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/fix_cdata_space.py"/>
+      <arg value="--dir=${doc.manual.build.dir}/en"/>
+      <arg value="--pattern=*.xml"/>
+      <arg value="--recursive"/>
+    </exec>
+  </target>
+
+  <target name="doc.manual.filter"
+    description="Define filtering tokens for manual generation"
+    depends="filter">
+
+    <filter
+      token="DOCBOOK_XML_DTD"
+      value="${doc.manual.docbook-xml.file}"/>
+
+    <filter
+      token="DOCBOOK_XSL_HTML_MULTIPLE"
+      value="${doc.manual.docbook-xsl.html-multiple}"/>
+    <filter
+      token="DOCBOOK_XSL_HTML_SINGLE"
+      value="${doc.manual.docbook-xsl.html-single}"/>
+    <filter
+      token="DOCBOOK_XSL_FO"
+      value="${doc.manual.docbook-xsl.fo}"/>
+
+    <!-- Element reference entity defs -->
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}"
+      outputproperty="doc.manual.elementref.entities.decls">
+      <arg file="${doc.manual.script.dir}/dir2entities.py"/>
+      <arg value="--defs"/>
+      <arg value="--rel=${doc.manual.entities.src.dir}"/>
+      <arg value="${doc.manual.elementref.src.dir}/element.*.xml"/>
+    </exec>
+    <filter token="ELEMENTREF_REFPAGE_DEFS" value="${doc.manual.elementref.entities.decls}"/>
+
+    <!-- Element reference entity uses -->
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}"
+      outputproperty="doc.manual.elementref.entities.uses">
+      <arg file="${doc.manual.script.dir}/dir2entities.py"/>
+      <arg value="--uses"/>
+      <arg value="${doc.manual.elementref.src.dir}/element.*.xml"/>
+    </exec>
+    <filter token="ELEMENTREF_REFPAGES" value="${doc.manual.elementref.entities.uses}"/>
+
+    <!-- Parameter reference entity defs -->
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}"
+      outputproperty="doc.manual.paramref.entities.decls">
+      <arg file="${doc.manual.script.dir}/dir2entities.py"/>
+      <arg value="--defs"/>
+      <arg value="--rel=${doc.manual.entities.src.dir}"/>
+      <arg value="${doc.manual.paramref.src.dir}/param.*.xml"/>
+    </exec>
+    <filter token="PARAMREF_REFPAGE_DEFS" value="${doc.manual.paramref.entities.decls}"/>
+
+    <!-- Parameter reference entity uses -->
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}"
+      outputproperty="doc.manual.paramref.entities.uses">
+      <arg file="${doc.manual.script.dir}/dir2entities.py"/>
+      <arg value="--uses"/>
+      <arg value="${doc.manual.paramref.src.dir}/param.*.xml"/>
+    </exec>
+    <filter token="PARAMREF_REFPAGES" value="${doc.manual.paramref.entities.uses}"/>
+  </target>
+
+  <target name="doc.manual.elementref.generate"
+    description='Replace &lt;$KEYWORD$&gt;-style tokens in elementref files with data generated from the DTD'
+    depends="doc.manual.copy">
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/dtddoc.py"/>
+      <arg value="--filter"/>
+      <arg value="--dtd=${www.src.dir}/dtd/resume.dtd"/>
+      <arg value="--pattern=${doc.manual.elementref.build.dir}/element.*.xml"/>
+      <arg value="--build-dir=${doc.manual.elementref.build.dir}"/>
+    </exec>
+  </target>
+
+  <!-- Manual output formats -->
+  <target name="doc.manual.text"
+    description="Generate plain text manual"
+    depends="doc.manual.html-single">
+
+    <exec
+      executable="lynx"
+      failonerror="yes"
+      dir="${doc.build.dir}"
+      output="${doc.manual.text.file}">
+      <arg value="--nolist"/>
+      <arg value="--dump"/>
+      <arg value="${doc.manual.html-single.file}"/>
+    </exec>
+  </target>
+
+  <target name="doc.manual.html-single"
+    description="Generate single-file HTML manual"
+    depends="doc.manual.prepare">
+
+    <copy todir="${doc.manual.build.dir}"
+      file="${doc.manual.css.file}"/>
+
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.build.dir}">
+      <arg value="-o"/>
+      <arg value="${doc.manual.html-single.file}"/>
+      <arg value="${doc.manual.file}"/>
+      <arg value="${doc.manual.xsl.html-single}"/>
+    </java>
+  </target>
+
+  <target name="doc.manual.html-multiple"
+    description="Generate multi-file HTML manual"
+    depends="doc.manual.prepare">
+
+    <mkdir dir="${doc.manual.html-multiple.dir}"/>
+
+    <copy todir="${doc.manual.html-multiple.dir}"
+      file="${doc.manual.css.file}"/>
+    <mkdir dir="${doc.manual.images.build.dir}"/>
+    <copy todir="${doc.manual.html-multiple.dir}">
+      <fileset dir="${doc.manual.images.build.dir}"/>
+    </copy>
+
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.html-multiple.dir}">
+      <arg value="${doc.manual.file}"/>
+      <arg value="${doc.manual.xsl.html-multiple}"/>
+    </java>
+  </target>
+
+  <target name="doc.manual.html-multiple.web"
+    description="Generate multi-file HTML manual for use on the XML Resume Library web site"
+    depends="doc.manual.prepare">
+
+    <mkdir dir="${doc.manual.html-multiple.web.dir}"/>
+
+    <copy todir="${doc.manual.html-multiple.web.dir}"
+      file="${doc.manual.css.file}"/>
+    <mkdir dir="${doc.manual.images.build.dir}"/>
+    <copy todir="${doc.manual.html-multiple.web.dir}">
+      <fileset dir="${doc.manual.images.build.dir}"/>
+    </copy>
+
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.html-multiple.web.dir}">
+      <arg value="${doc.manual.file}"/>
+      <arg value="${doc.manual.xsl.html-multiple.web}"/>
+    </java>
+  </target>
+
+  <target name="doc.manual.fo"
+    description="Generate XSL-FO version of the manual"
+    depends="doc.manual.prepare">
+
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.build.dir}">
+      <arg value="-o"/>
+      <arg value="${doc.manual.fo.file}"/>
+      <arg value="${doc.manual.file}"/>
+      <arg value="${doc.manual.xsl.fo}"/>
+    </java>
+  </target>
+
+  <target name="doc.manual.pdf"
+    description="Generate PDF version of the manual"
+    depends="doc.manual.fo">
+
+    <!-- This section isn't needed with docbook-xsl-1.52.2 and FOP 0.20.3
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.build.dir}">
+      <arg value="-o"/>
+      <arg value="${doc.manual.fo.file}.patched-for-fop"/>
+      <arg value="${doc.manual.fo.file}"/>
+      <arg value="${doc.manual.docbook-xsl.dir}/fo/fo-patch-for-fop.xsl"/>
+    </java>
+    -->
+
+    <java 
+      classname="org.apache.fop.apps.Fop"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.build.dir}">
+      <arg value="${doc.manual.fo.file}"/>
+      <arg value="-pdf"/>
+      <arg value="${doc.manual.pdf.file}"/>
+    </java>
+  </target>
+
+</project>

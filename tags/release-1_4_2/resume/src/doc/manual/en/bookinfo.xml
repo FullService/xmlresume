@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<bookinfo>
+  <title>&book.title;</title>
+
+  <authorgroup>
+    <author>
+      <firstname>Bruce</firstname>
+      <surname>Christensen</surname>
+      <email>&bruce.email;</email>
+    </author>
+  </authorgroup>
+
+  <subtitle>For &library.name; Version &library.version.dots;</subtitle>
+
+  <pubdate>&book.pubdate;</pubdate>
+
+  <copyright>
+    <year>2002</year>
+    <holder>Bruce Christensen</holder>
+    <holder>Peter Hutnick</holder>
+  </copyright>
+
+  <legalnotice>
+    <para>
+      Permission is granted to copy, distribute and/or modify this document
+      under the terms of the GNU Free Documentation License, Version 1.1 or
+      any later version published by the Free Software Foundation; with no
+      invariant sections, with no Front-Cover Texts, and with no Back-Cover
+      Texts. A copy of the license is included in the section entitled
+      <quote><link linkend="gfdl">GNU Free Documentation License</link></quote>.
+    </para>
+  </legalnotice>
+
+</bookinfo>

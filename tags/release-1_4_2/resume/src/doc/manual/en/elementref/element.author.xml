@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.author">
+  <refnamediv>
+    <refname>author</refname>
+    <refpurpose>An author of a publication</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">author</sgmltag> element contains the name
+      of an author of a work or publication. It may also reference a
+      previously-defined <link linkend="element.name"><sgmltag
+      class="element">name</sgmltag></link> through its <sgmltag
+      class="attribute">name</sgmltag> attribute. In this case, the element will
+      be processed and displayed as if it were actually the referenced name.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">author</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">name</sgmltag></term>
+          <listitem>
+            <para>
+              The <sgmltag class="attribute">name</sgmltag> attribute contains
+              the <sgmltag class="attribute">id</sgmltag> of a <link
+              linkend="element.name"><sgmltag
+              class="element">name</sgmltag></link> element.
+            </para>
+            
+            <para>
+              If an <sgmltag class="element">author</sgmltag> element
+              specifies this attribute, it should not have any content. In
+              other words, there should be a single tag with a reference
+              (<literal><![CDATA[<author name="joe.smith"/>]]></literal>)
+              instead of two tags enclosing content
+              (<literal><![CDATA[<author>Joe Smith</author>]]></literal>).
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.name"><sgmltag class="element">name</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <bookTitle>Nuclear Engineering for Dummies</bookTitle>
+  <author>Edgar Neutron</author>
+</pub>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<name id="shirly.mendoza">
+  <firstname>Shirly</firstname>
+  <surname>Mendoza</surname>
+</name>
+<pub>
+  <artTitle>Cooking Wire-Core Pretzels</artTitle>
+  <author name="shirly.mendoza"/>
+  <bookTitle>Journal of Metal-Reinforced Confections</bookTitle>
+</pub>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

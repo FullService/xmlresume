@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.para">
+  <refnamediv>
+    <refname>para</refname>
+    <refpurpose>A paragraph of text</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">para</sgmltag> element contains a single
+      paragraph of text. Its contents are not preserved verbatim; instead, it
+      is treated much like HTML. Multiple whitespace characters (including
+      spaces and tabs) are compressed into a single space, and linebreaks are
+      treated as space characters instead of newlines. This allows flexibility
+      in formatting XML source code.
+    </para>
+
+    <para>
+      Paragraphs may contain basic markup to indicate emphasis, URLs, and
+      citations.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">para</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<para>
+  This is a boring paragraph.
+</para>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<para>
+  I like to <emphasis>emphasize</emphasize> my words; in fact, I've written an
+  article on the topic. It is published on the <emphasis><citation>Really
+  Exciting WRITING!</citation></emphasis> web site at
+  <url>http://www.really-exciting-writing.bob/EMPHASIS.html</url>.
+</para>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

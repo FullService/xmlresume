@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.job">
+  <refnamediv>
+    <refname>job</refname>
+    <refpurpose>A specific employment engagement</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">job</sgmltag> element describes a job,
+      contract, or other employment engagement.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">job</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a job. The job may then be
+              referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<job>
+  <jobtitle>Sr. VP of Soap Suds Engineering</jobtitle>
+  <employer>Proctor and Gamble</employer>
+  <period>
+    <from><date>
+      <month>May</month>
+      <year>1982</year>
+    </date></from>
+    <to><date>
+      <month>June</month>
+      <year>1988</year>
+    </date></to>
+  </period>
+</job>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<job>
+  <jobtitle>Dirt</jobtitle>
+  <employer>Earth</employer>
+  <period>
+    <from><date>
+      <month>Januaray</month>
+      <year>30,000 B.C.</year>
+    </date></from>
+    <to><present/></to>
+  </period>
+  <description>
+    Provided nutrients, absorbed water, and got tracked into houses.
+  </description>
+  <achievements>
+    <achievement>
+      Grew a 300-ft. tree.
+    </achievement>
+  </achievements>
+  <projects>
+    <project>
+      Took part in the construction of the construction of the Empire State
+      Building in New York City. (Was excavated from its basement.)
+    </project>
+  </projects>
+</job>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

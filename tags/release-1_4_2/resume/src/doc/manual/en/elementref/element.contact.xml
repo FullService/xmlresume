@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.contact">
+  <refnamediv>
+    <refname>contact</refname>
+    <refpurpose>Container for one or more methods of contacting someone</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">contact</sgmltag> element is a container
+      that holds elements that specify how to contact a person. The
+      information it contains is similar to what would be printed on a
+      business card.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">contact</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.address"><sgmltag class="element">address</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<contact>
+  <phone>555-555-1212</phone>
+  <email>sam.jones@xyz.bob</email>
+  <url>http://www.xyz.bob/~sam.jones/</url>
+</contact>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<contact>
+  <phone>123-123-1234 x123</phone>
+</contact>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<contact>
+  <email>kawanza_eloma@hotmail.bob</email>
+</contact>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

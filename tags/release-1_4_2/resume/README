@@ -1,0 +1,145 @@
+XML RESUME LIBRARY - Development System
+
+This is the developer's layout for the source of the XML
+Resume Library.  If you're seeing this file, it's
+assumed you know CVS, Ant, XML, XSL, and are generally
+aware of what you're doing.
+
+The Ant build.xml File
+======================
+
+The build.xml file describes this project to the Ant
+build system.  If you don't yet have Ant, you can get a
+copy from http://jakarta.apache.org/ant/.  You can then
+run "ant -projecthelp" to see a list of what's possible
+for this project.
+
+A useful alias for ant is "ant -find build.xml".  This
+causes Ant to search upwards through a directory tree to
+find the build.xml file instead of looking for it in
+just the current directory.
+
+Properties
+==========
+
+You can define properties to override the defaults in
+the build.xml file by creating a .ant.properties file in
+your home directory.
+
+Currently, there's just one interesting property to override:
+
+- resume.web.publish.dir
+
+  This property indicates the directory into which we publish any
+  web-accessible files from the system, such as the resume DTD.
+  This property is used during "ant install".
+
+Getting Help
+============
+
+If you want to know what each of the Ant targets do, run
+
+   ant -projecthelp
+
+DTD Changes
+===========
+
+If you change (add, remove, modify, or deprecate elements or attributes) the
+DTD, please also do the following:
+
+1. Update src/doc/manual/en/elementref.intro.xml, which is user-visible DTD
+   change documentation.
+
+2. Write or modify appropriate reference pages. If you've added elements, run
+   "ant doc.manual.create-missing" to automatically generate skeleton
+   documentation files. Then search for "TODO" in the generated files, replacing
+   with appropriate content.
+
+Deprecating elements takes a bit more work than adding or changing them:
+
+1. Elements that are deprecated should be documented as so in the appropriate
+   parts of the user guide. Specific information on doing so is in
+   src/doc/manual/AUTHORING.
+
+2. In addition, the XSLT stylesheets for resume generation should emit a message
+   to the user upon encountering a deprecated element. (However, the element
+   should still be formatted properly.) This message should be in
+   src/www/xsl/lib/deprecated.xsl.
+
+3. If possible, an "upgrade" XSLT file should be produced that automatically
+   removes or converts deprecated elements in a user's resume. See
+   src/www/xsl/misc/13x-140.xsl for an example.
+
+Cutting a Release
+=================
+
+To make a new release of the XML Resume Library,
+suitable for public distribution and consumption, do the
+following:
+
+1. Make sure everything works.  Try validating and
+   formatting the example resumes and your own.
+
+2. Update the version number in the build.xml file by
+   editing the two propeties "version.underscore" and
+   "version.dots".
+
+3. Run "cvs commit" to commit your changes to CVS.
+   Check for any merge problems, and merge and test
+   again if necessary.
+
+4. Update the changelog with rcs2log | cltohtml and
+   pasting in the HTML formatted changelog.
+
+5. Tag the release with "cvs tag X.Y.Z" where X.Y.Z is
+   the version number.
+
+6. Run "ant release" to create the ZIP and TGZ archives.
+
+7. Run "ant install.web" to publish the new release to the
+   web server.
+
+8. Upload the ZIP and TGZ archives to
+   ftp://ftp.sourceforge.net/pub/incoming/
+
+9. Add a new release to the SourceForge project page.
+
+Cleaning Up
+===========
+
+To clean up files generated after a release, run "ant
+clean".
+
+User's Guide
+============
+
+The XML Resume Project User's Guide is written in DocBook
+XML. This allows us to easily convert it to various output
+formats. (We currently generate single-file HTML, multi-file
+HTML, and text.)
+
+More information about the XML Resume Project User's Guide
+and the tools required to build it is in
+src/doc/manual/README. If you're going to be writing
+documentation, please read the AUTHORING file in the same
+directory.
+
+Formatting the Examples
+=======================
+
+Formatting the example resumes from the developer's
+edition requires a "make" command line that redefines
+the fo_style, text_style, and html_style symbols to
+point to the development area's copies and not the
+official copies via HTTP.  Additionally, you should use
+a CATALOG aware processor so that the local copy of the
+DTD is found instead of the last stable release via
+HTTP.  Here's a sample invocation:
+
+make xsl_base=../src/www/xsl/ \
+     resume=my-test \
+     clean \
+     all
+
+This formats my-test.xml into all four possible
+formats (html, text, fo, pdf).
