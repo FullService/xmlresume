@@ -145,7 +145,7 @@ $Id$
     <xsl:param name="Text"/>
     <!-- Note: This is the max width of the lines outputted, *including the
     bullet* -->
-    <xsl:param name="Width" select="20"/>
+    <xsl:param name="Width" select="$text.width - $text.indent.width"/>
 
     <xsl:call-template name="Wrap">
       <xsl:with-param name="Text">
@@ -186,7 +186,7 @@ $Id$
     <!-- Text to wrap -->
     <xsl:param name="Text"  />
     <!-- Maximum line length; lines longer than this get wrapped -->
-    <xsl:param name="Width" select="20"/>
+    <xsl:param name="Width" select="$text.width - $text.indent.width"/>
     <!-- Whether newlines in $Text should be kept. -->
     <xsl:param name="KeepNewlines" select="0"/>
     <!-- Number of characters to indent each line. If $FirstIndent is specified,
