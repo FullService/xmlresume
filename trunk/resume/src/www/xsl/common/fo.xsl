@@ -377,7 +377,7 @@ $Id$
   <!-- Format a single degree -->
   <xsl:template match="r:degree">
     <fo:block keep-with-next="always">
-      <fo:inline font-weight="bold"><xsl:value-of select="level"/>
+      <fo:inline font-weight="bold"><xsl:value-of select="r:level"/>
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
         <xsl:value-of select="r:major"/></fo:inline>
