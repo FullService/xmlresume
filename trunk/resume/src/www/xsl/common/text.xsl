@@ -111,31 +111,43 @@ $Id$
     <!-- Put as many words on the line as possible -->
     <!-- Do it till we run out of things -->
    <xsl:if test="$CPos=0">
-    <xsl:call-template name="NewLine"/>
+       <xsl:call-template name="NewLine"/>
    </xsl:if>
    <xsl:if test="string-length($Text) > 0">
-    <xsl:choose>
-        <xsl:when test="contains($Text,' ')">
-	    <xsl:variable name="Word" select="substring-before($Text,' ')"/>
-               <xsl:value-of select="$Word"/>
-	      <xsl:if test="(1 + $CPos + string-length($Word)) &gt; $Width">
-                  <xsl:call-template name="FormatParagraph">
-	            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-	            <xsl:with-param name="Width" select="$Width"/>
-	            <xsl:with-param name="CPos" select="0"/>
-	          </xsl:call-template>
-              </xsl:if> 
-	      <xsl:if test="($CPos + string-length($Word)) &lt; $Width">
-                  <xsl:text> </xsl:text>  
-                  <xsl:call-template name="FormatParagraph">
-	            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-	            <xsl:with-param name="Width" select="$Width"/>
-	            <xsl:with-param name="CPos" select="$CPos + string-length($Word) + 1"/>
-	          </xsl:call-template>
-	      </xsl:if>
-	</xsl:when>
-        <xsl:otherwise><xsl:value-of select="$Text"/></xsl:otherwise>
-    </xsl:choose>
+     <xsl:variable name="Word">
+       <xsl:choose>
+          <xsl:when test="contains($Text,' ')">
+	    <xsl:value-of select="substring-before($Text,' ')"/>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="$Text"/>
+	  </xsl:otherwise>
+       </xsl:choose>
+     </xsl:variable>
+
+     <xsl:choose>
+             <!-- If this word would cause the line to exceed $Width, -->
+             <!-- start a new line instead.                           -->
+       <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
+         <xsl:call-template name="FormatParagraph">
+            <xsl:with-param name="Text" select="$Text"/>
+            <xsl:with-param name="Width" select="$Width"/>
+            <xsl:with-param name="CPos" select="0"/>
+         </xsl:call-template>
+       </xsl:when> 
+	      <!-- otherwise, there's room on the current line -->
+       <xsl:otherwise>
+	 <xsl:if test="$CPos &gt; 0">
+           <xsl:text> </xsl:text>  
+	 </xsl:if>
+         <xsl:value-of select="$Word"/>
+         <xsl:call-template name="FormatParagraph">
+	   <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
+	   <xsl:with-param name="Width" select="$Width"/>
+	   <xsl:with-param name="CPos" select="$CPos + string-length($Word) + 1"/>
+	 </xsl:call-template>
+       </xsl:otherwise>
+     </xsl:choose>
    </xsl:if>
  </xsl:template>
 
@@ -146,6 +158,7 @@ $Id$
     <xsl:param name="CPos" select="0"/>
 
     <xsl:if test="$CPos=0">
+      <xsl:call-template name="NewLine"/>
       <xsl:value-of select="$text.bullet.character"/>
       <xsl:text> </xsl:text>
     </xsl:if>
@@ -153,36 +166,43 @@ $Id$
     <!-- Put as many words on the line as possible -->
     <!-- Do it till we run out of things -->
    <xsl:if test="string-length($Text) > 0">
-    <xsl:choose>
-        <xsl:when test="contains($Text,' ')">
-	    <xsl:variable name="Word" select="substring-before($Text,' ')"/>
-              <xsl:value-of select="$Word"/>
-	      <xsl:choose>
-	      <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
-                  <xsl:call-template name="NewLine"/>
-	          <xsl:text>  </xsl:text>
-	          <xsl:call-template name="FormatBulletListItem">
-	            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-		    <xsl:with-param name="Width" select="$Width"/>
-		    <xsl:with-param name="CPos" select="2"/>
-	          </xsl:call-template>
-              </xsl:when> 
-	      <xsl:otherwise>
-		<xsl:text> </xsl:text>
-	        <xsl:variable name="NewPos" select="$CPos + string-length($Word) + 1"/>
-	      <xsl:call-template name="FormatBulletListItem">
-	        <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
-		<xsl:with-param name="Width" select="$Width"/>
-		<xsl:with-param name="CPos" select="$NewPos"/>
-	      </xsl:call-template>
-	      </xsl:otherwise>
-	      </xsl:choose>
-	</xsl:when>
-        <xsl:otherwise>
-	  <xsl:value-of select="$Text"/>
-	  <xsl:call-template name="NewLine"/>
-	</xsl:otherwise>
-    </xsl:choose>
+
+     <xsl:variable name="Word">
+       <xsl:choose>
+          <xsl:when test="contains($Text,' ')">
+            <xsl:value-of select="substring-before($Text,' ')"/>
+          </xsl:when>
+	     <!-- otherwise, this is the last word. -->
+          <xsl:otherwise>
+	    <xsl:value-of select="$Text"/>
+          </xsl:otherwise>
+       </xsl:choose>
+     </xsl:variable>
+     <xsl:choose>
+	   <!-- If this word would exceed $Width, start a new line. -->
+	<xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
+           <xsl:call-template name="NewLine"/>
+	   <xsl:text>  </xsl:text>
+	   <xsl:call-template name="FormatBulletListItem">
+	      <xsl:with-param name="Text" select="$Text"/>
+	      <xsl:with-param name="Width" select="$Width"/>
+	      <xsl:with-param name="CPos" select="2"/>
+	   </xsl:call-template>
+        </xsl:when> 
+	      <!-- otherwise, there's room on the current line -->
+	<xsl:otherwise>
+	   <xsl:if test="$CPos &gt; 2">
+              <xsl:text> </xsl:text>  
+	   </xsl:if>
+           <xsl:value-of select="$Word"/>
+	   <xsl:variable name="NewPos" select="$CPos + string-length($Word) + 1"/>
+	   <xsl:call-template name="FormatBulletListItem">
+	      <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
+	      <xsl:with-param name="Width" select="$Width"/>
+	      <xsl:with-param name="CPos" select="$NewPos"/>
+	   </xsl:call-template>
+        </xsl:otherwise>
+     </xsl:choose>
    </xsl:if>
  </xsl:template>
 
@@ -243,9 +263,7 @@ $Id$
   <xsl:template name="centered.header">
     <xsl:call-template name="Center">
       <xsl:with-param name="Text">
-        <xsl:value-of select="name/firstname"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="name/surname"/>
+	<xsl:apply-templates select="name"/>
       </xsl:with-param>
     </xsl:call-template>
 
@@ -281,11 +299,9 @@ $Id$
     <!-- Your name, address, and stuff. -->
    <xsl:call-template name="Center">
    <xsl:with-param name="Text">
-    <xsl:value-of select="name/firstname"/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="name/surname"/>
-        <xsl:text>  - </xsl:text>
-        <xsl:value-of select="$resume.word"/>
+      <xsl:apply-templates select="name"/>
+      <xsl:text>  - </xsl:text>
+      <xsl:value-of select="$resume.word"/>
    </xsl:with-param>
    </xsl:call-template>
 <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
@@ -422,7 +438,7 @@ $Id$
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="64"/>
+      <xsl:with-param name="Width" select="72"/>
     </xsl:call-template>
   </xsl:template>
 		
@@ -438,7 +454,7 @@ $Id$
 
   <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
 
-  <xsl:template match="year | month | jobtitle | employer | firstname | surname | title |
+  <xsl:template match="year | month | jobtitle | employer | title |
                        skill">
 	<xsl:value-of select="."/>
   </xsl:template>
@@ -504,7 +520,6 @@ $Id$
     <xsl:if test="title">
       <xsl:apply-templates select="title"/><xsl:text>:</xsl:text>
       <xsl:call-template name="NewLine"/>
-      <xsl:call-template name="NewLine"/>
     </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
@@ -516,6 +531,7 @@ $Id$
 
   <xsl:template match="skillset">
     <xsl:if test="title">
+      <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="title"/>
       <xsl:call-template name="NewLine"/>
     </xsl:if>
@@ -537,7 +553,7 @@ $Id$
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="64"/>
+      <xsl:with-param name="Width" select="72"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -552,20 +568,24 @@ $Id$
   </xsl:template>
 
   <xsl:template match="pub">
+    <xsl:variable name="text">   
+      <xsl:apply-templates select="author[position() != last()]" mode="internal"/>
+      <xsl:apply-templates select="author[position() = last()]" mode="final"/>
+      <xsl:apply-templates select="artTitle"/>
+      <xsl:apply-templates select="bookTitle"/>
+      <xsl:apply-templates select="publisher"/>
+      <xsl:apply-templates select="pubDate"/>
+      <xsl:apply-templates select="pageNums"/>
+      <xsl:apply-templates select="para"/>
+    </xsl:variable>
+
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:call-template name="FormatParagraph">
 	  <xsl:with-param name="Text">
-	    <xsl:apply-templates select="author[position() != last()]" mode="internal"/>
-	    <xsl:apply-templates select="author[position() = last()]" mode="final"/>
-	    <xsl:apply-templates select="artTitle"/>
-	    <xsl:apply-templates select="bookTitle"/>
-	    <xsl:apply-templates select="publisher"/>
-	    <xsl:apply-templates select="pubDate"/>
-	    <xsl:apply-templates select="pageNums"/>
-	    <xsl:apply-templates select="para"/>
+	     <xsl:value-of select="normalize-space($text)"/>
 	  </xsl:with-param>
-	  <xsl:with-param name="Width" select="60"/>
+	  <xsl:with-param name="Width" select="72"/>
 	</xsl:call-template>
       </xsl:with-param>
       <xsl:with-param name="Length" select="4"/>
@@ -593,8 +613,10 @@ $Id$
       caused odd formatting with extra newlines inserted. Not sure why
       but this fixes it. *SE* -->
     <xsl:text>&quot;</xsl:text>
-    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:value-of select="."/>
     <xsl:text>&quot;</xsl:text>
+    <xsl:value-of select="$pub.item.separator"/>
+    
   </xsl:template>
 
   <!-- Title of book -->
@@ -655,9 +677,7 @@ $Id$
   <xsl:template match="name" mode="title">
    <xsl:call-template name="Center">
    <xsl:with-param name="Text">
-    <xsl:value-of select="firstname"/>
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="surname"/>
+        <xsl:apply-templates/>
         <xsl:text>  - </xsl:text>
         <xsl:value-of select="$resume.word"/>
   </xsl:with-param>
@@ -667,7 +687,15 @@ $Id$
   <xsl:template match="name">
     <xsl:apply-templates select="firstname"/>
     <xsl:text> </xsl:text>
+    <xsl:if test="middlenames">
+      <xsl:value-of select="middlenames"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates select="surname"/>
+    <xsl:if test="suffix">
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="suffix"/>
+    </xsl:if>
   </xsl:template>
   
 
@@ -678,7 +706,7 @@ $Id$
          <xsl:apply-templates/>
     </xsl:variable>
     <xsl:call-template name="FormatParagraph">
-        <xsl:with-param name="Width" select="64"/>
+        <xsl:with-param name="Width" select="72"/>
         <xsl:with-param name="Text">
 	   <xsl:value-of select="normalize-space($Text)"/>
         </xsl:with-param>
