@@ -171,7 +171,7 @@ class ResumeTest {
 			URL inputURL = (URL) i.next();
 			for (StringTokenizer t = new StringTokenizer(props.getProperty("stylesheets"), ","); t.hasMoreTokens();) {
 				String stylesheetKey = t.nextToken().trim();
-				URL stylesheetURL = ResumeTest.class.getResource("/xsl/" + props.getProperty(stylesheetKey
+				URL stylesheetURL = ResumeTest.class.getResource("/xsl/output/" + props.getProperty(stylesheetKey
 					+ ".file"));
 				if (stylesheetURL == null)
 					throw new IllegalStateException("Stylesheet " + stylesheetKey + " missing");
