@@ -858,6 +858,48 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:call-template>
   </xsl:template>
 
+  <!-- Format security clearance section. -->
+  <xsl:template match="r:clearances">
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="Title">
+          <xsl:with-param name="Default" select="$security-clearances.word"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:clearance"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- Format a single security clearance. -->
+  <xsl:template match="r:clearance">
+    <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:level"/>
+
+        <xsl:if test="r:organization">
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="r:organization"/>
+        </xsl:if>
+
+        <xsl:if test="r:date">
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="r:date"/>
+        </xsl:if>
+
+        <xsl:if test="r:note">
+          <xsl:text>. </xsl:text>
+          <xsl:apply-templates select="r:note"/>
+        </xsl:if>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+  
   <!-- Format awards section. -->
   <xsl:template match="r:awards">
     <xsl:call-template name="Heading">
@@ -875,6 +917,7 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:call-template>
   </xsl:template>
 
+  
   <!-- A single award. -->
   <xsl:template match="r:award">
     <xsl:call-template name="FormatBulletListItem">
@@ -1050,6 +1093,6 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:if test="following-sibling::*">
       <xsl:call-template name="NewLine"/>
     </xsl:if>
- </xsl:template>
+  </xsl:template>
 
 </xsl:stylesheet>

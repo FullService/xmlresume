@@ -46,6 +46,7 @@ $Id$
   <xsl:param name="academics.word">Education</xsl:param>
   <xsl:param name="publications.word">Publications</xsl:param>
   <xsl:param name="interests.word">Interests</xsl:param>
+  <xsl:param name="security-clearances.word">Security Clearances</xsl:param>
   <xsl:param name="awards.word">Awards</xsl:param>
   <xsl:param name="miscellany.word">Miscellany</xsl:param>
   <!-- Word to use for "in", as in "bachelor degree *in* political science" -->

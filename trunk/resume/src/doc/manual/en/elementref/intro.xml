@@ -35,6 +35,13 @@
       <itemizedlist>
         <listitem><para>
           New elements:
+          <link linkend="element.clearances"><sgmltag
+          class="element">clearances</sgmltag></link> and
+          <link linkend="element.clearance"><sgmltag
+          class="element">clearance</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          New elements:
           <link linkend="element.gpa"><sgmltag
           class="element">gpa</sgmltag></link>,
           <link linkend="element.score"><sgmltag

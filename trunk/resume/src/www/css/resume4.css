@@ -61,6 +61,7 @@ p {
 .awardTitle { font-weight: bold }
 .bookTitle { font-style: italic }
 .citation { font-style: italic }
+.clearanceLevel { font-weight: bold }
 .copyright { font-size: 75% }
 li.degree { margin-bottom: 0.5em; }
 .degreeTitle { font-weight: bold }

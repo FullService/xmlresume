@@ -64,21 +64,21 @@ $Id$
         output this meta tag when in HTML output mode. However, Xalan is too
         stupid to do that, so we work around it. This results in double meta
         tags when using a more compliant processor, like Saxon. -->
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>
-	  <xsl:apply-templates select="r:resume/r:header/r:name"/>
-	  <xsl:text> - </xsl:text>
-	  <xsl:value-of select="$resume.word"/>
-	</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>
+          <xsl:apply-templates select="r:resume/r:header/r:name"/>
+          <xsl:text> - </xsl:text>
+          <xsl:value-of select="$resume.word"/>
+        </title>
         <link rel="stylesheet" type="text/css">
-	  <xsl:attribute name="href">
-	    <xsl:value-of select="$css.href"/>
-	  </xsl:attribute>
-	</link>
+          <xsl:attribute name="href">
+            <xsl:value-of select="$css.href"/>
+          </xsl:attribute>
+        </link>
         <xsl:apply-templates select="r:resume/r:keywords" mode="header"/>
       </head>
       <body>
-	<xsl:apply-templates select="r:resume"/>
+        <xsl:apply-templates select="r:resume"/>
       </body>
     </html>
   </xsl:template>
@@ -96,7 +96,7 @@ $Id$
   <xsl:template match="r:keywords" mode="header">
     <meta name="keywords">
       <xsl:attribute name="content">
-	<xsl:apply-templates select="r:keyword"/>
+        <xsl:apply-templates select="r:keyword"/>
       </xsl:attribute>
     </meta>
   </xsl:template>
@@ -342,7 +342,7 @@ $Id$
       </div>
     </xsl:if>
   </xsl:template>
-		
+
   <xsl:template match="r:jobtitle">
     <span class="jobTitle">
       <xsl:apply-templates/>
@@ -512,7 +512,7 @@ $Id$
   <xsl:template match="r:skillset">
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
-	<p>
+        <p>
           <xsl:apply-templates select="r:title" mode="comma"/>
 
           <xsl:if test="r:skill">
@@ -526,7 +526,7 @@ $Id$
               <xsl:apply-templates select="r:skills" mode="comma"/>
             </span>
           </xsl:if>
-	</p>
+        </p>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates select="r:title" mode="bullet"/>
@@ -623,7 +623,7 @@ $Id$
         <span class="organization"><xsl:apply-templates select="r:organization"/></span><br/>
       </xsl:if>
       <xsl:if test="r:period">
-	<xsl:apply-templates select="r:period"/><br/>
+        <xsl:apply-templates select="r:period"/><br/>
       </xsl:if>
       <xsl:apply-templates select="r:description">
         <xsl:with-param name="css.class">membershipDescription</xsl:with-param>
@@ -667,6 +667,45 @@ $Id$
         select="$interest.description.format"/>
       <xsl:with-param name="css.class">interestDescription</xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+  
+  <!-- Format security clearance section. -->
+  <xsl:template match="r:clearances">
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="Title">
+          <xsl:with-param name="Default" select="$security-clearances.word"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <ul>
+      <xsl:apply-templates select="r:clearance"/>
+    </ul>
+  </xsl:template>
+
+  <!-- Format a single security clearance. -->
+  <xsl:template match="r:clearance">
+    <li class="clearance">
+      <span class="clearanceLevel">
+        <xsl:apply-templates select="r:level"/>
+      </span>
+
+      <xsl:if test="r:organization">
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="r:organization"/>
+      </xsl:if>
+
+      <xsl:if test="r:date">
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="r:date"/>
+      </xsl:if>
+
+      <xsl:if test="r:note">
+        <xsl:text>. </xsl:text>
+        <xsl:apply-templates select="r:note"/>
+      </xsl:if>
+    </li>
   </xsl:template>
 
   <!-- Format awards section. -->
@@ -780,7 +819,7 @@ $Id$
   <xsl:template match="r:link">
     <a class="linkA">
       <xsl:attribute name="href">
-	<xsl:value-of select="@href"/>
+        <xsl:value-of select="@href"/>
       </xsl:attribute>
       <xsl:value-of select="."/>
     </a>

@@ -18,11 +18,35 @@
 
   <refsect1><title>Description</title>
     <para>
-      The <sgmltag class="element">title</sgmltag> element specifies a degree
-      type, such as <quote>BFA</quote> (bachelor of fine arts) or
-      <quote>Ph.D</quote> (doctor of philosophy). It typically contains the
-      abbreviation (<quote>BS</quote>) not the full spelling (<quote>bachelor of
-      science</quote>).
+      The semantic of the <sgmltag class="element">title</sgmltag> element
+      vary depending on which element contains it:
+
+      <variablelist>
+        <varlistentry>
+          <term><sgmltag class="element">clearance</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, the <sgmltag
+              class="element">level</sgmltag> element specifies the level of
+              security clearance that a person has been granted, such as
+              <quote>Top Secret</quote> or <quote>Restricted</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">degree</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, the <sgmltag
+              class="element">level</sgmltag> element specifies a degree type,
+              such as <quote>BFA</quote> (bachelor of fine arts) or
+              <quote>Ph.D</quote> (doctor of philosophy). It typically contains
+              the abbreviation (<quote>BS</quote>) not the full spelling
+              (<quote>bachelor of science</quote>).
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </para>
 
     <refsect2><title>Parents</title>
@@ -66,8 +90,9 @@
   <refsect1><title>Examples</title>
 
     <para>
-      For examples, see <link linkend="element.degree"><sgmltag
-      class="element">degree</sgmltag></link>.
+      For examples, see <link linkend="element.clearance"><sgmltag
+      class="element">clearance</sgmltag></link> and <link
+      linkend="element.degree"><sgmltag class="element">degree</sgmltag></link>.
     </para>
 
   </refsect1>

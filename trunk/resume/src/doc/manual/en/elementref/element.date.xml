@@ -30,6 +30,13 @@
       published.
     </para>
 
+    <para>
+      When contained inside a <link linkend="element.clearance"><sgmltag
+      class="element">clearance</sgmltag></link> element, <sgmltag
+      class="element">date</sgmltag> represents the date that the security
+      clearance was granted.
+    </para>
+
     <note>
       <para>
         The <sgmltag class="element">month</sgmltag> element was made optional

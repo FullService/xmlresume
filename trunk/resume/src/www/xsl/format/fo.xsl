@@ -845,6 +845,58 @@ $Id$
 
     </xsl:choose>
   </xsl:template>
+  
+  <!-- Format security clearance section. -->
+  <xsl:template match="r:clearances">
+    <!-- Heading -->
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text">
+        <xsl:call-template name="Title">
+          <xsl:with-param name="Default" select="$security-clearances.word"/>
+        </xsl:call-template>
+      </xsl:with-param>
+    </xsl:call-template>
+ 
+    <!-- Clearances -->
+    <fo:list-block
+        space-after="{$para.break.space}"
+        provisional-distance-between-starts="{$para.break.space}"
+        provisional-label-separation="{$bullet.space}">
+
+      <xsl:apply-templates select="r:clearance"/>
+
+    </fo:list-block>
+  </xsl:template>
+
+  <!-- Format a single security clearance. -->
+  <xsl:template match="r:clearance">
+    <xsl:call-template name="bulletListItem">
+      <xsl:with-param name="text">
+
+        <fo:inline
+            font-weight="{$clearance-level.font.weight}"
+            font-style="{$clearance-level.font.style}">
+          <xsl:apply-templates select="r:level"/>
+        </fo:inline>
+
+        <xsl:if test="r:organization">
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="r:organization"/>
+        </xsl:if>
+
+        <xsl:if test="r:date">
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="r:date"/>
+        </xsl:if>
+
+        <xsl:if test="r:note">
+          <xsl:text>. </xsl:text>
+          <xsl:apply-templates select="r:note"/>
+        </xsl:if>
+
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 
   <!-- Format awards. -->
   <xsl:template match="r:awards">
@@ -856,7 +908,7 @@ $Id$
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-
+ 
     <!-- Awards -->
     <fo:list-block
         space-after="{$para.break.space}"

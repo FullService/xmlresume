@@ -186,6 +186,9 @@ $Id$
   <xsl:param name="degrees-note.font.style">italic</xsl:param>
   <xsl:param name="degrees-note.font.weight">normal</xsl:param>
 
+  <xsl:param name="clearance-level.font.style">italic</xsl:param>
+  <xsl:param name="clearance-level.font.weight">normal</xsl:param>
+
   <!-- Used on "*Overall GPA*: 3.0" -->
   <xsl:param name="gpa-preamble.font.style">italic</xsl:param>
   <xsl:param name="gpa-preamble.font.weight">normal</xsl:param>
