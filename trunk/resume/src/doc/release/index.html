@@ -75,7 +75,15 @@
 	use the library, and disclaimer</a>.  <strong>Definitely
 	read this file.</strong>
       </li>
-      <li><a href="manual/manual.html">User Guide</a></li>
+      <li>User Guide. Contains a getting started section, an element reference,
+        an XSL parameter reference, and a CSS class reference. Available in the
+        following formats:
+        <ul>
+          <li><a href="manual/html/index.html">HTML (multiple files)</a></li>
+          <li><a href="manual/manual.html">HTML (one large file)</a></li>
+          <li><a href="manual/manual.txt">Plain text</a></li>
+        </ul>
+      </li>
       <li>A list of <a href="authors/index.html">authors and
 	contributors</a> to the library.
       </li>
@@ -102,13 +110,13 @@
       <li>Xerces 1.4 XML parser</li>
       <li>Xalan 1.1 and Xalan 2.2 XSL processors</li>
       <li>FOP 0.20.3 Formatting Objects print processor (although you
-	will see some harmless warning messages due to incomplete
+	will see some harmless warning messages due to its incomplete
 	implementation of the XSL specification).
       </li>
     </ul>
 
-    <p>In addition, the library works quite well with <a
-      href="http://www.renderx.com/">RenderX's XEP Formatting Objects
+    <p>In addition, the library works quite well with the Saxon XSL processor
+      and <a href="http://www.renderx.com/">RenderX's XEP Formatting Objects
       processor</a>.
     </p>
 
@@ -135,6 +143,11 @@
       you move the other, too.
     </p>
 
+    <p>All available tags are documented in the <a
+      href="manual/html/elementref.html">Element Reference</a> in the User
+      Guide.
+    </p>
+
     <p>For an idea of how the tags work, see the comments in the
       <code>resume.dtd</code> file and the example
       r&eacute;sum&eacute; files.
@@ -145,6 +158,14 @@
     <p>You can format the XML resume into HTML for online viewing,
       into XSL Formatting Objects (FO) for rendering into PDF for
       printing, or into plain text.
+    </p>
+
+    <p>The <a href="manual/html/getting-started.html">Getting Started</a>
+      section of the user guide will help you create your first XML
+      r&eacute;sum&eacute; and convert it to HTML, PDF, and plain text. It
+      contains a chapter on <a
+      href="manual/html/getting-started.convert.html">Converting an XML
+      R&eacute;sum&eacute; to Other Formats</a>.
     </p>
 
     <h3>Creating an HTML Presentation</h3>
@@ -174,7 +195,7 @@
       your tastes.  By default, the HTML output referencs a cascading
       stylesheet named <code>resume.css</code>.  Create this file and
       publish it along with the HTML output to your web server to
-      customize the output.  You can find two sample CSS files under
+      customize the output.  You can find some sample CSS files under
       the <code>css</code> directory.
     </p>
 
@@ -184,116 +205,10 @@
       XSLT engine).
     </p>
 
-    <p>The following table lists the element classes used in the HTML
-      output for which you can specify styles.
+    <p>For information on the CSS classes available, and where they are used,
+      please consult the <a href="manual/html/cssref.html">CSS Class
+      Reference</a> in the User Guide.
     </p>
-
-    <table>
-      <thead>
-	<tr>
-	  <th>Class</th>
-	  <th>Where Used</th>
-	</tr>
-      </thead>
-      <tbody>
-	<tr>
-	  <td><code>academicsHeading</code></td><td>On the <code>h2</code> of the heading for your academics.</td>
-	</tr>
-	<tr>
-	  <td><code>bookTitle</code></td><td>On the <code>cite</code> used to refer to a title of a book in one of your publications.</td>
-	</tr>
-	<tr>
-	  <td><code>citation</code></td><td>On all HTML <code>cite</code>'s generated from all XML <code>citation</code>'s.</td>
-	</tr>
-	<tr>
-	  <td><code>contactHeading</code></td><td>On the <code>h2</code> of the heading for the contact information.</td>
-	</tr>
-	<tr>
-	  <td><code>copyright</code></td><td>On the <code>address</code> for copyright information.</td>
-	</tr>
-	<tr>
-	  <td><code>degree</code></td><td>On the <code>li</code> for a single degree.</td>
-	</tr>
-	<tr>
-	  <td><code>degrees</code></td><td>On the <code>ul</code> for the list of degrees you hold.</td>
-	</tr>
-	<tr>
-	  <td><code>description</code></td><td>Around descriptions of items.</td>
-	</tr>
-	<tr>
-	  <td><code>emphasis</code></td><td>On all HTML <code>strong</code>'s generated from all XML <code>emphasis</code>'s.</td>
-	</tr>
-	<tr>
-	  <td><code>employer</code></td><td>Around all employer names.</td>
-	</tr>
-	<tr>
-	  <td><code>historyHeading</code></td><td>On the <code>h2</code> of the heading for the employment history.</td>
-	</tr>
-	<tr>
-	  <td><code>job</code></td><td>On the <code>p</code> of the paragraph generating a single employer entry.</td>
-	</tr>
-	<tr>
-	  <td><code>jobTitle</code></td><td>On the <code>span</code> enclosing the title you held at job.</td>
-	</tr>
-	<tr>
-	  <td><code>level</code></td><td>On the <code>acronym</code> for the level attained in a degree.</td>
-	</tr>
-	<tr>
-	  <td><code>membershipsHeading</code></td><td>On the <code>h2</code> for the memberships heading.</td>
-	</tr>
-	<tr>
-	  <td><code>membershipTitle</code></td><td>On the position title in a membership.</td>
-	</tr>
-	<tr>
-	  <td><code>miscHeading</code></td><td>On the <code>h2</code> for the miscellany heading.</td>
-	</tr>
-	<tr>
-	  <td><code>nameHeading</code></td><td>Around your name at the top of the r&eacute;sum&eacute;.</td>
-	</tr>
-	<tr>
-	  <td><code>note</code></td><td>On the <code>div</code> used as the admonition below the list of held degrees.</td>
-	</tr>
-	<tr>
-	  <td><code>objectiveHeading</code></td><td>On the <code>h2</code> of the heading for the professional objective.</td>
-	</tr>
-	<tr>
-	  <td><code>organization</code></td><td>On the name of the organization of which you're a member.</td>
-	</tr>
-	<tr>
-	  <td><code>para</code></td><td>On all HTML <code>p</code>'s generated from all XML <code>para</code>'s.</td>
-	</tr>
-	<tr>
-	  <td><code>pub</code></td><td>On a single publication.</td>
-	</tr>
-	<tr>
-	  <td><code>pubs</code></td><td>On the <code>ul</code> for the list of publications.</td>
-	</tr>
-	<tr>
-	  <td><code>pubsHeading</code></td><td>On the <code>h2</code> heading the publications.</td>
-	</tr>
-	<tr>
-	  <td><code>resume</code></td><td>On the <code>body</code> of the entire HTML output.</td>
-	</tr>
-	<tr>
-	  <td><code>skill</code></td><td>On the <code>li</code> for a single skill.</td>
-	</tr>
-	<tr>
-	  <td><code>skillareaHeading</code></td><td>On the <code>h2</code> for a skill area.</td>
-	</tr>
-	<tr>
-	  <td><code>skills</code></td><td>On the <code>ul</code> for a list of skills.</td>
-	</tr>
-	<tr>
-	  <td><code>skillsetTitle</code></td><td>On the <code>h3</code> for a title of a set of skills.</td>
-	</tr>
-	<tr>
-	  <td><code>urlA</code></td><td>On the <code>a</code> of a generated hyperlink.</td>
-	</tr>
-	<tr>
-	  <td><code>urlCode</code></td><td>On <code>code</code> sections used to mark up URLs.</td>
-	</tr>
-      </tbody>
-    </table>
 
     <h3>Creating a PDF Presentation</h3>
 
@@ -343,37 +258,24 @@
     <h3>Automating Formatting</h3>
 
     <p>To automate formatting a r&eacute;sum&eacute; to all three
-      output formats, consider using the <code>Makefile</code>.  It
+      output formats, consider using the <code>Makefile</code>. It
       uses the Java versions of the Apache XML tools Xerces/Xalan/FOP
       to create both web and print presentations of a
-      r&eacute;sum&eacute;.  Adjust the <code>RESUME</code> value
-      inthe <code>Makefile</code> to point to the file name of the
+      r&eacute;sum&eacute;.  Adjust the <code>resume</code> value
+      in the <code>Makefile</code> to point to the file name of the
       r&eacute;sume&eacute; you want to format, without the
       <code>.xml</code> extension.
     </p>
 
+    <p>The <code>Makefile</code> is in the <code>examples</code> directory.</p>
+
     <h3>Configurable Parameters</h3>
 
     <p>Several parameters are available to control how a 
-    r&eacute;sum&eacute; is formatted. They are:
+      r&eacute;sum&eacute; is formatted. They are documented in the <a
+      href="manual/html/paramref.html">XSL Parameter Reference</a> in the User
+      Guide.
     </p>
-
-    <ul>
-      <li><code>header.format</code> - possible values are  
-      <code>standard</code> and <code>centered</code>.   See 
-      the <a href="header.html">Header Formatting</a> section
-      for example output.
-
-      <li><code>address.format</code> - possible values are  
-      <code>standard</code>, <code>european</code> and 
-      <code>italian</code>.   See the 
-      <a href="address.html">Address Formatting</a> section for
-      more details.
-
-      <li><code>skills.format</code> - possible values are  
-      <code>bullet</code> for bulleted lists, <code>comma</code>
-      for comma-separated lists of skills.  See the <a href="skills.html">
-      Skills Formatting</a> section for an example.
 
   </body>
 </html>
