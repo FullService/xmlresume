@@ -679,7 +679,7 @@ $Id$
     <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
     <p>
       <xsl:if test="r:address">
-      <xsl:apply-templates select="r:address"/><br/>
+        <xsl:apply-templates select="r:address"/><br/>
       </xsl:if>
       
       <!-- Don't print the label if the field value is empty *SE* -->
