@@ -611,9 +611,14 @@ $Id$
     </xsl:variable>
     <xsl:value-of select="normalize-space($Text)"/>
     <xsl:apply-templates select="@level"/>
-    <xsl:if test="following-sibling::r:skill">
-      <xsl:text>, </xsl:text>
-    </xsl:if>
+    <xsl:choose>
+      <xsl:when test="following-sibling::r:skill">
+        <xsl:text>, </xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$skills.suffix"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- Format a single skill as a bullet item. -->
