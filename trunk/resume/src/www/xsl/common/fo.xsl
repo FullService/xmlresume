@@ -402,7 +402,7 @@ $Id$
         <xsl:apply-templates select="r:date"/>
       </xsl:if>
       <xsl:if test="r:annotation">
-        <xsl:text>, </xsl:text>
+        <xsl:text>. </xsl:text>
         <xsl:apply-templates select="r:annotation"/>
       </xsl:if>
     </fo:block>
