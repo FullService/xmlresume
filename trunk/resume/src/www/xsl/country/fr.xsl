@@ -87,7 +87,6 @@ $Id$
   <xsl:param name="overall-gpa.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="pager.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="phone.work.phrase">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="referees.hidden.phrase">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="security-clearances.word">TRANSLATION NEEDED</xsl:param>
 </xsl:stylesheet>
 

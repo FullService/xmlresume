@@ -74,8 +74,6 @@ $Id$
   <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
   <xsl:param name="out-of.word">de um total de</xsl:param>
 
-  <!-- Phrase to display when referees are hidden. -->
-  <xsl:param name="referees.hidden.phrase">Dispon&#x00ED;vel sob pedido.</xsl:param>
   <xsl:param name="last-modified.phrase">&#x00DA;ltima modifica&#x00e7;&#x00f5;</xsl:param>
 
   <xsl:param name="phone.word">Telefone</xsl:param>

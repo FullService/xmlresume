@@ -65,9 +65,6 @@ $Id$
   <xsl:param name="major-gpa.word">Notendurchschnitt der Hauptfächer</xsl:param>
   <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
   <xsl:param name="out-of.word">von</xsl:param>
-
-  <!-- Phrase to display when referees are hidden. -->
-  <xsl:param name="referees.hidden.phrase">Referenzen werden gerne auf Anfrage genannt.</xsl:param>
   <xsl:param name="last-modified.phrase">Letzte Aktualisierung:</xsl:param>
 
   <xsl:param name="phone.word">Telefon</xsl:param>

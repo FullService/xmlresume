@@ -72,9 +72,6 @@ $Id$
   <xsl:param name="major-gpa.word">GPA in Major</xsl:param>
   <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
   <xsl:param name="out-of.word"> out of </xsl:param>
-
-  <!-- Phrase to display when referees are hidden. -->
-  <xsl:param name="referees.hidden.phrase">Available upon request.</xsl:param>
   <xsl:param name="last-modified.phrase">Last modified</xsl:param>
 
   <xsl:param name="phone.word">Phone</xsl:param>

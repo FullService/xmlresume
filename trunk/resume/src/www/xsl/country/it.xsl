@@ -70,7 +70,6 @@ $Id$
   <xsl:param name="im.jabber.service">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="im.msn.service">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="im.yahoo.service">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="referees.hidden.phrase">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="security-clearances.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="interests.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="minor.word">TRANSLATION NEEDED</xsl:param>
