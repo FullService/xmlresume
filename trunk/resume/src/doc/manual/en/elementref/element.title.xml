@@ -47,6 +47,8 @@
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term><sgmltag class="element">awards</sgmltag></term>
+          <term><sgmltag class="element">interests</sgmltag></term>
           <term><sgmltag class="element">memberships</sgmltag></term>
           <term><sgmltag class="element">skillarea</sgmltag></term>
           <listitem>
@@ -55,6 +57,16 @@
               class="element">title</sgmltag> contains a heading for that
               section of a &resume;. It is formatted as a top-level heading.
             </para>
+            <note>
+              <para>
+                The <sgmltag class="element">title</sgmltag> element is optional
+                in <sgmltag class="element">awards</sgmltag> and <sgmltag
+                class="element">interests</sgmltag>. If it is not present, the
+                <parameter>awards.word</parameter> and
+                <parameter>interests.word</parameter> parameters will be used
+                as the heading text in formatted &resume;s, respectively.
+              </para>
+            </note>
           </listitem>
         </varlistentry>
         <varlistentry>

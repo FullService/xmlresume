@@ -61,6 +61,9 @@ $Id$
   <!-- Word to use for "Interests" -->
   <xsl:param name="interests.word">Interests</xsl:param>
 
+  <!-- Word to use for "Awards" -->
+  <xsl:param name="awards.word">Awards</xsl:param>
+
   <!-- Word to use for "Miscellany" -->
   <xsl:param name="miscellany.word">Miscellany</xsl:param>
 

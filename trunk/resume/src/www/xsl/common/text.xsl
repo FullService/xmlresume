@@ -51,6 +51,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="awards.xsl"/>
   <xsl:include href="deprecated.xsl"/>
   <xsl:include href="contact.xsl"/>
   <xsl:include href="string.xsl"/>
@@ -818,6 +819,40 @@ In general, each block is responsible for outputting a newline after itself.
         select="$text.width - $text.indent.width"/>
       <xsl:with-param name="paragraph.format"
         select="$interest.description.format"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- Format awards section. -->
+  <xsl:template match="r:awards">
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="AwardsTitle"/>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:award"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- A single award. -->
+  <xsl:template match="r:award">
+    <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+
+        <xsl:if test="r:organization"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:organization"/>
+
+        <xsl:if test="r:date"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:date"/>
+
+        <xsl:call-template name="NewLine"/>
+
+        <xsl:apply-templates select="r:description"/>
+      </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 

@@ -45,6 +45,7 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="awards.xsl"/>
   <xsl:include href="deprecated.xsl"/>
   <xsl:include href="contact.xsl"/>
   <xsl:include href="string.xsl"/>
@@ -679,7 +680,7 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:membership/r:title">
-    <fo:inline font-weight="bold"><xsl:value-of select="."/></fo:inline>
+    <fo:inline font-weight="{$emphasis.font.weight}"><xsl:value-of select="."/></fo:inline>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -752,6 +753,47 @@ $Id$
       </xsl:otherwise>
 
     </xsl:choose>
+  </xsl:template>
+
+  <!-- Format awards. -->
+  <xsl:template match="r:awards">
+    <!-- Heading -->
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text">
+        <xsl:call-template name="AwardsTitle"/>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <!-- Awards -->
+    <fo:list-block
+        space-after="{$para.break.space}"
+        provisional-distance-between-starts="{$para.break.space}"
+        provisional-label-separation="{$bullet.space}">
+
+      <xsl:apply-templates select="r:award"/>
+
+    </fo:list-block>
+  </xsl:template>
+
+  <!-- A single award. -->
+  <xsl:template match="r:award">
+    <xsl:call-template name="bulletListItem">
+      <xsl:with-param name="text">
+
+        <fo:inline font-weight="{$emphasis.font.weight}">
+          <xsl:apply-templates select="r:title"/>
+        </fo:inline>
+
+        <xsl:if test="r:organization"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:organization"/>
+
+        <xsl:if test="r:date"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:date"/>
+
+        <xsl:apply-templates select="r:description"/>
+
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Format miscellaneous information with "Miscellany" as the heading. -->

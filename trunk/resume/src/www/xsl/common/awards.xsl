@@ -1,8 +1,11 @@
-/*
-resume3.css
-Sample Cascading Stylesheet (CSS) for HTML formatted resumes.
+<?xml version="1.0" encoding="UTF-8"?>
 
-Copyright (c) 2001 Stewart Evans, Bruce Christensen
+<!--
+awards.xsl
+Defines some common templates for award processing that are 
+shared by all the stylesheets. 
+
+Copyright (c) 2002 Bruce Christensen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -27,36 +30,27 @@ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 
-.resume { 
-    background-color: #eeeeee;
-    padding-left: 30pt;
-    padding-right: 30pt;
-}
-h2 {
-    margin-left: -20pt;
-    font-family: sans-serif;
-    color: black;
-    border-bottom: solid 1pt black;
-}
-p {
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-}
+$Id$
+-->
 
-.awardTitle { font-weight: bold }
-.bookTitle { font-style: italic }
-.citation { font-style: italic }
-.copyright { font-size: 75% }
-li.degree { margin-bottom: 0.5em; }
-.degreeTitle { font-weight: bold }
-.employer { font-style: italic }
-.headerBlock { text-align: center }
-.jobTitle { font-weight: bold }
-.lastModified { font-size: 75% }
-.nameHeading { text-align: center; font-family: sans-serif }
-div.referee { margin-bottom: 1em; }
-.refereeName { font-weight: bold }
-.skillsetTitle { font-weight: bold }
-.urlA { font-family:sans-serif; color:red; }
+<xsl:stylesheet version="1.0"
+  xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <!-- Outputs the title to use for an awards section. -->
+  <!-- Uses <title> child element if present, otherwise $awards.word -->
+  <!-- Note: This template should be called with an r:awards as its -->
+  <!-- context node. -->
+  <xsl:template name="AwardsTitle">
+    <xsl:choose>
+      <xsl:when test="r:title">
+        <xsl:apply-templates select="r:title"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$awards.word"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+</xsl:stylesheet>

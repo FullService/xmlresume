@@ -38,6 +38,12 @@
           class="element">lastModified</sgmltag></link>.
         </para></listitem>
         <listitem><para>
+          New elements: <link linkend="element.awards"><sgmltag
+          class="element">awards</sgmltag></link> and
+          <link linkend="element.award"><sgmltag
+          class="element">award</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
           New elements: <link linkend="element.interests"><sgmltag
           class="element">interests</sgmltag></link> and
           <link linkend="element.interest"><sgmltag

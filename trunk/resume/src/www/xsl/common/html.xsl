@@ -49,6 +49,7 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="awards.xsl"/>
   <xsl:include href="deprecated.xsl"/>
   <xsl:include href="contact.xsl"/>
   <xsl:include href="string.xsl"/>
@@ -606,6 +607,32 @@ $Id$
         select="$interest.description.format"/>
       <xsl:with-param name="css.class">interestDescription</xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+
+  <!-- Format awards section. -->
+  <xsl:template match="r:awards">
+    <h2 class="awardsHeading">
+      <xsl:call-template name="AwardsTitle"/>
+    </h2>
+
+    <ul>
+      <xsl:apply-templates select="r:award"/>
+    </ul>
+  </xsl:template>
+
+  <!-- A single award. -->
+  <xsl:template match="r:award">
+    <li class="award">
+      <span class="awardTitle"><xsl:apply-templates select="r:title"/></span>
+
+      <xsl:if test="r:organization"><xsl:text>, </xsl:text></xsl:if>
+      <xsl:apply-templates select="r:organization"/>
+
+      <xsl:if test="r:date"><xsl:text>, </xsl:text></xsl:if>
+      <xsl:apply-templates select="r:date"/>
+
+      <xsl:apply-templates select="r:description"/>
+    </li>
   </xsl:template>
 
   <!-- Format the misc info -->

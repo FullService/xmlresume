@@ -26,8 +26,8 @@
           <row>
             <entry><literal>academicsHeading</literal></entry>
             <entry>
-              On the <sgmltag class="element">h2</sgmltag> of the heading for your
-              academics.
+              On the <sgmltag class="element">h2</sgmltag> of the heading for
+              your academics.
             </entry>
           </row>
           <row>
@@ -41,6 +41,25 @@
             <entry>
               On the <sgmltag class="element">p</sgmltag> that contains a postal
               address.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>award</literal></entry>
+            <entry>
+              On the <sgmltag class="element">li</sgmltag> for a single award.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>awardsHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> of the heading for
+              your awards.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>awardTitle</literal></entry>
+            <entry>
+              On the <sgmltag class="element">span</sgmltag> of an award title.
             </entry>
           </row>
           <row>
