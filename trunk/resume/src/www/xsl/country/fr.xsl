@@ -33,14 +33,18 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 $Id$
 -->
 
-<xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<!-- French language notes (correct us if we're wrong:
+ * Not all the words are capitalized in titles, only the first one. 
+ * It's Téléphone privé, not privé Téléphone
+-->
 
   <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
   <xsl:param name="page.word">page</xsl:param>
   <xsl:param name="contact.word">Information de Contact</xsl:param>
-  <xsl:param name="objective.word">Objectif Professionnel</xsl:param>
-  <xsl:param name="history.word">Exp&#x00e9;rience Professionnelle</xsl:param>
+  <xsl:param name="objective.word">Objectif professionnel</xsl:param>
+  <xsl:param name="history.word">Exp&#x00e9;rience professionnelle</xsl:param>
   <xsl:param name="academics.word">Formation</xsl:param>
   <xsl:param name="publications.word">Publications</xsl:param>
   <xsl:param name="miscellany.word">Divers</xsl:param>
@@ -49,11 +53,14 @@ $Id$
   <xsl:param name="by.word">par</xsl:param>
   <xsl:param name="present.word">pr&#x00e9;sent</xsl:param>
   <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
+  <xsl:param name="mobile.word">GSM</xsl:param> 
+  <xsl:param name="home.word">priv&#x00e9;</xsl:param>
   <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
   <xsl:param name="achievements.word">R&#x00e9;alisations:</xsl:param>
   <xsl:param name="projects.word">Projets:</xsl:param>
   <xsl:param name="referees.word">R&#x00e9;f&#x00e9;rences</xsl:param>
+  <xsl:param name="awards.word">R&#x00e9;compenses</xsl:param>
 
   <!-- default is European address formatting.  For countries other -->
   <!-- than France (e.g. Canada) "standard" formatting may be more correct. -->
