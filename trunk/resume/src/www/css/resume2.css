@@ -38,6 +38,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	.degrees { font-style: normal }
 	.emphasis { font-weight: bold }
 	.employer { font-style: italic }
+	.headerBlock { text-align: center }
 	.historyHeading { font-style: normal; color:green }
 	.job { font-style: normal }
 	.jobTitle { font-weight: bold }
