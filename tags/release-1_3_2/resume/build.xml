@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Ant build.xml file for developers of the XML Resume Library.
+(c) 2000-2001 Sean Kelly and contributors.  All rights reserevd.
+
+$Id$
+-->
+
+<project name="xmlresume" default="release" basedir=".">
+
+  <!-- Load any user-overriding definitions -->
+  <property file="${user.home}/.ant.properties"/>
+
+  <!-- GENERAL PROPERTIES ===================================================================================================== -->
+
+  <!-- Current version number -->
+  <property name="version.underscore" value="1_3_2"/>
+  <property name="version.dots" value="1.3.2"/>
+
+  <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
+
+  <!-- Root of all source code -->
+  <property name="src.dir" value="${basedir}/src"/>
+  <property name="java.src.dir" value="${src.dir}/java"/>
+  <property name="www.src.dir" value="${src.dir}/www"/>
+
+  <!-- Where generated test target data should go -->
+  <property name="target.data.dir" value="${java.src.dir}/net/sourceforge/xmlresume/targetdata"/>
+
+  <!-- Web server's directory; where to install web-accessible files -->
+  <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
+
+  <!-- Where built files go -->
+  <property name="build.dir" value="${basedir}/build"/>
+
+  <!-- Binary resource files that mustn't be modified -->
+  <patternset id="binary.resources">
+    <include name="**/*.exe"/>
+    <include name="**/*.jpg"/>
+    <include name="**/*.jpeg"/>
+    <include name="**/*.gif"/>
+    <include name="**/*.png"/>
+    <include name="**/*.pdf"/>
+    <include name="**/*.ico"/>
+    <include name="**/*.bmp"/>
+  </patternset>
+
+  <!-- Nonbinary resource files that may be filtered and modified -->
+  <patternset id="text.resources">
+    <include name="**/*.properties"/>
+    <include name="**/*.xml"/>
+    <include name="**/*.dtd"/>
+    <include name="**/*.ent"/>
+    <include name="**/*.xsl"/>
+    <include name="**/*.css"/>
+    <include name="**/*.fo"/>
+    <include name="**/*.html"/>
+    <include name="**/*.txt"/>
+  </patternset>
+
+  <!-- Java classpath -->
+  <path id="test.classpath">
+    <pathelement path="${build.dir}"/>
+  </path>
+
+  <!-- DOCUMENTATION EXTRACTION =============================================================================================== -->
+
+  <!-- Root of constructed documentation -->
+  <property name="doc.dir" value="${basedir}/doc"/>
+
+  <!-- RELEASE CONSTRUCTION =================================================================================================== -->
+
+  <!-- Name of built release directory -->
+  <property name="release.dir" value="resume-${version.underscore}"/>
+
+  <!-- Release layout staging area -->
+  <property name="stage.dir" value="${basedir}/${release.dir}"/>
+  
+  <!-- Release archive filenames -->
+  <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
+  <property name="release.tar.name" value="resume-${version.underscore}.tar"/>
+  <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
+
+  <!-- Release archive paths -->
+  <property name="release.zip" value="${basedir}/${release.zip.name}"/>
+  <property name="release.tar" value="${basedir}/${release.tar.name}"/>
+  <property name="release.tgz" value="${basedir}/${release.tgz.name}"/>
+
+  <!-- TARGETS TO BUILD ======================================================================================================= -->
+
+  <!-- Compilation -->
+  <target name="build"
+    description="Build the software"
+    depends="build.prepare, build.compile, build.resources"/>
+
+  <target name="build.prepare"
+    description="Prepare the build area">
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <target name="build.compile"
+    description="Compile source code"
+    depends="build.prepare">
+    <javac srcdir="${java.src.dir}"
+      destdir="${build.dir}"
+      debug="yes"
+      includes="**/*.java"/>
+  </target>
+
+  <target name="build.resources"
+    description="Copy resource files into build area">
+    <copy todir="${build.dir}"
+      filtering="no">
+      <fileset dir="${java.src.dir}">
+	<patternset refid="binary.resources"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.dir}"
+      filtering="yes">
+      <fileset dir="${java.src.dir}">
+	<patternset refid="text.resources"/>
+      </fileset>
+      <fileset dir="${www.src.dir}">
+	<patternset refid="text.resources"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Documentation generation -->
+
+  <target name="doc"
+    description="Generate all documentation"
+    depends="doc.prepare, doc.manuals"/>
+	  
+  <target name="doc.prepare"
+    description="Prepare the documentation directory">
+    <mkdir dir="${doc.dir}"/>
+  </target>
+
+  <target name="doc.manuals"
+    description="Generate manual files"
+    depends="filter, doc.prepare">
+    <copy todir="${doc.dir}"
+	  filtering="yes">
+      <fileset dir="${src.dir}/doc/release"/>
+    </copy>
+  </target>
+
+  <!-- Releasing to the public -->
+
+  <target name="release"
+    description="Build a complete public release"
+    depends="doc, release.build, release.archive"/>
+
+  <target name="release.build"
+    description="Build a release"
+    depends="release.build.prepare, release.build.copy"/>
+    
+  <target name="release.build.prepare"
+    description="Prepare to stage the release">
+    <mkdir dir="${stage.dir}"/>
+    <mkdir dir="${stage.dir}/doc"/>
+    <mkdir dir="${stage.dir}/examples"/>
+    <mkdir dir="${stage.dir}/dtd"/>
+    <mkdir dir="${stage.dir}/xsl"/>
+    <mkdir dir="${stage.dir}/css"/>
+  </target>    
+
+  <target name="release.build.copy"
+    description="Copy files into the staging area"
+    depends="filter">
+    <copy todir="${stage.dir}/doc">
+      <fileset dir="${doc.dir}"/>
+    </copy>
+    <copy tofile="${stage.dir}/README"
+      file="${src.dir}/doc/README.src"
+      filtering="yes"/>
+    <copy todir="${stage.dir}/examples"
+      filtering="yes">
+      <fileset dir="${basedir}/examples">
+	<include name="**/Makefile"/>
+	<include name="**/*.xml"/>
+        <include name="**/README"/>
+      </fileset>
+    </copy>
+    <copy todir="${stage.dir}/dtd"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/dtd"/>
+    </copy>
+    <copy todir="${stage.dir}/xsl"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/xsl"/>
+    </copy>
+    <copy todir="${stage.dir}/css"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/css"/>
+    </copy>
+  </target>
+
+  <target name="release.archive"
+    description="Create archives of the staged release"
+    depends="release.archive.zip, release.archive.tgz"/>
+
+  <target name="release.archive.zip"
+    description="Create the zip file release">
+    <zip zipfile="${release.zip}"
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
+  </target>
+
+  <target name="release.archive.tgz"
+    description="Create the gzip'd tar file release">
+    <tar tarfile="${release.tar}"
+      basedir="${basedir}"
+      includes="${release.dir}/**"/>
+    <gzip zipfile="${release.tgz}"
+      src="${release.tar}"/>
+    <delete file="${release.tar}"/>
+  </target>
+
+  <!-- Unit and regression tests -->
+
+  <target name="test"
+    description="Run the unit and regression tests"
+    depends="build">
+    <junit haltonfailure="no"
+      fork="yes">
+      <classpath refid="test.classpath"/>
+      <formatter type="plain"
+	usefile="no"/>
+      <batchtest>
+	<fileset dir="${build.dir}"
+	  includes="**/*Test.class"/>
+      </batchtest>
+    </junit>
+  </target>
+
+  <!-- Installing -->
+
+  <target name="install"
+    description="Install installable components"
+    depends="install.web"/>
+
+  <target name="install.web"
+    description="Install web server files">
+    <mkdir dir="${resume.web.publish.dir}"/>
+    <copy todir="${resume.web.publish.dir}">
+      <fileset dir="${src.dir}/www"/>
+    </copy>
+  </target>
+
+  <!-- Housekeeping -->
+
+  <target name="filter"
+    description="Define filtering tokens">
+    <filter token="VERSION_DOTS" value="${version.dots}"/>
+    <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
+    <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
+    <filter token="RELEASE_DIR" value="${release.dir}"/>
+  </target>
+
+  <target name="clean"
+    description="Remove everything that can be rebuilt"
+    depends="clean.doc, clean.release, clean.build"/>
+
+  <target name="clean.doc"
+    description="Clean out documentation that can be rebuilt">
+    <delete dir="${doc.dir}"/>
+  </target>
+
+  <target name="clean.release"
+    description="Remove the release archives and staging area">
+    <delete dir="${stage.dir}"/>
+    <delete file="${release.zip}"/>
+    <delete file="${release.tgz}"/>
+  </target>
+
+  <target name="clean.build"
+    description="Clean the compiled software area">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="run.test"
+    description="Run the test"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-test"/>
+    </java>
+  </target>
+
+  <target name="run.generate"
+    description="Generate the test target data"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-generate"/>
+      <arg file="${target.data.dir}"/>
+    </java>
+  </target>
+
+</project>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>XML Resume Library: Skills Formatting</title>
+    <link href="doc.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>XML R&eacute;sum&eacute; Library: Skills Formatting</h1>
+
+    <p>The <code>skills.format</code> parameter controls the formatting
+      of skillsets.  Possible values are <code>bullet</code> (the default)
+      and <code>comma</code>.  
+    </p>
+
+    <p>The <code>bullet</code> format is more useful when individual skill
+     entries are each a complete sentence or sentence fragment.  
+     The <code>comma</code> format may be preferable when each skill 
+     is a single word or short phrase.
+
+    <p>Given a skillset section like this:
+      <br/>
+      <pre>
+      &lt;skillarea&gt;
+        &lt;title&gt;Technical Skills&lt;/title&gt;
+        &lt;skillset&gt;
+          &lt;title&gt;Programming Languages&lt;/title&gt;
+	  &lt;skills&gt;
+	    &lt;skill&gt;Java&lt;/skill&gt;
+	    &lt;skill&gt;C++&lt;/skill&gt;
+	    &lt;skill&gt;C&lt;/skill&gt;
+	    &lt;skill&gt;perl&lt;/skill&gt;
+	  &lt;/skills&gt;
+        &lt;/skillset&gt;
+      &lt;/skillarea&gt;
+      </pre>
+    </p>
+
+    <p>This is how it would look in each of the formats:
+    </p>
+
+    <h2>Bullet</h2>
+
+      <div class="example">
+       <h2>Technical Skills</h2>
+       <h3>Programming Languages</h2>
+       <ul>
+       <li>Java
+       <li>C++
+       <li>C
+       <li>perl
+       </ul>
+      </div>
+
+    <h2>Comma</h2>
+
+      <div class="example">
+       <h2>Technical Skills</h2>
+       <p>
+       Programming Languages: Java, C++, C, perl
+       </p>
+      </div>
+
+     <p><a href="index.html">Back to the main documentation page</a></p>
+  </body>
+</html>
