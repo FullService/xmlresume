@@ -26,86 +26,81 @@
 //
 // $Id$
 
-package net.sourceforge.xmlresume;
+package net.sourceforge.xmlresume.test;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.xml.transform.Transformer;
 
 /**
- * An XSL parameter setting.
- *
- * Objects of this class describe an XSL parameter, including its name and all possible
- * values it may take.
+ * A setting of a single parameter.
  *
  * @author Kelly
  */
-class Parameter {
+class Setting {
 	/**
-	 * Creates a new <code>Parameter</code> instance.
+	 * Creates a new <code>Setting</code> instance.
 	 *
-	 * @param name Name of the parameter.
-	 * @param values A {@link Set} of {@link String} values it may take.
+	 * @param parameter The parameter being set.
+	 * @param value The value to which it's being set.
 	 */
-	public Parameter(String name, Set values) {
-		this.name = name;
-		this.values = values;
+	public Setting(Parameter parameter, String value) {
+		this.parameter = parameter;
+		this.value = value;
 	}
 
 	/**
-	 * Creates a new <code>Parameter</code> instance.
-	 *
-	 * @param name Name of the parameter.
-	 */
-	public Parameter(String name) {
-		this.name = name;
-		values = new HashSet();
-	}
-
-	/**
-	 * Get the name of this parameter.
+	 * Get the name of the parameter being set.
 	 *
 	 * @return Its name.
 	 */
 	public String getName() {
-		return name;
+		return parameter.getName();
 	}
 
 	/**
-	 * Add a possible value to this parameter.
+	 * Get the paramter being set.
 	 *
-	 * @param value a <code>String</code> value.
+	 * @return a <code>Parameter</code> value.
 	 */
-	public void addValue(String value) {
-		values.add(value);
+	public Parameter getParameter() {
+		return parameter;
 	}
 
 	/**
-	 * Get the set of all possible values of this parameter.
+	 * Get the value to which the parameter is being set.
 	 *
-	 * @return A {@link Set} of {@link String} values it may take.
+	 * @return a <code>String</code> value.
 	 */
-	public Set getValues() {
-		return values;
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * Apply this parameter setting to the given transformer.
+	 *
+	 * @param transformer Transformer in which to set the parameter to a certain value.
+	 */
+	public void applyTo(Transformer transformer) {
+		transformer.setParameter(getName(), getValue());
 	}
 
 	public String toString() {
-		return "Parameter[name=" + name + ",values=" + values + "]";
+		return getName() + "=" + getValue();
 	}
 
 	public int hashCode() {
-		return (name.hashCode() << 16) & values.hashCode();
+		return (parameter.hashCode() << 16) ^ value.hashCode();
 	}
 
 	public boolean equals(Object obj) {
 		if (obj == this) return true;
-		if (!(obj instanceof Parameter)) return false;
-		Parameter rhs = (Parameter) obj;
-		return name.equals(rhs.name) && values.equals(rhs.values);
+		if (!(obj instanceof Setting)) return false;
+		Setting rhs = (Setting) obj;
+		return parameter.equals(rhs.parameter) && value.equals(rhs.value);
 	}
 
-	/** Name of parameter. */
-	private String name;
+	/** Parameter I'm setting .*/
+	private Parameter parameter;
 
-	/** Set of possible values, which are all {@link String}s. */
-	private Set values;
+	/** Value to which I'm setting the parameter. */
+	private String value;
 }
