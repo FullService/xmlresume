@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.css.href">
+  <refnamediv>
+    <refname>css.href</refname>
+    <refpurpose>indicates the CSS stylesheet to use to format HTML output</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+      This parameter applies to only the HTML output format.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      The value of <parameter>css.href</parameter> is a URL that points to a
+      Cascading Style Sheet file. The HTML version of the &resume; will link to
+      this file.
+    </para>
+      
+    <para>
+      For information on the CSS classes that are available for formatting, see
+      <xref linkend="cssref"/>.
+    </para>
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.interests">
+  <refnamediv>
+    <refname>interests</refname>
+    <refpurpose>Container for one or more interests</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">interests</sgmltag> element contains one or
+      more <link linkend="element.interest"><sgmltag
+      class="element">interest</sgmltag></link> elements.
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        The <sgmltag class="element">interests</sgmltag> element is formatted as
+        a top-level section in a &resume;. The
+        <parameter>interests.word</parameter> parameter is used as the title
+        text if the <sgmltag class="element">interests</sgmltag> doesn't contain
+        a <sgmltag class="element">title</sgmltag> element.
+      </para>
+      <para>
+        Child <sgmltag class="element">interest</sgmltag> elements are formatted
+        as a bulleted list in all output formats.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">interests</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a ELEMENT. The ELEMENT may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.skillarea"><sgmltag class="element">skillarea</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<interests>
+  <title>Hobbies</title>
+  <interest>
+    <title>Swimming</title>
+  </interest>
+  <interest>
+    <title>Fine foods</title>
+    <description>
+      <para>I do quite well in pie-eating contests.</para>
+    </description>
+  </interest>
+  <interest>
+    <title>Australia</title>
+  </interest>
+</interests>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<interests>
+  <interest>
+    <title>My belly button</title>
+  </interest>
+  <interest>
+    <title>Fire ants</title>
+  </interest>
+  <interest>
+    <title>Fertilizer</title>
+  </interest>
+</interests>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

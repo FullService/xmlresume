@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.address.format">
+  <refnamediv>
+    <refname>address.format</refname>
+    <refpurpose>controls default formatting of the <sgmltag class="element">address</sgmltag> element</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+      This parameter controls the formatting of the <link
+      linkend="element.address"><sgmltag
+      class="element">address</sgmltag></link> element in all output
+      formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>standard</literal> (the default),
+      <literal>european</literal>, and <literal>italian</literal>.
+    </para>
+
+    <note>
+      <para>
+        In the examples below, <literal><![CDATA[<street>]]></literal> means the
+        value of XML element <sgmltag class="starttag">street</sgmltag>, if
+        defined. <literal><![CDATA[<suburb | ward>]]></literal> means the value
+        of XML element <sgmltag class="starttag">suburb</sgmltag>, if defined,
+        otherwise the value of XML element <sgmltag
+        class="starttag">ward</sgmltag>, otherwise blank.
+      </para>
+    </note>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>standard</literal></term>
+        <listitem>
+          <para>
+            Formats addresses in North American layout:
+
+            <literallayout><computeroutput><![CDATA[
+<street>
+<street2>
+<suburb | ward>
+<city>, <state | province | county > <zip | postalCode>
+<country>
+            ]]></computeroutput></literallayout>
+
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><literal>european</literal></term>
+        <listitem>
+          <para>
+            Formats addresses in European layout:
+
+            <informalexample><literallayout><computeroutput><![CDATA[
+<street>
+<street2>
+<suburb | ward>
+<zip | postalCode> <city>, <state | province | county > <country>
+            ]]></computeroutput></literallayout></informalexample>
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><literal>italian</literal></term>
+        <listitem>
+          <para>
+            Formats addresses in Italian layout:
+
+            <informalexample><literallayout><computeroutput><![CDATA[
+<street>
+<street2>
+<postalCode> <city> (<province>)
+<country>
+            ]]></computeroutput></literallayout></informalexample>
+
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      If none of these formats suit your needs, there is the option of entering
+      your address as a single text block, in which case it will be formatted
+      with line breaks intact. For example:
+
+      <informalexample><programlisting><![CDATA[
+<address>Sr. H&eacute;ctor Garc&iacute;a Mariz&oacute;
+Reina #35, apt. 4a, e/ Gervasio y Escobar
+Ciudad de La Habana, CP 11900
+CUBA</address>
+      ]]></programlisting></informalexample>
+
+    </para>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.birth">
+  <refnamediv>
+    <refname>birth</refname>
+    <refpurpose>Container for information about a person's birth</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">birth</sgmltag> element contains a single
+      <link linkend="element.date"><sgmltag
+      class="element">date</sgmltag></link> that specifies when a person was
+      born.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">birth</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<header>
+  <name>
+    <firstname>Scotty</firstname>
+    <surname>O'Reilly</surname>
+  </name>
+  <birth>
+    <date>
+      <dayOfMonth>17</dayOfMonth>
+      <month>March</month>
+      <year>1931</year>
+    </date>
+  </birth>
+</header>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<header>
+  <name>
+    <firstname>Jos]]>&egrave;<![CDATA[</firstname>
+    <middlenames>Luis Miguel</middlenames>
+    <surname>Domingo</surname>
+  </name>
+  <birth>
+    <date>
+      <dayOfMonth>23</dayOfMonth>
+      <month>Mayo</month>
+      <year>1834</year>
+    </date>
+  </birth>
+</header>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.subjects.format">
+  <refnamediv>
+    <refname>subjects.format</refname>
+    <refpurpose>controls formatting of the <sgmltag class="element">subjects</sgmltag> element</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+       This parameter controls the formatting of the <link
+       linkend="element.subjects"><sgmltag
+       class="element">subjects</sgmltag></link> element in all output formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>comma</literal> (the default) and
+      <literal>table</literal>.
+    </para>
+
+    <para>
+      The examples below show how a <sgmltag class="starttag">subjects</sgmltag>
+      section like this would be rendered:
+
+      <informalexample><programlisting><![CDATA[
+<subjects>
+  <subject>
+    <title>English</title>
+    <result>C</result>
+  </subject>
+  <subject>
+    <title>Science</title>
+    <result>A</result>
+  </subject>
+  <subject>
+    <title>Math</title>
+    <result>B-</result>
+  </subject>
+</subjects>
+      ]]></programlisting></informalexample>
+
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term><literal>comma</literal></term>
+        <listitem>
+          <para>
+            Produces a comma-separated list on a single line:
+
+            <informalexample>
+              <para>
+                Subjects: English (C), Science (A), Math (B-).
+              </para>
+            </informalexample>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>table</literal></term>
+        <listitem>
+          <para>
+            Produces a table, with subject name in the first column and result
+            in the second column:
+          </para>
+
+          <informalexample>
+            <bridgehead renderas="sect3">Subjects</bridgehead>
+
+            <informaltable frame="none">
+              <tgroup cols="2">
+                <tbody>
+                  <row><entry>English</entry><entry>C</entry></row>
+                  <row><entry>Science</entry><entry>A</entry></row>
+                  <row><entry>Math</entry><entry>B-</entry></row>
+                </tbody>
+              </tgroup>
+            </informaltable>
+          </informalexample>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>

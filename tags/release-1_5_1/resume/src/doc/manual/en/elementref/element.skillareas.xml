@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.skillareas">
+  <refnamediv>
+    <refname>skillareas</refname>
+    <refpurpose>Group of one or more skill areas</refpurpose>
+    <refclass>Deprecated</refclass>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <important>
+      <para>
+        This element is deprecated as of &library.name; version 1.4.0. It should
+        not be used.
+      </para>
+      <para>
+        <link linkend="element.skillarea"><sgmltag
+        class="element">skillarea</sgmltag></link> elements are now allowed as
+        direct children of <sgmltag class="element">resume</sgmltag>, so
+        <sgmltag class="element">skillareas</sgmltag> is no longer necessary.
+        <sgmltag class="element">skillareas</sgmltag> is still allowed in this
+        release of &library.name;, but may be removed in future versions. It is
+        recommended that you remove all <sgmltag
+        class="element">skillareas</sgmltag> elements from XML &resume;s.
+      </para>
+    </important>
+
+    <para>
+      The <sgmltag class="element">skillareas</sgmltag> element contains one
+      or more <link linkend="element.skillarea"><sgmltag
+      class="element">skillarea</sgmltag>s</link>.
+    </para>
+
+    <para>
+      This element is a top-level section of a &resume;.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">skillareas</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<skillareas>
+  <skillarea>
+    <title>Aviation</title>
+    <skillset>
+      <title>Piloting</title>
+      <skill>Biplanes</skill>
+      <skill>Jumbo Jets</skill>
+      <skill>Space Shuttle</skill>
+    </skillset>
+    <skillset>
+      <title>Navigation</title>
+      <skill>Map and charts</skill>
+      <skill>Instruments</skill>
+      <skill>Stars</skill>
+    </skillset>
+  </skillarea>
+
+  <skillarea>
+    <title>Cleaning</title>
+    <skillset>
+      <title>Tools</title>
+      <skill>Rag</skill>
+      <skill>Sponge</skill>
+      <skill>Towel</skill>
+    </skillset>
+    <skillset>
+      <title>Chemicals</title>
+      <skill>Bleach</skill>
+      <skill>Water</skill>
+      <skill>Soap</skill>
+    </skillset>
+  </skillarea>
+</skillareas>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

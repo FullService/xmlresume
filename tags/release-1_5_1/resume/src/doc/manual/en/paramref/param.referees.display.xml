@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.referees.display">
+  <refnamediv>
+    <refname>referees.display</refname>
+    <refpurpose>Determines whether or not referees are visible in formatted
+    output</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+       This parameter controls the formatting of the <link
+       linkend="element.referee"><sgmltag
+       class="element">referee</sgmltag></link>
+       element in all output formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>1</literal> (display referees) and
+      <literal>0</literal> (display alternate text).
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>1</literal> (true)</term>
+        <listitem>
+          <para>
+            Referees are displayed in formatted output.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>0</literal> (false)</term>
+        <listitem>
+          <para>
+            The text of the <parameter>referees.hidden.phrase</parameter>
+            parameter (default: <literal>Available upon request.</literal>) is
+            displayed in place of referees.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>

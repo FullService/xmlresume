@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.TODO">
+  <refnamediv>
+    <refname>TODO</refname>
+    <refpurpose>TODO</refpurpose>
+  </refnamediv>
+
+  <!-- Describe what elements and output formats this param applies to
+  TODO remove this line when this section is complete (or unnecessary)
+  <refsect1><title>Applies To</title>
+    <para>
+       This parameter controls the formatting of the <link
+       linkend="element.ID"><sgmltag class="element">ID</sgmltag></link>
+       element in FORMAT_NAMES formats.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <!-- TODO <literal>valuename</literal> -->.
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>TODO</literal></term>
+        <listitem>
+          <para>
+            TODO
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>TODO</literal></term>
+        <listitem>
+          <para>
+            TODO
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>
