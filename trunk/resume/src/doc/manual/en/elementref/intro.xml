@@ -51,6 +51,14 @@
         </para></listitem>
         <listitem><para>
           Change:
+          <link linkend="element.name"><sgmltag
+          class="element">name</sgmltag></link>
+          may now contain a 
+          <link linkend="element.title"><sgmltag
+          class="element">title</sgmltag></link>.
+        </para></listitem>
+        <listitem><para>
+          Change:
           <link linkend="element.institution"><sgmltag
           class="element">institution</sgmltag></link> and
           <link linkend="element.organization"><sgmltag
