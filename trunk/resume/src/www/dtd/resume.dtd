@@ -135,7 +135,7 @@ $Id$
 <!ELEMENT job (jobtitle, employer, period, description?, projects?, achievements?)>
 <!ATTLIST job id ID #IMPLIED>
 <!ELEMENT jobtitle (#PCDATA)>
-<!ELEMENT employer (%inlines;)>
+<!ELEMENT employer (%inlines;)*>
 <!ATTLIST employer id ID #IMPLIED>
 <!ELEMENT period (from, to)>
 <!ELEMENT from (date | present)>

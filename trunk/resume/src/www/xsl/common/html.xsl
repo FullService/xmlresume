@@ -323,7 +323,7 @@ $Id$
       </span>
       <br/>
       <span class="employer">
-        <xsl:value-of select="r:employer"/>
+        <xsl:apply-templates select="r:employer"/>
       </span>
       <br/>
       <xsl:apply-templates select="r:period"/>
@@ -339,6 +339,10 @@ $Id$
     </xsl:if>
   </xsl:template>
 		
+  <xsl:template match="r:employer">
+    <xsl:apply-templates/>
+  </xsl:template>
+
   <!-- Format the projects section as a bullet list -->
   <xsl:template match="r:projects">
     <ul>
@@ -602,7 +606,7 @@ $Id$
   </xsl:template>
 
   <!-- link -> make link from href attribute -->
-  <xsl:template match="link">
+  <xsl:template match="r:link">
     <a>
       <xsl:attribute name="href">
 	<xsl:value-of select="@href"/>
