@@ -71,10 +71,17 @@ Online R&eacute;sum&eacute; Converter (ORC)
 
     </br><br/>
 
-    <p>Click browse to upload your params.xsl file:<p/>
+    <p>Click browse to upload your customized params.xsl file:<p/>
     <input type="file" name="params" size="50"/>
 
+    </br><br/>
+
+    <p>Click browse to upload your customized CSS file (your 
+params.xsl file must refer to "./resume.css" to use it)</p>
+    <input type="file" name="css" size="50"/>
+
     <br/><br/>
+
     <input TYPE="SUBMIT" NAME="SUBMIT" VALUE="Submit R&eacute;sum&eacute;">
   </form>
 

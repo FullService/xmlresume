@@ -45,7 +45,7 @@ for resume in `ls -1 | grep '^orc'`;
 do
   cd $resume
     grep '^email =' user.props | cut -f 3 -d" " | md5 >> ../../users.email
-    ${ANTCMD} -debug -propertyfile user.props \
+    ${ANTCMD} -verbose -propertyfile user.props \
     -find build.xml dispatch >> ./out/antlog.txt
   sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..

@@ -45,6 +45,12 @@ function process_upload() {
       return( array( 1, "Internal: could not copy file ../xsl/params.xsl to $pathdirname"));
   }
 
+# Move resume.css file into place (if it exists)
+  if( is_uploaded_file($_FILES['css']['tmp_name'])) {
+    if( !move_uploaded_file( $_FILES['css']['tmp_name'], $pathdirname."/resume.css"))
+      return( array( 1, "Internal: could not move file " . $_FILES['css']['tmp_name'] . " to $pathdirname"));
+  } 
+
   # Create user.props file
   if( !$fpProps = fopen( $pathdirname . "/user.props", 'w'))
     return( array( 1, "Internal: could not create user.props file"));

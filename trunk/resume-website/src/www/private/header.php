@@ -22,7 +22,7 @@ close the table and take care of other loose ends.
       ><span style="font-weight: bold;">R&eacute;sum&eacute;</span
       ><span style="color: red;">Library</span></a>
     </h1>
-    <table cellpadding="4">
+    <table>
       <tbody>
 	<tr valign="top">
 	  <td class="quicklinks">
