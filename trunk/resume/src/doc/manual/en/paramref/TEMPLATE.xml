@@ -3,8 +3,8 @@
 
 <refentry id="param.TODO">
   <refnamediv>
-    <refname><!-- TODO --></refname>
-    <refpurpose><!-- TODO --></refpurpose>
+    <refname>TODO</refname>
+    <refpurpose>TODO</refpurpose>
   </refnamediv>
 
   <!-- Describe what elements and output formats this param applies to
@@ -25,10 +25,18 @@
 
     <variablelist>
       <varlistentry>
-        <term><literal><!-- TODO --></literal></term>
+        <term><literal>TODO</literal></term>
         <listitem>
           <para>
-            <!-- TODO -->
+            TODO
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>TODO</literal></term>
+        <listitem>
+          <para>
+            TODO
           </para>
         </listitem>
       </varlistentry>
