@@ -264,6 +264,6 @@ $Id$
 
   <!-- Separator between <para>s in a description formatted as a single line -->
   <!-- &#x2014; == em-dash -->
-  <xsl:param name="description.para.separator.text"> &#x2014; </xsl:param>
+  <xsl:param name="description.para.separator"> &#x2014; </xsl:param>
 
 </xsl:stylesheet>

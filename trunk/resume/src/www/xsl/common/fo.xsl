@@ -772,7 +772,7 @@ $Id$
         <xsl:for-each select="r:para">
           <xsl:apply-templates/>
           <xsl:if test="following-sibling::*">
-            <xsl:value-of select="$description.para.separator.text"/>
+            <xsl:value-of select="$description.para.separator"/>
           </xsl:if>
         </xsl:for-each>
       </xsl:when>
