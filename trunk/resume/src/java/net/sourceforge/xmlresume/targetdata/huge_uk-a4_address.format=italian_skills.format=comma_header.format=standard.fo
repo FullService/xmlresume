@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<fo:layout-master-set>
+<fo:simple-page-master page-width="210mm" page-height="297mm" margin-bottom="0in" margin-right="20mm" margin-left="33mm" margin-top="20mm" master-name="resume-page">
+<fo:region-body margin-bottom="20mm" overflow="error-if-overflow"/>
+<fo:region-after extent="20mm" overflow="error-if-overflow"/>
+</fo:simple-page-master>
+</fo:layout-master-set>
+<fo:page-sequence master-name="resume-page">
+<fo:static-content flow-name="xsl-region-after">
+<fo:block font-family="serif" font-size="8pt" text-align="start">Sárah Elizabéth Adams Senior - CV - page <fo:page-number/>
+</fo:block>
+</fo:static-content>
+<fo:flow flow-name="xsl-region-body">
+<fo:block font-size="10pt" font-family="serif" start-indent="20mm">
+<fo:block>
+<fo:block font-weight="bold">Sárah Elizabéth Adams Senior</fo:block>
+<fo:block>
+<fo:block>1930 Second St</fo:block>
+<fo:block>Unit 15-A</fo:block>
+<fo:block>San Raton</fo:block>
+</fo:block>
+<fo:block space-after="10pt">
+<fo:block>
+<fo:inline font-style="italic">Telephone:</fo:inline> 417.555.1413</fo:block>
+<fo:block>
+<fo:inline font-style="italic">Email:</fo:inline> sgurl@yahoo.com</fo:block>
+<fo:block>
+<fo:inline font-style="italic">URL:</fo:inline> http://geocities.com/sgurl</fo:block>
+</fo:block>
+</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Professional Objective</fo:block>
+<fo:block space-after="10pt">Assistant manager or manager at fast food chain.</fo:block>
+<fo:block space-after="10pt">Either that, or owner of beauty salon.</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Academics</fo:block>
+<fo:block keep-with-next="always">
+<fo:inline font-weight="bold">MBA in Business Administration</fo:inline>,
+      May 1989,
+      Geeba geeba!</fo:block>
+<fo:block>Institute for the Administration of Business</fo:block>
+<fo:block keep-with-next="always">
+<fo:inline font-weight="bold">B.Ph. in Business Administration</fo:inline>,
+      May 1990,
+      Geeba geeba!</fo:block>
+<fo:block>Advanced Institute for the Administration of Business</fo:block>
+<fo:block font-style="italic">
+<fo:block space-after="10pt">Well, what can I say, really?</fo:block>
+<fo:block space-after="10pt">They were both nice schools.</fo:block>
+</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Employment History</fo:block>
+<fo:block>
+<fo:inline font-weight="bold">Stylist</fo:inline> • <fo:inline font-style="italic">LA Salon</fo:inline> • <fo:inline font-style="italic">August 1978September1979–</fo:inline>
+<fo:block>
+<fo:block space-after="10pt">LA Salon was the major source of personal grooming for
+	  the stars of Hollywood.  Located in Burbank near several
+	  important studios, it provided hair, skin, and nail care
+	  services.
+	</fo:block>
+<fo:block space-after="10pt">We also served the more well-to-do residents of Burbank,
+	  and Glendale.
+	</fo:block>
+</fo:block>
+<fo:block>
+<fo:list-block provisional-label-separation="10pt" provisional-distance-between-starts="10pt" space-after="10pt">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>Styled <fo:inline font-weight="bold">Sean Connery's</fo:inline>
+	  hair.</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>Got good tips.</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+</fo:block>
+</fo:block>
+<fo:block>
+<fo:inline font-weight="bold">Customer Service Relations Expert</fo:inline> • <fo:inline font-style="italic">MacDonald's</fo:inline> • <fo:inline font-style="italic">Present–Present</fo:inline>
+</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Computer Experience</fo:block>
+<fo:block space-after="10pt">
+<fo:inline font-style="italic">Languages and Software: </fo:inline>Java, C++, C, XML, XSL, SGML, HTML, CSS, Docbook, J2EE, Servlets, JSP, Jini, CORBA, RPC, RMI, Apache, iPlanet, TCP/IP, JDBC, Oracle, Progress, SQL, Tcl, sh, csh (Python to a small degree), Swing, AWT, Tk, Xlib, Unix systems programming, Posix thread programming, JNI, PostScript page description language, TeX typesetting language</fo:block>
+<fo:block space-after="10pt">
+<fo:inline font-style="italic">Development Techniques: </fo:inline>Unified Modeling Language (Booch et al.), Refactoring (Fowler), Design Patterns (Gamma et al.), Analysis Patterns (under study)</fo:block>
+<fo:block space-after="10pt">
+<fo:inline font-style="italic">Hardware: </fo:inline>TINI, One-Wire, iButtons, MicroLAN, Sun/SPARC, Intel PC architecture, HP 9000/700 &amp; 800 series, Routers, terminal servers, PostScript laser printers</fo:block>
+<fo:block space-after="10pt">
+<fo:inline font-style="italic">Operating Systems: </fo:inline>Windows, FreeBSD, Linux, Solaris, HP/UX, SGI Irix</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Methodologies and Practices</fo:block>
+<fo:block space-after="10pt">Cleanroom Software Engineering (Harlan Mills and
+	    Allan Stavely), Unified Software Development Process (Jacobson et al.), PSP: Personal Software Process (Software Engineering
+	    Institute), XP: Extreme Programming (under study)</fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Publications</fo:block>
+<fo:list-block provisional-label-separation="10pt" provisional-distance-between-starts="10pt" space-after="10pt">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Kelly, S.: 2001: Creating Technical Documentation with
+	DocBook.  <fo:inline font-style="italic">Inside XML Solutions</fo:inline>, volume 1,
+	issue 8.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001:
+	Object Oriented Data Technology for Space Science Data
+	Archiving and Retrieval: Potential Applications for
+	Bioinformatics.  First JPL Information Technology Symposium,
+	Pasadena, Jet Propulsion Laboratory.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Kelly, S., 2001: Using XSL Formatting Objects.
+	<fo:inline font-style="italic">Inside XML Solutions</fo:inline>, volume 1,
+	issue 6.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A
+	Distributed Component Framework for Science Data Product
+	Interoperability.  17th International CODATA Conference,
+	Baveno, International Council for Science.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A
+	Multi-Discipline Metadata Registry for Science
+	Interoperability.  Open Forum on Metadata Registries, ISO/IEC
+	JTC1/SC32, Data Management and Interchange.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999:
+	Science Search and Retrieval using XML.  Second National
+	Conference on Scientific and Technical Data, Washington DC,
+	National Academy of Sciences.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Kelly, S., 1997: The Application Interface for the
+	WFO-Advanced Forecaster Workstation, D2D.  Preprints,
+	<fo:inline font-style="italic">13th International Conference on Interactive
+	Information and Processing Systems for Meteorology,
+	Oceanography, and Hydrology</fo:inline>, Long Beach, American
+	Meteorological Society.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">Kelly, S., 1997: An Object-Oriented Framework for Local
+	Extensions to the WFO-Advanced Forecaster Display Workstation,
+	D2D.  Preprints, <fo:inline font-style="italic">13th International Conference on Interactive
+	Information and Processing Systems for Meteorology,
+	Oceanography, and Hydrology</fo:inline>, Long Beach, American
+	Meteorological Society.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">
+	Kelly, S., 1996: Terminals with FreeBSD.  <fo:inline font-style="italic">The FreeBSD
+	Handbook</fo:inline>, The FreeBSD Project, Incorporated.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:block space-after="10pt">
+	Kelly, S., 1996: Printing with FreeBSD.  <fo:inline font-style="italic">The FreeBSD
+	Handbook</fo:inline>, The FreeBSD Project, Incorporated.
+      </fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Miscellany</fo:block>
+<fo:block space-after="10pt">For each operand that names a file of a type other than
+     directory, ls displays its name as well as any requested,
+     associated information.  For each operand that names a file of
+     type directory, ls displays the names of files contained within
+     that directory, as well as any requested, asso- ciated
+     information.
+    </fo:block>
+<fo:block space-after="10pt">If no operands are given, the contents of the current
+     directory are dis- played.  If more than one operand is given,
+     non-directory operands are displayed first; directory and
+     non-directory operands are sorted sepa- rately and in
+     lexicographical order.
+    </fo:block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Memberships</fo:block>
+<fo:list-block provisional-label-separation="10pt" provisional-distance-between-starts="10pt" space-after="10pt">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:inline font-weight="bold">Grand Poobah</fo:inline>, The Odd Fellows, August 1978September1979–<fo:block space-after="10pt">The da driver provides support for all SCSI devices of
+	  the direct access class that are attached to the system
+	  through a supported SCSI Host Adapter.  The direct access
+	  class includes disk, magneto-optical, and solid-state
+	  devices.
+	</fo:block>
+<fo:block space-after="10pt">A SCSI Host adapter must also be separately configured
+	  into the system before a SCSI direct access device can be
+	  configured.
+	</fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+<fo:inline font-weight="bold">Lesser Poobah</fo:inline>, The Even Fellows,  Present–<fo:block space-after="10pt">The sa driver is based around the concept of a ``mount
+	  session'', which is defined as the period between the time
+	  that a tape is mounted, and the time when it is unmounted.
+	  Any parameters set during a mount session re- main in effect
+	  for the remainder of the session or until replaced.  The
+	  tape can be unmounted, bringing the session to a close in
+	  several ways.
+	</fo:block>
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+</fo:block>
+</fo:flow>
+</fo:page-sequence>
+</fo:root>
