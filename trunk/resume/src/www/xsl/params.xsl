@@ -71,16 +71,16 @@ $Id$
 
   <!-- SEPARATORS AND DELIMITERS (all formats) ============================ -->
 
-  <!-- Separator between skillset title and skills list
-  (applies only when skills.format = comma) -->
+  <!-- Separator between skillset title and skills list -->
+  <!-- (applies only when skills.format = comma) -->
   <xsl:param name="skills.title.separator">: </xsl:param>
 
-  <!-- Separator between individual skills
-  (applies only when skills.format = comma) -->
+  <!-- Separator between individual skills -->
+  <!-- (applies only when skills.format = comma) -->
   <xsl:param name="skills.separator">, </xsl:param>
 
-  <!-- Output after the last skill in a skillset
-  (applies only when skills.format = comma) -->
+  <!-- Output after the last skill in a skillset -->
+  <!-- (applies only when skills.format = comma) -->
   <xsl:param name="skills.suffix">.</xsl:param>
 
   <!-- Text to use to indicate start and end of skill level in all formats -->
@@ -99,19 +99,19 @@ $Id$
   (applies only when subjects.format = comma) -->
   <xsl:param name="subjects.separator">, </xsl:param>
 
-  <!-- Separator between individual subjects
-  (applies only when subjects.format = comma) -->
+  <!-- Separator between the subjects title and the subjects list -->
+  <!-- (applies only when subjects.format = comma) -->
   <xsl:param name="subjects.title.separator">: </xsl:param>
 
   <!-- Output after the last subject in a list
   (applies only when subjects.format = comma) -->
   <xsl:param name="subjects.suffix">.</xsl:param>
 
-  <!-- Should skill <result> elements be displayed when formatting? -->
+  <!-- Should result elements be displayed when formatting? -->
   <xsl:param name="subjects.result.display">1</xsl:param>
 
-  <!-- Text to use to indicate start and end of subject 
-  (applies only when subjects.format = comma -->
+  <!-- Text to use to indicate start and end of subject -->
+  <!-- (applies only when subjects.format = comma -->
   <xsl:param name="subjects.result.start"> (</xsl:param>
   <xsl:param name="subjects.result.end">)</xsl:param>
 
@@ -119,9 +119,9 @@ $Id$
   <xsl:param name="location.start"> (</xsl:param>
   <xsl:param name="location.end">)</xsl:param>
 
-  <!-- Separator between <para>s in a description.
-  (applies only when interest.description.format = single-line) -->
-  <!-- &#x2014; == em-dash -->
+  <!-- Separator between <para>s in a description. -->
+  <!-- (applies only when interest.description.format = single-line) -->
+  <!-- Note: &#x2014; == em-dash -->
   <xsl:param name="description.para.separator"> &#x2014; </xsl:param>
 
   <!-- Default separator between authors in publication details.  -->
@@ -133,7 +133,12 @@ $Id$
   <!-- HTML-SPECIFIC ====================================================== -->
 
   <!-- Cascading stylesheet to use -->
-  <xsl:param name="css.href">resume.css</xsl:param>
+  <xsl:param name="css.href">../../src/www/css/compact.css</xsl:param>
+
+  <!-- Should style sheets be embedded within the html file?
+  <!-- '1' to embed the css in the html (allows for easy emailing) -->
+  <!-- '0' to link to the css in a seperate file -->
+  <xsl:param name="css.embed">1</xsl:param>
 
   <!-- PLAIN TEXT-SPECIFIC ================================================ -->
 
