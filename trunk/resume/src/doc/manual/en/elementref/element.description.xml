@@ -4,7 +4,7 @@
 <refentry id="element.description">
   <refnamediv>
     <refname>description</refname>
-    <refpurpose>An expanation of a job or membership</refpurpose>
+    <refpurpose>An explanation of something</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -19,10 +19,7 @@
   <refsect1><title>Description</title>
     <para>
       The <sgmltag class="element">description</sgmltag> element specifies a
-      person's role, their activities, or other information about a <link
-      linkend="element.job"><sgmltag class="element">job</sgmltag></link> or
-      <link linkend="element.membership"><sgmltag
-      class="element">membership</sgmltag></link>.
+      person's role, their activities, or other descriptive information.
     </para>
 
     <refsect2><title>Parents</title>
