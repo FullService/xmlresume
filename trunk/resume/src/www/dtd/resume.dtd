@@ -170,8 +170,7 @@ $Id$
 <!ELEMENT para (#PCDATA | emphasis | citation | url)*>
 <!ELEMENT emphasis (#PCDATA)>
 <!ELEMENT citation (#PCDATA)>
-<!ELEMENT date (month, year)>
-<!ELEMENT fullDate (dayOfMonth, month, year)>
+<!ELEMENT date (dayOfMonth?, month, year)>
 <!ELEMENT month (#PCDATA)>
 <!ELEMENT year (#PCDATA)>
 <!ELEMENT present EMPTY>
