@@ -18,7 +18,7 @@
 
   <refsect1><title>Description</title>
     <para>
-      The <sgmltag class="element">phone</sgmltag> element contains a
+      The <sgmltag class="element">fax</sgmltag> element contains a
       telephone number that can be used to connect to a facsimile machine. The
       phone number is not required to be in a specific format. (See <link
       linkend="element.phone"><sgmltag class="element">phone</sgmltag></link>
