@@ -62,7 +62,7 @@ $Id$
 	  <fo:block text-align="start" font-size="8pt"
 		    font-family="serif">
 	    <xsl:apply-templates select="resume/header/name"/>'s
-	    Resume - page <fo:page-number/>
+	    R&#x00e9;sum&#x00e9; - page <fo:page-number/>
           </fo:block>
         </fo:static-content>
 
