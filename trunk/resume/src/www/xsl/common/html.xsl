@@ -148,7 +148,7 @@ $Id$
       <!-- Compatibility with older resumes using US address schema -->
       <xsl:when test="street[following-sibling::*[1][self::city]]">
 	<xsl:value-of select="street"/><br/> 
-	<xsl:value-of select="city"/><xsl:text>,</xsl:text> 
+	<xsl:value-of select="city"/><xsl:text>, </xsl:text> 
 	<xsl:value-of select="state"/><xsl:text> </xsl:text>
 	<xsl:value-of select="zip"/> 
       </xsl:when>
