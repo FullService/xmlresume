@@ -107,6 +107,7 @@ $Id$
     <xsl:param name="text">Heading Not Defined</xsl:param>
     <fo:block
       start-indent="{$heading.indent}"
+      font-size="{$heading.font.size}"
       font-family="{$heading.font.family}"
       font-weight="{$heading.font.weight}"
       space-before="{$para.break.space}"
