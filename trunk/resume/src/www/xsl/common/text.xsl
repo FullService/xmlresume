@@ -400,9 +400,8 @@ $Id$
 
   <xsl:template match="r:present"><xsl:value-of select="$present.word"/></xsl:template>
 
-  <xsl:template match="r:year | r:month | r:jobtitle | r:employer | r:title |
-                       r:skill">
-	<xsl:value-of select="."/>
+  <xsl:template match="r:year | r:month | r:jobtitle | r:employer | r:title | r:skill | r:annotation">
+    <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
   <!-- Degrees and stuff -->
@@ -745,6 +744,17 @@ $Id$
 	   <xsl:value-of select="normalize-space($Text)"/>
         </xsl:with-param>
     </xsl:call-template>
+  </xsl:template>
+
+  <!-- Normalize whitespace on <para> text -->
+  <xsl:template match="r:para/text()">
+    <xsl:if test="preceding-sibling::*">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:if test="following-sibling::*">
+      <xsl:text> </xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <!-- emphasis -> strong -->
