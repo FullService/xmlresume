@@ -91,14 +91,10 @@ $Id$
 
   <!-- Title of article -->
   <xsl:template match="r:artTitle">
-      <!-- having the &quot; encodings outside of <xsl:text> instructions 
-      caused odd formatting with extra newlines inserted. Not sure why
-      but this fixes it. *SE* -->
     <xsl:text>&quot;</xsl:text>
     <xsl:value-of select="."/>
     <xsl:text>&quot;</xsl:text>
     <xsl:value-of select="$pub.item.separator"/>
-    
   </xsl:template>
 
   <!-- Publisher with a following publication date. -->
