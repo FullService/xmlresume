@@ -126,7 +126,7 @@ $Id$
 
   <!-- Output your name and the word "Resume". -->
   <xsl:template match="header">
-    <h1><xsl:apply-templates select="name"/>
+    <h1 class="nameHeading"><xsl:apply-templates select="name"/>
       <xsl:text> - </xsl:text>
       <xsl:value-of select="$resume.word"/>
     </h1>
@@ -136,14 +136,28 @@ $Id$
     <p>
       <xsl:apply-templates select="name"/><br/>
       <xsl:apply-templates select="address"/><br/>
-      <xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><br/>
-      <xsl:value-of select="$email.word"/>: <a>
-        <xsl:attribute name="href">
-          <xsl:text>mailto:</xsl:text>
+      
+      <!-- Don't print the label if the field value is empty *SE* -->
+      <xsl:if test="contact/phone">
+        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><br/>
+      </xsl:if>
+      <xsl:if test="contact/email">
+        <xsl:value-of select="$email.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:text>mailto:</xsl:text>
+            <xsl:value-of select="contact/email"/>
+          </xsl:attribute>
           <xsl:value-of select="contact/email"/>
-        </xsl:attribute>
-        <xsl:value-of select="contact/email"/>
-      </a>
+        </a><br/>
+      </xsl:if>
+      <xsl:if test="contact/url">
+        <xsl:value-of select="$url.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:value-of select="contact/url"/>
+          </xsl:attribute>
+          <xsl:value-of select="contact/url"/>
+        </a>
+      </xsl:if>
     </p>
   </xsl:template>
 
@@ -187,11 +201,14 @@ $Id$
         <xsl:value-of select="jobtitle"/>
       </span>
       <br/>
+      <span class="employer">
       <xsl:value-of select="employer"/>
+      </span>
       <br/>
       <xsl:apply-templates select="period"/>
     </p>
     <xsl:apply-templates select="description"/>
+    <xsl:apply-templates select="achievements"/>
   </xsl:template>
 		
   <xsl:template match="period">
@@ -205,6 +222,15 @@ $Id$
   </xsl:template>
 
   <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
+
+  <!-- Format the achievements section as a bullet list *SE* -->
+  <xsl:template match="achievements">
+     <ul>
+     <xsl:for-each select="achievement">
+      <li class="skill"><xsl:value-of select="."/></li>
+     </xsl:for-each>
+     </ul>
+  </xsl:template>
 
   <!-- Degrees and stuff -->
   <xsl:template match="academics">
@@ -245,6 +271,12 @@ $Id$
   </xsl:template>
 
   <!-- Format the open-ended skills -->
+
+  <xsl:template match="skillareas">
+    <h2 class="skillareasHeading"><xsl:value-of select="$skills.word"/></h2>
+    <xsl:apply-templates select="skillarea"/>
+  </xsl:template>
+
   <xsl:template match="skillarea">
     <h2 class="skillareaHeading"><xsl:value-of select="title"/></h2>
     <xsl:apply-templates select="skillset"/>

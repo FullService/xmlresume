@@ -140,6 +140,52 @@ $Id$
    </xsl:if>
  </xsl:template>
 
+  <!-- Named template for formatting a generic bullet list item *SE* -->
+  <xsl:template name="FormatBulletListItem" >
+    <xsl:param name="Text"  />
+    <xsl:param name="Width" select="20"/>
+    <xsl:param name="CPos" select="0"/>
+
+    <xsl:if test="$CPos=0">
+      <xsl:value-of select="$text.bullet.character"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
+
+    <!-- Put as many words on the line as possible -->
+    <!-- Do it till we run out of things -->
+   <xsl:if test="string-length($Text) > 0">
+    <xsl:choose>
+        <xsl:when test="contains($Text,' ')">
+	    <xsl:variable name="Word" select="substring-before($Text,' ')"/>
+              <xsl:value-of select="$Word"/>
+	      <xsl:choose>
+	      <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
+                  <xsl:call-template name="NewLine"/>
+	          <xsl:text>  </xsl:text>
+	          <xsl:call-template name="FormatBulletListItem">
+	            <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
+		    <xsl:with-param name="Width" select="$Width"/>
+		    <xsl:with-param name="CPos" select="2"/>
+	          </xsl:call-template>
+              </xsl:when> 
+	      <xsl:otherwise>
+		<xsl:text> </xsl:text>
+	        <xsl:variable name="NewPos" select="$CPos + string-length($Word) + 1"/>
+	      <xsl:call-template name="FormatBulletListItem">
+	        <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
+		<xsl:with-param name="Width" select="$Width"/>
+		<xsl:with-param name="CPos" select="$NewPos"/>
+	      </xsl:call-template>
+	      </xsl:otherwise>
+	      </xsl:choose>
+	</xsl:when>
+        <xsl:otherwise>
+	  <xsl:value-of select="$Text"/>
+	  <xsl:call-template name="NewLine"/>
+	</xsl:otherwise>
+    </xsl:choose>
+   </xsl:if>
+ </xsl:template>
 
   <!-- Suppress the keywords in the main body of the document -->
   <xsl:template match="keywords"/>
@@ -190,8 +236,23 @@ $Id$
 <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="address"/><xsl:call-template name="NewLine"/>
-<xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><xsl:call-template name="NewLine"/>
-<xsl:value-of select="$email.word"/>: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
+
+      <!-- Don't print phone/email labels if fields are empty. *SE -->
+      <xsl:if test="contact/phone">
+        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+	<xsl:value-of select="contact/phone"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:if test="contact/email">
+        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/email"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:if test="contact/url">
+        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/url"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
   </xsl:template>
     <!-- Objective, with level 2 heading. -->
     <xsl:template match="objective">
@@ -204,6 +265,7 @@ $Id$
       <xsl:apply-templates/>
      </xsl:with-param>
   </xsl:call-template>
+  <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="address">
@@ -253,8 +315,22 @@ $Id$
       <xsl:apply-templates select="period"/>
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="description"/>
+      <xsl:apply-templates select="achievements"/>
       <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <!-- Format the achievements section as a bullet list *SE* -->
+  <xsl:template match="achievements">
+      <xsl:call-template name="NewLine"/>
+     <xsl:for-each select="achievement">
+      <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Text">
+         <xsl:value-of select="normalize-space(.)"/>
+      </xsl:with-param>
+      <xsl:with-param name="Width" select="64"/>
+      </xsl:call-template>
+     </xsl:for-each>
   </xsl:template>
 		
   <xsl:template match="period">
@@ -325,45 +401,55 @@ $Id$
   </xsl:template>
 
   <!-- Format the open-ended skills -->
+  <!-- Added: display skills.word as title for the skillareas section *SE* -->
+  <xsl:template match="skillareas">
+      <xsl:call-template name="NewLine"/>
+      <xsl:if test="$skills.word">
+        <xsl:call-template name="NewLine"/>
+        <xsl:value-of select="$skills.word"/>:
+      </xsl:if>
+      <xsl:apply-templates />
+  </xsl:template>
+
   <xsl:template match="skillarea">
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="title"/><xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
+      <xsl:call-template name="NewLine"/>
+    <xsl:if test="title">
+      <xsl:apply-templates select="title"/><xsl:text>:</xsl:text>
+      <xsl:call-template name="NewLine"/>
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
                <xsl:apply-templates select="skillset"/>
-    	       <xsl:call-template name="NewLine"/>
       </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
-    <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="skillset">
-    <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="title"/>
+    <xsl:if test="title">
+      <xsl:apply-templates select="title"/>
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:call-template name="FormatParagraph">
-            <xsl:with-param name="Text" >
-        	<xsl:apply-templates select="skills"/>
-            </xsl:with-param>
-      	    <xsl:with-param name="Width" select="45"/>
-        </xsl:call-template>     
+        <xsl:apply-templates select="skills"/>
        </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
 
+  <!-- Format skills as a bullet list (instead of paragraph) *SE* -->
   <xsl:template match="skills">
      <xsl:for-each select="skill">
-      <xsl:value-of select="normalize-space(.)"/>
-      <xsl:if test="not(position()=last())"><xsl:text>, </xsl:text></xsl:if>
+      <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Text">
+         <xsl:value-of select="normalize-space(.)"/>
+      </xsl:with-param>
+      <xsl:with-param name="Width" select="64"/>
+      </xsl:call-template>
      </xsl:for-each>
   </xsl:template>
 

@@ -142,24 +142,37 @@ $Id$
     <fo:character character="&#xa;"/>
   </xsl:template>
 
+
+  <!-- Named template to format a single contact field *SE* -->
+  <!-- Don't print the label if the field value is empty *SE* -->
+  <xsl:template name="contact">
+      <xsl:param name="label"/>
+      <xsl:param name="field"/>
+      <xsl:if test="string-length($field) > 0">
+        <fo:block>
+	  <fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$label"/>:</fo:inline>
+	  <xsl:text> </xsl:text>
+	  <xsl:value-of select="$field"/>
+        </fo:block>
+      </xsl:if>
+  </xsl:template>
+
   <!-- Format contact information. -->
+
   <xsl:template match="contact">
-    <fo:block>
-      <fo:block>
-	<fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$phone.word"/>:</fo:inline>
-	<xsl:text> </xsl:text>
-	<xsl:value-of select="phone"/>
-      </fo:block>
-      <fo:block>
-	<fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$email.word"/>:</fo:inline>
-	<xsl:text> </xsl:text>
-	<xsl:value-of select="email"/>
-      </fo:block>
-      <fo:block>
-	<fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$url.word"/>:</fo:inline>
-	<xsl:text> </xsl:text>
-	<xsl:apply-templates select="url"/>
-      </fo:block>
+    <fo:block space-after="{$para.break.space}">
+      <xsl:call-template name="contact">
+         <xsl:with-param name="field" select="phone"/>
+         <xsl:with-param name="label" select="$phone.word"/>
+      </xsl:call-template>
+      <xsl:call-template name="contact">
+         <xsl:with-param name="field" select="email"/>
+         <xsl:with-param name="label" select="$email.word"/>
+      </xsl:call-template>
+      <xsl:call-template name="contact">
+         <xsl:with-param name="field" select="url"/>
+         <xsl:with-param name="label" select="$url.word"/>
+      </xsl:call-template>
     </fo:block>
   </xsl:template>
 
@@ -187,10 +200,26 @@ $Id$
       <fo:inline font-style="italic"><xsl:value-of select="employer"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:apply-templates select="period"/></fo:inline>
-      <fo:block>
-        <xsl:apply-templates select="description"/>
-      </fo:block>
+      <xsl:if test="description">
+        <fo:block>
+          <xsl:apply-templates select="description"/>
+        </fo:block>
+      </xsl:if>
+      <xsl:if test="achievements/achievement">
+        <fo:block>
+          <xsl:apply-templates select="achievements"/>
+        </fo:block>
+      </xsl:if>
     </fo:block>
+  </xsl:template>
+
+  <!-- Format the achievements section as a bullet list *SE* -->
+  <xsl:template match="achievements">
+    <xsl:for-each select="achievement">
+      <xsl:call-template name="bulletListItem">
+        <xsl:with-param name="Text" select="."/>
+      </xsl:call-template>
+    </xsl:for-each>
   </xsl:template>
 
   <!-- Format academics -->
@@ -220,6 +249,14 @@ $Id$
   </xsl:template>
 
   <!-- Format a skill area's title and the skillsets underneath it. -->
+  <!-- Added: display skills.word as title for the whole skills section *SE* -->
+  <xsl:template match="skillareas">
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text"><xsl:value-of select="$skills.word"/></xsl:with-param>
+    </xsl:call-template>
+    <xsl:apply-templates select="skillarea"/>
+  </xsl:template>
+
   <xsl:template match="skillarea">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="title"/></xsl:with-param>
@@ -249,8 +286,8 @@ $Id$
     </fo:list-block>
   </xsl:template>
 
-  <!-- Format a single skill as a bullet item. -->
-  <xsl:template match="skill">
+  <xsl:template name="bulletListItem">
+    <xsl:param name="Text"/>
     <fo:list-item>
       <fo:list-item-label start-indent="{$body.indent}"
 	end-indent="label-end()">
@@ -258,10 +295,17 @@ $Id$
       </fo:list-item-label>
       <fo:list-item-body start-indent="body-start()">
         <fo:block>
-          <xsl:value-of select="."/>
+          <xsl:value-of select="$Text"/>
         </fo:block>
       </fo:list-item-body>
     </fo:list-item>
+  </xsl:template>
+
+  <!-- Format a single skill as a bullet item. -->
+  <xsl:template match="skill">
+    <xsl:call-template name="bulletListItem">
+       <xsl:with-param name="Text" select="."/>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Format the publications section. -->

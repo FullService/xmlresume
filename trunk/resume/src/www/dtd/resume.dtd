@@ -112,13 +112,15 @@ $Id$
 
 <!-- Your previous employment history. -->
 <!ELEMENT history (job+)>
-<!ELEMENT job (jobtitle, employer, period, description)>
+<!ELEMENT job (jobtitle, employer, period, description?, achievements?)>
 <!ELEMENT jobtitle (#PCDATA)>
 <!ELEMENT employer (#PCDATA)>
 <!ELEMENT period (from, to)>
 <!ELEMENT from (date | present)>
 <!ELEMENT to (date | present)>
 <!ELEMENT description (para+)>
+<!ELEMENT achievements (achievement+)>
+<!ELEMENT achievement (#PCDATA)>
 
 <!-- What academics, if any, you might possess. -->
 <!ELEMENT academics (degrees, note?)>
