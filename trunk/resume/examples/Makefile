@@ -62,10 +62,10 @@ xsl_base = http://xmlresume.sourceforge.net/xsl
 #xsl_base = ../xsl
 #xsl_base = ../src/www/xsl
 
-html_style = $(xsl_base)/$(country)-html.xsl
-text_style = $(xsl_base)/$(country)-text.xsl
-fo_style = $(xsl_base)/$(country)-$(papersize).xsl
-upgrade_13x_140_style = $(xsl_base)/13x-140.xsl
+html_style = $(xsl_base)/output/$(country)-html.xsl
+text_style = $(xsl_base)/output/$(country)-text.xsl
+fo_style = $(xsl_base)/output/$(country)-$(papersize).xsl
+upgrade_13x_140_style = $(xsl_base)/misc/13x-140.xsl
 
 #------------------------------------------------------------------------------
 # Processing software
