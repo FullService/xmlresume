@@ -1,0 +1,5 @@
+Note: there are .htaccess files in:
+ - www
+ - www/private
+ - www/examples
+(Just a heads up, since you might not notice otherwise.)
