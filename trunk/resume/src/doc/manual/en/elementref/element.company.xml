@@ -18,10 +18,12 @@
   </refsynopsisdiv>
 
   <refsect1><title>Description</title>
-    <para>
-      This tag is <emphasis role="bold">deprecated</emphasis>. It should not
-      be used.
-    </para>
+
+    <important>
+      <para>
+        This element is deprecated. It should not be used.
+      </para>
+    </important>
 
     <refsect2><title>Parents</title>
       <para>
