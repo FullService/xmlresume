@@ -125,7 +125,7 @@ $Id$
   </xsl:template>
 
   <!-- Output your name and the word "Resume". -->
-  <xsl:template match="standard.header">
+  <xsl:template name="standard.header">
     <h1 class="nameHeading"><xsl:apply-templates select="name"/>
       <xsl:text> - </xsl:text>
       <xsl:value-of select="$resume.word"/>
@@ -198,7 +198,7 @@ $Id$
        <xsl:call-template name="centered.header"/>
     </xsl:when>
     <xsl:otherwise>
-       <xsl:call-template name="std.header"/>
+       <xsl:call-template name="standard.header"/>
     </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
