@@ -1,0 +1,254 @@
+<!--
+resume.dtd - Resume Document Type Definition for XML
+
+Copyright (c) 2000-2002 Sean Kelly
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The doctype with FPI for this DTD is:
+
+  <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
+                   "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+
+$Id$
+-->
+
+<!-- Grab a bunch of additional Latin characters courtesy of Norman -->
+<!-- Walsh's extraction of the ISO 8879 set for DocBook XML. -->
+<!ENTITY % ISOlat1.module "INCLUDE">
+<![%ISOlat1.module;[
+<!ENTITY % ISOlat1 PUBLIC
+"ISO 8879:1986//ENTITIES Added Latin 1//EN//XML"
+"iso-lat1.ent">
+%ISOlat1;
+<!--end of ISOlat1.module-->]]>
+
+<!-- Inline elements -->
+<!ENTITY % inlines "#PCDATA | emphasis | citation | url | link">
+
+<!-- Sections of a resume -->
+<!ENTITY % sections "(objective|history|academics|skillareas|skillarea|pubs|misc|referees|keywords|memberships|interests|awards)">
+
+<!-- A collection of resumes -->
+<!ELEMENT resumes (resume*)>
+<!ATTLIST resumes id ID #IMPLIED
+	xmlns     CDATA #FIXED "http://xmlresume.sourceforge.net/resume/0.0"
+	xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation CDATA #IMPLIED>
+
+<!-- A resume -->
+<!ELEMENT resume (docpath?, header?, (%sections;)*, lastModified?, copyright?)>
+<!ATTLIST resume id ID #IMPLIED
+	xmlns     CDATA #FIXED "http://xmlresume.sourceforge.net/resume/0.0"
+	xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation CDATA #IMPLIED>
+
+<!-- A resume may be part of a hierarchy of documents with a single -->
+<!-- root.  This docpath element specifies that hierarchy, plus the -->
+<!-- URIs to the documents. -->
+<!-- The following elements were deprecated as of 1.4.0. They will be removed
+in a future version. -->
+<!ELEMENT docpath (head?, node*, tail)>
+<!ELEMENT head (label, uri)>
+<!ELEMENT node (label, uri)>
+<!ELEMENT tail (#PCDATA)>
+<!ELEMENT label (#PCDATA)>
+<!ELEMENT uri (#PCDATA)>
+
+<!-- The header of the resume contains your name and address. -->
+<!ELEMENT header (name, address?, birth?, contact?)>
+<!ELEMENT name (firstname, middlenames?, surname, suffix?)>
+<!ATTLIST name id ID #IMPLIED>
+<!ELEMENT firstname (#PCDATA)>
+<!-- Use for one or more middle names or initials. -->
+<!ELEMENT middlenames (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!-- suffix is intended for Jr., Sr., III, etc. -->
+<!ELEMENT suffix (#PCDATA)>
+<!ELEMENT birth (date)>
+
+<!-- Your address is free-form text formatted as is proper for your -->
+<!-- mailing standards.  To insert a line break, simply put a newline -->
+<!-- in your document.  Mark up any other postal items with the element -->
+<!-- from addrElements. -->
+<!ENTITY % addrElements "street | street2 | suburb | ward | city | state | province | county | prefecture | zip | postalCode | country">
+<!ELEMENT address (#PCDATA | %addrElements; | break)*>
+<!ATTLIST address
+    format (standard|european|italian) #IMPLIED
+    id ID #IMPLIED>
+<!ELEMENT street (#PCDATA)>
+<!ATTLIST street id ID #IMPLIED>
+<!-- Deprecated as of 1.3.3. Use multiple <street>s instead. -->
+<!ELEMENT street2 (#PCDATA)>
+<!ATTLIST street2 id ID #IMPLIED>
+<!ELEMENT suburb (#PCDATA)>
+<!ATTLIST suburb id ID #IMPLIED>
+<!ELEMENT ward (#PCDATA)>
+<!ATTLIST ward id ID #IMPLIED>
+<!ELEMENT city (#PCDATA)>
+<!ATTLIST city id ID #IMPLIED>
+<!ELEMENT state (#PCDATA)>
+<!ATTLIST state id ID #IMPLIED>
+<!ELEMENT province (#PCDATA)>
+<!ATTLIST province id ID #IMPLIED>
+<!ELEMENT county (#PCDATA)>
+<!ATTLIST county id ID #IMPLIED>
+<!ELEMENT prefecture (#PCDATA)>
+<!ATTLIST prefecture id ID #IMPLIED>
+<!ELEMENT zip (#PCDATA)>
+<!ATTLIST zip id ID #IMPLIED>
+<!ELEMENT postalCode (#PCDATA)>
+<!ATTLIST postalCode id ID #IMPLIED>
+<!ELEMENT country (#PCDATA)>
+<!ATTLIST country id ID #IMPLIED>
+<!ELEMENT break EMPTY> <!-- Deprecated. -->
+<!ELEMENT contact (phone|fax|pager|email|url|instantMessage)*>
+<!ELEMENT phone (#PCDATA)>
+<!ATTLIST phone location (home | work | mobile) #IMPLIED>
+<!ELEMENT fax (#PCDATA)>
+<!ATTLIST fax location (home | work) #IMPLIED>
+<!ELEMENT pager (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT instantMessage (#PCDATA)>
+<!ATTLIST instantMessage service CDATA #IMPLIED>
+<!ELEMENT link (#PCDATA)>
+<!ATTLIST link href CDATA #IMPLIED>
+
+<!-- Your lifelong objective. -->
+<!ELEMENT objective (para+)>
+<!ATTLIST objective id ID #IMPLIED>
+
+<!-- Your previous employment history. -->
+<!ELEMENT history (job+)>
+<!ELEMENT job (jobtitle, employer, period, description?, projects?, achievements?)>
+<!ATTLIST job id ID #IMPLIED>
+<!ELEMENT jobtitle (#PCDATA)>
+<!ELEMENT employer (%inlines;)*>
+<!ATTLIST employer id ID #IMPLIED>
+<!ELEMENT period (from, to)>
+<!ELEMENT from (date | present)>
+<!ELEMENT to (date | present)>
+<!ELEMENT description (para+)>
+<!ELEMENT projects (project+)>
+<!ELEMENT project (%inlines;)*>
+<!ELEMENT achievements (achievement+)>
+<!ELEMENT achievement (%inlines;)*>
+
+<!-- What academics, if any, you might possess. -->
+<!ELEMENT academics (degrees, note?)>
+<!ELEMENT degrees (degree+)>
+<!ELEMENT degree (level, major+, minor*, (date|period)?, institution?, subjects?, annotation?)>
+<!ATTLIST degree id ID #IMPLIED>
+<!ELEMENT level (#PCDATA)>
+<!ELEMENT major (#PCDATA)>
+<!ELEMENT minor (#PCDATA)>
+<!ELEMENT institution (#PCDATA)>
+<!ATTLIST institution id ID #IMPLIED>
+<!ELEMENT subjects (subject+)>
+<!ELEMENT subject (title,result)>
+<!ELEMENT result (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)>
+<!ELEMENT note (para+)>
+
+<!-- Special skills you'd like to highlight, each in its own area. -->
+<!-- skillareas should be removed in a future version, after people have had a
+chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
+<!ELEMENT skillareas (skillarea+)> <!-- Deprecated in 1.4.0 -->
+<!ELEMENT skillarea (title, skillset+)>
+<!ATTLIST skillarea id ID #IMPLIED>
+<!ELEMENT skillset (title?, (skill+ | skills))>
+<!ATTLIST skillset id ID #IMPLIED>
+<!-- skills should be removed in a future version, after people have had a
+chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
+<!ELEMENT skills (skill+)> <!-- Deprecated in 1.4.0 -->
+<!ATTLIST skills id ID #IMPLIED>
+<!ELEMENT skill (%inlines;)*>
+<!ATTLIST skill
+    id ID #IMPLIED
+    level CDATA #IMPLIED>
+
+<!-- Have you published anything? -->
+<!ELEMENT pubs (pub+)>
+<!ENTITY % pubElements "(artTitle|bookTitle|author|date|pubDate|publisher|pageNums|url)">
+<!ELEMENT pub (para | %pubElements;)*>
+<!ATTLIST pub id ID #IMPLIED>
+<!ELEMENT artTitle (#PCDATA | link)*>
+<!ELEMENT bookTitle (#PCDATA | link)*>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author name IDREF #IMPLIED>
+<!ELEMENT pubDate (month?, year)> <!-- Deprecated in 1.4.0. -->
+<!ELEMENT publisher (#PCDATA | link | url)*>
+<!ELEMENT pageNums (#PCDATA)>
+
+<!-- Professional memberships. -->
+<!ELEMENT memberships (title, membership+)>
+<!ELEMENT membership (title?, organization?, period?, description?)>
+<!ATTLIST membership id ID #IMPLIED>
+<!ELEMENT organization (#PCDATA)>
+<!ATTLIST organization id ID #IMPLIED>
+
+<!-- Interests and/or hobbies. -->
+<!ELEMENT interests (title?, interest+)>
+<!ELEMENT interest (title, description?)>
+
+<!-- Awards or other honors. -->
+<!ELEMENT awards (title?, award+)>
+<!ELEMENT award (title, organization?, date?, description?)>
+
+<!-- Final remarks. -->
+<!ELEMENT misc (para+)>
+
+<!-- The date the resume was last modified -->
+<!ELEMENT lastModified (date)>
+
+<!-- A copyright on a resume?  Absolutely.  This helps prevents -->
+<!-- particularly annoying headhunters from plastering your resume all -->
+<!-- over the place, and also prevents you from being hired at a place -->
+<!-- that would otherwise want you, but does not want to pay tribute -->
+<!-- to the particularly annoying headhunter who plastered your resume -->
+<!-- there after grabbing it off the net. -->
+<!ELEMENT copyright (year, name?, legalnotice?)>
+<!ELEMENT company (#PCDATA)> <!-- Deprecated. -->
+<!ELEMENT legalnotice (para+)>
+
+<!-- For database retrieval (and web page insertion), some keywords. -->
+<!ELEMENT keywords (keyword+)>
+<!ELEMENT keyword (#PCDATA)>
+
+<!-- The referees of the resume names and addresses. -->
+<!ELEMENT referees (referee+)>
+<!ELEMENT referee (name, title?, organization?, address?, contact?)>
+
+<!-- Miscellaneous elements part of larger constructs. -->
+<!ELEMENT para (%inlines;)*>
+<!ELEMENT emphasis (#PCDATA)>
+<!ELEMENT citation (#PCDATA)>
+<!ELEMENT date (((dayOfMonth)?, month)?, year)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT dayOfMonth (#PCDATA)>
+<!ELEMENT present EMPTY>
+<!ELEMENT title (#PCDATA)>

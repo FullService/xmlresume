@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.date">
+  <refnamediv>
+    <refname>date</refname>
+    <refpurpose>A specific instant in time</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">date</sgmltag> element represents a
+      specific instant in time, with at least year-level granularity, and at
+      most day-level granularity.
+    </para>
+
+    <para>
+      When contained inside a <link linkend="element.pub"><sgmltag
+      class="element">pub</sgmltag></link> element, <sgmltag
+      class="element">date</sgmltag> represents the date that the work was
+      published.
+    </para>
+
+    <note>
+      <para>
+        The <sgmltag class="element">month</sgmltag> element was made optional
+        in version 1.4.0 of the &library.name;. It was previously required.
+      </para>
+    </note>
+
+    <para>
+      To represent a period of time, instead of a specific instant, use <link
+      linkend="element.period"><sgmltag
+      class="element">period</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">date</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.period"><sgmltag class="element">period</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<date>
+  <dayOfMonth>27</dayOfMonth>
+  <month>November</month>
+  <year>1634</year>
+</date>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<date>
+  <month>July</month>
+  <year>1457</year>
+</date>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

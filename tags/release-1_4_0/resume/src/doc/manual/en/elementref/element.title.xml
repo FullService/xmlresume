@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.title">
+  <refnamediv>
+    <refname>title</refname>
+    <refpurpose>A title or heading</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">title</sgmltag> element contains a title or
+      heading. Its semantics vary depending on the element that contains it:
+
+      <variablelist>
+        <varlistentry>
+          <term><sgmltag class="element">interest</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, <sgmltag
+              class="element">title</sgmltag> contains the name of an interest,
+              such as <quote>Cooking</quote>, or <quote>Politics</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">membership</sgmltag></term>
+          <term><sgmltag class="element">referee</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in these elements, <sgmltag
+              class="element">title</sgmltag> contains the name of the
+              person's role or capacity withing an organization. Examples:
+              <quote>Treasurer</quote>, <quote>Member</quote>, <quote>Chief
+              Officer of Toothpaste Policy</quote>, <quote>Lead
+              Programmer</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">awards</sgmltag></term>
+          <term><sgmltag class="element">interests</sgmltag></term>
+          <term><sgmltag class="element">memberships</sgmltag></term>
+          <term><sgmltag class="element">skillarea</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in these elements, <sgmltag
+              class="element">title</sgmltag> contains a heading for that
+              section of a &resume;. It is formatted as a top-level heading.
+            </para>
+            <note>
+              <para>
+                The <sgmltag class="element">title</sgmltag> element is optional
+                in <sgmltag class="element">awards</sgmltag> and <sgmltag
+                class="element">interests</sgmltag>. If it is not present, the
+                <parameter>awards.word</parameter> and
+                <parameter>interests.word</parameter> parameters will be used
+                as the heading text in formatted &resume;s, respectively.
+              </para>
+            </note>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">skillset</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, <sgmltag
+              class="element">title</sgmltag> contains the name of a skill
+              category. Examples: <quote>Teaching</quote>,
+              <quote>Computers</quote>, <quote>Woodworking</quote>,
+              <quote>Soap Carving</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">subject</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, <sgmltag
+              class="element">title</sgmltag> contains the name of a subject.
+              It can be as general as <quote>English</quote> (a very broad
+              field of study), or as specific as <quote>Eng 115 Intro to
+              Writing Fall 2001</quote> (a specific university course name,
+              number, and date of study).
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">title</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.artTitle"><sgmltag class="element">artTitle</sgmltag></link></member>
+        <member><link linkend="element.bookTitle"><sgmltag class="element">bookTitle</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <example>
+      <title>
+        <sgmltag class="element">interest</sgmltag> title
+      </title>
+      <programlisting><![CDATA[
+<interest>
+  <title>Fly fishing for sharks</title>
+  <description><para>
+    I once caught a 300-kg. Great White off the coase of Florida using a green
+    and gold-colored dragonfly that I tied.
+  </para></description>
+</interest>
+      ]]></programlisting>
+    </example>
+
+    <example>
+      <title>
+        <sgmltag class="element">membership</sgmltag> and <sgmltag
+        class="element">memberships</sgmltag> titles
+      </title>
+      <programlisting><![CDATA[
+<memberships>
+  <title>Professional Memberships</title>
+  <membership>
+    <organization>American Society of Blower-Uppers</organization>
+  </membership>
+  <membership>
+    <title>Spokesperson</title>
+    <organization>Smallville Demolitioneers</organization>
+  </membership>
+  <membership>
+    <title>President</title>
+    <organization>Willow County Pyrotechnicans' Guild</organization>
+  </membership>
+</membership>
+      ]]></programlisting>
+    </example>
+
+    <example>
+      <title>
+        <sgmltag class="element">skillarea</sgmltag> and <sgmltag
+        class="element">skillset</sgmltag> titles
+      </title>
+      <programlisting><![CDATA[
+<skillarea>
+  <title>Computer Skills</title>
+  <skillset>
+    <title>Word Processing</title>
+    <skill>Microsoft Word</skill>
+    <skill>Corel WordPerfect</skill>
+  </skillset>
+  <skillset>
+    <title>Programming</title>
+    <skill>Perl</skill>
+    <skill>Python</skill>
+    <skill>XML</skill>
+    <skill>C++</skill>
+  </skillset>
+</skillarea>
+      ]]></programlisting>
+    </example>
+
+    <example>
+      <title><sgmltag class="element">subject</sgmltag> title</title>
+      <programlisting><![CDATA[
+<subject>
+  <title>Intro to Sociology</title>
+  <result>A-</result>
+</subject>
+      ]]></programlisting>
+    </example>
+
+  </refsect1>
+
+</refentry>

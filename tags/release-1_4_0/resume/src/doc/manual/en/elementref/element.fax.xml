@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.fax">
+  <refnamediv>
+    <refname>fax</refname>
+    <refpurpose>A fax telephone number</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">fax</sgmltag> element contains a
+      telephone number that can be used to connect to a facsimile machine. The
+      phone number is not required to be in a specific format. (See <link
+      linkend="element.phone"><sgmltag class="element">phone</sgmltag></link>
+      for examples of numbers.)
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">fax</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">location</sgmltag></term>
+          <listitem>
+            <para>
+              Indicates the location that the phone number connects to. This
+              attribute is optional.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
+        <member><link linkend="element.pager"><sgmltag class="element">pager</sgmltag></link></member>
+        <member><link linkend="element.phone"><sgmltag class="element">phone</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<fax>555-555-1212</fax>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<fax location="work">(123) 456-7890</fax>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<fax location="home">345.324.2721</fax>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

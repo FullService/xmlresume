@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.name">
+  <refnamediv>
+    <refname>name</refname>
+    <refpurpose>A person's name</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">name</sgmltag> element specifies a person's
+      name. It must contain a <link linkend="element.firstname"><sgmltag
+      class="element">firstname</sgmltag></link> and <link
+      linkend="element.surname"><sgmltag
+      class="element">surname</sgmltag></link>. It may optionally contain a
+      <link linkend="element.middlenames"><sgmltag
+      class="element">middlenames</sgmltag></link> element and a <link
+      linkend="element.suffix"><sgmltag
+      class="element">suffix</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">name</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a name. The name may then be
+              referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<name>
+  <firstname>John</firstname>
+  <middlenames>Q.</middlenames>
+  <surname>Doe</surname>
+</name>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<name>
+  <firstname>Joe</firstname>
+  <middlenames>Sam George Bob</middlenames>
+  <surname>Flamboyzo</surname>
+  <suffix>Jr.</suffix>
+</name>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<name>
+  <firstname>King</firstname>
+  <surname>Louis</surname>
+  <suffix>VIII</suffix>
+</name>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

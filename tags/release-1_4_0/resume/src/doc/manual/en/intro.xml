@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<preface id="intro">
+  <prefaceinfo>
+    <title>Introduction</title>
+  </prefaceinfo>
+
+  <section id="intro.what-is">
+    <title>What is the &library.name;?</title>
+    <para>Blah blah.</para>
+  </section>
+</preface>
