@@ -196,6 +196,7 @@ $Id$
 
   <xsl:param name="header.item.font.style">italic</xsl:param>
 
+  <xsl:param name="copyright.font.size">8pt</xsl:param>
   <xsl:param name="emphasis.font.weight">bold</xsl:param>
   <xsl:param name="citation.font.style">italic</xsl:param>
   <xsl:param name="url.font.family">monospace</xsl:param>

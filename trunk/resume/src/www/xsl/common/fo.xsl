@@ -882,7 +882,9 @@ $Id$
 
   <!-- Format legalese. -->
   <xsl:template match="r:copyright">
-    <fo:block start-indent="{$heading.indent}">
+    <fo:block
+        start-indent="{$heading.indent}"
+        font-size="{$copyright.font.size}">
       <fo:block keep-with-next="always">
         <xsl:value-of select="$copyright.word"/>
         <xsl:text> </xsl:text>
