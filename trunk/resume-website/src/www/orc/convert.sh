@@ -14,7 +14,7 @@
 ########################################################
 
 # You may need to change the following variables:
-SUPPORT_HOME="/usr/home/mjm/xmlresume/resume-support"
+SUPPORT_HOME="@SUPPORT_HOME@"
 ANTCMD="${SUPPORT_HOME}/ant/ant"
 JAVACMD=java
 
