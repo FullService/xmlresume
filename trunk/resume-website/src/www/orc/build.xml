@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="all" name="ORC">
+<!-- ====================================================================
+ build.xml: A Makefile for the online resume converter
+ Contributed 2002 by Mark Miller <brandondoyle>
+
+USAGE:
+ This file requires that ant be called from the incoming/{timestamp}/ 
+directory.  Normally, it is done so from the process-upload() function 
+in orc-functions.php:
+cd incoming/{timestamp} && ant -verbose -l antlog.txt \
+          -propertyfile user.props -find build.xml dispatch
+
+FUNCTIONALITY
+ Calling the target "dispatch":
+	runs sanity checks (see FIXME below),
+	target-filters resume.xml into resume-filtered.xml
+	converts the resume-filtered.xml to the specified formats
+	compresses the output into an appropriate format
+	moves the compressed archive into incoming/{timestamp}/out
+
+TODO
+ * Make a "clean" target, called from the ORC_ROOT directory,
+   that removes 
+==================================================================== -->
+
+
+<!-- Derived properties: -->
+  <property name="www_root" value="/home/mjm/www"/>
+  <property name="orc_root" value="/home/mjm/xmlresume/resume-website/src/www/orc"/>
+  <property name="resume" value="resume"/>
+  <property name="resume.filtered" value="${resume}-filtered"/>
+  <property name="xsl.base" value="."/>
+  <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Filter"/>
+  <property name="pdf.processor" value="org.apache.fop.apps.Fop"/>
+  <property name="xsl.processor" value="org.apache.xalan.xslt.Process"/>
+  <property name="fo_style" value="${xsl.base}/output/${country}-${papersize}.xsl"/>
+  <property name="html_style" value="${xsl.base}/output/${country}-html.xsl"/>
+  <property name="text_style" value="${xsl.base}/output/${country}-text.xsl"/>
+<!--									-->
+
+<!--		Target Init 		-->
+  <target name="init" description="Initialize the build system">
+    <tstamp/>
+  </target>
+<!--		Target Validate		-->
+  <target name="validate" depends="init"
+	  description="Run sanity checks, validate input">
+    <!-- FIXME Add sanity checks --> 
+  </target>
+<!--		Target Filter		-->
+  <target name="filter" depends="-filter.target,-filter.copy" 
+   	  description="Filter XML according to targets."/>
+  <target name="-filter.target" if="options.filter"
+	  depends="validate">
+    <echo message="Running targeting filter"/>
+    <java classname="${filter.processor}">
+      <arg value="-in"/>
+      <arg value="${resume}.xml"/>
+      <arg value="-out"/>
+      <arg value="${resume.filtered}.xml"/>
+      <arg value="${filter.targets}"/>
+    </java>
+  </target>
+  <target name="-filter.copy" unless="options.filter" 
+	  depends="validate">
+    <echo message="Skipping targeting filter step"/>
+    <copy file="${resume}.xml" 
+	  tofile="${resume.filtered}.xml"/>
+  </target>
+<!--		Target Text 		-->
+  <target name="txt" depends="filter" if="options.txt"
+	  description="Format to a plain-text resume.">
+    <java classname="${xsl.processor}">
+      <arg value="-in"/>
+      <arg value="${resume.filtered}.xml"/>
+      <arg value="-xsl"/>
+      <arg value="${text_style}"/>
+      <arg value="-out"/>
+      <arg value="${resume}.txt"/>
+    </java>
+  </target>
+<!--		Target HTML 		-->
+  <target name="html" depends="filter" if="options.html"
+	  description="Format to an HTML resume.">
+    <java classname="${xsl.processor}">
+      <arg value="-in"/>
+      <arg value="${resume.filtered}.xml"/>
+      <arg value="-xsl"/>
+      <arg value="${html_style}"/>
+      <arg value="-out"/>
+      <arg value="${resume}.html"/>
+    </java>
+  </target>
+<!--		Target FO 		-->
+  <target name="fo" depends="filter" if="options.pdf"
+	  description="Format to an XML FO resume.">
+    <java classname="${xsl.processor}">
+      <arg value="-in"/>
+      <arg value="${resume.filtered}.xml"/>
+      <arg value="-xsl"/>
+      <arg value="${fo_style}"/>
+      <arg value="-out"/>
+      <arg value="${resume}.fo"/>
+    </java>
+  </target>
+<!-- 		Target PDF 		-->
+  <target name="pdf" depends="fo" if="options.pdf"
+	  description="Format to a PDF Resume.">
+    <java classname="${pdf.processor}">
+      <arg value="-fo"/>
+      <arg value="${resume}.fo"/>
+      <arg value="-pdf"/>
+      <arg value="${resume}.pdf"/>
+    </java>
+  </target>
+<!-- 		Target Convert 		-->
+  <target name="convert" depends="html,txt,pdf"
+	  description="Convert to all formats"/>
+<!-- 		Target Compress 	-->
+  <target name="compress" depends="-tar,-zip"
+	  description="Zip/Tar the formatted output."/>
+  <target name="-tar" depends="convert" if="options.tgz">
+     <tar destfile="${resume}.tar" basedir="."
+	  includes="${resume}.xml ${resume.filtered}.xml, ${resume}.txt,
+		    ${resume}.html, ${resume}.pdf"/>
+     <gzip src="${resume}.tar" zipfile="${resume}.tgz"/>
+  </target>
+  <target name="-zip" depends="convert" unless="options.tgz">
+     <zip destfile="${resume}.zip" basedir="."
+	  includes="${resume}.xml ${resume.filtered}.xml, ${resume}.txt,
+		    ${resume}.html, ${resume}.pdf"/>
+  </target>
+<!-- 		Target Dispatch		-->
+  <target name="dispatch" depends="compress"
+          description="Prepare the zip/tgz file for transmission.">
+     <mkdir dir="out"/>
+     <move file="${resume}.zip" todir="out" failonerror="false"/>
+     <move file="${resume}.tgz" todir="out" failonerror="false"/>
+  </target>
+
+
+<!-- 		Target clean 		-->
+  <target description="Clean all build products." name="clean">
+    <delete dir="${orc_root}/incoming/" quiet="true"/>
+    <mkdir dir="${orc_root}/incoming/"/>
+    <copy todir="${orc_root}/incoming/">
+      <fileset dir="${www_root}">
+	<include name="css/*"/>
+      </fileset>
+      <fileset dir=".">
+	<include name=".htaccess"/>
+      </fileset>
+    </copy>
+    <chmod dir="${orc_root}/incoming" perm="ugo+rwx"/>
+  </target>
+</project>
