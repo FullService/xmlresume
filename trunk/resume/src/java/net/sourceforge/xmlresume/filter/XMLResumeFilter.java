@@ -35,15 +35,15 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * <p>In reality there is little that this class does that XMLFilterImpl 
  * does not.  It does, however, allow us to insert debugging statements easily
  * to figure out what's going on.</p>
- * 
- * <p>XMLResumeFilters can be separated into two groups-- include (allow) filters
- * and exclude (deny) filters, i.e., those that filter out everything not in 
- * their whitelist and those that filter out everything that is in their blacklist.</p>
- * TargetFilter is an include filter, while ElementFilter and AttributeFilter
- * are exclude filters.</p>
  *
- * <p>XMLResumeFilter does not itself filter anything-- it just passes on events.
- * The logic of filtering is left to its derived classes.</p>
+ * <p>XMLResumeFilters can be separated into two groups-- include (allow)
+ * filters and exclude (deny) filters, i.e., those that filter out 
+ * everything not in their whitelist and those that filter out everything 
+ * that is in their blacklist.</p> TargetFilter is an include filter, 
+ * while ElementFilter and AttributeFilter are exclude filters.</p>
+ *
+ * <p>XMLResumeFilter does not itself filter anything-- it just passes on 
+ * events.  The logic of filtering is left to its derived classes.</p>
  *
  * @author Mark Miller <joup@bnet.org>
  */
