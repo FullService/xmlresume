@@ -34,11 +34,15 @@ $Id$
 -->
 
 <xsl:stylesheet version="1.0"
+  exclude-result-prefixes="r"
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:output method="html" omit-xml-declaration="yes" indent="yes"
-    encoding="UTF-8" doctype-public="-//W3C//DTD HTML 4.0//EN"/>
+  <xsl:output method="xml" omit-xml-declaration="yes" indent="yes"
+    encoding="UTF-8"
+    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+    doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"
+    />
   <xsl:strip-space elements="*"/>
 
   <xsl:include href="params.xsl"/>
@@ -333,12 +337,16 @@ $Id$
       <xsl:with-param name="css.class">jobDescription</xsl:with-param>
     </xsl:apply-templates>
     <xsl:if test="r:projects/r:project">
-      <xsl:value-of select="$projects.word"/>
-      <xsl:apply-templates select="r:projects"/>
+      <div class="projects">
+        <p><xsl:value-of select="$projects.word"/></p>
+        <xsl:apply-templates select="r:projects"/>
+      </div>
     </xsl:if>
     <xsl:if test="r:achievements/r:achievement">
-      <xsl:value-of select="$achievements.word"/>
-      <xsl:apply-templates select="r:achievements"/>
+      <div class="achievements">
+        <p><xsl:value-of select="$achievements.word"/></p>
+        <xsl:apply-templates select="r:achievements"/>
+      </div>
     </xsl:if>
   </xsl:template>
 		
@@ -440,11 +448,11 @@ $Id$
     <table>
       <xsl:for-each select="r:subject">
         <tr>
-          <td width="100"></td>
+          <td></td>
 	  <td>
             <xsl:apply-templates select="r:title"/>
 	  </td>
-          <td width="10"></td>
+          <td></td>
 	  <td>
             <xsl:apply-templates select="r:result"/>
 	  </td>
@@ -616,7 +624,7 @@ $Id$
 
   <!-- Format the legalese -->
   <xsl:template match="r:copyright">
-    <address class="copyright">
+    <div class="copyright">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
       <xsl:apply-templates select="r:year"/>
@@ -631,7 +639,7 @@ $Id$
       </xsl:if>
       <xsl:text>. </xsl:text>
       <xsl:apply-templates select="r:legalnotice"/>
-    </address>
+    </div>
   </xsl:template>
 
   <!-- Put a space between first and last name -->
