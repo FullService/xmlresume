@@ -21,9 +21,44 @@ $Id$
 
   <!-- Root of all source code -->
   <property name="src.dir" value="${basedir}/src"/>
+  <property name="java.src.dir" value="${src.dir}/java"/>
+  <property name="www.src.dir" value="${src.dir}/www"/>
 
   <!-- Web server's directory; where to install web-accessible files -->
   <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
+
+  <!-- Where built files go -->
+  <property name="build.dir" value="${basedir}/build"/>
+
+  <!-- Binary resource files that mustn't be modified -->
+  <patternset id="binary.resources">
+    <include name="**/*.exe"/>
+    <include name="**/*.jpg"/>
+    <include name="**/*.jpeg"/>
+    <include name="**/*.gif"/>
+    <include name="**/*.png"/>
+    <include name="**/*.pdf"/>
+    <include name="**/*.ico"/>
+    <include name="**/*.bmp"/>
+  </patternset>
+
+  <!-- Nonbinary resource files that may be filtered and modified -->
+  <patternset id="text.resources">
+    <include name="**/*.properties"/>
+    <include name="**/*.xml"/>
+    <include name="**/*.dtd"/>
+    <include name="**/*.ent"/>
+    <include name="**/*.xsl"/>
+    <include name="**/*.css"/>
+    <include name="**/*.fo"/>
+    <include name="**/*.html"/>
+    <include name="**/*.txt"/>
+  </patternset>
+
+  <!-- Java classpath -->
+  <path id="test.classpath">
+    <pathelement path="${build.dir}"/>
+  </path>
 
   <!-- DOCUMENTATION EXTRACTION =============================================================================================== -->
 
@@ -49,6 +84,44 @@ $Id$
   <property name="release.tgz" value="${basedir}/${release.tgz.name}"/>
 
   <!-- TARGETS TO BUILD ======================================================================================================= -->
+
+  <!-- Compilation -->
+  <target name="build"
+    description="Build the software"
+    depends="build.prepare, build.compile, build.resources"/>
+
+  <target name="build.prepare"
+    description="Prepare the build area">
+    <mkdir dir="${build.dir}"/>
+  </target>
+
+  <target name="build.compile"
+    description="Compile source code"
+    depends="build.prepare">
+    <javac srcdir="${java.src.dir}"
+      destdir="${build.dir}"
+      debug="yes"
+      includes="**/*.java"/>
+  </target>
+
+  <target name="build.resources"
+    description="Copy resource files into build area">
+    <copy todir="${build.dir}"
+      filtering="no">
+      <fileset dir="${java.src.dir}">
+	<patternset refid="binary.resources"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.dir}"
+      filtering="yes">
+      <fileset dir="${java.src.dir}">
+	<patternset refid="text.resources"/>
+      </fileset>
+      <fileset dir="${www.src.dir}">
+	<patternset refid="text.resources"/>
+      </fileset>
+    </copy>
+  </target>
 
   <!-- Documentation generation -->
 
@@ -141,6 +214,23 @@ $Id$
     <delete file="${release.tar}"/>
   </target>
 
+  <!-- Unit and regression tests -->
+
+  <target name="test"
+    description="Run the unit and regression tests"
+    depends="build">
+    <junit haltonfailure="no"
+      fork="yes">
+      <classpath refid="test.classpath"/>
+      <formatter type="plain"
+	usefile="no"/>
+      <batchtest>
+	<fileset dir="${build.dir}"
+	  includes="**/*Test.class"/>
+      </batchtest>
+    </junit>
+  </target>
+
   <!-- Installing -->
 
   <target name="install"
@@ -167,7 +257,7 @@ $Id$
 
   <target name="clean"
     description="Remove everything that can be rebuilt"
-    depends="clean.doc, clean.release"/>
+    depends="clean.doc, clean.release, clean.build"/>
 
   <target name="clean.doc"
     description="Clean out documentation that can be rebuilt">
@@ -179,6 +269,32 @@ $Id$
     <delete dir="${stage.dir}"/>
     <delete file="${release.zip}"/>
     <delete file="${release.tgz}"/>
+  </target>
+
+  <target name="clean.build"
+    description="Clean the compiled software area">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="run.test"
+    description="Run the test"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-test"/>
+    </java>
+  </target>
+
+  <target name="run.generate"
+    description="Generate the test data"
+    depends="build">
+    <java classname="net.sourceforge.xmlresume.ResumeTest"
+      fork="yes"
+      classpathref="test.classpath">
+      <arg value="-generate"/>
+      <arg file="c:/tmp/testdata"/>
+    </java>
   </target>
 
 </project>
