@@ -26,6 +26,50 @@
       in the User Guide.
     </p>
 
+    <h2>Release 1.3.3</h2>
+
+    <ul>
+      <li>The output stylesheets (<code>us-html.xsl</code>,
+        <code>br-a4.xsl</code>, etc.) are now in the <code>xsl/output</code>
+        directory. (They were previously in the <code>xsl</code> directory.</li>
+      <li>New elements:
+        <a href="../manual/html/element.clearances.html"><code>&lt;clearances&gt;</code></a>
+        and
+        <a href="../manual/html/element.clearance.html"><code>&lt;clearance&gt;</code></a>.
+        These elements may be used to note security clearances that you may
+        have.
+        (Feature request 556633.)</li>
+      <li>New elements:
+        <a href="../manual/html/element.gpa.html"><code>&lt;gpa&gt;</code></a>,
+        <a href="../manual/html/element.score.html"><code>&lt;score&gt;</code></a>
+        and
+        <a href="../manual/html/element.possible.html"><code>&lt;possible&gt;</code></a>.
+        You can use these tags to include a GPA in a degree.
+        r&eacute;sum&eacute;.
+        (Feature request 560641.)</li>
+      <li>New element:
+        <a href="../manual/html/element.location.html"><code>&lt;location&gt;</code></a>.
+        This element can be used to indicate the city of a 
+        <a href="../manual/html/element.job.html"><code>&lt;job&gt;</code></a>,
+        <a href="../manual/html/element.degree.html"><code>&lt;degree&gt;</code></a>,
+        or
+        <a href="../manual/html/element.membership.html"><code>&lt;membership&gt;</code></a>.
+        (Feature request 505444.)</li>
+      <li>
+        <a href="../manual/html/element.name.html"><code>&lt;name&gt;</code></a>
+        may now contain an optional
+        <a href="../manual/html/element.title.html"><code>&lt;title&gt;</code></a>.
+        </li>
+      <li>
+        <a href="../manual/html/element.institution.html"><code>&lt;institution&gt;</code></a>
+        and
+        <a href="../manual/html/element.organization.html"><code>&lt;organization&gt;</code></a>
+        may now contain inline elements.
+        </li>
+      <li>Added Dutch language support, thanks to Andre van Dijk.</li>
+      <li>New CSS stylesheet: resume4.css.</li>
+    </ul>
+
     <h2>Release 1.4.0</h2>
 
     <ul>
@@ -108,7 +152,6 @@
       <li>Namespaces are supported and used within the stylesheets.</li>
       <li>We're now compatible with the XSL-FO standard and FOP version 0.20.3.</li>
       <li>New <code>&lt;link&gt;</code> element to support hyperlinks to employers.</li>
-      </li>
     </ul>
 
     <h2>Release 1.3.2</h2>
