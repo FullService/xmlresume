@@ -37,6 +37,7 @@ $Id$
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:import href="common/text.xsl"/>
+  <xsl:import href="us-params.xsl"/>
 
   <!-- No other overrides needed, since the default parameters are all
   US English and US-Letter size paper already. -->

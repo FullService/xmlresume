@@ -37,96 +37,12 @@ $Id$
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- Word to use for "resume" -->
-  <xsl:param name="resume.word">R&#x00e9;sum&#x00e9;</xsl:param>
-
-  <!-- Word to use for "page" -->
-  <xsl:param name="page.word">page</xsl:param>
-
-  <!-- Word to use for "Contact Information" -->
-  <xsl:param name="contact.word">Contact Information</xsl:param>
-
-  <!-- Word to use for "Professional Objective" -->
-  <xsl:param name="objective.word">Professional Objective</xsl:param>
-
-  <!-- Word to use for "Employment History" -->
-  <xsl:param name="history.word">Employment History</xsl:param>
-
-  <!-- Word to use for "Academics" -->
-  <xsl:param name="academics.word">Education</xsl:param>
-
-  <!-- Word to use for "Publications" -->
-  <xsl:param name="publications.word">Publications</xsl:param>
-
-  <!-- Word to use for "Interests" -->
-  <xsl:param name="interests.word">Interests</xsl:param>
-
-  <!-- Word to use for "Awards" -->
-  <xsl:param name="awards.word">Awards</xsl:param>
-
-  <!-- Word to use for "Miscellany" -->
-  <xsl:param name="miscellany.word">Miscellany</xsl:param>
-
-  <!-- Word to use for "in", as in "bachelor degree *in* political science" -->
-  <xsl:param name="in.word">in</xsl:param>
-
-  <!-- Word to use for "and", as in "Minors in political science, English, *and*
-  business" -->
-  <xsl:param name="and.word">and</xsl:param>
-
-  <!-- Word to use for "Copyright (c)" -->
-  <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
-
-  <!-- Word to use for "by", as in "Copyright by Joe Doom" -->
-  <xsl:param name="by.word">by</xsl:param>
-
-  <!-- Word to use for "present", as in "Period worked: August 1999-Present" -->
-  <xsl:param name="present.word">Present</xsl:param>
-
-  <!-- Word to use for phone, email, and URL for contact information. -->
-  <xsl:param name="phone.word">Phone</xsl:param>
-  <xsl:param name="fax.word">Fax</xsl:param>
-  <xsl:param name="pager.word">Pager</xsl:param>
-  <xsl:param name="email.word">Email</xsl:param>
-  <xsl:param name="url.word">URL</xsl:param>
-
-  <!-- Instant messenger service names -->
-  <!-- (When you add or remove a service here, don't forget to update
-  contact.xsl in this dir, and element.instantMessage.xml in the user guide.)
-  -->
-  <xsl:param name="im.aim.service">AIM</xsl:param>
-  <xsl:param name="im.icq.service">ICQ</xsl:param>
-  <xsl:param name="im.irc.service">IRC</xsl:param>
-  <xsl:param name="im.jabber.service">Jabber</xsl:param>
-  <xsl:param name="im.msn.service">MSN Messenger</xsl:param>
-  <xsl:param name="im.yahoo.service">Yahoo! Messenger</xsl:param>
-
-  <!-- Words for phone and fax locations, as in "Home Phone", or "Work Fax" -->
-  <xsl:param name="home.word">Home</xsl:param>
-  <xsl:param name="work.word">Work</xsl:param>
-  <xsl:param name="mobile.word">Mobile</xsl:param>
-
-  <!-- Word to use for the "Achievements:" heading in a job. -->
-  <xsl:param name="achievements.word">Achievements:</xsl:param>
-
-  <!-- Word to use for the "Projects:" heading in a job. -->
-  <xsl:param name="projects.word">Projects:</xsl:param>
-
-  <!-- Word to use for Minor (lesser area of study), singluar and plural. -->
-  <xsl:param name="minor.word">minor</xsl:param>
-  <xsl:param name="minors.word">minors</xsl:param>
-
-  <!-- Word to use for referees. -->
-  <xsl:param name="referees.word">References</xsl:param>
+  <xsl:import href="../us-params.xsl"/>
 
   <!-- Should referees be displayed when formatting? -->
   <!-- '1' to display referees -->
   <!-- '0' to display referees.hidden.phrase instead. -->
   <xsl:param name="referees.display">1</xsl:param>
-  <xsl:param name="referees.hidden.phrase">Available upon request.</xsl:param>
-
-  <!-- Phrase to use for "Last modified". -->
-  <xsl:param name="last-modified.phrase">Last modified</xsl:param>
 
   <!-- Default separator between authors in publication details.  -->
   <xsl:param name="pub.author.separator">, </xsl:param>

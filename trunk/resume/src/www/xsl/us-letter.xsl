@@ -38,6 +38,7 @@ $Id$
 
   <xsl:import href="common/fo.xsl"/>
   <xsl:import href="common/letter.xsl"/>
+  <xsl:import href="us-params.xsl"/>
 
   <!-- No other overrides needed, since the default parameters are all
   US English and US-Letter size paper already. -->
