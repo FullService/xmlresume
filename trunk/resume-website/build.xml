@@ -17,8 +17,8 @@ $Id$
        ~/.ant.properties file, using the format "variableName = value" -->
 
   <!-- Current version number and release files -->
-  <property name="version.dots" value="1.5.0"/>
-  <property name="version.underscore" value="1_5_0"/>
+  <property name="version.dots" value="1.5.1"/>
+  <property name="version.underscore" value="1_5_1"/>
   <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
   <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
   <property name="webserver.address" value="http://xmlresume.sourceforge.net"/>
@@ -96,7 +96,8 @@ $Id$
     <ant antfile="${resume.web.publish.dir}/orc/build.xml"
 	 dir="${resume.web.publish.dir}/orc/"
 	 target="clean"/>
-    <chmod file="${resume.web.publish.dir}/orc/convert.sh" perm="ugo+rx"/>
+    <chmod file="${resume.web.publish.dir}/orc/convert.sh" perm="ug+rx"/>
+    <chmod file="${resume.web.publish.dir}/orc/clean.sh" perm="ug+rx"/>
   </target>
 
   <!-- Housekeeping -->
