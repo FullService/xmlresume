@@ -7,6 +7,11 @@ include_once("../private/header.php");
 Online R&eacute;sum&eacute; Converter (ORC)
 </h1>
 
+<p><b>Note:</b> be sure your XML R&eacute;sum&eacute; file specifies
+http://xmlresume.sourceforge.net/dtd/resume.dtd in the DOCTYPE
+declaration.  If it does not your r&eacute;sum&eacute; cannot be
+converted.</p>
+
   <form action="./process-upload.php" method="post" enctype="multipart/form-data">
 
     <!-- Allow uploads of up to 100K in size -->

@@ -146,7 +146,6 @@ TODO
   <target description="Clean all build products." name="clean">
     <echo message="This target must be run from ORC's root directory."/>
 <!-- The delete target doesn't understand symlinks, so we use rm instead -->
-<!--    <delete dir="./incoming/" quiet="true"/> --> 
     <exec executable="rm">
       <arg value="-rf"/>
       <arg value="incoming"/>
@@ -159,6 +158,7 @@ TODO
       </fileset>
     </copy>
     <touch file="./incoming/index.html"/>    
+    <touch file="./incoming/DONE/index.html"/>    
     <chmod dir="./incoming" perm="ugo+rwx"/>
   </target>
 </project>
