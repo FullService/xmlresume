@@ -7,7 +7,7 @@ ORC - The XMLResume Library's Online Resume Converter
 ORC assumes that it is in the subdirectory "orc" of ~/htdocs on
 shells.sourceforge.net, which is the root of
 http://xmlresume.sourceforge.net.  It assumes that, in the orc directory,
-../css and ../xsl exist and contain what is put their during the build
+../css and ../xsl exist and contain what is put there during the build
 process of the "resume" build process (ie, the xmlresume source CVS
 module).  If you are using ORC on your own machine, and you want the 
 website part to be in ~/htdocs/xmlresume, I suggest you add a symbolic 
@@ -62,5 +62,9 @@ addresses (piped into <<users.email>>) so we can see how many (unique)
 users we have.  I hate spam as much as the next guy, so a 1-way hash of 
 something we want to keep around for awhile seems like a safe idea.
 
-It's probably a good idea to run convert.sh at a low system priority to 
-keep it from bogging the server down.
+To set the build process in motion, use
+% crontab crontab.orc
+
+Before doing so on shells.sf.net, though, make sure no other 
+project members are doing the same thing, because there might
+be process/threading issues.
