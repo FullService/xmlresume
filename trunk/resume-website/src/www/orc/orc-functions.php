@@ -24,11 +24,6 @@ function process_upload() {
   if( !mkdir( $pathdirname . "/out", 0770)) return array(1, "Couldn't create directory " . $pathdirname . "/out");
   chmod( $pathdirname . "/out", 0777);
 
-# Add a .htaccess file that forbids directory listing (just a privacy thing)
-  if( !$fpHtaccess = fopen( $pathdirname . "/.htaccess", 'w'))
-    return( array( 1, "Can't create .htaccess file"));
-  fwrite( $fpHtaccess, "Options -indexes\n");
-
 # Sanity Checks (feel free to add more, eg validity checks)
   if( $_FILES['resume'] == "") return( array( 1, "File not uploaded"));
   if( $_FILES['resume']['error'] != "") print ($_FILES['resume']['error']);
