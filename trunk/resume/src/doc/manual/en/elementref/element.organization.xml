@@ -19,7 +19,7 @@
   <refsect1><title>Description</title>
     <para>
       The <sgmltag class="element">organization</sgmltag> element contains the
-      name of a profession or other organization.
+      name of a professional or other type of organization.
     </para>
 
     <refsect2><title>Parents</title>
