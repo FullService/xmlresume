@@ -112,7 +112,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <degrees>
       <degree>
 	<level>BA</level>
-	<subject>Renaissance Bedpan Design</subject>
+	<major>Renaissance Bedpan Design</major>
 	<date>
 	  <month>February</month>
 	  <year>1631</year>
@@ -131,9 +131,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <skillset>
 	<skills>
 	  <skill>Speak multiple European languages with no discernable
-	    accent.
+	    accent
 	  </skill>
-	  <skill>Able to predict earthquakes.</skill>
+	  <skill>Able to predict earthquakes</skill>
 	</skills>
       </skillset>
     </skillarea>
