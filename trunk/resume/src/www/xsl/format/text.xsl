@@ -334,7 +334,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:template match="r:description" name="r:description">
     <!-- Possible values: 'block', 'single-line' -->
     <xsl:param name="paragraph.format">block</xsl:param>
-    <xsl:param name="Width" select="$text.width"/>
+    <xsl:param name="Width" select="$text.width - $text.indent.width"/>
 
     <xsl:choose>
       <xsl:when test="$paragraph.format = 'single-line'">
@@ -354,7 +354,9 @@ In general, each block is responsible for outputting a newline after itself.
       </xsl:when>
 
       <xsl:otherwise> <!-- block -->
-        <xsl:apply-templates/>
+        <xsl:apply-templates>
+          <xsl:with-param name="Width" select="$Width"/>
+        </xsl:apply-templates>
       </xsl:otherwise>
     </xsl:choose>
 
@@ -955,7 +957,10 @@ In general, each block is responsible for outputting a newline after itself.
 
         <xsl:call-template name="NewLine"/>
 
-        <xsl:apply-templates select="r:description"/>
+        <xsl:apply-templates select="r:description">
+          <xsl:with-param name="Width"
+            select="$text.width - $text.indent.width - string-length($text.bullet.prefix)"/>
+        </xsl:apply-templates>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -1018,12 +1023,14 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- para -> p -->
   <xsl:template match="r:para">
+    <xsl:param name="Width" select="$text.width - $text.indent.width"/>
+
     <!-- Format Paragraph -->
     <xsl:variable name="Text">
       <xsl:apply-templates/>
     </xsl:variable>
     <xsl:call-template name="Wrap">
-      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
+      <xsl:with-param name="Width" select="$Width"/>
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
