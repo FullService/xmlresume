@@ -47,7 +47,7 @@ DTD Changes
 If you change (add, remove, modify, or deprecate elements or attributes) the
 DTD, please also do the following:
 
-1. Update src/doc/manual/en/elementref.intro.xml, which is user-visible DTD
+1. Update src/doc/manual/en/elementref/intro.xml, which is user-visible DTD
    change documentation.
 
 2. Write or modify appropriate reference pages. If you've added elements, run
@@ -81,7 +81,7 @@ following:
    formatting the example resumes and your own.
 
 2. Update the version number in the build.xml file by
-   editing the two propeties "version.underscore" and
+   editing the two properties "version.underscore" and
    "version.dots".
 
 3. Run "cvs commit" to commit your changes to CVS.
