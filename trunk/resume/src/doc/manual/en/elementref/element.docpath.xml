@@ -5,6 +5,7 @@
   <refnamediv>
     <refname>docpath</refname>
     <refpurpose><!-- TODO --></refpurpose>
+    <refclass>Deprecated</refclass>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -17,6 +18,13 @@
   </refsynopsisdiv>
 
   <refsect1><title>Description</title>
+    <important>
+      <para>
+        This element is deprecated as of &library.name; version 1.3.4. It should
+        not be used, and will be removed in a future version.
+      </para>
+    </important>
+
     <para>
       <!-- TODO -->
     </para>

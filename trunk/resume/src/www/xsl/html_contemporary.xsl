@@ -83,39 +83,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			<xsl:text>, </xsl:text>
 		</xsl:if>
 	</xsl:template>
-	<!-- The "docpath" is used on my website.  Just ignore it.  -->
-	<xsl:template match="docpath">
-		<div class="navbar">
-			<xsl:apply-templates select="head"/>
-			<xsl:apply-templates select="node"/>
-			<xsl:apply-templates select="tail"/>
-		</div>
-	</xsl:template>
-	<xsl:template name="pathItem">
-		<xsl:param name="style">unknown</xsl:param>
-		<span class="{$style}">
-			<a>
-				<xsl:attribute name="href"><xsl:value-of select="uri"/></xsl:attribute>
-				<xsl:value-of select="label"/>
-			</a>
-			<xsl:text> > </xsl:text>
-		</span>
-	</xsl:template>
-	<xsl:template match="head">
-		<xsl:call-template name="pathItem">
-			<xsl:with-param name="style">navHome</xsl:with-param>
-		</xsl:call-template>
-	</xsl:template>
-	<xsl:template match="node">
-		<xsl:call-template name="pathItem">
-			<xsl:with-param name="style">navItem</xsl:with-param>
-		</xsl:call-template>
-	</xsl:template>
-	<xsl:template match="tail">
-		<span class="navTerminal">
-			<xsl:value-of select="."/>
-		</span>
-	</xsl:template>
 	<!-- Output your name and the word "Resume". -->
 	<xsl:template name="standard.header">
 		<!--Apply "contemporary" styling to contact info *RK*-->

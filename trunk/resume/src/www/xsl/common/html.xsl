@@ -98,46 +98,6 @@ $Id$
     </xsl:if>
   </xsl:template>
 
-  <!-- The "docpath" is used on my website.  Just ignore it.  -->
-  <xsl:template match="r:docpath">
-    <div class="navbar">
-      <xsl:apply-templates select="r:head"/>
-      <xsl:apply-templates select="r:node"/>
-      <xsl:apply-templates select="r:tail"/>
-    </div>
-  </xsl:template>
-
-  <xsl:template name="pathItem">
-    <xsl:param name="style">unknown</xsl:param>
-    <span class="{$style}">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:apply-templates select="r:uri"/>
-        </xsl:attribute>
-        <xsl:apply-templates select="r:label"/>
-      </a>
-      <xsl:text> > </xsl:text>
-    </span>
-  </xsl:template>
-
-  <xsl:template match="r:head">
-    <xsl:call-template name="pathItem">
-      <xsl:with-param name="style">navHome</xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template match="r:node">
-    <xsl:call-template name="pathItem">
-      <xsl:with-param name="style">navItem</xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template match="r:tail">
-    <span class="navTerminal">
-      <xsl:value-of select="."/>
-    </span>
-  </xsl:template>
-
   <xsl:template match="r:header">
     <xsl:choose>
       <xsl:when test="$header.format = 'centered'">

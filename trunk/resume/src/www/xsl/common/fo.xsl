@@ -814,7 +814,6 @@ $Id$
   <xsl:template match="r:present"><xsl:value-of select="$present.word"/></xsl:template>
 
   <!-- Suppress items not needed for print presentation -->
-  <xsl:template match="r:docpath"/>
   <xsl:template match="r:keywords"/>
 
   <!-- Format the referees -->

@@ -63,7 +63,6 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Suppress the keywords in the main body of the document -->
   <xsl:template match="r:keywords"/>
-  <xsl:template match="r:docpath"/>
 
   <xsl:template match="r:keyword">
     <!--
@@ -71,45 +70,6 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:if test="position() != last()">
       <xsl:text>, </xsl:text>
     </xsl:if>
-    -->
-  </xsl:template>
-
-  <xsl:template name="pathItem">
-    <!--
-    <xsl:param name="style">unknown</xsl:param>
-    <span class="{$style}">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:apply-templates select="r:uri"/>
-        </xsl:attribute>
-        <xsl:apply-templates select="r:label"/>
-      </a>
-      <xsl:text> > </xsl:text>
-    </span>
-    -->
-  </xsl:template>
-
-  <xsl:template match="r:head">
-    <!--
-    <xsl:call-template name="pathItem">
-      <xsl:with-param name="style">navHome</xsl:with-param>
-    </xsl:call-template>
-    -->
-  </xsl:template>
-
-  <xsl:template match="r:node">
-    <!--
-    <xsl:call-template name="pathItem">
-      <xsl:with-param name="style">navItem</xsl:with-param>
-    </xsl:call-template>
-    -->
-  </xsl:template>
-
-  <xsl:template match="r:tail">
-    <!--
-    <span class="navTerminal">
-      <xsl:value-of select="."/>
-    </span>
     -->
   </xsl:template>
 

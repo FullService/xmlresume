@@ -111,4 +111,14 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="FormatPubDate"/>
   </xsl:template>
 
+  <xsl:template match="r:docpath | r:head | r:node | r:tail | r:label | r:uri">
+    <xsl:message>
+      WARNING: The docpath, head, node, tail, label, and uri elements are
+      deprecated as of version 1.3.4 of the XML Resume Library. They will be
+      removed in a future version. It is recommended that you remove all of
+      these elements.
+    </xsl:message>
+    <xsl:apply-templates/>
+  </xsl:template>
+
 </xsl:stylesheet>
