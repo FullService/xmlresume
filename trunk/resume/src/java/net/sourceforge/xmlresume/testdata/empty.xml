@@ -27,4 +27,4 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 $Id$
 -->
-<resume/>
+<resume xmlns="http://xmlresume.sourceforge.net/resume/0.0"/>
