@@ -722,7 +722,7 @@ $Id$
 
   <xsl:template match="r:pub">
     <xsl:variable name="text">   
-      <xsl:call-template name="formatPub"/>
+      <xsl:call-template name="r:formatPub"/>
     </xsl:variable>
 
     <xsl:call-template name="Indent">

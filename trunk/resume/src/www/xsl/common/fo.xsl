@@ -56,13 +56,15 @@ $Id$
 	  margin-bottom="0in"
 	  page-height="{$page.height}"
 	  page-width="{$page.width}">
-	  <fo:region-body overflow="error-if-overflow"
+	  <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
+	  <fo:region-body overflow="hidden"
 	    margin-bottom="{$margin.bottom}"/>
-	  <fo:region-after overflow="error-if-overflow"
+	  <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
+	  <fo:region-after overflow="hidden"
 	    extent="{$margin.bottom}"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
-      <fo:page-sequence master-name="resume-page">
+      <fo:page-sequence master-reference="resume-page">
         <!-- Running footer with person's name and page number. -->
 	<fo:static-content flow-name="xsl-region-after">
 	  <fo:block text-align="start" font-size="{$footer.font.size}"
@@ -523,7 +525,7 @@ $Id$
       </fo:list-item-label>
       <fo:list-item-body start-indent="body-start()">
 	<fo:block>
-	  <xsl:call-template name="formatPub"/>
+	  <xsl:call-template name="r:formatPub"/>
 	</fo:block>
       </fo:list-item-body>
     </fo:list-item>
