@@ -251,6 +251,7 @@ $Id$
     </tstamp>
 
     <filter token="VERSION_DOTS" value="${version.dots}"/>
+    <filter token="VERSION_UNDERSCORE" value="${version.underscore}"/>
     <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
     <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
     <filter token="RELEASE_DIR" value="${release.dir}"/>
