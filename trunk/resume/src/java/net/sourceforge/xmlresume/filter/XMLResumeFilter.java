@@ -49,9 +49,9 @@ public class XMLResumeFilter extends XMLFilterImpl {
     XMLReader reader;
     Locator locator;
 
-    private final int ERROR = 10;
-    private static final int WARN = 5;
-    private static final int DEBUG = 1;
+    static final int ERROR = 10;
+    static final int WARN = 5;
+    static final int DEBUG = 1;
     int debugLevel = ERROR;
     
     /** 

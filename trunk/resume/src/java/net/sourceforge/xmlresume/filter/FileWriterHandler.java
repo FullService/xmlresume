@@ -33,12 +33,8 @@ import org.xml.sax.helpers.XMLFilterImpl;
  *
  * @author Mark Miller
  */
-public class FileWriterHandler extends XMLFilterImpl {
-    private static final int ERROR = 10;
-    private static final int WARN = 5;
-    private static final int DEBUG = 1;
-    // The level of debugging desired.  
-    public int debugLevel = 9;
+public class FileWriterHandler extends XMLResumeFilter {
+
     private PrintWriter output;
     private Locator locator;
 
@@ -84,7 +80,6 @@ public class FileWriterHandler extends XMLFilterImpl {
 	}
 	output.print(">");
 	//indent = indent + "  ";
-
     }
 
     /** 
@@ -170,23 +165,6 @@ public class FileWriterHandler extends XMLFilterImpl {
     }
 
     /**
-     * Print a debug message if verbose logging is enabled
-     * @param msg Debug message
-     */
-    private void debug(String msg) {
-	debug(msg, DEBUG);
-    }
-
-    /**
-     * Print a debug message if severity is greater than the logging level
-     * @param msg Debug message
-     * @param severity The importance of the message
-     */
-    private void debug(String msg, int severity) {
-	if (severity >= debugLevel) { System.err.println(msg); }
-    }
-
-    /**
      * Create a new instance that will write its data to {@field output}
      * @param output the output file in the UTF-8 character encoding.
      * @throws UnsupportedEncodingException when the character encoding is unsupported
@@ -205,12 +183,7 @@ public class FileWriterHandler extends XMLFilterImpl {
      */
     public FileWriterHandler(XMLReader reader, PrintStream output, int debugLevel, String enc) 
 	throws UnsupportedEncodingException {
-	super(reader);
-        reader.setContentHandler(this);
-        reader.setErrorHandler(this);
-        reader.setDTDHandler(this);
-        reader.setEntityResolver(this);
-	this.debugLevel = debugLevel;
+	super(reader, debugLevel);
 	this.output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(output, enc)));
     }	
 }
