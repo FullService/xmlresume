@@ -306,7 +306,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates select="r:employer"/>
     <xsl:apply-templates select="r:location"/>
     <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="r:period"/>
+    <xsl:apply-templates select="r:date|r:period"/>
 
     <xsl:if test="r:description">
       <xsl:call-template name="NewLine"/>
@@ -830,12 +830,12 @@ In general, each block is responsible for outputting a newline after itself.
           <xsl:call-template name="NewLine"/>
         </xsl:if>
 
-        <xsl:if test="r:period">
+        <xsl:if test="r:date|r:period">
           <xsl:call-template name="Wrap">
             <xsl:with-param name="FirstIndent" select="0"/>
             <xsl:with-param name="Indent" select="$text.indent.width"/>
             <xsl:with-param name="Text">
-              <xsl:apply-templates select="r:period"/>
+              <xsl:apply-templates select="r:date|r:period"/>
             </xsl:with-param>
           </xsl:call-template>
           <xsl:call-template name="NewLine"/>

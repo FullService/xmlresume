@@ -31,6 +31,25 @@
       </para>
     </warning>
 
+    <section><title>Version 1.4.3</title>
+     <itemizedlist>
+        <listitem><para>
+	  Changed elements:
+	  <link linkend="element.date"><sgmltag
+          class="element">date</sgmltag></link>
+	  can now be used in place of 
+	  <link linkend="element.period"><sgmltag
+          class="element">period</sgmltag></link>
+	  in 
+	  <link linkend="element.membership"><sgmltag
+          class="element">membership</sgmltag></link>
+	  and 
+	  <link linkend="element.job"><sgmltag
+          class="element">job</sgmltag></link>.
+	</para></listitem>
+     </itemizedlist>
+    </section>
+
     <section><title>Version 1.4.2</title>
       <para>
         No DTD changes.

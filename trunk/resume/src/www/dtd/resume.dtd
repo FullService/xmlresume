@@ -148,7 +148,7 @@ in a future version. -->
 
 <!-- Your previous employment history. -->
 <!ELEMENT history (job+)>
-<!ELEMENT job (jobtitle, employer, location?, period, description?, projects?, achievements?)>
+<!ELEMENT job (jobtitle, employer, location?, (date|period), description?, projects?, achievements?)>
 <!ATTLIST job id ID #IMPLIED>
 <!ELEMENT jobtitle (#PCDATA)>
 <!ELEMENT employer (%inlines;)*>
@@ -216,7 +216,7 @@ chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
 
 <!-- Professional memberships. -->
 <!ELEMENT memberships (title, membership+)>
-<!ELEMENT membership (title?, (organization, location?)?, period?, description?)>
+<!ELEMENT membership (title?, (organization, location?)?, (date|period)?, description?)>
 <!ATTLIST membership id ID #IMPLIED>
 <!ELEMENT organization (%inlines;)*>
 <!ATTLIST organization id ID #IMPLIED>

@@ -322,7 +322,7 @@ $Id$
       <xsl:apply-templates select="r:employer"/>
       <xsl:apply-templates select="r:location"/>
       <br/>
-      <xsl:apply-templates select="r:period"/>
+      <xsl:apply-templates select="r:date|r:period"/>
     </p>
     <xsl:apply-templates select="r:description">
       <xsl:with-param name="css.class">jobDescription</xsl:with-param>
@@ -642,8 +642,8 @@ $Id$
         <xsl:apply-templates select="r:location"/>
         <br/>
       </xsl:if>
-      <xsl:if test="r:period">
-        <xsl:apply-templates select="r:period"/>
+      <xsl:if test="r:date|r:period">
+        <xsl:apply-templates select="r:date|r:period"/>
         <br/>
       </xsl:if>
       <xsl:apply-templates select="r:description">

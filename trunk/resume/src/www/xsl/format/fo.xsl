@@ -411,7 +411,7 @@ $Id$
         <fo:block
             font-style="{$job-period.font.style}"
             font-weight="{$job-period.font.weight}">
-          <xsl:apply-templates select="r:period"/>
+          <xsl:apply-templates select="r:date|r:period"/>
         </fo:block>
       </fo:block>
       <xsl:if test="r:description">
@@ -782,9 +782,9 @@ $Id$
           <xsl:apply-templates select="r:location"/>
         </fo:block>
       </xsl:if>
-      <xsl:if test="r:period">
+      <xsl:if test="r:date|r:period">
         <fo:block keep-with-next="always">
-          <xsl:apply-templates select="r:period"/>
+          <xsl:apply-templates select="r:date|r:period"/>
         </fo:block>
       </xsl:if>
     </fo:block>
