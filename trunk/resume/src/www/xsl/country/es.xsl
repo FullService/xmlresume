@@ -51,7 +51,6 @@ $Id$
 
   <xsl:param name="phone.word">Tel&eacute;fono</xsl:param>
   <xsl:param name="fax.word">Fax</xsl:param>
-  <xsl:param name="mobile.word">M&oacute;vil</xsl:param>
   <xsl:param name="phone.home.phrase"><xsl:value-of select="$phone.word"/></xsl:param>
   <xsl:param name="phone.work.phrase"><xsl:value-of select="$phone.word"/> del Trabajo</xsl:param>
   <xsl:param name="phone.mobile.phrase"><xsl:value-of select="$phone.word"/> M&oacute;vil</xsl:param>
