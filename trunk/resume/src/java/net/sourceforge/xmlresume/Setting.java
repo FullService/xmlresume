@@ -101,6 +101,6 @@ class Setting {
 	/** Parameter I'm setting .*/
 	private Parameter parameter;
 
-	/** Value to wchih I'm setting the parameter. */
+	/** Value to which I'm setting the parameter. */
 	private String value;
 }
