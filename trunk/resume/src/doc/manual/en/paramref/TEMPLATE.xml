@@ -7,11 +7,16 @@
     <refpurpose><!-- TODO --></refpurpose>
   </refnamediv>
 
+  <!-- Describe what elements and output formats this param applies to
+  TODO remove this line when this section is complete (or unnecessary)
   <refsect1><title>Applies To</title>
     <para>
-      <!-- TODO -->
+       This parameter controls the formatting of the <link
+       linkend="element.ID"><sgmltag class="element">ID</sgmltag></link>
+       element in FORMAT_NAMES formats.
     </para>
   </refsect1>
+  -->
 
   <refsect1><title>Possible Values</title>
     <para>
