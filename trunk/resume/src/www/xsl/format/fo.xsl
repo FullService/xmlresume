@@ -1113,6 +1113,15 @@ $Id$
     </fo:block>
   </xsl:template>
 
+   <!-- Format a link based on href attribute -->
+   <xsl:template match="r:link">
+      <fo:basic-link show-destination="new" color="blue">
+         <xsl:attribute name="external-destination">
+            <xsl:apply-templates select="@href"/>
+         </xsl:attribute>
+         <xsl:apply-templates/>
+      </fo:basic-link>
+   </xsl:template>
   
   <xsl:template match="r:lastModified" mode="footer">
     <xsl:value-of select="$last-modified.phrase"/>
