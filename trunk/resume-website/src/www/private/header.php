@@ -46,12 +46,14 @@ $meta_redirect_delay : the delay prior to redirection (in seconds)
 
 <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_ZIP_NAME@">Download ZIP</a></p>
 <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_TGZ_NAME@">Download GZIP TAR</a></p>
-<p><a href="user-guide/index.html">User Guide (HTML)</a></p>
-<p><a href="user-guide.pdf">User Guide (PDF)</a></p>
-<p><a href="examples/index.html">Examples</a></p>
+<p><a href="@WWW_ROOT@/orc">Online R&eacute;sum&eacute; Converter</a></p>
+<p>User Guide (<a href="@WWW_ROOT@/user-guide/index.html">HTML,</a>
+   <a href="@WWW_ROOT@/user-guide.pdf">PDF</a>)</p>
+<p><a href="@WWW_ROOT@/examples/index.html">Examples</a></p>
+<p><a href="@WWW_ROOT@/people">People</a></p>
 <p><a href="http://sourceforge.net/projects/xmlresume">Project Page</a></p>
-<p><a href="license/index.html">License</a></p>
-<p><a href="dtd/resume.dtd">The DTD</a></p>
+<p><a href="@WWW_ROOT@/license/index.html">License</a></p>
+<p><a href="@WWW_ROOT@/dtd/resume.dtd">The DTD</a></p>
 <p><a href="http://sourceforge.net/forum/forum.php?forum_id=92731">Help Forum</a></p>
 <p><a href="http://sourceforge.net/forum/forum.php?forum_id=92730">General Chat</a></p>
 <p><a href="http://sourceforge.net/tracker/?func=add&amp;group_id=29512&amp;atid=396335">Report Bug</a></p>
