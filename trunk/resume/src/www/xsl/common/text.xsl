@@ -447,13 +447,16 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <!-- Format a date. -->
   <xsl:template match="r:date">
     <xsl:if test="r:dayOfMonth">
       <xsl:apply-templates select="r:dayOfMonth"/>
       <xsl:text> </xsl:text>
     </xsl:if>
-    <xsl:apply-templates select="r:month"/>
-    <xsl:text> </xsl:text>
+    <xsl:if test="r:month">
+      <xsl:apply-templates select="r:month"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates select="r:year"/>
   </xsl:template>
 

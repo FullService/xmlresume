@@ -392,8 +392,10 @@ $Id$
       <xsl:apply-templates select="r:dayOfMonth"/>
       <xsl:text> </xsl:text>
     </xsl:if>
-    <xsl:apply-templates select="r:month"/>
-    <xsl:text> </xsl:text>
+    <xsl:if test="r:month">
+      <xsl:apply-templates select="r:month"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates select="r:year"/>
   </xsl:template>
 

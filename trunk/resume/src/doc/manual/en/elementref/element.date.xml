@@ -19,9 +19,16 @@
   <refsect1><title>Description</title>
     <para>
       The <sgmltag class="element">date</sgmltag> element represents a
-      specific instant in time, with at least month-level granularity, and at
+      specific instant in time, with at least year-level granularity, and at
       most day-level granularity.
     </para>
+
+    <note>
+      <para>
+        The <sgmltag class="element">month</sgmltag> element was made optional
+        in version 1.3.4 of the &library.name;. It was previously required.
+      </para>
+    </note>
 
     <para>
       To represent a period of time, instead of a specific instant, use <link

@@ -236,7 +236,7 @@ chance to remove it from their resumes. It was deprecated in version 1.3.4. -->
 <!ELEMENT para (%inlines;)*>
 <!ELEMENT emphasis (#PCDATA)>
 <!ELEMENT citation (#PCDATA)>
-<!ELEMENT date (dayOfMonth?, month, year)>
+<!ELEMENT date (((dayOfMonth)?, month)?, year)>
 <!ELEMENT month (#PCDATA)>
 <!ELEMENT year (#PCDATA)>
 <!ELEMENT dayOfMonth (#PCDATA)>
