@@ -1,0 +1,79 @@
+XML RESUME LIBRARY - Development System
+
+This is the developer's layout for the source of the XML
+Resume Library.  If you're seeing this file, it's
+assumed you know CVS, Ant, XML, XSL, and are generally
+aware of what you're doing.
+
+The Ant build.xml File
+======================
+
+The build.xml file describes this project to the Ant
+build system.  If you don't yet have Ant, you can get a
+copy from http://jakarta.apache.org/ant/.  You can then
+run "ant -projecthelp" to see a list of what's possible
+for this project.
+
+A useful alias for ant is "ant -find build.xml".  This
+causes Ant to search upwards through a directory tree to
+find the build.xml file instead of looking for it in
+just the current directory.
+
+Properties
+==========
+
+You can define properties to override the defaults in
+the build.xml file by creating a .ant.properties file in
+your home directory.
+
+Currently, there's just one interesting property to override:
+
+- resume.web.publish.dir
+
+  This property indicates the directory into which we publish any
+  web-accessible files from the system, such as the resume DTD.
+  This property is used during "ant install".
+
+Getting Help
+============
+
+If you want to know what each of the Ant targets do, run
+
+   ant -projecthelp
+
+Cutting a Release
+=================
+
+To make a new release of the XML Resume Library,
+suitable for public distribution and consumption, do the
+following:
+
+1. Make sure everything works.  Try validating and
+   formatting the example resumes and your own.
+
+2. Update the version number in the build.xml file by
+   editing the two propeties "version.underscore" and
+   "version.dots".
+
+3. Run "cvs commit" to commit your changes to CVS.
+   Check for any merge problems, and merge and test
+   again if necessary.
+
+4. Tag the release with "cvs tag X.Y.Z" where X.Y.Z is
+   the version number.
+
+5. Run "ant release" to create the ZIP and TGZ archives.
+
+6. Run "ant publish" to publish the new release to the
+   web server.
+
+7. Upload the ZIP and TGZ archives to
+   ftp://ftp.sourceforge.net/pub/incoming/
+
+8. Add a new release to the SourceForge project page.
+
+Cleaning Up
+===========
+
+To clean up files generated after a release, run "ant
+clean".
