@@ -33,6 +33,7 @@ for resume in `ls -1 orc*`;
 do
   cd $resume
   $ant_cmd -verbose -propertyfile user.props \
-	-find build.xml dispatch >> ./antlog.txt
+	-find build.xml dispatch >> ./out/antlog.txt
+  sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..
 done

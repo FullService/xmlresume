@@ -124,14 +124,12 @@ TODO
   <target name="compress" depends="-tar,-zip"
 	  description="Zip/Tar the formatted output."/>
   <target name="-tar" depends="convert" if="options.tgz">
-    <mkdir dir="out"/>
     <tar destfile="out/${resume}.tar" basedir=".">
-      <fileset refid="output.files"/>
+      <tarfileset refid="output.files"/>
     </tar>
     <gzip src="out/${resume}.tar" zipfile="out/${resume}.tgz"/>
   </target>
   <target name="-zip" depends="convert" unless="options.tgz">
-    <mkdir dir="out"/>
     <zip destfile="out/${resume}.zip" basedir=".">
       <fileset refid="output.files"/>
     </zip>
@@ -139,7 +137,8 @@ TODO
 <!-- 		Target Dispatch		-->
   <target name="dispatch" depends="compress"
           description="Notify the user that the build is complete."/>
-<!-- FIXME -->
+  <!-- You could put a <mail> element here, but that would require the
+       not-freely-redistributable javamail implementation from Sun. -->
   </target>
 
 
@@ -152,10 +151,8 @@ TODO
       <fileset dir="../">
 	<include name="css/*"/>
       </fileset>
-      <fileset dir=".">
-	<include name=".htaccess"/>
-      </fileset>
     </copy>
+    <touch file="./incoming/index.html"/>    
     <chmod dir="./incoming" perm="ugo+rwx"/>
   </target>
 </project>

@@ -16,8 +16,13 @@ function process_upload() {
 # Give rwx permission to EVERYONE, because otherwise the web server will
 # create files that the build system can't delete
   umask(0000); 
+
+# Create the working directories
   if( !mkdir($pathdirname, 0770)) return array(1, "Couldn't create directory $pathdirname");
   chmod($pathdirname, 0777);
+  touch($pathdirname . "/index.html");
+  if( !mkdir($pathdirname . "/out", 0770)) return array(1, "Couldn't create directory $pathdirname . "/out");
+  chmod($pathdirname . "/out", 0777);
 
 # Add a .htaccess file that forbids directory listing (just a privacy thing)
   if( !$fpHtaccess = fopen( $pathdirname . "/.htaccess", 'w'))
@@ -49,6 +54,7 @@ function process_upload() {
   if( !$fpProps = fopen( $pathdirname . "/user.props", 'w'))
     return( array( 1, "Internal: could not create user.props file"));
   fwrite($fpProps, "basedir = .\n");
+  fwrite($fpProps, "dirname = " . $dirname . "\n");
   fwrite($fpProps, "email = " . $_POST["email"] . "\n");
   fwrite($fpProps, "country = " . $_POST["opt_country"] . "\n");
   fwrite($fpProps, "papersize = " . $_POST["opt_papersize"] . "\n");
@@ -70,6 +76,34 @@ function process_upload() {
   symlink( "../xsl/lib", $pathdirname . "/lib");
   symlink( "../xsl/output", $pathdirname . "/output");
   symlink( "../xsl/paper", $pathdirname . "/paper");
+
+  #Create an email message body (to be sent later)
+  if( !$fpEmail = fopen( $pathdirname . "/reply.email", 'w'))
+    return( array( 1, "Internal: could not create reply.email file"));
+  fwrite($fpEmail,
+"
+To: $email
+Subject: ORC: Your XML Resume has been processed
+Hello,
+
+This message is to notify you that the XML R&eacute;sum&eacute; you
+submitted has been processed.  The results of this build, and a log
+summary of the build process can be found at
+
+@WEBSERVER_ADDRESS@/orc/incoming/$dirname/out/
+
+Please download your build results as soon as possible; they are deleted
+on a regular basis.
+
+If you discover a server error that the XMLResume developers should know 
+about, please file a bug report at
+
+http://sourceforge.net/tracker/?func=add&group_id=29512&atid=396335
+
+Don't forget to include the log summary in the report!
+
+Thanks for using the XMLResume Library.");
+  fclose($fpEmail);
 
   return( array( 0, "R&eacute;sum&eacute; uploaded successfully."));
 }
