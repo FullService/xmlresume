@@ -56,7 +56,7 @@ $Id$
 
   <!-- Layout of the referees section: "2-column" or "standard" -->
   <!-- Does not affect the layout of the text output, only html and pdf -->
-  <xsl:param name="referees.layout">standard</xsl:param>
+  <xsl:param name="referees.layout">2-column</xsl:param>
 
   <!-- Format for name/contact header: 'standard' or 'centered' *SE* -->
   <!-- Set here or override on command line -->
