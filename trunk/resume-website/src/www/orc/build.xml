@@ -160,6 +160,7 @@ TODO
     <copy todir="./incoming/">
       <fileset dir="../">
 	<include name="css/*"/>
+	<include name="dtd/*"/>
       </fileset>
     </copy>
     <touch file="./incoming/index.html"/>    

@@ -7,17 +7,34 @@ include_once("../private/header.php");
 Online R&eacute;sum&eacute; Converter (ORC)
 </h1>
 
+<h3>What is it?</h3>
+
+<p>ORC is a web-based version of the software included in the 
+XMLR&eacute;sum&eacute; library.  With ORC, you can format your
+XMLR&eacute;sum&eacute; without having to install the software or set
+up Java.  However, we <b>strongly</b> encourage regular users to download
+and install the library themselves-- in the long run, it's easier and
+more customizable that way.</p>
+
 <h3>Usage Notes</h3>
 
-<p>So please, if you like XMLR&eacute;sum&eacute;, please install 
-the necessary software on your own computer.  If you use ORC yourself and 
-want to show your appreciation, please consider purchasing an item from 
-the developer's <a 
-href="http://www.amazon.com/exec/obidos/search-handle-url/104-3869407-3127140?ix=us-xml-wishlist&pg=1&sz=50&rank=-valuesort&fqp=email%01joup%40bnet.org">WishList</a>, 
-or contributing to your favorite open source project.
+<p>Before you upload a resume.xml file, check to make sure the
+DOCTYPE declaration at the top references either 
+<code>"http://xmlresume.sourceforge.net/dtd/resume.dtd"</code> or 
+<code>"../dtd/resume.dtd"</code></p>
+<p>Examples:
+<ul>
+  <li><code>
+    &lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.5.2//EN" <br/>
+    <b>"http://xmlresume.sourceforge.net/dtd/resume.dtd"</b>&gt;
+  </code></li>
+  <li><code>
+    &lt;!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.5.2//EN" <br/>
+    <b>"../dtd/resume.dtd"</b>&gt;
+  </code></li>
+</ul>
+<p>The part in bold is the most important-- any other value <i>will not work</i>.
 </p>
-
-<p>Thanks for your consideration.</p>
 
 <h3>Privacy Notice</h3>
 
@@ -27,7 +44,7 @@ quickly skim the build summary and formatted output of your
 r&eacute;sum&eacute; to make sure everything is functioning smoothly.  
 We're not interested in your private life, we're just looking for bugs in
 our code.  (We will <b>never</b> send you spam or use your email address
-in a way that ticks you off).</p>
+in a bad way).</p>
 
 <p>All r&eacute;sum&eacute;s are deleted from the server on the 
 15 of the month.  This means your uploaded files, the formatted
