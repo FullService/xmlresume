@@ -46,8 +46,8 @@ $Id$
   <xsl:include href="params.xsl"/>
 
   <xsl:template match="/">
-          <xsl:apply-templates select="resume/header/name" mode="title"/>
 	  <xsl:apply-templates select="resume"/>
+	  <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- Some miscelaneous Templates that I need -->
@@ -96,7 +96,6 @@ $Id$
   <xsl:template name="Center">
     <xsl:param name="Width" select="80"/>
     <xsl:param name="Text" />
-    <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NSpace">
     <xsl:with-param name="n" select="($Width - string-length($Text)) div 2" />
     </xsl:call-template>
@@ -231,11 +230,68 @@ $Id$
   </xsl:template>
 
   <xsl:template match="header">
+    <xsl:choose>
+    <xsl:when test="$header.format = 'centered'">
+       <xsl:call-template name="centered.header"/>
+    </xsl:when>
+    <xsl:otherwise>
+       <xsl:call-template name="standard.header"/>
+    </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="centered.header">
+    <xsl:call-template name="Center">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="name/firstname"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="name/surname"/>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <xsl:apply-templates select="address" mode="centered"/>
+
+    <xsl:if test="contact/phone">
+      <xsl:call-template name="Center">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+	<xsl:value-of select="contact/phone"/>
+      </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:if test="contact/email">
+      <xsl:call-template name="Center">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/email"/>
+      </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:if test="contact/url">
+      <xsl:call-template name="Center">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/url"/>
+      </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="standard.header">
     <!-- Your name, address, and stuff. -->
+   <xsl:call-template name="Center">
+   <xsl:with-param name="Text">
+    <xsl:value-of select="name/firstname"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="name/surname"/>
+        <xsl:text>  - </xsl:text>
+        <xsl:value-of select="$resume.word"/>
+   </xsl:with-param>
+   </xsl:call-template>
 <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
 <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="address"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="address" mode="standard"/><xsl:call-template name="NewLine"/>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
       <xsl:if test="contact/phone">
@@ -254,6 +310,7 @@ $Id$
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
   </xsl:template>
+
     <!-- Objective, with level 2 heading. -->
     <xsl:template match="objective">
     <xsl:call-template name="NewLine"/>
@@ -268,7 +325,38 @@ $Id$
   <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <xsl:template match="address">
+  <xsl:template match="address" mode="centered">
+    <xsl:choose>
+      <!-- Compatibility with older resumes using US address schema -->
+      <xsl:when test="street[following-sibling::*[1][self::city]]">
+	<xsl:call-template name="Center">
+	  <xsl:with-param name="Text">
+	     <xsl:value-of select="normalize-space(street)"/>
+	  </xsl:with-param>
+	</xsl:call-template>
+	<xsl:call-template name="Center">
+	  <xsl:with-param name="Text">
+	    <xsl:value-of select="normalize-space(city)"/>
+	    <xsl:text>, </xsl:text><xsl:value-of select="normalize-space(state)"/>
+	    <xsl:text> </xsl:text>
+	    <xsl:value-of select="normalize-space(zip)"/><xsl:call-template name="NewLine"/>
+	  </xsl:with-param>
+	</xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:variable name="text">
+	  <xsl:apply-templates/>
+	</xsl:variable>
+	<xsl:call-template name="Center">
+	  <xsl:with-param name="Text">
+	    <xsl:value-of select="normalize-space($text)"/>
+	  </xsl:with-param>
+	</xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="address" mode="standard">
     <xsl:choose>
       <!-- Compatibility with older resumes using US address schema -->
       <xsl:when test="street[following-sibling::*[1][self::city]]">
@@ -449,6 +537,7 @@ $Id$
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
+      <xsl:with-param name="Width" select="64"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -533,8 +622,18 @@ $Id$
 
   <!-- Format the misc info -->
   <xsl:template match="misc">
+    <xsl:call-template name="NewLine"/>
     <xsl:value-of select="$miscellany.word"/>:
-    <xsl:apply-templates/>
+    <xsl:call-template name="Indent">
+       <xsl:with-param name="Text">
+	  <xsl:call-template name="FormatParagraph">
+            <xsl:with-param name="Text">
+              <xsl:value-of select="."/>
+            </xsl:with-param>
+	    <xsl:with-param name="Width" select="64"/>
+          </xsl:call-template>
+       </xsl:with-param>
+     </xsl:call-template>
   </xsl:template>
 
   <!-- Format the legalese -->
@@ -556,8 +655,8 @@ $Id$
     <xsl:value-of select="firstname"/>
     <xsl:text> </xsl:text>
     <xsl:value-of select="surname"/>
-    <xsl:text>  - </xsl:text>
-    <xsl:value-of select="$resume.word"/>
+        <xsl:text>  - </xsl:text>
+        <xsl:value-of select="$resume.word"/>
   </xsl:with-param>
    </xsl:call-template>
   </xsl:template>
