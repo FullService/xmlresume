@@ -777,7 +777,13 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:value-of select="$by.word"/>
       <xsl:text> </xsl:text>
-      <xsl:apply-templates select="name"/>.
+      <xsl:if test="name">
+        <xsl:apply-templates select="name"/>
+      </xsl:if>
+      <xsl:if test="not(name)">
+        <xsl:apply-templates select="/resume/header/name"/>
+      </xsl:if>
+      <xsl:text>. </xsl:text>
       <xsl:value-of select="legalnotice"/>
   </xsl:template>
 

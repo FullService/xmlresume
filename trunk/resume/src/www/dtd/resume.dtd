@@ -152,7 +152,7 @@ $Id$
 <!-- that would otherwise want you, but does not want to pay tribute -->
 <!-- to the particularly annoying headhunter who plastered your resume -->
 <!-- there after grabbing it off the net. -->
-<!ELEMENT copyright (year, name, legalnotice?)>
+<!ELEMENT copyright (year, name?, legalnotice?)>
 <!ELEMENT company (#PCDATA)>
 <!ELEMENT legalnotice (para+)>
 
