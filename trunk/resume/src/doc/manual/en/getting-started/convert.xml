@@ -365,7 +365,7 @@ does anyone know what specific .jars are needed?]
         url="&xmlresume.list.devel.url;"/> or send a message with
         <literal>subscribe
         <replaceable>[youraddress@yourdomain.tld]</replaceable></literal> in the
-        body to <email>&xmlresume.list.devel.bot.url;</email>.
+        body to <email>&xmlresume.list.devel.bot.email;</email>.
       </para>
 
     </section>
