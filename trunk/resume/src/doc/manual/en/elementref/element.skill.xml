@@ -22,16 +22,6 @@
       that a person is skilled at.
     </para>
 
-    <para>
-      <sgmltag class="element">skill</sgmltag> elements may contain a <link
-      linkend="element.level"><sgmltag class="element">level</sgmltag></link>
-      element. Although the DTD allows multiple <sgmltag
-      class="element">level</sgmltag>s, only a single one should be included.
-      The level will be formatted after all other text and child elements of a
-      skill if the <link linkend="param.skills.level.display"><parameter
-      >skills.level.display</parameter></link> is true.
-    </para>
-
     <refsect2><title>Parents</title>
       <para>
         <sgmltag class="element">skill</sgmltag> may be contained in these
@@ -40,22 +30,28 @@
       </para>
     </refsect2>
 
-    <!-- Use this section to describe element attributes, if any
     <refsect2><title>Attributes</title>
       <variablelist>
 
         <varlistentry>
-          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <term><sgmltag class="attribute">level</sgmltag></term>
           <listitem>
             <para>
-              DESCRIPTION
+              The <sgmltag class="attribute">level</sgmltag> attribute indicates
+              a person's level of proficiency at a skill.  <quote>Level of
+              proficiency</quote> may be expressed in any manner, such as
+              <quote>3 years</quote> (three years of experience with a
+              particular skill), <quote>expert</quote>, or <quote>7/10</quote>.
+              The <link linkend="param.skills.level.display"
+              ><parameter>skills.level.display</parameter></link> parameter
+              determines whether or not skill levels are displayed in formatted
+              output.
             </para>
           </listitem>
         </varlistentry>
 
       </variablelist>
     </refsect2>
-    -->
 
   </refsect1>
 
@@ -75,15 +71,14 @@
 <skill>Singing</skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>Java Programming <level>3 years</level></skill>
+<skill level="3 years">Java Programming</skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>Eating <level>Glutton</level></skill>
+<skill level="certified glutton">Eating</skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>
+<skill level="beginner">
   Throwing <emphasis>large</emphasis> objects
-  <level>Beginner</level>
 </skill>
     ]]></programlisting></informalexample>
 

@@ -50,7 +50,7 @@ $Id$
     <xsl:text>&#xA;</xsl:text>
   </xsl:template>
   
-  <!-- Create a heading. Add a colon to the level ("1:") to output one -->
+  <!-- Create a heading. -->
   <xsl:template name="Heading">
     <xsl:param name="Text"/>
 

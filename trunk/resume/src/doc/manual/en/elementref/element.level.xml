@@ -4,7 +4,7 @@
 <refentry id="element.level">
   <refnamediv>
     <refname>level</refname>
-    <refpurpose>A degree type or skill proficiency level</refpurpose>
+    <refpurpose>A degree type</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -18,38 +18,11 @@
 
   <refsect1><title>Description</title>
     <para>
-      The semantics of <sgmltag class="element">title</sgmltag> vary depending
-      on the element that contains it:
-
-      <variablelist>
-        <varlistentry>
-          <term><sgmltag class="element">degree</sgmltag></term>
-          <listitem>
-            <para>
-              When contained in this element, <sgmltag
-              class="element">level</sgmltag> specifies a degree type, such as
-              <quote>BFA</quote> (bachelor of fine arts) or <quote>Ph.D</quote>
-              (doctor of philosophy). It typically contains the abbreviation
-              (<quote>BS</quote>) not the full spelling (<quote>bachelor of
-              science</quote>).
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><sgmltag class="element">skill</sgmltag></term>
-          <listitem>
-            <para>
-              When contained in this element, <sgmltag
-              class="element">level</sgmltag> indicates the person's level of
-              proficiency at the skill that contains it. <quote>Level of
-              proficiency</quote> may be expressed in any manner, such as
-              <quote>3 years</quote> (three years of experience with that
-              skill), <quote>expert</quote>, or <quote>7/10</quote>.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
+      The <sgmltag class="element">title</sgmltag> element specifies a degree
+      type, such as <quote>BFA</quote> (bachelor of fine arts) or
+      <quote>Ph.D</quote> (doctor of philosophy). It typically contains the
+      abbreviation (<quote>BS</quote>) not the full spelling (<quote>bachelor of
+      science</quote>).
     </para>
 
     <refsect2><title>Parents</title>
@@ -94,8 +67,7 @@
 
     <para>
       For examples, see <link linkend="element.degree"><sgmltag
-      class="element">degree</sgmltag></link> and <link
-      linkend="element.skill"><sgmltag class="element">skill</sgmltag></link>.
+      class="element">degree</sgmltag></link>.
     </para>
 
   </refsect1>

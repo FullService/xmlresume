@@ -653,8 +653,8 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Format individual skill as part of a comma-separated list -->
   <xsl:template match="r:skill" mode="comma">
-    <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
-    <xsl:apply-templates select="r:level"/>
+    <xsl:apply-templates/>
+    <xsl:apply-templates select="@level"/>
     <xsl:if test="following-sibling::r:skill">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -663,8 +663,8 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format individual skill as a bullet item -->
   <xsl:template match="r:skill" mode="bullet">
     <xsl:variable name="Text">
-      <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
-      <xsl:apply-templates select="r:level"/>
+      <xsl:apply-templates/>
+      <xsl:apply-templates select="@level"/>
     </xsl:variable>
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
@@ -676,10 +676,10 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   <!-- Format a skill level -->
-  <xsl:template match="r:skill/r:level">
+  <xsl:template match="r:skill/@level">
     <xsl:if test="$skills.level.display = 1">
       <xsl:value-of select="$skills.level.start"/>
-      <xsl:apply-templates/>
+      <xsl:value-of select="."/>
       <xsl:value-of select="$skills.level.end"/>
     </xsl:if>
   </xsl:template>

@@ -503,8 +503,8 @@ $Id$
 
   <!-- Format a skill as part of a comma-separated list -->
   <xsl:template match="r:skill" mode="comma">
-    <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
-    <xsl:apply-templates select="r:level"/>
+    <xsl:apply-templates/>
+    <xsl:apply-templates select="@level"/>
     <xsl:if test="following-sibling::r:skill">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -513,16 +513,16 @@ $Id$
   <!-- Format a skill as part of a bulleted list -->
   <xsl:template match="r:skill" mode="bullet">
     <li class="skill">
-      <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
-      <xsl:apply-templates select="r:level"/>
+      <xsl:apply-templates/>
+      <xsl:apply-templates select="@level"/>
     </li>
   </xsl:template>
 
   <!-- Format a skill level -->
-  <xsl:template match="r:skill/r:level">
+  <xsl:template match="r:skill/@level">
     <xsl:if test="$skills.level.display = 1">
       <xsl:value-of select="$skills.level.start"/>
-      <xsl:apply-templates/>
+      <xsl:value-of select="."/>
       <xsl:value-of select="$skills.level.end"/>
     </xsl:if>
   </xsl:template>
