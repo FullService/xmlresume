@@ -37,6 +37,13 @@
             </entry>
           </row>
           <row>
+            <entry><literal>address</literal></entry>
+            <entry>
+              On the <sgmltag class="element">p</sgmltag> that contains a postal
+              address.
+            </entry>
+          </row>
+          <row>
             <entry><literal>bookTitle</literal></entry>
             <entry>
               On the <sgmltag class="element">cite</sgmltag> used to refer to a
