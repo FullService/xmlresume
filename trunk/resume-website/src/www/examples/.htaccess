@@ -1,0 +1,15 @@
+<FilesMatch "^example">
+  # If AddDefaultCharset is on (the default), then it forces the MIME type of
+  # all documents served to iso-8859-1 (latin1) -- even for documents that have
+  # a <meta charset...> tag.
+  AddDefaultCharset Off
+</FilesMatch>
+<FilesMatch "\.xml$">
+  # The point of putting the *.xml files in this directory on the web site is so
+  # that people can *look* at them, not download/process them. Because of this,
+  # we se the MIME type to text/plain so that browsers will render the files
+  # instead of processing them as XML (and possibly displaying a parse error,
+  # since the XML files may use entities defined in the DTD, which isn't
+  # directly available.)
+  ForceType text/plain
+</FilesMatch>
