@@ -961,7 +961,9 @@ $Id$
   <xsl:template match="r:lastModified">
     <fo:block
         start-indent="{$heading.indent}"
-        space-after="{$para.break.space}">
+        space-before="{$para.break.space}"
+        space-after="{$para.break.space}"
+        font-size="{$fineprint.font.size}">
       <xsl:value-of select="$last-modified.phrase"/>
       <xsl:text> </xsl:text>
       <xsl:apply-templates/>
@@ -973,7 +975,7 @@ $Id$
   <xsl:template match="r:copyright">
     <fo:block
         start-indent="{$heading.indent}"
-        font-size="{$copyright.font.size}">
+        font-size="{$fineprint.font.size}">
       <fo:block keep-with-next="always">
         <xsl:value-of select="$copyright.word"/>
         <xsl:text> </xsl:text>

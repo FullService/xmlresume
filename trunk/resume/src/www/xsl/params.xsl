@@ -159,7 +159,9 @@ $Id$
   <xsl:param name="heading.border.bottom.style">none</xsl:param>
   <xsl:param name="heading.border.bottom.width">thin</xsl:param>
 
-  <xsl:param name="copyright.font.size">8pt</xsl:param>
+  <!-- Used for copyright notice and "last modified" date -->
+  <xsl:param name="fineprint.font.size">8pt</xsl:param>
+
   <xsl:param name="emphasis.font.weight">bold</xsl:param>
   <xsl:param name="citation.font.style">italic</xsl:param>
   <xsl:param name="url.font.family">monospace</xsl:param>
