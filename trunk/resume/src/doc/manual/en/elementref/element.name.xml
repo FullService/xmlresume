@@ -18,15 +18,8 @@
 
   <refsect1><title>Description</title>
     <para>
-      The <sgmltag class="element">name</sgmltag> element specifies a person's
-      name. It must contain a <link linkend="element.firstname"><sgmltag
-      class="element">firstname</sgmltag></link> and <link
-      linkend="element.surname"><sgmltag
-      class="element">surname</sgmltag></link>. It may optionally contain a
-      <link linkend="element.middlenames"><sgmltag
-      class="element">middlenames</sgmltag></link> element and a <link
-      linkend="element.suffix"><sgmltag
-      class="element">suffix</sgmltag></link>.
+      The <sgmltag class="element">name</sgmltag> element contains a person's
+      name.
     </para>
 
     <refsect2><title>Parents</title>
