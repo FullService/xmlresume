@@ -24,3 +24,4 @@
 #DEFAULT (echo ""; id; echo %s; date; cat) >> $CVSROOT/CVSROOT/commitlog
 # or
 #DEFAULT (echo ""; id; echo %{sVv}; date; cat) >> $CVSROOT/CVSROOT/commitlog
+ALL python $CVSROOT/CVSROOT/syncmail %{sVv} xmlresume-cvs@lists.sourceforge.net
