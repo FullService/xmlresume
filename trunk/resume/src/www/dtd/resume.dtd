@@ -49,7 +49,7 @@ $Id$
 <!ENTITY % inlines "#PCDATA | emphasis | citation | url">
 
 <!-- Sections of a resume -->
-<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|keywords)">
+<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|keywords|memberships)">
 
 <!-- A resume -->
 <!ELEMENT resume (docpath?, header?, (%sections;)*, copyright?)>
@@ -142,6 +142,12 @@ $Id$
 <!ELEMENT pubDate (month?, year)>
 <!ELEMENT publisher (#PCDATA | url)*>
 <!ELEMENT pageNums (#PCDATA)>
+
+<!-- Professional memberships. -->
+<!ELEMENT memberships (membership+)>
+<!ELEMENT membership (membershipTitle?, organization?, period?, description?)>
+<!ELEMENT membershipTitle (#PCDATA)>
+<!ELEMENT organization (#PCDATA)>
 
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>
