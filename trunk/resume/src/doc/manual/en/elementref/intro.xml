@@ -57,9 +57,10 @@
           class="attribute">level</sgmltag> attribute.
         </para></listitem>
         <listitem><para>
-          Change: the <sgmltag class="element">contact</sgmltag> element may now
-          contain any number of its allowed child elements, and they may appear
-          in any order.
+          Change: the <link linkend="element.contact"><sgmltag
+          class="element">contact</sgmltag></link> element may now contain any
+          number of its allowed child elements, and they may appear in any
+          order.
         </para></listitem>
         <listitem><para>
           Change: the <link linkend="element.resume"><sgmltag
@@ -74,7 +75,7 @@
           class="element">skill</sgmltag></link> elements.
         </para></listitem>
         <listitem><para>
-          Change: <link linkend="element.degree"><sgmltag
+          Change: the <link linkend="element.degree"><sgmltag
           class="element">degree</sgmltag></link> element may now contain either
           a
           <link linkend="element.period"><sgmltag
@@ -94,7 +95,7 @@
           class="element">link</sgmltag></link> elements.
         </para></listitem>
         <listitem><para>
-          Change: <link linkend="element.referee"><sgmltag
+          Change: the <link linkend="element.referee"><sgmltag
           class="element">referee</sgmltag></link> element may now contain an
           optional
           <link linkend="element.title"><sgmltag
