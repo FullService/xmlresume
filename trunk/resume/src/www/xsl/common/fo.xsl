@@ -907,7 +907,9 @@ $Id$
         <xsl:apply-templates select="r:referee"/>
       </xsl:when>
       <xsl:otherwise>
-        <fo:block><xsl:value-of select="$referees.hidden.phrase"/></fo:block>
+        <fo:block space-after="{$para.break.space}">
+          <xsl:value-of select="$referees.hidden.phrase"/>
+        </fo:block>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
