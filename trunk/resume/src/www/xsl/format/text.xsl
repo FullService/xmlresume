@@ -573,12 +573,10 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format a subject as part of comma-separated list -->
   <xsl:template match="r:subject" mode="comma">
     <xsl:value-of select="normalize-space(r:title)"/>
-    <xsl:if test="$subjects.result.display = 1">
-      <xsl:if test="r:result">
-        <xsl:value-of select="$subjects.result.start"/>
-        <xsl:value-of select="normalize-space(r:result)"/>
-        <xsl:value-of select="$subjects.result.end"/>
-      </xsl:if>   
+    <xsl:if test="r:result">
+      <xsl:value-of select="$subjects.result.start"/>
+      <xsl:value-of select="normalize-space(r:result)"/>
+      <xsl:value-of select="$subjects.result.end"/>
     </xsl:if>   
     <xsl:if test="following-sibling::*">
       <xsl:value-of select="$subjects.separator"/>
@@ -758,11 +756,9 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Format a skill level -->
   <xsl:template match="r:skill/@level">
-    <xsl:if test="$skills.level.display = 1">
-      <xsl:value-of select="$skills.level.start"/>
-      <xsl:value-of select="normalize-space(.)"/>
-      <xsl:value-of select="$skills.level.end"/>
-    </xsl:if>
+    <xsl:value-of select="$skills.level.start"/>
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:value-of select="$skills.level.end"/>
   </xsl:template>
 
 
@@ -1087,22 +1083,7 @@ In general, each block is responsible for outputting a newline after itself.
 
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:choose>
-
-          <xsl:when test="$referees.display = 1">
-            <xsl:apply-templates select="r:referee"/>
-          </xsl:when>
-
-          <xsl:otherwise>
-            <xsl:call-template name="Wrap">
-              <xsl:with-param name="Text">
-                <xsl:value-of select="$referees.hidden.phrase"/>
-              </xsl:with-param>
-            </xsl:call-template>
-            <xsl:call-template name="NewLine"/>
-          </xsl:otherwise>
-
-        </xsl:choose>
+        <xsl:apply-templates select="r:referee"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>

@@ -156,6 +156,8 @@ $Id$
     <xsl:apply-templates/>
     <br/>
   </xsl:template>
+
+  <!-- Format an email address -->
   <xsl:template match="r:contact/r:email">
     <xsl:value-of select="$email.word"/>
     <xsl:text>: </xsl:text>
@@ -164,6 +166,8 @@ $Id$
     </a>
     <br/>
   </xsl:template>
+
+  <!-- Format a URL -->
   <xsl:template match="r:contact/r:url">
     <xsl:value-of select="$url.word"/>
     <xsl:text>: </xsl:text>
@@ -526,11 +530,9 @@ $Id$
           <td>
             <xsl:apply-templates select="r:title"/>
           </td>
-          <xsl:if test="$subjects.result.display = 1">
-            <td>
-              <xsl:apply-templates select="r:result"/>
-            </td>
-          </xsl:if>
+          <td>
+            <xsl:apply-templates select="r:result"/>
+          </td>
         </tr>
       </xsl:for-each>
     </table>
@@ -551,12 +553,10 @@ $Id$
 <!-- Format a subject -->
   <xsl:template match="r:subject" mode="comma">
     <xsl:value-of select="normalize-space(r:title)"/>
-    <xsl:if test="$subjects.result.display = 1">
-      <xsl:if test="r:result">
-        <xsl:value-of select="$subjects.result.start"/>
-        <xsl:value-of select="normalize-space(r:result)"/>
-        <xsl:value-of select="$subjects.result.end"/>
-      </xsl:if>
+    <xsl:if test="r:result">
+      <xsl:value-of select="$subjects.result.start"/>
+      <xsl:value-of select="normalize-space(r:result)"/>
+      <xsl:value-of select="$subjects.result.end"/>
     </xsl:if>
     <xsl:if test="following-sibling::r:subject">
       <xsl:value-of select="$subjects.separator"/>
@@ -635,11 +635,9 @@ $Id$
 
 <!-- Format a skill level -->
   <xsl:template match="r:skill/@level">
-    <xsl:if test="$skills.level.display = 1">
-      <xsl:value-of select="$skills.level.start"/>
-      <xsl:value-of select="normalize-space(.)"/>
-      <xsl:value-of select="$skills.level.end"/>
-    </xsl:if>
+    <xsl:value-of select="$skills.level.start"/>
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:value-of select="$skills.level.end"/>
   </xsl:template>
 
 <!-- Format publications -->
@@ -874,27 +872,18 @@ $Id$
         <xsl:value-of select="$referees.word"/>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:choose>
-      <xsl:when test="$referees.display = 1">
-        <xsl:choose>
-	  <xsl:when test="$referees.layout = 'compact'">
-            <table class="referees">
-              <xsl:apply-templates select="r:referee" mode="compact"/>
-            </table>
-          </xsl:when>
-	  <xsl:otherwise>
-	    <div class="referees">
-	      <xsl:apply-templates select="r:referee" mode="standard"/>
-	    </div>
-	  </xsl:otherwise>
-	</xsl:choose>
-      </xsl:when>
-      <xsl:otherwise>
-        <p>
-          <xsl:value-of select="$referees.hidden.phrase"/>
-        </p>
-      </xsl:otherwise>
-    </xsl:choose>
+      <xsl:choose>
+        <xsl:when test="$referees.layout = 'compact'">
+          <table class="referees">
+            <xsl:apply-templates select="r:referee" mode="compact"/>
+          </table>
+        </xsl:when>
+	<xsl:otherwise>
+	  <div class="referees">
+	    <xsl:apply-templates select="r:referee" mode="standard"/>
+	  </div>
+	</xsl:otherwise>
+     </xsl:choose>
   </xsl:template>
 
   <xsl:template match="r:referee" mode="standard">

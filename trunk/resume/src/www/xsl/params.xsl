@@ -46,14 +46,6 @@ $Id$
   <!-- 'comma' for comma-separated lists -->
   <xsl:param name="skills.format">comma</xsl:param>
 
-  <!-- Should skill <level> elements be displayed when formatting? -->
-  <xsl:param name="skills.level.display">1</xsl:param>
-
-  <!-- Should referees be displayed when formatting? -->
-  <!-- '1' to display referees -->
-  <!-- '0' to display referees.hidden.phrase instead. -->
-  <xsl:param name="referees.display">1</xsl:param>
-
   <!-- Layout of the referees section: "compact" or "standard" -->
   <!-- Does not affect the layout of the text output, only html and pdf -->
   <xsl:param name="referees.layout">compact</xsl:param>
@@ -106,9 +98,6 @@ $Id$
   <!-- Output after the last subject in a list
   (applies only when subjects.format = comma) -->
   <xsl:param name="subjects.suffix">.</xsl:param>
-
-  <!-- Should result elements be displayed when formatting? -->
-  <xsl:param name="subjects.result.display">1</xsl:param>
 
   <!-- Text to use to indicate start and end of subject -->
   <!-- (applies only when subjects.format = comma -->

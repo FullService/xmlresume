@@ -583,12 +583,10 @@ $Id$
 
   <xsl:template match="r:subject" mode="comma">
     <xsl:apply-templates select="r:title"/>
-    <xsl:if test="$subjects.result.display = 1">
-      <xsl:if test="r:result">
-        <xsl:value-of select="$subjects.result.start"/>
-        <xsl:value-of select="normalize-space(r:result)"/>
-        <xsl:value-of select="$subjects.result.end"/>
-      </xsl:if>   
+    <xsl:if test="r:result">
+      <xsl:value-of select="$subjects.result.start"/>
+      <xsl:value-of select="normalize-space(r:result)"/>
+      <xsl:value-of select="$subjects.result.end"/>
     </xsl:if>   
     <xsl:if test="following-sibling::*">
       <xsl:value-of select="$subjects.separator"/>
@@ -706,11 +704,9 @@ $Id$
 
   <!-- Format a skill level -->
   <xsl:template match="r:skill/@level">
-    <xsl:if test="$skills.level.display = 1">
-      <xsl:value-of select="$skills.level.start"/>
-      <xsl:value-of select="normalize-space(.)"/>
-      <xsl:value-of select="$skills.level.end"/>
-    </xsl:if>
+    <xsl:value-of select="$skills.level.start"/>
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:value-of select="$skills.level.end"/>
   </xsl:template>
 
 
@@ -1052,26 +1048,17 @@ $Id$
       <xsl:with-param name="text"><xsl:value-of select="$referees.word"/></xsl:with-param>
     </xsl:call-template>
     <xsl:choose>
-      <xsl:when test="$referees.display = 1">
-        <xsl:choose>
-	  <xsl:when test="$referees.layout = 'compact'">
-            <fo:table table-layout="fixed" width="90%">
-	      <fo:table-column width="40%"/>
-	      <fo:table-column width="40%"/>
-	      <fo:table-body>
-                <xsl:apply-templates select="r:referee" mode="compact"/>
-	      </fo:table-body>
-            </fo:table>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:apply-templates select="r:referee" mode="standard"/>
-          </xsl:otherwise>
-	</xsl:choose>
+      <xsl:when test="$referees.layout = 'compact'">
+        <fo:table table-layout="fixed" width="90%">
+          <fo:table-column width="40%"/>
+	  <fo:table-column width="40%"/>
+	  <fo:table-body>
+            <xsl:apply-templates select="r:referee" mode="compact"/>
+	  </fo:table-body>
+        </fo:table>
       </xsl:when>
       <xsl:otherwise>
-        <fo:block space-after="{$para.break.space}">
-          <xsl:value-of select="$referees.hidden.phrase"/>
-        </fo:block>
+        <xsl:apply-templates select="r:referee" mode="standard"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
