@@ -44,10 +44,15 @@ $Id$
   <xsl:include href="params.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
+  <xsl:include href="interests.xsl"/>
 
   <xsl:template match="/">
     <html>
       <head>
+        <!-- The XSLT Recommendation specifies that the XSLT processor should
+        output this meta tag when in HTML output mode. However, Xalan is too
+        stupid to do that, so we work around it. This results in double meta
+        tags when using a more compliant processor, like Saxon. -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>
 	  <xsl:apply-templates select="r:resume/r:header/r:name"/>
@@ -334,7 +339,9 @@ $Id$
       <br/>
       <xsl:apply-templates select="r:period"/>
     </p>
-    <xsl:apply-templates select="r:description"/>
+    <xsl:apply-templates select="r:description">
+      <xsl:with-param name="css.class">jobDescription</xsl:with-param>
+    </xsl:apply-templates>
     <xsl:if test="r:projects/r:project">
       <xsl:value-of select="$projects.word"/>
       <xsl:apply-templates select="r:projects"/>
@@ -542,8 +549,44 @@ $Id$
       <xsl:if test="r:period">
 	<xsl:apply-templates select="r:period"/><br/>
       </xsl:if>
+      <xsl:apply-templates select="r:description">
+        <xsl:with-param name="css.class">membershipDescription</xsl:with-param>
+      </xsl:apply-templates>
+    </li>
+  </xsl:template>
+
+  <!-- Format interests section. -->
+  <xsl:template match="r:interests">
+    <h2 class="interestsHeading">
+      <xsl:call-template name="InterestsTitle"/>
+    </h2>
+
+    <ul>
+      <xsl:apply-templates select="r:interest"/>
+    </ul>
+  </xsl:template>
+
+  <!-- A single interest. -->
+  <xsl:template match="r:interest">
+    <li>
+      <span class="interestTitle"><xsl:apply-templates select="r:title"/></span>
+
+      <!-- Append period to title if followed by a single-line description -->
+      <xsl:if test="$interest.description.format = 'single-line' and r:description">
+        <xsl:text>. </xsl:text>
+      </xsl:if>
+
       <xsl:apply-templates select="r:description"/>
     </li>
+  </xsl:template>
+
+  <!-- Format an interest description -->
+  <xsl:template match="r:interest/r:description">
+    <xsl:call-template name="r:description">
+      <xsl:with-param name="paragraph.format"
+        select="$interest.description.format"/>
+      <xsl:with-param name="css.class">interestDescription</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Format the misc info -->
@@ -635,7 +678,9 @@ $Id$
   <xsl:template match="r:referee">
     <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
     <p>
+      <xsl:if test="r:address">
       <xsl:apply-templates select="r:address"/><br/>
+      </xsl:if>
       
       <!-- Don't print the label if the field value is empty *SE* -->
       <xsl:if test="r:contact/r:phone">
@@ -661,9 +706,31 @@ $Id$
     </p>
   </xsl:template>
 
-  <!-- Wrap a description up in a div -->
-  <xsl:template match="r:description">
-    <div class="description"><xsl:apply-templates/></div>
+  <!-- Format a description as either a block (div) or a single line (span) -->
+  <xsl:template match="r:description" name="r:description">
+    <!-- Possible values: 'block', 'single-line' -->
+    <xsl:param name="paragraph.format">block</xsl:param>
+    <xsl:param name="css.class">description</xsl:param>
+
+    <xsl:choose>
+      <xsl:when test="$paragraph.format = 'single-line'">
+        <span class="{$css.class}">
+          <xsl:for-each select="r:para">
+            <xsl:apply-templates/>
+
+            <xsl:if test="following-sibling::*">
+              <xsl:value-of select="$description.para.separator.text"/>
+            </xsl:if>
+
+          </xsl:for-each>
+        </span>
+      </xsl:when>
+
+      <xsl:otherwise> <!-- block -->
+        <div class="{$css.class}"><xsl:apply-templates/></div>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 
 </xsl:stylesheet>
