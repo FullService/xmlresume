@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
+  "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+
+<!--
+example2.xml
+
+Another example resume using the XML Resume Library.
+
+Copyright (c) 2001-2002 Sean Kelly.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+<resume id="x9281cp35">
+
+  <header>
+    <name id="a.kernighan">
+      <firstname>Alexis</firstname>
+      <surname>Kernighan</surname>
+    </name>
+    <!-- This person is using the untagged style address (lives in Cuba). -->
+    <address>Reina #35, apt. 4a, e/ Gervasio y Escobar
+Cuidad de la Habana, CP 11900
+CUBA
+</address>
+  </header>
+
+  <objective>
+    <para>To achieve my Master Chef certification and become
+      <emphasis>executive chef</emphasis> at a fine restaurant in the
+      Hawaiian islands.
+    </para>
+  </objective>
+
+  <skillareas>
+    <skillarea>
+      <title>Cooking Skills</title>
+      <skillset>
+	<title>General Experience</title>
+	<skills>
+	  <skill>Gastronomy</skill>
+	  <skill>Culinary math</skill>
+	  <skill>Nutrition</skill>
+	  <skill>Sanitation</skill>
+	  <skill>Culinary French</skill>
+	  <skill>Meat identification</skill>
+	  <skill>Wines</skill>
+	  <skill>Restaurant Law</skill>
+	  <skill><citation>Brodeger's Sanitation</citation> science background</skill>
+	</skills>
+      </skillset>
+      <skillset>
+	<title>Culinary Skills</title>
+	<skills>
+	  <skill>Braise</skill>
+	  <skill>Saut&eacute;</skill>
+	  <skill>Fry</skill>
+	  <skill>Bake</skill>
+	  <skill>Stocks</skill>
+	  <skill>Reductions</skill>
+	  <skill>Sauces</skill>
+	</skills>
+      </skillset>
+      <skillset>
+	<title>Cuisines</title>
+	<skills>
+	  <skill>Seafood</skill>
+	  <skill>American Regional</skill>
+	  <skill>Asian</skill>
+	  <skill>Charcuterie</skill>
+	  <skill>Garde Manger</skill>
+	  <skill>P&acirc;tisserie</skill>
+	  <skill>Modern French</skill>
+	</skills>
+      </skillset>
+    </skillarea>
+  </skillareas>
+
+  <history>
+    <job>
+      <jobtitle>Sous Chef</jobtitle>
+      <employer>The Four Seasons</employer>
+      <period>
+	<from>
+	  <date>
+	    <month>March</month>
+	    <year>1997</year>
+	  </date>
+	</from>
+	<to>
+	  <present/>
+	</to>
+      </period>
+      <projects>
+	<project>Fall Menu</project>
+	<project>Revamping of Grill Area</project>
+      </projects>
+      <achievements>
+	<achievement>Developed <emphasis>13</emphasis> new menu items</achievement>
+	<achievement>Prepared daily operations plan</achievement>
+        <achievement>Streamlined procedures for fresh foods
+	  procurement</achievement>
+      </achievements>
+    </job>
+    <job>
+      <jobtitle>Assistant Chef</jobtitle>
+      <employer>Zolo</employer>
+      <period>
+	<from>
+	  <date>
+	    <month>April</month>
+	    <year>1993</year>
+	  </date>
+	</from>
+	<to>
+	  <date>
+	    <month>January</month>
+	    <year>1997</year>
+	  </date>
+	</to>
+      </period>
+      <description>
+	<para>Prepared standard daily mise en place, stocks, and
+	  sauces.  Assembled cold plates and salads.
+	</para>
+      </description>
+    </job>
+  </history>
+
+  <memberships>
+    <title>Professional Societies</title>
+    <membership>
+      <organization>Association of Aluminum Utensils</organization>
+    </membership>
+    <membership>
+      <title>Grand Poobah</title>
+      <organization>Stonecutters</organization>
+    </membership>
+    <membership>
+      <title>Senior Fellow</title>
+      <organization>Society for Creative Cuisine</organization>
+      <period><from><date><month>February</month><year>1993</year></date></from>
+	<to><present/></to></period>
+      <description>
+	<para>As senior fellow, I was responsible for all recruiting
+	  efforts of the organization.
+	</para>
+      </description>
+    </membership>
+  </memberships>
+
+  <misc>
+    <para>What can't be captured on a r&eacute;sum&eacute; is my sheer
+      level of <emphasis>enthusiasm</emphasis> for not just cooking
+      food, but dealing with people.  I'm told I make nearly every
+      kitchen run more smoothly because I know how to manage and make
+      people want to <emphasis>do their best</emphasis>.
+    </para>
+    <para>I'm listed in <citation>Who's Who in American
+	Restaurants</citation> as well as <citation>La
+	Rubach&ograve;n</citation>.
+    </para>
+  </misc>
+
+  <academics>
+    <degrees>
+      <degree>
+	<level>AA</level>
+	<major>Culinary Arts</major>
+	<date>
+	  <month>May</month>
+	  <year>1995</year>
+	</date>
+	<institution>Culinary Institute of America</institution>
+        <subjects>
+	  <subject>
+	    <title>Stocks, broths, and soups</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French and world sauces</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French cuisine</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>World cuisine</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Kitchen sanitation</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Pastry</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>Culinary history</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Hotel restaurant management</title>
+	    <result>C</result>
+	  </subject>
+	</subjects>	  
+      </degree>
+    </degrees>
+  </academics>
+
+  <pubs>
+    <pub>
+      <artTitle>High speed reduction of wine based sauces</artTitle>
+      <bookTitle>Journal of the Occidental Culinary Federation</bookTitle>
+      <author name="a.kernighan"/>
+      <author>Charles Bell</author>
+      <author>Kassandra Kassis</author>
+      <pageNums>132-136</pageNums>
+      <pubDate>
+	<month>February</month>
+	<year>2000</year>
+      </pubDate>
+      <publisher>OCF, New York, New York</publisher>
+    </pub>
+
+    <pub>
+      <author name="a.kernighan"/>
+      <pubDate>
+	<year>1998</year>
+      </pubDate>
+      <publisher>Deltoid Press, <url>http://www.deltoid.co/</url></publisher>
+      <bookTitle>The Texas Ranger Chow Book</bookTitle>
+    </pub>
+	
+  </pubs>
+
+  <referees>
+    <referee>
+      <name>
+	<firstname>Indiana</firstname>
+	<surname>O'Brien</surname>
+      </name>
+      <contact>
+	<phone>408.555.1296</phone>
+      </contact>
+    </referee>
+    <referee>
+      <name>
+	<firstname>Web</firstname>
+	<surname>Melgood</surname>
+      </name>
+      <address>
+	<street>3090 Deltoid</street>
+	<city>Santa Yorba</city>
+	<state>CA</state>
+	<zip>95022</zip>
+	<country>USA</country>
+      </address>
+    </referee>
+  </referees>
+
+</resume>
