@@ -115,15 +115,21 @@ $Id$
   
   <!-- Header information -->
   <xsl:template match="r:header">
-    <fo:block space-after="{$para.break.space}">
-      <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
+    <fo:block
+        space-after="{$para.break.space}"
+        start-indent="0in"
+        margin-left="{$header.margin-left}"
+        margin-right="{$header.margin-right}">
+      <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
         rule-thickness="{$header.line.thickness}"/>
       <fo:block font-weight="{$header.name.font.weight}">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
       <xsl:apply-templates select="r:address"/>
-      <xsl:apply-templates select="r:contact"/>
-      <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
+      <fo:block space-before="{$half.space}">
+        <xsl:apply-templates select="r:contact"/>
+      </fo:block>
+      <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
         rule-thickness="{$header.line.thickness}"/>
     </fo:block>
   </xsl:template>
@@ -383,16 +389,27 @@ $Id$
   <!-- Format a single job. -->
   <xsl:template match="r:job">
     <fo:block>
-      <fo:block space-after="{$half.space}">
-      <fo:inline font-weight="bold"><xsl:apply-templates select="r:jobtitle"/></fo:inline>
-      <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
-      <fo:inline font-style="italic"><xsl:apply-templates select="r:employer"/></fo:inline>
-      <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
-      <fo:inline wrap-option="no-wrap" font-style="italic"><xsl:apply-templates select="r:period"/></fo:inline>
+      <fo:block
+          space-after="{$half.space}"
+          keep-with-next="always">
+        <fo:inline font-weight="bold">
+          <xsl:apply-templates select="r:jobtitle"/>
+        </fo:inline>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$bullet.glyph"/>
+        <xsl:text> </xsl:text>
+        <fo:inline font-style="italic">
+          <xsl:apply-templates select="r:employer"/>
+        </fo:inline>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$bullet.glyph"/>
+        <xsl:text> </xsl:text>
+        <fo:inline wrap-option="no-wrap" font-style="italic">
+          <xsl:apply-templates select="r:period"/>
+        </fo:inline>
       </fo:block>
       <xsl:if test="r:description">
         <fo:block
-          space-after="{$para.break.space}"
           provisional-distance-between-starts="0.5em">
           <xsl:apply-templates select="r:description"/>
         </fo:block>

@@ -136,7 +136,7 @@ $Id$
   <xsl:param name="half.space">0.5em</xsl:param>
 
   <!-- Body text indent -->
-  <xsl:param name="body.indent">2in</xsl:param>
+  <xsl:param name="body.indent">1in</xsl:param>
 
   <!-- Heading text indent -->
   <xsl:param name="heading.indent">0in</xsl:param>
@@ -200,9 +200,19 @@ $Id$
   <xsl:param name="skills.level.end">)</xsl:param>
 
   <!-- Settings for lines around the header of the print resume -->
-  <xsl:param name="header.line.length">3.0in</xsl:param>
   <xsl:param name="header.line.pattern">rule</xsl:param>
   <xsl:param name="header.line.thickness">0.2em</xsl:param>
+
+  <!-- Margins for the header box. It would be nice to just specify a width
+  attribute for the header block, but neither FOP nor XEP use it. Instead, we
+  force the width using these two properties. To center the header box, they
+  should each be:
+    ($page.width - $margin.left - $margin.right - [desired header width]) div 2
+  We can't do that using an XPath expression because the numbers have associated
+  units. Grrr. There has to be a better way to do this.
+  -->
+  <xsl:param name="header.margin-left">1.75in</xsl:param>
+  <xsl:param name="header.margin-right" select="$header.margin-left"/>
 
   <!-- Format of interest descriptions. Available values are: -->
   <!-- 'single-line' for <para>s on same line as title, separated by dashes -->

@@ -49,9 +49,11 @@ $Id$
   <xsl:param name="page.height">297mm</xsl:param>
   <xsl:param name="page.width">210mm</xsl:param>
   <xsl:param name="margin.top">20mm</xsl:param>
-  <xsl:param name="margin.left">33mm</xsl:param>
+  <xsl:param name="margin.left">20mm</xsl:param>
   <xsl:param name="margin.right">20mm</xsl:param>
   <xsl:param name="margin.bottom">20mm</xsl:param>
   <xsl:param name="body.indent">20mm</xsl:param>
+  <xsl:param name="header.margin-left">50mm</xsl:param>
+  <xsl:param name="header.margin-right" select="$header.margin-left"/>
 
 </xsl:stylesheet>
