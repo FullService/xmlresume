@@ -84,7 +84,7 @@ This message is to notify you that the XML Résumé you
 submitted has been processed.  The results of this build, and a log
 summary of the build process can be found at
 
-http://sbap.org/orc/incoming/$dirname/out/
+@WEBSERVER_ADDRESS@/incoming/DONE/$dirname/out/
 
 Please download your build results as soon as possible; they are deleted
 on a regular basis.

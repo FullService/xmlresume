@@ -49,5 +49,5 @@ do
 	-find build.xml dispatch >> ./out/antlog.txt
   sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..
-  mv $resume DONE-$resume
+  mv $resume DONE/$resume
 done

@@ -147,6 +147,7 @@ TODO
     <echo message="This target must be run from ORC's root directory."/>
     <delete dir="./incoming/" quiet="true"/>
     <mkdir dir="./incoming/"/>
+    <mkdir dir="./incoming/DONE/"/>    
     <copy todir="./incoming/">
       <fileset dir="../">
 	<include name="css/*"/>
