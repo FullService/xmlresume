@@ -553,25 +553,25 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:call-template name="MaxSubjectTitleLength"/>
     </xsl:param>
 
+    <xsl:param name="Text">
+      <xsl:for-each select="r:subject">
+        <xsl:apply-templates select="r:title"/>
+        <!-- Pad over to the second column -->
+        <xsl:call-template name="NSpace">
+          <xsl:with-param
+            name="n"
+            select="2 + $MaxChars - string-length(normalize-space(r:title))"/>
+        </xsl:call-template>
+
+        <xsl:apply-templates select="r:result"/>
+        <xsl:if test="following-sibling::*">
+          <xsl:call-template name="NewLine"/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:param>
+
     <xsl:call-template name="Indent">
-      <xsl:with-param name="Text">
-
-        <xsl:for-each select="r:subject">
-          <xsl:apply-templates select="r:title"/>
-          <!-- Pad over to the second column -->
-          <xsl:call-template name="NSpace">
-            <xsl:with-param
-              name="n"
-              select="2 + $MaxChars - string-length(normalize-space(r:title))"/>
-          </xsl:call-template>
-
-          <xsl:apply-templates select="r:result"/>
-          <xsl:if test="following-sibling::*">
-            <xsl:call-template name="NewLine"/>
-          </xsl:if>
-        </xsl:for-each>
-
-      </xsl:with-param>
+      <xsl:with-param name="Text" select="$Text"/>
     </xsl:call-template>
 
     <xsl:call-template name="NewLine"/>
