@@ -15,8 +15,8 @@ $Id$
   <!-- PROPERTIES ============================================================================================================= -->
 
   <!-- Current version number and release files -->
-  <property name="version.dots" value="1.2.3"/>
-  <property name="version.underscore" value="1_2_3"/>
+  <property name="version.dots" value="1.2.4"/>
+  <property name="version.underscore" value="1_2_4"/>
   <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
   <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
 
