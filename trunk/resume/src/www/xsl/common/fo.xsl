@@ -799,6 +799,10 @@ $Id$
 
   <!-- Format a date. -->
   <xsl:template match="r:date">
+    <xsl:if test="r:dayOfMonth">
+      <xsl:apply-templates select="r:dayOfMonth"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates select="r:month"/>
     <xsl:text> </xsl:text>
     <xsl:apply-templates select="r:year"/>
