@@ -117,9 +117,8 @@ $Id$
   <xsl:template match="r:header">
     <fo:block
         space-after="{$para.break.space}"
-        start-indent="0in"
-        margin-left="{$header.margin-left}"
-        margin-right="{$header.margin-right}">
+        start-indent="{$header.margin-left}"
+        end-indent="{$header.margin-right}">
       <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
         rule-thickness="{$header.line.thickness}"/>
       <fo:block font-weight="{$header.name.font.weight}">
@@ -775,19 +774,21 @@ $Id$
   <!-- Format legalese. -->
   <xsl:template match="r:copyright">
     <fo:block start-indent="{$heading.indent}">
-      <xsl:value-of select="$copyright.word"/>
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates select="r:year"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$by.word"/>
-      <xsl:text> </xsl:text>
-      <xsl:if test="r:name">
-        <xsl:apply-templates select="r:name"/>
-      </xsl:if>
-      <xsl:if test="not(r:name)">
-        <xsl:apply-templates select="/r:resume/r:header/r:name"/>
-      </xsl:if>
-      <xsl:text>. </xsl:text>
+      <fo:block keep-with-next="always">
+        <xsl:value-of select="$copyright.word"/>
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="r:year"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$by.word"/>
+        <xsl:text> </xsl:text>
+        <xsl:if test="r:name">
+          <xsl:apply-templates select="r:name"/>
+        </xsl:if>
+        <xsl:if test="not(r:name)">
+          <xsl:apply-templates select="/r:resume/r:header/r:name"/>
+        </xsl:if>
+        <xsl:text>. </xsl:text>
+      </fo:block>
       <xsl:apply-templates select="r:legalnotice"/>
     </fo:block>
   </xsl:template>
