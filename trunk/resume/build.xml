@@ -14,8 +14,8 @@ $Id$
   <!-- GENERAL PROPERTIES ===================================================================================================== -->
 
   <!-- Current version number -->
-  <property name="version.underscore" value="1_4_2"/>
-  <property name="version.dots" value="1.4.2"/>
+  <property name="version.underscore" value="1_5_0"/>
+  <property name="version.dots" value="1.5.0"/>
 
   <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
 

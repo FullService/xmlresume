@@ -26,6 +26,42 @@
       in the User Guide.
     </p>
 
+    <h2>Release 1.5.0</h2>
+
+    <ul>
+    <li>Added support for targeted r&eacute;sum&eacute;s.  This allows 
+	the user to selectively filter out irrelevant elements and focus 
+	the r&eacute;sum&eacute; to a particular purpose.  A 
+	demonstration of this feature is included in 
+	<code>example/example2.xml</code></li>
+    <li>Cascading Style Sheets (CSS) now default to being embedded 
+	directly into the HTML output, which makes it easier to 
+	email/transfer a r&eacute;sum&eacute;.  Thanks to Luciano Cardoso
+	for the suggestion and hint.</li>
+    <li>Decreased the default margins to conserve space and trees 
+	(PDF output)</li>
+    <li>Referees can now be listed in a 2-column table in the PDF and HTML
+	output.  This behavior is off by default.</li>
+    <li>Italian, French, and Brazilian translations have been 
+	improved/fixed.  (Thanks to Didier Cassirame, Gilles 
+	Sadowski, Luciano Cardoso, and Miguel Coca)</li>
+    <li>Localization support for the fax and phone elements has been 
+	improved.  The home.word, mobile.word, and work.word params have
+	been replaced by phone.home.phrase, phone.mobile.phrase, and
+	phone.work.phrase (same applies to fax) that can support arbitrary
+	orderings (eg, Mobile Phone in UK, GSM in French, Cellphone in US).
+	Default translations for some languages may be incomplete, so please
+	send in translations via SourceForge's Patch Request forms. 
+	(Bugs 624365, 629607)</li>
+    <li>Makefile support (in the <code>examples</code> directory) has been 
+	added for using XMLMind's XFC package or the JFOR package to 
+	produce RTF output.  This requires a separate download and is not
+	strongly supported by the XMLR&eacute;sum&eacute; Project.  
+	(Thanks to James Manning)</li>
+    <li>The "date" element can now be used in place of "period" for 
+	the "membership" and "job" elements</li>
+    </ul>
+
     <h2>Release 1.4.2</h2>
 
     <ul>

@@ -18,7 +18,141 @@
     </p>
 
 <!-- BEGIN CHANGELOG (do not remove this line) -->
-<pre>2002-07-16  Bruce Christensen  
+<pre>
+2002-11-04  brandondoyle
+	* /cvsroot/xmlresume/resume/example/Makefile, 
+/cvsroot/xmlresume/resume/example/example2.xml
+	Updated Makefile to support filtering and add targeted elements to example2.xml
+
+2002-11-04  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/it.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl/country/us.xsl, /cvsro
+ot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl
+/country/fr.xsl:
+        Bugs 624365, 629607 request that we allow non-english users to use different
+        phrases for "Mobile Phone", "Home Phone", and the like.  This change replaces
+        the home.word param (and mobile.word, and work.word respectively) with
+        phone.home.phrase and fax.home.phrase.
+
+2002-11-04  brandondoyle
+
+        * /cvsroot/xmlresume/resume/examples/Makefile:
+        Added Makefile support for RTF using xmlmind's fo-&gt;rtf 
+converter, which seems to work ok.
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl,
+/cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl,
+/cvsroot/xmlresume/resume/src/www/xsl/para ms.xsl:
+        Added two column support for the referees section
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/br.xsl:
+        fixed the character code for "pagina"
+
+        * /cvsroot/xmlresume/resume/src/www/css/blue-orange.css,
+/cvsroot/xmlresume/resume/src/www/css/compact.css,
+/cvsroot/xmlresume/resume/src/www/css/gray.c ss,
+/cvsroot/xmlresume/resume/src/www/css/original.css,
+/cvsroot/xmlresume/resum e/src/www/css/professional.css:
+        css support for 2-column format, misc. fixes
+
+        * /cvsroot/xmlresume/resume/src/www/css/CSS_Classes.txt,
+/cvsroot/xmlres ume/resume/src/www/css/cssClasses.sh,
+/cvsroot/xmlresume/resume/src/www/css/cssC lasses.txt:
+        cssClasses.(sh|txt)-- create or maintain a list of available CSS 
+classes.
+
+2002-11-03  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml, /cvs
+root/xmlresume/resume/src/www/xsl/format/fo.xsl,
+/cvsroot/xmlresume/resume/src/w ww/xsl/format/html.xsl,
+/cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, 
+/cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+        Allow the use of "date" elements in place of "period" in  
+	membership and jobs.
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/paper/letter.xsl:
+        Reduced margin size to use the page more efficiently.  New
+settings should allow enough room for printing/faxing.
+
+2002-10-29  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/misc/html_contemporary.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl/misc/html_professional.xsl:
+        Deprecated the use of these files; it seems like a heap of trouble 
+	to maintain when CSS can be used about as easily.  (And by
+	deprecating, I just put a note in the file saying "don't use 
+	this.")
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/fr.xsl:
+        Support request # 629607, changes and additions to reflect the 
+	french style
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+        forgot a closing comment tag
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+       added reminder about finding the right css directory.
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, 
+/cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+         * Simple cleanup of params.xsl comments
+         * Added param "css.embed" to allow for optional embedding of css 
+	   style tags directly into the html file.  Allows for easier file 
+	   transfer (one file instead of two)
+
+2002-10-28  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/css/resume_professional.css,
+/cvsroo t/xmlresume/resume/src/www/css/resume_contemporary.css,
+/cvsroot/xmlresume/resum e/src/www/css/resume1.css,
+/cvsroot/xmlresume/resume/src/www/css/resume2.css, /c
+vsroot/xmlresume/resume/src/www/css/resume3.css,
+/cvsroot/xmlresume/resume/src/w ww/css/resume4.css,
+/cvsroot/xmlresume/resume/src/www/css/original.css, /cvsroot
+/xmlresume/resume/src/www/css/professional.css,
+/cvsroot/xmlresume/resume/src/ww w/css/gray.css,
+/cvsroot/xmlresume/resume/src/www/css/blue-orange.css, /cvsroot/
+xmlresume/resume/src/www/css/compact.css,
+/cvsroot/xmlresume/resume/src/www/css/ NOTICE,
+/cvsroot/xmlresume/resume/src/www/css/CSS_Classes.txt:
+         * Replaced/removed resume*.css with equivalent, descriptively 
+	   named files.
+         * Wrapped all CSS with xml tags to allow embedding into the 
+	   generated html files (allows for easy emailing of an html 
+	   resume)
+         * Moved Copyright/usage notice into NOTICE
+         * Created CSS_Classes.txt, which lists all available CSS classes 
+	   for the xmlresume, plus a command to update the list.
+
+2002-10-26  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java:
+        PrintStream.PrintStream(OutputStream, boolean, String charset) 
+	does not exist prior to JRE 1.3, so I've changed it to use a 
+	different constructor.
+
+2002-10-22  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/fr.xsl:
+        Changed in.word and achievements.word to better reflect current 
+	french style.  SF Patch # 618302
+
+2002-10-19  brandondoyle
+
+        * /cvsroot/xmlresume/resume/examples/Makefile:
+        Added all the countries we support to the list of possible vals 
+	for "country"
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/it.xsl:
+        Italian pluralization rules:
+                male: cano -&gt; cani
+                female: porta -&gt; porte
+
+2002-07-16  Bruce Christensen  
 
 	* /cvsroot/xmlresume/resume/src/doc/manual/xsl/fo.xsl:
 	Fixed some parameters that were causing FOP to choke (or else emit more
