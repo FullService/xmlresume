@@ -41,6 +41,8 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pub.xsl"/>
 
+  <xsl:include href="string.xsl"/>
+
   <!-- Outputs the text to use as a title. -->
   <!-- Uses <title> child element if present, otherwise $Default. -->
   <xsl:template name="Title">
@@ -188,6 +190,48 @@ $Id$
       </xsl:when>
     </xsl:choose>
 
+  </xsl:template>
+
+  <!-- SKILLS ============================================================= -->
+  <!-- Normalize space in skills, but preserve descendant elements. This
+  replaced the following code in the r:skill template:
+  
+  <xsl:variable name="Text">
+    <xsl:apply-templates/>
+  </xsl:variable>
+  <xsl:value-of select="normalize-space($Text)"/>
+
+  The problem with the above code is that if a skill contains other elements
+  (for example, a <link>), the normalize-space call removes those elements. This
+  solution avoids that problem.
+  -->
+  <xsl:template match="r:skill//text()">
+    <xsl:value-of select="normalize-space(.)"/>
+
+    <!-- This part's a bit complicated. It basically says to output a space IF:
+      1. This text node is followed by an element or another text node.
+      2. AND This element has trailing whitespace.
+    We can't ignore the second requirement, or else we format input like this:
+      "<skill>Apache (<url>www.apache.org</url>)</skill>"
+    As:
+      "Apache ( www.apache.org)"
+    Our more complicated rule yields the correct output:
+      "Apache (www.apache.org)"
+    -->
+    <xsl:if test="following-sibling::* or following-sibling::text()">
+
+      <xsl:variable name="TrailingWS">
+        <xsl:call-template name="TrailingSpace">
+          <xsl:with-param name="Text">
+            <xsl:value-of select="."/>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:if test="string-length($TrailingWS)">
+        <xsl:text> </xsl:text>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
