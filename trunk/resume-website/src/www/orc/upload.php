@@ -2,11 +2,11 @@
 
 <head>
   <title>ORC - The Online R&eacute;sum&eacute; Converter</title>
-  <link href="../site.css" rel="STYLESHEET" type="text/css">
+  <link href="../site.css" rel="STYLESHEET" type="text/css"/>
 </head>
 <table>
-  <tr><td>
-<!--    <?php include("../private/quicklinks.html"); ?> -->
+  <tr><td class="quicklinks">
+    <?php include("../private/quicklinks.html"); ?>
   </td>
 <td>
 
@@ -16,10 +16,6 @@ Online R&eacute;sum&eacute; Converter (ORC)
 </h1>
 
   <form action="./process-upload.php" method="post" enctype="multipart/form-data">
-
-    <div class="submit">
-      <input TYPE="SUBMIT" NAME="SUBMIT" VALUE="Submit R&eacute;sum&eacute;">
-    </div>
 
     <!-- Allow uploads of up to 100K in size -->
     <input type="hidden" name="MAX_FILE_SIZE" value="100000"/>

@@ -1,3 +1,17 @@
+<html>
+
+<head>
+  <title>The XML R&eacute;sum&eacute; Online R&eacute;sum&eacute; Converter</title>
+</head>
+
+<body>
+
+  <table><tr>
+    <td class="quicklinks">
+      <?php include("../private/quicklinks.html"); ?>
+    </td>
+    <td>
+
 <?php
 require("orc-functions.php");
 
@@ -6,18 +20,7 @@ $time_stamp = time();
 $dirname = "orc" . $time_stamp;
 $pathdirname  = "./incoming/" . $dirname;
 
-include("../private/quicklinks.html");
-?>
-<html>
-
-<head>
-  <title>The XML R&eacute;sum&eacute; Online R&eacute;sum&eacute; Converter</title>
-</head>
-
-<body>
-<?php 
-
-  $arrReturn = process_upload(); 
+$arrReturn = process_upload(); 
 
 # report success
   if ($arrReturn[0] == 0) {
@@ -37,5 +40,7 @@ conversion shortly.</p>
 }
 ?>
 
+  </td></tr>
+</table>
 </body></html>
 
