@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>XML Resume Library</title>
+    <meta name="keywords" content="XML, resume, curricula, vitae, DTD,
+    schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS">
+    <style>
+body {
+      margin: 30pt 30pt 20pt 30pt;
+      font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h1 {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+}
+h2 {
+      font-size: medium;
+      font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+.xml {
+      font-family: Lucida Console, Courier New, Courier, monospace;
+}
+.elem {
+      color: rgb(20%, 30%, 100%);
+}
+.example {
+      background: rgb(90%, 90%, 90%);
+      padding: 6px 6px 6px 6px;
+}
+.date {
+      font-family: Lucida Console, Courier New, Courier, monospace;
+      font-size: 80%;
+      background: rgb(100%, 100%, 90%);
+}
+</style>
+  </head>
+  <body>
+    <h1 style="margin-top: 10pt; font-family: Verdana, Tahoma, Arial,
+      Helvetica, sans-serif; font-size: x-large; font-weight: normal;">
+      <span style="color: red;">XML</span><span style="font-weight:
+      bold;">R&eacute;sum&eacute;</span><span style="color: red;">Library</span>
+    </h1>
+    <table cellpadding="4">
+      <tbody>
+	<tr valign="top">
+	  <td bgcolor="#eeffee">
+	    <h2><span style="font-weight: normal; color: red;">Quick</span><span style="font-weight: bold;">Access</span></h2>
+	    <p>Current Version: <span style="font-weight: bold">@VERSION_DOTS@</span></p>
+
+	    <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_ZIP_NAME@">Download ZIP</a></p>
+	    <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_TGZ_NAME@">Download GZIP TAR</a></p>
+	    <p><a href="http://sourceforge.net/projects/xmlresume">Project Page</a></p>
+	    <p><a href="license/index.html">License</a></p>
+	    <p><a href="dtd/resume.dtd">The DTD</a></p>
+	    <p><a href="http://sourceforge.net/forum/forum.php?forum_id=92731">Help Forum</a></p>
+	    <p><a href="http://sourceforge.net/forum/forum.php?forum_id=92730">General Chat</a></p>
+	    <p><a href="http://sourceforge.net/tracker/?func=add&group_id=29512&atid=396335">Report Bug</a></p>
+	    <p><a href="http://sourceforge.net/tracker/?func=add&group_id=29512&atid=396338">Request Feature</a></p>
+	    <p align="center"><a href="http://sourceforge.net"><img
+		  src="http://sourceforge.net/sflogo.php?group_id=29512"
+		  width="88" height="31" border="0" alt="SourceForge Logo"></a>
+	    </p>
+	  </td>
+	  <td>
+	    <h2>What is it?</h2>
+	    <p>The XML R&eacute;sum&eacute; Library is an XML and XSL
+	      based system for marking up, adding metadata to, and
+	      formatting r&eacute;sum&eacute;s and curricula vitae.
+	    </p>
+
+	    <p>It consists of these components:</p>
+	    <ul>
+	      <li>An <strong>XML Document Type Definition (DTD)</strong> for describing
+		r&eacute;sum&eacute;s.</li>
+	      <li><strong>Three XSL stylesheets</strong> to transform an XML
+		r&eacute;sum&eacute; into:
+		<ul>
+		  <li>Web-ready HTML,</li>
+		  <li>Print-ready PDF, or</li>
+		  <li>Plain, unformatted text</li>
+		</ul>
+	      </li>
+	    </ul>
+
+	    <h2>Applications</h2>
+
+	    <ul>
+
+	      <li><strong>R&eacute;sum&eacute; production:</strong>
+		aproduce web and print r&eacute;sum&eacute;s from a
+		<em>single</em> source file.
+	      </li>
+
+	      <li><strong>B2B (business-to-business):</strong>
+		transfer r&eacute;sum&eacute;s between human resources
+		and other company divisions, or between recruiters and
+		employers.
+	      </li>
+
+	      <li><strong>Search and retrieval:</strong> increase
+		precision in locating employees using
+		r&eacute;sum&eacute; metadata.
+	      </li>
+	    </ul>
+
+	    <h2>An example</h2>
+
+	    <p>This fragment:</p>
+	    <div class="xml">
+<span class="elem"&gt;</span>&lt;job&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;jobtitle&gt;</span>Manager<span class="elem"&gt;</span>&lt;/jobtitle&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;employer&gt;</span>Acme, Inc.<span class="elem"&gt;</span>&lt;/employer&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;period&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;from&gt;</span><span class="elem"&gt;</span>&lt;date&gt;</span><span class="elem"&gt;</span>&lt;month&gt;</span>June<span class="elem"&gt;</span>&lt;/month&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;year&gt;</span>1992<span class="elem"&gt;</span>&lt;/year&gt;</span><span class="elem"&gt;</span>&lt;/date&gt;</span><span class="elem"&gt;</span>&lt;/from&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;to&gt;</span><span class="elem"&gt;</span>&lt;date&gt;</span><span class="elem"&gt;</span>&lt;month&gt;</span>August<span class="elem"&gt;</span>&lt;/month&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;year&gt;</span>1998<span class="elem"&gt;</span>&lt;/year&gt;</span><span class="elem"&gt;</span>&lt;/date&gt;</span><span class="elem"&gt;</span>&lt;/to&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;/period&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;description&gt;</span><span class="elem"&gt;</span>&lt;para&gt;</span>Oversaw production<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of large magnets and rocket skates<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for a <span class="elem"&gt;</span>&lt;emphasis&gt;</span>single<span class="elem"&gt;</span>&lt;/emphasis&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;customer.<span class="elem"&gt;</span>&lt;/para&gt;</span><br>
+&nbsp;&nbsp;<span class="elem"&gt;</span>&lt;/description&gt;</span><br>
+<span class="elem"&gt;</span>&lt;/job&gt;</span><br>
+	    </div>
+
+	    <p>Gives you this HTML:</p>
+
+	    <div class="example">
+	      Manager<br>
+	      Acme, Inc.<br>
+	      June 1992-August 1998<br><br>
+	      Oversaw production of large magnets and rocket skates for a <b>single</b> customer.
+	    </div>
+
+	    <p>Or this PDF:</p>
+
+	    <img src="shot.jpg">
+
+	    <p>Or this plain text:</p>
+
+	    <div class="example">
+	      <code>
+		Manager<br>
+		Acme, Inc.<br>
+		June 1992-August 1998<br><br>
+		Oversaw production of large magnets and rocket skates for a single customer.
+	      </code>
+	    </div>
+
+	  </td>
+	  <td> 
+	    <h2><span style="font-weight: normal; color: red;">News</span><span style="font-weight: bold;">Items</span></h2>
+
+	    <p><span class="date">17-Jun-2001:</span> The XML
+	      R&eacute;sum&eacute; project is now hosted on <a
+		href="http://sourceforge.net">SourceForge</a>.
+	    </p>
+
+	    <p><span class="date">30-Apr-2001:</span> Joseph Feller,
+	      editor of <a
+	      href="http://www.elementkjournals.com/ixs">Inside XML
+	      Solutions</a>, wrote a great article covering the XML
+	      R&eacute;sum&eacute; Library in the April 2001 issue.
+	      Thanks Joe!
+	    </p>
+
+	    <h2><span style="font-weight: normal; color: red;">Good</span><span style="font-weight: bold;">Words</span></h2>
+
+	    <p>Ricardo A.&nbsp;of Ecuador writes: "I saw your XML
+	      R&eacute;sum&eacute; Library, and I think [it's] great!"
+	      Thanks for the comments, Ricardo!
+	    </p>
+
+	    <p>Stewart B. of Canada says it's "cool work."  Thanks, Stewart!</p>
+
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </body>
+</html>
