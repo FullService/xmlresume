@@ -132,4 +132,8 @@ $Id$
   <!-- Cascading stylesheet to use -->
   <xsl:param name="css.href">resume.css</xsl:param>
 
+  <!-- Format for name/contact header: 'standard' or 'centered' *SE* -->
+  <!-- Set here or override on command line -->
+  <xsl:param name="header.format">standard</xsl:param>
+
 </xsl:stylesheet>
