@@ -26,7 +26,8 @@
           <row>
             <entry><literal>achievement</literal></entry>
             <entry>
-              On the <sgmltag class="element">li</sgmltag> for a single skill.
+              On the <sgmltag class="element">li</sgmltag> for a single
+              achievement.
             </entry>
           </row>
           <row>
