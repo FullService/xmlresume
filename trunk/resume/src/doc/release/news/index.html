@@ -15,6 +15,43 @@
     <p>This document lists user-visible changes to the library.
     </p>
 
+    <h2>Release 1.2.4</h2>
+
+    <p>Bugs fixed:</p>
+    <ul>
+      <li>Old style US addresses in HTML were coming out
+	"City,State".  Now there's a space after the comma:
+	"City,&nbsp;State".
+      </li>
+      <li>The <code>&lt;dayOfMonth&gt;</code> was missing a content
+	model; it has one now (PCDATA).
+      </li>
+      <li><code>&lt;fullDate&gt;</code> wasn't referenced anywhere.
+	It's gone.
+      </li>
+      <li>The plain text stylesheet <code>text.xsl</code>
+	contained an invalid template that Xalan allowed but 4Suite
+	correctly disallowed.  That's fixed now.
+      </li>
+      <li>The HTML output explicitly sets the character set to
+	UTF-8.
+      </li>
+    </ul>
+    <p>New features:</p>
+    <ul>
+      <li>Real en-dashes appear in periods of employment
+	in the HTML and FO renderings.
+      </li>
+      <li>Hyphens in the FO rendering separating employer, job title,
+	and period of employment use bullets now (those hyphens looked
+	funny).
+      </li>
+      <li>HTML output now includes Cascading Stylesheet (CSS) "class"
+	attributes, enabling you to customize the HTML appearance of
+	your r&eacuet;sum&eacute;.  A sample stylesheet,
+	<code>resume.css</code> is in the <code>css</code> directory.
+    </p>
+
     <h2>Release 1.2.3</h2>
 
     <ul>

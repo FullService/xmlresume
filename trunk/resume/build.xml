@@ -14,8 +14,8 @@ $Id$
   <!-- GENERAL PROPERTIES ===================================================================================================== -->
 
   <!-- Current version number -->
-  <property name="version.underscore" value="1_2_3"/>
-  <property name="version.dots" value="1.2.3"/>
+  <property name="version.underscore" value="1_2_4"/>
+  <property name="version.dots" value="1.2.4"/>
 
   <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
 
@@ -87,6 +87,7 @@ $Id$
     <mkdir dir="${stage.dir}/examples"/>
     <mkdir dir="${stage.dir}/dtd"/>
     <mkdir dir="${stage.dir}/xsl"/>
+    <mkdir dir="${stage.dir}/css"/>
   </target>    
 
   <target name="release.build.copy"
@@ -109,6 +110,10 @@ $Id$
     <copy todir="${stage.dir}/xsl"
       filtering="yes">
       <fileset dir="${src.dir}/www/xsl"/>
+    </copy>
+    <copy todir="${stage.dir}/css"
+      filtering="yes">
+      <fileset dir="${src.dir}/www/css"/>
     </copy>
   </target>
 

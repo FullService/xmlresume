@@ -85,11 +85,14 @@ Formatting the example resumes from the developer's
 edition requires a "make" command line that redefines
 the FO_STYLE, TEXT_STYLE, and HTML_STYLE symbols to
 point to the development area's copies and not the
-official copies via http.  Here's a sample invocation:
+official copies via HTTP.  Additionally, you should use
+a CATALOG aware processor so that the local copy of the
+DTD is found instead of the last stable release via
+HTTP.  Here's a sample invocation:
 
-make HTML_STYLE=../www/xsl/html.xsl \
-     FO_STYLE=../www/xsl/us-letter.xsl \
-     TXT_STYLE=../www/xsl/text.xsl \
+make HTML_STYLE=../src/www/xsl/us-html.xsl \
+     FO_STYLE=../src/www/xsl/us-letter.xsl \
+     TXT_STYLE=../src/www/xsl/us-text.xsl \
      RESUME=my-test \
      clean \
      all

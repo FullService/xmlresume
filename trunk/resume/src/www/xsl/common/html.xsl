@@ -46,16 +46,20 @@ $Id$
   <xsl:template match="/">
     <html>
       <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<title>
 	  <xsl:apply-templates select="resume/header/name"/>
 	  <xsl:text> - </xsl:text>
 	  <xsl:value-of select="$resume.word"/>
 	</title>
-        <!-- This is just used on my website; ignore it. -->
-        <link rel="stylesheet" type="text/css" href="../../../std.css"/>
+        <link rel="stylesheet" type="text/css">
+	  <xsl:attribute name="href">
+	    <xsl:value-of select="$css.href"/>
+	  </xsl:attribute>
+	</link>
         <xsl:apply-templates select="resume/keywords" mode="header"/>
       </head>
-      <body>
+      <body class="resume">
 	<xsl:apply-templates select="resume"/>
       </body>
     </html>
@@ -128,7 +132,7 @@ $Id$
     </h1>
       
     <!-- Your name, address, and stuff. -->
-    <h2><xsl:value-of select="$contact.word"/></h2>
+    <h2 class="contactHeading"><xsl:value-of select="$contact.word"/></h2>
     <p>
       <xsl:apply-templates select="name"/><br/>
       <xsl:apply-templates select="address"/><br/>
@@ -166,19 +170,19 @@ $Id$
 
   <!-- Objective, with level 2 heading. -->
   <xsl:template match="objective">
-    <h2><xsl:value-of select="$objective.word"/></h2>
+    <h2 class="objectiveHeading"><xsl:value-of select="$objective.word"/></h2>
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Past jobs, with level 2 heading. -->
   <xsl:template match="history">
-    <h2><xsl:value-of select="$history.word"/></h2>
+    <h2 class="historyHeading"><xsl:value-of select="$history.word"/></h2>
     <xsl:apply-templates select="job"/>
   </xsl:template>
 
   <!-- Format each job -->
   <xsl:template match="job">
-    <p>
+    <p class="job">
       <span class="jobTitle">
         <xsl:value-of select="jobtitle"/>
       </span>
@@ -204,13 +208,13 @@ $Id$
 
   <!-- Degrees and stuff -->
   <xsl:template match="academics">
-    <h2><xsl:value-of select="$academics.word"/></h2>
+    <h2 class="academicsHeading"><xsl:value-of select="$academics.word"/></h2>
     <xsl:apply-templates select="degrees"/>
     <xsl:apply-templates select="note"/>
   </xsl:template>
 
   <xsl:template match="degrees">
-    <ul>
+    <ul class="degrees">
       <xsl:apply-templates select="degree"/>
     </ul>
     <xsl:apply-templates select="note"/>
@@ -223,8 +227,8 @@ $Id$
   </xsl:template>
 
   <xsl:template match="degree">
-    <li>
-      <acronym>
+    <li class="degree">
+      <acronym class="level">
         <xsl:value-of select="level"/>
       </acronym>
       <xsl:text> </xsl:text>
@@ -242,7 +246,7 @@ $Id$
 
   <!-- Format the open-ended skills -->
   <xsl:template match="skillarea">
-    <h2><xsl:value-of select="title"/></h2>
+    <h2 class="skillareaHeading"><xsl:value-of select="title"/></h2>
     <xsl:apply-templates select="skillset"/>
   </xsl:template>
 
@@ -252,30 +256,30 @@ $Id$
   </xsl:template>
 
   <xsl:template match="skillset/title">
-    <h3><xsl:value-of select="."/></h3>
+    <h3 class="skillsetTitle"><xsl:value-of select="."/></h3>
   </xsl:template>
 
   <xsl:template match="skills">
-    <ul>
+    <ul class="skills">
       <xsl:apply-templates select="skill"/>
     </ul>
   </xsl:template>
 
   <xsl:template match="skill">
-    <li><xsl:value-of select="."/></li>
+    <li class="skill"><xsl:value-of select="."/></li>
   </xsl:template>
 
   <!-- Format publications -->
   <xsl:template match="pubs">
-    <h2><xsl:value-of select="$publications.word"/></h2>
-    <ul>
+    <h2 class="pubsHeading"><xsl:value-of select="$publications.word"/></h2>
+    <ul class="pubs">
       <xsl:apply-templates select="pub"/>
     </ul>
   </xsl:template>
 
   <!-- Format a single publication -->
   <xsl:template match="pub">
-    <li>
+    <li class="pub">
       <!-- Format each author, putting separator characters betwixt. -->
       <xsl:apply-templates select="author[position() != last()]" mode="internal"/>
       <xsl:apply-templates select="author[position() = last()]" mode="final"/>
@@ -316,7 +320,7 @@ $Id$
 
   <!-- Title of book -->
   <xsl:template match="bookTitle">
-    <cite><xsl:value-of select="."/></cite><xsl:value-of select="$pub.item.separator"/>
+    <cite class="bookTitle"><xsl:value-of select="."/></cite><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Publisher with a following publication date. -->
@@ -344,13 +348,13 @@ $Id$
 
   <!-- Format the misc info -->
   <xsl:template match="misc">
-    <h2><xsl:value-of select="$miscellany.word"/></h2>
+    <h2 class="miscHeading"><xsl:value-of select="$miscellany.word"/></h2>
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Format the legalese -->
   <xsl:template match="copyright">
-    <address>
+    <address class="copyright">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="year"/>
@@ -371,20 +375,20 @@ $Id$
 
   <!-- para -> p -->
   <xsl:template match="para">
-    <p>
+    <p class="para">
       <xsl:apply-templates/>
     </p>
   </xsl:template>
 
   <!-- emphasis -> strong -->
   <xsl:template match="emphasis">
-    <strong><xsl:value-of select="."/></strong>
+    <strong class="emphasis"><xsl:value-of select="."/></strong>
   </xsl:template>
 
   <!-- url -> monospace along with href -->
   <xsl:template match="url">
-    <code>
-      <a>
+    <code class="urlCode">
+      <a class="urlA">
         <xsl:attribute name="href">
           <xsl:value-of select="."/>
 	</xsl:attribute>
@@ -395,7 +399,7 @@ $Id$
 
   <!-- citation -> cite -->
   <xsl:template match="citation">
-    <cite><xsl:value-of select="."/></cite>
+    <cite class="citation"><xsl:value-of select="."/></cite>
   </xsl:template>
 
 </xsl:stylesheet>

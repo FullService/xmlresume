@@ -111,14 +111,7 @@
       processor</a>.
     </p>
 
-    <h2>Using the Library</h2>
-
-    <p>You can use the library as a schema for r&eacute;sum&eacute;s by
-      using just the DTD, or to format r&eacute;sum&eacute;s for
-      presentation from a single source by using the XSL files.
-    </p>
-
-    <h3>Creating R&eacute;sum&eacute;s Using the DTD</h3>
+    <h2>Creating R&eacute;sum&eacute;s Using the DTD</h2>
 
     <p>To create your own r&eacute;sum&eacute;s using the XML
       R&eacute;sum&eacute; DTD, use the following document type
@@ -146,12 +139,19 @@
       r&eacute;sum&eacute; files.
     </p>
 
-    <h3>Formatting R&eacute;sum&eacute;s</h3>
+    <h2>Formatting R&eacute;sum&eacute;s</h2>
 
-    <p><strong>To create an HTML presentation</strong> of your
-      r&eacute;sum&eacute;, run your XSLT engine on the XML file
-      containing the r&eacute;sum&eacute; along with the one of the
-      HTML stylesheet files:
+    <p>You can format the XML resume into HTML for online viewing,
+      into XSL Formatting Objects (FO) for rendering into PDF for
+      printing, or into plain text.
+    </p>
+
+    <h3>Creating an HTML Presentation</h3>
+
+    <p>To create an HTML presentation of your r&eacute;sum&eacute;,
+      run your XSLT engine on the XML file containing the
+      r&eacute;sum&eacute; along with the one of the HTML stylesheet
+      files:
     </p>
     <ul>
       <li><code>us-html.xsl</code> for US English
@@ -165,29 +165,150 @@
       HTML using appropriate phrasing and terminology.
     </p>
 
-    <p><strong>To create a PDF presentation</strong>, <em>first</em>
-      run your XSLT engine on the r&eacute;sum&eacute; XML file along
-      with one of the FO stylesheet files:
+    <h4>Customizing the HTML Output</h4>
+
+    <p>The XSL stylesheet generates generic HTML output and abuses no
+      special HTML tricks to create special formatting effects.  You
+      can use Cascading Stylesheets (CSS) to customize the output to
+      your tastes.  By default, the HTML output referencs a cascading
+      stylesheet named <code>resume.css</code>.  Create this file and
+      publish it along with the HTML output to your web server to
+      customize the output.  You can find a sample
+      <code>resume.css</code> file under the <code>css</code>
+      directory.
     </p>
 
-    <ul>
-      <li><code>us-letter.xsl</code> for US English
-	r&eacute;sum&eacute;s on US-Letter size paper.
-      </li>
-      <li><code>uk-a4.xsl</code> for UK English CVs on A4 size paper.
-      </li>
-      <li><code>fr-a4.xsl</code> for French r&eacute;sum&eacute;s on
-	A4 size paper.
-      </li>
-    </ul>
-
-    <p><em>Then</em> run the output of that through your FO engine to
-      render it.
+    <p>To specify a different stylesheet reference than
+      <code>resume.css</code>, give your XSLT engine a value for the
+      <code>css.href</code> parameter (how you do so depends on your
+      XSLT engine).
     </p>
 
-    <p><strong>To create a plain text presentation</strong>, run your
-      XSLT engine on the r&eacute;sum&eacute; XML file and one of the
-      following:
+    <p>The following table lists the element classes used in the HTML
+      output for which you can specify styles.
+    </p>
+
+    <table>
+      <thead>
+	<tr>
+	  <th>Class</th>
+	  <th>Where Used</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr>
+	  <td><code>academicsHeading</code></td><td>On the <code>h2</code> of the heading for your academics.</td>
+	</tr>
+	<tr>
+	  <td><code>bookTitle</code></td><td>On the <code>cite</code> used to refer to a title of a book in one of your publications.</td>
+	</tr>
+	<tr>
+	  <td><code>citation</code></td><td>On all HTML <code>cite</code>'s generated from all XML <code>citation</code>'s.</td>
+	</tr>
+	<tr>
+	  <td><code>contactHeading</code></td><td>On the <code>h2</code> of the heading for the contact information.</td>
+	</tr>
+	<tr>
+	  <td><code>copyright</code></td><td>On the <code>address</code> for copyright information.</td>
+	</tr>
+	<tr>
+	  <td><code>degree</code></td><td>On the <code>li</code> for a single degree.</td>
+	</tr>
+	<tr>
+	  <td><code>degrees</code></td><td>On the <code>ul</code> for the list of degrees you hold.</td>
+	</tr>
+	<tr>
+	  <td><code>emphasis</code></td><td>On all HTML <code>strong</code>'s generated from all XML <code>emphasis</code>'s.</td>
+	</tr>
+	<tr>
+	  <td><code>historyHeading</code></td><td>On the <code>h2</code> of the heading for the employment history.</td>
+	</tr>
+	<tr>
+	  <td><code>job</code></td><td>On the <code>p</code> of the paragraph generating a single employer entry.</td>
+	</tr>
+	<tr>
+	  <td><code>jobTitle</code></td><td>On the <code>span</code> enclosing the title you held at job.</td>
+	</tr>
+	<tr>
+	  <td><code>level</code></td><td>On the <code>acronym</code> for the level attained in a degree.</td>
+	</tr>
+	<tr>
+	  <td><code>miscHeading</code></td><td>On the <code>h2</code> for the miscellany heading.</td>
+	</tr>
+	<tr>
+	  <td><code>note</code></td><td>On the <code>div</code> used as the admonition below the list of held degrees.</td>
+	</tr>
+	<tr>
+	  <td><code>objectiveHeading</code></td><td>On the <code>h2</code> of the heading for the professional objective.</td>
+	</tr>
+	<tr>
+	  <td><code>para</code></td><td>On all HTML <code>p</code>'s generated from all XML <code>para</code>'s.</td>
+	</tr>
+	<tr>
+	  <td><code>pub</code></td><td>On a single publication.</td>
+	</tr>
+	<tr>
+	  <td><code>pubs</code></td><td>On the <code>ul</code> for the list of publications.</td>
+	</tr>
+	<tr>
+	  <td><code>pubsHeading</code></td><td>On the <code>h2</code> heading the publications.</td>
+	</tr>
+	<tr>
+	  <td><code>resume</code></td><td>On the <code>body</code> of the entire HTML output.</td>
+	</tr>
+	<tr>
+	  <td><code>skill</code></td><td>On the <code>li</code> for a single skill.</td>
+	</tr>
+	<tr>
+	  <td><code>skillareaHeading</code></td><td>On the <code>h2</code> for a skill area.</td>
+	</tr>
+	<tr>
+	  <td><code>skills</code></td><td>On the <code>ul</code> for a list of skills.</td>
+	</tr>
+	<tr>
+	  <td><code>skillsetTitle</code></td><td>On the <code>h3</code> for a title of a set of skills.</td>
+	</tr>
+	<tr>
+	  <td><code>urlA</code></td><td>On the <code>a</code> of a generated hyperlink.</td>
+	</tr>
+	<tr>
+	  <td><code>urlCode</code></td><td>On <code>code</code> sections used to mark up URLs.</td>
+	</tr>
+      </tbody>
+    </table>
+
+    <h3>Creating a PDF Presentation</h3>
+
+    <p>To create a PDF presentation, follows these steps:</p>
+
+    <ol>
+      <li>Run your XSLT engine on the r&eacute;sum&eacute; XML file
+	along with one of the FO stylesheet files:
+
+	<ul>
+	  <li><code>us-letter.xsl</code> for US English
+	    r&eacute;sum&eacute;s on US-Letter size paper.
+	  </li>
+	  <li><code>uk-a4.xsl</code> for UK English CVs on A4 size paper.
+	  </li>
+	  <li><code>fr-a4.xsl</code> for French r&eacute;sum&eacute;s on
+	    A4 size paper.
+	  </li>
+	</ul>
+	<p>This will transform your XML file into another XML file
+	  that defines formatting objects (usually named with a
+	  <code>.fo</code> extension).
+	</p>
+      </li>
+      <li>Run the formatting object output through your FO engine to
+	render it to PDF.
+      </li>
+    </ol>
+
+    <h3>Creating a Plain Text Presentation</h3>
+
+    <p>To create a plain text presentation, run your XSLT engine on
+      the r&eacute;sum&eacute; XML file and one of the following:
     </p>
 
     <ul>
@@ -201,13 +322,16 @@
       </li>
     </ul>
 
-    <p>To automate this process, consider using the
-      <code>Makefile</code>.  It uses the Java versions of the Apache
-      XML tools Xerces/Xalan/FOP to create both web and print
-      presentations of a r&eacute;sum&eacute;.  Adjust the
-      <code>RESUME</code> value inthe <code>Makefile</code> to point
-      to the file name of the r&eacute;sume&eacute; you want to
-      format, without the <code>.xml</code> extension.
+    <h3>Automating Formatting</h3>
+
+    <p>To automate formatting a r&eacute;sum&eacute; to all three
+      output formats, consider using the <code>Makefile</code>.  It
+      uses the Java versions of the Apache XML tools Xerces/Xalan/FOP
+      to create both web and print presentations of a
+      r&eacute;sum&eacute;.  Adjust the <code>RESUME</code> value
+      inthe <code>Makefile</code> to point to the file name of the
+      r&eacute;sume&eacute; you want to format, without the
+      <code>.xml</code> extension.
     </p>
 
   </body>

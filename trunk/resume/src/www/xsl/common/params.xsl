@@ -126,4 +126,7 @@ $Id$
   <xsl:param name="citation.font.style">italic</xsl:param>
   <xsl:param name="url.font.family">monospace</xsl:param>
 
+  <!-- Cascading stylesheet to use -->
+  <xsl:param name="css.href">resume.css</xsl:param>
+
 </xsl:stylesheet>
