@@ -71,6 +71,7 @@ length=79 # suggested max width of log line
 logins= # login names for people we know fullnames and mailaddrs of
 loginFullnameMailaddrs="seankelly	Sean Kelly	kelly@ad1440.net
 sargent	Paul Sargent	sargent@users.sourceforge.net
+stewarte	Stewart Evans	stewarte@users.sourceforge.net
 robert_dubinski	Robert Dubinski	rsd@dubinski-family.org"
 # login<tab>fullname<tab>mailaddr triplets
 logTZ= # time zone for log dates (if empty, use local time)
