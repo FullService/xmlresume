@@ -73,39 +73,99 @@ Deprecating elements takes a bit more work than adding or changing them:
 Cutting a Release
 =================
 
-To make a new release of the XML Resume Library,
-suitable for public distribution and consumption, do the
-following:
+NOTE: See 
+http://sourceforge.net/docman/display_doc.php?docid=10468&group_id=29512
+for a better-formatted version of the following instructions
 
-1. Make sure everything works.  Try validating and
-   formatting the example resumes and your own.
+To cut and post a new release the XML Résumé Library, you will need two 
+modules from CVS: resume and resume-website. Check them out into one 
+directory so that you have the following structure: 
 
-2. Update the version number in the build.xml file by
-   editing the two properties "version.underscore" and
-   "version.dots".
+some-dir/resume
+some-dir/resume-website
 
-3. Run "cvs commit" to commit your changes to CVS.
-   Check for any merge problems, and merge and test
-   again if necessary.
+* * * *  Install the new release files
 
-4. Update the changelog with rcs2log | cltohtml and
-   pasting in the HTML formatted changelog.
+  cd resume
+  ant clean
+  cvs update -d		# to make sure you've got the latest changes
+  cvs commit 		# to make sure your own changes are in
+			# (cleaning up any merge conflicts)
 
-5. Edit src/doc/release/*/index.html to reflect any major changes
-   you have made.
+**** Confirm functionality by: 
+  ant run.generate	# to generate the regression test date
+  ant run.test		# to run regression tests
+Format the example résumés
+Format the address test résumés
+Format your own résumé
 
-6. Tag the release with "cvs tag release-X_Y_Z" where X_Y_Z is
-   the version number.
+**** Update the documentation files: 
 
-7. Run "ant release" to create the ZIP and TGZ archives.
+	ant doc.manual.check	# ensure there are no elements in the DTD 
+				# without a reference page in the manual. 
+If there are missing pages, run 
+	ant doc.manual.create-missing
+Then do a search-and-replace for "TODO" in all of the created files, 
+making changes as appropriate.
 
-8. Run "ant install.web" to publish the new release to the
-   web server.
+Edit:
+	src/doc/release/news/index.html 
+		for user-visible changes (required with every release).  
+	src/doc/manual/en/elementref/intro.xml
+		for DTD changes.  (You can run 
+		cvs update -p -r release-major_minor_sub \
+		src/www/dtd/resume.dtd > resume.old.dtd 
+		to retrieve the last release's DTD for easy diff-ing with 
+		the current one.)
+	src/doc/index.html for usage instructions on specific features 
+	Other files as necessary 
 
-9. Upload the ZIP and TGZ archives to
-   ftp://ftp.sourceforge.net/pub/incoming/
+**** Update etc/rcs2log if necessary. 
 
-10. Add a new release to the SourceForge project page.
+**** Run etc/rcs2log | etc/cltohtml | etc/replace_changelog.py 
+	(required with every release).
+**** Commit src/doc/release/changelog/index.html to CVS.  
+**** Edit build.xml and update version numbers. 
+**** Commit the changed documentation and support files. 
+**** 	rm -rf ~/htdocs 
+**** "ant release ftp upload.sf.net" as anonymous and
+	upload the .tgz and the .zip files to the /incoming directory.  
+**** ant install cvs tag release-major_minor_sub to tag the release.  
+**** cd ../resume-website 
+**** Edit src/www/index.html to add a news item announcing the release. 
+**** Edit build.xml to match the version number in ../resume/build.xml. 
+**** cvs commit 
+**** ant install 
+**** cd ~ chmod -R g+w htdocs 
+**** tar czf htdocs.tgz htdocs 
+**** scp htdocs.tgz shell.sf.net:
+
+ * * * * Create the new release
+
+Visit www.sf.net and log in, if necessary.
+Go to http://www.sourceforge.net/projects/xmlresume/.
+Go to Admin.
+Go Edit/Release Files.
+Click Add Release to the xmlresume package. Name the release major.minor.sub. 
+Paste in the news and changelogs (in HTML format) and click Update.
+Check the .tgz and .zip files and click Add.
+Set the .tgz file's processor to Any, file type to Source .gz; click Update.
+Set the .zip file's processor to Any, file type to Source .zip, click Update.
+Check the box next to I'm Sure and send the notice.
+
+ * * * * Update the website
+
+ssh into shell.sf.net.
+cd /home/groups/x/xm/xmlresume
+rm -rf htdocs
+tar xzpf ~/htdocs.tgz
+rm ~/htdocs.tgz
+
+Finally, check out the project's web page and see how it looks. Try 
+downloading both the .tgz and .zip files and see if they work.
+
+And good luck.
+
 
 Cleaning Up
 ===========
