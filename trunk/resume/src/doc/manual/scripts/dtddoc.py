@@ -209,9 +209,10 @@ Operations:
     --check                     Same as --list-unknown --list-missing
     --filter                    Copies all files matching <pattern> to
                                 <build-dir> (which must already exist), then
-                                replaces "<$CONTENT_MODEL$>",
-                                "<$ATTRIBUTES_TABLE$>", and "<$PARENTS$>" tokens
-                                with generated data
+                                replaces "<?resumevar CONTENT_MODEL?>",
+                                "<?resumevar ATTRIBUTES_TABLE?>", and 
+                                "<?resumevar PARENTS?>" tokens with generated
+                                data
 
 Options:
 
@@ -299,6 +300,8 @@ def find_unknown_files(elems, pattern):
 #------------------------------------------------------------------------------
 
 id_prefix = "element."
+var_prefix = re.escape("<?resumevar ")
+var_suffix = re.escape("?>")
 
 # Get command line options
 try:
@@ -436,7 +439,7 @@ for op in ops:
 
             for token in replacements.keys():
                 output_text = re.sub(
-                    r"<\$"+token+r"\$>",
+                    var_prefix + token + var_suffix,
                     replacements[token],
                     output_text,
                     )
@@ -485,7 +488,7 @@ for op in ops:
                 out_text = in_text
                 for token in replacements.keys():
                     out_text = re.sub(
-                        r"<\?resumevar "+token+r"\?>",
+                        var_prefix + token + var_suffix,
                         replacements[token],
                         out_text,
                         )
