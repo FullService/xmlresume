@@ -4,7 +4,7 @@ Sample Cascading Stylesheet (CSS) for HTML formatted resumes.
 This is a sample only, and probably is quite offensive in terms
 of taste and style.
 
-Copyright (c) 2001 Sean Kelly
+Copyright (c) 2001-2002 Sean Kelly
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -87,6 +87,14 @@ h2 {
 
 .historyHeading {
 	color:			violet;
+}
+
+.membershipsHeading {
+	color:			magenta;
+}
+
+.organization {
+	font-style:		italic;
 }
 
 .urlCode {
