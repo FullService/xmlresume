@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+
+NOTE: Usage of this file is or should be 
+deprecated.  We suggest using CSS instead.
+- brandondoyle 10/29/02
+
 html.xsl
 Transform XML resume into HTML, styled similar to Microsoft Word's Contemporary
 resume template.
