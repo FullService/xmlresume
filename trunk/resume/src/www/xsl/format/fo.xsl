@@ -152,22 +152,6 @@ $Id$
     </fo:block>
   </xsl:template>
 
-  <!-- Format a name in Western style, given then surname  -->
-  <!-- (plus middle and suffix if defined).                -->
-  <xsl:template match="r:name">
-    <xsl:apply-templates select="r:firstname"/>
-    <xsl:text> </xsl:text>
-    <xsl:if test="r:middlenames">
-      <xsl:apply-templates select="r:middlenames"/>
-      <xsl:text> </xsl:text>
-    </xsl:if>
-    <xsl:apply-templates select="r:surname"/>
-    <xsl:if test="r:suffix">
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates select="r:suffix"/>
-    </xsl:if>
-  </xsl:template>
-
   <xsl:template match="r:address" mode="free-form">
     <fo:block>
       <xsl:apply-templates/>

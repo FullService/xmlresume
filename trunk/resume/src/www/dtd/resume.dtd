@@ -83,7 +83,7 @@ in a future version. -->
 
 <!-- The header of the resume contains your name and address. -->
 <!ELEMENT header (name, address?, birth?, contact?)>
-<!ELEMENT name (firstname, middlenames?, surname, suffix?)>
+<!ELEMENT name (title?, firstname, middlenames?, surname, suffix?)>
 <!ATTLIST name id ID #IMPLIED>
 <!ELEMENT firstname (#PCDATA)>
 <!-- Use for one or more middle names or initials. -->

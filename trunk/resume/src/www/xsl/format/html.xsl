@@ -810,21 +810,6 @@ $Id$
     </div>
   </xsl:template>
 
-  <!-- Put a space between first and last name -->
-  <xsl:template match="r:name">
-    <xsl:apply-templates select="r:firstname"/>
-    <xsl:text> </xsl:text>
-    <xsl:if test="r:middlenames">
-      <xsl:apply-templates select="r:middlenames"/>
-      <xsl:text> </xsl:text>
-    </xsl:if>
-    <xsl:apply-templates select="r:surname"/>
-    <xsl:if test="r:suffix">
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates select="r:suffix"/>
-    </xsl:if>
-  </xsl:template>
-
   <!-- para -> p -->
   <xsl:template match="r:para">
     <p class="para">

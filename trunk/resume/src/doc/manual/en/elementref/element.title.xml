@@ -23,6 +23,17 @@
 
       <variablelist>
         <varlistentry>
+          <term><sgmltag class="element">name</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, <sgmltag
+              class="element">title</sgmltag> contains a person's formal title,
+              such as <quote>Dr.</quote>, <quote>Ms.</quote>, or
+              <quote>Professor</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term><sgmltag class="element">interest</sgmltag></term>
           <listitem>
             <para>

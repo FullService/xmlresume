@@ -243,4 +243,25 @@ $Id$
     </xsl:if>
   </xsl:template>
 
+  <!-- NAMES ============================================================== -->
+  <!-- Format a name in Western style, given then surname  -->
+  <!-- (plus title, middle and suffix if defined).         -->
+  <xsl:template match="r:name">
+    <xsl:if test="r:title">
+      <xsl:apply-templates select="r:title"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates select="r:firstname"/>
+    <xsl:text> </xsl:text>
+    <xsl:if test="r:middlenames">
+      <xsl:apply-templates select="r:middlenames"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates select="r:surname"/>
+    <xsl:if test="r:suffix">
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="r:suffix"/>
+    </xsl:if>
+  </xsl:template>
+
 </xsl:stylesheet>

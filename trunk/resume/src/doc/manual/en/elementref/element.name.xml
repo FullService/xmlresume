@@ -70,6 +70,7 @@
 
     <informalexample><programlisting><![CDATA[
 <name>
+  <title>Mr.</title>
   <firstname>John</firstname>
   <middlenames>Q.</middlenames>
   <surname>Doe</surname>
