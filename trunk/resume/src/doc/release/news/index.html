@@ -15,9 +15,21 @@
     <p>This document lists user-visible changes to the library.
     </p>
 
-    <h2>Release 1.3.0.</h2>
+    <h2>Release 1.3.0</h2>
 
     <ul>
+      <li><strong>Schema Change!</strong> The
+	<code>&lt;subject&gt;</code> element under a
+	<code>&lt;degree&gt;</code> in order to list your college
+	major is now a <code>&lt;major&gt;</code> element.  You will
+	need to change your r&eacute;sum&eacute;s and/or software.
+
+	<p>As a convenience, we have provided an XSLT transformation
+	  in <code>xsl/124-130.xsl</code> that will turn version 1.2.4
+	  r&eacute;sum&eacute;s into 1.3.0 with the
+	  <code>&lt;major&gt;</code> element.
+	</p>
+      </li>
       <li>You can specify whether HTML and plain text headings should
 	be standard (flush left) or centered with the
 	<code>header.format</code> parameter.
@@ -31,10 +43,25 @@
 	freeform addresses.
       </li>
       <li>You can now list and format professional memberships on your
-	r&eacute;sum&eacute;.
+	r&eacute;sum&eacute; with the <code>&lt;memberships&gt;</code>
+	element.
+      </li>
+      <li>
+      <li>You can list subjects and levels achieved under each degree
+	with the <code>&lt;subjects&gt;</code> element.
+      </li>
+      <li>You can list personal references with the
+	<code>&lt;referees&gt;</code> element.
+      </li>
+      <li>Many elements contain unique <code>id</code> attributes
+	now.  You can use the <code>name</code> attribute in an
+	<code>&lt;author&gt;</code> element to refer to a publication
+	author by <code>id</code>.
+      </li>
+      <li>You can list projects at a job with the new
+	<code>&lt;projects&gt;</code> element.
       </li>
     </ul>
-
 
     <h2>Release 1.2.4</h2>
 
