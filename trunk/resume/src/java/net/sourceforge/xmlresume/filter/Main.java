@@ -39,7 +39,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class Filter { 
+public class Main { 
 
     /**
      * Run the filter and output the data to an intermediate file.
@@ -94,7 +94,7 @@ public class Filter {
 
 	if (in == null || argv.length < 2 || "-h".equals(argv[0]) || "--help".equals(argv[0])) {
 	    throw new Error("Filter -- preprocess an XMLResume to select for elements in a given target\n" + 
-			       "Usage: java Filter [-v|--verbose] -in <in_file> [-out <out_file>] [target1 [target2 [...]]\n" + 
+			       "Usage: java Main [-v|--verbose] -in <in_file> [-out <out_file>] [target1 [target2 [...]]\n" + 
 			       "If -out <out_file> is not specified, output will be printed on STDOUT.");
 	} else if (!in.canRead()) {
 	    throw new Error("Error: can't open file " + in + " for reading.");
