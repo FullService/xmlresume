@@ -9,6 +9,14 @@
     (structure) of all of the elements that you can use to construct a &resume;.
   </para>
 
+  <para>
+    To get started with creating a &resume;, take a look <xref
+    linkend="getting-started.create"/>, which is a tutorial on creating an XML
+    &resume;. Alternatively, you could examine the content model for the <link
+    linkend="element.resume"><sgmltag class="element">resume</sgmltag></link>
+    element, and drill down from there.
+  </para>
+
   <section><title>Changes to the DTD</title>
 
     <para>
