@@ -24,6 +24,9 @@ $Id$
   <property name="java.src.dir" value="${src.dir}/java"/>
   <property name="www.src.dir" value="${src.dir}/www"/>
 
+  <!-- Where generated test target data should go -->
+  <property name="target.data.dir" value="${java.src.dir}/net/sourceforge/xmlresume/targetdata"/>
+
   <!-- Web server's directory; where to install web-accessible files -->
   <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
 
@@ -287,13 +290,13 @@ $Id$
   </target>
 
   <target name="run.generate"
-    description="Generate the test data"
+    description="Generate the test target data"
     depends="build">
     <java classname="net.sourceforge.xmlresume.ResumeTest"
       fork="yes"
       classpathref="test.classpath">
       <arg value="-generate"/>
-      <arg file="/tmp/testdata"/>
+      <arg file="${target.data.dir}"/>
     </java>
   </target>
 
