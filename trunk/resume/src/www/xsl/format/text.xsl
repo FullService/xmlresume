@@ -347,16 +347,13 @@ In general, each block is responsible for outputting a newline after itself.
           <xsl:with-param name="Text">
             <xsl:for-each select="r:para">
               <xsl:apply-templates/>
-
               <xsl:if test="following-sibling::*">
                 <xsl:value-of select="$description.para.separator"/>
               </xsl:if>
-
             </xsl:for-each>
           </xsl:with-param>
         </xsl:call-template>
       </xsl:when>
-
       <xsl:otherwise> <!-- block -->
         <xsl:apply-templates>
           <xsl:with-param name="Width" select="$Width"/>
@@ -371,13 +368,17 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:if test="r:project">
       <xsl:value-of select="$projects.word"/>
       <xsl:call-template name="NewLine"/>
-
       <xsl:apply-templates select="r:project"/>
     </xsl:if>
   </xsl:template>
 
+  <!-- Format a single project -->
   <xsl:template match="r:project">
     <xsl:variable name="Text">
+      <xsl:if test="@title">
+        <xsl:value-of select="@title"/>
+        <xsl:value-of select="$title.separator"/>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:variable>
     <xsl:call-template name="FormatBulletListItem">
@@ -386,7 +387,6 @@ In general, each block is responsible for outputting a newline after itself.
       </xsl:with-param>
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
     </xsl:call-template>
-
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
@@ -439,7 +439,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:value-of select="$present.word"/>
   </xsl:template>
 
-  <xsl:template match="r:employer | r:jobtitle | r:year | r:month | r:title | r:annotation | r:level">
+  <xsl:template match="r:employer | r:jobtitle | r:year | r:month | r:annotation | r:level">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
@@ -561,7 +561,7 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Indent" select="floor($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
         <xsl:value-of select="$subjects.word"/>
-        <xsl:value-of select="$subjects.title.separator"/>
+        <xsl:value-of select="$title.separator"/>
         <xsl:apply-templates select="r:subject" mode="comma"/>
         <xsl:value-of select="$subjects.suffix"/>
       </xsl:with-param>
@@ -651,7 +651,11 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   <xsl:template match="r:skillarea">
-    <xsl:apply-templates select="r:title"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:title"/>
+      </xsl:with-param>
+    </xsl:call-template>
 
     <xsl:call-template name="Indent">
       <!-- We use ceiling so that the total indent of skills from the margin
@@ -661,14 +665,6 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Length" select="ceiling($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:skillset"/>
-      </xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template match="r:skillarea/r:title">
-    <xsl:call-template name="Heading">
-      <xsl:with-param name="Text">
-        <xsl:apply-templates/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -693,8 +689,9 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Indent" select="floor($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
         <xsl:if test="r:title">
-          <xsl:apply-templates select="r:title"/>
-          <xsl:text>: </xsl:text>
+          <xsl:apply-templates select="r:title">
+	    <xsl:with-param name="Separator" select="$title.separator"/>
+	  </xsl:apply-templates>
         </xsl:if>
 
         <xsl:apply-templates select="r:skill" mode="comma"/>
@@ -866,7 +863,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$interests.word"/>
+          <xsl:with-param name="Title" select="$interests.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -932,7 +929,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$security-clearances.word"/>
+          <xsl:with-param name="Title" select="$security-clearances.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -970,7 +967,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$awards.word"/>
+          <xsl:with-param name="Title" select="$awards.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>

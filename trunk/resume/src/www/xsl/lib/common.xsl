@@ -48,16 +48,24 @@ $Id$
   <!-- Outputs the text to use as a title. -->
   <!-- Uses <title> child element if present, otherwise $Default. -->
   <xsl:template name="Title">
-    <xsl:param name="Default">NO DEFAULT TITLE DEFINED</xsl:param>
-
+    <xsl:param name="Title">NO DEFAULT TITLE DEFINED</xsl:param>
+    <xsl:param name="Separator"></xsl:param>
     <xsl:choose>
       <xsl:when test="r:title">
-        <xsl:apply-templates select="r:title"/>
+        <xsl:value-of select="normalize-space(r:title)"/>
+	<xsl:value-of select="$Separator"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="$Default"/>
+        <xsl:value-of select="$Title"/>
+	<xsl:value-of select="$Separator"/>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="r:title">
+    <xsl:param name="Separator"></xsl:param>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$Separator"/>
   </xsl:template>
 
   <!-- CONTACTS =========================================================== -->

@@ -75,9 +75,9 @@ $Id$
 
   <!-- SEPARATORS AND DELIMITERS (all formats) ============================ -->
 
-  <!-- Separator between skillset title and skills list -->
-  <!-- (applies only when skills.format = comma) -->
-  <xsl:param name="skills.title.separator">: </xsl:param>
+  <!-- Separator between a list title and its list -->
+  <!-- (applies only to comma-separated lists) -->
+  <xsl:param name="title.separator">: </xsl:param>
 
   <!-- Separator between individual skills -->
   <!-- (applies only when skills.format = comma) -->
@@ -102,10 +102,6 @@ $Id$
   <!-- Separator between individual subjects
   (applies only when subjects.format = comma) -->
   <xsl:param name="subjects.separator">, </xsl:param>
-
-  <!-- Separator between the subjects title and the subjects list -->
-  <!-- (applies only when subjects.format = comma) -->
-  <xsl:param name="subjects.title.separator">: </xsl:param>
 
   <!-- Output after the last subject in a list
   (applies only when subjects.format = comma) -->

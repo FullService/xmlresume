@@ -158,7 +158,8 @@ in a future version. -->
 <!ELEMENT to (date | present)>
 <!ELEMENT description (para+)>
 <!ELEMENT projects (project+)>
-<!ELEMENT project (%inlines;)*>
+<!ELEMENT project  (%inlines;)*>
+<!ATTLIST project title CDATA #IMPLIED>
 <!ELEMENT achievements (achievement+)>
 <!ELEMENT achievement (%inlines;)*>
 

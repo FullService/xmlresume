@@ -321,6 +321,7 @@ $Id$
     </xsl:call-template>
     <xsl:apply-templates select="r:job"/>
   </xsl:template>
+
 <!-- Format each job -->
   <xsl:template match="r:job">
     <p class="job">
@@ -351,21 +352,7 @@ $Id$
       </div>
     </xsl:if>
   </xsl:template>
-  <xsl:template match="r:jobtitle">
-    <span class="jobTitle">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-  <xsl:template match="r:employer">
-    <span class="employer">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
-  <xsl:template match="r:organization">
-    <span class="organization">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
+
   <xsl:template match="r:location">
     <span class="location">
       <xsl:value-of select="$location.start"/>
@@ -378,22 +365,57 @@ $Id$
       <xsl:apply-templates/>
     </span>
   </xsl:template>
+
 <!-- Format the projects section as a bullet list -->
   <xsl:template match="r:projects">
     <ul>
-      <xsl:for-each select="r:project">
-        <li class="project">
-          <xsl:apply-templates/>
-        </li>
-      </xsl:for-each>
+      <xsl:apply-templates select="r:project"/>
     </ul>
   </xsl:template>
-  <xsl:template match="r:period"><xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/></xsl:template>
-  <xsl:template match="r:date" name="FormatDate">
-    <xsl:if test="r:dayOfMonth">
-      <xsl:apply-templates select="r:dayOfMonth"/>
-      <xsl:text> </xsl:text>
-    </xsl:if>
+
+<!-- Format a project as a bullet -->
+  <xsl:template match="r:project">
+      <li class="project">
+        <xsl:if test="@title">
+          <span class="projectTitle">
+  	    <xsl:value-of select="@title"/>
+  	    <xsl:value-of select="$title.separator"/>
+          </span>
+	</xsl:if>
+        <xsl:apply-templates/>	
+      </li>
+  </xsl:template>
+
+
+  <xsl:template match="r:jobtitle">
+    <span class="jobTitle">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="r:employer">
+    <span class="employer">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="r:organization">
+    <span class="organization">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+<!-- Format the period element -->
+  <xsl:template match="r:period">
+    <xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/>
+   </xsl:template>
+
+<!-- Format a date -->
+   <xsl:template match="r:date" name="FormatDate">
+     <xsl:if test="r:dayOfMonth">
+       <xsl:apply-templates select="r:dayOfMonth"/>
+       <xsl:text> </xsl:text>
+     </xsl:if>
     <xsl:if test="r:month">
       <xsl:apply-templates select="r:month"/>
       <xsl:text> </xsl:text>
@@ -403,6 +425,7 @@ $Id$
   <xsl:template match="r:present">
     <xsl:value-of select="$present.word"/>
   </xsl:template>
+
 <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="r:achievements">
     <ul>
@@ -413,6 +436,7 @@ $Id$
       </xsl:for-each>
     </ul>
   </xsl:template>
+
 <!-- Degrees and stuff -->
   <xsl:template match="r:academics">
     <xsl:call-template name="Heading">
@@ -508,11 +532,14 @@ $Id$
       </xsl:for-each>
     </table>
   </xsl:template>
+
 <!-- Format the subjects as a list -->
   <xsl:template match="r:subjects" mode="comma">
     <p>
-      <xsl:value-of select="$subjects.word"/>
-      <xsl:value-of select="$subjects.title.separator"/>
+      <xsl:call-template name="Title">
+	<xsl:with-param name="Title" select="$subjects.word"/>
+        <xsl:with-param name="Separator" select="$title.separator"/>
+      </xsl:call-template>
       <xsl:apply-templates select="r:subject" mode="comma"/>
       <xsl:value-of select="$subjects.suffix"/>
     </p>
@@ -548,7 +575,11 @@ $Id$
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
         <p>
-          <xsl:apply-templates select="r:title" mode="comma"/>
+          <span class="skillSetTitle">
+            <xsl:apply-templates select="r:title">
+	      <xsl:with-param name="Separator" select="$title.separator"/>
+	    </xsl:apply-templates>
+	  </span>
           <xsl:if test="r:skill">
             <span class="skills">
               <xsl:apply-templates select="r:skill" mode="comma"/>
@@ -564,7 +595,9 @@ $Id$
         </p>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="r:title" mode="bullet"/>
+	<h3 class="skillsetTitle">
+          <xsl:apply-templates select="r:title"/>
+	</h3>
         <xsl:if test="r:skill">
           <ul class="skills">
             <xsl:apply-templates select="r:skill" mode="bullet"/>
@@ -578,21 +611,6 @@ $Id$
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <!-- Format a skillset title as a comma-separated list -->
-  <xsl:template match="r:skillset/r:title" mode="comma">
-    <span class="skillsetTitle">
-      <xsl:apply-templates/>
-      <xsl:value-of select="$skills.title.separator"/>
-    </span>
-  </xsl:template>
-
-  <!-- Format a skillset title as a bulleted list -->
-  <xsl:template match="r:skillset/r:title" mode="bullet">
-    <h3 class="skillsetTitle">
-      <xsl:apply-templates/>
-    </h3>
   </xsl:template>
 
 <!-- Format a skill as part of a comma-separated list -->
@@ -649,12 +667,16 @@ $Id$
       <xsl:apply-templates select="r:membership"/>
     </ul>
   </xsl:template>
+
 <!-- A single membership. -->
   <xsl:template match="r:membership">
     <li>
       <xsl:if test="r:title">
-        <xsl:apply-templates select="r:title"/>
-        <br/>
+	<div class="membershipTitle">
+          <xsl:call-template name="Title">
+	    <xsl:with-param name="Title" select="r:title"/>
+	  </xsl:call-template>
+	</div>
       </xsl:if>
       <xsl:if test="r:organization">
         <xsl:apply-templates select="r:organization"/>
@@ -670,17 +692,13 @@ $Id$
       </xsl:apply-templates>
     </li>
   </xsl:template>
-  <xsl:template match="r:membership/r:title">
-    <span class="membershipTitle">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
+
 <!-- Format interests section. -->
   <xsl:template match="r:interests">
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$interests.word"/>
+          <xsl:with-param name="Title" select="$interests.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -688,6 +706,7 @@ $Id$
       <xsl:apply-templates select="r:interest"/>
     </ul>
   </xsl:template>
+
 <!-- A single interest. -->
   <xsl:template match="r:interest">
     <li>
@@ -713,7 +732,7 @@ $Id$
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$security-clearances.word"/>
+          <xsl:with-param name="Title" select="$security-clearances.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -746,7 +765,7 @@ $Id$
     <xsl:call-template name="Heading">
       <xsl:with-param name="Text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$awards.word"/>
+          <xsl:with-param name="Title" select="$awards.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>

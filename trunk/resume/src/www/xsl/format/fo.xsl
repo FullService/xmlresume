@@ -448,15 +448,26 @@ $Id$
     </fo:block>
   </xsl:template>
 
-  <!-- Format the projects section as a bullet list -->
+  <!-- Format the projects section -->
   <xsl:template match="r:projects">
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:for-each select="r:project">
-        <xsl:call-template name="bulletListItem"/>
-      </xsl:for-each>
+      <xsl:apply-templates select="r:project"/>
     </fo:list-block>
+  </xsl:template>
+
+  <!-- Format a single project as a bullet -->
+  <xsl:template match="r:project">
+    <xsl:call-template name="bulletListItem">
+      <xsl:with-param name="text">
+        <xsl:if test="@title">
+          <xsl:value-of select="@title"/>
+          <xsl:value-of select="$title.separator"/>
+        </xsl:if>
+	<xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Format the achievements section as a bullet list *SE* -->
@@ -561,14 +572,14 @@ $Id$
   <xsl:template match="r:subjects" mode="comma">
     <fo:inline font-style="{$job-subheading.font.style}">
       <xsl:value-of select="$subjects.word"/>
-      <xsl:value-of select="$subjects.title.separator"/>
+      <xsl:value-of select="$title.separator"/>
     </fo:inline>
     <xsl:apply-templates select="r:subject" mode="comma"/>
     <xsl:value-of select="$subjects.suffix"/>
   </xsl:template>
 
   <xsl:template match="r:subject" mode="comma">
-    <xsl:value-of select="normalize-space(r:title)"/>
+    <xsl:apply-templates select="r:title"/>
     <xsl:if test="$subjects.result.display = 1">
       <xsl:if test="r:result">
         <xsl:value-of select="$subjects.result.start"/>
@@ -585,7 +596,7 @@ $Id$
   <xsl:template match="r:subjects" mode="table">
     <fo:inline font-style="{$job-subheading.font.style}">
       <xsl:value-of select="$subjects.word"/>
-      <xsl:value-of select="$subjects.title.separator"/>
+      <xsl:value-of select="$title.separator"/>
     </fo:inline>
     <fo:list-block
       start-indent="1.5in"
@@ -626,15 +637,25 @@ $Id$
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
         <fo:block space-after="{$half.space}">
-          <xsl:apply-templates select="r:title" mode="comma"/>
+          <fo:inline
+           font-style="{$skillset-title.font.style}"
+           font-weight="{$skillset-title.font.weight}">
+            <xsl:apply-templates select="r:title">
+	      <xsl:with-param name="Separator" select="$title.separator"/>
+	    </xsl:apply-templates>
+          </fo:inline>
           <xsl:apply-templates select="r:skill" mode="comma"/>
           <!-- The following line should be removed in a future version. -->
           <xsl:apply-templates select="r:skills" mode="comma"/>
         </fo:block>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="r:title" mode="bullet"/>
-
+        <fo:block
+         keep-with-next="always"
+         font-style="{$skillset-title.font.style}"
+         font-weight="{$skillset-title.font.weight}">
+          <xsl:apply-templates select="r:title"/>
+        </fo:block>
         <xsl:if test="r:skill">
           <fo:list-block space-after="{$para.break.space}"
             provisional-distance-between-starts="{$para.break.space}"
@@ -654,26 +675,6 @@ $Id$
 
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <!-- Format the title of a set of skills. -->
-  <xsl:template match="r:skillset/r:title" mode="comma">
-    <fo:inline
-        font-style="{$skillset-title.font.style}"
-        font-weight="{$skillset-title.font.weight}">
-      <xsl:apply-templates/>
-      <xsl:value-of select="$skills.title.separator"/>
-    </fo:inline>
-  </xsl:template>
-
-  <!-- Format the title of a set of skills. -->
-  <xsl:template match="r:skillset/r:title" mode="bullet">
-    <fo:block
-        keep-with-next="always"
-        font-style="{$skillset-title.font.style}"
-        font-weight="{$skillset-title.font.weight}">
-      <xsl:apply-templates/>
-    </fo:block>
   </xsl:template>
 
   <!-- Format a single skill as part of a comma-separated list. -->
@@ -778,7 +779,11 @@ $Id$
   <!-- Format membership. -->
   <xsl:template match="r:membership">
     <fo:block space-after="{$half.space}" keep-with-next="always">
-      <xsl:apply-templates select="r:title"/>
+      <fo:block
+       font-weight="{$jobtitle.font.weight}"
+       font-style="{$jobtitle.font.style}">
+        <xsl:apply-templates select="r:title"/>
+      </fo:block>
       <xsl:if test="r:organization">
         <fo:block keep-with-next="always">
           <xsl:apply-templates select="r:organization"/>
@@ -791,17 +796,7 @@ $Id$
         </fo:block>
       </xsl:if>
     </fo:block>
-
     <xsl:apply-templates select="r:description"/>
-
-  </xsl:template>
-
-  <xsl:template match="r:membership/r:title">
-    <fo:block
-        font-weight="{$jobtitle.font.weight}"
-        font-style="{$jobtitle.font.style}">
-      <xsl:apply-templates/>
-    </fo:block>
   </xsl:template>
 
   <!-- Format interests. -->
@@ -810,7 +805,7 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$interests.word"/>
+          <xsl:with-param name="Title" select="$interests.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -874,7 +869,7 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$security-clearances.word"/>
+          <xsl:with-param name="Title" select="$security-clearances.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
@@ -921,7 +916,7 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text">
         <xsl:call-template name="Title">
-          <xsl:with-param name="Default" select="$awards.word"/>
+          <xsl:with-param name="Title" select="$awards.word"/>
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
