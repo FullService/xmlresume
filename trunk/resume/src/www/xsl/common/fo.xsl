@@ -44,6 +44,7 @@ $Id$
   <xsl:include href="params.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
+  <xsl:include href="interests.xsl"/>
 
   <!-- Format the document. -->
   <xsl:template match="/">
@@ -505,6 +506,7 @@ $Id$
 
   <!-- Format a single bullet and its text -->
   <xsl:template name="bulletListItem">
+    <xsl:param name="text"/>
     <fo:list-item>
       <fo:list-item-label start-indent="{$body.indent}"
         end-indent="label-end()">
@@ -512,7 +514,14 @@ $Id$
       </fo:list-item-label>
       <fo:list-item-body start-indent="body-start()">
         <fo:block>
-          <xsl:apply-templates/>
+          <xsl:choose>
+            <xsl:when test="string-length($text) > 0">
+              <xsl:copy-of select="$text"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates/>
+            </xsl:otherwise>
+          </xsl:choose>
         </fo:block>
       </fo:list-item-body>
     </fo:list-item>
@@ -559,7 +568,7 @@ $Id$
   <!-- Format memberships. -->
   <xsl:template match="r:memberships">
     <xsl:call-template name="heading">
-      <xsl:with-param name="text"><xsl:value-of select="title"/></xsl:with-param>
+      <xsl:with-param name="text"><xsl:value-of select="r:title"/></xsl:with-param>
     </xsl:call-template>
     <fo:list-block
         space-after="{$para.break.space}"
@@ -586,6 +595,68 @@ $Id$
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
+  </xsl:template>
+
+  <!-- Format interests. -->
+  <xsl:template match="r:interests">
+    <!-- Heading -->
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text">
+        <xsl:call-template name="InterestsTitle"/>
+      </xsl:with-param>
+    </xsl:call-template>
+
+    <!-- Interests -->
+    <fo:list-block
+        space-after="{$para.break.space}"
+        provisional-distance-between-starts="{$para.break.space}"
+        provisional-label-separation="{$bullet.space}">
+
+      <xsl:apply-templates select="r:interest"/>
+
+    </fo:list-block>
+  </xsl:template>
+
+  <!-- A single interest. -->
+  <xsl:template match="r:interest">
+    <xsl:call-template name="bulletListItem">
+      <xsl:with-param name="text">
+
+        <xsl:apply-templates select="r:title"/>
+
+        <!-- Append period to title if followed by a single-line description -->
+        <xsl:if test="$interest.description.format = 'single-line' and r:description">
+          <xsl:text>. </xsl:text>
+        </xsl:if>
+
+        <xsl:apply-templates select="r:description"/>
+
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!-- Format an interest description -->
+  <xsl:template match="r:interest/r:description">
+    <xsl:choose>  
+
+      <xsl:when test="$interest.description.format = 'single-line'">
+        <xsl:for-each select="r:para">
+          <xsl:apply-templates/>
+          <xsl:if test="following-sibling::*">
+            <xsl:value-of select="$description.para.separator.text"/>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:when>
+
+      <xsl:otherwise> <!-- Block -->
+        <fo:block
+          space-after="{$para.break.space}"
+          provisional-distance-between-starts="5pt">
+          <xsl:apply-templates/>
+        </fo:block>
+      </xsl:otherwise>
+
+    </xsl:choose>
   </xsl:template>
 
   <!-- Format miscellaneous information with "Miscellany" as the heading. -->
