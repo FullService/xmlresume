@@ -42,7 +42,7 @@ $Id$
   <xsl:param name="resume.word">CV</xsl:param>
   <xsl:param name="referees.word">Referees</xsl:param>
 
-  <xsl:param name="academics.word">Education</xsl:param>
+  <xsl:param name="academics.word">Qualifications</xsl:param>
   <xsl:param name="achievements.word">Achievements</xsl:param>
   <xsl:param name="and.word">and</xsl:param>
   <xsl:param name="awards.word">Awards</xsl:param>
@@ -81,6 +81,8 @@ $Id$
   <xsl:param name="publications.word">Publications</xsl:param>
   <xsl:param name="security-clearances.word">Security clearance</xsl:param>
   <xsl:param name="url.word">Website</xsl:param>
+  <xsl:param name="training.word">Training</xsl:param>
+  <xsl:param name="certification.word">Certifying Body</xsl:param>
 
   <!-- Format for address; available values are: -->
   <!-- 'standard' for US/Canadian/UK style addresses -->
