@@ -34,7 +34,7 @@ $Id$
 <xsl:stylesheet xmlns:r="http://xmlresume.sourceforge.net/resume/0.0" 
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0" 
  exclude-result-prefixes="r">
-  <xsl:output method="xml" omit-xml-declaration="yes" indent="no" encoding="UTF-8" 
+  <xsl:output method="html" omit-xml-declaration="yes" indent="no" encoding="UTF-8" 
    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" 
    doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"/>
    
@@ -53,11 +53,6 @@ $Id$
   <xsl:template match="/">
     <html>
       <head>
-<!-- The XSLT Recommendation specifies that the XSLT processor should
-        output this meta tag when in HTML output mode. However, Xalan is too
-        stupid to do that, so we work around it. This results in double meta
-        tags when using a more compliant processor, like Saxon. -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>
           <xsl:apply-templates select="r:resume/r:header/r:name"/>
           <xsl:text> - </xsl:text>
