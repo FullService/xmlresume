@@ -27,7 +27,7 @@ Online R&eacute;sum&eacute; Converter (ORC)
     <input type="file" name="resume" size="50"/>
 
     </br><br/>
-    <p>Your Email Address (used to email output):</p>
+    <p>Your Email Address (used to notify you of a successful build):</p>
     <input type="text" name="email" size="50" maxlength="255"/>
 
     <h2>R&eacute;sum&eacute; Output Options</h2>
