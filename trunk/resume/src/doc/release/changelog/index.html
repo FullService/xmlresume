@@ -17,7 +17,30 @@
       <a href="../news/index.html">news</a>.
     </p>
 
-<pre>2002-01-18  Sean Kelly  
+<pre>2002-02-16  Sean Kelly  
+
+	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Bump version # to 1.3.2 and update news file with notes about what's
+	been fixed: punctuation and spacing in academic degrees and widening
+	FO subject list.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl: Fix: 513515
+
+	Make degree column a bit wider.  Column size seems to work
+	logarithmically---FOP bug or that's how FO is supposed to work?
+	Investigate later.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl:
+	Fix: 509432
+
+	Format academic degrees with correct punctuation and without running
+	annotations directly into their text.
+
+2002-01-18  Sean Kelly  
+
+	* /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html:
+	Really update the changelog.  (I shouldn't have had two martinis
+	before doing this. :-)
 
 	* /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html:
 	Add news items about &lt;div class="description"&gt;...
