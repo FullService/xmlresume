@@ -2,7 +2,7 @@
 #
 # Makefile for resumes
 #
-# Copyright (c) 2000-2001 Sean Kelly
+# Copyright (c) 2000-2002 Sean Kelly
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
