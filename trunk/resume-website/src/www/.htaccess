@@ -1,0 +1,7 @@
+<FilesMatch "\.html$">
+  # PHP would normally interpret the <?xml version...?> PI as (invalid) PHP
+  # code. This forces the use of <?php... instead of just <?..., thereby
+  # avoiding that problem.
+  php_flag short_open_tag Off
+  ForceType application/x-httpd-php
+</FilesMatch>
