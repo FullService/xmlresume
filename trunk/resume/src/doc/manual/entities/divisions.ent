@@ -37,6 +37,11 @@ etc.). The only place these entities should be referenced is manual.xml. -->
 <!ENTITY cssref SYSTEM "../en/cssref/chapter.xml">
 
 <!-- ====================================================================== -->
+<!-- GNU FDL Appendix -->
+<!-- ====================================================================== -->
+<!ENTITY gfdl SYSTEM "../en/appendices/gfdl.xml">
+
+<!-- ====================================================================== -->
 <!-- Glossary -->
 <!-- ====================================================================== -->
 <!ENTITY glossary SYSTEM "../en/glossary.xml">
