@@ -470,10 +470,12 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:level"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="$in.word"/>
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="r:major"/>
+        <xsl:if test="r:major">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$in.word"/>
+          <xsl:text> </xsl:text>
+          <xsl:apply-templates select="r:major"/>
+        </xsl:if>
         <xsl:apply-templates select="r:minor"/>
         <xsl:if test="r:date|r:period">     
           <xsl:text>, </xsl:text>

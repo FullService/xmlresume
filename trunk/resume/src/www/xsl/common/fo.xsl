@@ -490,9 +490,12 @@ $Id$
             font-style="{$degree.font.style}"
             font-weight="{$degree.font.weight}">
           <xsl:apply-templates select="r:level"/>
-          <xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
-          <xsl:text> </xsl:text>
-          <xsl:apply-templates select="r:major"/>
+          <xsl:if test="r:major">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="$in.word"/>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates select="r:major"/>
+          </xsl:if>
         </fo:inline>
         <xsl:apply-templates select="r:minor"/>
         <xsl:if test="r:date|r:period">

@@ -38,7 +38,7 @@ $Id$
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:output method="xml" omit-xml-declaration="yes" indent="yes"
+  <xsl:output method="xml" omit-xml-declaration="yes" indent="no"
     encoding="UTF-8"
     doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
     doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"
@@ -406,13 +406,13 @@ $Id$
   <xsl:template match="r:degree">
     <li class="degree">
       <span class="degreeTitle">
-        <acronym class="level">
-          <xsl:apply-templates select="r:level"/>
-        </acronym>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="$in.word"/>
-        <xsl:text> </xsl:text>
-        <xsl:apply-templates select="r:major"/>
+        <xsl:apply-templates select="r:level"/>
+        <xsl:if test="r:major">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$in.word"/>
+          <xsl:text> </xsl:text>
+          <xsl:apply-templates select="r:major"/>
+        </xsl:if>
       </span>
       <xsl:apply-templates select="r:minor"/>
       <xsl:if test="r:date|r:period">
