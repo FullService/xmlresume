@@ -938,6 +938,19 @@ In general, each block is responsible for outputting a newline after itself.
     <!-- Your name, address, and stuff. -->
     <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
 
+    <xsl:if test="r:title or r:organization">
+      <xsl:call-template name="Wrap">
+        <xsl:with-param name="Text">
+          <xsl:apply-templates select="r:title"/>
+          <xsl:if test="r:title and r:organization">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+          <xsl:apply-templates select="r:organization"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
+
     <xsl:apply-templates select="r:address"/>
     <xsl:apply-templates select="r:contact"/>
 

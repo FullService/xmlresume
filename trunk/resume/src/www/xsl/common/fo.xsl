@@ -866,6 +866,15 @@ $Id$
       <fo:block keep-with-next="always" font-style="italic">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
+
+      <fo:block>
+        <xsl:apply-templates select="r:title"/>
+        <xsl:if test="r:title and r:organization">
+          <xsl:text>, </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="r:organization"/>
+      </fo:block>
+
       <xsl:apply-templates select="r:address"/>
       <xsl:apply-templates select="r:contact"/>
     </fo:block>

@@ -34,13 +34,15 @@
         </varlistentry>
         <varlistentry>
           <term><sgmltag class="element">membership</sgmltag></term>
+          <term><sgmltag class="element">referee</sgmltag></term>
           <listitem>
             <para>
-              When contained in this element, <sgmltag
+              When contained in these elements, <sgmltag
               class="element">title</sgmltag> contains the name of the
               person's role or capacity withing an organization. Examples:
               <quote>Treasurer</quote>, <quote>Member</quote>, <quote>Chief
-              Officer of Toothpaste Policy</quote>.
+              Officer of Toothpaste Policy</quote>, <quote>Lead
+              Programmer</quote>.
             </para>
           </listitem>
         </varlistentry>

@@ -697,6 +697,17 @@ $Id$
 
   <xsl:template match="r:referee">
     <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
+
+    <xsl:if test="r:title or r:organization">
+      <p>
+        <xsl:apply-templates select="r:title"/>
+        <xsl:if test="r:title and r:organization">
+          <xsl:text>, </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="r:organization"/>
+      </p>
+    </xsl:if>
+
     <p>
       <xsl:apply-templates select="r:address"/>
       <xsl:apply-templates select="r:contact"/>
