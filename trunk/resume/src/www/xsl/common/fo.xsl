@@ -45,6 +45,7 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="deprecated.xsl"/>
 
   <!-- Format the document. -->
   <xsl:template match="/">
@@ -445,11 +446,6 @@ $Id$
     </fo:list-block>
   </xsl:template>
 
-  <!-- Format a skill area's title and the skillsets underneath it. -->
-  <xsl:template match="r:skillareas">
-    <xsl:apply-templates select="r:skillarea"/>
-  </xsl:template>
-
   <xsl:template match="r:skillarea">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="r:title"/></xsl:with-param>
@@ -457,52 +453,68 @@ $Id$
     <xsl:apply-templates select="r:skillset"/>
   </xsl:template>
 
-  <!-- Format a skillset's title (if any) and then the skils underneath it. -->
+  <!-- Format a skillset's title (if any) and then the skills underneath it. -->
   <xsl:template match="r:skillset">
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
-        <fo:block
-            space-after="{$half.space}">
-        <xsl:apply-templates select="r:title" mode="comma"/>
-        <xsl:apply-templates select="r:skills" mode="comma"/>
+        <fo:block space-after="{$half.space}">
+          <xsl:apply-templates select="r:title" mode="comma"/>
+          <xsl:apply-templates select="r:skill" mode="comma"/>
+          <!-- The following line should be removed in a future version. -->
+          <xsl:apply-templates select="r:skills" mode="comma"/>
         </fo:block>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates select="r:title" mode="bullet"/>
-        <xsl:apply-templates select="r:skills" mode="bullet"/>
+
+        <xsl:if test="r:skill">
+          <fo:list-block space-after="{$para.break.space}"
+            provisional-distance-between-starts="{$para.break.space}"
+            provisional-label-separation="{$bullet.space}">
+            <xsl:apply-templates select="r:skill" mode="bullet"/>
+          </fo:list-block>
+        </xsl:if>
+
+        <!-- The following block should be removed in a future version. -->
+        <xsl:if test="r:skills">
+          <fo:list-block space-after="{$para.break.space}"
+            provisional-distance-between-starts="{$para.break.space}"
+            provisional-label-separation="{$bullet.space}">
+            <xsl:apply-templates select="r:skills" mode="bullet"/>
+          </fo:list-block>
+        </xsl:if>
+
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
+  <!-- Format the title of a set of skills in italics. -->
   <xsl:template match="r:skillset/r:title" mode="comma">
     <fo:inline font-style="italic">
-      <xsl:value-of select="."/><xsl:text>: </xsl:text>
+      <xsl:apply-templates/><xsl:text>: </xsl:text>
     </fo:inline>
-  </xsl:template>
-
-  <!-- Format skills as a comma separated list. -->
-  <xsl:template match="r:skills" mode="comma">
-    <xsl:for-each select="r:skill[position() != last()]">
-      <xsl:apply-templates/><xsl:text>, </xsl:text>
-    </xsl:for-each>
-    <xsl:apply-templates select="r:skill[position() = last()]"/>
   </xsl:template>
 
   <!-- Format the title of a set of skills in italics. -->
   <xsl:template match="r:skillset/r:title" mode="bullet">
     <fo:block keep-with-next="always" font-style="italic">
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
 
-  <!-- Format skills as a bullet list. -->
-  <xsl:template match="r:skills" mode="bullet">
-    <fo:list-block space-after="{$para.break.space}"
-      provisional-distance-between-starts="{$para.break.space}"
-      provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="r:skill" mode="bullet"/>
-    </fo:list-block>
+  <!-- Format a single skill as part of a comma-separated list. -->
+  <xsl:template match="r:skill" mode="comma">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::r:skill">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
   </xsl:template>
+
+  <!-- Format a single skill as a bullet item. -->
+  <xsl:template match="r:skill" mode="bullet">
+    <xsl:call-template name="bulletListItem"/>
+  </xsl:template>
+
 
   <!-- Format a single bullet and its text -->
   <xsl:template name="bulletListItem">
@@ -525,11 +537,6 @@ $Id$
         </fo:block>
       </fo:list-item-body>
     </fo:list-item>
-  </xsl:template>
-
-  <!-- Format a single skill as a bullet item. -->
-  <xsl:template match="r:skill" mode="bullet">
-    <xsl:call-template name="bulletListItem"/>
   </xsl:template>
 
   <!-- Format the publications section. -->

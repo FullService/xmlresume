@@ -5,6 +5,7 @@
   <refnamediv>
     <refname>skills</refname>
     <refpurpose>Group of one or more skills</refpurpose>
+    <refclass>Deprecated</refclass>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -17,6 +18,22 @@
   </refsynopsisdiv>
 
   <refsect1><title>Description</title>
+    <important>
+      <para>
+        This element is deprecated as of &library.name; version 1.3.4. It should
+        not be used.
+      </para>
+      <para>
+        <link linkend="element.skill"><sgmltag
+        class="element">skill</sgmltag></link> elements are now allowed as
+        direct children of <sgmltag class="element">skillset</sgmltag>, so
+        <sgmltag class="element">skills</sgmltag> is no longer necessary.
+        <sgmltag class="element">skills</sgmltag> is still allowed in this
+        release of &library.name;, but may be removed in future versions. It is
+        recommended that you remove all <sgmltag
+        class="element">skills</sgmltag> elements from XML &resume;s.
+      </para>
+    </important>
     <para>
       The <sgmltag class="element">skills</sgmltag> element contains one or
       more (usually related) skills.

@@ -170,19 +170,15 @@
   <title>Computer Skills</title>
   <skillset>
     <title>Word Processing</title>
-    <skills>
-      <skill>Microsoft Word</skill>
-      <skill>Corel WordPerfect</skill>
-    </skills>
+    <skill>Microsoft Word</skill>
+    <skill>Corel WordPerfect</skill>
   </skillset>
   <skillset>
     <title>Programming</title>
-    <skills>
-      <skill>Perl</skill>
-      <skill>Python</skill>
-      <skill>XML</skill>
-      <skill>C++</skill>
-    </skills>
+    <skill>Perl</skill>
+    <skill>Python</skill>
+    <skill>XML</skill>
+    <skill>C++</skill>
   </skillset>
 </skillarea>
       ]]></programlisting>

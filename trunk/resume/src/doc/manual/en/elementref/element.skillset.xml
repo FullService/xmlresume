@@ -72,12 +72,10 @@
     <informalexample><programlisting><![CDATA[
 <skillset>
   <title>Eating Utinsels</title>
-  <skills>
-    <skill>Knife</skill>
-    <skill>Fork</skill>
-    <skill>Spoon</skill>
-    <skill>Soup Spoon</skill>
-  </skills>
+  <skill>Knife</skill>
+  <skill>Fork</skill>
+  <skill>Spoon</skill>
+  <skill>Soup Spoon</skill>
 </skillset>
     ]]></programlisting></informalexample>
 

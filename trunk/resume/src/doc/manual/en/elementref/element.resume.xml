@@ -84,79 +84,63 @@
     for the Ministry of Magic.</para>
   </objective>
 
-  <skillareas>
-    <skillarea>
-      <title>Magical Skills</title>
-      <skillset>
-        <title>Charms</title>
-        <skills>
-          <skill>Levitation</skill>
-          <skill>Cheering</skill>
-          <skill>Summoning</skill>
-          <skill>Banishing</skill>
-        </skills>
-      </skillset>
-      <skillset>
-        <title>Spells and Curses</title>
-        <skills>
-          <skill>Unlocking Spell</skill>
-          <skill>Patronus Spell</skill>
-          <skill>Stunning Spell</skill>
-          <skill>Disarming Spell</skill>
-          <skill>Reductor Curse</skill>
-          <skill>Impediment Curse</skill>
-          <skill>Imperious Curse Evasion</skill>
-        </skills>
-      </skillset>
-      <skillset>
-        <title>Potions</title>
-        <skills>
-          <skill>Polyjuice</skill>
-          <skill>Enlarging</skill>
-          <skill>Antidotes</skill>
-        </skills>
-      </skillset>
-      <skillset>
-        <title>Flying</title>
-        <skills>
-          <skill>High-speed</skill>
-          <skill>Wronski Feint</skill>
-          <skill>Steep dives</skill>
-          <skill>Bludger Evasion</skill>
-          <skill>No-hands</skill>
-          <skill>High-altitude</skill>
-        </skills>
-      </skillset>
-      <skillset>
-        <title>Languages</title>
-        <skills>
-          <skill>English</skill>
-          <skill>Parsel Tounge</skill>
-          <skill>Troll (point and grunt)</skill>
-        </skills>
-      </skillset>
-    </skillarea>
-    <skillarea>
-      <title>Muggle Skills</title>
-      <skillset>
-        <title>Daily Life</title>
-        <skills>
-          <skill>Telephone</skill>
-          <skill>Mailbox</skill>
-          <skill>Riding in cars</skill>
-          <skill>Electric lights</skill>
-          <skill>Hammering</skill>
-        </skills>
-      </skillset>
-      <skillset>
-        <title>Camping</title>
-        <skills>
-          <skill>Setting up tents</skill>
-          <skill>Lighting Matches</skill>
-        </skills>
-      </skillset>
-    </skillarea>
-  </skillareas>
+  <skillarea>
+    <title>Magical Skills</title>
+    <skillset>
+      <title>Charms</title>
+      <skill>Levitation</skill>
+      <skill>Cheering</skill>
+      <skill>Summoning</skill>
+      <skill>Banishing</skill>
+    </skillset>
+    <skillset>
+      <title>Spells and Curses</title>
+      <skill>Unlocking Spell</skill>
+      <skill>Patronus Spell</skill>
+      <skill>Stunning Spell</skill>
+      <skill>Disarming Spell</skill>
+      <skill>Reductor Curse</skill>
+      <skill>Impediment Curse</skill>
+      <skill>Imperious Curse Evasion</skill>
+    </skillset>
+    <skillset>
+      <title>Potions</title>
+      <skill>Polyjuice</skill>
+      <skill>Enlarging</skill>
+      <skill>Antidotes</skill>
+    </skillset>
+    <skillset>
+      <title>Flying</title>
+      <skill>High-speed</skill>
+      <skill>Wronski Feint</skill>
+      <skill>Steep dives</skill>
+      <skill>Bludger Evasion</skill>
+      <skill>No-hands</skill>
+      <skill>High-altitude</skill>
+    </skillset>
+    <skillset>
+      <title>Languages</title>
+      <skill>English</skill>
+      <skill>Parsel Tounge</skill>
+      <skill>Troll (point and grunt)</skill>
+    </skillset>
+  </skillarea>
+  <skillarea>
+    <title>Muggle Skills</title>
+    <skillset>
+      <title>Daily Life</title>
+      <skill>Telephone</skill>
+      <skill>Mailbox</skill>
+      <skill>Riding in cars</skill>
+      <skill>Electric lights</skill>
+      <skill>Hammering</skill>
+    </skillset>
+    <skillset>
+      <title>Camping</title>
+      <skill>Setting up tents</skill>
+      <skill>Lighting Matches</skill>
+    </skillset>
+  </skillarea>
 
   <history>
     <job>

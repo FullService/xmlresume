@@ -60,12 +60,16 @@
   <refsect1><title>Examples</title>
 
     <informalexample><programlisting><![CDATA[
-<skills>
-  <skill>Singing</skill>
-  <skill>Cooking</skill>
-  <skill>Eating</skill>
-  <skill>Throwing large objects</skill>
-</skills>
+<skill>Singing</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill>Cooking</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill>Eating</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill>Throwing large objects</skill>
     ]]></programlisting></informalexample>
 
   </refsect1>

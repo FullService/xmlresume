@@ -45,6 +45,7 @@ $Id$
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
+  <xsl:include href="deprecated.xsl"/>
   <xsl:include href="string.xsl"/>
 
   <xsl:template match="/">
@@ -351,7 +352,7 @@ $Id$
   <xsl:template match="r:projects">
     <ul>
       <xsl:for-each select="r:project">
-        <li class="skill">
+        <li class="project">
           <xsl:apply-templates/>
         </li>
       </xsl:for-each>
@@ -374,7 +375,7 @@ $Id$
   <xsl:template match="r:achievements">
     <ul>
       <xsl:for-each select="r:achievement">
-        <li class="skill">
+        <li class="achievement">
           <xsl:apply-templates/>
         </li>
       </xsl:for-each>
@@ -448,12 +449,8 @@ $Id$
 
   <!-- Format the open-ended skills -->
 
-  <xsl:template match="r:skillareas">
-    <xsl:apply-templates select="r:skillarea"/>
-  </xsl:template>
-
   <xsl:template match="r:skillarea">
-    <h2 class="skillareaHeading"><xsl:value-of select="r:title"/></h2>
+    <h2 class="skillareaHeading"><xsl:apply-templates select="r:title"/></h2>
     <xsl:apply-templates select="r:skillset"/>
   </xsl:template>
 
@@ -461,47 +458,62 @@ $Id$
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
 	<p>
-        <xsl:apply-templates select="r:title" mode="comma"/>
-        <xsl:apply-templates select="r:skills" mode="comma"/>
+          <xsl:apply-templates select="r:title" mode="comma"/>
+
+          <xsl:if test="r:skill">
+            <span class="skills">
+              <xsl:apply-templates select="r:skill" mode="comma"/>
+            </span>
+          </xsl:if>
+          <!-- The following block should be removed in a future version. -->
+          <xsl:if test="r:skills">
+            <span class="skills">
+              <xsl:apply-templates select="r:skills" mode="comma"/>
+            </span>
+          </xsl:if>
 	</p>
       </xsl:when>
       <xsl:otherwise>
         <xsl:apply-templates select="r:title" mode="bullet"/>
-        <xsl:apply-templates select="r:skills" mode="bullet"/>
+
+        <xsl:if test="r:skill">
+          <ul class="skills">
+            <xsl:apply-templates select="r:skill" mode="bullet"/>
+          </ul>
+        </xsl:if>
+        <!-- The following block should be removed in a future version. -->
+        <xsl:if test="r:skills">
+          <ul class="skills">
+            <xsl:apply-templates select="r:skills" mode="bullet"/>
+          </ul>
+        </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template match="r:skillset/r:title" mode="comma">
     <span class="skillsetTitle">
-      <xsl:value-of select="."/><xsl:text>: </xsl:text>
+      <xsl:apply-templates/><xsl:text>: </xsl:text>
     </span>
   </xsl:template>
 
   <xsl:template match="r:skillset/r:title" mode="bullet">
-    <h3 class="skillsetTitle"><xsl:value-of select="."/></h3>
+    <h3 class="skillsetTitle"><xsl:apply-templates/></h3>
   </xsl:template>
 
-
-	<!-- format as a comma-separated list -->
-  <xsl:template match="r:skills" mode="comma">
-    <span class="skills">
-      <xsl:for-each select="r:skill[position() != last()]">
-        <xsl:apply-templates/><xsl:text>, </xsl:text>
-      </xsl:for-each>
-      <xsl:apply-templates select="r:skill[position() = last()]"/>
-    </span>
+  <!-- Format a skill as part of a comma-separated list -->
+  <xsl:template match="r:skill" mode="comma">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::r:skill">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
   </xsl:template>
 
-        <!-- format as a bullet list -->
-  <xsl:template match="r:skills" mode="bullet">
-     <ul class="skills">
-     <xsl:for-each select="r:skill">
-        <li class="skill">
-          <xsl:apply-templates/>
-        </li>
-      </xsl:for-each>
-    </ul>
+  <!-- Format a skill as part of a bulleted list -->
+  <xsl:template match="r:skill" mode="bullet">
+    <li class="skill">
+      <xsl:apply-templates/>
+    </li>
   </xsl:template>
 
 

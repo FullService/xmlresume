@@ -50,9 +50,10 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:include href="params.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pubs.xsl"/>
+  <xsl:include href="interests.xsl"/>
+  <xsl:include href="deprecated.xsl"/>
   <xsl:include href="string.xsl"/>
   <xsl:include href="textlayout.xsl"/>
-  <xsl:include href="interests.xsl"/>
 
   <xsl:template match="/">
     <xsl:apply-templates select="r:resume"/>
@@ -439,7 +440,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <xsl:template match="r:year | r:month | r:title | r:skill | r:annotation">
+  <xsl:template match="r:year | r:month | r:title | r:annotation">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
@@ -570,7 +571,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates select="r:title"/>
 
     <xsl:call-template name="Indent">
-      <xsl:with-param name="Length" select="2"/>
+      <xsl:with-param name="Length" select="floor($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:skillset"/>
       </xsl:with-param>
@@ -599,20 +600,19 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- format a skillset as comma-separated lists.  Need to use -->
   <!-- Wrap so long lists wrap onto multiple lines.  -->
   <xsl:template match="r:skillset" mode="comma">
-    <xsl:call-template name="Indent">
-      <xsl:with-param name="Length" select="2"/>
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Width"
+        select="$text.width - floor($text.indent.width div 2)"/>
+      <xsl:with-param name="Indent" select="floor($text.indent.width div 2)"/>
       <xsl:with-param name="Text">
-        <xsl:call-template name="Wrap">
-          <xsl:with-param name="Text">
-            <xsl:if test="r:title">
-              <xsl:apply-templates select="r:title"/>
-              <xsl:text>: </xsl:text>
-            </xsl:if>
+        <xsl:if test="r:title">
+          <xsl:apply-templates select="r:title"/>
+          <xsl:text>: </xsl:text>
+        </xsl:if>
 
-            <xsl:apply-templates select="r:skills" mode="comma"/>
-          </xsl:with-param>
-          <xsl:with-param name="Width" select="72"/>
-        </xsl:call-template>
+        <xsl:apply-templates select="r:skill" mode="comma"/>
+        <!-- The following line should be removed in a future version. -->
+        <xsl:apply-templates select="r:skills" mode="comma"/>
       </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
@@ -630,6 +630,8 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
+        <xsl:apply-templates select="r:skill" mode="bullet"/>
+        <!-- The following line should be removed in a future version. -->
         <xsl:apply-templates select="r:skills" mode="bullet"/>
       </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
@@ -640,15 +642,15 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:if>
   </xsl:template>
 
-  <!-- format skills as a comma-separated list -->
-  <xsl:template match="r:skills" mode="comma">
-    <xsl:for-each select="r:skill[position() != last()]">
-      <xsl:apply-templates select="."/><xsl:text>, </xsl:text>
-    </xsl:for-each>
-    <xsl:apply-templates select="r:skill[position() = last()]"/>
+  <!-- Format individual skill as part of a comma-separated list -->
+  <xsl:template match="r:skill" mode="comma">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::r:skill">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
   </xsl:template>
 
-  <!-- Format individual skill as a bullet list -->
+  <!-- Format individual skill as a bullet item -->
   <xsl:template match="r:skill" mode="bullet">
     <xsl:variable name="Text">
       <xsl:apply-templates/>
@@ -825,20 +827,25 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Format the legalese -->
   <xsl:template match="r:copyright">
-      <xsl:value-of select="$copyright.word"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="r:year"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="$by.word"/>
-      <xsl:text> </xsl:text>
-      <xsl:if test="r:name">
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$copyright.word"/>
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="r:year"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$by.word"/>
+        <xsl:text> </xsl:text>
         <xsl:apply-templates select="r:name"/>
-      </xsl:if>
-      <xsl:if test="not(r:name)">
-        <xsl:apply-templates select="/r:resume/r:header/r:name"/>
-      </xsl:if>
-      <xsl:text>. </xsl:text>
-      <xsl:value-of select="r:legalnotice"/>
+        <xsl:if test="not(r:name)">
+          <xsl:apply-templates select="/r:resume/r:header/r:name"/>
+        </xsl:if>
+        <xsl:text>. </xsl:text>
+        <xsl:apply-templates select="r:legalnotice"/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="r:name">

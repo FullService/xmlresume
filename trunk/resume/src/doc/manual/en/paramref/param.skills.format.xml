@@ -31,12 +31,10 @@
   <title>Technical Skills</title>
   <skillset>
     <title>Programming Languages</title>
-    <skills>
-      <skill>Java</skill>
-      <skill>C++</skill>
-      <skill>C</skill>
-      <skill>perl</skill>
-    </skills>
+    <skill>Java</skill>
+    <skill>C++</skill>
+    <skill>C</skill>
+    <skill>perl</skill>
   </skillset>
 </skillarea>
       ]]></programlisting></informalexample>

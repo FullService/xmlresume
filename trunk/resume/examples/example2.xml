@@ -54,49 +54,41 @@ CUBA
     </para>
   </objective>
 
-  <skillareas>
-    <skillarea>
-      <title>Cooking Skills</title>
-      <skillset>
-	<title>General Experience</title>
-	<skills>
-	  <skill>Gastronomy</skill>
-	  <skill>Culinary math</skill>
-	  <skill>Nutrition</skill>
-	  <skill>Sanitation</skill>
-	  <skill>Culinary French</skill>
-	  <skill>Meat identification</skill>
-	  <skill>Wines</skill>
-	  <skill>Restaurant Law</skill>
-	  <skill><citation>Brodeger's Sanitation</citation> science background</skill>
-	</skills>
-      </skillset>
-      <skillset>
-	<title>Culinary Skills</title>
-	<skills>
-	  <skill>Braise</skill>
-	  <skill>Saut&eacute;</skill>
-	  <skill>Fry</skill>
-	  <skill>Bake</skill>
-	  <skill>Stocks</skill>
-	  <skill>Reductions</skill>
-	  <skill>Sauces</skill>
-	</skills>
-      </skillset>
-      <skillset>
-	<title>Cuisines</title>
-	<skills>
-	  <skill>Seafood</skill>
-	  <skill>American Regional</skill>
-	  <skill>Asian</skill>
-	  <skill>Charcuterie</skill>
-	  <skill>Garde Manger</skill>
-	  <skill>P&acirc;tisserie</skill>
-	  <skill>Modern French</skill>
-	</skills>
-      </skillset>
-    </skillarea>
-  </skillareas>
+  <skillarea>
+    <title>Cooking Skills</title>
+    <skillset>
+      <title>General Experience</title>
+      <skill>Gastronomy</skill>
+      <skill>Culinary math</skill>
+      <skill>Nutrition</skill>
+      <skill>Sanitation</skill>
+      <skill>Culinary French</skill>
+      <skill>Meat identification</skill>
+      <skill>Wines</skill>
+      <skill>Restaurant Law</skill>
+      <skill><citation>Brodeger's Sanitation</citation> science background</skill>
+    </skillset>
+    <skillset>
+      <title>Culinary Skills</title>
+      <skill>Braise</skill>
+      <skill>Saut&eacute;</skill>
+      <skill>Fry</skill>
+      <skill>Bake</skill>
+      <skill>Stocks</skill>
+      <skill>Reductions</skill>
+      <skill>Sauces</skill>
+    </skillset>
+    <skillset>
+      <title>Cuisines</title>
+      <skill>Seafood</skill>
+      <skill>American Regional</skill>
+      <skill>Asian</skill>
+      <skill>Charcuterie</skill>
+      <skill>Garde Manger</skill>
+      <skill>P&acirc;tisserie</skill>
+      <skill>Modern French</skill>
+    </skillset>
+  </skillarea>
 
   <history>
     <job>

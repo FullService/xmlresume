@@ -94,18 +94,14 @@
 
   <skillset>
     <title>Computers</title>
-    <skills>
-      <skill>Typing (<emphasis>150 WPM!!</emphasis>)</skill>
-      <skill>Dropping little food crumbs in keyboards</skill>
-    </skills>
+    <skill>Typing (<emphasis>150 WPM!!</emphasis>)</skill>
+    <skill>Dropping little food crumbs in keyboards</skill>
   </skillset>
 
   <skillset>
     <title>Writing</title>
-    <skills>
-      <skill>Editing</skill>
-      <skill>Cursive</skill>
-    </skills>
+    <skill>Editing</skill>
+    <skill>Cursive</skill>
   </skillset>
 </skillarea>
       ]]></programlisting>
@@ -121,30 +117,24 @@
 
   <skillset>
     <title>Investing</title>
-    <skills>
-      <skill>Stocks</skill>
-      <skill>Bonds</skill>
-      <skill>Money market accounts</skill>
-      <skill>Retirement accounts</skill>
-    </skills>
+    <skill>Stocks</skill>
+    <skill>Bonds</skill>
+    <skill>Money market accounts</skill>
+    <skill>Retirement accounts</skill>
   </skillset>
 
   <skillset>
     <title>Bookkeeping</title>
-    <skills>
-      <skill>Amortization</skill>
-      <skill>Loan schedules</skill>
-      <skill>Book balancing</skill>
-    </skills>
+    <skill>Amortization</skill>
+    <skill>Loan schedules</skill>
+    <skill>Book balancing</skill>
   </skillset>
 
   <skillset>
     <title>Advising</title>
-    <skills>
-      <skill>Retirement investment</skill>
-      <skill>College investment</skill>
-      <skill>Philanthropy</skill>
-    </skills>
+    <skill>Retirement investment</skill>
+    <skill>College investment</skill>
+    <skill>Philanthropy</skill>
   </skillset>
 </skillarea>
       ]]></programlisting>

@@ -125,19 +125,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </degrees>
   </academics>
 
-  <skillareas>
-    <skillarea>
-      <title>Special Skills</title>
-      <skillset>
-	<skills>
-	  <skill>Speak multiple European languages with no discernable
-	    accent
-	  </skill>
-	  <skill>Able to predict earthquakes</skill>
-	</skills>
-      </skillset>
-    </skillarea>
-  </skillareas>
+  <skillarea>
+    <title>Special Skills</title>
+    <skillset>
+      <skill>Speak multiple European languages with no discernable
+        accent
+      </skill>
+      <skill>Able to predict earthquakes</skill>
+    </skillset>
+  </skillarea>
 
   <copyright>
     <year>2009</year>
