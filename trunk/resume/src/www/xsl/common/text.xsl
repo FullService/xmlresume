@@ -786,31 +786,29 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- A single interest. -->
   <xsl:template match="r:interest">
+    <xsl:variable name="Description">
+      <xsl:apply-templates select="r:description"/>
+    </xsl:variable>
+
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:title"/>
 
-        <xsl:variable name="Description">
-          <xsl:apply-templates select="r:description"/>
-        </xsl:variable>
-
         <xsl:if test="r:description">
+
           <xsl:choose>
+
             <xsl:when test="$interest.description.format = 'single-line'">
               <xsl:text>. </xsl:text>
-              <!-- We need to normalize this space because FormatBulletListItem
-              leaves newlines intact, and single-line-formatted descriptions are
-              already Wrap-ed (and thus contain newlines). Since we output the
-              title before the description, the first line is too long, and so
-              gets wrapped. However, the second line is also too long.
-              -->
               <xsl:value-of select="normalize-space($Description)"/>
             </xsl:when>
+
             <xsl:otherwise>
               <xsl:call-template name="NewLine"/>
               <xsl:value-of select="$Description"/>
             </xsl:otherwise>
+
           </xsl:choose>
         </xsl:if>
 
