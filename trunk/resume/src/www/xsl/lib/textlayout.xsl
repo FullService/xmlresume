@@ -150,7 +150,7 @@ $Id$
     <xsl:call-template name="Wrap">
       <xsl:with-param name="Text">
         <xsl:value-of select="$text.bullet.prefix"/>
-        <xsl:value-of select="$Text"/>
+        <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
       <xsl:with-param name="Width" select="$Width"/>
       <xsl:with-param name="FirstIndent" select="0"/>

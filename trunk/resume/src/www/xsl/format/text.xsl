@@ -878,41 +878,29 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- A single interest. -->
   <xsl:template match="r:interest">
-    <xsl:variable name="Description">
-      <xsl:apply-templates select="r:description"/>
-    </xsl:variable>
-
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:title"/>
-
         <xsl:if test="r:description">
-
           <xsl:choose>
-
             <xsl:when test="$interest.description.format = 'single-line'">
               <xsl:text>. </xsl:text>
-              <xsl:value-of select="normalize-space($Description)"/>
+              <xsl:apply-templates select="r:description"/>
             </xsl:when>
-
             <xsl:otherwise>
               <xsl:call-template name="NewLine"/>
-              <xsl:value-of select="$Description"/>
+              <xsl:apply-templates select="r:description"/>
             </xsl:otherwise>
-
           </xsl:choose>
         </xsl:if>
-
       </xsl:with-param>
     </xsl:call-template>
-
     <xsl:if test="$interest.description.format = 'single-line'">
       <xsl:call-template name="NewLine"/>
       <!-- Block-formatted descriptions already provide their own trailing
       newline, courtesy of the r:para template. -->
     </xsl:if>
-
   </xsl:template>
 
   <!-- Format an interest description -->
