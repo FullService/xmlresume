@@ -42,6 +42,22 @@
           <link linkend="element.possible"><sgmltag
           class="element">possible</sgmltag></link>.
         </para></listitem>
+        <listitem><para>
+          Change:
+          <link linkend="element.institution"><sgmltag
+          class="element">institution</sgmltag></link> and
+          <link linkend="element.organization"><sgmltag
+          class="element">organization</sgmltag></link>
+          may now contain inline elements
+          (<link linkend="element.emphasis"><sgmltag
+          class="element">emphasis</sgmltag></link>,
+          <link linkend="element.citation"><sgmltag
+          class="element">citation</sgmltag></link>,
+          <link linkend="element.url"><sgmltag
+          class="element">url</sgmltag></link>, and
+          <link linkend="element.link"><sgmltag
+          class="element">link</sgmltag></link>).
+        </para></listitem>
       </itemizedlist>
     </section>
 

@@ -32,6 +32,10 @@ The doctype with FPI for this DTD is:
   <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
                    "http://xmlresume.sourceforge.net/dtd/resume.dtd">
 
+XXX NOTE: If you change the DTD, please update the user-visible "changelog" in
+XXX the manual. It's contained in resume/src/doc/manual/en/elementref/intro.xml.
+XXX Thanks!
+
 $Id$
 -->
 
@@ -165,7 +169,7 @@ in a future version. -->
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT major (#PCDATA)>
 <!ELEMENT minor (#PCDATA)>
-<!ELEMENT institution (#PCDATA)>
+<!ELEMENT institution (%inlines;)*>
 <!ATTLIST institution id ID #IMPLIED>
 <!ELEMENT gpa (score, possible?, note?)>
 <!ATTLIST gpa type (overall|major) "overall">
@@ -211,7 +215,7 @@ chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
 <!ELEMENT memberships (title, membership+)>
 <!ELEMENT membership (title?, organization?, period?, description?)>
 <!ATTLIST membership id ID #IMPLIED>
-<!ELEMENT organization (#PCDATA)>
+<!ELEMENT organization (%inlines;)*>
 <!ATTLIST organization id ID #IMPLIED>
 
 <!-- Interests and/or hobbies. -->
