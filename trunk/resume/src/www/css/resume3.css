@@ -54,6 +54,7 @@ li.degree {
 .bookTitle { font-style: italic }
 .citation { font-style: italic }
 .copyright { font-size: 75% }
+.degreeTitle { font-weight: bold }
 .employer { font-style: italic }
 .headerBlock { text-align: center }
 .jobTitle { font-weight: bold }
