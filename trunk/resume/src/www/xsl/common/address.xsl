@@ -35,6 +35,7 @@ $Id$
 -->
 
 <xsl:stylesheet version="1.0"
+  xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
@@ -42,7 +43,7 @@ $Id$
   <!-- selection; then instead of the ugly template below, we'd have -->
   <!-- '<xsl:apply-templates select="address" mode="$address.format"/>'-->
   <!-- But it doesn't, so we need this. -->
-  <xsl:template match="address">
+  <xsl:template match="r:address">
 
     <xsl:choose>
       <xsl:when test="node()[1][not(self::*)]">
@@ -75,13 +76,13 @@ $Id$
 
         <xsl:choose>
 	  <xsl:when test="state">
-	     <xsl:value-of select="normalize-space(state)"/>
+	     <xsl:value-of select="normalize-space(r:state)"/>
 	  </xsl:when>
 	  <xsl:when test="province">
-	     <xsl:value-of select="normalize-space(province)"/>
+	     <xsl:value-of select="normalize-space(r:province)"/>
 	  </xsl:when>
 	  <xsl:when test="county">
-	     <xsl:value-of select="normalize-space(county)"/>
+	     <xsl:value-of select="normalize-space(r:county)"/>
 	  </xsl:when>
 	  <!-- Otherwise, leave blank -->
 	  <xsl:otherwise>
@@ -95,10 +96,10 @@ $Id$
    <xsl:template name="CityDivision">
         <xsl:choose>
 	  <xsl:when test="suburb">
-	     <xsl:value-of select="normalize-space(suburb)"/>
+	     <xsl:value-of select="normalize-space(r:suburb)"/>
 	  </xsl:when>
 	  <xsl:when test="ward">
-	     <xsl:value-of select="normalize-space(ward)"/>
+	     <xsl:value-of select="normalize-space(r:ward)"/>
 	  </xsl:when>
 	</xsl:choose>
    </xsl:template>
@@ -107,10 +108,10 @@ $Id$
    <xsl:template name="PostCode">
         <xsl:choose>
 	  <xsl:when test="zip">
-	     <xsl:value-of select="normalize-space(zip)"/>
+	     <xsl:value-of select="normalize-space(r:zip)"/>
 	  </xsl:when>
 	  <xsl:when test="postalCode">
-	     <xsl:value-of select="normalize-space(postalCode)"/>
+	     <xsl:value-of select="normalize-space(r:postalCode)"/>
 	  </xsl:when>
 	  <!-- Otherwise, leave blank -->
 	  <xsl:otherwise>

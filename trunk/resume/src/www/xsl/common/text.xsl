@@ -35,6 +35,7 @@ $Id$
 -->
 
 <xsl:stylesheet version="1.0"
+         xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
 	 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:output method="text" omit-xml-declaration="yes" indent="no"
@@ -47,7 +48,7 @@ $Id$
   <xsl:include href="pubs.xsl"/>
 
   <xsl:template match="/">
-	  <xsl:apply-templates select="resume"/>
+	  <xsl:apply-templates select="r:resume"/>
 	  <xsl:call-template name="NewLine"/>
   </xsl:template>
 
@@ -249,9 +250,9 @@ $Id$
     <span class="{$style}">
       <a>
         <xsl:attribute name="href">
-          <xsl:value-of select="uri"/>
+          <xsl:value-of select="r:uri"/>
         </xsl:attribute>
-        <xsl:value-of select="label"/>
+        <xsl:value-of select="r:label"/>
       </a>
       <xsl:text> > </xsl:text>
     </span>
@@ -289,37 +290,37 @@ $Id$
   <xsl:template name="centered.header">
     <xsl:call-template name="Center">
       <xsl:with-param name="Text">
-	<xsl:apply-templates select="name"/>
+	<xsl:apply-templates select="r:name"/>
       </xsl:with-param>
     </xsl:call-template>
 
     <xsl:call-template name="CenterBlock">
       <xsl:with-param name="Text">
-        <xsl:apply-templates select="address"/>
+        <xsl:apply-templates select="r:address"/>
       </xsl:with-param>
     </xsl:call-template>
 
-    <xsl:if test="contact/phone">
+    <xsl:if test="r:contact/r:phone">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
         <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="contact/phone"/>
+	<xsl:value-of select="r:contact/r:phone"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="contact/email">
+    <xsl:if test="r:contact/r:email">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
         <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/email"/>
+	<xsl:value-of select="r:contact/r:email"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="contact/url">
+    <xsl:if test="r:contact/r:url">
       <xsl:call-template name="Center">
       <xsl:with-param name="Text">
         <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/url"/>
+	<xsl:value-of select="r:contact/r:url"/>
       </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
@@ -329,31 +330,31 @@ $Id$
     <!-- Your name, address, and stuff. -->
    <xsl:call-template name="Center">
    <xsl:with-param name="Text">
-      <xsl:apply-templates select="name"/>
+      <xsl:apply-templates select="r:name"/>
       <xsl:text>  - </xsl:text>
       <xsl:value-of select="$resume.word"/>
    </xsl:with-param>
    </xsl:call-template>
 <xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
 <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="address"/> 
+      <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:address"/> 
       <xsl:call-template name="NewLine"/>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
-      <xsl:if test="contact/phone">
+      <xsl:if test="r:contact/r:phone">
         <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="contact/phone"/>
+	<xsl:value-of select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
-      <xsl:if test="contact/email">
+      <xsl:if test="r:contact/r:email">
         <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/email"/>
+	<xsl:value-of select="r:contact/r:email"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
-      <xsl:if test="contact/url">
+      <xsl:if test="r:contact/r:url">
         <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/url"/>
+	<xsl:value-of select="r:contact/r:url"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
   </xsl:template>
@@ -383,17 +384,17 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:value-of select="normalize-space(r:street)"/>
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="street2">
-       <xsl:value-of select="normalize-space(street2)"/>
+     <xsl:if test="r:street2">
+       <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
      <xsl:if test="string-length($CityDivision) &gt; 0">
        <xsl:value-of select="$CityDivision"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
-     <xsl:value-of select="normalize-space(city)"/>
+     <xsl:value-of select="normalize-space(r:city)"/>
      <xsl:if test="string-length($AdminDivision) &gt; 0">
        <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
      </xsl:if>
@@ -402,8 +403,8 @@ $Id$
        <xsl:value-of select="$PostCode"/>
      </xsl:if> 
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="country">
-       <xsl:value-of select="normalize-space(country)"/>
+     <xsl:if test="r:country">
+       <xsl:value-of select="normalize-space(r:country)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
   </xsl:template>
@@ -420,10 +421,10 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:value-of select="normalize-space(r:street)"/>
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="street2">
-       <xsl:value-of select="normalize-space(street2)"/>
+     <xsl:if test="r:street2">
+       <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
      <xsl:if test="string-length($CityDivision) &gt; 0">
@@ -434,36 +435,36 @@ $Id$
        <xsl:value-of select="$PostCode"/>
        <xsl:text> </xsl:text>
      </xsl:if>
-     <xsl:value-of select="normalize-space(city)"/>
+     <xsl:value-of select="normalize-space(r:city)"/>
      <xsl:if test="string-length($AdminDivision) &gt; 0">
        <xsl:call-template name="NewLine"/>
        <xsl:value-of select="$AdminDivision"/>
      </xsl:if>
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="country">
-       <xsl:value-of select="normalize-space(country)"/>
+     <xsl:if test="r:country">
+       <xsl:value-of select="normalize-space(r:country)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
   </xsl:template>
 
   <xsl:template match="address" mode="italian">
-     <xsl:value-of select="normalize-space(street)"/>
+     <xsl:value-of select="normalize-space(r:street)"/>
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="street2">
-       <xsl:value-of select="normalize-space(street2)"/>
+     <xsl:if test="r:street2">
+       <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
-     <xsl:if test="postalCode">
-       <xsl:value-of select="normalize-space(postalCode)"/>
+     <xsl:if test="r:postalCode">
+       <xsl:value-of select="normalize-space(r:postalCode)"/>
        <xsl:text> </xsl:text>
      </xsl:if>
-     <xsl:value-of select="normalize-space(city)"/>
-     <xsl:if test="province">
-       <xsl:text> (</xsl:text><xsl:value-of select="province"/><xsl:text>)</xsl:text>
+     <xsl:value-of select="normalize-space(r:city)"/>
+     <xsl:if test="r:province">
+       <xsl:text> (</xsl:text><xsl:value-of select="r:province"/><xsl:text>)</xsl:text>
      </xsl:if>
      <xsl:call-template name="NewLine"/>
-     <xsl:if test="country">
-       <xsl:value-of select="normalize-space(country)"/>
+     <xsl:if test="r:country">
+       <xsl:value-of select="normalize-space(r:country)"/>
        <xsl:call-template name="NewLine"/>
      </xsl:if>
   </xsl:template>
@@ -477,7 +478,7 @@ $Id$
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
-          <xsl:apply-templates select="job"/>
+          <xsl:apply-templates select="r:job"/>
        </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -485,18 +486,18 @@ $Id$
   <!-- Format each job -->
   <xsl:template match="job">
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="jobtitle"/>
+      <xsl:apply-templates select="r:jobtitle"/>
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="employer"/>
+      <xsl:apply-templates select="r:employer"/>
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="period"/>
+      <xsl:apply-templates select="r:period"/>
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="description"/>
-      <xsl:if test="projects/project">
-        <xsl:apply-templates select="projects"/>
+      <xsl:apply-templates select="r:description"/>
+      <xsl:if test="r:projects/r:project">
+        <xsl:apply-templates select="r:projects"/>
       </xsl:if>
-      <xsl:if test="achievements/achievement">
-        <xsl:apply-templates select="achievements"/>
+      <xsl:if test="r:achievements/r:achievement">
+        <xsl:apply-templates select="r:achievements"/>
       </xsl:if>
       <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
@@ -512,7 +513,7 @@ $Id$
   <xsl:template match="projects">
      <xsl:call-template name="NewLine"/><xsl:value-of select="$projects.word"/>
      <xsl:call-template name="NewLine"/>
-     <xsl:apply-templates select="project"/>
+     <xsl:apply-templates select="r:project"/>
   </xsl:template>
 
   <xsl:template match="project">
@@ -533,7 +534,7 @@ $Id$
        <xsl:call-template name="NewLine"/><xsl:value-of select="$achievements.word"/>
      </xsl:if>
      <xsl:call-template name="NewLine"/>
-     <xsl:apply-templates select="achievement"/>
+     <xsl:apply-templates select="r:achievement"/>
   </xsl:template>
 
   <xsl:template match="achievement">
@@ -549,13 +550,13 @@ $Id$
   </xsl:template>
 		
   <xsl:template match="period">
-    <xsl:apply-templates select="from"/>-<xsl:apply-templates select="to"/>
+    <xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/>
   </xsl:template>
 
   <xsl:template match="date">
-    <xsl:apply-templates select="month"/>
+    <xsl:apply-templates select="r:month"/>
     <xsl:text> </xsl:text>
-    <xsl:apply-templates select="year"/>
+    <xsl:apply-templates select="r:year"/>
   </xsl:template>
 
   <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
@@ -575,15 +576,15 @@ $Id$
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
-         <xsl:apply-templates select="degrees"/>
-         <xsl:apply-templates select="note"/>
+         <xsl:apply-templates select="r:degrees"/>
+         <xsl:apply-templates select="r:note"/>
        </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="degrees">
-      <xsl:apply-templates select="degree"/>
-      <xsl:apply-templates select="note"/>
+      <xsl:apply-templates select="r:degree"/>
+      <xsl:apply-templates select="r:note"/>
   </xsl:template>
 
   <xsl:template match="note">
@@ -591,21 +592,21 @@ $Id$
   </xsl:template>
 
   <xsl:template match="degree">
-      <xsl:value-of select="level"/>
+      <xsl:value-of select="r:level"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="major"/>
-      <xsl:if test="date">     
+      <xsl:if test="r:date">     
          <xsl:text>, </xsl:text>
-         <xsl:apply-templates select="date"/>
+         <xsl:apply-templates select="r:date"/>
       </xsl:if>
-      <xsl:if test="institution">
+      <xsl:if test="r:institution">
         <xsl:text>, </xsl:text>
-        <xsl:value-of select="institution"/>
+        <xsl:value-of select="r:institution"/>
       </xsl:if>
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="annotation"/>
+      <xsl:apply-templates select="r:annotation"/>
       <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
   </xsl:template>
@@ -626,13 +627,13 @@ $Id$
 
   <xsl:template match="skillarea">
       <xsl:call-template name="NewLine"/>
-    <xsl:if test="title">
-      <xsl:apply-templates select="title"/><xsl:text>:</xsl:text>
+    <xsl:if test="r:title">
+      <xsl:apply-templates select="r:title"/><xsl:text>:</xsl:text>
       <xsl:call-template name="NewLine"/>
     </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-               <xsl:apply-templates select="skillset"/>
+               <xsl:apply-templates select="r:skillset"/>
       </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
@@ -656,11 +657,11 @@ $Id$
       <xsl:with-param name="Text">
 	<xsl:call-template name="FormatParagraph">
           <xsl:with-param name="Text">
-        <xsl:if test="title">
-          <xsl:apply-templates select="title"/>
+        <xsl:if test="r:title">
+          <xsl:apply-templates select="r:title"/>
           <xsl:text>: </xsl:text>
         </xsl:if>
-        <xsl:apply-templates select="skills" mode="comma"/>
+        <xsl:apply-templates select="r:skills" mode="comma"/>
        </xsl:with-param>
       <xsl:with-param name="Width" select="72"/>
       </xsl:call-template>
@@ -671,14 +672,14 @@ $Id$
   </xsl:template>
 
   <xsl:template match="skillset" mode="bullet">
-    <xsl:if test="title">
+    <xsl:if test="r:title">
       <xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="title"/>
+      <xsl:apply-templates select="r:title"/>
       <xsl:call-template name="NewLine"/>
     </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:apply-templates select="skills" mode="bullet"/>
+        <xsl:apply-templates select="r:skills" mode="bullet"/>
        </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
@@ -701,10 +702,10 @@ $Id$
 	<!-- format as a comma-separated list -->
   <xsl:template match="skills" mode="comma">
     <span class="skills">
-      <xsl:for-each select="skill[position() != last()]">
+      <xsl:for-each select="r:skill[position() != last()]">
         <xsl:apply-templates/><xsl:text>, </xsl:text>
       </xsl:for-each>
-      <xsl:apply-templates select="skill[position() = last()]"/>
+      <xsl:apply-templates select="r:skill[position() = last()]"/>
     </span>
   </xsl:template>
 
@@ -715,7 +716,7 @@ $Id$
     <xsl:value-of select="$publications.word"/>
     <xsl:text>:</xsl:text>
     <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="pub"/>
+    <xsl:apply-templates select="r:pub"/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
@@ -758,11 +759,11 @@ $Id$
   <!-- Format memberships. -->
   <xsl:template match="memberships">
     <xsl:call-template name="NewLine"/>
-    <xsl:value-of select="title"/>
+    <xsl:value-of select="r:title"/>
     <xsl:text>:</xsl:text>
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NewLine"/>
-    <xsl:apply-templates select="membership"/>
+    <xsl:apply-templates select="r:membership"/>
   </xsl:template>
 
   <xsl:template match="membership">
@@ -807,18 +808,18 @@ $Id$
   <xsl:template match="copyright">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="year"/>
+      <xsl:value-of select="r:year"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$by.word"/>
       <xsl:text> </xsl:text>
-      <xsl:if test="name">
-        <xsl:apply-templates select="name"/>
+      <xsl:if test="r:name">
+        <xsl:apply-templates select="r:name"/>
       </xsl:if>
-      <xsl:if test="not(name)">
-        <xsl:apply-templates select="/resume/header/name"/>
+      <xsl:if test="not(r:name)">
+        <xsl:apply-templates select="/r:resume/r:header/r:name"/>
       </xsl:if>
       <xsl:text>. </xsl:text>
-      <xsl:value-of select="legalnotice"/>
+      <xsl:value-of select="r:legalnotice"/>
   </xsl:template>
 
   <!-- Center the Name on the first line -->
@@ -833,16 +834,16 @@ $Id$
   </xsl:template>
 
   <xsl:template match="name">
-    <xsl:apply-templates select="firstname"/>
+    <xsl:apply-templates select="r:firstname"/>
     <xsl:text> </xsl:text>
-    <xsl:if test="middlenames">
-      <xsl:value-of select="middlenames"/>
+    <xsl:if test="r:middlenames">
+      <xsl:value-of select="r:middlenames"/>
       <xsl:text> </xsl:text>
     </xsl:if>
-    <xsl:apply-templates select="surname"/>
-    <xsl:if test="suffix">
+    <xsl:apply-templates select="r:surname"/>
+    <xsl:if test="r:suffix">
       <xsl:text> </xsl:text>
-      <xsl:value-of select="suffix"/>
+      <xsl:value-of select="r:suffix"/>
     </xsl:if>
   </xsl:template>
   
@@ -888,7 +889,7 @@ $Id$
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
-         <xsl:apply-templates select="referee"/>
+         <xsl:apply-templates select="r:referee"/>
        </xsl:with-param>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
@@ -896,23 +897,23 @@ $Id$
 
   <xsl:template match="referee">
     <!-- Your name, address, and stuff. -->
-      <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="address"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:address"/><xsl:call-template name="NewLine"/>
 
       <!-- Don't print phone/email labels if fields are empty. *SE -->
-      <xsl:if test="contact/phone">
+      <xsl:if test="r:contact/r:phone">
         <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-	<xsl:value-of select="contact/phone"/>
+	<xsl:value-of select="r:contact/r:phone"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
-      <xsl:if test="contact/email">
+      <xsl:if test="r:contact/r:email">
         <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/email"/>
+	<xsl:value-of select="r:contact/r:email"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
-      <xsl:if test="contact/url">
+      <xsl:if test="r:contact/r:url">
         <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
-	<xsl:value-of select="contact/url"/>
+	<xsl:value-of select="r:contact/r:url"/>
 	<xsl:call-template name="NewLine"/>
       </xsl:if>
       <xsl:call-template name="NewLine"/>

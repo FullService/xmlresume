@@ -34,6 +34,7 @@ $Id$
 -->
 
 <xsl:stylesheet version="1.0"
+		xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:output method="xml" omit-xml-declaration="no" indent="yes"
@@ -66,7 +67,7 @@ $Id$
 	<fo:static-content flow-name="xsl-region-after">
 	  <fo:block text-align="start" font-size="{$footer.font.size}"
 	    font-family="{$footer.font.family}">
-	    <xsl:apply-templates select="resume/header/name"/>
+	    <xsl:apply-templates select="r:resume/r:header/r:name"/>
 	    <xsl:text> - </xsl:text>
 	    <xsl:value-of select="$resume.word"/>
 	    <xsl:text> - </xsl:text>
@@ -81,7 +82,7 @@ $Id$
           <fo:block start-indent="{$body.indent}"
 	    font-family="{$body.font.family}"
 	    font-size="{$body.font.size}">
-            <xsl:apply-templates select="resume"/>
+            <xsl:apply-templates select="r:resume"/>
           </fo:block>
         </fo:flow>
       </fo:page-sequence>
@@ -103,15 +104,15 @@ $Id$
   </xsl:template>
   
   <!-- Header information -->
-  <xsl:template match="header">
+  <xsl:template match="r:header">
     <fo:block space-after="{$para.break.space}">
       <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
 	rule-thickness="{$header.line.thickness}"/>
       <fo:block font-weight="{$header.name.font.weight}">
-	<xsl:apply-templates select="name"/>
+	<xsl:apply-templates select="r:name"/>
       </fo:block>
-      <xsl:apply-templates select="address"/>
-      <xsl:apply-templates select="contact"/>
+      <xsl:apply-templates select="r:address"/>
+      <xsl:apply-templates select="r:contact"/>
       <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
 	rule-thickness="{$header.line.thickness}"/>
     </fo:block>
@@ -119,21 +120,21 @@ $Id$
 
   <!-- Format a name in Western style, given then surname  -->
   <!-- (plus middle and suffix if defined).                -->
-  <xsl:template match="name">
-    <xsl:value-of select="firstname"/>
+  <xsl:template match="r:name">
+    <xsl:value-of select="r:firstname"/>
     <xsl:text> </xsl:text>
-    <xsl:if test="middlenames">
-      <xsl:value-of select="middlenames"/>
+    <xsl:if test="r:middlenames">
+      <xsl:value-of select="r:middlenames"/>
       <xsl:text> </xsl:text>
     </xsl:if>
-    <xsl:value-of select="surname"/>
-    <xsl:if test="suffix">
+    <xsl:value-of select="r:surname"/>
+    <xsl:if test="r:suffix">
       <xsl:text> </xsl:text>
-      <xsl:value-of select="suffix"/>
+      <xsl:value-of select="r:suffix"/>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="address" mode="standard">
+  <xsl:template match="r:address" mode="standard">
 
      <!-- templates defined in address.xsl for setting standard fields -->
      <xsl:variable name="AdminDivision">
@@ -147,15 +148,15 @@ $Id$
      </xsl:variable>
 
      <fo:block>
-       <fo:block><xsl:value-of select="street"/></fo:block>
-       <xsl:if test="street2">
-         <fo:block><xsl:value-of select="street2"/></fo:block>
+       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:if test="r:street2">
+         <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>
        <xsl:if test="string-length($CityDivision) &gt; 0">
          <fo:block><xsl:value-of select="$CityDivision"/></fo:block>
        </xsl:if>
        <fo:block>
-         <xsl:value-of select="city"/>
+         <xsl:value-of select="r:city"/>
 	 <xsl:if test="string-length($AdminDivision) &gt; 0">
 	    <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
 	 </xsl:if>
@@ -163,15 +164,15 @@ $Id$
 	    <xsl:text> </xsl:text><xsl:value-of select="$PostCode"/>
 	 </xsl:if>
 	</fo:block>
-	<xsl:if test="country">
+	<xsl:if test="r:country">
 	   <fo:block>
-	   <xsl:value-of select="country"/>
+	   <xsl:value-of select="r:country"/>
 	   </fo:block>
 	</xsl:if>
       </fo:block>
    </xsl:template>
 
-  <xsl:template match="address" mode="european">
+  <xsl:template match="r:address" mode="european">
 
      <!-- templates defined in address.xsl for setting standard fields -->
      <xsl:variable name="AdminDivision">
@@ -185,9 +186,9 @@ $Id$
      </xsl:variable>
 
      <fo:block>
-       <fo:block><xsl:value-of select="street"/></fo:block>
-       <xsl:if test="street2">
-         <fo:block><xsl:value-of select="street2"/></fo:block>
+       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:if test="r:street2">
+         <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>
        <xsl:if test="string-length($CityDivision) &gt; 0">
          <fo:block><xsl:value-of select="$CityDivision"/></fo:block>
@@ -196,48 +197,48 @@ $Id$
 	 <xsl:if test="string-length($PostCode) &gt; 0">
 	    <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text>
 	 </xsl:if>
-         <xsl:value-of select="city"/>
+         <xsl:value-of select="r:city"/>
 	</fo:block>
 	 <xsl:if test="string-length($AdminDivision) &gt; 0">
 	    <fo:block>
 	    <xsl:value-of select="$AdminDivision"/>
 	    </fo:block>
 	 </xsl:if>
-	 <xsl:if test="country">
+	 <xsl:if test="r:country">
 	    <fo:block>
-	    <xsl:value-of select="country"/>
+	    <xsl:value-of select="r:country"/>
 	    </fo:block>
 	 </xsl:if>
       </fo:block>
    </xsl:template>
 
-  <xsl:template match="address" mode="italian">
+  <xsl:template match="r:address" mode="italian">
 
      <fo:block>
-       <fo:block><xsl:value-of select="street"/></fo:block>
-       <xsl:if test="street2">
-         <fo:block><xsl:value-of select="street2"/></fo:block>
+       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:if test="r:street2">
+         <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>
        <fo:block>
-	 <xsl:if test="postalCode">
-	    <xsl:value-of select="postalCode"/><xsl:text> </xsl:text>
+	 <xsl:if test="r:postalCode">
+	    <xsl:value-of select="r:postalCode"/><xsl:text> </xsl:text>
 	 </xsl:if>
-         <xsl:value-of select="city"/>
-	 <xsl:if test="province">
-	    <xsl:text> (</xsl:text><xsl:value-of select="province"/>
+         <xsl:value-of select="r:city"/>
+	 <xsl:if test="r:province">
+	    <xsl:text> (</xsl:text><xsl:value-of select="r:province"/>
 	    <xsl:text>)</xsl:text>
 	 </xsl:if>
 	</fo:block>
-	 <xsl:if test="country">
+	 <xsl:if test="r:country">
 	    <fo:block>
-	    <xsl:value-of select="country"/>
+	    <xsl:value-of select="r:country"/>
 	    </fo:block>
 	 </xsl:if>
       </fo:block>
    </xsl:template>
 
   <!-- Preserve line breaks within a free format address -->
-  <xsl:template match="address//text()">
+  <xsl:template match="r:address//text()">
     <xsl:call-template name="PreserveLinebreaks">
       <xsl:with-param name="Text" select="."/>
     </xsl:call-template>
@@ -277,25 +278,25 @@ $Id$
 
   <!-- Format contact information. -->
 
-  <xsl:template match="contact">
+  <xsl:template match="r:contact">
     <fo:block>
       <xsl:call-template name="contact">
-         <xsl:with-param name="field" select="phone"/>
+         <xsl:with-param name="field" select="r:phone"/>
          <xsl:with-param name="label" select="$phone.word"/>
       </xsl:call-template>
       <xsl:call-template name="contact">
-         <xsl:with-param name="field" select="email"/>
+         <xsl:with-param name="field" select="r:email"/>
          <xsl:with-param name="label" select="$email.word"/>
       </xsl:call-template>
       <xsl:call-template name="contact">
-         <xsl:with-param name="field" select="url"/>
+         <xsl:with-param name="field" select="r:url"/>
          <xsl:with-param name="label" select="$url.word"/>
       </xsl:call-template>
     </fo:block>
   </xsl:template>
 
   <!-- Format the objective with the heading "Professional Objective." -->
-  <xsl:template match="objective">
+  <xsl:template match="r:objective">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$objective.word"/></xsl:with-param>
     </xsl:call-template>
@@ -303,7 +304,7 @@ $Id$
   </xsl:template>
 
   <!-- Format the history with the heading "Employment History". -->
-  <xsl:template match="history">
+  <xsl:template match="r:history">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$history.word"/></xsl:with-param>
     </xsl:call-template>
@@ -311,111 +312,111 @@ $Id$
   </xsl:template>
 
   <!-- Format a single job. -->
-  <xsl:template match="job">
+  <xsl:template match="r:job">
     <fo:block>
       <fo:block space-after="{$half.space}">
-      <fo:inline font-weight="bold"><xsl:value-of select="jobtitle"/></fo:inline>
+      <fo:inline font-weight="bold"><xsl:value-of select="r:jobtitle"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
-      <fo:inline font-style="italic"><xsl:value-of select="employer"/></fo:inline>
+      <fo:inline font-style="italic"><xsl:value-of select="r:employer"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
-      <fo:inline font-style="italic"><xsl:apply-templates select="period"/></fo:inline>
+      <fo:inline font-style="italic"><xsl:apply-templates select="r:period"/></fo:inline>
       </fo:block>
-      <xsl:if test="description">
+      <xsl:if test="r:description">
         <fo:block>
           <xsl:apply-templates select="description"/>
         </fo:block>
       </xsl:if>
-      <xsl:if test="projects/project">
+      <xsl:if test="r:projects/r:project">
         <fo:block>
 	  <fo:inline font-style="italic"><xsl:value-of select="$projects.word"/></fo:inline>
-          <xsl:apply-templates select="projects"/>
+          <xsl:apply-templates select="r:projects"/>
         </fo:block>
       </xsl:if>
-      <xsl:if test="achievements/achievement">
+      <xsl:if test="r:achievements/r:achievement">
         <fo:block>
           <fo:inline font-style="italic"><xsl:value-of select="$achievements.word"/></fo:inline>
-          <xsl:apply-templates select="achievements"/>
+          <xsl:apply-templates select="r:achievements"/>
         </fo:block>
       </xsl:if>
     </fo:block>
   </xsl:template>
 
   <!-- Format the projects section as a bullet list -->
-  <xsl:template match="projects">
+  <xsl:template match="r:projects">
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:for-each select="project">
+      <xsl:for-each select="r:project">
         <xsl:call-template name="bulletListItem"/>
       </xsl:for-each>
     </fo:list-block>
   </xsl:template>
 
   <!-- Format the achievements section as a bullet list *SE* -->
-  <xsl:template match="achievements">
+  <xsl:template match="r:achievements">
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:for-each select="achievement">
+      <xsl:for-each select="r:achievement">
         <xsl:call-template name="bulletListItem"/>
       </xsl:for-each>
     </fo:list-block>
   </xsl:template>
 
   <!-- Format academics -->
-  <xsl:template match="academics">
+  <xsl:template match="r:academics">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$academics.word"/></xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="degrees"/>
+    <xsl:apply-templates select="r:degrees"/>
     <fo:block font-style="italic">
-      <xsl:apply-templates select="note"/>
+      <xsl:apply-templates select="r:note"/>
     </fo:block>
   </xsl:template>
 
   <!-- Format a single degree -->
-  <xsl:template match="degree">
+  <xsl:template match="r:degree">
     <fo:block keep-with-next="always">
       <fo:inline font-weight="bold"><xsl:value-of select="level"/>
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
         <xsl:value-of select="major"/></fo:inline>
-      <xsl:if test="date">
+      <xsl:if test="r:date">
         <xsl:text>, </xsl:text>
-	<xsl:apply-templates select="date"/>
+	<xsl:apply-templates select="r:date"/>
       </xsl:if>
-      <xsl:if test="annotation">
+      <xsl:if test="r:annotation">
         <xsl:text>, </xsl:text>
-        <xsl:apply-templates select="annotation"/>
+        <xsl:apply-templates select="r:annotation"/>
       </xsl:if>
     </fo:block>
     <fo:block space-after="{$para.break.space}">
-      <xsl:value-of select="institution"/>
+      <xsl:value-of select="r:institution"/>
     </fo:block>
-    <xsl:if test="subjects/subject">
+    <xsl:if test="r:subjects/r:subject">
       <fo:block space-after="{$para.break.space}">
-        <xsl:apply-templates select="subjects"/>
+        <xsl:apply-templates select="r:subjects"/>
       </fo:block>
     </xsl:if>
   </xsl:template>
 
   <!-- Format the subjects section as a table -->
-  <xsl:template match="subjects">
+  <xsl:template match="r:subjects">
     <fo:table>
       <fo:table-column column-width="50pt" column-number="1"/>
       <fo:table-column column-width="250pt" column-number="2"/>
       <fo:table-column column-width="150pt" column-number="3"/>
       <fo:table-body>
-        <xsl:for-each select="subject">
+        <xsl:for-each select="r:subject">
           <fo:table-row>
 	    <fo:table-cell>
               <fo:block></fo:block>
 	    </fo:table-cell>
 	    <fo:table-cell>
-              <fo:block><xsl:value-of select="title"/></fo:block>
+              <fo:block><xsl:value-of select="r:title"/></fo:block>
 	    </fo:table-cell>
 	    <fo:table-cell>
-              <fo:block><xsl:value-of select="result"/></fo:block>
+              <fo:block><xsl:value-of select="r:result"/></fo:block>
 	   </fo:table-cell>
           </fo:table-row>
         </xsl:for-each>
@@ -424,34 +425,34 @@ $Id$
   </xsl:template>
 
   <!-- Format a skill area's title and the skillsets underneath it. -->
-  <xsl:template match="skillareas">
-    <xsl:apply-templates select="skillarea"/>
+  <xsl:template match="r:skillareas">
+    <xsl:apply-templates select="r:skillarea"/>
   </xsl:template>
 
-  <xsl:template match="skillarea">
+  <xsl:template match="r:skillarea">
     <xsl:call-template name="heading">
-      <xsl:with-param name="text"><xsl:value-of select="title"/></xsl:with-param>
+      <xsl:with-param name="text"><xsl:value-of select="r:title"/></xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="skillset"/>
+    <xsl:apply-templates select="r:skillset"/>
   </xsl:template>
 
   <!-- Format a skillset's title (if any) and then the skils underneath it. -->
-  <xsl:template match="skillset">
+  <xsl:template match="r:skillset">
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
         <fo:block space-after="{$half.space}">
-        <xsl:apply-templates select="title" mode="comma"/>
-        <xsl:apply-templates select="skills" mode="comma"/>
+        <xsl:apply-templates select="r:title" mode="comma"/>
+        <xsl:apply-templates select="r:skills" mode="comma"/>
 	</fo:block>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="title" mode="bullet"/>
-        <xsl:apply-templates select="skills" mode="bullet"/>
+        <xsl:apply-templates select="r:title" mode="bullet"/>
+        <xsl:apply-templates select="r:skills" mode="bullet"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="skillset/title" mode="comma">
+  <xsl:template match="r:skillset/r:title" mode="comma">
     <fo:inline font-style="italic">
       <xsl:value-of select="."/><xsl:text>: </xsl:text>
     </fo:inline>
@@ -459,25 +460,25 @@ $Id$
 
   <!-- Format skills as a comma separated list. -->
   <xsl:template match="skills" mode="comma">
-    <xsl:for-each select="skill[position() != last()]">
+    <xsl:for-each select="r:skill[position() != last()]">
       <xsl:apply-templates/><xsl:text>, </xsl:text>
     </xsl:for-each>
-    <xsl:apply-templates select="skill[position() = last()]"/>
+    <xsl:apply-templates select="r:skill[position() = last()]"/>
   </xsl:template>
 
   <!-- Format the title of a set of skills in italics. -->
-  <xsl:template match="skillset/title" mode="bullet">
+  <xsl:template match="r:skillset/r:title" mode="bullet">
     <fo:block keep-with-next="always" font-style="italic">
       <xsl:value-of select="."/>
     </fo:block>
   </xsl:template>
 
   <!-- Format skills as a bullet list. -->
-  <xsl:template match="skills" mode="bullet">
+  <xsl:template match="r:skills" mode="bullet">
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="skill" mode="bullet"/>
+      <xsl:apply-templates select="r:skill" mode="bullet"/>
     </fo:list-block>
   </xsl:template>
 
@@ -497,24 +498,24 @@ $Id$
   </xsl:template>
 
   <!-- Format a single skill as a bullet item. -->
-  <xsl:template match="skill" mode="bullet">
+  <xsl:template match="r:skill" mode="bullet">
     <xsl:call-template name="bulletListItem"/>
   </xsl:template>
 
   <!-- Format the publications section. -->
-  <xsl:template match="pubs">
+  <xsl:template match="r:pubs">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$publications.word"/></xsl:with-param>
     </xsl:call-template>
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="pub"/>
+      <xsl:apply-templates select="r:pub"/>
     </fo:list-block>
   </xsl:template>
   
   <!-- Format a single publication -->
-  <xsl:template match="pub">
+  <xsl:template match="r:pub">
     <fo:list-item>
       <fo:list-item-label start-indent="{$body.indent}"
 	end-indent="label-end()">
@@ -529,12 +530,12 @@ $Id$
   </xsl:template>
 
   <!-- Title of book -->
-  <xsl:template match="bookTitle">
+  <xsl:template match="r:bookTitle">
     <fo:inline font-style="italic"><xsl:value-of select="."/></fo:inline><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format memberships. -->
-  <xsl:template match="memberships">
+  <xsl:template match="r:memberships">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="title"/></xsl:with-param>
     </xsl:call-template>
@@ -546,18 +547,18 @@ $Id$
   </xsl:template>
 
   <!-- Format membership. -->
-  <xsl:template match="membership">
+  <xsl:template match="r:membership">
     <xsl:call-template name="bulletListItem"/>
   </xsl:template>
 
-  <xsl:template match="membership/title">
+  <xsl:template match="r:membership/r:title">
     <fo:inline font-weight="bold"><xsl:value-of select="."/></fo:inline>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="membership/organization">
+  <xsl:template match="r:membership/r:organization">
     <xsl:value-of select="."/>
     <xsl:if test="following-sibling::*">
       <xsl:text>, </xsl:text>
@@ -565,7 +566,7 @@ $Id$
   </xsl:template>
 
   <!-- Format miscellaneous information with "Miscellany" as the heading. -->
-  <xsl:template match="misc">
+  <xsl:template match="r:misc">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$miscellany.word"/></xsl:with-param>
     </xsl:call-template>
@@ -573,87 +574,87 @@ $Id$
   </xsl:template>
 
   <!-- Format legalese. -->
-  <xsl:template match="copyright">
+  <xsl:template match="r:copyright">
     <fo:block start-indent="{$heading.indent}">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="year"/>
+      <xsl:value-of select="r:year"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$by.word"/>
       <xsl:text> </xsl:text>
-      <xsl:if test="name">
-        <xsl:apply-templates select="name"/>
+      <xsl:if test="r:name">
+        <xsl:apply-templates select="r:name"/>
       </xsl:if>
-      <xsl:if test="not(name)">
-        <xsl:apply-templates select="/resume/header/name"/>
+      <xsl:if test="not(r:name)">
+        <xsl:apply-templates select="/r:resume/r:header/r:name"/>
       </xsl:if>
       <xsl:text>. </xsl:text>
-      <xsl:apply-templates select="legalnotice"/>
+      <xsl:apply-templates select="r:legalnotice"/>
     </fo:block>
   </xsl:template>
 
   <!-- Format para's as block objects with 10pt space after them. -->
-  <xsl:template match="para">
+  <xsl:template match="r:para">
     <fo:block space-after="{$para.break.space}">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
 
   <!-- Format emphasized words in bold. -->
-  <xsl:template match="emphasis">
+  <xsl:template match="r:emphasis">
     <fo:inline font-weight="{$emphasis.font.weight}">
       <xsl:value-of select="."/>
     </fo:inline>
   </xsl:template>
 
   <!-- Format citations to other works in italics. -->
-  <xsl:template match="citation">
+  <xsl:template match="r:citation">
     <fo:inline font-style="{$citation.font.style}">
       <xsl:value-of select="."/>
     </fo:inline>
   </xsl:template>
 
   <!-- Format a URL. -->
-  <xsl:template match="url">
+  <xsl:template match="r:url">
     <fo:inline font-family="{$url.font.family}">
       <xsl:value-of select="."/>
     </fo:inline>
   </xsl:template>
 
   <!-- Format a period. -->
-  <xsl:template match="period">
-    <xsl:apply-templates select="from"/>&#x2013;<xsl:apply-templates select="to"/>
+  <xsl:template match="r:period">
+    <xsl:apply-templates select="r:from"/>&#x2013;<xsl:apply-templates select="r:to"/>
   </xsl:template>
 
   <!-- Format a date. -->
-  <xsl:template match="date">
-    <xsl:value-of select="month"/>
+  <xsl:template match="r:date">
+    <xsl:value-of select="r:month"/>
     <xsl:text> </xsl:text>
-    <xsl:value-of select="year"/>
+    <xsl:value-of select="r:year"/>
   </xsl:template>
 
   <!-- In a date with just "present", format it as the word "present". -->
-  <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
+  <xsl:template match="r:present"><xsl:value-of select="$present.word"/></xsl:template>
 
   <!-- Suppress items not needed for print presentation -->
-  <xsl:template match="docpath"/>
-  <xsl:template match="keywords"/>
+  <xsl:template match="r:docpath"/>
+  <xsl:template match="r:keywords"/>
 
   <!-- Format the referees -->
-  <xsl:template match="referees">
+  <xsl:template match="r:referees">
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$referees.word"/></xsl:with-param>
     </xsl:call-template>
-    <xsl:apply-templates select="referee"/>
+    <xsl:apply-templates select="r:referee"/>
   </xsl:template>
 
-  <xsl:template match="referee">
+  <xsl:template match="r:referee">
     <fo:block space-after="{$para.break.space}">
       <fo:block keep-with-next="always" font-style="italic">
-	<xsl:apply-templates select="name"/>
+	<xsl:apply-templates select="r:name"/>
       </fo:block>
-      <xsl:apply-templates select="address"/>
-      <xsl:apply-templates select="contact"/>
+      <xsl:apply-templates select="r:address"/>
+      <xsl:apply-templates select="r:contact"/>
     </fo:block>
   </xsl:template>
 

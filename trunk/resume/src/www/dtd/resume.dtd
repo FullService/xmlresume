@@ -53,10 +53,17 @@ $Id$
 
 <!-- A collection of resumes -->
 <!ELEMENT resumes (resume*)>
+<!ATTLIST resumes id ID #IMPLIED
+	xmlns     CDATA #FIXED "http://xmlresume.sourceforge.net/resume/0.0"
+	xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation CDATA #IMPLIED>
 
 <!-- A resume -->
 <!ELEMENT resume (docpath?, header?, (%sections;)*, copyright?)>
-<!ATTLIST resume id ID #IMPLIED>
+<!ATTLIST resume id ID #IMPLIED
+	xmlns     CDATA #FIXED "http://xmlresume.sourceforge.net/resume/0.0"
+	xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation CDATA #IMPLIED>
 
 <!-- A resume may be part of a hierarchy of documents with a single -->
 <!-- root.  This docpath element specifies that hierarchy, plus the -->
