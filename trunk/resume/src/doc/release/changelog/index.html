@@ -19,6 +19,42 @@
 
 <!-- BEGIN CHANGELOG (do not remove this line) -->
 <pre>
+
+2002-11-06  brandondoyle
+
+        * /cvsroot/xmlresume/resume/src/doc/README.src:
+        Added a pointer to the news section of the docs
+
+        * /cvsroot/xmlresume/resume/src/doc/manual/en/glossary.xml:
+        Added a few glossary terms.
+
+        * /cvsroot/xmlresume/resume/build.xml:
+        Release support for the java filter stuff
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/country/es.xsl:
+        Spanish language support, contributed by Miguel Coca.
+
+        * /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java:
+        Restored specification of UTF-8 in the PrintStream constructor; this is
+        required to prevent character codes from being translated too early.
+
+        Unfortunately, this precludes the possibility of using the filter with
+        Jre 1.3.1 or earlier... bad luck all around.
+
+        * /cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+        Changed the value of css.href so that show up in the right spot for the release users
+
+        * /cvsroot/xmlresume/resume/examples/Makefile, /cvsroot/xmlresume/resume/examples/example2.xml:
+        Added parts to example2.xml to represent new parts of the DTD and demonstrate the filter idea.
+
+        * /cvsroot/xmlresume/resume/src/doc/manual/en/paramref/intro.xml,
+/cvsroot/xmlresume/resume/src/doc/manual/entities/divisions.ent,
+/cvsroot/xmlresume/resume/src/doc/release/todo/index.html, /cvsroot/xmlresume/resume/src/doc/manual/en/bookinfo.xml,
+/cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml,
+/cvsroot/xmlresume/resume/src/doc/manual/en/glossary.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/intro.xml,
+/cvsroot/xmlresume/resume/src/doc/manual/manual.xml:
+        User guide changes and additions
+
 2002-11-05  brandondoyle
 
         * /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl,
