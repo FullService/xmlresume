@@ -80,7 +80,7 @@ function process_upload() {
 Subject: ORC: Your XML Resume has been processed
 Hello,
 
-This message is to notify you that the XML R&eacute;sum&eacute; you
+This message is to notify you that the XML Résumé you
 submitted has been processed.  The results of this build, and a log
 summary of the build process can be found at
 
@@ -96,7 +96,8 @@ http://sourceforge.net/tracker/?func=add&group_id=29512&atid=396335
 
 Don't forget to include the log summary in the report!
 
-Thanks for using the XMLResume Library.");
+Thanks for using the XMLResume Library.
+");
   fclose($fpEmail);
 
   return( array( 0, "R&eacute;sum&eacute; uploaded successfully."));
