@@ -38,22 +38,70 @@ $Id$
 
   <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
   <xsl:param name="page.word">p&#x00e1;gina</xsl:param>
+  <!-- Word to use for "Contact Information" -->
   <xsl:param name="contact.word">Dados para Contato</xsl:param>
   <xsl:param name="objective.word">Objetivo Profissional</xsl:param>
+  <!-- Word to use for "Employment History" -->
   <xsl:param name="history.word">Experi&#x00ea;ncia Profissional</xsl:param>
   <xsl:param name="academics.word">Forma&#x00e7;&#x00e3;o Acad&#x00ea;mica</xsl:param>
   <xsl:param name="publications.word">Publica&#x00e7;&#x00f5;es</xsl:param>
+  <xsl:param name="interests.word">Interesses</xsl:param>
+  <xsl:param name="security-clearances.word">Autoriza&#x00e7;&#x00f5;es</xsl:param>
+  <xsl:param name="awards.word">Pr&#x00E8;mios</xsl:param>
   <xsl:param name="miscellany.word">Diversos</xsl:param>
+  <!-- Word to use for "in", as in "bachelor degree *in* political science" -->
   <xsl:param name="in.word">em</xsl:param>
+  <!-- Word to use for "and", as in "Minors in political science, 
+	English, *and* business" -->
+  <xsl:param name="and.word">e</xsl:param>
+  <!-- Word to use for "Copyright (c)" -->
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
+  <!-- Word to use for "by", as in "Copyright by Joe Doom" -->
   <xsl:param name="by.word">por</xsl:param>
+  <!-- Word to use for "present", as in "Period worked: August 1999-Present" -->
   <xsl:param name="present.word">presente data</xsl:param>
-  <xsl:param name="phone.word">Telefone</xsl:param>
-  <xsl:param name="email.word">Endere&#x00e7;o Eletr&#x00f4;nico</xsl:param>
-  <xsl:param name="url.word">URL</xsl:param>
   <xsl:param name="achievements.word">Realiza&#x00e7;&#x00f5;es:</xsl:param>
   <xsl:param name="projects.word">Projetos:</xsl:param>
+
+  <!-- Word to use for "minor" (lesser area of study), singluar and plural. -->
+  <xsl:param name="minor.word">minorit&#x00E1;rio</xsl:param>
+  <xsl:param name="minors.word">minorit&#x00E1;rios</xsl:param>
   <xsl:param name="referees.word">Refer&#x00ea;ncias</xsl:param>
+  <!-- Word to use for "Overall GPA", as in "*Overall GPA*: 3.3" -->
+  <xsl:param name="overall-gpa.word">Média geral</xsl:param>
+  <!-- Word to use for "GPA in Major", as in "*GPA in Major*: 3.3" -->
+  <xsl:param name="major-gpa.word">GPA in Major</xsl:param>
+  <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
+  <xsl:param name="out-of.word">de um total de</xsl:param>
+
+  <!-- Phrase to display when referees are hidden. -->
+  <xsl:param name="referees.hidden.phrase">Dispon&#x00ED;vel sob pedido.</xsl:param>
+  <xsl:param name="last-modified.phrase">&#x00DA;ltima modifica&#x00e7;&#x00f5;</xsl:param>
+
+  <xsl:param name="phone.word">Telefone</xsl:param>
+  <xsl:param name="fax.word">Fax</xsl:param>
+  <xsl:param name="pager.word">Pager</xsl:param>
+  <xsl:param name="email.word">Endere&#x00e7;o Eletr&#x00f4;nico</xsl:param>
+  <xsl:param name="url.word">URL</xsl:param>
+
+  <!-- Words for phone and fax locations, as in "Home Phone", or "Work Fax" -->
+
+  <xsl:param name="phone.home.phrase"><xsl:value-of select="$phone.word"/> Residencial</xsl:param>
+  <xsl:param name="phone.work.phrase"><xsl:value-of select="$phone.word"/> Comercial</xsl:param>
+  <xsl:param name="phone.mobile.phrase"><xsl:value-of select="$phone.word"/> Celular</xsl:param>
+  <xsl:param name="fax.home.phrase"><xsl:value-of select="$fax.word"/> Residencial</xsl:param>
+  <xsl:param name="fax.work.phrase"><xsl:value-of select="$fax.word"/> Comercial</xsl:param>
+
+  <!-- Instant messenger service names -->
+  <!-- (When you add or remove a service here, don't forget to update
+  ../../lib/common.xsl and element.instantMessage.xml in the user guide.)
+  -->
+  <xsl:param name="im.aim.service">AIM</xsl:param>
+  <xsl:param name="im.icq.service">ICQ</xsl:param>
+  <xsl:param name="im.irc.service">IRC</xsl:param>
+  <xsl:param name="im.jabber.service">Jabber</xsl:param>
+  <xsl:param name="im.msn.service">MSN Messenger</xsl:param>
+  <xsl:param name="im.yahoo.service">Yahoo! Messenger</xsl:param>
 
   <!-- default is European address formatting.  For countries other -->
   <!-- than France (e.g. Canada) "standard" formatting may be more correct. -->
