@@ -29,8 +29,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The doctype with unofficial FPI for this DTD is:
 
-  <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.0.1//EN"
-                          "http://ad1440.net/~kelly/resume.dtd">
+  <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.2.0//EN"
+                   "http://xmlresume.sourceforge.net/dtd/resume.dtd">
 
 $Id$
 -->
