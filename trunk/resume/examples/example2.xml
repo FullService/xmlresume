@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
-"file:/Documents and Settings/kelly/Desktop/Development/xmlresume/resume/src/www/dtd/resume.dtd">
-<!--  "http://xmlresume.sourceforge.net/dtd/resume.dtd"> -->
+  "http://xmlresume.sourceforge.net/dtd/resume.dtd">
 
 <!--
 example2.xml
@@ -114,6 +113,10 @@ CUBA
 	  <present/>
 	</to>
       </period>
+      <projects>
+	<project>Fall Menu</project>
+	<project>Revamping of Grill Area</project>
+      </projects>
       <achievements>
 	<achievement>Developed <emphasis>13</emphasis> new menu items</achievement>
 	<achievement>Prepared daily operations plan</achievement>
@@ -185,12 +188,46 @@ CUBA
     <degrees>
       <degree>
 	<level>AA</level>
-	<subject>Culinary Arts</subject>
+	<major>Culinary Arts</major>
 	<date>
 	  <month>May</month>
 	  <year>1995</year>
 	</date>
 	<institution>Culinary Institute of America</institution>
+        <subjects>
+	  <subject>
+	    <title>Stocks, broths, and soups</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French and world sauces</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French cuisine</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>World cuisine</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Kitchen sanitation</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Pastry</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>Culinary history</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Hotel restaurant management</title>
+	    <result>C</result>
+	  </subject>
+	</subjects>	  
       </degree>
     </degrees>
   </academics>
@@ -220,5 +257,30 @@ CUBA
     </pub>
 	
   </pubs>
+
+  <referees>
+    <referee>
+      <name>
+	<firstname>Indiana</firstname>
+	<surname>O'Brien</surname>
+      </name>
+      <contact>
+	<phone>408.555.1296</phone>
+      </contact>
+    </referee>
+    <referee>
+      <name>
+	<firstname>Web</firstname>
+	<surname>Melgood</surname>
+      </name>
+      <address>
+	<street>3090 Deltoid</street>
+	<city>Santa Yorba</city>
+	<state>CA</state>
+	<zip>95022</zip>
+	<country>USA</country>
+      </address>
+    </referee>
+  </referees>
 
 </resume>
