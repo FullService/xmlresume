@@ -183,9 +183,9 @@ $Id$
   <xsl:template match="job">
     <fo:block>
       <fo:inline font-weight="bold"><xsl:value-of select="jobtitle"/></fo:inline>
-      -
+      <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:value-of select="employer"/></fo:inline>
-      -
+      <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:apply-templates select="period"/></fo:inline>
       <fo:block>
         <xsl:apply-templates select="description"/>
@@ -405,7 +405,7 @@ $Id$
 
   <!-- Format a period. -->
   <xsl:template match="period">
-    <xsl:apply-templates select="from"/>-<xsl:apply-templates select="to"/>
+    <xsl:apply-templates select="from"/>&#x2013;<xsl:apply-templates select="to"/>
   </xsl:template>
 
   <!-- Format a date. -->

@@ -191,7 +191,7 @@ $Id$
   </xsl:template>
 		
   <xsl:template match="period">
-    <xsl:apply-templates select="from"/>-<xsl:apply-templates select="to"/>
+    <xsl:apply-templates select="from"/>&#x2013;<xsl:apply-templates select="to"/>
   </xsl:template>
 
   <xsl:template match="date">
