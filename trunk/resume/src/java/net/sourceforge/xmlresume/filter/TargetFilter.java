@@ -54,18 +54,18 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLFilterImpl;
 
 /**
- * Filter XMLResume elements based on the <code>categories</code> attribute.  
- * "Categories," in the meaningful sense, can be anything that the user decides 
+ * Filter XMLResume elements based on the <code>targets</code> attribute.  
+ * "Targets," in the meaningful sense, can be anything that the user decides 
  * makes sense.
  *
- * <p><code>Categories</code>Can be a simple comma-seperated list (whitespace 
+ * <p><code>Targets</code>Can be a simple comma-seperated list (whitespace 
  * discouraged), or a more complex boolean statement in disjunctive form:
  * eg, the element with the attribute 
- * <code>categories="A:B|C"</code> would be included in resumes for which 
- * (A and B) OR C are defined as categories.
+ * <code>targets="A:B|C"</code> would be included in resumes for which 
+ * (A and B) OR C are defined as targets.
  * Commas (,) are functionally equivalent to pipes (|), but are included
- * because the common case is that of a list of categories for which
- * the element should be included.  Categories are case-insensitive.
+ * because the common case is that of a list of targets for which
+ * the element should be included.  Targets are case-insensitive.
  * 
  * Instances of this class should be placed <i>between</i> an 
  * {@link org.xml.sax.XMLReader} and a {@link org.xml.sax.helpers.DefaultHandler}.
@@ -73,34 +73,34 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * <p> For example, consider a former Enron executive named Eric who is 
  * looking for a new job.  Eric has skills in somewhat disparate 
  * fields and wants to maintain a single source file to generate resumes 
- * for each field.  He creates a "management" category for management
- * experience, a "accounting" category for his finance skills, and an "outdated"
- * category for skills which have lost relevance to his career. 
+ * for each field.  He creates a "management" target for management
+ * experience, a "accounting" target for his finance skills, and an "outdated"
+ * target for skills which have lost relevance to his career. 
  * His "skills" section might look like this:
  * <ul>
- *  <li><code>&#60;skill categories="management|accounting"&#62;Leadership&#60;/skill&#62;</code>
- *  <li><code>&#60;skill categories="accounting"&#62;Financial modeling&#60;/skill&#62;</code>
- *  <li><code>&#60;skill categories="management"&#62;Vision&#60;/skill&#62;</code>
- *  <li><code>&#60;skill categories="accounting"&#62;Audit&#60;/skill&#62;</code>
- *  <li><code>&#60;skill categories="management:outdated"&#62;Ethics&#60;/skill&#62;</code>
+ *  <li><code>&#60;skill targets="management|accounting"&#62;Leadership&#60;/skill&#62;</code>
+ *  <li><code>&#60;skill targets="accounting"&#62;Financial modeling&#60;/skill&#62;</code>
+ *  <li><code>&#60;skill targets="management"&#62;Vision&#60;/skill&#62;</code>
+ *  <li><code>&#60;skill targets="accounting"&#62;Audit&#60;/skill&#62;</code>
+ *  <li><code>&#60;skill targets="management:outdated"&#62;Ethics&#60;/skill&#62;</code>
  * </ul>
  *
  * If he wants to make a resume to apply for a management job, he would
- * simple filter on the "management" category.  Note that "Leadership" will
+ * simple filter on the "management" target.  Note that "Leadership" will
  * be included in both accounting and management resumes.  "Ethics" will be
  * included only in management resumes that are outdated.  
 
  * @author Mark Miller <joup@bigfoot.com>
  */
-public class CategoryFilter extends XMLFilterImpl {
+public class TargetFilter extends XMLFilterImpl {
     Stack elements;
     //Ignore all events while this is non-null
     String excludedElement;
-    StringVector categories;
+    StringVector targets;
     XMLReader parent;
     DefaultHandler dh;
     Locator locator;
-    Hashtable availableCats = null;
+    Hashtable availableTargets = null;
 
     private static final int ERROR = 10;
     private static final int WARN = 5;
@@ -108,19 +108,19 @@ public class CategoryFilter extends XMLFilterImpl {
 
     int debugLevel = ERROR;
 
-    public static final String CATEGORIES_ATTR = "targets";
+    public static final String TARGETS_ATTR = "targets";
     public static final String OR_OP_CHARS = "|,";
     public static final String AND_OP_CHARS = "+";
 
     /** 
-     * Create a new CategoryFilter object, which passes elements matching 
-     * {@link categories} (as well as elements that have no explicitly 
-     * defined categories) to its {@link DefaultHandler}.
+     * Create a new TargetFilter object, which passes elements matching 
+     * targets (as well as elements that have no explicitly 
+     * defined targets) to its {@link DefaultHandler}.
      * @param parent the XMLReader that is parsing the input, or another XMLFilter.
-     * @param categories an array of categories to match on
+     * @param targets an array of targets to match on
      */
 
-    public CategoryFilter(XMLReader parent, Iterator categories) {
+    public TargetFilter(XMLReader parent, Iterator targets) {
 	super(parent);
 	this.parent = parent;
       	parent.setContentHandler(this);
@@ -129,25 +129,25 @@ public class CategoryFilter extends XMLFilterImpl {
 	parent.setEntityResolver(this);
 	this.elements = new Stack();
 
-	this.categories = new StringVector();
-	this.availableCats = new Hashtable();
-	while (categories.hasNext()) {
-	    this.categories.push((String) categories.next());
+	this.targets = new StringVector();
+	this.availableTargets = new Hashtable();
+	while (targets.hasNext()) {
+	    this.targets.push((String) targets.next());
 	}
     }
 
     /** 
-     * Create a new CategoryFilter object, which passes elements matching 
-     * {@link categories} (as well as elements that have no explicitly 
-     * defined categories) to its {@link DefaultHandler}.
+     * Create a new TargetFilter object, which passes elements matching 
+     * targets (as well as elements that have no explicitly 
+     * defined targets) to its {@link DefaultHandler}.
      * @param parent the XMLReader that is parsing the input, or another XMLFilter.
-     * @param categories an array of categories to match on
+     * @param targets an array of targets to match on
      * @param debugLevel the debug message level. Messages with a severity
-     *   equal to or greater than {@link debugLevel} will be printed.
+     *   equal to or greater than debugLevel will be printed.
      */
 
-    public CategoryFilter(XMLReader parent, Iterator categories, int debugLevel) {
-        this(parent, categories);
+    public TargetFilter(XMLReader parent, Iterator targets, int debugLevel) {
+        this(parent, targets);
         this.debugLevel = debugLevel;
     }
 
@@ -208,13 +208,13 @@ public class CategoryFilter extends XMLFilterImpl {
 				       + " was not closed");
 	    }
 	}
-	s = "\n\n<!-- AVAILABLE CATEGORIES:";
-	e = availableCats.elements();
+	s = "\n\n<!-- AVAILABLE TARGETS:";
+	e = availableTargets.elements();
 	while (e.hasMoreElements()) 
 	    s = s + " " + (String) e.nextElement();
-	s = s + " -->\n<!-- ACCEPTED CATEGORIES:";
-	for (int i=0; i < categories.size(); i++)
-	    s = s + " " + categories.elementAt(i);
+	s = s + " -->\n<!-- ACCEPTED TARGETS:";
+	for (int i=0; i < targets.size(); i++)
+	    s = s + " " + targets.elementAt(i);
 	s = s + " -->\n";
 	dh.characters(s.toCharArray(), 0, s.length());
 	dh.endDocument();
@@ -225,8 +225,8 @@ public class CategoryFilter extends XMLFilterImpl {
      * an excluded element.  <p>If there is no parent element that has been excluded,
      * pass the event on to the <code>DefaultHandler</code> iff
      * <ul>
-     * <li>there is no <code>categories</code> attribute list, OR
-     * <li>the <code>categories</code> attribute matches one of the accepted ones
+     * <li>there is no <code>targets</code> attribute list, OR
+     * <li>the <code>targets</code> attribute matches one of the accepted ones
      *
      * @param uri The Uniform Resource Indicator of the element
      * @param localName The local name of the element
@@ -241,22 +241,22 @@ public class CategoryFilter extends XMLFilterImpl {
         // XXX If you optimize this method (so that it doesn't check for
         // XXX acceptance if we're in an excluded element, or so that it uses
         // XXX short-circuit boolean logic), you'll break the part of the code
-        // XXX that compiles a list of available categories. It has to "see"
-        // XXX EVERY SINGLE CATEGORY of EVERY SINGLE ELEMENT.
+        // XXX that compiles a list of available targets. It has to "see"
+        // XXX EVERY SINGLE TARGET of EVERY SINGLE ELEMENT.
 
-	String categoryList = attributes.getValue(CATEGORIES_ATTR);
+	String targetList = attributes.getValue(TARGETS_ATTR);
 
         // Determine whether the element should be accepted
-        // (As a side effect, update the list of available categories)
-        boolean accept = false;     // presume that the categoryList won't be accepted
-	if ( ! (categoryList == null || categoryList.equals(""))) {
+        // (As a side effect, update the list of available targets)
+        boolean accept = false;     // presume that the targetList won't be accepted
+	if ( ! (targetList == null || targetList.equals(""))) {
 
 	    // This used to quit looping after the element was accepted:
             //   while (!accept && orTok.hasMoreTokens()) {
             // However, if the loop short-circuits, we can miss adding some
-            // categories to availableCats.
+            // targets to availableTargets.
 
-	    StringTokenizer orTok = new StringTokenizer(categoryList, OR_OP_CHARS);
+	    StringTokenizer orTok = new StringTokenizer(targetList, OR_OP_CHARS);
 	    while (orTok.hasMoreTokens()) {
 
 		boolean acceptAndClause = true;
@@ -264,8 +264,8 @@ public class CategoryFilter extends XMLFilterImpl {
 		StringTokenizer andTok = new StringTokenizer(orTok.nextToken(), AND_OP_CHARS);
                 while (andTok.hasMoreTokens()) {
 		    String s = andTok.nextToken();
-		    availableCats.put(s,s);
-		    acceptAndClause = acceptAndClause && categories.containsIgnoreCase(s);
+		    availableTargets.put(s,s);
+		    acceptAndClause = acceptAndClause && targets.containsIgnoreCase(s);
 		    debug("string='" + s + "', acceptAndClause=" + acceptAndClause);
 		}
 
@@ -280,14 +280,14 @@ public class CategoryFilter extends XMLFilterImpl {
             elements.push(qName);
 
             // Create a new attributes list that doesn't include the
-            // "categories" attribute.
-            AttributesImpl attrsMinusCategories = new AttributesImpl(attributes);
-            int categoriesIdx = attrsMinusCategories.getIndex(CATEGORIES_ATTR);
-            if (categoriesIdx != -1) {
-                attrsMinusCategories.removeAttribute(categoriesIdx);
+            // "targets" attribute.
+            AttributesImpl attrsMinusTargets = new AttributesImpl(attributes);
+            int targetsIdx = attrsMinusTargets.getIndex(TARGETS_ATTR);
+            if (targetsIdx != -1) {
+                attrsMinusTargets.removeAttribute(targetsIdx);
             }
 
-            dh.startElement(uri, localName, qName, attrsMinusCategories);
+            dh.startElement(uri, localName, qName, attrsMinusTargets);
         }
     }
 

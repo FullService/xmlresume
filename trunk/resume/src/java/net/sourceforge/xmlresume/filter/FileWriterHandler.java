@@ -76,7 +76,7 @@ public class FileWriterHandler extends DefaultHandler {
 	debug("Received startDocument event");
 	output.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 	output.println("<!DOCTYPE resume PUBLIC \"-//Sean Kelly//DTD Resume 1.3.1//EN\" \"http://xmlresume.sourceforge.net/dtd/resume.dtd\">");
-	output.println("<!-- THIS FILE WAS GENERATED AUTOMATICALLY BY XMLResume's CategoryFilter. -->");
+	output.println("<!-- THIS FILE WAS GENERATED AUTOMATICALLY BY XMLResume's Targeting Filter. -->");
 	indent = "";
     }
 	   
@@ -91,8 +91,8 @@ public class FileWriterHandler extends DefaultHandler {
     }
 
     /** 
-     * Print {@link qName} and {@link attributes} to {@link this.output}
-     * {@link uri} and {@link localName} are ignored.
+     * Print qName and attributes to {@field output}
+     * uri and localName are ignored.
      * @param qName The name of the element
      * @param attributes A list of attributes associated with the element
      */
@@ -121,7 +121,7 @@ public class FileWriterHandler extends DefaultHandler {
     }
 
     /**
-     * Print the data to {@link this.output}
+     * Print the data to {@field output}
      */
 
     public void characters(char[] ch, int start, int length) throws SAXException {
@@ -146,7 +146,7 @@ public class FileWriterHandler extends DefaultHandler {
     }
 
     /** 
-     * Print whitespace to {@link this.output}.
+     * Print whitespace to {@field output}.
      */ 
     public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
 	String data = new String(ch, start, length);
@@ -201,7 +201,7 @@ public class FileWriterHandler extends DefaultHandler {
     }
 
     /**
-     * Print a debug message if {@link severity} is greater than the logging level
+     * Print a debug message if severity is greater than the logging level
      * @param msg Debug message
      * @param severity The importance of the message
      */
@@ -210,7 +210,7 @@ public class FileWriterHandler extends DefaultHandler {
     }
 
     /**
-     * Create a new instance that will write its data to {@link output}
+     * Create a new instance that will write its data to {@field output}
      * @param output the output file in the UTF-8 character encoding.
      * @throws UnsupportedEncodingException when the character encoding is unsupported
      */
@@ -220,7 +220,7 @@ public class FileWriterHandler extends DefaultHandler {
     }	
 
     /**
-     * Create a new instance that will write its data to {@link output}
+     * Create a new instance that will write its data to {@field output}
      *  in the UTF-8 character encoding.
      * @param output the output file
      * @param debugLevel low values == more debug messages
@@ -232,7 +232,7 @@ public class FileWriterHandler extends DefaultHandler {
     }	
 
     /**
-     * Create a new instance that will write its data to {@link output}
+     * Create a new instance that will write its data to {@field output}
      * in the specified character encoding.
      * @param output the output file 
      * @param enc the character encoding to use
@@ -244,7 +244,7 @@ public class FileWriterHandler extends DefaultHandler {
     }	
 
     /**
-     * Create a new instance that will write its data to {@link output}
+     * Create a new instance that will write its data to {@field output}
      * @param output the output file
      * @param debugLevel low values == more debug messages
      * @param enc the character encoding to use

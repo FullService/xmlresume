@@ -51,11 +51,11 @@ public class Filter {
 	int debugLevel=9;
 	int i=0;
 	int nCats;
-	Vector categoryList = new Vector();
+	Vector targetList = new Vector();
 	File in = null;
 	File outfile = null;
 	PrintStream out = System.out;
-	CategoryFilter filter;
+	TargetFilter filter;
 	FileWriterHandler writer;
 	SAXParser parser;
 
@@ -81,13 +81,13 @@ public class Filter {
                     //"UTF-8" // character set
                 );
 	    } else {
-		categoryList.addElement(argv[i]);
+		targetList.addElement(argv[i]);
 		i++;
 	    }
 	}
 
 	if (in == null || argv.length < 2 || "-h".equals(argv[0]) || "--help".equals(argv[0])) {
-	    System.err.println("Filter -- preprocess an XMLResume to select for elements in a given category\n" + 
+	    System.err.println("Filter -- preprocess an XMLResume to select for elements in a given target\n" + 
 			       "Usage: java Filter [-v|--verbose] -in <in_file> [-out <out_file>] [target1 [target2 [...]]\n" + 
 			       "If -out <out_file> is not specified, output will be printed on STDOUT.");
 	    System.exit(1);
@@ -96,7 +96,7 @@ public class Filter {
 	    System.exit(1);
 	} else {
 	    parser = SAXParserFactory.newInstance().newSAXParser();
-	    filter = new CategoryFilter(parser.getXMLReader(), categoryList.iterator(), debugLevel);
+	    filter = new TargetFilter(parser.getXMLReader(), targetList.iterator(), debugLevel);
 	    try {
 		writer = new FileWriterHandler(out, debugLevel, "UTF-8");
 	    } catch (UnsupportedEncodingException e) { 
