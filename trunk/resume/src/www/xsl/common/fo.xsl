@@ -122,7 +122,10 @@ $Id$
   <!-- Header information -->
   <xsl:template match="r:header" mode="standard">
     <fo:block space-after="{$para.break.space}">
-      <fo:block font-weight="{$header.name.font.weight}">
+      <fo:block
+          font-style="{$header.name.font.style}"
+          font-weight="{$header.name.font.weight}"
+          font-size="{$header.name.font.size}">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
       <xsl:apply-templates select="r:address"/>
@@ -139,7 +142,10 @@ $Id$
         end-indent="{$header.margin-right}">
       <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
         rule-thickness="{$header.line.thickness}"/>
-      <fo:block font-weight="{$header.name.font.weight}">
+      <fo:block
+          font-style="{$header.name.font.style}"
+          font-weight="{$header.name.font.weight}"
+          font-size="{$header.name.font.size}">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
       <xsl:apply-templates select="r:address"/>
