@@ -112,6 +112,8 @@ $Id$
       font-weight="{$heading.font.weight}"
       space-before="{$para.break.space}"
       space-after="{$para.break.space}"
+      border-bottom-style="{$heading.border.bottom.style}"
+      border-bottom-width="{$heading.border.bottom.width}"
       keep-with-next="always">
       <xsl:value-of select="$text"/>
     </fo:block>

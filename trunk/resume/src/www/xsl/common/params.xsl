@@ -185,6 +185,8 @@ $Id$
   <xsl:param name="heading.font.size">10pt</xsl:param>
   <xsl:param name="heading.font.family">sans-serif</xsl:param>
   <xsl:param name="heading.font.weight">bold</xsl:param>
+  <xsl:param name="heading.border.bottom.style">none</xsl:param>
+  <xsl:param name="heading.border.bottom.width">thin</xsl:param>
   <xsl:param name="header.name.font.weight">bold</xsl:param>
   <xsl:param name="header.item.font.style">italic</xsl:param>
   <xsl:param name="emphasis.font.weight">bold</xsl:param>
