@@ -87,6 +87,10 @@ $Id$
   <xsl:param name="skills.level.start"> (</xsl:param>
   <xsl:param name="skills.level.end">)</xsl:param>
 
+  <!-- Text to use to indicate start and end of location in all formats -->
+  <xsl:param name="location.start"> (</xsl:param>
+  <xsl:param name="location.end">)</xsl:param>
+
   <!-- Separator between <para>s in a description.
   (applies only when interest.description.format = single-line) -->
   <!-- &#x2014; == em-dash -->

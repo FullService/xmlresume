@@ -102,7 +102,7 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:keyword">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:if test="position() != last()">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -323,7 +323,9 @@ $Id$
   <xsl:template match="r:job">
     <p class="job">
       <xsl:apply-templates select="r:jobtitle"/> <br/>
-      <xsl:apply-templates select="r:employer"/> <br/>
+      <xsl:apply-templates select="r:employer"/>
+      <xsl:apply-templates select="r:location"/>
+      <br/>
       <xsl:apply-templates select="r:period"/>
     </p>
     <xsl:apply-templates select="r:description">
@@ -351,6 +353,26 @@ $Id$
 
   <xsl:template match="r:employer">
     <span class="employer">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="r:organization">
+    <span class="organization">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="r:location">
+    <span class="location">
+      <xsl:value-of select="$location.start"/>
+      <xsl:apply-templates/>
+      <xsl:value-of select="$location.end"/>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="r:institution">
+    <span class="institution">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
@@ -442,6 +464,7 @@ $Id$
       <xsl:if test="r:institution">
         <br/>
         <xsl:apply-templates select="r:institution"/>
+        <xsl:apply-templates select="r:location"/>
       </xsl:if>
 
       <xsl:apply-templates select="r:gpa"/>
@@ -617,10 +640,13 @@ $Id$
   <xsl:template match="r:membership">
     <li>
       <xsl:if test="r:title">
-        <span class="membershipTitle"><xsl:apply-templates select="r:title"/></span><br/>
+        <xsl:apply-templates select="r:title"/>
+        <br/>
       </xsl:if>
       <xsl:if test="r:organization">
-        <span class="organization"><xsl:apply-templates select="r:organization"/></span><br/>
+        <xsl:apply-templates select="r:organization"/>
+        <xsl:apply-templates select="r:location"/>
+        <br/>
       </xsl:if>
       <xsl:if test="r:period">
         <xsl:apply-templates select="r:period"/><br/>
@@ -629,6 +655,12 @@ $Id$
         <xsl:with-param name="css.class">membershipDescription</xsl:with-param>
       </xsl:apply-templates>
     </li>
+  </xsl:template>
+
+  <xsl:template match="r:membership/r:title">
+    <span class="membershipTitle">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
   <!-- Format interests section. -->
@@ -802,16 +834,16 @@ $Id$
 
   <!-- emphasis -> strong -->
   <xsl:template match="r:emphasis">
-    <strong class="emphasis"><xsl:value-of select="."/></strong>
+    <strong class="emphasis"><xsl:apply-templates/></strong>
   </xsl:template>
 
   <!-- url -> monospace along with href -->
   <xsl:template match="r:url" name="FormatUrl">
     <a class="urlA">
       <xsl:attribute name="href">
-        <xsl:value-of select="."/>
+        <xsl:apply-templates/>
       </xsl:attribute>
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </a>
   </xsl:template>
 
@@ -819,15 +851,15 @@ $Id$
   <xsl:template match="r:link">
     <a class="linkA">
       <xsl:attribute name="href">
-        <xsl:value-of select="@href"/>
+        <xsl:apply-templates select="@href"/>
       </xsl:attribute>
-      <xsl:value-of select="."/>
+      <xsl:apply-templates/>
     </a>
   </xsl:template>
 
   <!-- citation -> cite -->
   <xsl:template match="r:citation">
-    <cite class="citation"><xsl:value-of select="."/></cite>
+    <cite class="citation"><xsl:apply-templates/></cite>
   </xsl:template>
 
   <!-- Format the referees -->

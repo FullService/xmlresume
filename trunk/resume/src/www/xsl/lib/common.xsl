@@ -234,4 +234,13 @@ $Id$
     </xsl:if>
   </xsl:template>
 
+  <!-- LOCATION =========================================================== -->
+  <!-- Location sub-elements -->
+  <xsl:template match="r:location/*">
+    <xsl:apply-templates/>
+    <xsl:if test="following-sibling::*">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
 </xsl:stylesheet>

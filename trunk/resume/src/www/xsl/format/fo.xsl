@@ -400,34 +400,35 @@ $Id$
     <xsl:apply-templates/>
   </xsl:template>
 
+  <xsl:template match="r:location">
+    <xsl:value-of select="$location.start"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$location.end"/>
+  </xsl:template>
+
   <!-- Format a single job. -->
   <xsl:template match="r:job">
     <fo:block>
-      <fo:block
-          space-after="{$half.space}"
-          keep-with-next="always">
-        <fo:inline
+      <fo:block space-after="{$half.space}" keep-with-next="always">
+        <fo:block
+            keep-with-next="always"
             font-style="{$jobtitle.font.style}"
             font-weight="{$jobtitle.font.weight}">
           <xsl:apply-templates select="r:jobtitle"/>
-        </fo:inline>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="$bullet.glyph"/>
-        <xsl:text> </xsl:text>
-        <fo:inline
-            font-style="{$employer.font.style}"
-            font-weight="{$employer.font.weight}">
-          <xsl:apply-templates select="r:employer"/>
-        </fo:inline>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="$bullet.glyph"/>
-        <xsl:text> </xsl:text>
-        <fo:inline
-            wrap-option="no-wrap"
+        </fo:block>
+        <fo:block keep-with-next="always">
+          <fo:inline
+              font-style="{$employer.font.style}"
+              font-weight="{$employer.font.weight}">
+            <xsl:apply-templates select="r:employer"/>
+          </fo:inline>
+          <xsl:apply-templates select="r:location"/>
+        </fo:block>
+        <fo:block
             font-style="{$job-period.font.style}"
             font-weight="{$job-period.font.weight}">
           <xsl:apply-templates select="r:period"/>
-        </fo:inline>
+        </fo:block>
       </fo:block>
       <xsl:if test="r:description">
         <fo:block
@@ -524,6 +525,7 @@ $Id$
       </fo:block>
       <fo:block>
         <xsl:apply-templates select="r:institution"/>
+        <xsl:apply-templates select="r:location"/>
       </fo:block>
 
       <xsl:apply-templates select="r:gpa"/>
@@ -755,31 +757,37 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:apply-templates select="r:title"/></xsl:with-param>
     </xsl:call-template>
-    <fo:list-block
-        space-after="{$para.break.space}"
-        provisional-distance-between-starts="{$para.break.space}"
-        provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="r:membership"/>
-    </fo:list-block>
+
+    <xsl:apply-templates select="r:membership"/>
   </xsl:template>
 
   <!-- Format membership. -->
   <xsl:template match="r:membership">
-    <xsl:call-template name="bulletListItem"/>
+    <fo:block space-after="{$half.space}" keep-with-next="always">
+      <xsl:apply-templates select="r:title"/>
+      <xsl:if test="r:organization">
+        <fo:block keep-with-next="always">
+          <xsl:apply-templates select="r:organization"/>
+          <xsl:apply-templates select="r:location"/>
+        </fo:block>
+      </xsl:if>
+      <xsl:if test="r:period">
+        <fo:block keep-with-next="always">
+          <xsl:apply-templates select="r:period"/>
+        </fo:block>
+      </xsl:if>
+    </fo:block>
+
+    <xsl:apply-templates select="r:description"/>
+
   </xsl:template>
 
   <xsl:template match="r:membership/r:title">
-    <fo:inline font-weight="{$emphasis.font.weight}"><xsl:apply-templates/></fo:inline>
-    <xsl:if test="following-sibling::*">
-      <xsl:text>, </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="r:membership/r:organization">
-    <xsl:apply-templates/>
-    <xsl:if test="following-sibling::*">
-      <xsl:text>, </xsl:text>
-    </xsl:if>
+    <fo:block
+        font-weight="{$jobtitle.font.weight}"
+        font-style="{$jobtitle.font.style}">
+      <xsl:apply-templates/>
+    </fo:block>
   </xsl:template>
 
   <!-- Format interests. -->

@@ -184,7 +184,7 @@ $Id$
   greater than $Width. Words are separated by spaces. -->
   <xsl:template name="Wrap">
     <!-- Text to wrap -->
-    <xsl:param name="Text"  />
+    <xsl:param name="Text"/>
     <!-- Maximum line length; lines longer than this get wrapped -->
     <xsl:param name="Width" select="$text.width - $text.indent.width"/>
     <!-- Whether newlines in $Text should be kept. -->

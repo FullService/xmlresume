@@ -132,32 +132,32 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:template match="r:contact/r:phone">
     <xsl:apply-templates select="@location"/>
     <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:fax">
     <xsl:apply-templates select="@location"/>
     <xsl:value-of select="$fax.word"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:pager">
     <xsl:value-of select="$pager.word"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:email">
     <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <xsl:template match="r:contact/r:url">
     <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
@@ -293,10 +293,19 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template match="r:location">
+    <xsl:value-of select="$location.start"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$location.end"/>
+  </xsl:template>
+
   <!-- Format each job -->
   <xsl:template match="r:job">
     <xsl:apply-templates select="r:jobtitle"/>
+    <xsl:call-template name="NewLine"/>
     <xsl:apply-templates select="r:employer"/>
+    <xsl:apply-templates select="r:location"/>
+    <xsl:call-template name="NewLine"/>
     <xsl:apply-templates select="r:period"/>
 
     <xsl:if test="r:description">
@@ -424,12 +433,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:value-of select="$present.word"/>
   </xsl:template>
 
-  <xsl:template match="r:jobtitle | r:employer">
-    <xsl:value-of select="normalize-space(.)"/>
-    <xsl:call-template name="NewLine"/>
-  </xsl:template>
-
-  <xsl:template match="r:year | r:month | r:title | r:annotation | r:level">
+  <xsl:template match="r:employer | r:jobtitle | r:year | r:month | r:title | r:annotation | r:level">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
@@ -485,6 +489,7 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:call-template name="Wrap">
         <xsl:with-param name="Text">
           <xsl:apply-templates select="r:institution"/>
+          <xsl:apply-templates select="r:location"/>
         </xsl:with-param>
       </xsl:call-template>
       <xsl:call-template name="NewLine"/>
@@ -759,7 +764,46 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:template match="r:membership">
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:apply-templates/>
+
+        <xsl:if test="r:title">
+          <xsl:call-template name="Wrap">
+            <xsl:with-param name="FirstIndent" select="0"/>
+            <xsl:with-param name="Indent" select="$text.indent.width"/>
+            <xsl:with-param name="Text">
+              <xsl:apply-templates select="r:title"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="NewLine"/>
+        </xsl:if>
+
+        <xsl:if test="r:organization">
+          <xsl:call-template name="Wrap">
+            <xsl:with-param name="FirstIndent" select="0"/>
+            <xsl:with-param name="Indent" select="$text.indent.width"/>
+            <xsl:with-param name="Text">
+              <xsl:apply-templates select="r:organization"/>
+              <xsl:apply-templates select="r:location"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="NewLine"/>
+        </xsl:if>
+
+        <xsl:if test="r:period">
+          <xsl:call-template name="Wrap">
+            <xsl:with-param name="FirstIndent" select="0"/>
+            <xsl:with-param name="Indent" select="$text.indent.width"/>
+            <xsl:with-param name="Text">
+              <xsl:apply-templates select="r:period"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="NewLine"/>
+        </xsl:if>
+
+        <xsl:if test="r:description">
+          <xsl:call-template name="NewLine"/>
+          <xsl:apply-templates select="r:description"/>
+        </xsl:if>
+
       </xsl:with-param>
     </xsl:call-template>
 
@@ -768,27 +812,6 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:call-template name="NewLine"/>
     </xsl:if>
       
-  </xsl:template>
-
-  <xsl:template match="r:membership/r:title">
-    <xsl:apply-templates/>
-    <xsl:if test="following-sibling::*">
-      <xsl:text>, </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="r:membership/r:organization">
-    <xsl:apply-templates/>
-    <xsl:if test="following-sibling::*">
-      <xsl:text>, </xsl:text>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="r:membership/r:description">
-    <xsl:if test="preceding-sibling::*">
-      <xsl:call-template name="NewLine"/>
-    </xsl:if>
-    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Format interests section. -->
