@@ -170,7 +170,16 @@
 	targeted to other purposes, change <command>filter_targets</command>
 	in <filename>Makefile</filename>.
       </para>
+
+	<note><para>
+	  You will need to add the <filename>xmlresume-filter.jar</filename>
+	  file to your java CLASSPATH before you can make use of the filter.
+	  It is located in the <filename>java</filename> directory of the
+	  &library.name; distribution.
+	</para></note>
+
     </section>
+
 	
     <section id="getting-started.explore.features.customizing">
       <title>Customizing your &resume;</title>
