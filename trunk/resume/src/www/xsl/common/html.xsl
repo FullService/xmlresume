@@ -663,7 +663,7 @@ $Id$
   </xsl:template>
 
   <!-- url -> monospace along with href -->
-  <xsl:template match="r:url">
+  <xsl:template match="r:url" name="FormatUrl">
     <code class="urlCode">
       <a class="urlA">
         <xsl:attribute name="href">

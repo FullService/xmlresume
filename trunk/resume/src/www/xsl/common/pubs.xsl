@@ -48,6 +48,7 @@ $Id$
     <xsl:apply-templates select="r:date"/>
     <xsl:apply-templates select="r:pubDate"/> <!-- Deprecated as of 1.3.4. -->
     <xsl:apply-templates select="r:pageNums"/>
+    <xsl:apply-templates select="r:url"/>
     <!-- And for those using free-form paragraphs, format those, too. -->
     <xsl:apply-templates select="r:para"/>
   </xsl:template>
@@ -69,7 +70,8 @@ $Id$
 
   <!-- Format the last author -->
   <xsl:template match="r:author" mode="final">
-    <xsl:call-template name="DerefAuthor"/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:call-template name="DerefAuthor"/>
+    <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format an author's name if provided or by reference to the name with the given id. -->
@@ -79,20 +81,21 @@ $Id$
         <xsl:apply-templates select="id(@name)"/>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:value-of select="."/>
+	<xsl:apply-templates/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <!-- Title of book -->
   <xsl:template match="r:bookTitle">
-    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Title of article -->
   <xsl:template match="r:artTitle">
     <xsl:text>&quot;</xsl:text>
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
     <xsl:text>&quot;</xsl:text>
     <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
@@ -104,7 +107,8 @@ $Id$
 
   <!-- Publisher without pub date -->
   <xsl:template match="r:publisher">
-    <xsl:apply-templates/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format the publication date -->
@@ -118,7 +122,14 @@ $Id$
 
   <!-- Format the page numbers of the journal in which the article appeared -->
   <xsl:template match="r:pageNums">
-    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:apply-templates/>
+    <xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+  
+  <!-- Format a URL -->
+  <xsl:template match="r:pub/r:url">
+    <xsl:call-template name="FormatUrl"/>
+    <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
   
 </xsl:stylesheet>

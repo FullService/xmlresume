@@ -17,6 +17,20 @@
   </refsynopsisdiv>
 
   <refsect1><title>Description</title>
+    <important>
+      <para>
+        The use of the <sgmltag class="element">url</sgmltag> element as a child
+        of <sgmltag class="element">publisher</sgmltag> is deprecated as of
+        &library.name; version 1.3.4.
+      </para>
+      <para>
+        We recommend that you convert all <sgmltag
+        class="element">url</sgmltag>s contained in <sgmltag
+        class="element">publisher</sgmltag>s to <sgmltag
+        class="element">link</sgmltag>s.
+      </para>
+    </important>
+
     <para>
       The <sgmltag class="element">url</sgmltag> element contains a single
       Uniform Resource Locator, as specified by <ulink url="&rfc1738.url;">RFC

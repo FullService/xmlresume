@@ -121,4 +121,14 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates/>
   </xsl:template>
 
+  <xsl:template match="r:publisher/r:url">
+    <xsl:message>
+      WARNING: Use of the url element as a child of the publisher element is
+      deprecated as of version 1.3.4 of the XML Resume Library. It will be
+      removed in a future version. It is recommended that you replace url
+      element children of publisher elements with link elements.
+    </xsl:message>
+    <xsl:call-template name="FormatUrl"/>
+  </xsl:template>
+
 </xsl:stylesheet>

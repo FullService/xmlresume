@@ -912,7 +912,7 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   <!-- url -> monospace along with href -->
-  <xsl:template match="r:url">
+  <xsl:template match="r:url" name="FormatUrl">
         <xsl:value-of select="."/>
   </xsl:template>
 

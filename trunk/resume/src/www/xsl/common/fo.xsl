@@ -659,7 +659,7 @@ $Id$
   </xsl:template>
 
   <!-- Title of book -->
-  <xsl:template match="r:bookTitle">
+  <xsl:template match="r:bookTitle" priority="1">
     <fo:inline font-style="italic"><xsl:value-of select="."/></fo:inline><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
@@ -822,7 +822,7 @@ $Id$
   </xsl:template>
 
   <!-- Format a URL. -->
-  <xsl:template match="r:url">
+  <xsl:template match="r:url" name="FormatUrl">
     <fo:inline font-family="{$url.font.family}">
       <xsl:value-of select="."/>
     </fo:inline>
