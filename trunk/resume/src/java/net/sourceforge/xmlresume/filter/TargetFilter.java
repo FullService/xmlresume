@@ -27,11 +27,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.AttributesImpl;
-import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLFilterImpl;
 
 /**
- * Filter XMLResume elements based on the <code>targets</code> attribute.  
+ * Filter (include) XMLResume elements based on the <code>targets</code> attribute.  
  * "Targets," in the meaningful sense, can be anything that the user decides 
  * makes sense.
  *
@@ -44,8 +43,8 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * because the common case is that of a list of targets for which
  * the element should be included.  Targets are case-insensitive.
  * 
- * Instances of this class should be placed <i>between</i> an 
- * {@link org.xml.sax.XMLReader} and a {@link org.xml.sax.helpers.DefaultHandler}.
+ * Instances of this class should be placed between an 
+ * {@link org.xml.sax.XMLReader} and a {@link org.xml.sax.ContentHandler}.
  *
  * <p> For example, consider a former Enron executive named Eric who is 
  * looking for a new job.  Eric has skills in somewhat disparate 
@@ -63,114 +62,58 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * </ul>
  *
  * If he wants to make a resume to apply for a management job, he would
- * simple filter on the "management" target.  Note that "Leadership" will
+ * simply filter on the "management" target.  Note that "Leadership" will
  * be included in both accounting and management resumes.  "Ethics" will be
  * included only in management resumes that are outdated.  
 
- * @author Mark Miller <joup@bigfoot.com>
+ * @author Mark Miller <joup@bnet.org>
  */
-public class TargetFilter extends XMLFilterImpl {
+public class TargetFilter extends XMLResumeFilter {
+
     Stack elements;
+
     //Ignore all events while this is non-null
     String excludedElement;
-    StringVector targets;
-    XMLReader parent;
-    DefaultHandler dh;
-    Locator locator;
+
+    StringVector whitelist;
     Hashtable availableTargets = null;
-
-    private static final int ERROR = 10;
-    private static final int WARN = 5;
-    private static final int DEBUG = 1;
-
-    int debugLevel = ERROR;
 
     public static final String TARGETS_ATTR = "targets";
     public static final String OR_OP_CHARS = "|,";
     public static final String AND_OP_CHARS = "+";
 
     /** 
-     * Create a new TargetFilter object, which passes elements matching 
-     * targets (as well as elements that have no explicitly 
-     * defined targets) to its {@link DefaultHandler}.
-     * @param parent the XMLReader that is parsing the input, or another XMLFilter.
-     * @param targets an array of targets to match on
+     * Create a new TargetFilter object, which passes elements included in the
+     * whitelist (as well as elements that have no explicitly 
+     * defined targets) to its {@link ContentHandler}.
+     * @param reader the XMLReader that is parsing the input, or another XMLFilter.
+     * @param whitelist an Iterator of targets to include in the output
      */
 
-    public TargetFilter(XMLReader parent, Iterator targets) {
-	super(parent);
-	this.parent = parent;
-      	parent.setContentHandler(this);
-	parent.setErrorHandler(this);
-	parent.setDTDHandler(this);
-	parent.setEntityResolver(this);
-	this.elements = new Stack();
-
-	this.targets = new StringVector();
-	this.availableTargets = new Hashtable();
-	while (targets.hasNext()) {
-	    this.targets.push((String) targets.next());
-	}
+    public TargetFilter(XMLReader reader, Iterator whitelist) {
+	this(reader, whitelist, 9);
     }
 
     /** 
-     * Create a new TargetFilter object, which passes elements matching 
-     * targets (as well as elements that have no explicitly 
-     * defined targets) to its {@link DefaultHandler}.
-     * @param parent the XMLReader that is parsing the input, or another XMLFilter.
-     * @param targets an array of targets to match on
+     * Create a new TargetFilter object, which passes elements included in the
+     * whitelist (as well as elements that have no explicitly 
+     * defined targets) to its {@link ContentHandler}.
+     * @param reader the XMLReader that is parsing the input, or another XMLFilter.
+     * @param whitelist an Iterator of targets to include in the output
      * @param debugLevel the debug message level. Messages with a severity
      *   equal to or greater than debugLevel will be printed.
      */
 
-    public TargetFilter(XMLReader parent, Iterator targets, int debugLevel) {
-        this(parent, targets);
-        this.debugLevel = debugLevel;
-    }
-
-    /**
-     * Parse the content of the file specified as XML using the
-     * specified <code>org.xml.sax.helpers.DefaultHandler</code>.
-     *
-     * @param f The file containing the XML to parse
-     * @param dh The SAX DefaultHandler to use.
-     * @exception IOException If any IO errors occur.
-     * @exception IllegalArgumentException If the File object is null.
-     * @see org.xml.sax.DocumentHandler
-     */
-
-    public void parse(File f, DefaultHandler dh) throws SAXException, IOException
-    {
-        if (f == null) {
-            throw new IllegalArgumentException("File cannot be null");
-        }
-	if (dh == null) {
-	    throw new IllegalArgumentException("DefaultHandler cannot be null");
+    public TargetFilter(XMLReader reader, Iterator whitelist, int debugLevel) {
+        super(reader, debugLevel);
+	elements = new Stack();
+	this.whitelist = new StringVector();
+	this.availableTargets = new Hashtable();
+	while (whitelist.hasNext()) {
+	    this.whitelist.push((String) whitelist.next());
 	}
-        String uri = "file:" + f.getAbsolutePath();
-        if (File.separatorChar == '\\') {
-            uri = uri.replace('\\', '/');
-        }
-        InputSource input = new InputSource(uri);
-	this.dh = dh;
-	this.setContentHandler(dh);
-	this.setErrorHandler(dh);
-	this.setDTDHandler(dh);
-	this.setEntityResolver(dh);
-        parent.parse(input);
     }
 
-    /**
-     * Filter the startDocument event.
-     * 
-     */
-
-    public void startDocument() throws SAXException 
-    { 
-	debug("Received startdocument event");
-	dh.startDocument();
-    }
-	
     /** 
      * Filter the endDocument event.
      * @exception SAXException If there are any remaining open tags
@@ -190,20 +133,20 @@ public class TargetFilter extends XMLFilterImpl {
 	while (e.hasMoreElements()) 
 	    s = s + " " + (String) e.nextElement();
 	s = s + " -->\n<!-- ACCEPTED TARGETS:";
-	for (int i=0; i < targets.size(); i++)
-	    s = s + " " + targets.elementAt(i);
+	for (int i=0; i < whitelist.size(); i++)
+	    s = s + " " + whitelist.elementAt(i);
 	s = s + " -->\n";
-	dh.characters(s.toCharArray(), 0, s.length());
-	dh.endDocument();
+	this.getContentHandler().characters(s.toCharArray(), 0, s.length());
+	this.getContentHandler().endDocument();
     }
 
     /**
-     * Filter the startElement event.  Ignore this event if the tag is inside 
+     * Filter the startElement event.  Ignore this event if the element is inside 
      * an excluded element.  <p>If there is no parent element that has been excluded,
-     * pass the event on to the <code>DefaultHandler</code> iff
+     * pass the event on to the <code>ContentHandler</code> iff
      * <ul>
      * <li>there is no <code>targets</code> attribute list, OR
-     * <li>the <code>targets</code> attribute matches one of the accepted ones
+     * <li>the <code>targets</code> attribute matches with one in the whitelist
      *
      * @param uri The Uniform Resource Indicator of the element
      * @param localName The local name of the element
@@ -228,11 +171,6 @@ public class TargetFilter extends XMLFilterImpl {
         boolean accept = false;     // presume that the targetList won't be accepted
 	if ( ! (targetList == null || targetList.equals(""))) {
 
-	    // This used to quit looping after the element was accepted:
-            //   while (!accept && orTok.hasMoreTokens()) {
-            // However, if the loop short-circuits, we can miss adding some
-            // targets to availableTargets.
-
 	    StringTokenizer orTok = new StringTokenizer(targetList, OR_OP_CHARS);
 	    while (orTok.hasMoreTokens()) {
 
@@ -242,7 +180,7 @@ public class TargetFilter extends XMLFilterImpl {
                 while (andTok.hasMoreTokens()) {
 		    String s = andTok.nextToken();
 		    availableTargets.put(s,s);
-		    acceptAndClause = acceptAndClause && targets.containsIgnoreCase(s);
+		    acceptAndClause = acceptAndClause && whitelist.containsIgnoreCase(s);
 		    debug("string='" + s + "', acceptAndClause=" + acceptAndClause);
 		}
 
@@ -264,7 +202,7 @@ public class TargetFilter extends XMLFilterImpl {
                 attrsMinusTargets.removeAttribute(targetsIdx);
             }
 
-            dh.startElement(uri, localName, qName, attrsMinusTargets);
+            this.getContentHandler().startElement(uri, localName, qName, attrsMinusTargets);
         }
     }
 
@@ -277,7 +215,7 @@ public class TargetFilter extends XMLFilterImpl {
 
     public void endElement (String uri, String localName, String qName) 
 	throws SAXException {
-	//If this tag associated with this event closes 
+	//If the tag associated with this event closes 
 	//an excluded tag, reset excludedElement
 	if (excludedElement != null) {
 	    if (qName.equals(excludedElement))
@@ -296,7 +234,7 @@ public class TargetFilter extends XMLFilterImpl {
 					   + "is mismatched with open element " 
 					   + openTag);
 		}	
-		dh.endElement(uri, localName, qName);
+		this.getContentHandler().endElement(uri, localName, qName);
 	    }
 	}
     }
@@ -312,12 +250,12 @@ public class TargetFilter extends XMLFilterImpl {
 	String data = new String(ch, start, length);
 	if (excludedElement == null) {
 	    if (elements.isEmpty()) {
-		dh.warning(new SAXParseException("Data appears outside tags: \n" 
+		this.getErrorHandler().warning(new SAXParseException("Data appears outside tags: \n" 
 						 + data
 						 + "\n\tThey will be ignored.", 
 						 locator));
 	    } else {
-		dh.characters(ch, start, length);
+		this.getContentHandler().characters(ch, start, length);
 	    }
 	}
     }
@@ -328,45 +266,7 @@ public class TargetFilter extends XMLFilterImpl {
      */ 
     public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
 	if (excludedElement == null) {
-            dh.ignorableWhitespace(ch, start, length);
-	}
-    }
-
-    /**
-     * Handle the DTD Declaration
-     */
-    public void notationDecl(String name, String publicId, String systemId)
-                  throws SAXException {
-	debug("Received notationDecl Event:"
-		+ "\n\tname: " + name
-		+ "\n\tpublicId: " + publicId
-		+" \n\tsystemId: " + systemId);
-    }
-
-    public void unparsedEntityDecl(String name, String publicId, 
-				String systemId, String notationName)
-                        throws SAXException {
-	debug("Received unparsedEntityDecl Event:"
-		+ "\n\tname: " + name + "\n\tpublicId: " + publicId
-		+ "\n\tsystemId: " + systemId
-		+ "\n\tnotationName: " + notationName);
-    }
-
-    /** 
-     * Record the locator for this Filter's <code>parent</code>.
-     */     
-    public void setDocumentLocator(Locator locator) {
-	this.locator = locator;
-	if (dh != null) { dh.setDocumentLocator(locator); }
-    }
-    
-    private void debug(String msg) { 
-	debug(msg, DEBUG);
-    }
-
-    private void debug(String msg, int severity) { 
-	if (severity >= this.debugLevel) {
-	   System.err.println(msg);
+            this.getContentHandler().ignorableWhitespace(ch, start, length);
 	}
     }
 }

@@ -33,7 +33,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
  *
  * @author Mark Miller
  */
-public class FileWriterHandler extends DefaultHandler {
+public class FileWriterHandler extends XMLFilterImpl {
     private static final int ERROR = 10;
     private static final int WARN = 5;
     private static final int DEBUG = 1;
@@ -191,33 +191,9 @@ public class FileWriterHandler extends DefaultHandler {
      * @param output the output file in the UTF-8 character encoding.
      * @throws UnsupportedEncodingException when the character encoding is unsupported
      */
-    public FileWriterHandler(PrintStream output)
+    public FileWriterHandler(XMLReader reader, PrintStream output)
         throws UnsupportedEncodingException {
-	this (output, 9, "UTF-8");
-    }	
-
-    /**
-     * Create a new instance that will write its data to {@field output}
-     *  in the UTF-8 character encoding.
-     * @param output the output file
-     * @param debugLevel low values == more debug messages
-     * @throws UnsupportedEncodingException when the character encoding is unsupported
-     */
-    public FileWriterHandler(PrintStream output, int debugLevel) 
-        throws UnsupportedEncodingException {
-	this (output, debugLevel, "UTF-8");
-    }	
-
-    /**
-     * Create a new instance that will write its data to {@field output}
-     * in the specified character encoding.
-     * @param output the output file 
-     * @param enc the character encoding to use
-     * @throws UnsupportedEncodingException when the character encoding is unsupported
-     */
-    public FileWriterHandler(PrintStream output, String enc)
-        throws UnsupportedEncodingException {
-	this (output, 9, enc);
+	this (reader, output, 9, "UTF-8");
     }	
 
     /**
@@ -227,8 +203,13 @@ public class FileWriterHandler extends DefaultHandler {
      * @param enc the character encoding to use
      * @throws UnsupportedEncodingException when the character encoding is unsupported
      */
-    public FileWriterHandler(PrintStream output, int debugLevel, String enc) 
+    public FileWriterHandler(XMLReader reader, PrintStream output, int debugLevel, String enc) 
 	throws UnsupportedEncodingException {
+	super(reader);
+        reader.setContentHandler(this);
+        reader.setErrorHandler(this);
+        reader.setDTDHandler(this);
+        reader.setEntityResolver(this);
 	this.debugLevel = debugLevel;
 	this.output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(output, enc)));
     }	
