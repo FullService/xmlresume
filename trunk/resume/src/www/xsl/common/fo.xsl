@@ -442,21 +442,23 @@ $Id$
       </xsl:if>
       <xsl:if test="r:projects/r:project">
         <fo:block>
-          <fo:inline
+          <fo:block
+              keep-with-next="always"
               font-style="{$job-subheading.font.style}"
               font-weight="{$job-subheading.font.weight}">
             <xsl:value-of select="$projects.word"/>
-          </fo:inline>
+          </fo:block>
           <xsl:apply-templates select="r:projects"/>
         </fo:block>
       </xsl:if>
       <xsl:if test="r:achievements/r:achievement">
         <fo:block>
-          <fo:inline
+          <fo:block
+              keep-with-next="always"
               font-style="{$job-subheading.font.style}"
               font-weight="{$job-subheading.font.weight}">
             <xsl:value-of select="$achievements.word"/>
-          </fo:inline>
+          </fo:block>
           <xsl:apply-templates select="r:achievements"/>
         </fo:block>
       </xsl:if>
