@@ -574,7 +574,10 @@ $Id$
 
   <!-- Format a single skill as part of a comma-separated list. -->
   <xsl:template match="r:skill" mode="comma">
-    <xsl:apply-templates/>
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:value-of select="normalize-space($Text)"/>
     <xsl:apply-templates select="@level"/>
     <xsl:if test="following-sibling::r:skill">
       <xsl:text>, </xsl:text>
@@ -583,9 +586,12 @@ $Id$
 
   <!-- Format a single skill as a bullet item. -->
   <xsl:template match="r:skill" mode="bullet">
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
     <xsl:call-template name="bulletListItem">
       <xsl:with-param name="text">
-        <xsl:apply-templates/>
+        <xsl:value-of select="normalize-space($Text)"/>
         <xsl:apply-templates select="@level"/>
       </xsl:with-param>
     </xsl:call-template>
@@ -595,7 +601,7 @@ $Id$
   <xsl:template match="r:skill/@level">
     <xsl:if test="$skills.level.display = 1">
       <xsl:value-of select="$skills.level.start"/>
-      <xsl:value-of select="."/>
+      <xsl:value-of select="normalize-space(.)"/>
       <xsl:value-of select="$skills.level.end"/>
     </xsl:if>
   </xsl:template>
