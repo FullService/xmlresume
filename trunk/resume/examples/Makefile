@@ -113,11 +113,13 @@ clean:
 	rm -f $(resume).txt
 	rm -f $(resume).fo
 	rm -f $(resume).pdf
+	rm -f $(resume).rtf
 	rm -f $(resume)-filtered.xml
 	rm -f $(resume)-filtered.html
 	rm -f $(resume)-filtered.txt
 	rm -f $(resume)-filtered.pdf
 	rm -f $(resume)-filtered.fo
+	rm -f $(resume)-filtered.rtf
 
 $(resume).html: in = $(resume).xml
 $(resume).html: out = $(resume).html
