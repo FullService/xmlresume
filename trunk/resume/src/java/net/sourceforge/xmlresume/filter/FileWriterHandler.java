@@ -31,6 +31,10 @@ package net.sourceforge.xmlresume.filter;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 import java.util.Vector;
 import javax.xml.parsers.SAXParser;
@@ -58,7 +62,7 @@ public class FileWriterHandler extends DefaultHandler {
     private static final int DEBUG = 1;
     // The level of debugging desired.  
     public int debugLevel = 9;
-    private PrintStream output;
+    private PrintWriter output;
     private Locator locator;
 
     //The indent for the output data
@@ -207,21 +211,49 @@ public class FileWriterHandler extends DefaultHandler {
 
     /**
      * Create a new instance that will write its data to {@link output}
-     * @param output the output file
+     * @param output the output file in the UTF-8 character encoding.
+     * @throws UnsupportedEncodingException when the character encoding is unsupported
      */
+    public FileWriterHandler(PrintStream output)
+        throws UnsupportedEncodingException {
+	this (output, 9, "UTF-8");
+    }	
 
-    public FileWriterHandler(PrintStream output) {
-	this.output = output;
+    /**
+     * Create a new instance that will write its data to {@link output}
+     *  in the UTF-8 character encoding.
+     * @param output the output file
+     * @param debugLevel low values == more debug messages
+     * @throws UnsupportedEncodingException when the character encoding is unsupported
+     */
+    public FileWriterHandler(PrintStream output, int debugLevel) 
+        throws UnsupportedEncodingException {
+	this (output, debugLevel, "UTF-8");
+    }	
+
+    /**
+     * Create a new instance that will write its data to {@link output}
+     * in the specified character encoding.
+     * @param output the output file 
+     * @param enc the character encoding to use
+     * @throws UnsupportedEncodingException when the character encoding is unsupported
+     */
+    public FileWriterHandler(PrintStream output, String enc)
+        throws UnsupportedEncodingException {
+	this (output, 9, enc);
     }	
 
     /**
      * Create a new instance that will write its data to {@link output}
      * @param output the output file
+     * @param debugLevel low values == more debug messages
+     * @param enc the character encoding to use
+     * @throws UnsupportedEncodingException when the character encoding is unsupported
      */
-
-    public FileWriterHandler(PrintStream output, int debugLevel) {
+    public FileWriterHandler(PrintStream output, int debugLevel, String enc) 
+	throws UnsupportedEncodingException {
 	this.debugLevel = debugLevel;
-	this.output = output;
+	this.output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(output, enc)));
     }	
 }
 

@@ -32,6 +32,7 @@ package net.sourceforge.xmlresume.filter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -76,8 +77,8 @@ public class Filter {
 		i += 2;
 		out = new PrintStream(
                     new FileOutputStream(outfile),
-                    false, // auto-flush data?
-                    "UTF-8" // character set
+                    false // auto-flush data?
+                    //"UTF-8" // character set
                 );
 	    } else {
 		categoryList.addElement(argv[i]);
@@ -87,7 +88,7 @@ public class Filter {
 
 	if (in == null || argv.length < 2 || "-h".equals(argv[0]) || "--help".equals(argv[0])) {
 	    System.err.println("Filter -- preprocess an XMLResume to select for elements in a given category\n" + 
-			       "Usage: java Filter [-v|--verbose] -in <in_file> [-out <out_file>] [category1 [category2 [...]]\n" + 
+			       "Usage: java Filter [-v|--verbose] -in <in_file> [-out <out_file>] [target1 [target2 [...]]\n" + 
 			       "If -out <out_file> is not specified, output will be printed on STDOUT.");
 	    System.exit(1);
 	} else if (!in.canRead()) {
@@ -96,7 +97,13 @@ public class Filter {
 	} else {
 	    parser = SAXParserFactory.newInstance().newSAXParser();
 	    filter = new CategoryFilter(parser.getXMLReader(), categoryList.iterator(), debugLevel);
-	    writer = new FileWriterHandler(out, debugLevel);
+	    try {
+		writer = new FileWriterHandler(out, debugLevel, "UTF-8");
+	    } catch (UnsupportedEncodingException e) { 
+		throw new Error("Your platform does not support the " +
+		"UTF-8 encoding, which is required for using Filter\n");
+	    }
+
 	    filter.parse(in, writer);
 	    System.exit(0);
 	}
