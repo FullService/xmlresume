@@ -22,6 +22,16 @@
       that a person is skilled at.
     </para>
 
+    <para>
+      <sgmltag class="element">skill</sgmltag> elements may contain a <link
+      linkend="element.level"><sgmltag class="element">level</sgmltag></link>
+      element. Although the DTD allows multiple <sgmltag
+      class="element">level</sgmltag>s, only a single one should be included.
+      The level will be formatted after all other text and child elements of a
+      skill if the <link linkend="param.skills.level.display"><parameter
+      >skills.level.display</parameter></link> is true.
+    </para>
+
     <refsect2><title>Parents</title>
       <para>
         <sgmltag class="element">skill</sgmltag> may be contained in these
@@ -53,6 +63,8 @@
     <para>
       <simplelist type="inline">
         <member><link linkend="element.achievement"><sgmltag class="element">achievement</sgmltag></link></member>
+        <member><link linkend="param.skills.format"><parameter>skills.format</parameter></link></member>
+        <member><link linkend="param.skills.level.display"><parameter>skills.level.display</parameter></link></member>
       </simplelist>.
     </para>
   </refsect1>
@@ -63,13 +75,16 @@
 <skill>Singing</skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>Cooking</skill>
+<skill>Java Programming <level>3 years</level></skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>Eating</skill>
+<skill>Eating <level>Glutton</level></skill>
     ]]></programlisting></informalexample>
     <informalexample><programlisting><![CDATA[
-<skill>Throwing large objects</skill>
+<skill>
+  Throwing <emphasis>large</emphasis> objects
+  <level>Beginner</level>
+</skill>
     ]]></programlisting></informalexample>
 
   </refsect1>

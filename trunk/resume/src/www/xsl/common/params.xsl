@@ -171,18 +171,25 @@ $Id$
   <!-- 'comma' for comma-separated lists -->
   <xsl:param name="skills.format">bullet</xsl:param>
 
+  <!-- Should skill <level> elements be displayed when formatting? -->
+  <xsl:param name="skills.level.display">1</xsl:param>
+
+  <!-- Text to use to indicate start and end of skill level in all formats -->
+  <xsl:param name="skills.level.start"> (</xsl:param>
+  <xsl:param name="skills.level.end">)</xsl:param>
+
   <!-- Settings for lines around the header of the print resume -->
   <xsl:param name="header.line.length">3.0in</xsl:param>
   <xsl:param name="header.line.pattern">rule</xsl:param>
   <xsl:param name="header.line.thickness">2pt</xsl:param>
 
-  <!-- Separator between <para>s in a description formatted as a single line -->
-  <!-- &#x2014; == em-dash -->
-  <xsl:param name="description.para.separator.text"> &#x2014; </xsl:param>
-
   <!-- Format of interest descriptions. Available values are: -->
   <!-- 'single-line' for <para>s on same line as title, separated by dashes -->
   <!-- 'block' for typical block-style paragraphs -->
   <xsl:param name="interest.description.format">single-line</xsl:param>
+
+  <!-- Separator between <para>s in a description formatted as a single line -->
+  <!-- &#x2014; == em-dash -->
+  <xsl:param name="description.para.separator.text"> &#x2014; </xsl:param>
 
 </xsl:stylesheet>

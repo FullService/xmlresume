@@ -23,7 +23,6 @@
 
       <variablelist>
         <varlistentry>
-        <varlistentry>
           <term><sgmltag class="element">interest</sgmltag></term>
           <listitem>
             <para>
@@ -33,6 +32,7 @@
             </para>
           </listitem>
         </varlistentry>
+        <varlistentry>
           <term><sgmltag class="element">membership</sgmltag></term>
           <listitem>
             <para>

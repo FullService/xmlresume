@@ -107,9 +107,9 @@ $Id$
     <span class="{$style}">
       <a>
         <xsl:attribute name="href">
-          <xsl:value-of select="r:uri"/>
+          <xsl:apply-templates select="r:uri"/>
         </xsl:attribute>
-        <xsl:value-of select="r:label"/>
+        <xsl:apply-templates select="r:label"/>
       </a>
       <xsl:text> > </xsl:text>
     </span>
@@ -133,78 +133,62 @@ $Id$
     </span>
   </xsl:template>
 
+  <xsl:template match="r:header">
+    <xsl:choose>
+      <xsl:when test="$header.format = 'centered'">
+        <xsl:apply-templates select="." mode="centered"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="standard"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- Output your name and the word "Resume". -->
-  <xsl:template name="standard.header">
+  <xsl:template match="r:header" mode="standard">
     <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
     <p>
-      <xsl:apply-templates select="r:address"/><br/>
-      
-      <!-- Don't print the label if the field value is empty *SE* -->
-      <xsl:if test="r:contact/r:phone">
-        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="r:contact/r:phone"/><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:email">
-        <xsl:value-of select="$email.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:text>mailto:</xsl:text>
-            <xsl:value-of select="r:contact/r:email"/>
-          </xsl:attribute>
-          <xsl:value-of select="r:contact/r:email"/>
-        </a><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:url">
-        <xsl:value-of select="$url.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:value-of select="r:contact/r:url"/>
-          </xsl:attribute>
-          <xsl:value-of select="r:contact/r:url"/>
-        </a>
-      </xsl:if>
+      <xsl:apply-templates select="r:address"/>
+      <xsl:apply-templates select="r:contact"/>
     </p>
   </xsl:template>
 
   <!-- Alternate formatting for the page header. -->
   <!-- Display the name and contact information in a single centered block. -->
   <!-- Since the 'align' attribute is deprecated, we rely on a CSS -->
-  <!-- stylesheet to center the headerBlock. -->
-  <xsl:template name="centered.header">
-    <div class="headerBlock">
+  <!-- style to center the headerBlock. -->
+  <xsl:template match="r:header" mode="centered">
+    <div class="headerBlock" style="text-align: center">
       <h1 class="nameHeading"><xsl:apply-templates select="r:name"/></h1>
-      <xsl:apply-templates select="r:address"/><br/>
-      <xsl:if test="r:contact/r:phone">
-        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="r:contact/r:phone"/><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:email">
-        <xsl:value-of select="$email.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:text>mailto:</xsl:text>
-            <xsl:value-of select="r:contact/r:email"/>
-          </xsl:attribute>
-          <xsl:value-of select="r:contact/r:email"/>
-        </a><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:url">
-        <xsl:value-of select="$url.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:value-of select="r:contact/r:url"/>
-          </xsl:attribute>
-          <xsl:value-of select="r:contact/r:url"/>
-        </a>
-      </xsl:if>
-      </div>
+      <xsl:apply-templates select="r:address"/>
+      <xsl:apply-templates select="r:contact"/>
+    </div>
   </xsl:template>
 
-  <xsl:template match="r:header">
-    <xsl:choose>
-    <xsl:when test="$header.format = 'centered'">
-       <xsl:call-template name="centered.header"/>
-    </xsl:when>
-    <xsl:otherwise>
-       <xsl:call-template name="standard.header"/>
-    </xsl:otherwise>
-    </xsl:choose>
+  <!-- Contact information -->
+  <xsl:template match="r:contact/r:phone">
+    <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+    <xsl:apply-templates/>
+    <br/>
   </xsl:template>
 
+  <xsl:template match="r:contact/r:email">
+    <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text>
+    <a href="mailto:{.}">
+      <xsl:apply-templates/>
+    </a>
+    <br/>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:url">
+    <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text>
+    <a href="{.}">
+      <xsl:apply-templates/>
+    </a>
+    <br/>
+  </xsl:template>
+
+  <!-- Address, in various formats -->
   <xsl:template match="r:address" mode="standard">
 
      <!-- templates defined in address.xsl for setting standard fields -->
@@ -219,15 +203,15 @@ $Id$
      </xsl:variable>
 
      <xsl:for-each select="r:street">
-       <xsl:value-of select="."/><br/>
+       <xsl:apply-templates select="."/><br/>
      </xsl:for-each>
      <xsl:if test="r:street2">
-       <xsl:value-of select="r:street2"/><br/>
+       <xsl:apply-templates select="r:street2"/><br/>
      </xsl:if>
      <xsl:if test="string-length($CityDivision) &gt; 0">
        <xsl:value-of select="$CityDivision"/><br/>
      </xsl:if>
-     <xsl:value-of select="r:city"/>
+     <xsl:apply-templates select="r:city"/>
      <xsl:if test="string-length($AdminDivision) &gt; 0">
        <xsl:text>, </xsl:text><xsl:value-of select="$AdminDivision"/>
      </xsl:if>
@@ -235,8 +219,9 @@ $Id$
        <xsl:text> </xsl:text><xsl:value-of select="$PostCode"/> 
      </xsl:if>
      <xsl:if test="r:country">
-       <br/><xsl:value-of select="r:country"/>
+       <br/><xsl:apply-templates select="r:country"/>
      </xsl:if>
+     <br/>
   </xsl:template>
 
   <xsl:template match="r:address" mode="european">
@@ -253,10 +238,10 @@ $Id$
      </xsl:variable>
 
      <xsl:for-each select="r:street">
-       <xsl:value-of select="."/><br/>
+       <xsl:apply-templates select="."/><br/>
      </xsl:for-each>
      <xsl:if test="r:street2">
-       <xsl:value-of select="r:street2"/><br/>
+       <xsl:apply-templates select="r:street2"/><br/>
      </xsl:if>
      <xsl:if test="string-length($CityDivision) &gt; 0">
        <xsl:value-of select="$CityDivision"/><br/>
@@ -264,33 +249,37 @@ $Id$
      <xsl:if test="string-length($PostCode) &gt; 0">
        <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text> 
      </xsl:if>
-     <xsl:value-of select="r:city"/>
+     <xsl:apply-templates select="r:city"/>
      <xsl:if test="string-length($AdminDivision) &gt; 0">
        <br/><xsl:value-of select="$AdminDivision"/>
      </xsl:if>
      <xsl:if test="r:country">
-       <br/><xsl:value-of select="r:country"/>
+       <br/><xsl:apply-templates select="r:country"/>
      </xsl:if>
+     <br/>
   </xsl:template>
 
   <xsl:template match="r:address" mode="italian">
 
     <xsl:for-each select="r:street">
-      <xsl:value-of select="."/><br/>
+      <xsl:apply-templates select="."/><br/>
     </xsl:for-each>
      <xsl:if test="r:street2">
-       <xsl:value-of select="r:street2"/><br/>
+       <xsl:apply-templates select="r:street2"/><br/>
      </xsl:if>
      <xsl:if test="r:postalCode">
-       <xsl:value-of select="r:postalCode"/><xsl:text> </xsl:text> 
+       <xsl:apply-templates select="r:postalCode"/><xsl:text> </xsl:text> 
      </xsl:if>
-     <xsl:value-of select="r:city"/>
+     <xsl:apply-templates select="r:city"/>
      <xsl:if test="r:province">
-       <xsl:text> (</xsl:text><xsl:value-of select="r:province"/><xsl:text>)</xsl:text>
+       <xsl:text> (</xsl:text>
+       <xsl:apply-templates select="r:province"/>
+       <xsl:text>)</xsl:text>
      </xsl:if>
      <xsl:if test="r:country">
-       <br/><xsl:value-of select="r:country"/>
+       <br/><xsl:apply-templates select="r:country"/>
      </xsl:if>
+     <br/>
   </xsl:template>
 
   <!-- Preserve line breaks within a free format address -->
@@ -321,14 +310,8 @@ $Id$
   <!-- Format each job -->
   <xsl:template match="r:job">
     <p class="job">
-      <span class="jobTitle">
-        <xsl:value-of select="r:jobtitle"/>
-      </span>
-      <br/>
-      <span class="employer">
-        <xsl:apply-templates select="r:employer"/>
-      </span>
-      <br/>
+      <xsl:apply-templates select="r:jobtitle"/> <br/>
+      <xsl:apply-templates select="r:employer"/> <br/>
       <xsl:apply-templates select="r:period"/>
     </p>
     <xsl:apply-templates select="r:description">
@@ -344,8 +327,16 @@ $Id$
     </xsl:if>
   </xsl:template>
 		
+  <xsl:template match="r:jobtitle">
+    <span class="jobTitle">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
   <xsl:template match="r:employer">
-    <xsl:apply-templates/>
+    <span class="employer">
+      <xsl:apply-templates/>
+    </span>
   </xsl:template>
 
   <!-- Format the projects section as a bullet list -->
@@ -364,9 +355,9 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:date">
-    <xsl:value-of select="r:month"/>
+    <xsl:apply-templates select="r:month"/>
     <xsl:text> </xsl:text>
-    <xsl:value-of select="r:year"/>
+    <xsl:apply-templates select="r:year"/>
   </xsl:template>
 
   <xsl:template match="r:present"><xsl:value-of select="$present.word"/></xsl:template>
@@ -405,19 +396,19 @@ $Id$
   <xsl:template match="r:degree">
     <li class="degree">
       <acronym class="level">
-        <xsl:value-of select="r:level"/>
+        <xsl:apply-templates select="r:level"/>
       </acronym>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="r:major"/>
+      <xsl:apply-templates select="r:major"/>
       <xsl:if test="r:date">
 	<xsl:text>, </xsl:text>
 	<xsl:apply-templates select="r:date"/>
       </xsl:if>
       <xsl:if test="r:institution">
 	<xsl:text>, </xsl:text>
-        <xsl:value-of select="r:institution"/>
+        <xsl:apply-templates select="r:institution"/>
       </xsl:if>
       <xsl:if test="r:annotation">
         <xsl:text>. </xsl:text>
@@ -436,11 +427,11 @@ $Id$
         <tr>
           <td width="100"></td>
 	  <td>
-            <xsl:value-of select="r:title"/>
+            <xsl:apply-templates select="r:title"/>
 	  </td>
           <td width="10"></td>
 	  <td>
-            <xsl:value-of select="r:result"/>
+            <xsl:apply-templates select="r:result"/>
 	  </td>
         </tr>
       </xsl:for-each>
@@ -503,7 +494,8 @@ $Id$
 
   <!-- Format a skill as part of a comma-separated list -->
   <xsl:template match="r:skill" mode="comma">
-    <xsl:apply-templates/>
+    <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
+    <xsl:apply-templates select="r:level"/>
     <xsl:if test="following-sibling::r:skill">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -512,10 +504,19 @@ $Id$
   <!-- Format a skill as part of a bulleted list -->
   <xsl:template match="r:skill" mode="bullet">
     <li class="skill">
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
+      <xsl:apply-templates select="r:level"/>
     </li>
   </xsl:template>
 
+  <!-- Format a skill level -->
+  <xsl:template match="r:skill/r:level">
+    <xsl:if test="$skills.level.display = 1">
+      <xsl:value-of select="$skills.level.start"/>
+      <xsl:apply-templates/>
+      <xsl:value-of select="$skills.level.end"/>
+    </xsl:if>
+  </xsl:template>
 
   <!-- Format publications -->
   <xsl:template match="r:pubs">
@@ -534,7 +535,7 @@ $Id$
 
   <!-- Memberships, with level 2 heading. -->
   <xsl:template match="r:memberships">
-    <h2 class="membershipsHeading"><xsl:value-of select="r:title"/></h2>
+    <h2 class="membershipsHeading"><xsl:apply-templates select="r:title"/></h2>
     <ul>
       <xsl:apply-templates select="r:membership"/>
     </ul>
@@ -544,10 +545,10 @@ $Id$
   <xsl:template match="r:membership">
     <li>
       <xsl:if test="r:title">
-        <span class="membershipTitle"><xsl:value-of select="r:title"/></span><br/>
+        <span class="membershipTitle"><xsl:apply-templates select="r:title"/></span><br/>
       </xsl:if>
       <xsl:if test="r:organization">
-        <span class="organization"><xsl:value-of select="r:organization"/></span><br/>
+        <span class="organization"><xsl:apply-templates select="r:organization"/></span><br/>
       </xsl:if>
       <xsl:if test="r:period">
 	<xsl:apply-templates select="r:period"/><br/>
@@ -603,7 +604,7 @@ $Id$
     <address class="copyright">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="r:year"/>
+      <xsl:apply-templates select="r:year"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$by.word"/>
       <xsl:text> </xsl:text>
@@ -614,22 +615,22 @@ $Id$
         <xsl:apply-templates select="/r:resume/r:header/r:name"/>
       </xsl:if>
       <xsl:text>. </xsl:text>
-      <xsl:value-of select="r:legalnotice"/>
+      <xsl:apply-templates select="r:legalnotice"/>
     </address>
   </xsl:template>
 
   <!-- Put a space between first and last name -->
   <xsl:template match="r:name">
-    <xsl:value-of select="r:firstname"/>
+    <xsl:apply-templates select="r:firstname"/>
     <xsl:text> </xsl:text>
     <xsl:if test="r:middlenames">
-      <xsl:value-of select="r:middlenames"/>
+      <xsl:apply-templates select="r:middlenames"/>
       <xsl:text> </xsl:text>
     </xsl:if>
-    <xsl:value-of select="r:surname"/>
+    <xsl:apply-templates select="r:surname"/>
     <xsl:if test="r:suffix">
       <xsl:text> </xsl:text>
-      <xsl:value-of select="r:suffix"/>
+      <xsl:apply-templates select="r:suffix"/>
     </xsl:if>
   </xsl:template>
 
@@ -681,29 +682,27 @@ $Id$
   <xsl:template match="r:referee">
     <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
     <p>
-      <xsl:if test="r:address">
-        <xsl:apply-templates select="r:address"/><br/>
-      </xsl:if>
+      <xsl:apply-templates select="r:address"/>
       
       <!-- Don't print the label if the field value is empty *SE* -->
       <xsl:if test="r:contact/r:phone">
-        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="r:contact/r:phone"/><br/>
+        <xsl:value-of select="$phone.word"/>: <xsl:apply-templates select="r:contact/r:phone"/><br/>
       </xsl:if>
       <xsl:if test="r:contact/r:email">
         <xsl:value-of select="$email.word"/>: <a>
           <xsl:attribute name="href">
             <xsl:text>mailto:</xsl:text>
-            <xsl:value-of select="r:contact/r:email"/>
+            <xsl:apply-templates select="r:contact/r:email"/>
           </xsl:attribute>
-          <xsl:value-of select="r:contact/r:email"/>
+          <xsl:apply-templates select="r:contact/r:email"/>
         </a><br/>
       </xsl:if>
       <xsl:if test="r:contact/r:url">
         <xsl:value-of select="$url.word"/>: <a>
           <xsl:attribute name="href">
-            <xsl:value-of select="r:contact/r:url"/>
+            <xsl:apply-templates select="r:contact/r:url"/>
           </xsl:attribute>
-          <xsl:value-of select="r:contact/r:url"/>
+          <xsl:apply-templates select="r:contact/r:url"/>
         </a>
       </xsl:if>
     </p>

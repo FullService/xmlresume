@@ -79,9 +79,9 @@ In general, each block is responsible for outputting a newline after itself.
     <span class="{$style}">
       <a>
         <xsl:attribute name="href">
-          <xsl:value-of select="r:uri"/>
+          <xsl:apply-templates select="r:uri"/>
         </xsl:attribute>
-        <xsl:value-of select="r:label"/>
+        <xsl:apply-templates select="r:label"/>
       </a>
       <xsl:text> > </xsl:text>
     </span>
@@ -289,7 +289,7 @@ In general, each block is responsible for outputting a newline after itself.
     </xsl:if>
     <xsl:value-of select="normalize-space(r:city)"/>
     <xsl:if test="r:province">
-      <xsl:text> (</xsl:text><xsl:value-of select="r:province"/><xsl:text>)</xsl:text>
+      <xsl:text> (</xsl:text><xsl:apply-templates select="r:province"/><xsl:text>)</xsl:text>
     </xsl:if>
     <xsl:call-template name="NewLine"/>
     <xsl:if test="r:country">
@@ -473,18 +473,18 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="Wrap">
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
-        <xsl:value-of select="r:level"/>
+        <xsl:apply-templates select="r:level"/>
         <xsl:text> </xsl:text>
         <xsl:value-of select="$in.word"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="r:major"/>
+        <xsl:apply-templates select="r:major"/>
         <xsl:if test="r:date">     
           <xsl:text>, </xsl:text>
           <xsl:apply-templates select="r:date"/>
         </xsl:if>
         <xsl:if test="r:institution">
           <xsl:text>, </xsl:text>
-          <xsl:value-of select="r:institution"/>
+          <xsl:apply-templates select="r:institution"/>
         </xsl:if>
         <xsl:if test="r:annotation">
           <xsl:text>. </xsl:text>
@@ -514,7 +514,7 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Text">
 
         <xsl:for-each select="r:subject">
-          <xsl:value-of select="r:title"/>
+          <xsl:apply-templates select="r:title"/>
           <!-- Pad over to the second column -->
           <xsl:call-template name="NSpace">
             <xsl:with-param
@@ -522,7 +522,7 @@ In general, each block is responsible for outputting a newline after itself.
               select="2 + $MaxChars - string-length(r:title)"/>
           </xsl:call-template>
 
-          <xsl:value-of select="r:result"/>
+          <xsl:apply-templates select="r:result"/>
           <xsl:if test="following-sibling::*">
             <xsl:call-template name="NewLine"/>
           </xsl:if>
@@ -644,7 +644,8 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Format individual skill as part of a comma-separated list -->
   <xsl:template match="r:skill" mode="comma">
-    <xsl:apply-templates/>
+    <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
+    <xsl:apply-templates select="r:level"/>
     <xsl:if test="following-sibling::r:skill">
       <xsl:text>, </xsl:text>
     </xsl:if>
@@ -653,7 +654,8 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format individual skill as a bullet item -->
   <xsl:template match="r:skill" mode="bullet">
     <xsl:variable name="Text">
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="text() | *[not(self::r:level)]"/>
+      <xsl:apply-templates select="r:level"/>
     </xsl:variable>
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
@@ -662,6 +664,15 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <!-- Format a skill level -->
+  <xsl:template match="r:skill/r:level">
+    <xsl:if test="$skills.level.display = 1">
+      <xsl:value-of select="$skills.level.start"/>
+      <xsl:apply-templates/>
+      <xsl:value-of select="$skills.level.end"/>
+    </xsl:if>
   </xsl:template>
 
 
@@ -852,13 +863,13 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates select="r:firstname"/>
     <xsl:text> </xsl:text>
     <xsl:if test="r:middlenames">
-      <xsl:value-of select="r:middlenames"/>
+      <xsl:apply-templates select="r:middlenames"/>
       <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:apply-templates select="r:surname"/>
     <xsl:if test="r:suffix">
       <xsl:text> </xsl:text>
-      <xsl:value-of select="r:suffix"/>
+      <xsl:apply-templates select="r:suffix"/>
     </xsl:if>
   </xsl:template>
 
