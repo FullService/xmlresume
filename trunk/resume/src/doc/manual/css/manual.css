@@ -1,2 +1,11 @@
+.note, .important, .warning, .caution, .tip {
+    border: 1px solid black;
+    padding: 0.1in;
+    }
+.important {background-color: LightBlue;}
+.warning {background-color: LightRed;}
+.caution {background-color: LightYellow;}
+.tip {background-color: LightGreen;}
+
 .programlisting {background-color: #dddddd}
 .informalexample {background-color: #ffcc66}
