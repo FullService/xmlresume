@@ -17,7 +17,215 @@
       <a href="../news/index.html">news</a>.
     </p>
 
-<pre>2002-05-24  Bruce Christensen  
+<pre>2002-06-16  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/release/index.html:
+	Updated for release 1.4.1. (Changed XSL paths to include output directory).
+
+	* /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Fixed an HTML error.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Fixed a typo.
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/testdata/basic.xml, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/testdata/empty.xml, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/testdata/huge.xml:
+	Added xmlns attribute to the &lt;resume&gt; tag so that the stylesheets will
+	match.
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/ResumeTest.java:
+	Fixed to point to new location for output stylesheets.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl:
+	Changed the structure of the template that formats subjects to work around
+	(what I think is) a bug in Xalan.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl:
+	Switch from &lt;xsl:include&gt;ing string.xsl to &lt;xsl:import&gt;ing it. This avoids
+	a double-inclusion, since the output format stylesheets include string.xsl.
+
+2002-06-15  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Added a note about the new &lt;location&gt; element to this list of changes for
+	version 1.4.1.
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/iso-lat1.ent:
+	Updated this file with the latest version from:
+	http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/docbook/xmlcharent/iso-lat1.ent?rev=1.3&amp;content-type=text/vnd.viewcvs-markup
+
+	It includes fixes for a few erroneous characters in the previous version.
+	It also includes an appropriate copyright notice, which the original
+	version did not.
+
+2002-06-14  Sean Kelly  
+
+	* /cvsroot/xmlresume/resume/src/doc/release/authors/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/ResumeTest.properties:
+	Add notes about Dutch resumes; add Dutch resume to test properties.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/nl.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/nl-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/nl-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/nl-text.xsl:
+	Dutch resumes, contributed by Andre van Dijk 
+
+	* /cvsroot/xmlresume/resume/contrib/resume.bat:
+	Format resume with Windows batch file, courtesy of Payan Mirrashidi.
+
+	* /cvsroot/xmlresume/resume/contrib/format-cygwin.sh:
+	Cygwin-compatible shell script to format resumes, courtesy of Will
+	Sargent.
+
+	* /cvsroot/xmlresume/resume/build.xml:
+	Make the img directory if it doesn't exist.
+
+2002-06-14  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.name.xml:
+	Removed the list of required and allowed elements, since we automatically
+	generate that information.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Added a note that &lt;name&gt; may now contain a &lt;title&gt;.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.title.xml, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.name.xml:
+	Added support for a &lt;title&gt; element within a &lt;name&gt; (feature request
+	568565).
+
+	Also moved the templates that format a name from each of the format XSLT
+	files (html.xsl, text.xsl, and fo.xsl) into common.xsl, since they were all
+	exactly the same.
+
+2002-06-10  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/build.xml:
+	The install.web target now filters the files it copies.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+	Renamed the copyright.font.size parameter to fineprint.font.size. It is now
+	applied to the "last modified" date in FO output.
+
+2002-06-08  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/xsl/common.xsl, /cvsroot/xmlresume/resume/src/doc/manual/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/doc/manual/xsl/html-common.xsl, /cvsroot/xmlresume/resume/src/doc/manual/xsl/html-multiple.web.xsl, /cvsroot/xmlresume/resume/src/doc/manual/xsl/html-multiple.xsl, /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/manual/css/manual.css, /cvsroot/xmlresume/resume/src/doc/manual/manual.xml:
+	 - Added ability to build  a version of the manual suitable for inclusion
+	   on the XML resume web site.
+	 - Prettied up the manual (fonts, colors, navigation bars)
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/textlayout.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.location.xml:
+	 - Added support for a &lt;location&gt; sub-element in &lt;job&gt;, &lt;membership&gt;, and
+	   &lt;degree&gt;.
+	 - Normalized formatting a bit between HTML, text, and PDF output. Jobs and
+	   memberships are now formatted as:
+
+	   Title
+	   Organization[, location]
+	   Date
+
+	   [Description...]
+
+2002-06-07  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/README:
+	Added a section on how to change the DTD.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/README: Minor updates.
+
+	Removed mention of the sgml dir, as we no longer include the SGML tools;
+	external versions installed on a developer's machine are used instead.
+
+2002-06-01  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Made &lt;title&gt; an allowable child of &lt;clearances&gt; instead of &lt;clearance&gt;.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/cssref/chapter.xml:
+	The text about the achievement class now refers to the achievement element.
+	(It referred to the skill element before.)
+
+2002-05-31  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java:
+	Fixed a stupid bug included in the last commit (mixed up arguments between
+	two constructors).
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/FileWriterHandler.java, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java:
+	Removed code from FileWriterHandler that escaped any non-ASCII character
+	with a hex entity. Instead, we now set the output character set to UTF-8 in
+	Filter, thus solving the problem (non-ASCII characters are converted to "?"
+	when output) in a simpler way.
+
+	* /cvsroot/xmlresume/resume/src/www/css/resume1.css, /cvsroot/xmlresume/resume/src/www/css/resume2.css, /cvsroot/xmlresume/resume/src/www/css/resume3.css, /cvsroot/xmlresume/resume/src/www/css/resume4.css, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/country/us.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.clearance.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.clearances.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.date.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.level.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Added support for security clearances (feature request 396338). This is
+	based on patch 562652, submitted by Nick Chalko, but with heavy changes by
+	myself.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl:
+	Fixed a rather nasty bug described in
+	http://sourceforge.net/forum/forum.php?thread_id=687115&amp;forum_id=92731.
+
+	The problem was with whitespace normalization in &lt;skills&gt;. We wanted to
+	normalize whitespace, so we would grab the result of &lt;xsl:apply-templates/&gt;
+	into $Text, and then output normalize-space($Text). Of course,
+	normalize-space converts its argument into a string, so if a skill contains
+	any other elements (say, a &lt;link&gt;), those elements get killed by the
+	normalization.
+
+	Solution? Roll our own space normalization, of course! We process
+	skill//text() nodes individually, normalizing space in each of them, and
+	outputting a space after each if needed.
+
+2002-05-30  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Added support for inlines (including &lt;link&gt; and &lt;url&gt;) to &lt;organzation&gt; and
+	&lt;institution&gt;, per feature request 562428.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl:
+	Changed a bunch of instances of "&lt;xsl:value-of select="."/&gt;" to
+	"&lt;xsl:apply-templates/&gt;".
+
+	* /cvsroot/xmlresume/resume/src/www/css/resume4.css:
+	Nice-looking new stylesheet. (If I do say so myself. :)
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/country/us.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/doc/manual/en/cssref/chapter.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.gpa.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.possible.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/element.score.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Added support for GPAs.
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/CategoryFilter.java, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/FileWriterHandler.java, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Props.java, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/README, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/javadoc.sh:
+	Added category filter support, written by Mark Miller .
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/cssref/chapter.xml, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl:
+	Some updates to HTML formatting:
+	 - Unified HTML heading formatting. There are no longer different CSS
+	   classes for each heading; they're all in the "heading" class. Also
+	   there's a named template (called Heading) that should be used to output
+	   any section heading.
+	 - Removed "resume" css class from the body tag, instead wrapping each
+	   resume in a &lt;div class="resume"&gt; instead. It's forseeable that there
+	   would be multiple resumes per source file, so it didn't make sense to
+	   have that tag in the body.
+	 - The header is now wrapped with &lt;div class="header"&gt; in both standard and
+	   centered modes. The headerBlock class has been removed.
+	 - Contact information is now wrapped in parapgraph tags. This fixes an
+	   XHTML validation problem. It used to be that a single &lt;p&gt;...&lt;/p&gt;
+	   contained both address and contact information in the header, but the
+	   address was also wrapped in a &lt;p&gt;...&lt;/p&gt;. This created invalid XHTML, so
+	   the &lt;p&gt; tags were removed from the header, but added to contact
+	   information.
+
+2002-05-26  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/misc/html_professional.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/br-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/br-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/br-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/de-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/de-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/de-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/fr-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/fr-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/fr-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/it-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/it-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/it-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/uk-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/uk-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/us-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/us-letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/output/us-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/paper/a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/paper/letter.xsl, /cvsroot/xmlresume/resume/examples/Makefile, /cvsroot/xmlresume/resume/src/www/xsl/124-130.xsl, /cvsroot/xmlresume/resume/src/www/xsl/13x-140.xsl, /cvsroot/xmlresume/resume/src/www/xsl/br-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/br-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/br-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/br-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/address.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/awards.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/common.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/contact.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/deprecated.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/interests.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/pubs.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/string.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/textlayout.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/br.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/de.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/fr.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/it.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/uk.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/us.xsl, /cvsroot/xmlresume/resume/src/www/xsl/de-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/de-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/de-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/de-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/default.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html_contemporary.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html_professional.xsl, /cvsroot/xmlresume/resume/src/www/xsl/it-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/it-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/it-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/it-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/address.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/common.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/deprecated.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/pub.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/string.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/textlayout.xsl, /cvsroot/xmlresume/resume/src/www/xsl/misc/124-130.xsl, /cvsroot/xmlresume/resume/src/www/xsl/misc/13x-140.xsl, /cvsroot/xmlresume/resume/src/www/xsl/misc/default.xsl, /cvsroot/xmlresume/resume/src/www/xsl/misc/html_contemporary.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-text.xsl:
+	Major directory refactoring in in src/www/xsl.
+
+2002-05-25  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-text.xsl:
+	Factored out all US-specific words into us-params.xsl.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl:
+	Moved all letter (paper size)-specific parameters into letter.xsl.
+
+2002-05-24  Bruce Christensen  
+
+	* /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html:
+	Updated changelog for version 1.4.0.
 
 	* /cvsroot/xmlresume/resume/etc/rcs2log:
 	Changed my email address from " at " separator to "@" so that it is
