@@ -96,4 +96,19 @@ Style
     |  ...
     |</section>
 
+6.  Deprecated elements. To document an element as deprecated, add this to its
+    <refnamediv>:
+    
+    |    <refclass>Deprecated</refclass>
+
+    In addition, add this as the first element in its Description section:
+
+    |    <important>
+    |      <para>
+    |        This element is deprecated as of &library.name version XXX.
+    |        It should not be used.
+    |      </para>
+    |      (paragraph about why deprecated, and recommended changes, if any)
+    |    </important>
+
 Original author: Bruce Christensen <bruce at iname.com>
