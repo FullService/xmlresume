@@ -36,6 +36,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	.copyright { font-size: 8pt }
 	.degree { font-style: normal }
 	.degrees { font-style: normal }
+	.description { font-style: normal }
 	.emphasis { font-weight: bold }
 	.employer { font-style: italic }
 	.headerBlock { text-align: center }
@@ -43,17 +44,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	.job { font-style: normal }
 	.jobTitle { font-weight: bold }
 	.level { font-style: normal }
+	.lastModified { font-style: normal }
 	.miscHeading { font-style: normal; color:green }
 	.nameHeading { text-align: center }
 	.note { font-style: normal }
 	.objectiveHeading { font-style: normal; color:green }
+	.organization { font-style: normal }
 	.para { font-style: normal }
+	.project { font-style: normal }
 	.pub { font-style: normal }
 	.pubs { font-style: normal }
 	.pubsHeading { font-style: normal; color:green }
 	.refereeHeading { font-style: normal }
 	.refereesHeading { font-weight: bold; color:green }
 	.resume { background-color:#F0F0C0; }
+	.resume { font-style: normal }
 	.skill { font-style: normal }
 	.skillareaHeading { font-style: normal }
 	.skills { font-style: normal }
