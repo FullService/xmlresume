@@ -47,6 +47,7 @@ $Id$
   <xsl:include href="interests.xsl"/>
   <xsl:include href="deprecated.xsl"/>
   <xsl:include href="contact.xsl"/>
+  <xsl:include href="string.xsl"/>
 
   <!-- Format the document. -->
   <xsl:template match="/">
@@ -147,6 +148,12 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:apply-templates select="r:suffix"/>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="r:address" mode="free-form">
+    <fo:block>
+      <xsl:apply-templates/>
+    </fo:block>
   </xsl:template>
 
   <xsl:template match="r:address" mode="standard">
@@ -260,25 +267,15 @@ $Id$
 
   <!-- Preserve line breaks within a free format address -->
   <xsl:template match="r:address//text()">
-    <xsl:call-template name="PreserveLinebreaks">
+    <xsl:call-template name="String-Replace">
       <xsl:with-param name="Text" select="."/>
+      <xsl:with-param name="Search-For">
+        <xsl:text>&#xA;</xsl:text>
+      </xsl:with-param>
+      <xsl:with-param name="Replace-With">
+        <fo:block/>
+      </xsl:with-param>
     </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template name="PreserveLinebreaks">
-    <xsl:param name="Text"/>
-    <xsl:choose>
-      <xsl:when test="contains($Text, '&#xA;')">
-         <xsl:value-of select="substring-before($Text, '&#xA;')"/>
-         <fo:block/>
-         <xsl:call-template name="PreserveLinebreaks">
-           <xsl:with-param name="Text" select="substring-after($Text, '&#xA;')"/>
-         </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-         <xsl:value-of select="$Text"/>
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
 
