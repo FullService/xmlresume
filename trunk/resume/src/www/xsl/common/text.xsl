@@ -429,7 +429,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <xsl:template match="r:year | r:month | r:title | r:annotation">
+  <xsl:template match="r:year | r:month | r:title | r:annotation | r:level">
     <xsl:value-of select="normalize-space(.)"/>
   </xsl:template>
 
@@ -514,7 +514,7 @@ In general, each block is responsible for outputting a newline after itself.
           <xsl:call-template name="NSpace">
             <xsl:with-param
               name="n"
-              select="2 + $MaxChars - string-length(r:title)"/>
+              select="2 + $MaxChars - string-length(normalize-space(r:title))"/>
           </xsl:call-template>
 
           <xsl:apply-templates select="r:result"/>
@@ -537,7 +537,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:choose>
       <xsl:when test="$SubjectIndex &lt;= count(r:subject)">
 
-        <xsl:variable name="CurLen" select="string-length(r:subject[$SubjectIndex]/r:title)"/>
+        <xsl:variable name="CurLen" select="string-length(normalize-space(r:subject[$SubjectIndex]/r:title))"/>
 
         <xsl:variable name="MaxFollowingLen">
           <xsl:call-template name="MaxSubjectTitleLength">
