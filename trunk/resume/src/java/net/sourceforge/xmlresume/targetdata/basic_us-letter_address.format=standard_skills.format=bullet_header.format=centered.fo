@@ -13,25 +13,27 @@
 </fo:static-content>
 <fo:flow flow-name="xsl-region-body">
 <fo:block font-size="10pt" font-family="serif" start-indent="2in">
-<fo:block>
+<fo:block space-after="10pt">
+<fo:leader rule-thickness="2pt" leader-pattern="rule" leader-length="3.0in"/>
 <fo:block font-weight="bold">Alyssa Montague</fo:block>
 <fo:block>
 <fo:block>1920 Second St</fo:block>
 <fo:block>Westy, California 91109</fo:block>
 </fo:block>
+<fo:leader rule-thickness="2pt" leader-pattern="rule" leader-length="3.0in"/>
 </fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Professional Objective</fo:block>
 <fo:block space-after="10pt">Project manager at Internet startup.</fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Employment History</fo:block>
 <fo:block>
-<fo:inline font-weight="bold">Technologist</fo:inline> • <fo:inline font-style="italic">System Expansion Associates</fo:inline> • <fo:inline font-style="italic">August 1993Present–</fo:inline>
+<fo:inline font-weight="bold">Technologist</fo:inline> • <fo:inline font-style="italic">System Expansion Associates</fo:inline> • <fo:inline font-style="italic">August 1993–Present</fo:inline>
 </fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Academics</fo:block>
 <fo:block keep-with-next="always">
 <fo:inline font-weight="bold">MBA in Business Administration</fo:inline>,
       May 1989,
       </fo:block>
-<fo:block/>
+<fo:block space-after="10pt"/>
 <fo:block font-style="italic"/>
 </fo:block>
 </fo:flow>

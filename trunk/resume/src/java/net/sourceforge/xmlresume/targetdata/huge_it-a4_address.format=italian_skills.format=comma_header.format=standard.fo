@@ -13,14 +13,15 @@
 </fo:static-content>
 <fo:flow flow-name="xsl-region-body">
 <fo:block font-size="10pt" font-family="serif" start-indent="20mm">
-<fo:block>
+<fo:block space-after="10pt">
+<fo:leader rule-thickness="2pt" leader-pattern="rule" leader-length="3.0in"/>
 <fo:block font-weight="bold">Sárah Elizabéth Adams Senior</fo:block>
 <fo:block>
 <fo:block>1930 Second St</fo:block>
 <fo:block>Unit 15-A</fo:block>
 <fo:block>San Raton</fo:block>
 </fo:block>
-<fo:block space-after="10pt">
+<fo:block>
 <fo:block>
 <fo:inline font-style="italic">Telefono:</fo:inline> 417.555.1413</fo:block>
 <fo:block>
@@ -28,6 +29,7 @@
 <fo:block>
 <fo:inline font-style="italic">URL:</fo:inline> http://geocities.com/sgurl</fo:block>
 </fo:block>
+<fo:leader rule-thickness="2pt" leader-pattern="rule" leader-length="3.0in"/>
 </fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Obiettivo</fo:block>
 <fo:block space-after="10pt">Assistant manager or manager at fast food chain.</fo:block>
@@ -37,19 +39,116 @@
 <fo:inline font-weight="bold">MBA in Business Administration</fo:inline>,
       May 1989,
       Geeba geeba!</fo:block>
-<fo:block>Institute for the Administration of Business</fo:block>
+<fo:block space-after="10pt">Institute for the Administration of Business</fo:block>
 <fo:block keep-with-next="always">
 <fo:inline font-weight="bold">B.Ph. in Business Administration</fo:inline>,
       May 1990,
       Geeba geeba!</fo:block>
-<fo:block>Advanced Institute for the Administration of Business</fo:block>
+<fo:block space-after="10pt">Advanced Institute for the Administration of Business</fo:block>
+<fo:block space-after="10pt">
+<fo:table>
+<fo:table-column column-number="1" column-width="50pt"/>
+<fo:table-column column-number="2" column-width="200pt"/>
+<fo:table-column column-number="3" column-width="150pt"/>
+<fo:table-body>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>Stocks, broths, and soups</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>A</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>French and world sauces</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>A</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>French cuisine</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>B</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>World cuisine</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>A</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>Kitchen sanitation</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>A</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>Pastry</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>B</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>Culinary history</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>A</fo:block>
+</fo:table-cell>
+</fo:table-row>
+<fo:table-row>
+<fo:table-cell>
+<fo:block/>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>Hotel restaurant management</fo:block>
+</fo:table-cell>
+<fo:table-cell>
+<fo:block>C</fo:block>
+</fo:table-cell>
+</fo:table-row>
+</fo:table-body>
+</fo:table>
+</fo:block>
 <fo:block font-style="italic">
 <fo:block space-after="10pt">Well, what can I say, really?</fo:block>
 <fo:block space-after="10pt">They were both nice schools.</fo:block>
 </fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Esperienze Professionali</fo:block>
 <fo:block>
-<fo:inline font-weight="bold">Stylist</fo:inline> • <fo:inline font-style="italic">LA Salon</fo:inline> • <fo:inline font-style="italic">August 1978September1979–</fo:inline>
+<fo:inline font-weight="bold">Stylist</fo:inline> • <fo:inline font-style="italic">LA Salon</fo:inline> • <fo:inline font-style="italic">August 1978–September 1979</fo:inline>
 <fo:block>
 <fo:block space-after="10pt">LA Salon was the major source of personal grooming for
 	  the stars of Hollywood.  Located in Burbank near several
@@ -61,6 +160,28 @@
 	</fo:block>
 </fo:block>
 <fo:block>
+<fo:inline font-style="italic">Progettos:</fo:inline>
+<fo:list-block provisional-label-separation="10pt" provisional-distance-between-starts="10pt" space-after="10pt">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>Hair revitalization campaign of 1997</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()" start-indent="20mm">
+<fo:block>•</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>Sales booster campaign of 1998</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+</fo:block>
+<fo:block>
+<fo:inline font-style="italic">Successos:</fo:inline>
 <fo:list-block provisional-label-separation="10pt" provisional-distance-between-starts="10pt" space-after="10pt">
 <fo:list-item>
 <fo:list-item-label end-indent="label-end()" start-indent="20mm">
@@ -84,6 +205,16 @@
 </fo:block>
 <fo:block>
 <fo:inline font-weight="bold">Customer Service Relations Expert</fo:inline> • <fo:inline font-style="italic">MacDonald's</fo:inline> • <fo:inline font-style="italic">presente–presente</fo:inline>
+<fo:block>
+<fo:block space-after="10pt">MacDonald's was a restaurant that provided food for
+	  those who needed a fast lunch or dinner.  I served as the
+	  <fo:inline font-weight="bold">primary</fo:inline> point through which customers
+	  interacted in order to select food items.
+	</fo:block>
+<fo:block space-after="10pt">Please note that this restaurant is
+	  <fo:inline font-weight="bold">not</fo:inline> to be confused with McDonald's.
+	</fo:block>
+</fo:block>
 </fo:block>
 <fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Computer Experience</fo:block>
 <fo:block space-after="10pt">
@@ -118,127 +249,8 @@
 <fo:block>•</fo:block>
 </fo:list-item-label>
 <fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001:
-	Object Oriented Data Technology for Space Science Data
-	Archiving and Retrieval: Potential Applications for
-	Bioinformatics.  First JPL Information Technology Symposium,
-	Pasadena, Jet Propulsion Laboratory.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Kelly, S., 2001: Using XSL Formatting Objects.
-	<fo:inline font-style="italic">Inside XML Solutions</fo:inline>, volume 1,
-	issue 6.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A
-	Distributed Component Framework for Science Data Product
-	Interoperability.  17th International CODATA Conference,
-	Baveno, International Council for Science.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A
-	Multi-Discipline Metadata Registry for Science
-	Interoperability.  Open Forum on Metadata Registries, ISO/IEC
-	JTC1/SC32, Data Management and Interchange.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999:
-	Science Search and Retrieval using XML.  Second National
-	Conference on Scientific and Technical Data, Washington DC,
-	National Academy of Sciences.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Kelly, S., 1997: The Application Interface for the
-	WFO-Advanced Forecaster Workstation, D2D.  Preprints,
-	<fo:inline font-style="italic">13th International Conference on Interactive
-	Information and Processing Systems for Meteorology,
-	Oceanography, and Hydrology</fo:inline>, Long Beach, American
-	Meteorological Society.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">Kelly, S., 1997: An Object-Oriented Framework for Local
-	Extensions to the WFO-Advanced Forecaster Display Workstation,
-	D2D.  Preprints, <fo:inline font-style="italic">13th International Conference on Interactive
-	Information and Processing Systems for Meteorology,
-	Oceanography, and Hydrology</fo:inline>, Long Beach, American
-	Meteorological Society.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">
-	Kelly, S., 1996: Terminals with FreeBSD.  <fo:inline font-style="italic">The FreeBSD
-	Handbook</fo:inline>, The FreeBSD Project, Incorporated.
-      </fo:block>
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()" start-indent="20mm">
-<fo:block>•</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-<fo:block space-after="10pt">
-	Kelly, S., 1996: Printing with FreeBSD.  <fo:inline font-style="italic">The FreeBSD
-	Handbook</fo:inline>, The FreeBSD Project, Incorporated.
-      </fo:block>
-</fo:block>
+<fo:block>Tilset Teemson, , Xavier Xevvinson. Gronkulating the Frobnicator. <fo:inline font-style="italic">Proceedings of the 3rd Annual Rebbilation
+	Society</fo:inline>.  2163. 172. </fo:block>
 </fo:list-item-body>
 </fo:list-item>
 </fo:list-block>
@@ -264,7 +276,7 @@
 </fo:list-item-label>
 <fo:list-item-body start-indent="body-start()">
 <fo:block>
-<fo:inline font-weight="bold">Grand Poobah</fo:inline>, The Odd Fellows, August 1978September1979–<fo:block space-after="10pt">The da driver provides support for all SCSI devices of
+<fo:inline font-weight="bold">Grand Poobah</fo:inline>, The Odd Fellows, August 1978–September 1979<fo:block space-after="10pt">The da driver provides support for all SCSI devices of
 	  the direct access class that are attached to the system
 	  through a supported SCSI Host Adapter.  The direct access
 	  class includes disk, magneto-optical, and solid-state
@@ -283,7 +295,7 @@
 </fo:list-item-label>
 <fo:list-item-body start-indent="body-start()">
 <fo:block>
-<fo:inline font-weight="bold">Lesser Poobah</fo:inline>, The Even Fellows,  presente–<fo:block space-after="10pt">The sa driver is based around the concept of a ``mount
+<fo:inline font-weight="bold">Lesser Poobah</fo:inline>, The Even Fellows, presente–presente<fo:block space-after="10pt">The sa driver is based around the concept of a ``mount
 	  session'', which is defined as the period between the time
 	  that a tape is mounted, and the time when it is unmounted.
 	  Any parameters set during a mount session re- main in effect
@@ -295,6 +307,22 @@
 </fo:list-item-body>
 </fo:list-item>
 </fo:list-block>
+<fo:block keep-with-next="always" space-after="10pt" space-before="10pt" font-weight="bold" font-family="sans-serif" start-indent="0in">Riferimentos</fo:block>
+<fo:block space-after="10pt">
+<fo:block font-style="italic" keep-with-next="always">Indiana O'Brien</fo:block>
+<fo:block>
+<fo:block>
+<fo:inline font-style="italic">Telefono:</fo:inline> 408.555.1296</fo:block>
+</fo:block>
+</fo:block>
+<fo:block space-after="10pt">
+<fo:block font-style="italic" keep-with-next="always">Web Melgood</fo:block>
+<fo:block>
+<fo:block>3090 Deltoid</fo:block>
+<fo:block>Santa Yorba</fo:block>
+<fo:block>USA</fo:block>
+</fo:block>
+</fo:block>
 </fo:block>
 </fo:flow>
 </fo:page-sequence>

@@ -34,12 +34,18 @@ Employment History:
     
     Stylist
     LA Salon
-    August 1978September1979-
+    August 1978-September 1979
     
     LA Salon was the major source of personal grooming for the stars of
     Hollywood. Located in Burbank near several important studios, it
     provided hair, skin, and nail care services.
     We also served the more well-to-do residents of Burbank, and Glendale.
+    
+    Projects:
+    
+    * Hair revitalization campaign of 1997
+    * Sales booster campaign of 1998
+    Achievements:
     
     * Styled *Sean Connery's* hair.
     * Got good tips.
@@ -48,6 +54,12 @@ Employment History:
     Customer Service Relations Expert
     MacDonald's
     Present-Present
+    
+    MacDonald's was a restaurant that provided food for those who needed a
+    fast lunch or dinner. I served as the *primary* point through which
+    customers interacted in order to select food items.
+    Please note that this restaurant is *not* to be confused with
+    McDonald's.
     
     
     
@@ -68,44 +80,8 @@ Publications:
     Kelly, S.: 2001: Creating Technical Documentation with DocBook. Inside
     XML Solutions, volume 1, issue 8.
     
-    Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001: Object Oriented
-    Data Technology for Space Science Data Archiving and Retrieval:
-    Potential Applications for Bioinformatics. First JPL Information
-    Technology Symposium, Pasadena, Jet Propulsion Laboratory.
-    
-    Kelly, S., 2001: Using XSL Formatting Objects. Inside XML Solutions,
-    volume 1, issue 6.
-    
-    Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A Distributed
-    Component Framework for Science Data Product Interoperability. 17th
-    International CODATA Conference, Baveno, International Council for
-    Science.
-    
-    Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A Multi-Discipline
-    Metadata Registry for Science Interoperability. Open Forum on Metadata
-    Registries, ISO/IEC JTC1/SC32, Data Management and Interchange.
-    
-    Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999: Science Search and
-    Retrieval using XML. Second National Conference on Scientific and
-    Technical Data, Washington DC, National Academy of Sciences.
-    
-    Kelly, S., 1997: The Application Interface for the WFO-Advanced
-    Forecaster Workstation, D2D. Preprints, 13th International Conference
-    on Interactive Information and Processing Systems for Meteorology,
-    Oceanography, and Hydrology, Long Beach, American Meteorological
-    Society.
-    
-    Kelly, S., 1997: An Object-Oriented Framework for Local Extensions to
-    the WFO-Advanced Forecaster Display Workstation, D2D. Preprints, 13th
-    International Conference on Interactive Information and Processing
-    Systems for Meteorology, Oceanography, and Hydrology, Long Beach,
-    American Meteorological Society.
-    
-    Kelly, S., 1996: Terminals with FreeBSD. The FreeBSD Handbook, The
-    FreeBSD Project, Incorporated.
-    
-    Kelly, S., 1996: Printing with FreeBSD. The FreeBSD Handbook, The
-    FreeBSD Project, Incorporated.
+    Tilset Teemson, , Xavier Xevvinson. "Gronkulating the Frobnicator".
+    Proceedings of the 3rd Annual Rebbilation Society. 2163. 172.
 
 
 Miscellany:
@@ -121,7 +97,7 @@ Miscellany:
     sepa- rately and in lexicographical order.
 Memberships:
 
-    Grand Poobah, The Odd Fellows, August 1978September1979-
+    Grand Poobah, The Odd Fellows, August 1978-September 1979
     The da driver provides support for all SCSI devices of the direct
     access class that are attached to the system through a supported SCSI
     Host Adapter. The direct access class includes disk, magneto-optical,
@@ -129,7 +105,7 @@ Memberships:
     A SCSI Host adapter must also be separately configured into the system
     before a SCSI direct access device can be configured.
 
-    Lesser Poobah, The Even Fellows,  Present-
+    Lesser Poobah, The Even Fellows, Present-Present
     The sa driver is based around the concept of a ``mount session'', which
     is defined as the period between the time that a tape is mounted, and
     the time when it is unmounted. Any parameters set during a mount
@@ -137,4 +113,20 @@ Memberships:
     replaced. The tape can be unmounted, bringing the session to a close in
     several ways.
 
+
+
+Referees:
+
+    Indiana O'Brien
+    
+    Telephone: 408.555.1296
+    
+    Web Melgood
+    3090 Deltoid
+    95022 Santa Yorba
+    CA
+    USA
+    
+    
+    
 
