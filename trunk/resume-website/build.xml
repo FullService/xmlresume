@@ -19,6 +19,7 @@ $Id$
   <property name="version.underscore" value="1_5_0"/>
   <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
   <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
+  <property name="webserver.address" value="http://sbap.org"/>
 
   <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
 
@@ -38,6 +39,8 @@ $Id$
     <include name="**/*.gif"/>
     <include name="**/*.png"/>
     <include name="**/*.pdf"/>
+    <include name="**/*.jar"/>
+    <include name="**/*.class"/>
   </patternset>
 
   <!-- Nonbinary files that may be filtered/modified -->
@@ -47,6 +50,8 @@ $Id$
     <exclude name="**/*.gif"/>
     <exclude name="**/*.png"/>
     <exclude name="**/*.pdf"/>
+    <exclude name="**/*.jar"/>
+    <exclude name="**/*.class"/>
   </patternset>
 
   <!-- TARGETS TO BUILD ======================================================================================================= -->
@@ -80,12 +85,17 @@ $Id$
         <patternset refid="binary.files"/>
       </fileset>
     </copy>
+    <ant antfile="${resume.web.publish.dir}/orc/build.xml"
+	 dir="${resume.web.publish.dir}/orc/"
+	 target="clean"/>
+    <chmod file="${resume.web.publish.dir}/orc/convert.sh" perm="ugo+rx"/>
   </target>
 
   <!-- Housekeeping -->
   <target name="filter"
     description="Define filtering tokens">
     <filter token="VERSION_DOTS" value="${version.dots}"/>
+    <filter token="WEBSERVER_ADDRESS" value="${webserver.address}"/>
     <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
     <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
   </target>
