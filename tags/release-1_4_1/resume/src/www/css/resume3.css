@@ -1,0 +1,64 @@
+/*
+resume3.css
+Sample Cascading Stylesheet (CSS) for HTML formatted resumes.
+
+Copyright (c) 2001 Stewart Evans, Bruce Christensen
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+.resume { 
+    background-color: #eeeeee;
+    padding-left: 30pt;
+    padding-right: 30pt;
+}
+h2 {
+    margin-left: -20pt;
+    font-family: sans-serif;
+    color: black;
+    border-bottom: solid 1pt black;
+}
+p {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+
+.awardTitle { font-weight: bold }
+.bookTitle { font-style: italic }
+.citation { font-style: italic }
+.clearanceLevel { font-weight: bold }
+.copyright { font-size: 75% }
+li.degree { margin-bottom: 0.5em; }
+.degreeTitle { font-weight: bold }
+.employer { font-style: italic }
+.headerBlock { text-align: center }
+.jobTitle { font-weight: bold }
+.lastModified { font-size: 75% }
+.nameHeading { text-align: center; font-family: sans-serif }
+div.referee { margin-bottom: 1em; }
+.refereeName { font-weight: bold }
+.skillsetTitle { font-weight: bold }
+.urlA { font-family:sans-serif; color:red; }

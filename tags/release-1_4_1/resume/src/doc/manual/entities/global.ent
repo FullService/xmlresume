@@ -1,0 +1,41 @@
+<!-- This file defines global entities for the user guide. -->
+<!-- Tokens that look like @THIS@ are replaced by Ant during the build. -->
+
+<!-- Abbreviations for commonly used words and/or phrases -->
+<!ENTITY resume "r&eacute;sum&eacute;">
+<!ENTITY Resume "R&eacute;sum&eacute;">
+
+<!-- Project information -->
+<!ENTITY project.name "XML &Resume; Project">
+
+<!ENTITY library.name "XML &Resume; Library">
+<!ENTITY library.version.dots "@VERSION_DOTS@">
+<!ENTITY library.version.underscore "@VERSION_UNDERSCORE@">
+
+<!-- Book meta-information -->
+<!ENTITY book.title "&library.name; User Guide">
+<!ENTITY book.pubdate "@RELEASE_DATE@">
+
+<!-- URLs -->
+<!ENTITY xmlresume.project.url "http://xmlresume.sourceforge.net/">
+<!ENTITY xmlresume.download.url "http://sourceforge.net/project/showfiles.php?group_id=29512">
+<!ENTITY xmlresume.support.url "http://sourceforge.net/tracker/?group_id=29512&amp;atid=396336">
+<!ENTITY xmlresume.list.devel.url "http://lists.sourceforge.net/lists/listinfo/xmlresume-devel">
+
+<!ENTITY xerces.url "http://xml.apache.org/xerces2-j/">
+<!ENTITY xerces.download.url "http://xml.apache.org/dist/xerces2-j/">
+<!ENTITY xalan.url "http://xml.apache.org/xalan-j/">
+<!ENTITY xalan.download.url "http://xml.apache.org/dist/xalan-j/">
+<!ENTITY fop.url "http://xml.apache.org/fop/">
+<!ENTITY fop.download.url "http://xml.apache.org/fop/download.html">
+
+<!ENTITY css.url "http://www.w3c.org/Style/CSS/">
+<!ENTITY rfc1738.url "http://www.w3.org/Addressing/rfc1738.txt">
+<!ENTITY rfc1808.url "http://www.w3.org/Addressing/rfc1808.txt">
+<!ENTITY j2se.url "http://java.sun.com/j2se/">
+
+<!-- E-mail addresses -->
+<!ENTITY bruce.email "bruce at iname.com">
+<!ENTITY peter.email "peter@hutnick.com">
+
+<!ENTITY xmlresume.list.devel.bot.email "xmlresume-devel-request@lists.sourceforge.net">

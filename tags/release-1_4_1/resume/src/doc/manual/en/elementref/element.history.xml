@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.history">
+  <refnamediv>
+    <refname>history</refname>
+    <refpurpose>Container for a person's previous (and possibly current) jobs</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">history</sgmltag> element contains a
+      person's job history (the jobs that they have worked at in the past). It
+      is also common to include their current job in this element.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">history</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<history>
+  <job>
+    <jobtitle>Counselor</jobtitle>
+    <employer>Shrink Inc.</employer>
+    <period>
+      <from><date><month>August</month><year>1490</year></date></from>
+      <to><date><month>January</month><year>1497</year></date></to>
+    </period>
+    <description>
+      <para>
+        Counseled King Ferdinand and Queen Isabella. Helped to calm their fears
+        about their large investment in a man named Christopher Columbus.
+      </para>
+      <para>
+        When Columbus returned with gold, I was "downsized" by beheading.
+      </para>
+    </description>
+  </job>
+  <job>
+    <jobtitle>Angel</jobtitle>
+    <employer>Heaven</employer>
+    <period>
+      <from><date><month>January</month><year>1497</year></date></from>
+      <to><date><month>June</month><year>2344</year></date></to>
+    </period>
+    <description>
+      <para>
+        Saved souls.
+      </para>
+    </description>
+  </job>
+  <job>
+    <jobtitle>Supersonic Vacuum Technician</jobtitle>
+    <employer>Joe's Vacuum Shop</employer>
+    <period>
+      <from><date><month>June</month><year>2344</year></date></from>
+      <to><present/></to>
+    </period>
+    <description>
+      <para>
+        Allowed to return to earth to help my great-great-great-(you get the
+        picture)-grandson Joe with his business.
+      </para>
+      <para>
+        Repaired hyperdynamic microbial neutron particle accelerators in
+        Supersonic vacuum models XL144 and XP2000.
+      </para>
+    </description>
+  </job>
+</history>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<glossary id="gloss">
+  <glossaryinfo>
+    <title>Glossary</title>
+  </glossaryinfo>
+
+  <glossentry id="gloss.attribute">
+    <glossterm>attribute</glossterm>
+    <glossdef>
+      <para>Attributes provide additional information about <glossterm
+      linkend="gloss.element">element</glossterm> that they appear in. They take the form of
+      name-value pairs in the element. The <emphasis role="bold">emphasized</emphasis> parts of this
+      example are attributes:</para>
+      <informalexample><programlisting><![CDATA[
+<author]]> <emphasis role="bold"><![CDATA[name="a.kernighan"]]></emphasis><![CDATA[>
+<resume]]> <emphasis role="bold"><![CDATA[id="r25a4"]]></emphasis><![CDATA[>
+      ]]></programlisting></informalexample>
+    </glossdef>
+  </glossentry>
+
+  <glossentry id="gloss.element">
+    <glossterm>element</glossterm>
+    <glossdef>
+      <para>An element of an XML document that defines an
+      <quote>object</quote>, such as <sgmltag
+      class="starttag">resume</sgmltag> or <sgmltag
+      class="starttag">firstname</sgmltag>. <acronym>HTML</acronym> tags are
+      examples of elements. Additionally, elements can have <glossterm
+      linkend="gloss.attribute">attributes</glossterm>.</para>
+    </glossdef>
+  </glossentry>
+
+</glossary>

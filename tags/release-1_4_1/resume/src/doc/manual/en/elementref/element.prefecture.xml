@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.prefecture">
+  <refnamediv>
+    <refname>prefecture</refname>
+    <refpurpose>A name of a prefecture or other administrative district</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">prefecture</sgmltag> element contains the
+      name of a prefecture or other administrative district of a city, province,
+      state, or other area.
+    </para>
+
+    <para>
+      This element is currently ignored during formatting.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">prefecture</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a prefecture. The prefecture
+              may then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.city"><sgmltag class="element">city</sgmltag></link></member>
+        <member><link linkend="element.county"><sgmltag class="element">county</sgmltag></link></member>
+        <member><link linkend="element.state"><sgmltag class="element">state</sgmltag></link></member>
+        <member><link linkend="element.suburb"><sgmltag class="element">suburb</sgmltag></link></member>
+        <member><link linkend="element.ward"><sgmltag class="element">ward</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<prefecture>Basilius</prefecture>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>
