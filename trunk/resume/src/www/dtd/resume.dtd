@@ -62,10 +62,11 @@ $Id$
 <!ELEMENT uri (#PCDATA)>
 
 <!-- The header of the resume contains your name and address. -->
-<!ELEMENT header (name, address?, contact?)>
+<!ELEMENT header (name, address?, birth?, contact?)>
 <!ELEMENT name (firstname, surname)>
 <!ELEMENT firstname (#PCDATA)>
 <!ELEMENT surname (#PCDATA)>
+<!ELEMENT birth (date)>
 
 <!-- Your address is free-form text formatted as is proper for your -->
 <!-- mailing standards.  To insert a line break, put a <break/> -->
@@ -170,6 +171,7 @@ $Id$
 <!ELEMENT emphasis (#PCDATA)>
 <!ELEMENT citation (#PCDATA)>
 <!ELEMENT date (month, year)>
+<!ELEMENT fullDate (dayOfMonth, month, year)>
 <!ELEMENT month (#PCDATA)>
 <!ELEMENT year (#PCDATA)>
 <!ELEMENT present EMPTY>
