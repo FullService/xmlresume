@@ -384,8 +384,10 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="normalize-space(r:street)"/>
-     <xsl:call-template name="NewLine"/>
+     <xsl:for-each select="r:street">
+       <xsl:value-of select="normalize-space(.)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>
@@ -421,8 +423,10 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="normalize-space(r:street)"/>
-     <xsl:call-template name="NewLine"/>
+     <xsl:for-each select="r:street">
+       <xsl:value-of select="normalize-space(.)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>
@@ -448,8 +452,10 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:address" mode="italian">
-     <xsl:value-of select="normalize-space(r:street)"/>
-     <xsl:call-template name="NewLine"/>
+     <xsl:for-each select="r:street">
+       <xsl:value-of select="normalize-space(.)"/>
+       <xsl:call-template name="NewLine"/>
+     </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="normalize-space(r:street2)"/>
        <xsl:call-template name="NewLine"/>

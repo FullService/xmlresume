@@ -155,7 +155,9 @@ $Id$
      </xsl:variable>
 
      <fo:block>
-       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:for-each select="r:street">
+         <fo:block><xsl:value-of select="."/></fo:block>
+       </xsl:for-each>
        <xsl:if test="r:street2">
          <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>
@@ -193,7 +195,9 @@ $Id$
      </xsl:variable>
 
      <fo:block>
-       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:for-each select="r:street">
+         <fo:block><xsl:value-of select="."/></fo:block>
+       </xsl:for-each>
        <xsl:if test="r:street2">
          <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>
@@ -222,7 +226,9 @@ $Id$
   <xsl:template match="r:address" mode="italian">
 
      <fo:block>
-       <fo:block><xsl:value-of select="r:street"/></fo:block>
+       <xsl:for-each select="r:street">
+         <fo:block><xsl:value-of select="."/></fo:block>
+       </xsl:for-each>
        <xsl:if test="r:street2">
          <fo:block><xsl:value-of select="r:street2"/></fo:block>
        </xsl:if>

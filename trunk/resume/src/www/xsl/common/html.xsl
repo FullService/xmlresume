@@ -211,7 +211,9 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="r:street"/><br/> 
+     <xsl:for-each select="r:street">
+       <xsl:value-of select="."/><br/>
+     </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="r:street2"/><br/>
      </xsl:if>
@@ -243,7 +245,9 @@ $Id$
        <xsl:call-template name="PostCode"/>
      </xsl:variable>
 
-     <xsl:value-of select="r:street"/><br/> 
+     <xsl:for-each select="r:street">
+       <xsl:value-of select="."/><br/>
+     </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="r:street2"/><br/>
      </xsl:if>
@@ -264,7 +268,9 @@ $Id$
 
   <xsl:template match="r:address" mode="italian">
 
-     <xsl:value-of select="r:street"/><br/> 
+    <xsl:for-each select="r:street">
+      <xsl:value-of select="."/><br/>
+    </xsl:for-each>
      <xsl:if test="r:street2">
        <xsl:value-of select="r:street2"/><br/>
      </xsl:if>
