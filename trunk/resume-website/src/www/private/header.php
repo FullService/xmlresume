@@ -13,7 +13,7 @@ close the table and take care of other loose ends.
     <title>XML R&eacute;sum&eacute; Library:: <?php echo $pagetitle?> </title>
     <meta name="keywords" content="XML, resume, curricula, vitae, DTD,
     schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS">
-    <link rel="stylesheet" href="./site.css" type="text/css">
+    <link rel="stylesheet" href="@WWW_ROOT@/site.css" type="text/css">
   </head>
   <body>
     <h1 class="pageTitle">

@@ -13,13 +13,19 @@ $Id$
   <property file="${user.home}/.ant.properties"/>
 
   <!-- PROPERTIES ============================================================================================================= -->
+  <!-- NOTE: Do not change these values directly; instead, override them in your
+       ~/.ant.properties file, using the format "variableName = value" -->
 
   <!-- Current version number and release files -->
   <property name="version.dots" value="1.5.0"/>
   <property name="version.underscore" value="1_5_0"/>
   <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
   <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
-  <property name="webserver.address" value="http://sbap.org"/>
+  <property name="webserver.address" value="http://xmlresume.sourceforge.net/orc"/>
+  <!-- The location (relative to the webserver root) of the www files -->
+  <property name="www.root" value=""/>
+  <!-- The location of the resume-support module: -->
+  <property name="support.home" value="/home/groups/x/xm/xmlresume/resume-support"/>
 
   <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
 
@@ -96,6 +102,8 @@ $Id$
     description="Define filtering tokens">
     <filter token="VERSION_DOTS" value="${version.dots}"/>
     <filter token="WEBSERVER_ADDRESS" value="${webserver.address}"/>
+    <filter token="WWW_ROOT" value="${www.root}"/>
+    <filter token="SUPPORT_HOME" value="${support.home}"/>
     <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
     <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
   </target>
