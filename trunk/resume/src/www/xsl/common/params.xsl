@@ -258,7 +258,7 @@ $Id$
 
   <!-- Settings for lines around the header of the print resume -->
   <xsl:param name="header.line.pattern">rule</xsl:param>
-  <xsl:param name="header.line.thickness">0.2em</xsl:param>
+  <xsl:param name="header.line.thickness">1pt</xsl:param>
 
   <!-- Margins for the header box. It would be nice to just specify a width
   attribute for the header block, but neither FOP nor XEP use it. Instead, we
