@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.resumes">
+  <refnamediv>
+    <refname>resumes</refname>
+    <refpurpose>A collection of one or more &resume;s</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">resumes</sgmltag> element contains one or
+      more <link linkend="element.resume">&resume;s</link>. It could be used,
+      for example, to distribute the &resume;s of all applicants for a job as
+      a single file.
+    </para>
+
+    <para>
+      The formatting of this element is currently undefined.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">resumes</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a group of &resume;s. The
+              &resume;s may then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<resumes id="resumes.tech.titans">
+  <resume id="resume.gates">
+    <header>
+      <name>
+        <firstname>Bill</firstname>
+        <surname>Gates</surname>
+      </name>
+    </header>
+  </resume>
+  <resume id="resume.jobs">
+    <header>
+      <name>
+        <firstname>Steve</firstname>
+        <surname>Jobs</surname>
+      </name>
+    </header>
+  </resume>
+</resumes>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.from">
+  <refnamediv>
+    <refname>from</refname>
+    <refpurpose>The beginning point in a period of time</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">from</sgmltag> element specifies the
+      instant at which a given period of time begins. It is always followed by
+      a <link linkend="element.to"><sgmltag
+      class="element">to</sgmltag></link> element in a <link
+      linkend="element.period"><sgmltag
+      class="element">period</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">from</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.to"><sgmltag class="element">to</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<period>
+  <from>
+    <date>
+      <dayOfMonth>26</dayOfMonth>
+      <month>December</month>
+      <year>1936</year>
+    </date>
+  </from>
+  <to>
+    <date>
+      <dayOfMonth>14</dayOfMonth>
+      <month>January</month>
+      <year>2015</year>
+    </date>
+  </to>
+</period>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.state">
+  <refnamediv>
+    <refname>state</refname>
+    <refpurpose>A name or abbreviation of a state</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">state</sgmltag> element contains the name
+      or abbreviation for the name of a state or other similar political
+      entity.
+    </para>
+
+    <para>
+      The <sgmltag class="element">state</sgmltag> element represents a
+      division of a country. It should not be confused with the <sgmltag
+      class="element">country</sgmltag> element, which represents a
+      nation-state.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">state</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a state name. The name may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.province"><sgmltag class="element">province</sgmltag></link></member>
+        <member><link linkend="element.county"><sgmltag class="element">county</sgmltag></link></member>
+        <member><link linkend="element.prefecture"><sgmltag class="element">prefecture</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <example>
+      <title>State name</title>
+      
+      <programlisting><![CDATA[
+<state>New York</state>
+      ]]></programlisting>
+    </example>
+
+    <example>
+      <title>State abbreviation</title>
+      
+      <programlisting><![CDATA[
+<state>NY</state>
+      ]]></programlisting>
+    </example>
+
+  </refsect1>
+
+</refentry>

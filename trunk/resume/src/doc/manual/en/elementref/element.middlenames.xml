@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.middlenames">
+  <refnamediv>
+    <refname>middlenames</refname>
+    <refpurpose>One or more <quote>middle</quote> names of a person</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">middlenames</sgmltag> element contains all
+      of the names of a person, excluding their first (given) name and surname.
+      If the person has multiple middle names, they should be space-separated.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">middlenames</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.firstname"><sgmltag class="element">firstname</sgmltag></link></member>
+        <member><link linkend="element.surname"><sgmltag class="element">surname</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<middlenames>Samione</middlenames>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<middlenames>Lu&iacute;s Garcia M&aacute;rquez</middlenames>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.bookTitle">
+  <refnamediv>
+    <refname>bookTitle</refname>
+    <refpurpose>A title of a book or similar work</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">bookTitle</sgmltag> element marks the title
+      of a book, magazine, journal, anthology, or other similar work. To
+      denote the title of a sub-work (like an article), see <link
+      linkend="element.artTitle"><sgmltag
+      class="element">artTitle</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">bookTitle</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.artTitle"><sgmltag class="element">artTitle</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <bookTitle>Tropical Siberian Vacations</bookTitle>
+  <author>Boris Tzchleikovsy</author>
+</pub>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <bookTitle>Children's Bedtime Stories</bookTitle>
+  <artTitle>Jack the Axe Murderer</artTitle>
+  <author>Caroline Black</author>
+</pub>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<pub>
+  <artTitle>Global Commodities Market Downturn</artTitle>
+  <bookTitle>The Economist</bookTitle>
+  <pubDate>
+    <month>June</month>
+    <year>1992</year>
+  </pubdate>
+</pub>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

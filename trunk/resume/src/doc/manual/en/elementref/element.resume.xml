@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.resume">
+  <refnamediv>
+    <refname>resume</refname>
+    <refpurpose>A &resume; or curriculum vitae</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">resume</sgmltag> element represents a
+      single &resume; or curriculum vitae (CV). It is a summary of a person's
+      experience that is revelant to employment.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">resume</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a &resume;. The &resume; may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<resume id="a8df262">
+
+  <header>
+    <name id="harry.potter">
+      <firstname>Harry</firstname>
+      <surname>Potter</surname>
+    </name>
+    <address>
+      <street>4 Privet Drive</street>
+      <city>Little Whinging</city>
+      <county>Surrey</county>
+      <postalCode>RO51 5NF</postalCode>
+      <country>UK</country>
+    </address>
+  </header>
+
+  <objective>
+    <para>To defeat Lord Voldemort once and for all, then to become an Auror
+    for the Ministry of Magic.</para>
+  </objective>
+
+  <skillareas>
+    <skillarea>
+      <title>Magical Skills</title>
+      <skillset>
+        <title>Charms</title>
+        <skills>
+          <skill>Levitation</skill>
+          <skill>Cheering</skill>
+          <skill>Summoning</skill>
+          <skill>Banishing</skill>
+        </skills>
+      </skillset>
+      <skillset>
+        <title>Spells and Curses</title>
+        <skills>
+          <skill>Unlocking Spell</skill>
+          <skill>Patronus Spell</skill>
+          <skill>Stunning Spell</skill>
+          <skill>Disarming Spell</skill>
+          <skill>Reductor Curse</skill>
+          <skill>Impediment Curse</skill>
+          <skill>Imperious Curse Evasion</skill>
+        </skills>
+      </skillset>
+      <skillset>
+        <title>Potions</title>
+        <skills>
+          <skill>Polyjuice</skill>
+          <skill>Enlarging</skill>
+          <skill>Antidotes</skill>
+        </skills>
+      </skillset>
+      <skillset>
+        <title>Flying</title>
+        <skills>
+          <skill>High-speed</skill>
+          <skill>Wronski Feint</skill>
+          <skill>Steep dives</skill>
+          <skill>Bludger Evasion</skill>
+          <skill>No-hands</skill>
+          <skill>High-altitude</skill>
+        </skills>
+      </skillset>
+      <skillset>
+        <title>Languages</title>
+        <skills>
+          <skill>English</skill>
+          <skill>Parsel Tounge</skill>
+          <skill>Troll (point and grunt)</skill>
+        </skills>
+      </skillset>
+    </skillarea>
+    <skillarea>
+      <title>Muggle Skills</title>
+      <skillset>
+        <title>Daily Life</title>
+        <skills>
+          <skill>Telephone</skill>
+          <skill>Mailbox</skill>
+          <skill>Riding in cars</skill>
+          <skill>Electric lights</skill>
+          <skill>Hammering</skill>
+        </skills>
+      </skillset>
+      <skillset>
+        <title>Camping</title>
+        <skills>
+          <skill>Setting up tents</skill>
+          <skill>Lighting Matches</skill>
+        </skills>
+      </skillset>
+    </skillarea>
+  </skillareas>
+
+  <history>
+    <job>
+      <jobtitle>Student</jobtitle>
+      <employer>Hogwarts</employer>
+      <period>
+        <from>
+          <date>
+            <month>September</month>
+            <year>ca. 1995</year>
+          </date>
+        </from>
+        <to>
+          <present/>
+        </to>
+      </period>
+      <achievements>
+        <achievement>
+          On Gryffindor House Quidditch team four years running
+        </achievement>
+        <achievement>
+          Quidditch Cup
+        </achievement>
+        <achievement>Youngest Seeker in a century</achievement>
+        <achievement>
+          Faced Lord Voldemort four times and lived.
+        </achievement>
+      </achievements>
+    </job>
+    <job>
+      <jobtitle>De-gnomer</jobtitle>
+      <employer>Mrs. Weasley</employer>
+      <period>
+        <from>
+          <date>
+            <month>August</month>
+            <year>ca. 1995</year>
+          </date>
+        </from>
+        <to>
+          <date>
+            <month>August</month>
+            <year>ca. 1995</year>
+          </date>
+        </to>
+      </period>
+      <description>
+        <para>Removed gnomes from the Weasleys' garden.</para>
+      </description>
+    </job>
+  </history>
+
+  <academics>
+    <degrees>
+      <degree>
+        <level>Fourth Year</level>
+        <major>Wizarding</major>
+        <institution>Hogwards School of Witchcraft and Wizardry</institution>
+        <subjects>
+          <subject>
+            <title>Transfiguration</title>
+            <result>B</result>
+          </subject>
+          <subject>
+            <title>Charms</title>
+            <result>A-</result>
+          </subject>
+          <subject>
+            <title>Defense Against the Dark Arts</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>Potions</title>
+            <result>D</result>
+          </subject>
+          <subject>
+            <title>Care of Magical Creature</title>
+            <result>A+</result>
+          </subject>
+          <subject>
+            <title>Divination</title>
+            <result>B</result>
+          </subject>
+        </subjects>
+      </degree>
+    </degrees>
+  </academics>
+
+  <memberships>
+    <title>School Clubs</title>
+    <membership>
+      <organization>Dueling Club</organization>
+      <description><para>Trained in wizard dueling, with focus on
+      disarming.</para></description>
+    </membership>
+    <membership>
+      <title>Secretary</title>
+      <organization>Society for the Protection of Elfish Workers
+      (S.P.E.W.)</organization>
+    </membership>
+  </memberships>
+
+  <referees>
+    <referee>
+      <name>
+        <firstname>Minerva</firstname>
+        <surname>McGonagall</surname>
+      </name>
+      <address>Hogwarts School of Witchcraft and Wizardry
+Via Owl Post</address>
+    </referee>
+    <referee>
+      <name>
+        <firstname>Albus</firstname>
+        <surname>Dumbledore</surname>
+      </name>
+      <address>Hogwarts School of Witchcraft and Wizardry
+Via Owl Post</address>
+    </referee>
+  </referees>
+
+</resume>
+    ]]></programlisting></informalexample>
+
+    <para>
+      For additional examples, look at the sample &resume;s in the <filename
+      class="directory">examples</filename> directory of the &library.name;
+      distribution.
+    </para>
+  </refsect1>
+
+</refentry>

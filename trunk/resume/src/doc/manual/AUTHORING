@@ -1,0 +1,99 @@
+This file provides information for people interested in writing or maintaining
+the documentation in this directory.
+
+For information on building documentation, see the README file in this
+directory.
+
+Scripts
+=======
+
+There are a few programs in the scripts directory that will make your life a
+little easier. They can also make it harder if you are unaware of what they do.
+
+dtddoc.py:
+    Parses the XML Resume Library DTD and does various things, depending on the
+    option passed to it:
+    - --create-missing: creates files in the en/elementref dir for elements in
+      the DTD that don't have a corresponding file yet.
+      ***This is how you should create refentry's for new elements.***
+    - --check: compares elements in the DTD with files in the elementref
+      directory. It tells you which elements and/or files are present in only
+      one of the two.
+    - --filter: generates attribute tables, content models, and parents for
+      resume elements. Tokens like "<?PARENTS?>" in DocBook sources are replaced
+      with this information during the build process.
+
+fix_cdata_space.py:
+    Removes leading and trailing whitespace from the contents of <![CDATA[ ...
+    ]]> sections. For example, it will change this (| represents margin):
+
+    |    <programlisting><[!CDATA[
+    |<name>
+    |  <firstname>Joe</firstname>
+    |  <lastname>Smith</lastname>
+    |</name>
+    |    ]]></programlisting>
+
+    To this:
+
+    |    <programlisting><[!CDATA[<name>
+    |  <firstname>Joe</firstname>
+    |  <lastname>Smith</lastname>
+    |</name>]]></programlisting>
+
+Style
+=====
+
+1.  DocBook XML source should use 2-space indents (no tabs):
+
+    |<para>
+    |  The <sgmltag class="element">address</sgmltag> contains an address.
+    |</para>
+
+    If you use Vim 6, you may want to put this in your .vimrc:
+
+      if has("autocmd")
+        augroup xml
+          au!
+          autocmd Syntax xml  setlocal shiftwidth=2 softtabstop=2
+        augroup END
+      endif
+
+2.  Use the entities defined in entities/global.ent. Some common ones are:
+    - &resume; ("resume", with proper accents)
+    - &Resume; ("Resume", with proper accents)
+    - &library.name ("XML Resume Library")
+    - &project.name ("XML Resume Project")
+
+3.  Don't put URLs or e-mail addresses in DocBook XML files directly; instead,
+    define a "*.url" or "*.email" entity in entities.global and use that. The
+    reason is that it's easier to update broken links and addresses this way.
+
+3.  When referring to an element, write it as:
+
+    |  <sgmltag class="element">address</sgmltag>
+
+    Similarly, parameters should be written as:
+
+    |  <parameter>header.format</parameter>
+
+4.  DocBook start and end tags for code listings should indented properly, but
+    the listing should start in column 1. Also, listings should always use CDATA
+    sections to improve readability.
+
+    |    <programlisting><![CDATA[
+    |<resume id="asdf">
+    |  <header>
+    |    ...
+    |  </header>
+    |  ...
+    |</resume>
+    |    ]]></programlisting>
+
+5.  Keep <title>s on the same line as their parents:
+
+    |<section id="guide.intro"><title>Introduction</title>
+    |  ...
+    |</section>
+
+Original author: Bruce Christensen <bruce at iname.com>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<chapter id="guide.create">
+  <chapterinfo>
+    <title>Creating an XML &Resume; Source Document</title>
+  </chapterinfo>
+
+  <para>This chapter is a tutorial that teaches you how to construct your
+  &resume; in XML format.</para>
+
+  <!-- ==================================================================== -->
+  <!-- <section id="guide.overview.download">
+    <title>Download Tools</title>
+
+    <para>Because the &library.name; uses TODO</para>
+  </section> -->
+  <!-- ==================================================================== -->
+</chapter>

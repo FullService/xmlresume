@@ -81,6 +81,18 @@ Cleaning Up
 To clean up files generated after a release, run "ant
 clean".
 
+User's Guide
+============
+
+The XML Resume Project User's Guide is written in DocBook
+XML. This allows us to easily convert it to various output
+formats. (We currently generate single-file HTML, multi-file
+HTML, and text.)
+
+More information about the XML Resume Project User's Guide
+and the tools required to build it is in
+src/doc/manual/README.
+
 Formatting the Examples
 =======================
 

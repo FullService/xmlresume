@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<chapter id="guide.overview">
+  <chapterinfo>
+    <title>Overview</title>
+  </chapterinfo>
+
+  <para>This chapter gives an overview of the steps required to create an XML
+  &resume; and convert it to different output formats (like HTML and PDF). It
+  doesn't explain in detail how to construct a &resume; for that, see
+  <xref linkend="guide.create"/>.</para>
+
+  <!-- ==================================================================== -->
+  <section id="guide.overview.download">
+    <title>Download Tools</title>
+
+    <para>Because the &library.name; uses TODO</para>
+  </section>
+  <!-- ==================================================================== -->
+</chapter>

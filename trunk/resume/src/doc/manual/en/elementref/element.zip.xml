@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.zip">
+  <refnamediv>
+    <refname>zip</refname>
+    <refpurpose>A zip code</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">zip</sgmltag> element contains a single zip
+      code (United States postal code). It may contain any format, such as
+      standard five-digit (<quote>34525</quote>), ZIP+4
+      (<quote>34525-1625</quote>), or any other valid format.
+    </para>
+
+    <para>
+      For non-U.S. postal codes, use <link linkend="element.postalCode"><sgmltag
+      class="element">postalCode</sgmltag></link>.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">zip</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a zip code. The zip code may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.postalCode"><sgmltag class="element">postalCode</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <para>
+      For examples, see <link linkend="element.address"><sgmltag
+      class="element">address</sgmltag></link>.
+    </para>
+
+  </refsect1>
+
+</refentry>

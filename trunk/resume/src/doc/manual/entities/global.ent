@@ -1,0 +1,25 @@
+<!-- This file defines global entities for the user guide. -->
+<!-- Tokens that look like @THIS@ are replaced by Ant during the build. -->
+
+<!-- Abbreviations for commonly used words and/or phrases -->
+<!ENTITY resume "r&eacute;sum&eacute;">
+<!ENTITY Resume "R&eacute;sum&eacute;">
+
+<!-- Project information -->
+<!ENTITY project.name "XML &Resume; Project">
+
+<!ENTITY library.name "XML &Resume; Library">
+<!ENTITY library.version "@VERSION_DOTS@">
+
+<!-- Book meta-information -->
+<!ENTITY book.title "&library.name; User's Guide">
+<!ENTITY book.pubdate "@RELEASE_DATE@">
+<!ENTITY book.copyright.years "<year>2002</year>">
+
+<!-- URLs -->
+<!ENTITY css.url "http://www.w3c.org/Style/CSS/">
+<!ENTITY rfc1738.url "http://www.w3.org/Addressing/rfc1738.txt">
+<!ENTITY rfc1808.url "http://www.w3.org/Addressing/rfc1808.txt">
+
+<!-- E-mail addresses -->
+<!ENTITY bruce.email "bruce at iname.com">

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.phone">
+  <refnamediv>
+    <refname>phone</refname>
+    <refpurpose>A phone number</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">phone</sgmltag> element contains a
+      telephone number. The number is not required to be in a specific format;
+      these are all valid phone numbers:
+
+      <itemizedlist spacing="compact">
+        <listitem><para>
+          <literal><![CDATA[<phone>555-555-1212</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>555.555.1212</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>(555) 555-1212</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>(555) 555-1212 x555</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>(011) 47 8931-858128</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>(011) 59-3331-8580</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>Mobile: 555-1212</phone>]]></literal>
+        </para></listitem>
+        <listitem><para>
+          <literal><![CDATA[<phone>Fax: 555-1212</phone>]]></literal>
+        </para></listitem>
+      </itemizedlist>
+
+      The last two items on the list are the currently recommended method of
+      identifying non-primary phone numbers. However alternatives to this
+      method are being investegated by the &libarary.name; team. This will
+      probably change in a future version.
+
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">phone</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.address"><sgmltag class="element">address</sgmltag></link></member>
+        <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<phone>555.555.1212</phone>
+    ]]></programlisting></informalexample>
+
+    <para>
+      For additional examples, see <link linkend="element.contact"><sgmltag
+      class="element">contact</sgmltag></link>.
+    </para>
+
+  </refsect1>
+
+</refentry>
