@@ -239,7 +239,7 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
-    depends="filter,doc.manual.html-multiple.web"
+    depends="filter,  examples.web"
     description="Install web server files">
 
     <mkdir dir="${resume.web.publish.dir}"/>
@@ -253,6 +253,58 @@ $Id$
     <copy todir="${resume.web.publish.dir}/user-guide" filtering="no">
       <fileset dir="${doc.manual.html-multiple.web.dir}"/>
     </copy>
+
+    <mkdir dir="${resume.web.publish.dir}/examples"/>
+    <copy todir="${resume.web.publish.dir}/examples">
+      <fileset dir="${build.dir}/examples.web">
+        <include name="example*.xml"/>
+        <include name="example*.html"/>
+        <include name="example*.txt"/>
+        <include name="example*.pdf"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="examples.web"
+    depends="filter"
+    description="Build example resumes for inclusion in web site">
+
+    <copy todir="${build.dir}/examples.web"
+      filtering="yes">
+      <fileset dir="${basedir}/examples"/>
+    </copy>
+
+    <exec executable="${make}"
+      dir="${build.dir}/examples.web"
+      vmlauncher="${make.vmlauncher}"
+      failonerror="${make.failonerror}">
+
+      <arg value="clean"/>
+      <arg value="all"/>
+      <arg value="resume=example1"/>
+
+      <arg value="xsl_base=../../src/www/xsl"/>
+      <arg value="xsl_flags=-param css.href /css/resume3.css"/>
+
+      <arg line="${make.examples.extra-args}"/>
+    </exec>
+
+    <exec executable="${make}"
+      dir="${build.dir}/examples.web"
+      vmlauncher="${make.vmlauncher}"
+      failonerror="${make.failonerror}">
+
+      <arg value="clean"/>
+      <arg value="all"/>
+      <arg value="resume=example2"/>
+
+      <arg value="xsl_base=../../src/www/xsl"/>
+      <arg value="xsl_flags=-param css.href /css/resume4.css"/>
+
+      <arg line="${make.examples.extra-args}"/>
+    </exec>
+
   </target>
 
   <!-- Housekeeping -->
@@ -389,6 +441,14 @@ $Id$
   <property name="python" value="python"/>
   <property name="python.vmlauncher" value="true"/>
   <property name="python.failonerror" value="true"/>
+
+  <property name="make" value="make"/>
+  <property name="make.vmlauncher" value="true"/>
+  <property name="make.failonerror" value="true"/>
+  <!-- Override this in your ~/.ant.properties file if you need to pass
+  extra args to make when building the example resumes (for example, if you need
+  to customize the path for Xalan or FOP) -->
+  <property name="make.examples.extra-args" value=""/>
 
   <!-- TARGETS TO BUILD ======================================================================================================= --> 
 
