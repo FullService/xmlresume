@@ -54,25 +54,20 @@ entities:
  - divisions.ent: Entities for files included elsewhere in the manual
  - global.ent: Entities for content (phrases, words, etc.)
 scripts:
- - dtddoc.py --filter: extracts information from the DTD and inserts it
-   automatically into documentation files (with --filter). This script is
-   called automatically by Ant during the build process.
  - dtddoc.py --check: checks consistency of element reference and DTD (makes
    sure there is exactly one documentation file for each element defined in
    the DTD). Run it with --create-missing to create missing files.
+ - dtddoc.py --filter: extracts information from the DTD and inserts it
+   automatically into documentation files (with --filter). This script is
+   called automatically by Ant during the build process.
  - dir2entities.py: used to automatically generate XML entities from all
    files in a directory (cuts down on the number of places you have to edit
    to add or remove a new element or parameter to or from the manual). Called
    by Ant during the build.
  - fix_cdata_space.py: removes all leading and trailing space from the
    contents of <![CDATA[ ... ]]> sections. Allows DocBook source code to be
-   formatted nicely, while having output also look nice.
-sgml:
- - docbook-xml-4.1.2: DocBook XML DTD
- - docbook-xsl-1.50.0: DocBook XML XSL stylesheets
- - html-single.xsl: Single-file HTML stylesheet
- - html-multiple.xsl: Multi-file (chunked) HTML stylesheet
- - fo.xsl: XSL-FO stylesheet
+   formatted nicely, while having output also look nice. (Called automatically
+   by Ant during the build process.)
 
 Other output formats, such as RTF and PostScript are possible, but not
 implemented.  They use DSSSL instead of XSL stylesheets, and require an entirely
