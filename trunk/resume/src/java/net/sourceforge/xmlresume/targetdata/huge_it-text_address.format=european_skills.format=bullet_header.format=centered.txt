@@ -1,0 +1,138 @@
+                          Sárah Elizabéth Adams Senior
+                                 1930 Second St
+                                    Unit 15-A
+                              99109-2212 San Raton
+                                   California
+                                        
+                             Telefono: 417.555.1413
+                             Email: sgurl@yahoo.com
+                         URL: http://geocities.com/sgurl
+
+Obiettivo:
+    
+    Assistant manager or manager at fast food chain.
+    Either that, or owner of beauty salon.
+
+
+Istruzione:
+
+    MBA in Business Administration, May 1989, 
+    Institute for the Administration of Business.
+    -    Geeba geeba!
+    
+    B.Ph. in Business Administration, May 1990, 
+    Advanced Institute for the Administration of Business.
+    -    Geeba geeba!
+    
+    
+    Well, what can I say, really?
+    They were both nice schools.
+
+Esperienze Professionali:
+    
+    Stylist
+    LA Salon
+    August 1978September1979-
+    
+    LA Salon was the major source of personal grooming for the stars of
+    Hollywood. Located in Burbank near several important studios, it
+    provided hair, skin, and nail care services.
+    We also served the more well-to-do residents of Burbank, and Glendale.
+    
+    * Styled *Sean Connery's* hair.
+    * Got good tips.
+    
+    
+    Customer Service Relations Expert
+    MacDonald's
+    presente-presente
+    
+    
+    
+
+Computer Experience:
+    Languages and Software: Java, C++, C, XML, XSL, SGML, HTML, CSS, Docbook, J2EE, Servlets, JSP, Jini, CORBA, RPC, RMI, Apache, iPlanet, TCP/IP, JDBC, Oracle, Progress, SQL, Tcl, sh, csh (Python to a small degree), Swing, AWT, Tk, Xlib, Unix systems programming, Posix thread programming, JNI, PostScript page description language, TeX typesetting language
+    Development Techniques: Unified Modeling Language (Booch et al.), Refactoring (Fowler), Design Patterns (Gamma et al.), Analysis Patterns (under study)
+    Hardware: TINI, One-Wire, iButtons, MicroLAN, Sun/SPARC, Intel PC architecture, HP 9000/700 & 800 series, Routers, terminal servers, PostScript laser printers
+    Operating Systems: Windows, FreeBSD, Linux, Solaris, HP/UX, SGI Irix
+  
+Methodologies and Practices:
+    Cleanroom Software Engineering (Harlan Mills and
+    	    Allan Stavely), Unified Software Development Process (Jacobson et al.), PSP: Personal Software Process (Software Engineering
+    	    Institute), XP: Extreme Programming (under study)
+  
+Documenti:
+    
+    Kelly, S.: 2001: Creating Technical Documentation with DocBook. Inside
+    XML Solutions, volume 1, issue 8.
+    
+    Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001: Object Oriented
+    Data Technology for Space Science Data Archiving and Retrieval:
+    Potential Applications for Bioinformatics. First JPL Information
+    Technology Symposium, Pasadena, Jet Propulsion Laboratory.
+    
+    Kelly, S., 2001: Using XSL Formatting Objects. Inside XML Solutions,
+    volume 1, issue 6.
+    
+    Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A Distributed
+    Component Framework for Science Data Product Interoperability. 17th
+    International CODATA Conference, Baveno, International Council for
+    Science.
+    
+    Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A Multi-Discipline
+    Metadata Registry for Science Interoperability. Open Forum on Metadata
+    Registries, ISO/IEC JTC1/SC32, Data Management and Interchange.
+    
+    Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999: Science Search and
+    Retrieval using XML. Second National Conference on Scientific and
+    Technical Data, Washington DC, National Academy of Sciences.
+    
+    Kelly, S., 1997: The Application Interface for the WFO-Advanced
+    Forecaster Workstation, D2D. Preprints, 13th International Conference
+    on Interactive Information and Processing Systems for Meteorology,
+    Oceanography, and Hydrology, Long Beach, American Meteorological
+    Society.
+    
+    Kelly, S., 1997: An Object-Oriented Framework for Local Extensions to
+    the WFO-Advanced Forecaster Display Workstation, D2D. Preprints, 13th
+    International Conference on Interactive Information and Processing
+    Systems for Meteorology, Oceanography, and Hydrology, Long Beach,
+    American Meteorological Society.
+    
+    Kelly, S., 1996: Terminals with FreeBSD. The FreeBSD Handbook, The
+    FreeBSD Project, Incorporated.
+    
+    Kelly, S., 1996: Printing with FreeBSD. The FreeBSD Handbook, The
+    FreeBSD Project, Incorporated.
+
+
+Varie:
+        
+    For each operand that names a file of a type other than directory, ls
+    displays its name as well as any requested, associated information. For
+    each operand that names a file of type directory, ls displays the names
+    of files contained within that directory, as well as any requested,
+    asso- ciated information.
+    If no operands are given, the contents of the current directory are
+    dis- played. If more than one operand is given, non-directory operands
+    are displayed first; directory and non-directory operands are sorted
+    sepa- rately and in lexicographical order.
+Memberships:
+
+    Grand Poobah, The Odd Fellows, August 1978September1979-
+    The da driver provides support for all SCSI devices of the direct
+    access class that are attached to the system through a supported SCSI
+    Host Adapter. The direct access class includes disk, magneto-optical,
+    and solid-state devices.
+    A SCSI Host adapter must also be separately configured into the system
+    before a SCSI direct access device can be configured.
+
+    Lesser Poobah, The Even Fellows,  presente-
+    The sa driver is based around the concept of a ``mount session'', which
+    is defined as the period between the time that a tape is mounted, and
+    the time when it is unmounted. Any parameters set during a mount
+    session re- main in effect for the remainder of the session or until
+    replaced. The tape can be unmounted, bringing the session to a close in
+    several ways.
+
+
