@@ -529,6 +529,37 @@ $Id$
     <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
+  <!-- Format memberships. -->
+  <xsl:template match="memberships">
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text"><xsl:value-of select="title"/></xsl:with-param>
+    </xsl:call-template>
+    <fo:list-block space-after="{$para.break.space}"
+      provisional-distance-between-starts="{$para.break.space}"
+      provisional-label-separation="{$bullet.space}">
+      <xsl:apply-templates select="membership"/>
+    </fo:list-block>
+  </xsl:template>
+
+  <!-- Format membership. -->
+  <xsl:template match="membership">
+    <xsl:call-template name="bulletListItem"/>
+  </xsl:template>
+
+  <xsl:template match="membership/title">
+    <fo:inline font-weight="bold"><xsl:value-of select="."/></fo:inline>
+    <xsl:if test="following-sibling::*">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="membership/organization">
+    <xsl:value-of select="."/>
+    <xsl:if test="following-sibling::*">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Format miscellaneous information with "Miscellany" as the heading. -->
   <xsl:template match="misc">
     <xsl:call-template name="heading">

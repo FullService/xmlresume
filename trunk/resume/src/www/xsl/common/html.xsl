@@ -4,7 +4,7 @@
 html.xsl
 Transform XML resume into HTML.
 
-Copyright (c) 2000-2001 Sean Kelly
+Copyright (c) 2000-2002 Sean Kelly
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -126,15 +126,8 @@ $Id$
 
   <!-- Output your name and the word "Resume". -->
   <xsl:template name="standard.header">
-    <h1 class="nameHeading"><xsl:apply-templates select="name"/>
-      <xsl:text> - </xsl:text>
-      <xsl:value-of select="$resume.word"/>
-    </h1>
-      
-    <!-- Your name, address, and stuff. -->
-    <h2 class="contactHeading"><xsl:value-of select="$contact.word"/></h2>
+    <h1 class="nameHeading"><xsl:apply-templates select="name"/></h1>
     <p>
-      <xsl:apply-templates select="name"/><br/>
       <xsl:apply-templates select="address"/><br/>
       
       <!-- Don't print the label if the field value is empty *SE* -->
@@ -532,6 +525,30 @@ $Id$
   <!-- Format the page numbers of the journal in which the article appeared -->
   <xsl:template match="pageNums">
     <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+
+  <!-- Memberships, with level 2 heading. -->
+  <xsl:template match="memberships">
+    <h2 class="membershipsHeading"><xsl:value-of select="title"/></h2>
+    <ul>
+      <xsl:apply-templates select="membership"/>
+    </ul>
+  </xsl:template>
+
+  <!-- A single membership. -->
+  <xsl:template match="membership">
+    <li>
+      <xsl:if test="title">
+        <span class="membershipTitle"><xsl:value-of select="title"/></span><br/>
+      </xsl:if>
+      <xsl:if test="organization">
+        <span class="organization"><xsl:value-of select="organization"/></span><br/>
+      </xsl:if>
+      <xsl:if test="period">
+	<xsl:apply-templates select="period"/><br/>
+      </xsl:if>
+      <xsl:apply-templates select="description"/>
+    </li>
   </xsl:template>
 
   <!-- Format the misc info -->

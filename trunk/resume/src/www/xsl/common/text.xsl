@@ -755,6 +755,40 @@ $Id$
     <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
+  <!-- Format memberships. -->
+  <xsl:template match="memberships">
+    <xsl:call-template name="NewLine"/>
+    <xsl:value-of select="title"/>
+    <xsl:text>:</xsl:text>
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+    <xsl:apply-templates select="membership"/>
+  </xsl:template>
+
+  <xsl:template match="membership">
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+	<xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <xsl:template match="membership/title">
+    <xsl:value-of select="."/>
+    <xsl:if test="following-sibling::*">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="membership/organization">
+    <xsl:value-of select="."/>
+    <xsl:if test="following-sibling::*">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+  </xsl:template>
+
   <!-- Format the misc info -->
   <xsl:template match="misc">
     <xsl:call-template name="NewLine"/>
