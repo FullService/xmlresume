@@ -32,7 +32,11 @@ import org.xml.sax.helpers.XMLFilterImpl;
 /**
  * XMLResumeFilter-- base class for various filters.  
  * 
- * <pXMLResumeFilters can be separated into two groups-- include (allow) filters
+ * <p>In reality there is little that this class does that XMLFilterImpl 
+ * does not.  It does, however, allow us to insert debugging statements easily
+ * to figure out what's going on.</p>
+ * 
+ * <p>XMLResumeFilters can be separated into two groups-- include (allow) filters
  * and exclude (deny) filters, i.e., those that filter out everything not in 
  * their whitelist and those that filter out everything that is in their blacklist.</p>
  * TargetFilter is an include filter, while ElementFilter and AttributeFilter
@@ -52,19 +56,17 @@ public class XMLResumeFilter extends XMLFilterImpl {
     static final int ERROR = 10;
     static final int WARN = 5;
     static final int DEBUG = 1;
-    int debugLevel = ERROR;
-    
+    int debugLevel;
+
+///////////////////////////////////
+// Constructors
+///////////////////////////////////  
     /** 
      * Create a new XMLResumeFilter object, which passes all events to its {@link ContentHandler}.
      * @param reader the XMLReader that is parsing the input, or another XMLFilter.
      */
-
     public XMLResumeFilter(XMLReader reader) {
-	super(reader);
-      	reader.setContentHandler(this);
-	reader.setErrorHandler(this);
-	reader.setDTDHandler(this);
-	reader.setEntityResolver(this);
+	this(reader, ERROR);
     }
 
     /** 
@@ -73,38 +75,26 @@ public class XMLResumeFilter extends XMLFilterImpl {
      * @param debugLevel the debug message level. Messages with a severity
      *   equal to or greater than debugLevel will be printed.
      */
-
     public XMLResumeFilter(XMLReader reader, int debugLevel) {
-        this(reader);
+	super(reader);
         this.debugLevel = debugLevel;
+      	reader.setContentHandler(this);
+	reader.setErrorHandler(this);
+	reader.setDTDHandler(this);
+//	reader.setEntityResolver(this);
     }
 
-    /**
-     * Parse the content of the file specified as XML. 
-     *
-     * @param f The file containing the XML to parse
-     * @exception IOException If any IO errors occur.
-     * @exception IllegalArgumentException If the File object is null.
-     * @see org.xml.sax.DocumentHandler
-     */
-
-    public void parse(File f) throws SAXException, IOException
-    {
-        if (f == null) throw new IllegalArgumentException("File cannot be null");
-	
-        String uri = "file:" + f.getAbsolutePath();
-        if (File.separatorChar == '\\') {
-            uri = uri.replace('\\', '/');
-        }
-        InputSource input = new InputSource(uri);
-        parse(input);
-    }
-
+///////////////////////////////////
+// ContentHandler section
+// The following methods are not here.  Perhaps they should be:
+//
+// startPrefixMapping, endPrefixMapping
+// processingInstruction
+// skippedEntity
+///////////////////////////////////  
     /**
      * Filter the startDocument event.
-     * 
      */
-
     public void startDocument() throws SAXException 
     { 
 	debug("Received startdocument event");
@@ -115,7 +105,6 @@ public class XMLResumeFilter extends XMLFilterImpl {
      * Filter the endDocument event.
      * @exception SAXException If there are any remaining open tags
      */
-
     public void endDocument () throws SAXException { 
 	getContentHandler().endDocument();
     }
@@ -128,7 +117,6 @@ public class XMLResumeFilter extends XMLFilterImpl {
      * @param qName The qualified XML 1.0 name of the element
      * @param attributes The attributes associated with the element
      */
-
     public void startElement(String uri, String localName, String qName, 
 			     Attributes attributes) throws SAXException {
 	getContentHandler().startElement(uri, localName, qName, attributes);
@@ -139,21 +127,21 @@ public class XMLResumeFilter extends XMLFilterImpl {
      * 
      * @exception SAXParseException If this close tag is mismatched with an open tag.
      */
-
     public void endElement (String uri, String localName, String qName) 
 	throws SAXException {		
         getContentHandler().endElement(uri, localName, qName);
     }
 
     /** 
-     * Filter the characters event.  Ignore this event if it is inside an
-     * excluded tag.
+     * Filter the characters event.  Replaces all occurences of the XML's predefined
+     * entities (less-than, greater-than, ampersand, apostrophe, quote) with their
+     * character code equivalent.
      * 
      * @exception SAXParseException If this data appears outside all tags
      */
-
     public void characters(char[] ch, int start, int length) throws SAXException {
-	String data = new String(ch, start, length);
+        String data = new String(ch, start, length);
+        debug("Received characters event: " + data);
         getContentHandler().characters(ch, start, length);
     }
     
@@ -165,6 +153,36 @@ public class XMLResumeFilter extends XMLFilterImpl {
         getContentHandler().ignorableWhitespace(ch, start, length);
     }
 
+    /** 
+     * Record the locator for this Filter's <code>XMLReader</code>.
+     */     
+    public void setDocumentLocator(Locator locator) {
+	this.locator = locator;
+	getContentHandler().setDocumentLocator(locator);
+    }
+
+///////////////////////////////////
+// EntityResolver section
+///////////////////////////////////  
+    /**
+     * Resolve an entity.  An entity is one of those odd strings 
+     * such as &eacute; (accented 'e') or &amp; (ampersand).  Because
+     * the filter framework creates only intermediate data, we should
+     * not, for example, convert '&amp;' to '&'; it's up to the XSLT
+     * processor to do that.
+     * @param publicId
+     * @param systemId
+     */
+    public InputSource resolveEntity(String publicId, String systemId)
+		throws SAXException, IOException {
+	System.out.println("Received entity request, publicId: " + publicId +
+			   ", systemId: " + systemId);
+        return null;
+    }
+
+///////////////////////////////////
+// DTDHandler section
+///////////////////////////////////  
     /**
      * Handle the DTD Declaration
      */
@@ -177,6 +195,9 @@ public class XMLResumeFilter extends XMLFilterImpl {
         getDTDHandler().notationDecl(name, publicId, systemId);
     }
 
+    /**
+     * Handle an unparsedEntity Declaration.  I'm not sure what that is though.
+     */
     public void unparsedEntityDecl(String name, String publicId, 
 				String systemId, String notationName)
                         throws SAXException {
@@ -187,12 +208,28 @@ public class XMLResumeFilter extends XMLFilterImpl {
         getDTDHandler().unparsedEntityDecl(name, publicId, systemId, notationName);
     }
 
-    /** 
-     * Record the locator for this Filter's <code>XMLReader</code>.
-     */     
-    public void setDocumentLocator(Locator locator) {
-	this.locator = locator;
-	getContentHandler().setDocumentLocator(locator);
+
+///////////////////////////////////
+// Helper Methods
+///////////////////////////////////
+    /**
+     * Parse the content of the file specified as XML. 
+     *
+     * @param f The file containing the XML to parse
+     * @exception IOException If any IO errors occur.
+     * @exception IllegalArgumentException If the File object is null.
+     * @see org.xml.sax.DocumentHandler
+     */
+    public void parse(File f) throws SAXException, IOException
+    {
+        if (f == null) throw new IllegalArgumentException("File cannot be null");
+	
+        String uri = "file:" + f.getAbsolutePath();
+        if (File.separatorChar == '\\') {
+            uri = uri.replace('\\', '/');
+        }
+        InputSource input = new InputSource(uri);
+        parse(input);
     }
     
     protected void debug(String msg) { 

@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Stack;
+import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -93,14 +94,29 @@ public class FileWriterHandler extends XMLResumeFilter {
     }
 
     /**
-     * Print the data to {@field output}
+     * Print the data to {@field output}.  Replaces all occurences of the XML's predefined
+     * entities (less-than, greater-than, ampersand, apostrophe, quote) with their
+     * character code equivalent.
      */
 
     public void characters(char[] ch, int start, int length) throws SAXException {
-	String data = new String(ch, start, length);
-	debug("Received characters event: " + data);
+        
+        // java.util.regex.Pattern objects would be nice to use here, but they
+        // weren't introduced until 1.4
 
-        output.print(data);
+        String s;
+        StringBuffer sb = new StringBuffer("");
+        StringTokenizer st = new StringTokenizer(new String(ch, start, length), "<>&'\"", true);
+        while (st.hasMoreTokens()) {
+            s = st.nextToken();
+            if (s.equals("<")) s = "&lt;"; 
+            if (s.equals(">")) s = "&gt;";  
+            if (s.equals("&")) s = "&amp;";  
+            if (s.equals("'")) s = "&apos;"; 
+            if (s.equals("\"")) s = "&quot;";
+            sb.append(s);
+        }
+        output.print(sb.toString());
     }
     
     /** 
