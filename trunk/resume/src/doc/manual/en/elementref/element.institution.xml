@@ -35,7 +35,7 @@
       <variablelist>
 
         <varlistentry>
-          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <term><sgmltag class="attribute">id</sgmltag></term>
           <listitem>
             <para>
               A string used to uniquely identify an institution. The
