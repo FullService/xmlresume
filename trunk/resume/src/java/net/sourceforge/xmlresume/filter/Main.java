@@ -135,13 +135,14 @@ public class Main {
      * @param err An error string.
      */
     private static void usage(String err) { 
-	throw new Error(err + "\n\n" +
+	System.out.println(err + "\n\n" +
 			"Filter -- preprocess an XMLResume to include/exclude elements and attributes\n" + 
 			"Usage: java Main [-v|--verbose] -in <in_file> [-out <out_file>]\n" + 
 			"\t [-includeTargets \"[target1 [target2 [...]]]\"\n" + 
 			"\t [-excludeElements \"[elementName1 [elementName2 [...]]]\"\n" + 
 			"\t [-excludeAttributes \"[attributeName1 [attributeName2 [...]]]\"\n" + 
 			"If -out <out_file> is not specified, output will be printed on STDOUT.");
+	System.exit(1);
     }
 
     /**
