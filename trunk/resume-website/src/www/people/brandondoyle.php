@@ -14,10 +14,9 @@ include_once("../private/header.php");
   <a href="http://csua.berkeley.edu/~mjm/resume"
     >http://csua.berkeley.edu/~mjm/resume</a>
 </h3>
-<h5>Wishlist: 
-  <a 
-href="http://www.amazon.com/exec/obidos/search-handle-url/104-3869407-3127140?ix=us-xml-wishlist&pg=1&sz=50&rank=-valuesort&fqp=email%01joup%40bigfoot.com"
-    >Amazon</a>
+<h5>Wishlist: <a 
+href="http://www.amazon.com/exec/obidos/registry/wishlist/102-3632097-9492155"
+>Amazon</a>
 </h3>
 
 <p>I joined the project after I got sick of constantly editing and 
