@@ -168,7 +168,7 @@ in a future version. -->
 <!ELEMENT degrees (degree+)>
 <!ELEMENT degree
     (level, major*, minor*, (date|period)?,
-    (institution, location?)?, gpa?, subjects?, annotation?)>
+    (institution, location?)?, gpa?, subjects?, projects?, annotation?)>
 <!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
 <!ELEMENT major (#PCDATA)>

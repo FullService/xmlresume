@@ -458,6 +458,8 @@ $Id$
       <xsl:apply-templates/>
     </span>
   </xsl:template>
+
+<!-- Format a degree -->
   <xsl:template match="r:degree">
     <li class="degree">
       <span class="degreeTitle">
@@ -485,6 +487,7 @@ $Id$
       </xsl:if>
       <xsl:apply-templates select="r:gpa"/>
       <xsl:apply-templates select="r:subjects"/>
+      <xsl:apply-templates select="r:projects"/>
     </li>
   </xsl:template>
 <!-- Format a GPA -->

@@ -525,12 +525,15 @@ $Id$
         <xsl:apply-templates select="r:institution"/>
         <xsl:apply-templates select="r:location"/>
       </fo:block>
-
       <xsl:apply-templates select="r:gpa"/>
-
       <xsl:if test="r:subjects/r:subject">
         <fo:block space-before="{$half.space}">
           <xsl:apply-templates select="r:subjects"/>
+        </fo:block>
+      </xsl:if>
+      <xsl:if test="r:projects/r:project">
+        <fo:block space-before="{$half.space}">
+          <xsl:apply-templates select="r:projects"/>
         </fo:block>
       </xsl:if>
     </fo:block>

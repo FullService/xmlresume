@@ -500,17 +500,18 @@ In general, each block is responsible for outputting a newline after itself.
       </xsl:call-template>
       <xsl:call-template name="NewLine"/>
     </xsl:if>
-
     <xsl:if test="r:gpa">
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="r:gpa"/>
     </xsl:if>
-
     <xsl:if test="r:subjects/r:subject">
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="r:subjects"/>
     </xsl:if>
-
+    <xsl:if test="r:projects/r:project">
+      <xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:projects"/>
+    </xsl:if>
     <xsl:if test="following-sibling::*">
       <xsl:call-template name="NewLine"/>
     </xsl:if>
