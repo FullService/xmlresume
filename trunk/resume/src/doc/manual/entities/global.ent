@@ -37,5 +37,6 @@
 <!-- E-mail addresses -->
 <!ENTITY bruce.email "bruce at iname.com">
 <!ENTITY peter.email "peter@hutnick.com">
+<!ENTITY mark.email  "joup@bnet.org">
 
 <!ENTITY xmlresume.list.devel.bot.email "xmlresume-devel-request@lists.sourceforge.net">

@@ -126,7 +126,7 @@
 	one target, or apply only when two (or more) targets are defined.
 	By specifying a list of targets (separated by commas), Jane can 
 	ensure that her Carpentry skill will be included in both 
-	"construction" and "woodworking" &resumes;.  Similarly, her "Cooking 
+	"construction" and "woodworking" &resume;s.  Similarly, her "Cooking 
 	for construction workers" skill will apply only to &resume;s where
 	both "foodservice" AND "construction" are targeted.  
       </para>

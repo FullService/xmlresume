@@ -18,7 +18,101 @@
     </p>
 
 <!-- BEGIN CHANGELOG (do not remove this line) -->
-<pre>2002-11-07  brandondoyle  
+<pre>2002-11-28  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/params.xsl:
+	default output format is now 2-column for referees
+
+2002-11-26  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/br.xsl:
+	improved translations, courtesy of Felipe Leme
+
+2002-11-25  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/lib/textlayout.xsl:
+	Bug fix for "variable accessed before it was bound" bug 635211
+	Didn't I already check this in?
+
+2002-11-21  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/css/compact.css, /cvsroot/xmlresume/resume/src/www/maxbenson_contemporary.htm, /cvsroot/xmlresume/resume/src/www/maxbenson_contemporary.xml, /cvsroot/xmlresume/resume/src/www/maxbenson_professional.htm, /cvsroot/xmlresume/resume/src/www/maxbenson_professional.xml:
+	Removing maxbenson files because they seem to serve no purpose whatsoever.
+	compact.css: minor style changes
+
+2002-11-20  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Added the "targets" attribute to every element to allow for DTD validation
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Changed the ordering of the elements in a degree to reflect what
+	"annotation" means.  This changes nothing, technically speaking.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/elementref/intro.xml:
+	Started a new section for DTD changes for the next release
+
+	* /cvsroot/xmlresume/resume/build.xml:
+	Added doc.manual.pdf back into the build process
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/getting-started/explore.xml:
+	Updated docs in response to bug reports and questions.
+
+	* /cvsroot/xmlresume/resume/src/doc/manual/en/getting-started/explore.xml, /cvsroot/xmlresume/resume/src/doc/manual/en/getting-started/setup.xml:
+	User guide docs... I guess I forgot to add these a long time ago.
+
+2002-11-19  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/css/compact.css:
+	improved referee spacing
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/Filter.java:
+	Bugfixes for ant support, comment and code cleanups.
+
+	* /cvsroot/xmlresume/resume/examples/Makefile, /cvsroot/xmlresume/resume/examples/build.xml:
+	Changed some variable names to standardize them
+
+2002-11-18  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/es.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/propogate-params.sh:
+	Added a check to propogate-params to look for outdated params
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/es.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/fr.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/it.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/nl.xsl, /cvsroot/xmlresume/resume/src/www/xsl/country/propogate-params.sh, /cvsroot/xmlresume/resume/src/www/xsl/country/uk.xsl:
+	Added propogate-params.sh, an UGLY shell script to propogate new parameters
+	defined in us.xsl to other country.xsl files with a default translation of
+	"TRANSLATION NEEDED".  See Bruce's Feature Request 557492 for more info.
+	The changed files reflect the changes made after running this new script.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/br.xsl:
+	Updated brazilian translations courtesy of Felipe Leme
+
+	* /cvsroot/xmlresume/resume/examples/build.xml:
+	Added build.xml, an Ant Makefile for building the example resumes.
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/FileWriterHandler.java:
+	updated DOCTYPE definition from 1.3.1 to 1.5.0.  There needs to be a better
+	solution to this.  It would be nice if we could handle the &lt;!DOCTYPE&gt; events, but they don't seem to be generated anywhere.
+
+	* /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/filter/TargetFilter.java:
+	Added notationDecl and unparsedEntityDecl methods... which don't do much.
+
+2002-11-15  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/country/de.xsl:
+	Improved German language support, contributd by anon in bug# 638455
+
+2002-11-10  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/format/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/format/text.xsl, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	The "projects" element may now be included in the "degree" element
+
+	* /cvsroot/xmlresume/resume/examples/Makefile:
+	Added "es" (espanol) as a language (country) option.
+
+2002-11-07  brandondoyle  
+
+	* /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html, /cvsroot/xmlresume/resume/etc/replace_changelog.py:
+	doc changes, changed python location to /usr/local/bin/python
 
 	* /cvsroot/xmlresume/resume/README, /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/java/net/sourceforge/xmlresume/test/ResumeTest.java:
 	Random fixes while trying to build a release.
