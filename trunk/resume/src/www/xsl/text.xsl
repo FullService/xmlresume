@@ -185,17 +185,18 @@ $Id$
 
   <xsl:template match="header">
     <!-- Your name, address, and stuff. -->
-Contact Information:
+<xsl:value-of select="$contact.word"/><xsl:text>: </xsl:text>
 <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:apply-templates select="address"/>
-Phone: <xsl:value-of select="contact/phone"/>
-Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="address"/><xsl:call-template name="NewLine"/>
+<xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><xsl:call-template name="NewLine"/>
+<xsl:value-of select="$email.word"/>: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   </xsl:template>
     <!-- Objective, with level 2 heading. -->
     <xsl:template match="objective">
     <xsl:call-template name="NewLine"/>
-  <xsl:text>Professional Objective:</xsl:text>
+  <xsl:value-of select="$objective.word"/>
+  <xsl:text>:</xsl:text>
   <xsl:call-template name="NewLine"/>
   <xsl:call-template name="Indent">
      <xsl:with-param name="Text">
@@ -231,7 +232,8 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   <xsl:template match="history">
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NewLine"/>
-    <xsl:text>Employment History:</xsl:text>
+    <xsl:value-of select="$history.word"/>
+    <xsl:text>:</xsl:text>
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="Indent">
        <xsl:with-param name="Text">
@@ -264,7 +266,7 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
     <xsl:apply-templates select="year"/>
   </xsl:template>
 
-  <xsl:template match="present">Present</xsl:template>
+  <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
 
   <xsl:template match="year | month | jobtitle | employer | firstname | surname | title |
                        skill">
@@ -275,7 +277,8 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   <xsl:template match="academics">
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NewLine"/>
-    <xsl:text>Academics:</xsl:text>
+    <xsl:value-of select="$academics.word"/>
+    <xsl:text>:</xsl:text>
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="NewLine"/>
     <xsl:call-template name="Indent">
@@ -297,7 +300,9 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
 
   <xsl:template match="degree">
       <xsl:value-of select="level"/>
-      <xsl:text> in </xsl:text>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$in.word"/>
+      <xsl:text> </xsl:text>
       <xsl:value-of select="subject"/>
       <xsl:text>, </xsl:text>
       <xsl:apply-templates select="date"/>
@@ -365,7 +370,8 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   <!-- Format publications -->
   <xsl:template match="pubs">
     <xsl:call-template name="NewLine"/>
-    <xsl:text>Publications:</xsl:text>
+    <xsl:value-of select="$publications.word"/>
+    <xsl:text>:</xsl:text>
     <xsl:call-template name="NewLine"/>
     <xsl:apply-templates select="pub"/>
     <xsl:call-template name="NewLine"/>
@@ -442,15 +448,18 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
 
   <!-- Format the misc info -->
   <xsl:template match="misc">
-    Miscellany
+    <xsl:value-of select="$miscellany.word"/>:
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Format the legalese -->
   <xsl:template match="copyright">
-      Copyright 
-      <xsl:text disable-output-escaping="yes">(C) </xsl:text>
-      <xsl:value-of select="year"/> by
+      <xsl:value-of select="$copyright.word"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="year"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$by.word"/>
+      <xsl:text> </xsl:text>
       <xsl:apply-templates select="name"/>.
       <xsl:value-of select="legalnotice"/>
   </xsl:template>
@@ -461,8 +470,10 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
    <xsl:with-param name="Text">
     <xsl:value-of select="firstname"/>
     <xsl:text> </xsl:text>
-    <xsl:value-of select="surname"/>'s<xsl:text> </xsl:text>Resume
-   </xsl:with-param>
+    <xsl:value-of select="surname"/>
+    <xsl:text>  - </xsl:text>
+    <xsl:value-of select="$resume.word"/>
+  </xsl:with-param>
    </xsl:call-template>
   </xsl:template>
 
@@ -489,9 +500,9 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
 
   <!-- emphasis -> strong -->
   <xsl:template match="emphasis">
-  <xsl:text>[</xsl:text>
-    <xsl:value-of select="."/> 
-  <xsl:text>]</xsl:text>
+  <xsl:value-of select="$text.emphasis.start"/>
+  <xsl:value-of select="."/> 
+  <xsl:value-of select="$text.emphasis.end"/>
   </xsl:template>
 
   <!-- url -> monospace along with href -->

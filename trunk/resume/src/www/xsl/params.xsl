@@ -35,10 +35,95 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- Separator between authors in publication details.  -->
+  <!-- Word to use for "resume" -->
+  <xsl:param name="resume.word">R&#x00e9;sum&#x00e9;</xsl:param>
+
+  <!-- Word to use for "page" -->
+  <xsl:param name="page.word">page</xsl:param>
+
+  <!-- Word to use for "Contact Information" -->
+  <xsl:param name="contact.word">Contact Information</xsl:param>
+
+  <!-- Word to use for "Professional Objective" -->
+  <xsl:param name="objective.word">Professional Objective</xsl:param>
+
+  <!-- Word to use for "Employment History" -->
+  <xsl:param name="history.word">Employment History</xsl:param>
+
+  <!-- Word to use for "Academics" -->
+  <xsl:param name="academics.word">Academics</xsl:param>
+
+  <!-- Word to use for "Publications" -->
+  <xsl:param name="publications.word">Publications</xsl:param>
+
+  <!-- Word to use for "Miscellany" -->
+  <xsl:param name="miscellany.word">Miscellany</xsl:param>
+
+  <!-- Word to use for "in", as in "bachelor degree *in* political science" -->
+  <xsl:param name="in.word">in</xsl:param>
+
+  <!-- Word to use for "Copyright (c)" -->
+  <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
+
+  <!-- Word to use for "by", as in "Copyright by Joe Doom" -->
+  <xsl:param name="by.word">by</xsl:param>
+
+  <!-- Word to use for "present", as in "Period worked: August 1999-Present" -->
+  <xsl:param name="present.word">Present</xsl:param>
+
+  <!-- Word to use for phone, email, and URL for contact information. -->
+  <xsl:param name="phone.word">Phone</xsl:param>
+  <xsl:param name="email.word">Email</xsl:param>
+  <xsl:param name="url.word">URL</xsl:param>
+
+  <!-- Default separator between authors in publication details.  -->
   <xsl:param name="pub.author.separator">, </xsl:param>
 
-  <!-- Separator between items in publication details.  -->
+  <!-- Default separator between items in publication details.  -->
   <xsl:param name="pub.item.separator">. </xsl:param>
+
+  <!-- Default page size -->
+  <xsl:param name="page.height">11in</xsl:param>
+  <xsl:param name="page.width">8.5in</xsl:param>
+
+  <!-- Default page margins -->
+  <xsl:param name="margin.top">1in</xsl:param>
+  <xsl:param name="margin.left">1in</xsl:param>
+  <xsl:param name="margin.right">1in</xsl:param>
+  <xsl:param name="margin.bottom">1in</xsl:param>
+
+  <!-- Space betwixt paragraphs -->
+  <xsl:param name="para.break.space">10pt</xsl:param>
+
+  <!-- Body text indent -->
+  <xsl:param name="body.indent">2in</xsl:param>
+
+  <!-- Heading text indent -->
+  <xsl:param name="heading.indent">0in</xsl:param>
+
+  <!-- Bullet symbol -->
+  <xsl:param name="bullet.glyph">&#x2022;</xsl:param>
+
+  <!-- Text to use to indicate start and end of emphasis in plain text -->
+  <xsl:param name="text.emphasis.start">*</xsl:param>
+  <xsl:param name="text.emphasis.end">*</xsl:param>
+
+  <!-- Space between bullet and its text in bulleted item -->
+  <xsl:param name="bullet.space">10pt</xsl:param>
+
+  <!-- Fonts --> 
+  <xsl:param name="footer.font.size">8pt</xsl:param>
+  <xsl:param name="footer.font.family">serif</xsl:param>
+  <xsl:param name="body.font.size">10pt</xsl:param>
+  <xsl:param name="body.font.family">serif</xsl:param>
+  <xsl:param name="heading.font.size">10pt</xsl:param>
+  <xsl:param name="heading.font.family">sans-serif</xsl:param>
+  <xsl:param name="heading.font.weight">bold</xsl:param>
+  <xsl:param name="header.name.font.weight">bold</xsl:param>
+  <xsl:param name="header.item.font.style">italic</xsl:param>
+  <xsl:param name="emphasis.font.weight">bold</xsl:param>
+  <xsl:param name="citation.font.style">italic</xsl:param>
+  <xsl:param name="url.font.family">monospace</xsl:param>
+
 
 </xsl:stylesheet>

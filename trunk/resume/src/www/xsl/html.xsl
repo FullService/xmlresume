@@ -46,7 +46,9 @@ $Id$
     <html>
       <head>
 	<title>
-	  <xsl:apply-templates select="resume/header/name"/>'s Resume
+	  <xsl:apply-templates select="resume/header/name"/>
+	  <xsl:text> - </xsl:text>
+	  <xsl:value-of select="$resume.word"/>
 	</title>
         <!-- This is just used on my website; ignore it. -->
         <link rel="stylesheet" type="text/css" href="../../../std.css"/>
@@ -117,21 +119,20 @@ $Id$
     </span>
   </xsl:template>
 
-  <!-- Output your name and the word "Resume" with acute accents. -->
+  <!-- Output your name and the word "Resume". -->
   <xsl:template match="header">
-    <h1><xsl:apply-templates select="name"/>'s 
-      <xsl:text disable-output-escaping="yes">
-        R&amp;eacute;sum&amp;eacute;
-      </xsl:text>
+    <h1><xsl:apply-templates select="name"/>
+      <xsl:text> - </xsl:text>
+      <xsl:value-of select="$resume.word"/>
     </h1>
       
     <!-- Your name, address, and stuff. -->
-    <h2>Contact Information</h2>
+    <h2><xsl:value-of select="$contact.word"/></h2>
     <p>
       <xsl:apply-templates select="name"/><br/>
       <xsl:apply-templates select="address"/><br/>
-      Telephone: <xsl:value-of select="contact/phone"/><br/>
-      Email: <a>
+      <xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><br/>
+      <xsl:value-of select="$email.word"/>: <a>
         <xsl:attribute name="href">
           <xsl:text>mailto:</xsl:text>
           <xsl:value-of select="contact/email"/>
@@ -164,13 +165,13 @@ $Id$
 
   <!-- Objective, with level 2 heading. -->
   <xsl:template match="objective">
-    <h2>Professional Objective</h2>
+    <h2><xsl:value-of select="$objective.word"/></h2>
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Past jobs, with level 2 heading. -->
   <xsl:template match="history">
-    <h2>Employment History</h2>
+    <h2><xsl:value-of select="$history.word"/></h2>
     <xsl:apply-templates select="job"/>
   </xsl:template>
 
@@ -198,11 +199,11 @@ $Id$
     <xsl:value-of select="year"/>
   </xsl:template>
 
-  <xsl:template match="present">Present</xsl:template>
+  <xsl:template match="present"><xsl:value-of select="$present.word"/></xsl:template>
 
   <!-- Degrees and stuff -->
   <xsl:template match="academics">
-    <h2>Academics</h2>
+    <h2><xsl:value-of select="$academics.word"/></h2>
     <xsl:apply-templates select="degrees"/>
     <xsl:apply-templates select="note"/>
   </xsl:template>
@@ -225,7 +226,9 @@ $Id$
       <acronym>
         <xsl:value-of select="level"/>
       </acronym>
-      <xsl:text> in </xsl:text>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$in.word"/>
+      <xsl:text> </xsl:text>
       <xsl:value-of select="subject"/>
       <xsl:text>, </xsl:text>
       <xsl:apply-templates select="date"/>
@@ -263,7 +266,7 @@ $Id$
 
   <!-- Format publications -->
   <xsl:template match="pubs">
-    <h2>Publications</h2>
+    <h2><xsl:value-of select="$publications.word"/></h2>
     <ul>
       <xsl:apply-templates select="pub"/>
     </ul>
@@ -340,16 +343,19 @@ $Id$
 
   <!-- Format the misc info -->
   <xsl:template match="misc">
-    <h2>Miscellany</h2>
+    <h2><xsl:value-of select="$miscellany.word"/></h2>
     <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Format the legalese -->
   <xsl:template match="copyright">
     <address>
-      Copyright 
-      <xsl:text disable-output-escaping="yes">&amp;copy; </xsl:text>
-      <xsl:value-of select="year"/> by
+      <xsl:value-of select="$copyright.word"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="year"/>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$by.word"/>
+      <xsl:text> </xsl:text>
       <xsl:apply-templates select="name"/>.
       <xsl:value-of select="legalnotice"/>
     </address>
