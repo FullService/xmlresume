@@ -173,4 +173,5 @@ $Id$
 <!ELEMENT date (dayOfMonth?, month, year)>
 <!ELEMENT month (#PCDATA)>
 <!ELEMENT year (#PCDATA)>
+<!ELEMENT dayOfMonth (#PCDATA)>
 <!ELEMENT present EMPTY>
