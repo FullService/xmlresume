@@ -38,6 +38,7 @@ $Id$
   <xsl:output method="html" omit-xml-declaration="yes" indent="yes"/>
   <xsl:output doctype-public="-//W3C//DTD HTML 4.0//EN"/>
   <xsl:strip-space elements="*"/>
+  <xsl:preserve-space elements="address"/>
 
   <xsl:include href="params.xsl"/>
 
@@ -128,12 +129,7 @@ $Id$
     <h2>Contact Information</h2>
     <p>
       <xsl:apply-templates select="name"/><br/>
-      <xsl:value-of select="address/street"/><br/>
-      <xsl:value-of select="address/city"/>
-      <xsl:text>, </xsl:text>
-      <xsl:value-of select="address/state"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="address/zip"/><br/>
+      <xsl:apply-templates select="address"/><br/>
       Telephone: <xsl:value-of select="contact/phone"/><br/>
       Email: <a>
         <xsl:attribute name="href">
@@ -143,6 +139,27 @@ $Id$
         <xsl:value-of select="contact/email"/>
       </a>
     </p>
+  </xsl:template>
+
+  <xsl:template match="address">
+    <xsl:choose>
+      <!-- Compatibility with older resumes using US address schema -->
+      <xsl:when test="street[following-sibling::*[1][self::city]]">
+	<xsl:value-of select="street"/><br/> 
+	<xsl:value-of select="city"/><xsl:text>,</xsl:text> 
+	<xsl:value-of select="state"/><xsl:text> </xsl:text>
+	<xsl:value-of select="zip"/> 
+      </xsl:when>
+      <!-- International (including US) addresses -->
+      <xsl:otherwise>
+	<xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Line break in an address -->
+  <xsl:template match="break">
+    <br/>
   </xsl:template>
 
   <!-- Objective, with level 2 heading. -->

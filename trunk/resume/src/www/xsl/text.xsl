@@ -40,13 +40,14 @@ $Id$
   <xsl:output method="text" omit-xml-declaration="yes" indent="no"/>
   <xsl:output doctype-public="-//W3C//DTD HTML 4.0//EN"/>
   <xsl:strip-space elements="*"/>
+  <xsl:preserve-space elements="address break"/>
+
+  <xsl:include href="params.xsl"/>
 
   <xsl:template match="/">
           <xsl:apply-templates select="resume/header/name" mode="title"/>
 	  <xsl:apply-templates select="resume"/>
   </xsl:template>
-
-  <xsl:include href="params.xsl"/>
 
   <!-- Some miscelaneous Templates that I need -->
   <xsl:template name="NewLine">
@@ -187,11 +188,7 @@ $Id$
 Contact Information:
 <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
-      <xsl:value-of select="address/street"/><xsl:call-template name="NewLine"/>
-      <xsl:value-of select="address/city"/>
-      <xsl:text>, </xsl:text><xsl:value-of select="address/state"/>
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="address/zip"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="address"/>
 Phone: <xsl:value-of select="contact/phone"/>
 Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   </xsl:template>
@@ -205,6 +202,29 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
       <xsl:apply-templates/>
      </xsl:with-param>
   </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="address">
+    <xsl:choose>
+      <!-- Compatibility with older resumes using US address schema -->
+      <xsl:when test="street[following-sibling::*[1][self::city]]">
+	<xsl:value-of select="normalize-space(street)"/><xsl:call-template name="NewLine"/>
+	<xsl:value-of select="normalize-space(city)"/>
+	<xsl:text>, </xsl:text><xsl:value-of select="normalize-space(state)"/>
+	<xsl:text> </xsl:text>
+	<xsl:value-of select="normalize-space(zip)"/><xsl:call-template name="NewLine"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:variable name="text">
+	  <xsl:apply-templates/>
+	</xsl:variable>
+	<xsl:value-of select="normalize-space($text)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="break">
+    <xsl:text> / </xsl:text>
   </xsl:template>
 
   <!-- Past jobs, with level 2 heading. -->

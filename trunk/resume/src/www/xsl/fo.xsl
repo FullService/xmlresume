@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-pdf.xsl
+fo.xsl
 
 Copyright (c) 2000-2001 Sean Kelly
 All rights reserved.
@@ -35,8 +35,9 @@ $Id$
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format">
-  <xsl:output method="xml" omit-xml-declaration="no" indent="yes"/>
+  <xsl:output method="xml" omit-xml-declaration="no" indent="no"/>
   <xsl:strip-space elements="*"/>
+  <xsl:preserve-space elements="address"/>
 
   <xsl:include href="params.xsl"/>
 
@@ -111,15 +112,28 @@ $Id$
     <xsl:value-of select="surname"/>
   </xsl:template>
 
-  <!-- Format US-style address. -->
   <xsl:template match="address">
-    <fo:block>
-      <fo:block><xsl:value-of select="street"/></fo:block>
-      <fo:block>
-	<xsl:value-of select="city"/>,
-        <xsl:value-of select="state"/><xsl:text> </xsl:text><xsl:value-of select="zip"/>
-      </fo:block>
-    </fo:block>
+    <xsl:choose>
+      <!-- Compatibility with older resumes using US address schema -->
+      <xsl:when test="street[following-sibling::*[1][self::city]]">
+	<fo:block>
+	  <fo:block><xsl:value-of select="street"/></fo:block>
+	  <fo:block>
+	    <xsl:value-of select="city"/>,
+	    <xsl:value-of select="state"/><xsl:text> </xsl:text><xsl:value-of select="zip"/>
+	  </fo:block>
+	</fo:block>
+      </xsl:when>
+      <!-- International (including US) addresses -->
+      <xsl:otherwise>
+	<fo:block linefeed-treatment="preserve"><xsl:apply-templates/></fo:block>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Line break within an address -->
+  <xsl:template match="break">
+    <fo:character character="&#xa;"/>
   </xsl:template>
 
   <!-- Format contact information. -->

@@ -61,17 +61,46 @@ $Id$
 <!ELEMENT label (#PCDATA)>
 <!ELEMENT uri (#PCDATA)>
 
-<!-- The header of the resume contains your name and address.  A -->
-<!-- better version would allow for international addresses. -->
+<!-- The header of the resume contains your name and address. -->
 <!ELEMENT header (name, address?, contact?)>
 <!ELEMENT name (firstname, surname)>
 <!ELEMENT firstname (#PCDATA)>
 <!ELEMENT surname (#PCDATA)>
-<!ELEMENT address (street, city, state, zip)>
+
+<!-- Your address is free-form text formatted as is proper for your -->
+<!-- mailing standards.  To insert a line break, put a <break/> -->
+<!-- element, PLUS a newline in your document.  Mark up any other -->
+<!-- postal items with the element from addrElements. -->
+<!ENTITY % addrElements "street | city | state | zip | postalCode | number | country | locality | house | prefecture | burrough | parish | building | floor | room | flat | town | village | district | farm | community | society | metroplex | county | apartment | suite | unit | break">
+<!ELEMENT address (#PCDATA | %addrElements;)*>
 <!ELEMENT street (#PCDATA)>
 <!ELEMENT city (#PCDATA)>
 <!ELEMENT state (#PCDATA)>
 <!ELEMENT zip (#PCDATA)>
+<!ELEMENT postalCode (#PCDATA)>
+<!ELEMENT number (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT locality (#PCDATA)>
+<!ELEMENT house (#PCDATA)>
+<!ELEMENT prefecture (#PCDATA)>
+<!ELEMENT burrough (#PCDATA)>
+<!ELEMENT parish (#PCDATA)>
+<!ELEMENT building (#PCDATA)>
+<!ELEMENT floor (#PCDATA)>
+<!ELEMENT room (#PCDATA)>
+<!ELEMENT flat (#PCDATA)>
+<!ELEMENT town (#PCDATA)>
+<!ELEMENT village (#PCDATA)>
+<!ELEMENT district (#PCDATA)>
+<!ELEMENT farm (#PCDATA)>
+<!ELEMENT community (#PCDATA)>
+<!ELEMENT society (#PCDATA)>
+<!ELEMENT metroplex (#PCDATA)>
+<!ELEMENT county (#PCDATA)>
+<!ELEMENT apartment (#PCDATA)>
+<!ELEMENT suite (#PCDATA)>
+<!ELEMENT unit (#PCDATA)>
+<!ELEMENT break EMPTY>
 <!ELEMENT contact (phone?, email?, url?)>
 <!ELEMENT phone (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
@@ -100,7 +129,7 @@ $Id$
 <!ELEMENT annotation (#PCDATA)>
 <!ELEMENT note (para+)>
 
-<!-- Special skills you'd like to highlight, each in its own area.  -->
+<!-- Special skills you'd like to highlight, each in its own area. -->
 <!ELEMENT skillareas (skillarea+)>
 <!ELEMENT skillarea (title, skillset+)>
 <!ELEMENT title (#PCDATA)>

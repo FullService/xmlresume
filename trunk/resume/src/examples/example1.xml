@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
-          "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN">
+                        "http://xmlresume.sourceforge.net/dtd/resume.dtd">
 
 <!--
 example.xml
@@ -40,6 +40,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <firstname>Jo</firstname>
       <surname>Doe</surname>
     </name>
+    <!-- This person is using the old, but compatible US-style
+    address. -->
     <address>
       <street>123 Elm #456</street>
       <city>Garbonzoville</city>
