@@ -19,7 +19,7 @@
   <refsect1><title>Description</title>
     <para>
       The <sgmltag class="element">memberships</sgmltag> element contains one
-      or more p<link linkend="element.membership"><sgmltag
+      or more <link linkend="element.membership"><sgmltag
       class="element">membership</sgmltag></link>s.
     </para>
 
