@@ -66,7 +66,11 @@
       <para>
 	Filtering allows you to maintain a single, complete resume.xml
 	file that represents the entirety of your career/academic record, 
-	while allowing for the simple creation of targeted resumes.
+	while allowing for the simple creation of targeted &resume;s.  
+	In other words, you can start to think of your XML &Resume; as 
+	a database of your every skill, every accomplishment, every _____
+	without worrying about cluttering up the &resume; your employer
+	sees.  Read on to find out how.
       </para>
 
       <para>
@@ -90,9 +94,9 @@
 	The problem here is that Jane needs to maintain a record of all
 	her skills, but she doesn't need to tell a potential employer 
 	about all of those skills.  Sure, Jane could selectively 
-	comment out portions of her resume, but this can be tedious.  
-	Instead, she should use attributes to describe which categories of
-	resume a given element applies to:
+	comment out portions of her &resume;, but this can be tedious.  
+	Instead, she should use attributes to describe the categories of
+	&resume; to which a given element applies:
       </para>
 
        <informalexample><programlisting><![CDATA[
@@ -109,9 +113,9 @@
        ]]></programlisting></informalexample>
 
       <para>
-	After defining her targets, Jane can filter her resume to produce 
-	beautifully-formatted, well-focused resumes to send to employers.
-	Her "construction" resume will contain only those elements 
+	After defining her targets, Jane can filter her &resume; to produce 
+	beautifully-formatted, well-focused &resume;s to send to employers.
+	Her "construction" &resume; will contain only those elements 
 	applicable to the construction industry, and the job foreman won't 
 	have to read about her vast knowledge of meringues and bundt 
 	cakes, or her experience coding up an application server in Java.
@@ -122,15 +126,37 @@
 	one target, or apply only when two (or more) targets are defined.
 	By specifying a list of targets (separated by commas), Jane can 
 	ensure that her Carpentry skill will be included in both 
-	"construction" and "woodworking" resumes.  Similarly, her "Cooking 
-	for construction workers" skill will apply only to resumes where
+	"construction" and "woodworking" &resumes;.  Similarly, her "Cooking 
+	for construction workers" skill will apply only to &resume;s where
 	both "foodservice" AND "construction" are targeted.  
       </para>
 
       <para>
 	Elements that have no "targets" attribute are always included in 
 	the filtered output.  Thus Jane's communications skills will apply
-	to every resume.
+	to every &resume;.  
+      </para>
+
+      <para>
+	The "targets" attribute can be used in ANY element, but keep in 
+	mind that using targets on a high-level element (e.g., history or 
+	academics element) will affect all children of that element.  Thus
+	if the history element includes a 'targets="foo"' attribute, and 
+	"foo" is not included in the targets list during the filtering
+	process, then the entire history section will be filtered out, 
+	even if there are subelements of history that do not have the
+	 'targets="foo"' attribute.
+      </para>
+
+      <para>
+	Now, keep in mind that defining targets is entirely up to you.  
+	You can use the targets attribute in any element, and you can 
+	specify any number of values for the target&mdash; just keep in 
+	mind that comma (,) and plus (+) represent OR and AND, 
+	respectively, as per the example above.  If the list of possible
+	targets starts to pile up, just look at the end of a filtered
+	resume.xml file: a list of the possible and selected targets is
+	included for convenience.
       </para>
 
       <para>
@@ -140,7 +166,7 @@
 	and then the filtered version (<command>make filter 
 	resume=example2</command>).  Then compare 
 	<filename>example2.txt</filename> with 
-	<filename>example2-filtered.txt</filename>.  To create resumes 
+	<filename>example2-filtered.txt</filename>.  To create &resume;s 
 	targeted to other purposes, change <command>filter_targets</command>
 	in <filename>Makefile</filename>.
       </para>
@@ -165,12 +191,14 @@
 	  this file by issuing the command <command>cp params.xsl
 	  params.xsl.dist</command>, and then playing around with the values
 	  inside <filename>params.xsl</filename> to see how they affect
-	  the output of your resumes.  
+	  the formatting and output of your resumes.  
 	</para>
 	<note><para>
 	  You will need to change <literal>xsl_base</literal> in
 	  <filename>Makefile</filename> to point to your local xsl directory
-	  before any of your changes can take effect.
+	  before any of your changes can take effect.  Otherwise, the 
+	  default parameters stored on the XML&Resume; website are used 
+	  instead.
 	</para></note>
 
 	<para>
@@ -202,13 +230,15 @@
 	<para>
 	  Cascading Style Sheets (CSS) are a powerful way to format the 
 	  look of your HTML &Resume;.  A selection of sample CSS files are
-	  provided in the <filename class="directory">css</filename> directory.  If you 
-          have not already done so, try changing the value of 
-	  <literal>css.href</literal> in <filename>params.xsl</filename>
+	  provided in the <filename class="directory">css</filename> 
+	  directory. If you have not already done so, try changing the value 
+	  of <literal>css.href</literal> in <filename>params.xsl</filename>
 	  to a different stylesheet (you may have to adjust the location
 	  of the stylesheets).  Once you find one you like, you can tweak 
 	  it by editing the CSS file by hand, or create one that is 
-	  entirely your own.
+	  entirely your own.  If you think other people would find your
+	  CSS file useful, please consider submitting it back to the 
+	  project.
 	</para>
       </section>
     </section>
@@ -219,7 +249,7 @@
 
       <para>
         This is the fun part. Take a look at both example &resume;s and choose
-        which one is most like what you want. Then replace the existing
+        one suits you best. Then replace the existing
         information with your own. You may also be able to find example
         &resume;s of real people by search for <literal>XML resume</literal> on
         the internet.
