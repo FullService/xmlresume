@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
 params.xsl
@@ -78,8 +78,14 @@ $Id$
 
   <!-- Word to use for phone, email, and URL for contact information. -->
   <xsl:param name="phone.word">Phone</xsl:param>
+  <xsl:param name="fax.word">Fax</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
+
+  <!-- Words for phone and fax locations, as in "Home Phone", or "Work Fax" -->
+  <xsl:param name="home.word">Home</xsl:param>
+  <xsl:param name="work.word">Work</xsl:param>
+  <xsl:param name="mobile.word">Mobile</xsl:param>
 
   <!-- Word to use for the "Achievements:" heading in a job. -->
   <xsl:param name="achievements.word">Achievements:</xsl:param>

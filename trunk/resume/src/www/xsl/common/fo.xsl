@@ -46,6 +46,7 @@ $Id$
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
   <xsl:include href="deprecated.xsl"/>
+  <xsl:include href="contact.xsl"/>
 
   <!-- Format the document. -->
   <xsl:template match="/">
@@ -280,34 +281,63 @@ $Id$
   <!-- Named template to format a single contact field *SE* -->
   <!-- Don't print the label if the field value is empty *SE* -->
   <xsl:template name="contact">
-      <xsl:param name="label"/>
-      <xsl:param name="field"/>
-      <xsl:if test="string-length($field) > 0">
-        <fo:block>
-          <fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$label"/>:</fo:inline>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="$field"/>
-        </fo:block>
-      </xsl:if>
+    <xsl:param name="label"/>
+    <xsl:param name="field"/>
+    <xsl:if test="string-length($field) > 0">
+      <fo:block>
+        <fo:inline font-style="{$header.item.font.style}"><xsl:value-of select="$label"/>:</fo:inline>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$field"/>
+      </fo:block>
+    </xsl:if>
   </xsl:template>
 
   <!-- Format contact information. -->
 
-  <xsl:template match="r:contact">
-    <fo:block>
-      <xsl:call-template name="contact">
-        <xsl:with-param name="field" select="r:phone"/>
-        <xsl:with-param name="label" select="$phone.word"/>
-      </xsl:call-template>
-      <xsl:call-template name="contact">
-        <xsl:with-param name="field" select="r:email"/>
-        <xsl:with-param name="label" select="$email.word"/>
-      </xsl:call-template>
-      <xsl:call-template name="contact">
-        <xsl:with-param name="field" select="r:url"/>
-        <xsl:with-param name="label" select="$url.word"/>
-      </xsl:call-template>
-    </fo:block>
+  <xsl:template match="r:contact/r:phone">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:apply-templates select="@location"/>
+        <xsl:value-of select="$phone.word"/>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:fax">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:apply-templates select="@location"/>
+        <xsl:value-of select="$fax.word"/>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:email">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:value-of select="$email.word"/>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:url">
+    <xsl:call-template name="contact">
+      <xsl:with-param name="label">
+        <xsl:value-of select="$url.word"/>
+      </xsl:with-param>
+      <xsl:with-param name="field">
+        <xsl:apply-templates/>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- Format the objective with the heading "Professional Objective." -->

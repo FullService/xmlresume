@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Help VIM: <!DOCTYPE DocBook -->
 
-<refentry id="element.phone">
+<refentry id="element.fax">
   <refnamediv>
-    <refname>phone</refname>
-    <refpurpose>A voice telephone number</refpurpose>
+    <refname>fax</refname>
+    <refpurpose>A fax telephone number</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv><title>Synopsis</title>
@@ -19,35 +19,15 @@
   <refsect1><title>Description</title>
     <para>
       The <sgmltag class="element">phone</sgmltag> element contains a
-      telephone number. The number is not required to be in a specific format;
-      these are all valid phone numbers:
-
-      <itemizedlist spacing="compact">
-        <listitem><para>
-          <literal><![CDATA[555-555-1212]]></literal>
-        </para></listitem>
-        <listitem><para>
-          <literal><![CDATA[555.555.1212]]></literal>
-        </para></listitem>
-        <listitem><para>
-          <literal><![CDATA[(555) 555-1212]]></literal>
-        </para></listitem>
-        <listitem><para>
-          <literal><![CDATA[(555) 555-1212 x555]]></literal>
-        </para></listitem>
-        <listitem><para>
-          <literal><![CDATA[(011) 47 8931-858128]]></literal>
-        </para></listitem>
-        <listitem><para>
-          <literal><![CDATA[(011) 59-3331-8580]]></literal>
-        </para></listitem>
-      </itemizedlist>
-
+      telephone number that can be used to connect to a facsimile machine. The
+      phone number is not required to be in a specific format. (See <link
+      linkend="element.phone"><sgmltag class="element">phone</sgmltag></link>
+      for examples of numbers.)
     </para>
 
     <refsect2><title>Parents</title>
       <para>
-        <sgmltag class="element">phone</sgmltag> may be contained in these
+        <sgmltag class="element">fax</sgmltag> may be contained in these
         elements:
         <$PARENTS$>
       </para>
@@ -74,9 +54,8 @@
   <refsect1><title>See Also</title>
     <para>
       <simplelist type="inline">
-        <member><link linkend="element.address"><sgmltag class="element">address</sgmltag></link></member>
         <member><link linkend="element.email"><sgmltag class="element">email</sgmltag></link></member>
-        <member><link linkend="element.fax"><sgmltag class="element">fax</sgmltag></link></member>
+        <member><link linkend="element.phone"><sgmltag class="element">phone</sgmltag></link></member>
       </simplelist>.
     </para>
   </refsect1>
@@ -84,21 +63,16 @@
   <refsect1><title>Examples</title>
 
     <informalexample><programlisting><![CDATA[
-<phone>555.555.1212</phone>
+<fax>555-555-1212</fax>
     ]]></programlisting></informalexample>
 
     <informalexample><programlisting><![CDATA[
-<phone location="mobile">345-262-4567</phone>
+<fax location="work">(123) 456-7890</fax>
     ]]></programlisting></informalexample>
 
     <informalexample><programlisting><![CDATA[
-<phone location="home">(261) 345-1616</phone>
+<fax location="home">345.324.2721</fax>
     ]]></programlisting></informalexample>
-
-    <para>
-      For additional examples, see <link linkend="element.contact"><sgmltag
-      class="element">contact</sgmltag></link>.
-    </para>
 
   </refsect1>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
 text.xsl
@@ -52,6 +52,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
   <xsl:include href="deprecated.xsl"/>
+  <xsl:include href="contact.xsl"/>
   <xsl:include href="string.xsl"/>
   <xsl:include href="textlayout.xsl"/>
 
@@ -178,7 +179,15 @@ In general, each block is responsible for outputting a newline after itself.
 
   <!-- Contact information -->
   <xsl:template match="r:contact/r:phone">
+    <xsl:apply-templates select="@location"/>
     <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:fax">
+    <xsl:apply-templates select="@location"/>
+    <xsl:value-of select="$fax.word"/><xsl:text>: </xsl:text>
     <xsl:value-of select="."/>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
@@ -925,10 +934,7 @@ In general, each block is responsible for outputting a newline after itself.
     <!-- Your name, address, and stuff. -->
     <xsl:apply-templates select="r:name"/><xsl:call-template name="NewLine"/>
 
-    <xsl:if test="r:address">
-      <xsl:apply-templates select="r:address"/>
-    </xsl:if>
-
+    <xsl:apply-templates select="r:address"/>
     <xsl:apply-templates select="r:contact"/>
 
     <xsl:if test="following-sibling::*">

@@ -121,10 +121,12 @@ $Id$
 <!ATTLIST postalCode id ID #IMPLIED>
 <!ELEMENT country (#PCDATA)>
 <!ATTLIST country id ID #IMPLIED>
-<!-- Deprecated. -->
-<!ELEMENT break EMPTY>
-<!ELEMENT contact (phone?, email?, url?)>
+<!ELEMENT break EMPTY> <!-- Deprecated. -->
+<!ELEMENT contact (phone|fax|email|url)*>
 <!ELEMENT phone (#PCDATA)>
+<!ATTLIST phone location (home | work | mobile) #IMPLIED>
+<!ELEMENT fax (#PCDATA)>
+<!ATTLIST fax location (home | work) #IMPLIED>
 <!ELEMENT email (#PCDATA)>
 <!ELEMENT url (#PCDATA)>
 <!ELEMENT link (#PCDATA)>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
 html.xsl
@@ -46,6 +46,7 @@ $Id$
   <xsl:include href="pubs.xsl"/>
   <xsl:include href="interests.xsl"/>
   <xsl:include href="deprecated.xsl"/>
+  <xsl:include href="contact.xsl"/>
   <xsl:include href="string.xsl"/>
 
   <xsl:template match="/">
@@ -167,7 +168,15 @@ $Id$
 
   <!-- Contact information -->
   <xsl:template match="r:contact/r:phone">
+    <xsl:apply-templates select="@location"/>
     <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+    <xsl:apply-templates/>
+    <br/>
+  </xsl:template>
+
+  <xsl:template match="r:contact/r:fax">
+    <xsl:apply-templates select="@location"/>
+    <xsl:value-of select="$fax.word"/><xsl:text>: </xsl:text>
     <xsl:apply-templates/>
     <br/>
   </xsl:template>
@@ -683,28 +692,7 @@ $Id$
     <h3 class="refereeHeading"><xsl:apply-templates select="r:name"/></h3>
     <p>
       <xsl:apply-templates select="r:address"/>
-      
-      <!-- Don't print the label if the field value is empty *SE* -->
-      <xsl:if test="r:contact/r:phone">
-        <xsl:value-of select="$phone.word"/>: <xsl:apply-templates select="r:contact/r:phone"/><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:email">
-        <xsl:value-of select="$email.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:text>mailto:</xsl:text>
-            <xsl:apply-templates select="r:contact/r:email"/>
-          </xsl:attribute>
-          <xsl:apply-templates select="r:contact/r:email"/>
-        </a><br/>
-      </xsl:if>
-      <xsl:if test="r:contact/r:url">
-        <xsl:value-of select="$url.word"/>: <a>
-          <xsl:attribute name="href">
-            <xsl:apply-templates select="r:contact/r:url"/>
-          </xsl:attribute>
-          <xsl:apply-templates select="r:contact/r:url"/>
-        </a>
-      </xsl:if>
+      <xsl:apply-templates select="r:contact"/>
     </p>
   </xsl:template>
 
