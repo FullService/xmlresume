@@ -61,7 +61,7 @@ $Id$
     <degrees>
       <degree>
 	<level>MBA</level>
-	<subject>Business Administration</subject>
+	<major>Business Administration</major>
 	<date>
 	  <month>May</month>
 	  <year>1989</year>
@@ -71,12 +71,46 @@ $Id$
       </degree>
       <degree>
 	<level>B.Ph.</level>
-	<subject>Business Administration</subject>
+	<major>Business Administration</major>
 	<date>
 	  <month>May</month>
 	  <year>1990</year>
 	</date>
 	<institution>Advanced Institute for the Administration of Business</institution>
+        <subjects>
+	  <subject>
+	    <title>Stocks, broths, and soups</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French and world sauces</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>French cuisine</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>World cuisine</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Kitchen sanitation</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Pastry</title>
+	    <result>B</result>
+	  </subject>
+	  <subject>
+	    <title>Culinary history</title>
+	    <result>A</result>
+	  </subject>
+	  <subject>
+	    <title>Hotel restaurant management</title>
+	    <result>C</result>
+	  </subject>
+	</subjects>	  
 	<annotation>Geeba geeba!</annotation>
       </degree>
     </degrees>
@@ -95,11 +129,13 @@ $Id$
 	    <month>August</month>
 	    <year>1978</year>
 	  </date>
-	  <to>
+	</from>
+	<to>
+	  <date>
 	    <month>September</month>
 	    <year>1979</year>
-	  </to>
-	</from>
+	  </date>
+	</to>
       </period>
       <description>
 	<para>LA Salon was the major source of personal grooming for
@@ -111,6 +147,10 @@ $Id$
 	  and Glendale.
 	</para>
       </description>
+      <projects>
+	<project>Hair revitalization campaign of 1997</project>
+	<project>Sales booster campaign of 1998</project>
+      </projects>
       <achievements>
 	<achievement>Styled <emphasis>Sean Connery's</emphasis>
 	  hair.</achievement>
@@ -127,17 +167,17 @@ $Id$
 	<to>
 	  <present/>
 	</to>
-	<description>
-	  <para>MacDonald's was a restaurant that provided food for
-	    those who needed a fast lunch or dinner.  I served as the
-	    <emphasis>primary</emphasis> point through which customers
-	    interacted in order to select food items.
-	  </para>
-	  <para>Please note that this restaurant is
-	    <emphasis>not</emphasis> to be confused with McDonald's.
-	  </para>
-	</description>
       </period>
+      <description>
+	<para>MacDonald's was a restaurant that provided food for
+	  those who needed a fast lunch or dinner.  I served as the
+	  <emphasis>primary</emphasis> point through which customers
+	  interacted in order to select food items.
+	</para>
+	<para>Please note that this restaurant is
+	  <emphasis>not</emphasis> to be confused with McDonald's.
+	</para>
+      </description>
     </job>
   </history>
   <skillareas>
@@ -224,77 +264,14 @@ $Id$
     </pub>
 
     <pub>
-      <para>Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001:
-	Object Oriented Data Technology for Space Science Data
-	Archiving and Retrieval: Potential Applications for
-	Bioinformatics.  First JPL Information Technology Symposium,
-	Pasadena, Jet Propulsion Laboratory.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Kelly, S., 2001: Using XSL Formatting Objects.
-	<citation>Inside XML Solutions</citation>, volume 1,
-	issue 6.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A
-	Distributed Component Framework for Science Data Product
-	Interoperability.  17th International CODATA Conference,
-	Baveno, International Council for Science.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A
-	Multi-Discipline Metadata Registry for Science
-	Interoperability.  Open Forum on Metadata Registries, ISO/IEC
-	JTC1/SC32, Data Management and Interchange.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999:
-	Science Search and Retrieval using XML.  Second National
-	Conference on Scientific and Technical Data, Washington DC,
-	National Academy of Sciences.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Kelly, S., 1997: The Application Interface for the
-	WFO-Advanced Forecaster Workstation, D2D.  Preprints,
-	<citation>13th International Conference on Interactive
-	Information and Processing Systems for Meteorology,
-	Oceanography, and Hydrology</citation>, Long Beach, American
-	Meteorological Society.
-      </para>
-    </pub>
-
-    <pub>
-      <para>Kelly, S., 1997: An Object-Oriented Framework for Local
-	Extensions to the WFO-Advanced Forecaster Display Workstation,
-	D2D.  Preprints, <citation>13th International Conference on Interactive
-	Information and Processing Systems for Meteorology,
-	Oceanography, and Hydrology</citation>, Long Beach, American
-	Meteorological Society.
-      </para>
-    </pub>
-
-    <pub>
-      <para>
-	Kelly, S., 1996: Terminals with FreeBSD.  <citation>The FreeBSD
-	Handbook</citation>, The FreeBSD Project, Incorporated.
-      </para>
-    </pub>
-
-    <pub>
-      <para>
-	Kelly, S., 1996: Printing with FreeBSD.  <citation>The FreeBSD
-	Handbook</citation>, The FreeBSD Project, Incorporated.
-      </para>
+      <author>Tilset Teemson</author>
+      <author name="n1"/>
+      <author>Xavier Xevvinson</author>
+      <artTitle>Gronkulating the Frobnicator</artTitle>
+      <bookTitle>Proceedings of the 3rd Annual Rebbilation
+	Society</bookTitle>
+      <pubDate><year>2163</year></pubDate>
+      <pageNums>172</pageNums>
     </pub>
   </pubs>
 
@@ -460,11 +437,13 @@ $Id$
 	    <month>August</month>
 	    <year>1978</year>
 	  </date>
-	  <to>
+	</from>
+	<to>
+	  <date>
 	    <month>September</month>
 	    <year>1979</year>
-	  </to>
-	</from>
+	  </date>
+	</to>
       </period>
       <description>
 	<para>The da driver provides support for all SCSI devices of
@@ -484,13 +463,11 @@ $Id$
       <organization>The Even Fellows</organization>
       <period>
 	<from>
-	  <date>
-	    <present/>
-	  </date>
-	  <to>
-	    <present/>
-	  </to>
+	  <present/>
 	</from>
+	<to>
+	  <present/>
+	</to>
       </period>
       <description>
 	<para>The sa driver is based around the concept of a ``mount
@@ -504,4 +481,28 @@ $Id$
       </description>
     </membership>
   </memberships>
+  <referees>
+    <referee>
+      <name>
+	<firstname>Indiana</firstname>
+	<surname>O'Brien</surname>
+      </name>
+      <contact>
+	<phone>408.555.1296</phone>
+      </contact>
+    </referee>
+    <referee>
+      <name>
+	<firstname>Web</firstname>
+	<surname>Melgood</surname>
+      </name>
+      <address>
+	<street>3090 Deltoid</street>
+	<city>Santa Yorba</city>
+	<state>CA</state>
+	<zip>95022</zip>
+	<country>USA</country>
+      </address>
+    </referee>
+  </referees>
 </resume>

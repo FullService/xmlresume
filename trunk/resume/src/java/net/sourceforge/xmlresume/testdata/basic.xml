@@ -51,10 +51,10 @@ $Id$
 	    <month>August</month>
 	    <year>1993</year>
 	  </date>
-	  <to>
-	    <present/>
-	  </to>
 	</from>
+	<to>
+	  <present/>
+	</to>
       </period>
     </job>
   </history>
@@ -62,7 +62,7 @@ $Id$
     <degrees>
       <degree>
 	<level>MBA</level>
-	<subject>Business Administration</subject>
+	<major>Business Administration</major>
 	<date>
 	  <month>May</month>
 	  <year>1989</year>
