@@ -133,6 +133,7 @@ $Id$
   <!-- HTML-SPECIFIC ====================================================== -->
 
   <!-- Cascading stylesheet to use -->
+  <!-- Make sure the path to the css file is correct! -->
   <xsl:param name="css.href">../../src/www/css/compact.css</xsl:param>
 
   <!-- Should style sheets be embedded within the html file?
