@@ -105,6 +105,11 @@ $Id$
   <!-- Space betwixt paragraphs -->
   <xsl:param name="para.break.space">10pt</xsl:param>
 
+  <!-- Half space; for anywhere line spacing is needed but should be less -->
+  <!-- than a full paragraph break; between comma-separated skills lists, -->
+  <!-- between job header and description/achievements. -->
+  <xsl:param name="half.space">5pt</xsl:param>
+
   <!-- Body text indent -->
   <xsl:param name="body.indent">2in</xsl:param>
 

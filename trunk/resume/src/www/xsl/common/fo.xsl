@@ -313,11 +313,13 @@ $Id$
   <!-- Format a single job. -->
   <xsl:template match="job">
     <fo:block>
+      <fo:block space-after="{$half.space}">
       <fo:inline font-weight="bold"><xsl:value-of select="jobtitle"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:value-of select="employer"/></fo:inline>
       <xsl:text> </xsl:text><xsl:value-of select="$bullet.glyph"/><xsl:text> </xsl:text>
       <fo:inline font-style="italic"><xsl:apply-templates select="period"/></fo:inline>
+      </fo:block>
       <xsl:if test="description">
         <fo:block>
           <xsl:apply-templates select="description"/>
@@ -433,7 +435,7 @@ $Id$
   <xsl:template match="skillset">
     <xsl:choose>
       <xsl:when test="$skills.format = 'comma'">
-        <fo:block space-after="{$para.break.space}">
+        <fo:block space-after="{$half.space}">
         <xsl:apply-templates select="title" mode="comma"/>
         <xsl:apply-templates select="skills" mode="comma"/>
 	</fo:block>
