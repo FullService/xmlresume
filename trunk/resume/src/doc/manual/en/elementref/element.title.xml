@@ -23,6 +23,16 @@
 
       <variablelist>
         <varlistentry>
+        <varlistentry>
+          <term><sgmltag class="element">interest</sgmltag></term>
+          <listitem>
+            <para>
+              When contained in this element, <sgmltag
+              class="element">title</sgmltag> contains the name of an interest,
+              such as <quote>Cooking</quote>, or <quote>Politics</quote>.
+            </para>
+          </listitem>
+        </varlistentry>
           <term><sgmltag class="element">membership</sgmltag></term>
           <listitem>
             <para>
@@ -111,6 +121,21 @@
   </refsect1>
 
   <refsect1><title>Examples</title>
+
+    <example>
+      <title>
+        <sgmltag class="element">interest</sgmltag> title
+      </title>
+      <programlisting><![CDATA[
+<interest>
+  <title>Fly fishing for sharks</title>
+  <description><para>
+    I once caught a 300-kg. Great White off the coase of Florida using a green
+    and gold-colored dragonfly that I tied.
+  </para></description>
+</interest>
+      ]]></programlisting>
+    </example>
 
     <example>
       <title>
