@@ -65,6 +65,7 @@ xsl_base = http://xmlresume.sourceforge.net/xsl
 html_style = $(xsl_base)/$(country)-html.xsl
 text_style = $(xsl_base)/$(country)-text.xsl
 fo_style = $(xsl_base)/$(country)-$(papersize).xsl
+upgrade_131_134_style = $(xsl_base)/131-134.xsl
 
 #------------------------------------------------------------------------------
 # Processing software
@@ -79,13 +80,14 @@ fo_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
 # End configurable parameters
 #------------------------------------------------------------------------------
 
-.PHONY: all html text fo pdf clean
+.PHONY: all html text fo pdf clean 131-134
 
 all: html text fo pdf
 html: $(resume).html
 text: $(resume).txt
 fo: $(resume).fo
 pdf: $(resume).pdf
+131-134: $(resume).134.xml
 
 clean:
 	rm -f $(resume).html
@@ -116,3 +118,8 @@ $(resume).pdf: out = $(resume).pdf
 $(resume).pdf: $(resume).fo
 	$(fo_proc)
 
+$(resume).134.xml: in = $(resume).xml
+$(resume).134.xml: out = $(resume).134.xml
+$(resume).134.xml: xsl = $(upgrade_131_134_style)
+$(resume).134.xml: $(resume).xml
+	$(xsl_proc)
