@@ -43,4 +43,44 @@ $Id$
   <xsl:param name="phone.word">Telephone</xsl:param>
   <xsl:param name="referees.word">Referees</xsl:param>
 
+  <xsl:param name="academics.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="achievements.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="and.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="awards.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="by.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="contact.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="copyright.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="email.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="fax.home.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="fax.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="fax.work.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="history.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.aim.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.icq.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.irc.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.jabber.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.msn.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="im.yahoo.service">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="in.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="interests.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="last-modified.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="major-gpa.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="minor.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="minors.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="miscellany.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="objective.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="out-of.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="overall-gpa.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="page.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="pager.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="phone.home.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="phone.mobile.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="phone.work.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="present.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="projects.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="publications.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="referees.hidden.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="security-clearances.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="url.word">TRANSLATION NEEDED</xsl:param>
 </xsl:stylesheet>
+
