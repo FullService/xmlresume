@@ -426,7 +426,7 @@ $Id$
 
   <xsl:template match="skillset/title" mode="comma">
     <span class="skillsetTitle">
-      <xsl:value-of select="title"/><xsl:text>: </xsl:text>
+      <xsl:value-of select="."/><xsl:text>: </xsl:text>
     </span>
   </xsl:template>
 
