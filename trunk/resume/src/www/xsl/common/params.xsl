@@ -124,7 +124,7 @@ $Id$
   <xsl:param name="bullet.glyph">&#x2022;</xsl:param>
 
   <!-- Bullet equivalent in plain text *SE* -->
-  <xsl:param name="text.bullet.character">*</xsl:param>
+  <xsl:param name="text.bullet.prefix">* </xsl:param>
 
   <!-- Text to use to indicate start and end of emphasis in plain text -->
   <xsl:param name="text.emphasis.start">*</xsl:param>
