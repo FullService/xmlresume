@@ -403,7 +403,7 @@ $Id$
   <xsl:template match="subjects">
     <fo:table>
       <fo:table-column column-width="50pt" column-number="1"/>
-      <fo:table-column column-width="200pt" column-number="2"/>
+      <fo:table-column column-width="250pt" column-number="2"/>
       <fo:table-column column-width="150pt" column-number="3"/>
       <fo:table-body>
         <xsl:for-each select="subject">
