@@ -17,8 +17,79 @@
       <a href="../news/index.html">news</a>.
     </p>
 
-    <pre>
+<pre>2001-09-03  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/etc/rcs2log: Add Stewart.
+
+	* /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Fix docs.
+
+	* /cvsroot/xmlresume/resume/examples/example2.xml:
+	Updated example to demonstrate inline elements in skills and
+	achievements and with a more complex international address.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl:
+	Replace the Unicode en-dash with a hyphen in the HTML formatting of
+	job periods.  The results in a hyphen be generated in the output
+	instead of &amp;ndash;, which only modern browsers support.
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl, /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Update content model for achievement and skill to use same mixed model
+	as para, so formatting and semantics of inline elements can be used
+	in these locations.  Update stylesheets and news file appropriately.
+
+2001-09-02  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/authors/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl:
+	Remove "Skills" heading formatting and skills.word for &lt;skillareas&gt;.
+	Fix bullet lists of achievements; make it produce correct FO (XEP
+	rightly complained, but FOP let the incorrect FO go).  Update
+	release procedure to grab examples from correct directory.
+	Update authors and news items.
+
+2001-09-01  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl:
+	Stewart Evans's patches: HTML span class "employer", "nameHeading",
+	achievements section, real bulleted list items in text style,
+	formatting of the new achievements section, "skills.word" parameter,
+	suppression of blank fields, and formatting of contact/url in
+	HTML.  Whoa ... that's a lot; thanks Stewart!
+
+	* /cvsroot/xmlresume/resume/src/www/css/resume1.css, /cvsroot/xmlresume/resume/src/www/css/resume2.css:
+	Actually commit the sample CSS files.
+
+	* /cvsroot/xmlresume/resume/src/examples/Makefile, /cvsroot/xmlresume/resume/src/examples/example1.xml, /cvsroot/xmlresume/resume/src/examples/example2.xml, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/README, /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/examples/Makefile, /cvsroot/xmlresume/resume/examples/example1.xml, /cvsroot/xmlresume/resume/examples/example2.xml, /cvsroot/xmlresume/resume/src/doc/release/authors/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Move examples out from under src so that developers can more easily
+	use them.  Update developers README to reflect this.  Update release
+	information.  Add sample CSS files.
+
+2001-08-14  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl:
+	Correct error; xsl:param decls must be first thing in a template.
+	Thanks Roberto "Wolfox" Amorim for pointing that out!
+
+2001-08-05  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl:
+	Put a space after the comma after the city so you get "City, ST"
+	instead of "City,ST".
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Add content model for dayOfMonth.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl:
+	Use real en-dashes in employment periods and replace hyphens with the
+	bullet glyph to separate employer, position, and period.
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Fix reference to fullDate by using date with optional dayOfMonth field.
+
 2001-08-02  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html:
+	Update changelog for 1.2.3.
 
 	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/authors/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/doc/release/todo/index.html, /cvsroot/xmlresume/resume/src/examples/Makefile, /cvsroot/xmlresume/resume/src/examples/example1.xml, /cvsroot/xmlresume/resume/src/examples/example2.xml, /cvsroot/xmlresume/resume/src/www/xsl/common/a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-text.xsl:
 	Better parameterization support and factoring of common parameters.
@@ -135,6 +206,7 @@
 	New file.
 
     </pre>
+
   </body>
 </html>
 
