@@ -2,7 +2,7 @@
 #
 # Makefile for resumes
 #
-# Copyright (c) 2000-2002 Sean Kelly
+# Copyright (c) 2002 Bruce Christensen
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -28,47 +28,91 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#------------------------------------------------------------------------
-# Replace this with the basename (no .xml extension) of your resume
-# source file.  In this example, my resume is in "example.xml", so I
-# put "example" here.
+#------------------------------------------------------------------------------
+# To create example.html, example.txt, example.fo, and example.pdf from
+# example.xml, with Italian localization and a4 paper size, use this command:
 #
-RESUME = example1
+# 	make resume=example country=it papersize=a4
 #
-# Replace this with the country and paper size stylesheets you 
-# wish to use.  Current choices for FO (which gives you PDF)
-# are us-letter.xsl or uk-a4.xsl.  For HTML, choices include
-# us-html.xsl or uk-html.xsl.  And for plain text, choose
-# either us-text.xsl or uk-text.xsl.
+# To generate just the html version of cv.xml with UK localization, use this
+# command:
 #
-FO_STYLE = http://xmlresume.sourceforge.net/xsl/us-letter.xsl
-HTML_STYLE = http://xmlresume.sourceforge.net/xsl/us-html.xsl
-TXT_STYLE = http://xmlresume.sourceforge.net/xsl/us-text.xsl
+# 	make html resume=cv country=uk
 #
-#------------------------------------------------------------------------
+# To remove all generated files, run:
+#
+# 	make clean
+#------------------------------------------------------------------------------
 
-# End of configurable parameters.
+#------------------------------------------------------------------------------
+# Basename (filename minus .xml extension) of resume to process
+# For example, put "myresume" here to process "myresume.xml".
+#------------------------------------------------------------------------------
+resume = resume
 
-.PHONY: all clean
-.SUFFIXES: .html .fo .pdf .xml .xsl .txt
+#------------------------------------------------------------------------------
+# Stylesheets
+#------------------------------------------------------------------------------
+# Options: fr it uk us
+country = us
+# Options: letter for country=us, a4 for others
+papersize = letter
 
-all:	$(RESUME).html $(RESUME).pdf $(RESUME).txt
+xsl_base = http://xmlresume.sourceforge.net/xsl
+#xsl_base = ../xsl
+#xsl_base = ../src/www/xsl
+
+html_style = $(xsl_base)/$(country)-html.xsl
+text_style = $(xsl_base)/$(country)-text.xsl
+fo_style = $(xsl_base)/$(country)-$(papersize).xsl
+
+#------------------------------------------------------------------------------
+# Processing software
+#------------------------------------------------------------------------------
+xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $(in) -xsl $(xsl) -out $(out)
+#xsl_proc = java com.icl.saxon.StyleSheet $(xsl_flags) -o $(out) $(in) $(xsl) $(xsl_params)
+
+fo_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
+#fo_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
+
+#------------------------------------------------------------------------------
+# End configurable parameters
+#------------------------------------------------------------------------------
+
+.PHONY: all html text fo pdf clean
+
+all: html text fo pdf
+html: $(resume).html
+text: $(resume).txt
+fo: $(resume).fo
+pdf: $(resume).pdf
 
 clean:
-	-rm -f $(RESUME).html $(RESUME).pdf $(RESUME).fo $(RESUME).txt *~
+	rm -f $(resume).html
+	rm -f $(resume).txt
+	rm -f $(resume).fo
+	rm -f $(resume).pdf
 
-$(RESUME).html: $(RESUME).xml
-	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(HTML_STYLE) -out $(RESUME).html
+$(resume).html: in = $(resume).xml
+$(resume).html: out = $(resume).html
+$(resume).html: xsl = $(html_style)
+$(resume).html: $(resume).xml
+	$(xsl_proc)
 
-$(RESUME).txt: $(RESUME).xml
-	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(TXT_STYLE) -out $(RESUME).txt
+$(resume).txt: in = $(resume).xml
+$(resume).txt: out = $(resume).txt
+$(resume).txt: xsl = $(text_style)
+$(resume).txt: $(resume).xml
+	$(xsl_proc)
 
-$(RESUME).fo: $(RESUME).xml
-	java org.apache.xalan.xslt.Process $(XSLFLAGS) -in $(RESUME).xml -xsl $(FO_STYLE) -out $(RESUME).fo
+$(resume).fo: in = $(resume).xml
+$(resume).fo: out = $(resume).fo
+$(resume).fo: xsl = $(fo_style)
+$(resume).fo: $(resume).xml
+	$(xsl_proc)
 
-$(RESUME).pdf: $(RESUME).fo
-	java org.apache.fop.apps.Fop $(FOFLAGS) $(RESUME).fo $(RESUME).pdf
+$(resume).pdf: in = $(resume).fo
+$(resume).pdf: out = $(resume).pdf
+$(resume).pdf: $(resume).fo
+	$(fo_proc)
 
-# The stylesheet also works great with XEP; uncomment and modify the
-# below line for your XEP installation to give it a try.
-#	java -cp "/xep/lib/JimiProClasses.zip;/xep/lib/xep.jar;/xep/lib/xerces-1.2.3.jar" -Dcom.renderx.FO2PDF.ROOT=/xep com.renderx.FO2PDF.Driver $(RESUME).fo
