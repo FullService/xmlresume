@@ -44,7 +44,7 @@ for resume in `ls -1 | grep '^orc'`;
 do
    # If no lockfiles exist, create the .convert lockfile and convert
    if [ ! -e .UPLOAD.$resume -a ! -e .CONVERT.$resume ]; then
-      touch .convert.$resume
+      touch .CONVERT.$resume
 	cd $resume
 	grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.md5
 	${ANTCMD} -verbose -propertyfile user.props \
