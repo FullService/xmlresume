@@ -25,11 +25,8 @@
 
     <refsect2><title>Formatting</title>
       <para>
-        In HTML output, URLs are formatted as <sgmltag
-        class="element">a</sgmltag> (anchor) tags. The link text is the URL.
-      </para>
-      <para>
-        In text and FO/PDF output, URLs are formatted as plain text.
+        URLs are formatted as un-linked (non-hyperlinked) plain text. In HTML
+        and FO/PDF output formats, they are rendered in a fixed-width typeface.
       </para>
     </refsect2>
 
@@ -62,6 +59,9 @@
 
   <refsect1><title>See Also</title>
     <para>
+      <simplelist type="inline">
+        <member><link linkend="element.link"><sgmltag class="element">link</sgmltag></link></member>
+      </simplelist>.
       <simplelist type="inline">
         <member><link linkend="element.uri"><sgmltag class="element">uri</sgmltag></link></member>
       </simplelist>.
