@@ -756,6 +756,7 @@ $Id$
     description="Generate PDF version of the manual"
     depends="doc.manual.fo">
 
+    <!-- This section isn't needed with docbook-xsl-1.52.2 and FOP 0.20.3
     <java
       classname="com.icl.saxon.StyleSheet"
       classpathref="saxon.classpath"
@@ -765,15 +766,16 @@ $Id$
       <arg value="-o"/>
       <arg value="${doc.manual.fo.file}.patched-for-fop"/>
       <arg value="${doc.manual.fo.file}"/>
-      <arg value="${doc.manual.build.dir}/xsl/docbook-xsl-1.50.0/fo/fo-patch-for-fop.xsl"/>
+      <arg value="${doc.manual.docbook-xsl.dir}/fo/fo-patch-for-fop.xsl"/>
     </java>
+    -->
 
     <java 
       classname="org.apache.fop.apps.Fop"
       fork="yes"
       failonerror="yes"
       dir="${doc.manual.build.dir}">
-      <arg value="${doc.manual.fo.file}.patched-for-fop"/>
+      <arg value="${doc.manual.fo.file}"/>
       <arg value="-pdf"/>
       <arg value="${doc.manual.pdf.file}"/>
     </java>
