@@ -153,15 +153,6 @@
           class="element">uri</sgmltag></link>.
           Instances of these elements should be removed.
         </para></listitem>
-        <listitem><para>
-          Deprecated: the use of <link linkend="element.url"><sgmltag
-          class="element">url</sgmltag></link> as a child of
-          <link linkend="element.publisher"><sgmltag
-          class="element">publisher</sgmltag></link>. 
-          <sgmltag class="element">url</sgmltag> elements may be replaced
-          with <link linkend="element.link"><sgmltag
-          class="element">link</sgmltag></link> elements.
-        </para></listitem>
       </itemizedlist>
     </section>
 

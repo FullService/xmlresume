@@ -131,5 +131,5 @@ $Id$
     <xsl:call-template name="FormatUrl"/>
     <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
-  
+
 </xsl:stylesheet>

@@ -199,7 +199,6 @@ chance to remove it from their resumes. It was deprecated in version 1.3.4. -->
 <!ELEMENT author (#PCDATA)>
 <!ATTLIST author name IDREF #IMPLIED>
 <!ELEMENT pubDate (month?, year)> <!-- Deprecated in 1.3.4. -->
-<!-- url as a child of publisher is deprecated in 1.3.4 -->
 <!ELEMENT publisher (#PCDATA | link | url)*>
 <!ELEMENT pageNums (#PCDATA)>
 
