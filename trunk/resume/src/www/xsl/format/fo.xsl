@@ -51,25 +51,21 @@ $Id$
     <fo:root>
       <fo:layout-master-set>
         <fo:simple-page-master master-name="resume-page"
-          margin-top="{$margin.top}"
-          margin-left="{$margin.left}"
-          margin-right="{$margin.right}"
-          margin-bottom="0in"
-          page-height="{$page.height}"
-          page-width="{$page.width}">
+            margin-top="{$margin.top}" margin-left="{$margin.left}"
+            margin-right="{$margin.right}" margin-bottom="0in"
+            page-height="{$page.height}" page-width="{$page.width}">
           <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
-          <fo:region-body overflow="hidden"
-            margin-bottom="{$margin.bottom}"/>
+          <fo:region-body overflow="hidden" margin-bottom="{$margin.bottom}"/>
           <!-- FIXME: should be error-if-overflow, but fop0.20.3 doesn't support it -->
-          <fo:region-after overflow="hidden"
-            extent="{$margin.bottom}"/>
+          <fo:region-after overflow="hidden" extent="{$margin.bottom}"/>
         </fo:simple-page-master>
       </fo:layout-master-set>
-      <fo:page-sequence master-reference="resume-page">
+
+       <fo:page-sequence master-reference="resume-page">
         <!-- Running footer with person's name and page number. -->
         <fo:static-content flow-name="xsl-region-after">
-          <fo:block text-align="start" font-size="{$footer.font.size}"
-            font-family="{$footer.font.family}">
+          <fo:block font-size="{$footer.font.size}" text-align="start"
+	      font-family="{$footer.font.family}">
             <xsl:apply-templates select="r:resume/r:header/r:name"/>
             <xsl:text> - </xsl:text>
             <xsl:value-of select="$resume.word"/>
@@ -77,6 +73,10 @@ $Id$
             <xsl:value-of select="$page.word"/>
             <xsl:text> </xsl:text>
             <fo:page-number/>
+          </fo:block>
+          <fo:block font-size="{$footer.font.size}" text-align="end"
+	      font-family="{$footer.font.family}">
+            <xsl:apply-templates select="r:resume/r:lastModified" mode="footer"/>
           </fo:block>
         </fo:static-content>
 
@@ -101,11 +101,8 @@ $Id$
   <xsl:template name="heading">
     <xsl:param name="text">Heading Not Defined</xsl:param>
     <fo:block
-      start-indent="{$heading.indent}"
-      font-size="{$heading.font.size}"
-      font-family="{$heading.font.family}"
-      font-weight="{$heading.font.weight}"
-      space-before="{$para.break.space}"
+      start-indent="{$heading.indent}" font-size="{$heading.font.size}"
+      font-family="{$heading.font.family}" font-weight="{$heading.font.weight}"
       space-after="{$para.break.space}"
       border-bottom-style="{$heading.border.bottom.style}"
       border-bottom-width="{$heading.border.bottom.width}"
@@ -120,35 +117,41 @@ $Id$
       <fo:block
           font-style="{$header.name.font.style}"
           font-weight="{$header.name.font.weight}"
-          font-size="{$header.name.font.size}">
+          font-size="{$header.name.font.size}"
+          space-after="{$half.space}">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
-      <xsl:apply-templates select="r:address"/>
-      <fo:block space-before="{$half.space}">
+      <fo:block space-after="{$half.space}">
+        <xsl:apply-templates select="r:address"/>
+      </fo:block>
+      <fo:block space-after="{$half.space}">
         <xsl:apply-templates select="r:contact"/>
       </fo:block>
     </fo:block>
   </xsl:template>
 
   <xsl:template match="r:header" mode="centered">
-    <fo:block
-        space-after="{$para.break.space}"
+    <fo:block space-after="{$para.break.space}"
         start-indent="{$header.margin-left}"
-        end-indent="{$header.margin-right}">
-      <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
-        rule-thickness="{$header.line.thickness}"/>
-      <fo:block
-          font-style="{$header.name.font.style}"
-          font-weight="{$header.name.font.weight}"
-          font-size="{$header.name.font.size}">
+        end-indent="{$header.margin-right}" text-align="center">
+      <fo:leader leader-length="100%" 
+          leader-pattern="{$header.line.pattern}"
+          rule-thickness="{$header.line.thickness}"/>
+      <fo:block font-style="{$header.name.font.style}"
+          font-weight="{$header.name.font.weight}" 
+          space-after="{$half.space}"
+          font-size="{$header.name.font.size}" text-align="center">
         <xsl:apply-templates select="r:name"/>
       </fo:block>
-      <xsl:apply-templates select="r:address"/>
-      <fo:block space-before="{$half.space}">
+      <fo:block space-after="{$half.space}" text-align="center">
+        <xsl:apply-templates select="r:address"/>
+      </fo:block>
+      <fo:block text-align="center">
         <xsl:apply-templates select="r:contact"/>
       </fo:block>
-      <fo:leader leader-length="100%" leader-pattern="{$header.line.pattern}"
-        rule-thickness="{$header.line.thickness}"/>
+      <fo:leader leader-length="100%" 
+          leader-pattern="{$header.line.pattern}"
+          rule-thickness="{$header.line.thickness}"/>
     </fo:block>
   </xsl:template>
 
@@ -397,16 +400,14 @@ $Id$
   <xsl:template match="r:job">
     <fo:block>
       <fo:block space-after="{$half.space}" keep-with-next="always">
-        <fo:block
-            keep-with-next="always"
-            font-style="{$jobtitle.font.style}"
-            font-weight="{$jobtitle.font.weight}">
-          <xsl:apply-templates select="r:jobtitle"/>
-        </fo:block>
         <fo:block keep-with-next="always">
-          <fo:inline
-              font-style="{$employer.font.style}"
+          <fo:inline font-style="{$jobtitle.font.style}"
+              font-weight="{$jobtitle.font.weight}">
+            <xsl:apply-templates select="r:jobtitle"/>
+          </fo:inline>
+          <fo:inline font-style="{$employer.font.style}"
               font-weight="{$employer.font.weight}">
+	    <xsl:value-of select="$employer.separator"/>
             <xsl:apply-templates select="r:employer"/>
           </fo:inline>
           <xsl:apply-templates select="r:location"/>
@@ -951,20 +952,6 @@ $Id$
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- Format the "last modified" date -->
-  <xsl:template match="r:lastModified">
-    <fo:block
-        start-indent="{$heading.indent}"
-        space-before="{$para.break.space}"
-        space-after="{$para.break.space}"
-        font-size="{$fineprint.font.size}">
-      <xsl:value-of select="$last-modified.phrase"/>
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates/>
-      <xsl:text>.</xsl:text>
-    </fo:block>
-  </xsl:template>
-
   <!-- Format legalese. -->
   <xsl:template match="r:copyright">
     <fo:block
@@ -1125,5 +1112,15 @@ $Id$
       </xsl:if>
     </fo:block>
   </xsl:template>
+
+  
+  <xsl:template match="r:lastModified" mode="footer">
+    <xsl:value-of select="$last-modified.phrase"/>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <!-- Don't do anything for the lastModified element outside of the footer -->
+  <xsl:template match="r:lastModified"/>
 
 </xsl:stylesheet>

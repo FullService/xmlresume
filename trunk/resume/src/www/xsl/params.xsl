@@ -50,9 +50,9 @@ $Id$
   <!-- Does not affect the layout of the text output, only html and pdf -->
   <xsl:param name="referees.layout">compact</xsl:param>
 
-  <!-- Format for name/contact header: 'standard' or 'centered' *SE* -->
+  <!-- Format for name/contact header: 'standard' or 'centered' -->
   <!-- Set here or override on command line -->
-  <xsl:param name="header.format">standard</xsl:param>
+  <xsl:param name="header.format">centered</xsl:param>
 
   <!-- Format of interest descriptions. Available values are: -->
   <!-- 'single-line' for <para>s on same line as title, separated by dashes -->
@@ -126,7 +126,7 @@ $Id$
 
   <!-- PLAIN TEXT-SPECIFIC ================================================ -->
 
-  <!-- Bullet equivalent in plain text *SE* -->
+  <!-- Bullet equivalent in plain text -->
   <xsl:param name="text.bullet.prefix">* </xsl:param>
 
   <!-- Text to use to indicate start and end of emphasis in plain text -->
@@ -146,7 +146,7 @@ $Id$
   <xsl:param name="header.line.thickness">1pt</xsl:param>
 
   <!-- Space betwixt paragraphs -->
-  <xsl:param name="para.break.space">0.750em</xsl:param>
+  <xsl:param name="para.break.space">0.7em</xsl:param>
 
   <!-- Half space; for anywhere line spacing is needed but should be less -->
   <!-- than a full paragraph break; between comma-separated skills lists, -->
@@ -193,8 +193,9 @@ $Id$
   <xsl:param name="referee-name.font.style">italic</xsl:param>
   <xsl:param name="referee-name.font.weight">normal</xsl:param>
 
-  <xsl:param name="employer.font.style">italic</xsl:param>
+  <xsl:param name="employer.font.style">normal</xsl:param>
   <xsl:param name="employer.font.weight">normal</xsl:param>
+  <xsl:param name="employer.separator"> &#x2014; </xsl:param>
 
   <xsl:param name="job-period.font.style">italic</xsl:param>
   <xsl:param name="job-period.font.weight">normal</xsl:param>

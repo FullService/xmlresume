@@ -306,7 +306,7 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format each job -->
   <xsl:template match="r:job">
     <xsl:apply-templates select="r:jobtitle"/>
-    <xsl:call-template name="NewLine"/>
+    <xsl:text> -- </xsl:text>
     <xsl:apply-templates select="r:employer"/>
     <xsl:apply-templates select="r:location"/>
     <xsl:call-template name="NewLine"/>

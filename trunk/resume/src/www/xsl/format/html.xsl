@@ -334,7 +334,7 @@ $Id$
   <xsl:template match="r:job">
     <p class="job">
       <xsl:apply-templates select="r:jobtitle"/>
-      <br/>
+      <xsl:value-of select="$employer.separator"/>
       <xsl:apply-templates select="r:employer"/>
       <xsl:apply-templates select="r:location"/>
       <br/>
