@@ -31,8 +31,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 $Id$
 -->
-<xsl:stylesheet xmlns:r="http://xmlresume.sourceforge.net/resume/0.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" exclude-result-prefixes="r">
-  <xsl:output method="xml" omit-xml-declaration="yes" indent="no" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"/>
+<xsl:stylesheet xmlns:r="http://xmlresume.sourceforge.net/resume/0.0" 
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0" 
+ exclude-result-prefixes="r">
+  <xsl:output method="xml" omit-xml-declaration="yes" indent="no" encoding="UTF-8" 
+   doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" 
+   doctype-system="http://www.w3.org/TR/xhtml1/DTD/strict.dtd"/>
+   
   <xsl:strip-space elements="*"/>
   <xsl:include href="../params.xsl"/>
   <xsl:include href="../lib/common.xsl"/>
@@ -825,6 +830,7 @@ $Id$
       <xsl:apply-templates/>
     </cite>
   </xsl:template>
+
 <!-- Format the referees -->
   <xsl:template match="r:referees">
     <xsl:call-template name="Heading">
@@ -834,7 +840,18 @@ $Id$
     </xsl:call-template>
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
-        <xsl:apply-templates select="r:referee"/>
+        <xsl:choose>
+	  <xsl:when test="$referees.layout = '2-column'">
+            <table class="referees">
+              <xsl:apply-templates select="r:referee" mode="2-column"/>
+            </table>
+          </xsl:when>
+	  <xsl:otherwise>
+	    <div class="referees">
+	      <xsl:apply-templates select="r:referee" mode="standard"/>
+	    </div>
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:when>
       <xsl:otherwise>
         <p>
@@ -843,26 +860,47 @@ $Id$
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <xsl:template match="r:referee">
+
+  <xsl:template match="r:referee" mode="standard">
     <div class="referee">
       <div class="refereeName">
         <xsl:apply-templates select="r:name"/>
+        <xsl:if test="r:title or r:organization">
+          <div>
+            <xsl:apply-templates select="r:title"/>
+            <xsl:if test="r:title and r:organization">
+              <xsl:text>, </xsl:text>
+            </xsl:if>
+            <xsl:apply-templates select="r:organization"/>
+          </div>
+        </xsl:if>
       </div>
-      <xsl:if test="r:title or r:organization">
-        <div>
-          <xsl:apply-templates select="r:title"/>
-          <xsl:if test="r:title and r:organization">
-            <xsl:text>, </xsl:text>
-          </xsl:if>
-          <xsl:apply-templates select="r:organization"/>
-        </div>
-      </xsl:if>
-      <div class="refereeContact">
-        <xsl:apply-templates select="r:address"/>
-        <xsl:apply-templates select="r:contact"/>
-      </div>
+      <div class="refereeAddress"><xsl:apply-templates select="r:address"/></div>
+      <div class="refereeContact"><xsl:apply-templates select="r:contact"/></div>
     </div>
   </xsl:template>
+
+  <xsl:template match="r:referee" mode="2-column">
+    <tr>
+      <td>
+        <div class="refereeName">
+          <xsl:apply-templates select="r:name"/>
+          <xsl:if test="r:title or r:organization">
+            <div>
+              <xsl:apply-templates select="r:title"/>
+              <xsl:if test="r:title and r:organization">
+                <xsl:text>, </xsl:text>
+              </xsl:if>
+              <xsl:apply-templates select="r:organization"/>
+            </div>
+          </xsl:if>
+        </div>
+        <div class="refereeContact"><xsl:apply-templates select="r:contact"/></div>
+      </td>
+      <td class="refereeAddress"><xsl:apply-templates select="r:address"/></td>
+    </tr>
+  </xsl:template>
+
 <!-- Format a description as either a block (div) or a single line (span) -->
   <xsl:template match="r:description" name="r:description">
 <!-- Possible values: 'block', 'single-line' -->

@@ -225,6 +225,7 @@ $Id$
         <xsl:if test="string-length($PostCode) &gt; 0">
           <xsl:value-of select="$PostCode"/><xsl:text> </xsl:text>
         </xsl:if>
+	</fo:block><fo:block>
         <xsl:apply-templates select="r:city"/>
       </fo:block>
         <xsl:if test="string-length($AdminDivision) &gt; 0">
@@ -1067,7 +1068,13 @@ $Id$
 
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
-        <xsl:apply-templates select="r:referee"/>
+        <fo:table table-layout="fixed" width="80%">
+	  <fo:table-column width="40%"/>
+	  <fo:table-column width="40%"/>
+	  <fo:table-body>
+            <xsl:apply-templates select="r:referee" mode="2-column"/>
+	  </fo:table-body>
+        </fo:table>
       </xsl:when>
       <xsl:otherwise>
         <fo:block space-after="{$para.break.space}">
@@ -1077,10 +1084,39 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="r:referee">
-    <fo:block
-        space-after="{$para.break.space}">
+  <xsl:template match="r:referee" mode="2-column">
+    <fo:table-row>
+      <fo:table-cell padding-bottom="{$half.space}">
+        <fo:block
+            font-style="{$referee-name.font.style}"
+            font-weight="{$referee-name.font.weight}">
+          <xsl:apply-templates select="r:name"/>
+        </fo:block>
+        <fo:block>
+          <xsl:apply-templates select="r:title"/>
+          <xsl:if test="r:title and r:organization">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+          <xsl:apply-templates select="r:organization"/>
+	</fo:block>
+        <xsl:if test="r:contact">
+          <fo:block>
+            <xsl:apply-templates select="r:contact"/>
+          </fo:block>
+        </xsl:if>
+      </fo:table-cell>
+      <fo:table-cell padding-bottom=".5em">
+        <xsl:if test="r:address">
+          <fo:block>
+            <xsl:apply-templates select="r:address"/>
+          </fo:block>
+        </xsl:if>
+      </fo:table-cell>
+    </fo:table-row>
+  </xsl:template>
 
+  <xsl:template match="r:referee" mode="standard">
+    <fo:block space-after="{$para.break.space}">
       <fo:block space-after="{$half.space}">
         <fo:block keep-with-next="always"
             font-style="{$referee-name.font.style}"

@@ -54,6 +54,10 @@ $Id$
   <!-- '0' to display referees.hidden.phrase instead. -->
   <xsl:param name="referees.display">1</xsl:param>
 
+  <!-- Layout of the referees section: "2-column" or "standard" -->
+  <!-- Does not affect the layout of the text output, only html and pdf -->
+  <xsl:param name="referees.layout">standard</xsl:param>
+
   <!-- Format for name/contact header: 'standard' or 'centered' *SE* -->
   <!-- Set here or override on command line -->
   <xsl:param name="header.format">standard</xsl:param>
@@ -163,12 +167,12 @@ $Id$
   <xsl:param name="header.line.thickness">1pt</xsl:param>
 
   <!-- Space betwixt paragraphs -->
-  <xsl:param name="para.break.space">1.0em</xsl:param>
+  <xsl:param name="para.break.space">0.750em</xsl:param>
 
   <!-- Half space; for anywhere line spacing is needed but should be less -->
   <!-- than a full paragraph break; between comma-separated skills lists, -->
   <!-- between job header and description/achievements. -->
-  <xsl:param name="half.space">0.5em</xsl:param>
+  <xsl:param name="half.space">0.4em</xsl:param>
 
   <!-- Bullet Symbol -->
   <xsl:param name="bullet.glyph">&#x2022;</xsl:param>
