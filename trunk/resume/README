@@ -1,0 +1,39 @@
+XML RESUME LIBRARY - Development System
+
+This is the developer's view of the XML Resume Library.
+
+Properties
+==========
+
+There is only one property that needs to be set, and that's for
+creating a new release of the XML Resume Library website:
+
+- resume.web.publish.dir
+
+  This property indicates the directory into which we publish any
+  web-accessible files from the system, such as the resume DTD.
+  This property is used during "ant install".
+
+Getting Help
+============
+
+If you want to know what each of the Ant targets do, run
+
+   ant -projecthelp
+
+Distributing the System
+=======================
+
+To make a release of the system, run:
+
+   ant release
+
+This create a release of the tag software in .zip and .tgz file
+formats.
+
+Cleaning Up
+===========
+
+To clean up everything, run
+
+   ant clean
