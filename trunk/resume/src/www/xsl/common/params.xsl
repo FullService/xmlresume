@@ -235,6 +235,14 @@ $Id$
   <!-- 'comma' for comma-separated lists -->
   <xsl:param name="skills.format">comma</xsl:param>
 
+  <!-- Separator between individual skills
+  (applies only when skills.format = comma) -->
+  <xsl:param name="skills.separator">, </xsl:param>
+
+  <!-- Separator between skillset title and skills list
+  (applies only when skills.format = comma) -->
+  <xsl:param name="skills.title.separator">: </xsl:param>
+
   <!-- Should skill <level> elements be displayed when formatting? -->
   <xsl:param name="skills.level.display">1</xsl:param>
 

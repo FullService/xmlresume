@@ -589,7 +589,8 @@ $Id$
     <fo:inline
         font-style="{$skillset-title.font.style}"
         font-weight="{$skillset-title.font.weight}">
-      <xsl:apply-templates/><xsl:text>: </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:value-of select="$skills.title.separator"/>
     </fo:inline>
   </xsl:template>
 
