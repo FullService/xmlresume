@@ -32,7 +32,7 @@
         <literal>single-line</literal>, a period and a space
         (<quote>.&#x20;</quote>) are displayed. Finally, the description is
         output, formatted according to the <link
-        linkend="paramref.interest.description.format"
+        linkend="param.interest.description.format"
         ><parameter>interest.description.format</parameter></link> parameter.
       </para>
     </refsect2>
