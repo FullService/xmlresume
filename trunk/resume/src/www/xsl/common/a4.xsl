@@ -38,6 +38,13 @@ $Id$
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Measurements for A4-sized paper. -->
+  <!--
+       Ghostscript references http://www.twics.com/~eds/paper/index.html
+       as a source of info on paper sizes.  ISO A size papers are
+       intended for general printing.  The minimum margin for any ISO
+       (metric) paper is 3mm (all sides).
+       GH: 2002/05/05
+    -->
 
   <xsl:param name="page.height">297mm</xsl:param>
   <xsl:param name="page.width">210mm</xsl:param>
