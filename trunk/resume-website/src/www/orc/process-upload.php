@@ -47,6 +47,7 @@ r&eacute;sum&eacute; appears.</p>
   print "<h1>ERROR</h1>\n";
   print "<p> $arrReturn[1] </p>";
 }
+?>
 
 <p>If you discover a problem with ORC that the developers should know 
 about, please consider filing a bug report <a 
@@ -55,5 +56,4 @@ href="https://sourceforge.net/tracker/?func=add&group_id=29512&atid=396335"
 trying to convert, the log summary of the conversion, and any other files 
 that you uploaded.  Thanks!</p>
 
-include_once("../private/footer.php");
-?>
+<?php include_once("../private/footer.php"); ?>

@@ -25,8 +25,8 @@ converted.</p>
 
     <h2>R&eacute;sum&eacute; Output Options</h2>
     <table>
-      <tr><td class="options.desc">Country:</td>
-        <td class="options.value">
+      <tr><td class="orc_desc">Country:</td>
+        <td class="orc_value">
           <select name="opt_country">
             <option value="br"> Brazil </option>
             <option value="fr"> France </option>
@@ -38,39 +38,39 @@ converted.</p>
             <option selected value="us"> United States </option>
           </select>
         </td></tr>
-        <tr><td class="options.desc">Papersize:</td>
-	<td class="options.value">
+        <tr><td class="orc_desc">Papersize:</td>
+	<td class="orc_value">
 	  <select name="opt_papersize">
             <option value="letter"> Letter </option>
             <option value="a4"> A4 </option>
 	  </select>
 	</td></tr>
-      <tr><td class="options.desc">Use R&eacute;sum&eacute; Filter:
+      <tr><td class="orc_desc">Use R&eacute;sum&eacute; Filter:
 	  <input type="checkbox" name="opt_useFilter" value="1" checked/>
-	</td>
-        Include Targets (separated by spaces):
+	</td><td class="orc_value">
+        Include Targets (separated by spaces):<br/>
           <input type="text" name="opt_includeTargets" size="40" maxlength="400"/><br/>
-        Exclude Elements (separated by spaces):
+        Exclude Elements (separated by spaces):<br/>
           <input type="text" name="opt_excludeElements" size="40" maxlength="400"/><br/>
-        Exclude Attributes (separated by spaces):
+        Exclude Attributes (separated by spaces):<br/>
           <input type="text" name="opt_excludeAttributes" size="40" maxlength="400"/><br/>
 	</td>
       </tr>
 
-      <tr><td class="options.desc">Generate Plain Text Output</td>
-	<td class="options.value">
+      <tr><td class="orc_desc">Generate Plain Text Output</td>
+	<td class="orc_value">
           <input type="checkbox" name="opt_txt" value="1" checked/>
 	</td></tr>
-      <tr><td class="options.desc">Generate HTML Output</td>
-	<td class="options.value">
+      <tr><td class="orc_desc">Generate HTML Output</td>
+	<td class="orc_value">
           <input type="checkbox" name="opt_html" value="1" checked/>
 	</td></tr>
-      <tr><td class="options.desc">Generate PDF Output</td>
-	<td class="options.value">
+      <tr><td class="orc_desc">Generate PDF Output</td>
+	<td class="orc_value">
           <input type="checkbox" name="opt_pdf" value="1" checked/>
 	</td></tr>
-      <tr><td class="options.desc">Archive Format (used to compress output)</td>
-	<td class="options.value">
+      <tr><td class="orc_desc">Archive Format (used to compress output)</td>
+	<td class="orc_value">
 	  <select name="opt_archive">
             <option value="tgz"> .tgz (tar-gzip, Unix) </option>
             <option value="zip"> .zip (Winzip, MS Windows) </option>
