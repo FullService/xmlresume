@@ -64,9 +64,8 @@ $(RESUME).fo: $(RESUME).xml
 	java org.apache.xalan.xslt.Process -in $(RESUME).xml -xsl $(FO_STYLE) -out $(RESUME).fo
 
 $(RESUME).pdf: $(RESUME).fo
-	java -cp "/xep/lib/JimiProClasses.zip;/xep/lib/xep.jar;/xep/lib/xerces-1.2.3.jar" -Dcom.renderx.FO2PDF.ROOT=/xep com.renderx.FO2PDF.Driver $(RESUME).fo
-
-#	java org.apache.fop.apps.Fop $(RESUME).fo $(RESUME).pdf
+	java org.apache.fop.apps.Fop $(RESUME).fo $(RESUME).pdf
 
 # The stylesheet also works great with XEP; uncomment and modify the
 # below line for your XEP installation to give it a try.
+#	java -cp "/xep/lib/JimiProClasses.zip;/xep/lib/xep.jar;/xep/lib/xerces-1.2.3.jar" -Dcom.renderx.FO2PDF.ROOT=/xep com.renderx.FO2PDF.Driver $(RESUME).fo

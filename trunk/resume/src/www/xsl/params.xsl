@@ -125,5 +125,4 @@ $Id$
   <xsl:param name="citation.font.style">italic</xsl:param>
   <xsl:param name="url.font.family">monospace</xsl:param>
 
-
 </xsl:stylesheet>

@@ -37,5 +37,18 @@ $Id$
 
   <xsl:import href="fo.xsl"/>
 
+  <!-- In the UK, it's a CV (curricula vita).  And perhaps it's a
+  "Telephone", not a "Phone".  And the measurements are for A4-sized
+  paper. -->
+
+  <xsl:param name="resume.word">CV</xsl:param>
+  <xsl:param name="phone.word">Telephone</xsl:param>
+  <xsl:param name="page.height">297mm</xsl:param>
+  <xsl:param name="page.width">210mm</xsl:param>
+  <xsl:param name="margin.top">20mm</xsl:param>
+  <xsl:param name="margin.left">33mm</xsl:param>
+  <xsl:param name="margin.right">20mm</xsl:param>
+  <xsl:param name="margin.bottom">20mm</xsl:param>
+  <xsl:param name="body.indent">20mm</xsl:param>
 
 </xsl:stylesheet>
