@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.gpa">
+  <refnamediv>
+    <refname>gpa</refname>
+    <refpurpose>Information about a grade point average</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">gpa</sgmltag> element contains a information
+      about a grade point average, or GPA. A GPA is a number that averages the
+      scores of different subjects (such as mathematics, English, history,
+      etc.).
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">gpa</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">type</sgmltag></term>
+          <listitem>
+            <para>
+              Indicates whether the GPA refers to all courses taken toward a
+              degree, or just those in the major field of study.  Possible
+              values: <literal>overall</literal> and <literal>major</literal>.
+              Default is <literal>overall</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.ID"><sgmltag class="element">ID</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<gpa type="major">
+  <score>3.78</score>
+  <possible>4.00</possible>
+  <note>This is on a weighted scale.</note>
+</gpa>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<gpa>
+  <score>3</score>
+</gpa>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

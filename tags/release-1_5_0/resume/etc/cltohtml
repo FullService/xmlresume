@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# convert changelog (rcs2log output) into HTML-safe
+# stripping out email addresses and doing entity
+# substitution
+
+echo -n '<pre>'
+sed -e 's/<.*@.*>//g' -e 's/&/\&amp;/g' -e 's/>/\&gt;/g' -e 's/</\&lt;/g'
+echo '</pre>'
+exit 0
+

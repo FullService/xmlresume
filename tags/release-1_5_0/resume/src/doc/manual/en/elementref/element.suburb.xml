@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.suburb">
+  <refnamediv>
+    <refname>suburb</refname>
+    <refpurpose>A name of a suburb</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">suburb</sgmltag> element contains the name
+      of a suburb, as used by a postal service to deliver mail.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">suburb</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a suburb. The suburb may then
+              be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.city"><sgmltag class="element">city</sgmltag></link></member>
+        <member><link linkend="element.prefecture"><sgmltag class="element">prefecture</sgmltag></link></member>
+        <member><link linkend="element.ward"><sgmltag class="element">ward</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <example>
+      <title>A New Zealand Address</title>
+      <programlisting><![CDATA[
+<address>
+  <street>236 Majoribanks Street</street>
+  <suburb>Mount Victoria</suburb>
+  <city>Wellington</city>
+  <postalCode>6001</postalCode>
+  <country>New Zealand</country>
+</address>
+      ]]></programlisting>
+    </example>
+
+  </refsect1>
+
+</refentry>

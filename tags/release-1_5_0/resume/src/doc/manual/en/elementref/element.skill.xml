@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.skill">
+  <refnamediv>
+    <refname>skill</refname>
+    <refpurpose>A name and/or description of a skill</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">skill</sgmltag> element describes something
+      that a person is skilled at.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">skill</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">level</sgmltag></term>
+          <listitem>
+            <para>
+              The <sgmltag class="attribute">level</sgmltag> attribute indicates
+              a person's level of proficiency at a skill.  <quote>Level of
+              proficiency</quote> may be expressed in any manner, such as
+              <quote>3 years</quote> (three years of experience with a
+              particular skill), <quote>expert</quote>, or <quote>7/10</quote>.
+              The <link linkend="param.skills.level.display"
+              ><parameter>skills.level.display</parameter></link> parameter
+              determines whether or not skill levels are displayed in formatted
+              output.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.achievement"><sgmltag class="element">achievement</sgmltag></link></member>
+        <member><link linkend="param.skills.format"><parameter>skills.format</parameter></link></member>
+        <member><link linkend="param.skills.level.display"><parameter>skills.level.display</parameter></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<skill>Singing</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill level="3 years">Java Programming</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill level="certified glutton">Eating</skill>
+    ]]></programlisting></informalexample>
+    <informalexample><programlisting><![CDATA[
+<skill level="beginner">
+  Throwing <emphasis>large</emphasis> objects
+</skill>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>
