@@ -136,7 +136,7 @@ public class TargetFilter extends XMLResumeFilter {
 	for (int i=0; i < whitelist.size(); i++)
 	    s = s + " " + whitelist.elementAt(i);
 	s = s + " -->\n";
-	this.getContentHandler().characters(s.toCharArray(), 0, s.length());
+	this.getContentHandler().ignorableWhitespace(s.toCharArray(), 0, s.length());
 	this.getContentHandler().endDocument();
     }
 
@@ -157,7 +157,7 @@ public class TargetFilter extends XMLResumeFilter {
     public void startElement(String uri, String localName, String qName, 
 			     Attributes attributes) throws SAXException {
 
-        // XXX BEWARE!
+        // XXX NOTICE:
         // XXX If you optimize this method (so that it doesn't check for
         // XXX acceptance if we're in an excluded element, or so that it uses
         // XXX short-circuit boolean logic), you'll break the part of the code

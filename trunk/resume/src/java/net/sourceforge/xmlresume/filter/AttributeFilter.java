@@ -79,7 +79,7 @@ public class AttributeFilter extends XMLResumeFilter {
 	for (int i=0; i < blacklist.size(); i++)
 	    s = s + " " + blacklist.elementAt(i);
 	s = s + " -->\n";
-	this.getContentHandler().characters(s.toCharArray(), 0, s.length());
+	this.getContentHandler().ignorableWhitespace(s.toCharArray(), 0, s.length());
 	this.getContentHandler().endDocument();
     }
 
