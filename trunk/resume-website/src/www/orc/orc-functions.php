@@ -18,11 +18,11 @@ function process_upload() {
   umask(0000); 
 
 # Create the working directories
-  if( !mkdir($pathdirname, 0770)) return array(1, "Couldn't create directory $pathdirname");
-  chmod($pathdirname, 0777);
-  touch($pathdirname . "/index.html");
-  if( !mkdir($pathdirname . "/out", 0770)) return array(1, "Couldn't create directory $pathdirname . "/out");
-  chmod($pathdirname . "/out", 0777);
+  if( !mkdir( $pathdirname, 0770)) return array(1, "Couldn't create directory $pathdirname");
+  chmod( $pathdirname, 0777);
+  touch( $pathdirname . "/index.html");
+  if( !mkdir( $pathdirname . "/out", 0770)) return array(1, "Couldn't create directory " . $pathdirname . "/out");
+  chmod( $pathdirname . "/out", 0777);
 
 # Add a .htaccess file that forbids directory listing (just a privacy thing)
   if( !$fpHtaccess = fopen( $pathdirname . "/.htaccess", 'w'))
@@ -71,18 +71,17 @@ function process_upload() {
   # xsl directory and its files.  For example, output/*.xsl
   # refers to "../country/*.xsl", and format/*.xsl refers
   # to ../params.xsl . 
-  symlink( "../xsl/country", $pathdirname . "/country");
-  symlink( "../xsl/format", $pathdirname . "/format");
-  symlink( "../xsl/lib", $pathdirname . "/lib");
-  symlink( "../xsl/output", $pathdirname . "/output");
-  symlink( "../xsl/paper", $pathdirname . "/paper");
+  symlink( "../../../xsl/country/", $pathdirname . "/country");
+  symlink( "../../../xsl/format/", $pathdirname . "/format");
+  symlink( "../../../xsl/lib/", $pathdirname . "/lib");
+  symlink( "../../../xsl/output/", $pathdirname . "/output");
+  symlink( "../../../xsl/paper/", $pathdirname . "/paper");
 
   #Create an email message body (to be sent later)
   if( !$fpEmail = fopen( $pathdirname . "/reply.email", 'w'))
     return( array( 1, "Internal: could not create reply.email file"));
   fwrite($fpEmail,
-"
-To: $email
+"To: " . $_POST["email"] . "
 Subject: ORC: Your XML Resume has been processed
 Hello,
 
@@ -90,7 +89,7 @@ This message is to notify you that the XML R&eacute;sum&eacute; you
 submitted has been processed.  The results of this build, and a log
 summary of the build process can be found at
 
-@WEBSERVER_ADDRESS@/orc/incoming/$dirname/out/
+http://sbap.org/orc/incoming/$dirname/out/
 
 Please download your build results as soon as possible; they are deleted
 on a regular basis.

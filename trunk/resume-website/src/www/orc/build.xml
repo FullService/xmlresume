@@ -33,14 +33,14 @@ TODO
   <property name="html_style" value="${xsl.base}/output/${country}-html.xsl"/>
   <property name="text_style" value="${xsl.base}/output/${country}-text.xsl"/>
 <!--									-->
-  <fileset id="output.files">
+  <patternset id="output.files">
     <include name="${resume}.xml"/>
     <include name="${resume.filtered}.xml"/>
     <include name="${resume}.txt"/>
     <include name="${resume}.html"/>
     <include name="${resume}.fo"/>
     <include name="${resume}.pdf"/>
-  </fileset>
+  </patternset>
 <!--									-->
 <!--		Target Init 		-->
   <target name="init" description="Initialize the build system">
@@ -125,18 +125,18 @@ TODO
 	  description="Zip/Tar the formatted output."/>
   <target name="-tar" depends="convert" if="options.tgz">
     <tar destfile="out/${resume}.tar" basedir=".">
-      <tarfileset refid="output.files"/>
+      <patternset refid="output.files"/>
     </tar>
     <gzip src="out/${resume}.tar" zipfile="out/${resume}.tgz"/>
   </target>
   <target name="-zip" depends="convert" unless="options.tgz">
     <zip destfile="out/${resume}.zip" basedir=".">
-      <fileset refid="output.files"/>
+      <patternset refid="output.files"/>
     </zip>
   </target>
 <!-- 		Target Dispatch		-->
   <target name="dispatch" depends="compress"
-          description="Notify the user that the build is complete."/>
+          description="Notify the user that the build is complete.">
   <!-- You could put a <mail> element here, but that would require the
        not-freely-redistributable javamail implementation from Sun. -->
   </target>

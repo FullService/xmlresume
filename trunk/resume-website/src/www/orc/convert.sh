@@ -14,25 +14,38 @@
 ########################################################
 
 # You may need to change the following variables:
-support_home="/home/groups/x/xm/xmlresume/resume-support"
-ant_cmd="$supporthome/ant/ant"
+#export SUPPORT_HOME="/home/groups/x/xm/xmlresume/resume-support"
+export SUPPORT_HOME="${HOME}/xmlresume/resume-support"
+JAVACMD=java
+ANTCMD="${SUPPORT_HOME}/ant/ant"
+
+# Load user-specific configuration
+if [ -f "${HOME}/.antrc" ]; then 
+	. "${HOME}/.antrc"
+fi
+
 
 # Ant's ClassLoader is... frail.  We set the classpath
 # outside of Ant, save ourselves some heartache.
-cp=""
-cp="$cp:$support_home/fop.jar"
-cp="$cp:$support_home/xerces.jar"
-cp="$cp:$support_home/xalan.jar"
-cp="$cp:$support_home/avalon-framework-cvs-20020315.jar"
-cp="$cp:$support_home/batik.jar"
-cp="$cp:$support_home/xmlresume-filter.jar"
+cp="${SUPPORT_HOME}/fop.jar"
+for jarfile in `ls -1 ${SUPPORT_HOME} | grep .jar`; do
+	cp="${cp}:${SUPPORT_HOME}/${jarfile}"
+done
+for jarfile in `ls -1 ${SUPPORT_HOME}/ant/lib | grep .jar`; do
+	cp="${cp}:${SUPPORT_HOME}/${jarfile}"
+done
 export CLASSPATH=$cp
 
+echo "Using ClassPath: $CLASSPATH"
+
+# Add option for the CLASSPATH
+ANT_OPTS="${ANT_OPTS} -classpath ${LOCALCLASSPATH}"
+
 cd incoming
-for resume in `ls -1 orc*`; 
+for resume in `ls -1 | grep orc`; 
 do
   cd $resume
-  $ant_cmd -verbose -propertyfile user.props \
+	${ANTCMD} -debug -propertyfile user.props \
 	-find build.xml dispatch >> ./out/antlog.txt
   sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..
