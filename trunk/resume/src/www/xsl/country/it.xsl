@@ -46,14 +46,14 @@ $Id$
   <xsl:param name="miscellany.word">Varie</xsl:param>
   <xsl:param name="in.word">in</xsl:param>
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
-  <xsl:param name="by.word">by</xsl:param>
+  <xsl:param name="by.word">di</xsl:param>
   <xsl:param name="present.word">presente</xsl:param>
   <xsl:param name="phone.word">Telefono</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
-  <xsl:param name="achievements.word">Successos:</xsl:param>
-  <xsl:param name="projects.word">Progettos:</xsl:param>
-  <xsl:param name="referees.word">Riferimentos</xsl:param>
+  <xsl:param name="achievements.word">Conseguimenti</xsl:param>
+  <xsl:param name="projects.word">Progetti</xsl:param>
+  <xsl:param name="referees.word">Riferimenti</xsl:param>
 
   <!-- default to Italian address formatting -->
   <xsl:param name="address.format">italian</xsl:param>
