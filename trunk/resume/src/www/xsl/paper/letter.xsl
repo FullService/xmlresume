@@ -50,13 +50,13 @@ $Id$
   <xsl:param name="page.width">8.5in</xsl:param>
 
   <!-- Default page margins -->
-  <xsl:param name="margin.top">1in</xsl:param>
-  <xsl:param name="margin.left">1in</xsl:param>
-  <xsl:param name="margin.right">1in</xsl:param>
-  <xsl:param name="margin.bottom">1in</xsl:param>
+  <xsl:param name="margin.top">0.75in</xsl:param>
+  <xsl:param name="margin.left">0.6in</xsl:param>
+  <xsl:param name="margin.right">0.6in</xsl:param>
+  <xsl:param name="margin.bottom">0.6in</xsl:param>
 
   <!-- Body text indent -->
-  <xsl:param name="body.indent">1in</xsl:param>
+  <xsl:param name="body.indent">.5in</xsl:param>
 
   <!-- Heading text indent -->
   <xsl:param name="heading.indent">0in</xsl:param>
@@ -69,7 +69,7 @@ $Id$
   We can't do that using an XPath expression because the numbers have associated
   units. Grrr. There has to be a better way to do this.
   -->
-  <xsl:param name="header.margin-left">1.75in</xsl:param>
+  <xsl:param name="header.margin-left">1.65in</xsl:param>
   <xsl:param name="header.margin-right" select="$header.margin-left"/>
 
 </xsl:stylesheet>
