@@ -53,7 +53,7 @@ $Id$
   <xsl:param name="history.word">Employment History</xsl:param>
 
   <!-- Word to use for "Academics" -->
-  <xsl:param name="academics.word">Academics</xsl:param>
+  <xsl:param name="academics.word">Education</xsl:param>
 
   <!-- Word to use for "Publications" -->
   <xsl:param name="publications.word">Publications</xsl:param>
