@@ -39,7 +39,7 @@ for country in `ls -1 *.xsl`; do
     translated=`grep -c $param $country`
     if [ "0" = $translated ]; 
     then 
-      echo "Adding param $param to $country"
+      echo "Adding param $param to $country, make sure you edit $country.xsl manually."
       echo "  <xsl:param name=\"$param\">TRANSLATION NEEDED</xsl:param>" >> $country
     fi
   done
