@@ -68,9 +68,9 @@ $Id$
   <xsl:param name="minors.word">minorit&#x00E1;rios</xsl:param>
   <xsl:param name="referees.word">Refer&#x00ea;ncias</xsl:param>
   <!-- Word to use for "Overall GPA", as in "*Overall GPA*: 3.3" -->
-  <xsl:param name="overall-gpa.word">Média geral</xsl:param>
+  <xsl:param name="overall-gpa.word">M&#x00E9;dia Geral</xsl:param>
   <!-- Word to use for "GPA in Major", as in "*GPA in Major*: 3.3" -->
-  <xsl:param name="major-gpa.word">GPA in Major</xsl:param>
+  <xsl:param name="major-gpa.word">M&#x00E9;dia Principal</xsl:param>
   <!-- Text to use for "out of", as in "GPA: 3.71* out of *4.00" -->
   <xsl:param name="out-of.word">de um total de</xsl:param>
 
