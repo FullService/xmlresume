@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
-          "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+  "file:../www/dtd/resume.dtd">
+<!--          "http://xmlresume.sourceforge.net/dtd/resume.dtd"> -->
+
+
 <!--
 example2.xml
 
@@ -172,4 +175,31 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       </degree>
     </degrees>
   </academics>
+
+  <pubs>
+    <pub>
+      <artTitle>High speed reduction of wine based sauces</artTitle>
+      <bookTitle>Journal of the Occidental Culinary Federation</bookTitle>
+      <author>Kernighan, A.</author>
+      <author>Bell, C.</author>
+      <author>Kassis, K.</author>
+      <pageNums>132-136</pageNums>
+      <pubDate>
+	<month>February</month>
+	<year>2000</year>
+      </pubDate>
+      <publisher>OCF, New York, New York</publisher>
+    </pub>
+
+    <pub>
+      <author>Kernighan, A.</author>
+      <pubDate>
+	<year>1998</year>
+      </pubDate>
+      <publisher>Deltoid Press, <url>http://www.deltoid.co/</url></publisher>
+      <bookTitle>The Texas Ranger Chow Book</bookTitle>
+    </pub>
+	
+  </pubs>
+
 </resume>

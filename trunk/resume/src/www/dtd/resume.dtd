@@ -110,7 +110,14 @@ $Id$
 
 <!-- Have you published anything? -->
 <!ELEMENT pubs (pub+)>
-<!ELEMENT pub (para+)>
+<!ENTITY % pubElements "(artTitle|bookTitle|author|pubDate|publisher|pageNums)">
+<!ELEMENT pub (para | %pubElements;)*>
+<!ELEMENT artTitle (#PCDATA)>
+<!ELEMENT bookTitle (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT pubDate (month?, year)>
+<!ELEMENT publisher (#PCDATA | url)*>
+<!ELEMENT pageNums (#PCDATA)>
 
 <!-- Final remarks. -->
 <!ELEMENT misc (para+)>

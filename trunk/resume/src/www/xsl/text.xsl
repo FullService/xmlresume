@@ -46,6 +46,7 @@ $Id$
 	  <xsl:apply-templates select="resume"/>
   </xsl:template>
 
+  <xsl:include href="params.xsl"/>
 
   <!-- Some miscelaneous Templates that I need -->
   <xsl:template name="NewLine">
@@ -353,11 +354,70 @@ Email: <xsl:value-of select="contact/email"/><xsl:call-template name="NewLine"/>
   <xsl:template match="pub">
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-      	<xsl:apply-templates/>
+        <xsl:call-template name="FormatParagraph">
+	  <xsl:with-param name="Text">
+	    <xsl:apply-templates select="author[position() != last()]" mode="internal"/>
+	    <xsl:apply-templates select="author[position() = last()]" mode="final"/>
+	    <xsl:apply-templates select="artTitle"/>
+	    <xsl:apply-templates select="bookTitle"/>
+	    <xsl:apply-templates select="publisher"/>
+	    <xsl:apply-templates select="pubDate"/>
+	    <xsl:apply-templates select="pageNums"/>
+	    <xsl:apply-templates select="para"/>
+	  </xsl:with-param>
+	  <xsl:with-param name="Width" select="60"/>
+	</xsl:call-template>
       </xsl:with-param>
+      <xsl:with-param name="Length" select="4"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
-    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <!-- Format the all but the last author -->
+  <xsl:template match="author" mode="internal">
+    <xsl:value-of select="."/><xsl:value-of select="$pub.author.separator"/>
+  </xsl:template>
+
+  <!-- Format the last author whose name doesn't end in a period.
+  NOTE: This prevents a format like "Fish, X.." from appearing, but
+  only when the pub.item.separator is a ".", otherwise it just leaves
+  out the pub.item.separator.  Does anyone know how we can test for
+  $pub.item.separator instead of '.'? -->
+  <xsl:template match="author[substring(text(), string-length(text()))='.']" mode="final">
+    <xsl:value-of select="."/><xsl:text> </xsl:text>
+  </xsl:template>
+
+  <!-- Title of article -->
+  <xsl:template match="artTitle">
+    &quot;<xsl:value-of select="."/>&quot;<xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+
+  <!-- Title of book -->
+  <xsl:template match="bookTitle">
+    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+
+  <!-- Publisher with a following publication date. -->
+  <xsl:template match="publisher[following-sibling::pubDate]">
+    <xsl:apply-templates/>
+  </xsl:template>
+
+  <!-- Publisher without pub date -->
+  <xsl:template match="publisher">
+    <xsl:apply-templates/><xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+
+  <!-- Format the publication date -->
+  <xsl:template match="pubDate">
+    <xsl:value-of select="month"/>
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="year"/>
+    <xsl:value-of select="$pub.item.separator"/>
+  </xsl:template>
+
+  <!-- Format the page numbers of the journal in which the article appeared -->
+  <xsl:template match="pageNums">
+    <xsl:value-of select="."/><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format the misc info -->
