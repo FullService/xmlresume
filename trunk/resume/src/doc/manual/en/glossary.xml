@@ -48,7 +48,7 @@
     <glossterm>parent element</glossterm>
     <glossdef>
       <para>
-	The <glossterm linkend="gloss.element>element</glossterm>
+	The <glossterm linkend="gloss.element">element</glossterm>
 	whose start tags and end tags surround a given element.
       </para>
     </glossdef>
@@ -58,7 +58,7 @@
     <glossterm>child element</glossterm>
     <glossdef>
       <para>
-	Any <glossterm linkend="gloss.element>element</glossterm>
+	Any <glossterm linkend="gloss.element">element</glossterm>
 	positioned between the start tags and end tags of a given 
 	element.
       </para>
