@@ -49,6 +49,7 @@ In general, each block is responsible for outputting a newline after itself.
         The break element is deprecated as of version 1.3.3 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you remove all break elements.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
@@ -59,6 +60,7 @@ In general, each block is responsible for outputting a newline after itself.
         The company element is deprecated as of version 1.3.3 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you remove all company elements.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
@@ -69,6 +71,7 @@ In general, each block is responsible for outputting a newline after itself.
         The street2 element is deprecated as of version 1.3.3 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you convert all street2 elements to street elements.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
@@ -81,6 +84,7 @@ In general, each block is responsible for outputting a newline after itself.
         Resume Library. It will be removed in a future version. It is
         recommended that you remove all skillareas elements. skillarea elements
         may now be direct children of resume.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
@@ -92,6 +96,7 @@ In general, each block is responsible for outputting a newline after itself.
         Library. It will be removed in a future version. It is recommended that
         you remove all skills elements. skill elements may now be direct
         children of skillset.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
   </xsl:template>
   <xsl:template match="r:skills">
@@ -113,6 +118,7 @@ In general, each block is responsible for outputting a newline after itself.
         The pubDate element is deprecated as of version 1.4.0 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you replace pubDate elements with date elements.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:call-template name="FormatPubDate"/>
   </xsl:template>
@@ -123,6 +129,7 @@ In general, each block is responsible for outputting a newline after itself.
         The docpath, head, node, tail, label, and uri elements are deprecated as
         of version 1.4.0 of the XML Resume Library. They will be removed in a
         future version. It is recommended that you remove all of these elements.
+      You can use "make 13x-140" to fix this problem.
     </xsl:message>
     <xsl:apply-templates/>
   </xsl:template>
