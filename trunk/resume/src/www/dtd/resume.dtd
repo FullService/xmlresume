@@ -49,7 +49,7 @@ $Id$
 <!ENTITY % inlines "#PCDATA | emphasis | citation | url">
 
 <!-- Sections of a resume -->
-<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|keywords|memberships)">
+<!ENTITY % sections "(objective|history|academics|skillareas|pubs|misc|referees|keywords|memberships)">
 
 <!-- A collection of resumes -->
 <!ELEMENT resumes (resume*)>
@@ -123,7 +123,7 @@ $Id$
 
 <!-- Your previous employment history. -->
 <!ELEMENT history (job+)>
-<!ELEMENT job (jobtitle, employer, period, description?, achievements?)>
+<!ELEMENT job (jobtitle, employer, period, description?, projects?, achievements?)>
 <!ATTLIST job id ID #IMPLIED>
 <!ELEMENT jobtitle (#PCDATA)>
 <!ELEMENT employer (#PCDATA)>
@@ -132,18 +132,23 @@ $Id$
 <!ELEMENT from (date | present)>
 <!ELEMENT to (date | present)>
 <!ELEMENT description (para+)>
+<!ELEMENT projects (project+)>
+<!ELEMENT project (%inlines;)*>
 <!ELEMENT achievements (achievement+)>
 <!ELEMENT achievement (%inlines;)*>
 
 <!-- What academics, if any, you might possess. -->
 <!ELEMENT academics (degrees, note?)>
 <!ELEMENT degrees (degree+)>
-<!ELEMENT degree (level, subject, date, institution?, annotation?)>
+<!ELEMENT degree (level, major, date, institution?, subjects?, annotation?)>
 <!ATTLIST degree id ID #IMPLIED>
 <!ELEMENT level (#PCDATA)>
-<!ELEMENT subject (#PCDATA)>
+<!ELEMENT major (#PCDATA)>
 <!ELEMENT institution (#PCDATA)>
 <!ATTLIST institution id ID #IMPLIED>
+<!ELEMENT subjects (subject+)>
+<!ELEMENT subject (title,result)>
+<!ELEMENT result (#PCDATA)>
 <!ELEMENT annotation (#PCDATA)>
 <!ELEMENT note (para+)>
 
@@ -194,6 +199,10 @@ $Id$
 <!-- For database retrieval (and web page insertion), some keywords. -->
 <!ELEMENT keywords (keyword+)>
 <!ELEMENT keyword (#PCDATA)>
+
+<!-- The referees of the resume names and addresses. -->
+<!ELEMENT referees (referee+)>
+<!ELEMENT referee (name, address?, contact?)>
 
 <!-- Miscellaneous elements part of larger constructs. -->
 <!ELEMENT para (%inlines;)*>
