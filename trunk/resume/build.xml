@@ -405,6 +405,18 @@ $Id$
   </target>
 
   <!-- Manual preparatory targets -->
+  <target name="doc.manual.check"
+    description="Check if there are elements in the DTD that lack a refpage">
+
+    <exec executable="${python}"
+      vmlauncher="${python.vmlauncher}"
+      failonerror="${python.failonerror}">
+      <arg file="${doc.manual.script.dir}/dtddoc.py"/>
+      <arg value="--check"/>
+    </exec>
+  </target>
+
+  <!-- Manual preparatory targets -->
   <target name="doc.manual"
     description="Generate all formats of the manual"
     depends="doc.manual.html-single, doc.manual.html-multiple, doc.manual.text">
