@@ -355,10 +355,29 @@ public class TargetFilter extends XMLFilterImpl {
 	}
     }
 
+    /**
+     * Handle the DTD Declaration
+     */
+    public void notationDecl(String name, String publicId, String systemId)
+                  throws SAXException {
+	debug("Received notationDecl Event:"
+		+ "\n\tname: " + name
+		+ "\n\tpublicId: " + publicId
+		+" \n\tsystemId: " + systemId);
+    }
+
+    public void unparsedEntityDecl(String name, String publicId, 
+				String systemId, String notationName)
+                        throws SAXException {
+	debug("Received unparsedEntityDecl Event:"
+		+ "\n\tname: " + name + "\n\tpublicId: " + publicId
+		+ "\n\tsystemId: " + systemId
+		+ "\n\tnotationName: " + notationName);
+    }
+
     /** 
      * Record the locator for this Filter's <code>parent</code>.
-     */ 
-    
+     */     
     public void setDocumentLocator(Locator locator) {
 	this.locator = locator;
 	if (dh != null) { dh.setDocumentLocator(locator); }
