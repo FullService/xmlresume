@@ -17,6 +17,7 @@
 SUPPORT_HOME="@SUPPORT_HOME@"
 ANTCMD="${SUPPORT_HOME}/ant/ant"
 JAVACMD=java
+MD5CMD=md5sum
 
 # Load user-specific configuration
 if [ -f "${HOME}/.antrc" ]; then 
@@ -40,13 +41,13 @@ echo "Using ClassPath: $CLASSPATH"
 # Add option for the CLASSPATH
 ANT_OPTS="${ANT_OPTS} -classpath ${LOCALCLASSPATH}"
 
-cd incoming
+cd @WWW_ROOT_FS@/orc/incoming
 for resume in `ls -1 | grep '^orc'`; 
 do
   cd $resume
-    grep '^email =' user.props | cut -f 3 -d" " | md5 >> ../../users.email
+    grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.email
     ${ANTCMD} -verbose -propertyfile user.props \
-    -find build.xml dispatch >> ./out/antlog.txt
+    -find build.xml dispatch >& ./out/antlog.txt
   sendmail -f'noreply@xmlresume.sourceforge.net' -t < reply.email
   cd ..
   mv $resume DONE/$resume

@@ -17,9 +17,10 @@ $arrReturn = process_upload();
 
 <h1>Success!</h1> 
 
-<p>Congratulations, your r&eacute;sum&eacute; was uploaded successfully.  You
-will be emailed with a link to the results of your r&eacute;sum&eacute;'s 
-conversion shortly.</p>
+<p>Congratulations, your r&eacute;sum&eacute; was uploaded successfully.  
+It will be processed shortly.  Please check 
+<?php print "<a href=\"$arrReturn[2]\">$arrReturn[2]</a>"; ?>
+periodically to download your converted r&eacute;sum&eacute;.
 
 <?php
 # report upload failure

@@ -8,8 +8,7 @@
 #		1: Failure prior to build
 #		2: Failure during build
 #  $ret[1]: a descriptive error message
-#  $ret[2]: the location of the build log file (only if $ret[0] == 0 or 2)
-#  $ret[3]: the location of the converted compressed resume file
+#  $ret[2]: a URL to the processed resume
 function process_upload() {   
   global $dirname, $pathdirname, $time_stamp;
 
@@ -106,7 +105,8 @@ Thanks for using the XMLResume Library.
 ");
   fclose($fpEmail);
 
-  return( array( 0, "R&eacute;sum&eacute; uploaded successfully."));
+  return( array( 0, "R&eacute;sum&eacute; uploaded successfully.",
+	         "@WEBSERVER_ADDRESS@@WWW_ROOT@/orc/incoming/DONE/$dirname/out/"));
 }
 
 ?>

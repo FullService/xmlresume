@@ -24,10 +24,12 @@ $Id$
   <property name="webserver.address" value="http://xmlresume.sourceforge.net"/>
   <!-- The location (relative to the webserver root) of the www files -->
   <property name="www.root" value=""/>
+  <!-- The location (relative to the Filesystem root) of the www files -->
+  <property name="www.root.fs" value="/home/groups/x/xm/xmlresume/htdocs"/>
   <!-- The location of the resume-support module: -->
   <property name="support.home" value="/home/groups/x/xm/xmlresume/resume-support"/>
 
-  <!-- SOURCE CODE LAYOUT ===================================================================================================== -->
+  <!-- SOURCE CODE LAYOUT ============================================= -->
 
   <!-- Source web pages -->
   <property name="src.dir" value="${basedir}/src"/>
@@ -103,6 +105,7 @@ $Id$
     <filter token="VERSION_DOTS" value="${version.dots}"/>
     <filter token="WEBSERVER_ADDRESS" value="${webserver.address}"/>
     <filter token="WWW_ROOT" value="${www.root}"/>
+    <filter token="WWW_ROOT_FS" value="${www.root.fs}"/>
     <filter token="SUPPORT_HOME" value="${support.home}"/>
     <filter token="RELEASE_ZIP_NAME" value="${release.zip.name}"/>
     <filter token="RELEASE_TGZ_NAME" value="${release.tgz.name}"/>
