@@ -37,11 +37,13 @@ $Id$
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <!-- Since string.xsl is <xsl:include>ed by {html,fo,text}.xsl, we import it
+  here to avoid defining it twice. -->
+  <xsl:import href="string.xsl"/>
+
   <xsl:include href="deprecated.xsl"/>
   <xsl:include href="address.xsl"/>
   <xsl:include href="pub.xsl"/>
-
-  <xsl:include href="string.xsl"/>
 
   <!-- Outputs the text to use as a title. -->
   <!-- Uses <title> child element if present, otherwise $Default. -->
