@@ -89,8 +89,10 @@ $Id$
       <xsl:apply-templates/>
     </div>
   </xsl:template>
+
 <!-- Suppress the keywords in the main body of the document -->
   <xsl:template match="r:keywords"/>
+
 <!-- But put them into the HTML header. -->
   <xsl:template match="r:keywords" mode="header">
     <meta name="keywords">
@@ -105,6 +107,7 @@ $Id$
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
+
 <!-- Output your name and the word "Resume". -->
   <xsl:template match="r:header" mode="standard">
     <div class="header">
@@ -115,6 +118,7 @@ $Id$
       <xsl:apply-templates select="r:contact"/>
     </div>
   </xsl:template>
+
 <!-- Alternate formatting for the page header. -->
 <!-- Display the name and contact information in a single centered block. -->
 <!-- Since the 'align' attribute is deprecated, we rely on a CSS -->
@@ -128,6 +132,7 @@ $Id$
       <xsl:apply-templates select="r:contact"/>
     </div>
   </xsl:template>
+
 <!-- Contact information -->
   <xsl:template match="r:contact">
     <p>
@@ -719,9 +724,9 @@ $Id$
         <xsl:text>, </xsl:text>
         <xsl:apply-templates select="r:organization"/>
       </xsl:if>
-      <xsl:if test="r:date">
+      <xsl:if test="r:date|r:period">
         <xsl:text>, </xsl:text>
-        <xsl:apply-templates select="r:date"/>
+        <xsl:apply-templates select="r:date|r:period"/>
       </xsl:if>
       <xsl:if test="r:note">
         <xsl:text>. </xsl:text>
@@ -752,10 +757,10 @@ $Id$
         <xsl:text>, </xsl:text>
       </xsl:if>
       <xsl:apply-templates select="r:organization"/>
-      <xsl:if test="r:date">
+      <xsl:if test="r:date|r:period">
         <xsl:text>, </xsl:text>
       </xsl:if>
-      <xsl:apply-templates select="r:date"/>
+      <xsl:apply-templates select="r:date|r:period"/>
       <xsl:apply-templates select="r:description"/>
     </li>
   </xsl:template>

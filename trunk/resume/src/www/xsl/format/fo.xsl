@@ -894,28 +894,23 @@ $Id$
   <xsl:template match="r:clearance">
     <xsl:call-template name="bulletListItem">
       <xsl:with-param name="text">
-
         <fo:inline
             font-weight="{$clearance-level.font.weight}"
             font-style="{$clearance-level.font.style}">
           <xsl:apply-templates select="r:level"/>
         </fo:inline>
-
         <xsl:if test="r:organization">
           <xsl:text>, </xsl:text>
           <xsl:apply-templates select="r:organization"/>
         </xsl:if>
-
-        <xsl:if test="r:date">
+        <xsl:if test="r:date|r:period">
           <xsl:text>, </xsl:text>
-          <xsl:apply-templates select="r:date"/>
+          <xsl:apply-templates select="r:date|r:period"/>
         </xsl:if>
-
         <xsl:if test="r:note">
           <xsl:text>. </xsl:text>
           <xsl:apply-templates select="r:note"/>
         </xsl:if>
-
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -930,35 +925,26 @@ $Id$
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
- 
-    <!-- Awards -->
     <fo:list-block
         space-after="{$para.break.space}"
         provisional-distance-between-starts="{$para.break.space}"
         provisional-label-separation="{$bullet.space}">
-
       <xsl:apply-templates select="r:award"/>
-
     </fo:list-block>
   </xsl:template>
 
-  <!-- A single award. -->
+  <!-- Format a single award. -->
   <xsl:template match="r:award">
     <xsl:call-template name="bulletListItem">
       <xsl:with-param name="text">
-
         <fo:inline font-weight="{$emphasis.font.weight}">
           <xsl:apply-templates select="r:title"/>
         </fo:inline>
-
         <xsl:if test="r:organization"><xsl:text>, </xsl:text></xsl:if>
         <xsl:apply-templates select="r:organization"/>
-
-        <xsl:if test="r:date"><xsl:text>, </xsl:text></xsl:if>
-        <xsl:apply-templates select="r:date"/>
-
+        <xsl:if test="r:date|r:period"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:date|r:period"/>
         <xsl:apply-templates select="r:description"/>
-
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -1067,16 +1053,22 @@ $Id$
     <xsl:call-template name="heading">
       <xsl:with-param name="text"><xsl:value-of select="$referees.word"/></xsl:with-param>
     </xsl:call-template>
-
     <xsl:choose>
       <xsl:when test="$referees.display = 1">
-        <fo:table table-layout="fixed" width="80%">
-	  <fo:table-column width="40%"/>
-	  <fo:table-column width="40%"/>
-	  <fo:table-body>
-            <xsl:apply-templates select="r:referee" mode="2-column"/>
-	  </fo:table-body>
-        </fo:table>
+        <xsl:choose>
+	  <xsl:when test="$referees.layout = '2-column'">
+            <fo:table table-layout="fixed" width="90%">
+	      <fo:table-column width="40%"/>
+	      <fo:table-column width="40%"/>
+	      <fo:table-body>
+                <xsl:apply-templates select="r:referee" mode="2-column"/>
+	      </fo:table-body>
+            </fo:table>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:apply-templates select="r:referee" mode="standard"/>
+          </xsl:otherwise>
+	</xsl:choose>
       </xsl:when>
       <xsl:otherwise>
         <fo:block space-after="{$para.break.space}">
@@ -1086,6 +1078,8 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
+  <!-- Format a referee with the name, title, organiation in the 
+       left column and the address in the right column -->
   <xsl:template match="r:referee" mode="2-column">
     <fo:table-row>
       <fo:table-cell padding-bottom="{$half.space}">
@@ -1117,6 +1111,7 @@ $Id$
     </fo:table-row>
   </xsl:template>
 
+  <!-- Format a referee as a block element -->
   <xsl:template match="r:referee" mode="standard">
     <fo:block space-after="{$para.break.space}">
       <fo:block space-after="{$half.space}">
@@ -1125,7 +1120,6 @@ $Id$
             font-weight="{$referee-name.font.weight}">
           <xsl:apply-templates select="r:name"/>
         </fo:block>
-
         <fo:block>
           <xsl:apply-templates select="r:title"/>
           <xsl:if test="r:title and r:organization">
@@ -1134,7 +1128,6 @@ $Id$
           <xsl:apply-templates select="r:organization"/>
         </fo:block>
       </fo:block>
-
       <xsl:if test="r:address">
         <fo:block space-after="{$half.space}">
           <xsl:apply-templates select="r:address"/>

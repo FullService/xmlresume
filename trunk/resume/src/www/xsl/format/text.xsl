@@ -936,7 +936,6 @@ In general, each block is responsible for outputting a newline after itself.
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:clearance"/>
@@ -949,17 +948,14 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:level"/>
-
         <xsl:if test="r:organization">
           <xsl:text>, </xsl:text>
           <xsl:apply-templates select="r:organization"/>
         </xsl:if>
-
-        <xsl:if test="r:date">
+        <xsl:if test="r:date|r:period">
           <xsl:text>, </xsl:text>
-          <xsl:apply-templates select="r:date"/>
+          <xsl:apply-templates select="r:date|r:period"/>
         </xsl:if>
-
         <xsl:if test="r:note">
           <xsl:text>. </xsl:text>
           <xsl:apply-templates select="r:note"/>
@@ -978,7 +974,6 @@ In general, each block is responsible for outputting a newline after itself.
         </xsl:call-template>
       </xsl:with-param>
     </xsl:call-template>
-
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:award"/>
@@ -987,20 +982,16 @@ In general, each block is responsible for outputting a newline after itself.
   </xsl:template>
 
   
-  <!-- A single award. -->
+  <!-- Format a single award. -->
   <xsl:template match="r:award">
     <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:title"/>
-
         <xsl:if test="r:organization"><xsl:text>, </xsl:text></xsl:if>
         <xsl:apply-templates select="r:organization"/>
-
-        <xsl:if test="r:date"><xsl:text>, </xsl:text></xsl:if>
-        <xsl:apply-templates select="r:date"/>
-
+        <xsl:if test="r:date|r:period"><xsl:text>, </xsl:text></xsl:if>
+        <xsl:apply-templates select="r:date|r:period"/>
         <xsl:call-template name="NewLine"/>
-
         <xsl:apply-templates select="r:description">
           <xsl:with-param name="Width"
             select="$text.width - $text.indent.width - string-length($text.bullet.prefix)"/>
