@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.header.format">
+  <refnamediv>
+    <refname>header.format</refname>
+    <refpurpose>controls formatting of the <sgmltag class="element">header</sgmltag> element</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+      This parameter controls the formatting of the <link
+      linkend="element.header"><sgmltag class="element">header</sgmltag></link>
+      element in HTML and text output formats. The FO/PDF formatter is not
+      affected by this parameter; it produces output similar to the
+      <literal>centered</literal> option, but with the text left-justified
+      within a centered block.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>standard</literal> (the default) and
+      <literal>centered</literal>.
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>standard</literal></term>
+        <listitem>
+          <para>
+            Produces a centered line with the name and the word
+            <quote>&Resume;</quote>, followed by a left-justified contact
+            information block:
+
+            <informalexample><literallayout><computeroutput><![CDATA[
+Jo Doe -]]> &Resume;
+
+<![CDATA[
+Contact Information: 
+     Jo Doe
+     123 Elm #456
+     Garbonzoville, NX 99999-9999
+     Phone: 555.555.5555
+     Email: doe@doe.doe
+     URL: http://doe.com/~doe/
+          ]]></computeroutput></literallayout></informalexample>
+
+          </para>
+
+          <para>
+            This value is the default for <parameter>header.format</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><literal>centered</literal></term>
+        <listitem>
+          <para>
+            Produces a single centered block with the name and contact
+            information.
+          </para>
+
+          <informalexample><literallayout><computeroutput><![CDATA[
+Jo Doe
+     123 Elm #456
+     Garbonzoville, NX 99999-9999
+     Phone: 555.555.5555
+     Email: doe@doe.doe
+     URL: http://doe.com/~doe/
+          ]]></computeroutput></literallayout></informalexample>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+</refentry>

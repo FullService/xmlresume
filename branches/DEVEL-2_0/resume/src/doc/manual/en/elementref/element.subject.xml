@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.subject">
+  <refnamediv>
+    <refname>subject</refname>
+    <refpurpose>A name of a class or topic of study</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">subject</sgmltag> element contains the 
+      <link linkend="element.title"><sgmltag
+      class="element">title</sgmltag></link> of a class or other course of
+      study, as well as its <link linkend="element.result"><sgmltag
+      class="element">result</sgmltag></link>.
+    </para>
+    
+    <para>
+      A subject's title can be as general as <quote>mathematics</quote> (a
+      general field of study), or as specific as <quote>ECEn 224
+      Electrostatics Fall 1994</quote> (a specific university class, along
+      with the date the class was taken).
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">subject</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<subject>
+  <title>English</title>
+  <result>A-</result>
+</subject>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<subject>
+  <title>PE 194 Crabwalking</title>
+  <result>F</result>
+</subject>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.referee">
+  <refnamediv>
+    <refname>referee</refname>
+    <refpurpose>Someone who can provide additional information about the person the &resume; describes</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">referee</sgmltag> element contains the name
+      and contact information information of a person who knows the job
+      seeker (the person that the &resume; describes). Referees (also called
+      references) can provide additional information about the job seeker.
+      They often supply background information, confirm facts, and describe
+      the job seeker's character.
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        The display of <sgmltag class="element">referee</sgmltag> is influenced
+        by the <link linkend="param.referees.display"
+        ><parameter>referees.display</parameter></link> parameter.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">referee</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<referee>
+  <name>Joe</name>
+  <address>
+    <street>123 Main St.</street>
+    <city>Anytown</city>
+    <state>ST</state>
+    <zip>12345</zip>
+    <country>USA</country>
+  </address>
+  <contact>
+    <phone>123.456.7890</phone>
+    <email>joe@hotmail.bob</email>
+  </contact>
+</referee>
+    ]]></programlisting></informalexample>
+
+    <para>
+      For additional examples, see <link linkend="element.referees"><sgmltag
+      class="element">referees</sgmltag></link>.
+    </para>
+
+  </refsect1>
+
+</refentry>

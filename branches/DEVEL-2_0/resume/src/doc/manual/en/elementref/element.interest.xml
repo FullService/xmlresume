@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.interest">
+  <refnamediv>
+    <refname>interest</refname>
+    <refpurpose>Something a person is interested in</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">interest</sgmltag> element describes
+      something that a person is interested in. A common use for <sgmltag
+      class="element">interest</sgmltag> elements is to list hobbies.
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        The formatting of <sgmltag class="element">interest</sgmltag> is more
+        complex than that of many other elements. The title is always displayed
+        first, in standard font. Then, if there is a description, and the
+        <parameter>interest.description.format</parameter> parameter value is
+        <literal>single-line</literal>, a period and a space
+        (<quote>.&#x20;</quote>) are displayed. Finally, the description is
+        output, formatted according to the <link
+        linkend="param.interest.description.format"
+        ><parameter>interest.description.format</parameter></link> parameter.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">interest</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a ELEMENT. The ELEMENT may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.skill"><sgmltag class="element">skill</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<interest>
+  <title>Sewing</title>
+</interest>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<interest>
+  <title>Seattle Mariners</title>
+  <description>
+    <para>I'm a season ticket holder.</para>
+    <para><emphasis>GO MARINERS!</emphasis></para>
+  </description>
+</interest>
+    ]]></programlisting></informalexample>
+
+    <para>
+      For additional examples, see <link linkend="element.interests"><sgmltag
+      class="element">interests</sgmltag></link>.
+    </para>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.skills.format">
+  <refnamediv>
+    <refname>skills.format</refname>
+    <refpurpose>controls formatting of the <sgmltag class="element">skillset</sgmltag> element</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+      This parameter controls the formatting of the <link
+      linkend="element.skillset"><sgmltag
+      class="element">skillset</sgmltag></link> element in all output
+      formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>bullet</literal> (the default) and
+      <literal>comma</literal>.
+    </para>
+
+    <para>
+      The examples below show how a <sgmltag class="starttag">skillset</sgmltag>
+      like this would be rendered:
+
+      <informalexample><programlisting><![CDATA[
+<skillarea>
+  <title>Technical Skills</title>
+  <skillset>
+    <title>Programming Languages</title>
+    <skill>Java</skill>
+    <skill>C++</skill>
+    <skill>C</skill>
+    <skill>perl</skill>
+  </skillset>
+</skillarea>
+      ]]></programlisting></informalexample>
+
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>bullet</literal></term>
+        <listitem>
+          <para>
+            Formats skills as a bulleted list, one skill per line:
+
+            <informalexample>
+              <bridgehead renderas="sect2">Technical Skills</bridgehead>
+              <bridgehead renderas="sect3">Programming Languages</bridgehead>
+              <itemizedlist spacing="compact">
+                <listitem><para>Java</para></listitem>
+                <listitem><para>C++</para></listitem>
+                <listitem><para>C</para></listitem>
+                <listitem><para>Perl</para></listitem>
+              </itemizedlist>
+            </informalexample>
+
+          </para>
+
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><literal>comma</literal></term>
+        <listitem>
+          <para>
+            Produces a comma-separated list on a single line:
+
+            <informalexample>
+              <bridgehead renderas="sect2">Technical Skills</bridgehead>
+              <para>
+                Programming Languages: Java, C++, C, Perl
+              </para>
+            </informalexample>
+          </para>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+</refentry>

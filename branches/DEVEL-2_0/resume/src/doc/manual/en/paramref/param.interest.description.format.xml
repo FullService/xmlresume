@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.interest.description.format">
+  <refnamediv>
+    <refname>interest.description.format</refname>
+    <refpurpose>controls formatting of interest descriptions</refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+       This parameter controls the formatting of the <link
+       linkend="element.description"><sgmltag
+       class="element">description</sgmltag></link> element when it is contained
+       in an <link linkend="element.interest"><sgmltag
+       class="element">interest</sgmltag></link>. It affects all output formats.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <literal>single-line</literal> and
+      <literal>block</literal>. <literal>single-line</literal> is the default.
+    </para>
+
+    <para>
+      The examples below demonstrate the formatting of this XML fragment:
+
+      <programlisting><![CDATA[
+<interests>
+  <interest>
+    <title>Scuba diving</title>
+  </interest>
+  <interest>
+    <title>Flying</title>
+    <description>
+      <para>I have my pilot's license, and have logged over 1000 in-flight
+      hours.</para>
+      <para>I have also constructed my own airplane from a kit.</para>
+    </description>
+  </interest>
+</interests>
+      ]]></programlisting>
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal>single-line</literal></term>
+        <listitem>
+          <para>
+            This value is the default. Formats all of the <link
+            linkend="element.para"><sgmltag
+            class="element">para</sgmltag></link> elements in the description on
+            the same logical line as the interest title. The title is separated
+            from the description by a period, and the description paragraphs are
+            separated from each other by
+            <parameter>description.para.separator.text</parameter>, which
+            defaults to an em-dash (<quote>&mdash;</quote>).
+          </para>
+
+          <para>
+          
+            For example, the XML above would be formatted similar to the
+            following:
+
+            <informalexample>
+              <bridgehead formatas="sect2">Interests</bridgehead>
+              <itemizedlist spacing="compact">
+                <listitem><para>Scuba diving</para></listitem>
+                <listitem><para>
+                  Flying. I have my pilot's license, and have logged over 1000
+                  in-flight hours. &mdash; I have also constructed my own
+                  airplane from a kit.
+                </para></listitem>
+              </itemizedlist>
+            </informalexample>
+
+          </para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><literal>block</literal></term>
+        <listitem>
+          <para>
+            Formats each of the <sgmltag class="element">para</sgmltag> elements
+            in the description as a separate block below the interest title.
+          </para>
+
+          <para>
+          
+            For example, the XML above would be formatted similar to the
+            following:
+
+            <informalexample>
+              <bridgehead formatas="sect2">Interests</bridgehead>
+              <itemizedlist spacing="compact">
+                <listitem><para>Scuba diving</para></listitem>
+                <listitem>
+                  <para>Flying</para>
+                  <para>
+                    I have my pilot's license, and have logged over 1000
+                    in-flight hours.
+                  </para>
+                  <para>
+                    I have also constructed my own airplane from a kit.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </informalexample>
+
+          </para>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.description">
+  <refnamediv>
+    <refname>description</refname>
+    <refpurpose>An explanation of something</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><?resumevar CONTENT_MODEL?></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <?resumevar ATTRIBUTES_TABLE?>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">description</sgmltag> element specifies a
+      person's role, their activities, or other descriptive information.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">description</sgmltag> may be contained in these
+        elements:
+        <?resumevar PARENTS?>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.projects"><sgmltag class="element">projects</sgmltag></link></member>
+        <member><link linkend="element.achievements"><sgmltag class="element">achievements</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<job>
+  <jobtitle>Supersonic Vacuum Technician</jobtitle>
+  <employer>Joe's Vacuum Shop</employer>
+  <period>
+    <from><date><month>June</month><year>2344</year></date></from>
+    <to><present/></to>
+  </period>
+  <description>
+    Repaired hyperdynamic microbial particle accelerators in Supersonic vacuum
+    models XL144 and XP2000.
+  </description>
+</job>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<membership>
+  <title>Treasurer</title>
+  <organization>Mars Vacuum Repair Association</organization>
+  <description>
+    Kept books and collected membership dues.
+  </description>
+</job>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>
