@@ -587,8 +587,8 @@ $Id$
   <!-- Format the title of a set of skills. -->
   <xsl:template match="r:skillset/r:title" mode="comma">
     <fo:inline
-        font-style="{$skillset-heading.font.style}"
-        font-weight="{$skillset-heading.font.weight}">
+        font-style="{$skillset-title.font.style}"
+        font-weight="{$skillset-title.font.weight}">
       <xsl:apply-templates/><xsl:text>: </xsl:text>
     </fo:inline>
   </xsl:template>
@@ -597,8 +597,8 @@ $Id$
   <xsl:template match="r:skillset/r:title" mode="bullet">
     <fo:block
         keep-with-next="always"
-        font-style="{$skillset-heading.font.style}"
-        font-weight="{$skillset-heading.font.weight}">
+        font-style="{$skillset-title.font.style}"
+        font-weight="{$skillset-title.font.weight}">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>

@@ -211,8 +211,8 @@ $Id$
   <xsl:param name="job-subheading.font.style">italic</xsl:param>
   <xsl:param name="job-subheading.font.weight">normal</xsl:param>
 
-  <xsl:param name="skillset-heading.font.style">italic</xsl:param>
-  <xsl:param name="skillset-heading.font.weight">normal</xsl:param>
+  <xsl:param name="skillset-title.font.style">italic</xsl:param>
+  <xsl:param name="skillset-title.font.weight">normal</xsl:param>
 
   <xsl:param name="degrees-note.font.style">italic</xsl:param>
   <xsl:param name="degrees-note.font.weight">normal</xsl:param>
