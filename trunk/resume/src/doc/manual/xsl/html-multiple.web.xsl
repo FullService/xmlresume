@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-fo.xsl
-Convert DocBook sources into XSL-FO.
+html-multiple.web.xsl
+Convert DocBook sources into multiple HTML files in a format suitable for
+inclusion in the XML Resume web site.
 
 Copyright (c) 2002 Bruce Christensen.
 All rights reserved.
@@ -34,10 +35,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="common.xsl"/>
-  <xsl:import href="@DOCBOOK_XSL_FO@"/>
+  <xsl:import href="html-multiple.xsl"/>
 
   <!-- Customizations -->
-  <!-- (none) -->
+  <xsl:param name="xmlresume.index.href">../index.html</xsl:param>
 
 </xsl:stylesheet>

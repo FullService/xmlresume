@@ -239,10 +239,17 @@ $Id$
     depends="install.web"/>
 
   <target name="install.web"
+    depends="doc.manual.html-multiple.web"
     description="Install web server files">
+
     <mkdir dir="${resume.web.publish.dir}"/>
     <copy todir="${resume.web.publish.dir}">
       <fileset dir="${src.dir}/www"/>
+    </copy>
+
+    <mkdir dir="${resume.web.publish.dir}/user-guide"/>
+    <copy todir="${resume.web.publish.dir}/user-guide">
+      <fileset dir="${doc.manual.html-multiple.web.dir}"/>
     </copy>
   </target>
 
@@ -342,6 +349,7 @@ $Id$
   <!-- Manual directories (should match corresponding *.src.dir properties above) -->
   <property name="doc.manual.build.dir" value="${doc.build.dir}/manual"/>
   <property name="doc.manual.css.file" value="${doc.manual.build.dir}/css/manual.css"/>
+  <property name="doc.manual.images.build.dir" value="${doc.manual.build.dir}/img"/>
   <property name="doc.manual.entities.build.dir" value="${doc.manual.build.dir}/entities"/>
   <property name="doc.manual.elementref.build.dir" value="${doc.manual.build.dir}/en/elementref"/>
 
@@ -351,6 +359,7 @@ $Id$
   <!-- Manual output formats -->
   <property name="doc.manual.html-single.file" value="${doc.manual.build.dir}/manual.html"/>
   <property name="doc.manual.html-multiple.dir" value="${doc.manual.build.dir}/html"/>
+  <property name="doc.manual.html-multiple.web.dir" value="${doc.manual.build.dir}/html-web"/>
   <property name="doc.manual.text.file" value="${doc.manual.build.dir}/manual.txt"/>
   <property name="doc.manual.fo.file" value="${doc.manual.build.dir}/manual.fo"/>
   <property name="doc.manual.pdf.file" value="${doc.manual.build.dir}/manual.pdf"/>
@@ -359,6 +368,7 @@ $Id$
   <property name="doc.manual.xsl.dir" value="${doc.manual.build.dir}/xsl"/>
   <property name="doc.manual.xsl.html-single" value="${doc.manual.xsl.dir}/html-single.xsl"/>
   <property name="doc.manual.xsl.html-multiple" value="${doc.manual.xsl.dir}/html-multiple.xsl"/>
+  <property name="doc.manual.xsl.html-multiple.web" value="${doc.manual.xsl.dir}/html-multiple.web.xsl"/>
   <property name="doc.manual.xsl.fo" value="${doc.manual.xsl.dir}/fo.xsl"/>
 
   <!-- DocBook XML DTD version 4.1.2 system location -->
@@ -603,6 +613,9 @@ $Id$
 
     <copy todir="${doc.manual.html-multiple.dir}"
       file="${doc.manual.css.file}"/>
+    <copy todir="${doc.manual.html-multiple.dir}">
+      <fileset dir="${doc.manual.images.build.dir}"/>
+    </copy>
 
     <java
       classname="com.icl.saxon.StyleSheet"
@@ -612,6 +625,29 @@ $Id$
       dir="${doc.manual.html-multiple.dir}">
       <arg value="${doc.manual.file}"/>
       <arg value="${doc.manual.xsl.html-multiple}"/>
+    </java>
+  </target>
+
+  <target name="doc.manual.html-multiple.web"
+    description="Generate multi-file HTML manual for use on the XML Resume Library web site"
+    depends="doc.manual.prepare">
+
+    <mkdir dir="${doc.manual.html-multiple.web.dir}"/>
+
+    <copy todir="${doc.manual.html-multiple.web.dir}"
+      file="${doc.manual.css.file}"/>
+    <copy todir="${doc.manual.html-multiple.web.dir}">
+      <fileset dir="${doc.manual.images.build.dir}"/>
+    </copy>
+
+    <java
+      classname="com.icl.saxon.StyleSheet"
+      classpathref="saxon.classpath"
+      fork="yes"
+      failonerror="yes"
+      dir="${doc.manual.html-multiple.web.dir}">
+      <arg value="${doc.manual.file}"/>
+      <arg value="${doc.manual.xsl.html-multiple.web}"/>
     </java>
   </target>
 

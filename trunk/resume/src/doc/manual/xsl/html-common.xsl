@@ -35,6 +35,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!-- Customizations -->
+  <xsl:include href="common.xsl"/>
   <xsl:param name="html.stylesheet">manual.css</xsl:param>
 
   <!-- <xsl:param name="shade.verbatim">1</xsl:param>

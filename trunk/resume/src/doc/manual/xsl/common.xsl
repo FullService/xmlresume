@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-fo.xsl
-Convert DocBook sources into XSL-FO.
+common.xsl
+Common settings for DocBook XSL files.
 
 Copyright (c) 2002 Bruce Christensen.
 All rights reserved.
@@ -34,10 +34,22 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="common.xsl"/>
-  <xsl:import href="@DOCBOOK_XSL_FO@"/>
+  <!-- Depth to which recursive sections should appear in the TOC. -->
+  <xsl:param name="toc.section.depth">1</xsl:param>
 
-  <!-- Customizations -->
-  <!-- (none) -->
+  <!-- Removed ",figure,table,example,equation" from the book line -->
+  <xsl:param name="generate.toc">
+    appendix  toc
+    article   toc
+    book      toc
+    chapter   toc
+    part      toc
+    preface   toc
+    qandadiv  toc
+    qandaset  toc
+    reference toc
+    section   toc
+    set       toc
+  </xsl:param>
 
 </xsl:stylesheet>
