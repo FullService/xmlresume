@@ -636,4 +636,9 @@ $Id$
     </p>
   </xsl:template>
 
+  <!-- Wrap a description up in a div -->
+  <xsl:template match="description">
+    <div class="description"><xsl:apply-templates/></div>
+  </xsl:template>
+
 </xsl:stylesheet>
