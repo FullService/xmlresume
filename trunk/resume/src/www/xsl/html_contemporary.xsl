@@ -1,7 +1,8 @@
-﻿<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
 html.xsl
-Transform XML resume into HTML.
+Transform XML resume into HTML, styled similar to Microsoft Word's Contemporary
+resume template.
 
 Copyright (c) 2000-2002 Sean Kelly
 All rights reserved.
