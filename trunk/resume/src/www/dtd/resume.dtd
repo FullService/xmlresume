@@ -1,7 +1,7 @@
 <!--
 resume.dtd - Resume Document Type Definition for XML
 
-Copyright (c) 2000-2001 Sean Kelly
+Copyright (c) 2000-2002 Sean Kelly
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-The doctype with unofficial FPI for this DTD is:
+The doctype with FPI for this DTD is:
 
   <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume @VERSION_DOTS@//EN"
                    "http://xmlresume.sourceforge.net/dtd/resume.dtd">
@@ -127,7 +127,6 @@ $Id$
 <!-- Special skills you'd like to highlight, each in its own area. -->
 <!ELEMENT skillareas (skillarea+)>
 <!ELEMENT skillarea (title, skillset+)>
-<!ELEMENT title (#PCDATA)>
 <!ELEMENT skillset (title?, skills)>
 <!ELEMENT skills (skill+)>
 <!ELEMENT skill (%inlines;)*>
@@ -144,9 +143,8 @@ $Id$
 <!ELEMENT pageNums (#PCDATA)>
 
 <!-- Professional memberships. -->
-<!ELEMENT memberships (membership+)>
-<!ELEMENT membership (membershipTitle?, organization?, period?, description?)>
-<!ELEMENT membershipTitle (#PCDATA)>
+<!ELEMENT memberships (title, membership+)>
+<!ELEMENT membership (title?, organization?, period?, description?)>
 <!ELEMENT organization (#PCDATA)>
 
 <!-- Final remarks. -->
@@ -175,3 +173,4 @@ $Id$
 <!ELEMENT year (#PCDATA)>
 <!ELEMENT dayOfMonth (#PCDATA)>
 <!ELEMENT present EMPTY>
+<!ELEMENT title (#PCDATA)>
