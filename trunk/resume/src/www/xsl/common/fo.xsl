@@ -379,11 +379,15 @@ $Id$
       <fo:inline font-weight="bold"><xsl:value-of select="level"/>
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
-        <xsl:value-of select="major"/></fo:inline>,
+        <xsl:value-of select="major"/></fo:inline>
       <xsl:if test="date">
-	<xsl:apply-templates select="date"/>,
+        <xsl:text>, </xsl:text>
+	<xsl:apply-templates select="date"/>
       </xsl:if>
-      <xsl:apply-templates select="annotation"/>
+      <xsl:if test="annotation">
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="annotation"/>
+      </xsl:if>
     </fo:block>
     <fo:block space-after="{$para.break.space}">
       <xsl:value-of select="institution"/>

@@ -401,17 +401,21 @@ $Id$
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="major"/>
-      <xsl:text>, </xsl:text>
       <xsl:if test="date">
-	<xsl:apply-templates select="date"/>
 	<xsl:text>, </xsl:text>
+	<xsl:apply-templates select="date"/>
       </xsl:if>
-      <xsl:value-of select="institution"/>
-      <xsl:text>.</xsl:text>     
+      <xsl:if test="institution">
+	<xsl:text>, </xsl:text>
+        <xsl:value-of select="institution"/>
+      </xsl:if>
+      <xsl:if test="annotation">
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="annotation"/>
+      </xsl:if>
       <xsl:if test="subjects/subject">
         <xsl:apply-templates select="subjects"/>
       </xsl:if>
-      <xsl:apply-templates select="annotation"/>
     </li>
   </xsl:template>
 

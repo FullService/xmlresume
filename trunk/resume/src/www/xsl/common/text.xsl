@@ -596,13 +596,14 @@ $Id$
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="major"/>
-      <xsl:text>, </xsl:text>
       <xsl:if test="date">     
-          <xsl:apply-templates select="date"/>
-          <xsl:text>, </xsl:text><xsl:call-template name="NewLine"/>
+         <xsl:text>, </xsl:text>
+         <xsl:apply-templates select="date"/>
       </xsl:if>
-      <xsl:value-of select="institution"/>
-      <xsl:text>.</xsl:text>
+      <xsl:if test="institution">
+        <xsl:text>, </xsl:text>
+        <xsl:value-of select="institution"/>
+      </xsl:if>
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="annotation"/>
       <xsl:call-template name="NewLine"/>
