@@ -31,6 +31,12 @@
             </entry>
           </row>
           <row>
+            <entry><literal>achievement</literal></entry>
+            <entry>
+              On the <sgmltag class="element">li</sgmltag> for a single skill.
+            </entry>
+          </row>
+          <row>
             <entry><literal>bookTitle</literal></entry>
             <entry>
               On the <sgmltag class="element">cite</sgmltag> used to refer to a
@@ -172,6 +178,12 @@
             </entry>
           </row>
           <row>
+            <entry><literal>project</literal></entry>
+            <entry>
+              On the <sgmltag class="element">li</sgmltag> for a single project.
+            </entry>
+          </row>
+          <row>
             <entry><literal>pub</literal></entry>
             <entry>
               On a single publication.
@@ -213,14 +225,19 @@
           <row>
             <entry><literal>skills</literal></entry>
             <entry>
-              On the <sgmltag class="element">ul</sgmltag> for a list of skills.
+              If <parameter>skills.format</parameter> is
+              <literal>bullet</literal>, on the <sgmltag
+              class="element">ul</sgmltag> for a list of skills.
+              If <parameter>skills.format</parameter> is
+              <literal>comma</literal>, on the <sgmltag
+              class="element">span</sgmltag> for a list of skills.
             </entry>
           </row>
           <row>
             <entry><literal>skillsetTitle</literal></entry>
             <entry>
-              On the <sgmltag class="element">h3</sgmltag> for a title of a set of
-              skills.
+              On the <sgmltag class="element">h3</sgmltag> for a title of a set
+              of skills.
             </entry>
           </row>
           <row>
