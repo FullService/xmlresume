@@ -50,3 +50,8 @@ h1.pageTitle {
     font-size: 80%;
     background: rgb(100%, 100%, 90%);
 }
+
+td.quicklinks {
+    width: 130px;
+    background-color: "#eeffee"
+}
