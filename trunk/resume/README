@@ -77,3 +77,22 @@ Cleaning Up
 
 To clean up files generated after a release, run "ant
 clean".
+
+Formatting the Examples
+=======================
+
+Formatting the example resumes from the developer's
+edition requires a "make" command line that redefines
+the FO_STYLE, TEXT_STYLE, and HTML_STYLE symbols to
+point to the development area's copies and not the
+official copies via http.  Here's a sample invocation:
+
+make HTML_STYLE=../www/xsl/html.xsl \
+     FO_STYLE=../www/xsl/us-letter.xsl \
+     TXT_STYLE=../www/xsl/text.xsl \
+     RESUME=my-test \
+     clean \
+     all
+
+This formats my-test.xml into all three possible
+formats.
