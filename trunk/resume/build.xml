@@ -615,6 +615,7 @@ $Id$
 
     <copy todir="${doc.manual.html-multiple.dir}"
       file="${doc.manual.css.file}"/>
+    <mkdir dir="${doc.manual.images.build.dir}"/>
     <copy todir="${doc.manual.html-multiple.dir}">
       <fileset dir="${doc.manual.images.build.dir}"/>
     </copy>
@@ -638,6 +639,7 @@ $Id$
 
     <copy todir="${doc.manual.html-multiple.web.dir}"
       file="${doc.manual.css.file}"/>
+    <mkdir dir="${doc.manual.images.build.dir}"/>
     <copy todir="${doc.manual.html-multiple.web.dir}">
       <fileset dir="${doc.manual.images.build.dir}"/>
     </copy>
