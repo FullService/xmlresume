@@ -24,6 +24,14 @@
       the &resume; describes.
     </para>
 
+    <refsect2><title>Formatting</title>
+      <para>
+        The <link
+        linkend="param.header.format"><parameter>header.format</parameter></link>
+        parameter influences the formatting of headers in all output formats.
+      </para>
+    </refsect2>
+
     <refsect2><title>Parents</title>
       <para>
         <sgmltag class="element">header</sgmltag> may be contained in these
@@ -51,16 +59,13 @@
 
   </refsect1>
 
-  <!-- Use this section for links to other relevant pages
   <refsect1><title>See Also</title>
     <para>
       <simplelist type="inline">
-        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
-        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="param.header.format"><parameter>header.format</parameter></link></member>
       </simplelist>.
     </para>
   </refsect1>
-  -->
 
   <refsect1><title>Examples</title>
 
