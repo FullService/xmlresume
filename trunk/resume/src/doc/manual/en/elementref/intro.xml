@@ -65,6 +65,12 @@
           class="attribute">level</sgmltag> attribute.
         </para></listitem>
         <listitem><para>
+          Change: the <link linkend="element.pub"><sgmltag
+          class="element">pub</sgmltag></link> element may now contain a <link
+          linkend="element.url"><sgmltag class="element">url</sgmltag></link>
+          element.
+        </para></listitem>
+        <listitem><para>
           Change: the <link linkend="element.contact"><sgmltag
           class="element">contact</sgmltag></link> element may now contain any
           number of its allowed child elements, and they may appear in any
