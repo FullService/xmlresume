@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2002 Sean Kelly.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+$Id$
+-->
+<resume id="r1">
+  <header>
+    <name id="n1">
+      <firstname>S&#x00e1;rah</firstname>
+      <middlenames>Elizab&#x00e9;th</middlenames>
+      <surname>Adams</surname>
+      <suffix>Senior</suffix>
+    </name>
+    <address>
+      <street>1930 Second St</street>
+      <street2>Unit 15-A</street2>
+      <city>San Raton</city>, <state>California</state> <zip>99109-2212</zip>
+    </address>
+    <birth>
+      <date>
+	<dayOfMonth>12</dayOfMonth>
+	<month>February</month>
+	<year>1962</year>
+      </date>
+    </birth>
+    <contact>
+      <phone>417.555.1413</phone>
+      <email>sgurl@yahoo.com</email>
+      <url>http://geocities.com/sgurl</url>
+    </contact>
+  </header>
+  <objective id="o1">
+    <para>Assistant manager or manager at fast food chain.</para>
+    <para>Either that, or owner of beauty salon.</para>
+  </objective>
+  <academics>
+    <degrees>
+      <degree>
+	<level>MBA</level>
+	<subject>Business Administration</subject>
+	<date>
+	  <month>May</month>
+	  <year>1989</year>
+	</date>
+	<institution>Institute for the Administration of Business</institution>
+	<annotation>Geeba geeba!</annotation>
+      </degree>
+      <degree>
+	<level>B.Ph.</level>
+	<subject>Business Administration</subject>
+	<date>
+	  <month>May</month>
+	  <year>1990</year>
+	</date>
+	<institution>Advanced Institute for the Administration of Business</institution>
+	<annotation>Geeba geeba!</annotation>
+      </degree>
+    </degrees>
+    <note>
+      <para>Well, what can I say, really?</para>
+      <para>They were both nice schools.</para>
+    </note>
+  </academics>
+  <history>
+    <job id="j1">
+      <jobtitle>Stylist</jobtitle>
+      <employer id="e1">LA Salon</employer>
+      <period>
+	<from>
+	  <date>
+	    <month>August</month>
+	    <year>1978</year>
+	  </date>
+	  <to>
+	    <month>September</month>
+	    <year>1979</year>
+	  </to>
+	</from>
+      </period>
+      <description>
+	<para>LA Salon was the major source of personal grooming for
+	  the stars of Hollywood.  Located in Burbank near several
+	  important studios, it provided hair, skin, and nail care
+	  services.
+	</para>
+	<para>We also served the more well-to-do residents of Burbank,
+	  and Glendale.
+	</para>
+      </description>
+      <achievements>
+	<achievement>Styled <emphasis>Sean Connery's</emphasis>
+	  hair.</achievement>
+	<achievement>Got good tips.</achievement>
+      </achievements>
+    </job>
+    <job id="j2">
+      <jobtitle>Customer Service Relations Expert</jobtitle>
+      <employer id="e2">MacDonald's</employer>
+      <period>
+	<from>
+	  <present/>
+	</from>
+	<to>
+	  <present/>
+	</to>
+	<description>
+	  <para>MacDonald's was a restaurant that provided food for
+	    those who needed a fast lunch or dinner.  I served as the
+	    <emphasis>primary</emphasis> point through which customers
+	    interacted in order to select food items.
+	  </para>
+	  <para>Please note that this restaurant is
+	    <emphasis>not</emphasis> to be confused with McDonald's.
+	  </para>
+	</description>
+      </period>
+    </job>
+  </history>
+  <skillareas>
+    <skillarea>
+      <title>Computer Experience</title>
+
+      <skillset>
+	<title>Languages and Software</title>
+	<skills>
+	  <skill>Java, C++, C</skill>
+	  <skill>XML, XSL, SGML, HTML, CSS, Docbook</skill>
+	  <skill>J2EE, Servlets, JSP</skill>
+	  <skill>Jini</skill>
+	  <skill>CORBA, RPC, RMI</skill>
+	  <skill>Apache, iPlanet</skill>
+	  <skill>TCP/IP</skill>
+	  <skill>JDBC, Oracle, Progress, SQL</skill>
+	  <skill>Tcl, sh, csh (Python to a small degree)</skill>
+	  <skill>Swing, AWT, Tk, Xlib</skill>
+	  <skill>Unix systems programming</skill>
+	  <skill>Posix thread programming</skill>
+	  <skill>JNI</skill>
+	  <skill>PostScript page description language</skill>
+	  <skill>TeX typesetting language</skill>
+	</skills>
+      </skillset>
+
+      <skillset>
+	<title>Development Techniques</title>
+	<skills>
+	  <skill>Unified Modeling Language (Booch et al.)</skill>
+	  <skill>Refactoring (Fowler)</skill>
+	  <skill>Design Patterns (Gamma et al.)</skill>
+	  <skill>Analysis Patterns (under study)</skill>
+	</skills>
+      </skillset>
+
+      <skillset>
+	<title>Hardware</title>
+	<skills>
+          <skill>TINI</skill>
+          <skill>One-Wire, iButtons, MicroLAN</skill>
+	  <skill>Sun/SPARC</skill>
+	  <skill>Intel PC architecture</skill>
+	  <skill>HP 9000/700 &amp; 800 series</skill>
+	  <skill>Routers, terminal servers</skill>
+	  <skill>PostScript laser printers</skill>
+	</skills>
+      </skillset>
+
+      <skillset>
+	<title>Operating Systems</title>
+	<skills>
+	  <skill>Windows</skill>
+	  <skill>FreeBSD</skill>
+	  <skill>Linux</skill>
+	  <skill>Solaris</skill>
+	  <skill>HP/UX</skill>
+	  <skill>SGI Irix</skill>
+	</skills>
+      </skillset>
+    </skillarea>
+
+    <skillarea>
+      <title>Methodologies and Practices</title>
+      <skillset>
+	<skills>
+	  <skill>Cleanroom Software Engineering (Harlan Mills and
+	    Allan Stavely)</skill>
+	  <skill>Unified Software Development Process (Jacobson et al.)</skill>
+	  <skill>PSP: Personal Software Process (Software Engineering
+	    Institute)</skill>
+	  <skill>XP: Extreme Programming (under study)</skill>
+	</skills>
+      </skillset>
+    </skillarea>
+  </skillareas>
+  <pubs>
+    <pub>
+      <para>Kelly, S.: 2001: Creating Technical Documentation with
+	DocBook.  <citation>Inside XML Solutions</citation>, volume 1,
+	issue 8.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Crichton, D., Kelly, S., Hughes, S., Tran, T., 2001:
+	Object Oriented Data Technology for Space Science Data
+	Archiving and Retrieval: Potential Applications for
+	Bioinformatics.  First JPL Information Technology Symposium,
+	Pasadena, Jet Propulsion Laboratory.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Kelly, S., 2001: Using XSL Formatting Objects.
+	<citation>Inside XML Solutions</citation>, volume 1,
+	issue 6.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Crichton, D.; Hughes, J.; Kelly, S.; Hardman, S., 2000: A
+	Distributed Component Framework for Science Data Product
+	Interoperability.  17th International CODATA Conference,
+	Baveno, International Council for Science.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Hughes, J.; Crichton, D.; Hyon, J.; Kelly, S., 2000: A
+	Multi-Discipline Metadata Registry for Science
+	Interoperability.  Open Forum on Metadata Registries, ISO/IEC
+	JTC1/SC32, Data Management and Interchange.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Crichton, D.; Hughes, J.; Hyon, J.; Kelly, S., 1999:
+	Science Search and Retrieval using XML.  Second National
+	Conference on Scientific and Technical Data, Washington DC,
+	National Academy of Sciences.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Kelly, S., 1997: The Application Interface for the
+	WFO-Advanced Forecaster Workstation, D2D.  Preprints,
+	<citation>13th International Conference on Interactive
+	Information and Processing Systems for Meteorology,
+	Oceanography, and Hydrology</citation>, Long Beach, American
+	Meteorological Society.
+      </para>
+    </pub>
+
+    <pub>
+      <para>Kelly, S., 1997: An Object-Oriented Framework for Local
+	Extensions to the WFO-Advanced Forecaster Display Workstation,
+	D2D.  Preprints, <citation>13th International Conference on Interactive
+	Information and Processing Systems for Meteorology,
+	Oceanography, and Hydrology</citation>, Long Beach, American
+	Meteorological Society.
+      </para>
+    </pub>
+
+    <pub>
+      <para>
+	Kelly, S., 1996: Terminals with FreeBSD.  <citation>The FreeBSD
+	Handbook</citation>, The FreeBSD Project, Incorporated.
+      </para>
+    </pub>
+
+    <pub>
+      <para>
+	Kelly, S., 1996: Printing with FreeBSD.  <citation>The FreeBSD
+	Handbook</citation>, The FreeBSD Project, Incorporated.
+      </para>
+    </pub>
+  </pubs>
+
+  <misc>
+    <para>For each operand that names a file of a type other than
+     directory, ls displays its name as well as any requested,
+     associated information.  For each operand that names a file of
+     type directory, ls displays the names of files contained within
+     that directory, as well as any requested, asso- ciated
+     information.
+    </para>
+    <para>If no operands are given, the contents of the current
+     directory are dis- played.  If more than one operand is given,
+     non-directory operands are displayed first; directory and
+     non-directory operands are sorted sepa- rately and in
+     lexicographical order.
+    </para>
+  </misc>
+
+  <keywords>
+    <keyword>a</keyword>
+    <keyword>i</keyword>
+    <keyword>the</keyword>
+    <keyword>to</keyword>
+    <keyword>of</keyword>
+    <keyword>and</keyword>
+    <keyword>in</keyword>
+    <keyword>is</keyword>
+    <keyword>it</keyword>
+    <keyword>for</keyword>
+    <keyword>that</keyword>
+    <keyword>if</keyword>
+    <keyword>you</keyword>
+    <keyword>this</keyword>
+    <keyword>be</keyword>
+    <keyword>on</keyword>
+    <keyword>with</keyword>
+    <keyword>not</keyword>
+    <keyword>have</keyword>
+    <keyword>are</keyword>
+    <keyword>or</keyword>
+    <keyword>as</keyword>
+    <keyword>from</keyword>
+    <keyword>can</keyword>
+    <keyword>but</keyword>
+    <keyword>by</keyword>
+    <keyword>at</keyword>
+    <keyword>an</keyword>
+    <keyword>will</keyword>
+    <keyword>no</keyword>
+    <keyword>all</keyword>
+    <keyword>was</keyword>
+    <keyword>do</keyword>
+    <keyword>there</keyword>
+    <keyword>my</keyword>
+    <keyword>one</keyword>
+    <keyword>so</keyword>
+    <keyword>we</keyword>
+    <keyword>they</keyword>
+    <keyword>what</keyword>
+    <keyword>would</keyword>
+    <keyword>any</keyword>
+    <keyword>which</keyword>
+    <keyword>about</keyword>
+    <keyword>get</keyword>
+    <keyword>your</keyword>
+    <keyword>use</keyword>
+    <keyword>some</keyword>
+    <keyword>me</keyword>
+    <keyword>then</keyword>
+    <keyword>name</keyword>
+    <keyword>like</keyword>
+    <keyword>out</keyword>
+    <keyword>when</keyword>
+    <keyword>up</keyword>
+    <keyword>time</keyword>
+    <keyword>other</keyword>
+    <keyword>more</keyword>
+    <keyword>only</keyword>
+    <keyword>just</keyword>
+    <keyword>end</keyword>
+    <keyword>also</keyword>
+    <keyword>know</keyword>
+    <keyword>how</keyword>
+    <keyword>new</keyword>
+    <keyword>should</keyword>
+    <keyword>been</keyword>
+    <keyword>than</keyword>
+    <keyword>them</keyword>
+    <keyword>he</keyword>
+    <keyword>who</keyword>
+    <keyword>make</keyword>
+    <keyword>may</keyword>
+    <keyword>people</keyword>
+    <keyword>these</keyword>
+    <keyword>now</keyword>
+    <keyword>their</keyword>
+    <keyword>here</keyword>
+    <keyword>into</keyword>
+    <keyword>first</keyword>
+    <keyword>could</keyword>
+    <keyword>way</keyword>
+    <keyword>had</keyword>
+    <keyword>see</keyword>
+    <keyword>work</keyword>
+    <keyword>well</keyword>
+    <keyword>were</keyword>
+    <keyword>two</keyword>
+    <keyword>very</keyword>
+    <keyword>where</keyword>
+    <keyword>while</keyword>
+    <keyword>us</keyword>
+    <keyword>because</keyword>
+    <keyword>good</keyword>
+    <keyword>same</keyword>
+    <keyword>even</keyword>
+    <keyword>much</keyword>
+    <keyword>most</keyword>
+    <keyword>many</keyword>
+    <keyword>such</keyword>
+    <keyword>long</keyword>
+    <keyword>his</keyword>
+    <keyword>over</keyword>
+    <keyword>last</keyword>
+    <keyword>since</keyword>
+    <keyword>right</keyword>
+    <keyword>before</keyword>
+    <keyword>our</keyword>
+    <keyword>without</keyword>
+    <keyword>too</keyword>
+    <keyword>those</keyword>
+    <keyword>why</keyword>
+    <keyword>must</keyword>
+    <keyword>part</keyword>
+    <keyword>being</keyword>
+    <keyword>current</keyword>
+    <keyword>back</keyword>
+    <keyword>still</keyword>
+    <keyword>go</keyword>
+    <keyword>point</keyword>
+    <keyword>value</keyword>
+    <keyword>each</keyword>
+    <keyword>did</keyword>
+    <keyword>both</keyword>
+    <keyword>true</keyword>
+    <keyword>off</keyword>
+    <keyword>say</keyword>
+    <keyword>another</keyword>
+    <keyword>state</keyword>
+    <keyword>might</keyword>
+    <keyword>under</keyword>
+    <keyword>start</keyword>
+    <keyword>try</keyword>
+  </keywords>
+  <memberships>
+    <title>Memberships</title>
+    <membership>
+      <title>Grand Poobah</title>
+      <organization>The Odd Fellows</organization>
+      <period>
+	<from>
+	  <date>
+	    <month>August</month>
+	    <year>1978</year>
+	  </date>
+	  <to>
+	    <month>September</month>
+	    <year>1979</year>
+	  </to>
+	</from>
+      </period>
+      <description>
+	<para>The da driver provides support for all SCSI devices of
+	  the direct access class that are attached to the system
+	  through a supported SCSI Host Adapter.  The direct access
+	  class includes disk, magneto-optical, and solid-state
+	  devices.
+	</para>
+	<para>A SCSI Host adapter must also be separately configured
+	  into the system before a SCSI direct access device can be
+	  configured.
+	</para>
+      </description>
+    </membership>
+    <membership>
+      <title>Lesser Poobah</title>
+      <organization>The Even Fellows</organization>
+      <period>
+	<from>
+	  <date>
+	    <present/>
+	  </date>
+	  <to>
+	    <present/>
+	  </to>
+	</from>
+      </period>
+      <description>
+	<para>The sa driver is based around the concept of a ``mount
+	  session'', which is defined as the period between the time
+	  that a tape is mounted, and the time when it is unmounted.
+	  Any parameters set during a mount session re- main in effect
+	  for the remainder of the session or until replaced.  The
+	  tape can be unmounted, bringing the session to a close in
+	  several ways.
+	</para>
+      </description>
+    </membership>
+  </memberships>
+</resume>
