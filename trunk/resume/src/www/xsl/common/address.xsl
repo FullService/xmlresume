@@ -78,13 +78,13 @@ $Id$
   <xsl:template name="AdminDivision">
 
         <xsl:choose>
-	  <xsl:when test="state">
+	  <xsl:when test="r:state">
 	     <xsl:value-of select="normalize-space(r:state)"/>
 	  </xsl:when>
-	  <xsl:when test="province">
+	  <xsl:when test="r:province">
 	     <xsl:value-of select="normalize-space(r:province)"/>
 	  </xsl:when>
-	  <xsl:when test="county">
+	  <xsl:when test="r:county">
 	     <xsl:value-of select="normalize-space(r:county)"/>
 	  </xsl:when>
 	  <!-- Otherwise, leave blank -->
@@ -98,22 +98,23 @@ $Id$
      <!-- "Suburb" is used in New Zealand; "Ward" in Brazil and Japan. -->
    <xsl:template name="CityDivision">
         <xsl:choose>
-	  <xsl:when test="suburb">
+	  <xsl:when test="r:suburb">
 	     <xsl:value-of select="normalize-space(r:suburb)"/>
 	  </xsl:when>
-	  <xsl:when test="ward">
+	  <xsl:when test="r:ward">
 	     <xsl:value-of select="normalize-space(r:ward)"/>
 	  </xsl:when>
+          <!-- Otherwise, leave blank -->
 	</xsl:choose>
    </xsl:template>
 
      <!-- template to determine the code to be used in addresses. -->
    <xsl:template name="PostCode">
         <xsl:choose>
-	  <xsl:when test="zip">
+	  <xsl:when test="r:zip">
 	     <xsl:value-of select="normalize-space(r:zip)"/>
 	  </xsl:when>
-	  <xsl:when test="postalCode">
+	  <xsl:when test="r:postalCode">
 	     <xsl:value-of select="normalize-space(r:postalCode)"/>
 	  </xsl:when>
 	  <!-- Otherwise, leave blank -->
