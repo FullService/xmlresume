@@ -93,7 +93,7 @@ $Id$
 <!-- postal items with the element from addrElements. -->
 <!ENTITY % addrElements "street | street2 | suburb | ward | city | state | province | county | prefecture | zip | postalCode | country">
 <!ELEMENT address (#PCDATA | %addrElements; | break)*>
-<!ATTLIST address id ID #IMPLIED>
+<!ATTLIST address format (standard|european|italian) #IMPLIED id ID #IMPLIED>
 <!ELEMENT street (#PCDATA)>
 <!ATTLIST street id ID #IMPLIED>
 <!ELEMENT street2 (#PCDATA)>
