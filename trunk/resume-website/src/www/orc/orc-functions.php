@@ -25,7 +25,7 @@ function process_upload() {
 
 # Sanity Checks (feel free to add more, eg validity checks)
   if( $_FILES['resume'] == "") return( array( 1, "File not uploaded"));
-  if( $_FILES['resume']['error'] != "") print ($_FILES['resume']['error']);
+  if( $_FILES['resume']['error'] != "") return( array ( 1, $_FILES['resume']['error']));
   if( !is_uploaded_file($_FILES['resume']['tmp_name']))
     return( array( 1, "No XML R&eacute;sum&eacute; file uploaded"));
   if( $_FILES['resume']['size'] <= 0 || $_FILES['resume']['size'] > 100000)

@@ -31,6 +31,10 @@ SourceForge happy), so please consider using this time to
     <li><a href="http://www.aclu.org/">become a more active participant 
         in democracy</a> (U.S. only for this link)</a></li>
     <li><a href="http://www.eff.org/">help the fight for online freedom</a></li>
+    <li>browse the developer's <a 
+href="javascript:void 
+window.open('http://www.amazon.com/exec/obidos/search-handle-url/104-3869407-3127140?ix=us-xml-wishlist&pg=1&sz=50&rank=-valuesort&fqp=email%01joup%40bnet.org')"
+        >online wishlist</a></li>        
   </ul>
 </p>
 
@@ -49,11 +53,18 @@ r&eacute;sum&eacute; appears.</p>
 }
 ?>
 
-<p>If you discover a problem with ORC that the developers should know 
-about, please consider filing a bug report <a 
-href="https://sourceforge.net/tracker/?func=add&group_id=29512&atid=396335"
->here</a>.  Don't forget to include the r&eacute;sum&eacute; file you were 
-trying to convert, the log summary of the conversion, and any other files 
-that you uploaded.  Thanks!</p>
+<h2>Feedback</h2>
+
+<p>This is important-- if your r&eacute;sum&eacute; didn't turn out the 
+way you wanted it to, tell us about it!  What did you expect to happen, and 
+what went wrong?  Constructive criticism and words of praise are always 
+helpful and appreciated.</p>
+
+<form method="post" action="process-feedback.php" target="feedback" onsubmit="window.open('','feedback','width=400,height=400')">
+  <textarea name="comments" rows="10" cols="80">Please type your comments here</textarea><br/>
+  <input type="submit" name="Submit Comments"/>
+  <input type="hidden" name="errorMsg" value="<?php echo $arrReturn[1]; ?>"/>
+  <input type="hidden" name="buildLocation" value="<?php echo $arrReturn[2]; ?>"/>
+</form>
 
 <?php include_once("../private/footer.php"); ?>

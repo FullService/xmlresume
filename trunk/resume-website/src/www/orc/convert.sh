@@ -39,14 +39,17 @@ do
    # If no lockfiles exist, create the .convert lockfile and convert
    if [ ! -e .UPLOAD.$resume -a ! -e .CONVERT.$resume ]; then
 
-      # in case something goes wrong with the build, start a clean-start process
-      (sleep 120 && rm -f .CONVERT.$resume) &
+      # in case something goes wrong, start a clean-start process
+      (sleep 240 && rm -f .CONVERT.$resume) &
       touch .CONVERT.$resume
 	cd $resume
 	grep '^email =' user.props | cut -f 3 -d" " | ${MD5CMD} >> ../../users.md5
-	(${JAVACMD} ${ANT_OPTS} org.apache.tools.ant.Main \
+	${JAVACMD} ${ANT_OPTS} org.apache.tools.ant.Main \
 	-verbose -propertyfile user.props \
 	-find build.xml dispatch >& ./out/antlog.txt \
-	&& cd .. && mv $resume DONE/$resume && rm -f .CONVERT.$resume) &
+	cd @WWW_ROOT_FS@/orc/incoming
+	mv $resume DONE/$resume
+      rm -f .CONVERT.$resume
     fi
 done
+A
