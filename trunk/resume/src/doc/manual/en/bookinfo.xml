@@ -12,13 +12,14 @@
     </author>
   </authorgroup>
 
-  <subtitle>For &library.name; Version &library.version;</subtitle>
+  <subtitle>For &library.name; Version &library.version.dots;</subtitle>
 
   <pubdate>&book.pubdate;</pubdate>
 
   <copyright>
-    &book.copyright.years;
+    <year>2002</year>
     <holder>Bruce Christensen</holder>
+    <holder>Peter Hutnick</holder>
   </copyright>
 
   <legalnotice>
