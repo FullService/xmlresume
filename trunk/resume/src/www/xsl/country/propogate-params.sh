@@ -44,4 +44,13 @@ for country in `ls -1 *.xsl`; do
     fi
   done
 done
+
+echo "======== Making sure the appropriate files exist in ../output ..."
+for i in `ls -1 *.xsl | cut -c "1 2"`; do 
+  if [ ! -e ../output/$i-letter.xsl ]; then echo "You need to create an appropriate $i-letter.xsl in ../output/"; fi
+  if [ ! -e ../output/$i-a4.xsl ]; then echo "You need to create an appropriate $i-a4.xsl in ../output/"; fi
+  if [ ! -e ../output/$i-html.xsl ]; then echo "You need to create an appropriate $i-html.xsl in ../output/"; fi
+  if [ ! -e ../output/$i-text.xsl ]; then echo "You need to create an appropriate $i-text.xsl in ../output/"; fi
+done
+
 echo "Done."
