@@ -431,6 +431,9 @@ $Id$
   </xsl:template>
 
   <xsl:template match="r:degree">
+    <xsl:call-template name="FormatParagraph">
+      <xsl:with-param name="Width" select="$text.width - $text.indent"/>
+      <xsl:with-param name="Text">
       <xsl:value-of select="r:level"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
@@ -444,18 +447,79 @@ $Id$
         <xsl:text>, </xsl:text>
         <xsl:value-of select="r:institution"/>
       </xsl:if>
-      <xsl:call-template name="NewLine"/>
+        <xsl:if test="r:annotation">
+          <xsl:text>, </xsl:text>
       <xsl:apply-templates select="r:annotation"/>
+        </xsl:if>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+
+    <xsl:if test="r:subjects/r:subject">
       <xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="r:subjects"/>
+    </xsl:if>
+
       <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <xsl:template match="r:institution">
-	<xsl:text>    </xsl:text><xsl:value-of select="."/>
+  <!-- Format the subjects -->
+  <xsl:template match="r:subjects">
+    <xsl:param name="MaxChars">
+      <xsl:call-template name="MaxSubjectTitleLength"/>
+    </xsl:param>
+
+    <xsl:call-template name="Indent">
+    <xsl:with-param name="Text">
+
+      <xsl:for-each select="r:subject">
+        <xsl:value-of select="r:title"/>
+        <!-- Pad over to the second column -->
+        <xsl:call-template name="NSpace">
+          <xsl:with-param
+            name="n"
+            select="2 + $MaxChars - string-length(r:title)"/>
+        </xsl:call-template>
+
+        <xsl:value-of select="r:result"/>
+        <xsl:call-template name="NewLine"/>
+      </xsl:for-each>
+
+    </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="r:annotation">
-	<xsl:text>-    </xsl:text><xsl:value-of select="normalize-space(.)"/>
+  <!-- When called with an r:subjects as the context node, returns an integer
+  indicating number of characters in the longest subject title -->
+  <xsl:template name="MaxSubjectTitleLength">
+    <xsl:param name="SubjectIndex">1</xsl:param>
+
+    <xsl:choose>
+      <xsl:when test="$SubjectIndex &lt;= count(r:subject)">
+
+        <xsl:variable name="CurLen" select="string-length(r:subject[$SubjectIndex]/r:title)"/>
+
+        <xsl:variable name="MaxFollowingLen">
+          <xsl:call-template name="MaxSubjectTitleLength">
+            <xsl:with-param name="SubjectIndex" select="$SubjectIndex + 1"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:choose>
+          <xsl:when test="$CurLen > $MaxFollowingLen">
+            <xsl:value-of select="$CurLen"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$MaxFollowingLen"/>
+          </xsl:otherwise>
+        </xsl:choose>
+
+      </xsl:when>
+      <xsl:otherwise> <!-- $SubjectIndex > count(r:subject) -->
+        <xsl:text>0</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 
   <!-- Format the open-ended skills -->
