@@ -123,6 +123,20 @@ $Id$
     <delete file="${release.tar}"/>
   </target>
 
+  <!-- Installing -->
+
+  <target name="install"
+    description="Install installable components"
+    depends="install.web"/>
+
+  <target name="install.web"
+    description="Install web server files">
+    <mkdir dir="${resume.web.publish.dir}"/>
+    <copy todir="${resume.web.publish.dir}">
+      <fileset dir="${src.dir}/www"/>
+    </copy>
+  </target>
+
   <!-- Housekeeping -->
 
   <target name="filter"
