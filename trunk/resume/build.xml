@@ -147,11 +147,33 @@ $Id$
     <mkdir dir="${stage.dir}/dtd"/>
     <mkdir dir="${stage.dir}/xsl"/>
     <mkdir dir="${stage.dir}/css"/>
+    <mkdir dir="${stage.dir}/java"/>
   </target>    
+
+  <target name="release.compile"
+    description="Compile the java files into the staging area"
+    depends="release.build.prepare">
+    <javac srcdir="${java.src.dir}"
+      destdir="${stage.dir}/java"
+      debug="yes"
+      includes="**/filter/*.java"/>
+  </target>
+
+  <target name="release.jar"
+    description="Roll the java class files into a .jar"
+    depends="release.compile">
+    <jar basedir="${stage.dir}/java"
+       includes="**/*.class"
+       destfile="${stage.dir}/java/xmlresume-filter.jar"/>
+    <delete dir="${stage.dir}/java/net">
+      <fileset dir="${stage.dir}/java"
+        includes="**/*.class, net/*"/>
+    </delete>
+  </target>
 
   <target name="release.build.copy"
     description="Copy files into the staging area"
-    depends="release.build.prepare, filter, doc">
+    depends="release.build.prepare, filter, doc, release.jar">
 
     <!-- Documentation -->
     <copy todir="${stage.dir}/doc">
@@ -458,8 +480,8 @@ $Id$
 
   <!-- DocBook XSL Stylesheets version 1.50 system locations.
   These are system-dependent, but don't change them here. Instead, override them
-  in your ${user.home}/.ant.properties file. (You probably need to override just
-  the first line.) -->
+  in your ${user.home}/.ant.properties file with "doc.manual.docbook-xsl.dir = /path/to/your/docbook/stylesheets"
+  -->
   <property name="doc.manual.docbook-xsl.dir" value="/usr/share/sgml/docbook/stylesheet/xsl/nwalsh"/>
   <property name="doc.manual.docbook-xsl.html-single" value="${doc.manual.docbook-xsl.dir}/html/docbook.xsl"/>
   <property name="doc.manual.docbook-xsl.html-multiple" value="${doc.manual.docbook-xsl.dir}/html/chunk.xsl"/>
