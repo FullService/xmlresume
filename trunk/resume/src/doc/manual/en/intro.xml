@@ -8,6 +8,31 @@
 
   <section id="intro.what-is">
     <title>What is the &library.name;?</title>
-    <para>Blah blah.</para>
+
+      <para>
+        The &library.name; is, at its heart, a DTD, a Document Type Definition.
+        That means it is really someone's idea of how a &resume; should, or at
+        least could, be structured in XML. Beyond that, it comes with
+
+        <itemizedlist>
+          <listitem><para>Several XSLT style sheets (used to convert the XML
+            version of a &resume; to other formats such as plaintext, HTML,
+            PDF, and if you're lucky, RTF).
+          </para></listitem>
+          <listitem><para>
+            A Java-based filter to help you target your &resume;(s)
+	    toward a particular industry, employer, or job.
+          </para></listitem>
+          <listitem><para>
+            CSS stylesheets, used to control the presentation of the HTML
+            version.
+          </para></listitem>
+          <listitem><para>
+            A helpful <filename>Makefile</filename> that you can customize 
+	    for your own purposes.
+          </para></listitem>
+        </itemizedlist>
+      </para>
+
   </section>
 </preface>

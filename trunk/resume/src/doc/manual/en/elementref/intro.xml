@@ -46,7 +46,9 @@
 	  and 
 	  <link linkend="element.job"><sgmltag
           class="element">job</sgmltag></link>.
-	  Likewise, 
+	</para></listitem>
+	<listitem><para>
+	  Changed elements: 
 	  <link linkend="element.period"><sgmltag
           class="element">period</sgmltag></link> 
 	  can be used in place of 
@@ -56,15 +58,17 @@
           class="element">award</sgmltag></link> and
    	  <link linkend="element.clearance"><sgmltag
           class="element">clearance</sgmltag></link>.
-	</para>
-	<para>
+	</para></listitem>
+	<listitem><para>
+	  Changed element:
 	  <link linkend="element.major"><sgmltag
           class="element">major</sgmltag></link>
 	  is no longer a required child of 
 	  <link linkend="element.degree"><sgmltag
           class="element">degree</sgmltag></link>.
-	</para>
-	<para>
+	</para></listitem>
+	<listitem><para>
+	  Changed element:
 	  The <link linkend="element.project"><sgmltag
           class="element">project</sgmltag></link>
 	  element now supports an optional 

@@ -22,8 +22,8 @@
 
   <part id="getting-started">
     <title>Getting Started</title>
-    &getting-started.create;
-    &getting-started.convert;
+    &getting-started.setup;
+    &getting-started.explore;
   </part>
 
   <part id="ref">

@@ -23,12 +23,45 @@
   <glossentry id="gloss.element">
     <glossterm>element</glossterm>
     <glossdef>
-      <para>An element of an XML document that defines an
-      <quote>object</quote>, such as <sgmltag
-      class="starttag">resume</sgmltag> or <sgmltag
-      class="starttag">firstname</sgmltag>. <acronym>HTML</acronym> tags are
-      examples of elements. Additionally, elements can have <glossterm
-      linkend="gloss.attribute">attributes</glossterm>.</para>
+      <para>
+	An element of an XML document that defines an
+	<quote>object</quote>, such as <sgmltag
+	class="starttag">resume</sgmltag> or <sgmltag
+	class="starttag">firstname</sgmltag>. <acronym>HTML</acronym> tags are
+	examples of elements. Additionally, elements can have <glossterm
+	linkend="gloss.attribute">attributes</glossterm>.  Elements 
+	have a start (or "open") tag (e.g., <sgmltag 
+	class="starttag">firstname</sgmltag>) and an end (or "close") tag 
+	(e.g., <sgmltag class="endtag">firstname</sgmltag>).
+      </para>     
+      <para>
+	Each element (except for the root 
+	<sgmltag class="starttag">resume</sgmltag>) has exactly one 
+	<glossterm linkend="gloss.parent">parent element</glossterm> and 
+	0 or more <glossterm linkend="gloss.child">child 
+	elements</glossterm>.
+      </para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry id="gloss.parent">
+    <glossterm>parent element</glossterm>
+    <glossdef>
+      <para>
+	The <glossterm linkend="gloss.element>element</glossterm>
+	whose start tags and end tags surround a given element.
+      </para>
+    </glossdef>
+  </glossentry>
+
+  <glossentry id="gloss.child">
+    <glossterm>child element</glossterm>
+    <glossdef>
+      <para>
+	Any <glossterm linkend="gloss.element>element</glossterm>
+	positioned between the start tags and end tags of a given 
+	element.
+      </para>
     </glossdef>
   </glossentry>
 

@@ -8,8 +8,9 @@
   instead of just one <glossterm linkend="gloss.element">element</glossterm>.
   </para>
 
-  <para>This section details only user-configurable parameters. There are many
-  more internal parameters in <filename>params.xsl</filename>. Take a look at
+  <para>This section is a partial listing of user-configurable parameters. 
+  There are many more tunable parameters in
+  <filename>params.xsl</filename>. Take a look at
   the file in a text editor if you're interested.</para>
 
   <!-- <para>For information on how to override parameters, please see
