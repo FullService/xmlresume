@@ -94,7 +94,7 @@ following:
 5. Edit src/doc/release/*/index.html to reflect any major changes
    you have made.
 
-6. Tag the release with "cvs tag release-X.Y.Z" where X.Y.Z is
+6. Tag the release with "cvs tag release-X_Y_Z" where X_Y_Z is
    the version number.
 
 7. Run "ant release" to create the ZIP and TGZ archives.
