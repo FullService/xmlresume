@@ -21,7 +21,7 @@ $Id$
   <property name="version.underscore" value="1_5_0"/>
   <property name="release.zip.name" value="resume-${version.underscore}.zip"/>
   <property name="release.tgz.name" value="resume-${version.underscore}.tgz"/>
-  <property name="webserver.address" value="http://xmlresume.sourceforge.net/orc"/>
+  <property name="webserver.address" value="http://xmlresume.sourceforge.net"/>
   <!-- The location (relative to the webserver root) of the www files -->
   <property name="www.root" value=""/>
   <!-- The location of the resume-support module: -->

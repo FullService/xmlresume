@@ -84,7 +84,7 @@ This message is to notify you that the XML Résumé you
 submitted has been processed.  The results of this build, and a log
 summary of the build process can be found at
 
-@WEBSERVER_ADDRESS@/incoming/DONE/$dirname/out/
+@WEBSERVER_ADDRESS@@WWW_ROOT@/orc/incoming/DONE/$dirname/out/
 
 Please download your build results as soon as possible; they are deleted
 on a regular basis.

@@ -2,6 +2,18 @@ ORC - The XMLResume Library's Online Resume Converter
 
 ============   TECHNICAL OVERVIEW  =========
 
+--- REQUIRED DIRECTORY STRUCTURE --- 
+
+ORC assumes that it is in the subdirectory "orc" of ~/htdocs on
+shells.sourceforge.net, which is the root of
+http://xmlresume.sourceforge.net.  It assumes that, in the orc directory,
+../css and ../xsl exist and contain what is put their during the build
+process of the "resume" build process (ie, the xmlresume source CVS
+module).  If you are using ORC on your own machine, and you want the 
+website part to be in ~/htdocs/xmlresume, I suggest you add a symbolic 
+link from ~htdocs/xmlresume to wherever the css and xsl directories 
+(provided in the releases) are located.
+
 --- UPLOADING ---
 
 After reading the general disclaimers in index.html, users click to 
