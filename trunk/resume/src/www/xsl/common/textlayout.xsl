@@ -138,75 +138,120 @@ $Id$
     </xsl:if>
   </xsl:template>
 
-  <!-- Wraps $Text to $Width characters. Whitespace is normalized, with the
-  exception of newlines if $KeepNewlines is true.  -->
-  <xsl:template name="Wrap" >
+  <!-- Named template for formatting a generic bullet list item *SE* -->
+  <!-- Simply calls Wrap to do a hanging indent of the bullet character and
+  $Text. -->
+  <xsl:template name="FormatBulletListItem" >
+    <xsl:param name="Text"/>
+    <!-- Note: This is the max width of the lines outputted, *including the
+    bullet* -->
+    <xsl:param name="Width" select="20"/>
+
+    <xsl:call-template name="Wrap">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="$text.bullet.prefix"/>
+        <xsl:value-of select="$Text"/>
+      </xsl:with-param>
+      <xsl:with-param name="Width" select="$Width"/>
+      <xsl:with-param name="FirstIndent" select="0"/>
+      <xsl:with-param name="Indent" select="string-length($text.bullet.prefix)"/>
+      <xsl:with-param name="KeepNewlines" select="1"/>
+    </xsl:call-template>
+
+  </xsl:template>
+
+  <!-- Wraps $Text to $Width characters(*). Whitespace in input text is
+  normalized before processing, with the exception of newlines if $KeepNewlines
+  is true.
+  
+  The first line outputted will be indented $FirstIndent spaces (Default:
+  $Indent.)
+
+  All subsequent lines will be indented $Indent spaces. (Default: 0.)
+
+  $FirstIndent and $Indent are both measured from column zero; that is, they're
+  independent of each other. If $FirstIndent is 0, and $Indent is 3, you'll get
+  text shaped like this:
+
+  a b c d e f g h i j
+     k l m n o p q r s
+     t u v w x y z
+
+  Spaces used for indenting count toward $Width.
+
+  (*) If $Text contains a word that's longer than $Width, that word will be
+  output on a line by itself, causing the width of the outputted text to be
+  greater than $Width. Words are separated by spaces. -->
+  <xsl:template name="Wrap">
     <!-- Text to wrap -->
     <xsl:param name="Text"  />
     <!-- Maximum line length; lines longer than this get wrapped -->
     <xsl:param name="Width" select="20"/>
     <!-- Whether newlines in $Text should be kept. -->
     <xsl:param name="KeepNewlines" select="0"/>
+    <!-- Number of characters to indent each line. If $FirstIndent is specified,
+    the first line is indented that many characters instead. -->
+    <xsl:param name="Indent" select="0"/>
+    <!-- Number of characters to indent first line -->
+    <xsl:param name="FirstIndent" select="$Indent"/>
 
-    <!-- Number of characters outputted so far on the current line -->
-    <xsl:param name="CPos" select="0" />
-    <!-- Whether it's OK to output a newline if CPos = 0 -->
-    <xsl:param name="NewlineOK" select="0"/>
-    <!-- Has text been normalized yet? -->
+    <!-- Number of characters outputted on the current line -->
+    <xsl:param name="CPos" select="0"/>
+    <!-- Is the current line the first line? -->
+    <xsl:param name="IsFirstLine" select="1"/>
+    <!-- Has $Text been normalized? -->
     <xsl:param name="IsNormalized" select="0"/>
-
-    <!-- Output a newline if we're in column zero and we're allowed to
-    (not allowed when the template is first called by another template) -->
-    <xsl:if test="$CPos=0 and $NewlineOK">
-      <xsl:call-template name="NewLine"/>
-    </xsl:if>
-
-    <!-- Put as many words on the line as possible -->
-    <!-- Do it till we run out of things -->
 
     <xsl:choose>
 
-      <!-- If there's no input text, we're done -->
       <xsl:when test="string-length($Text) = 0">
+        <!-- Basis case; we're done. -->
       </xsl:when>
 
-      <!-- If we want to preserve newlines and the text contains a newline,
-      format everything before the newline. Then format everything after, with
-      $CPos reset to zero (since that's the column you're in after a newline has
-      been outputted). -->
+      <!-- Keep newlines if requested. (Basic idea is to split on newlines, do
+      wrapping on each part, and then join results with newlines.) -->
       <xsl:when test="$KeepNewlines and contains($Text, '&#xA;')">
-        <xsl:call-template name="Wrap">
-          <xsl:with-param name="Text" select="substring-before($Text, '&#xA;')"/>
-          <xsl:with-param name="Width" select="$Width"/>
-          <xsl:with-param name="KeepNewlines" select="$KeepNewlines"/>
-          <xsl:with-param name="CPos" select="$CPos"/>
-          <xsl:with-param name="NewlineOK" select="0"/>
-          <xsl:with-param name="IsNormalized" select="$IsNormalized"/>
-        </xsl:call-template>
+
+        <xsl:variable name="Before" select="substring-before($Text, '&#xA;')"/>
+        <xsl:variable name="After" select="substring-after($Text, '&#xA;')"/>
 
         <xsl:call-template name="Wrap">
-          <xsl:with-param name="Text" select="substring-after($Text, '&#xA;')"/>
+          <xsl:with-param name="Text" select="$Before"/>
           <xsl:with-param name="Width" select="$Width"/>
-          <xsl:with-param name="KeepNewlines" select="$KeepNewlines"/>
-          <xsl:with-param name="CPos" select="0"/>
-          <xsl:with-param name="NewlineOK" select="1"/>
-          <xsl:with-param name="IsNormalized" select="$IsNormalized"/>
+          <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+          <xsl:with-param name="Indent" select="$Indent"/>
+          <xsl:with-param name="KeepNewlines" select="1"/>
+          <xsl:with-param name="IsFirstLine" select="$IsFirstLine"/>
         </xsl:call-template>
+
+        <xsl:call-template name="NewLine"/>
+
+        <xsl:call-template name="Wrap">
+          <xsl:with-param name="Text" select="$After"/>
+          <xsl:with-param name="Width" select="$Width"/>
+          <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+          <xsl:with-param name="Indent" select="$Indent"/>
+          <xsl:with-param name="KeepNewlines" select="1"/>
+          <xsl:with-param name="IsFirstLine" select="0"/>
+        </xsl:call-template>
+
       </xsl:when>
 
-      <!-- Normalize whitespace in input text if it hasn't been done yet -->
       <xsl:when test="not($IsNormalized)">
         <xsl:call-template name="Wrap">
           <xsl:with-param name="Text" select="normalize-space($Text)"/>
           <xsl:with-param name="Width" select="$Width"/>
-          <xsl:with-param name="KeepNewlines" select="$KeepNewlines"/>
-          <xsl:with-param name="CPos" select="$CPos"/>
-          <xsl:with-param name="NewlineOK" select="$NewlineOK"/>
+          <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+          <xsl:with-param name="Indent" select="$Indent"/>
+          <xsl:with-param name="CPos" select="0"/>
+          <xsl:with-param name="IsFirstLine" select="$IsFirstLine"/>
           <xsl:with-param name="IsNormalized" select="1"/>
         </xsl:call-template>
       </xsl:when>
 
-      <!-- Pre-processing is complete; actually wrap the text -->
+      <!-- If we're here, text non-empty, normalized, and newline-free. We just
+      have to output the next word, or, if that would cause the line to become
+      too long, output a newline. -->
       <xsl:otherwise>
 
         <xsl:variable name="Word">
@@ -219,97 +264,102 @@ $Id$
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
+        <xsl:variable name="WordWidth" select="string-length($Word)"/>
+
+        <!-- Number of spaces to output before $Word -->
+        <xsl:variable name="SpaceWidth">
+          <!-- We're at the beginning of the line, so we may need to indent -->
+          <xsl:choose>
+            <xsl:when test="$CPos=0">
+              <xsl:choose>
+                <!-- We're on the first line -->
+                <xsl:when test="$IsFirstLine">
+                  <xsl:value-of select="$FirstIndent"/>
+                </xsl:when>
+                <!-- We're on a following line -->
+                <xsl:otherwise>
+                  <xsl:value-of select="$Indent"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <!-- We're not at the beginning of the line, so we'll need just one
+            space to separate this word from the previous one -->
+            <xsl:otherwise>1</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
 
         <xsl:choose>
 
-          <!-- If this word would cause the line to exceed $Width, -->
-          <!-- start a new line instead.                           -->
-          <xsl:when test="(1 + $CPos + string-length($Word)) &gt; $Width">
+          <!-- If the word length is longer than the allowed line length, and
+          we're at the start of the line, then output the word. (Without this
+          case, we'd get stuck in endless recursion.) -->
+          <xsl:when test="($CPos = 0) and ($SpaceWidth + $WordWidth &gt; $Width)">
+
+            <xsl:call-template name="NSpace">
+              <xsl:with-param name="n" select="$SpaceWidth"/>
+            </xsl:call-template>
+
+            <xsl:value-of select="$Word"/>
+
+            <xsl:call-template name="Wrap">
+              <xsl:with-param name="Text" select="substring-after($Text, ' ')"/>
+              <xsl:with-param name="Width" select="$Width"/>
+              <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+              <xsl:with-param name="Indent" select="$Indent"/>
+              <xsl:with-param name="CPos" select="$WordWidth"/>
+              <xsl:with-param name="IsFirstLine" select="$IsFirstLine"/>
+              <xsl:with-param name="IsNormalized" select="1"/>
+            </xsl:call-template>
+
+          </xsl:when>
+
+          <!-- If the word will make this line too long, make a new line and
+          try again -->
+          <xsl:when test="$CPos + $SpaceWidth + $WordWidth &gt; $Width">
+
+            <xsl:call-template name="NewLine"/>
+
             <xsl:call-template name="Wrap">
               <xsl:with-param name="Text" select="$Text"/>
               <xsl:with-param name="Width" select="$Width"/>
-              <xsl:with-param name="KeepNewlines" select="$KeepNewlines"/>
+              <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+              <xsl:with-param name="Indent" select="$Indent"/>
               <xsl:with-param name="CPos" select="0"/>
-              <xsl:with-param name="NewlineOK" select="1"/>
-              <xsl:with-param name="IsNormalized" select="$IsNormalized"/>
+              <xsl:with-param name="IsFirstLine" select="0"/>
+              <xsl:with-param name="IsNormalized" select="1"/>
             </xsl:call-template>
-          </xsl:when> 
-          <!-- otherwise, there's room on the current line -->
+
+          </xsl:when>
+
+          <!-- There's room on this line for the word, so output it, possibly
+          prepended with a space -->
           <xsl:otherwise>
 
-            <xsl:if test="$CPos &gt; 0">
-              <xsl:text> </xsl:text>  
-            </xsl:if>
-            <xsl:variable name="SpaceWidth">
-              <xsl:choose>
-                <xsl:when test="$CPos &gt; 0">1</xsl:when>
-                <xsl:otherwise>0</xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
+            <xsl:call-template name="NSpace">
+              <xsl:with-param name="n" select="$SpaceWidth"/>
+            </xsl:call-template>
 
             <xsl:value-of select="$Word"/>
+
             <xsl:call-template name="Wrap">
-              <xsl:with-param name="Text" select="substring-after($Text,' ')"/>
+              <xsl:with-param name="Text" select="substring-after($Text, ' ')"/>
               <xsl:with-param name="Width" select="$Width"/>
-              <xsl:with-param name="KeepNewlines" select="$KeepNewlines"/>
-              <xsl:with-param name="CPos" select="$CPos + string-length($Word) + $SpaceWidth"/>
-              <xsl:with-param name="NewlineOK" select="1"/>
-              <xsl:with-param name="IsNormalized" select="$IsNormalized"/>
+              <xsl:with-param name="FirstIndent" select="$FirstIndent"/>
+              <xsl:with-param name="Indent" select="$Indent"/>
+              <xsl:with-param name="CPos"
+                select="$CPos + $SpaceWidth + $WordWidth"/>
+              <xsl:with-param name="IsFirstLine" select="$IsFirstLine"/>
+              <xsl:with-param name="IsNormalized" select="1"/>
             </xsl:call-template>
+
           </xsl:otherwise>
+
         </xsl:choose>
 
       </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- Named template for formatting a generic bullet list item *SE* -->
-  <!-- Heavily modified by Bruce to call other templates to do the hard work. It
-  was pretty much a copy of Wrap before; now it calls Wrap
-  and Indent to do the work. -->
-  <xsl:template name="FormatBulletListItem" >
-    <xsl:param name="Text"/>
-    <!-- Note: This is the max width of the lines outputted, *including the
-    bullet* -->
-    <xsl:param name="Width" select="20"/>
-
-    <!-- Get the wrapped text -->
-    <xsl:variable name="FormattedText">
-      <xsl:call-template name="Wrap">
-        <xsl:with-param name="Text" select="$Text"/>
-        <xsl:with-param name="Width"
-          select="$Width - string-length($text.bullet.character) - 1"/>
-        <xsl:with-param name="KeepNewlines" select="1"/>
-      </xsl:call-template>
-    </xsl:variable>
-
-    <!-- Output bullet character and a space -->
-    <xsl:value-of select="$text.bullet.character"/>
-    <xsl:text> </xsl:text>
-
-    <xsl:choose>
-      <xsl:when test="contains($FormattedText, '&#xA;')">
-
-        <!-- Output the first line of the formatted text -->
-        <xsl:value-of select="substring-before($FormattedText, '&#xA;')"/>
-        <xsl:call-template name="NewLine"/>
-
-        <!-- Output the rest of the lines, indented to line up properly -->
-        <xsl:call-template name="Indent">
-          <xsl:with-param name="Text" select="substring-after($FormattedText, '&#xA;')"/>
-          <xsl:with-param name="Length">
-            <!-- The +1 is for the space outputted after the bullet char -->
-            <xsl:value-of select="string-length($text.bullet.character) + 1"/>
-          </xsl:with-param>
-        </xsl:call-template>
-
-      </xsl:when>
-
-      <xsl:otherwise>
-        <xsl:value-of select="$FormattedText"/>
-      </xsl:otherwise>
 
     </xsl:choose>
+
   </xsl:template>
 
 </xsl:stylesheet>
