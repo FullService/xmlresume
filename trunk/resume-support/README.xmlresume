@@ -1,0 +1,26 @@
+************ Last Updated 2002-11-20 *********
+
+This is the XMLResume Library's resume-support module.  Its goal is to
+serve as a repository of 3rd-party software modules (especially jar files)
+that is used in developing the library.  It's also quite handy, as it 
+contains all the software needed for converting a resume in one convenient 
+place.  
+
+USING
+You'll probably just need to add the jar files to your java classpath.
+
+UPDATING
+If any jar file is out of date, please replace it and commit it to CVS.  
+It it suggested that you test the new jar file for compatibility with 
+older VMs (1.3 at least, preferably 1.2) as not all systems have support 
+for 1.4.  
+
+Since this module contains the xmlresume-filter.jar, the build process 
+should support updating it automatically (it currently doesn't.)
+
+LICENSING
+Every attempt has been made to ensure that the use of the 3rd party 
+software in this module complies with the relevant licensing schemes.  If 
+you have a concern about a violation, please contact 
+xmlresume-devel@lists.sourceforge.net.
+
