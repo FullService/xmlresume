@@ -34,10 +34,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:include href="common.xsl"/>
   <xsl:import href="@DOCBOOK_XSL_FO@"/>
+  <xsl:include href="common.xsl"/>
 
   <!-- Customizations -->
-  <!-- (none) -->
+  <xsl:param name="alignment">left</xsl:param>
+  <xsl:param name="body.font.family">serif</xsl:param>
+  <xsl:param name="monospace.font.family">monospace</xsl:param>
+  <xsl:param name="sans.font.family">sans-serif</xsl:param>
+  <xsl:param name="title.font.family">sans-serif</xsl:param>
+  <xsl:param name="dingbat.font.family">serif</xsl:param>
 
 </xsl:stylesheet>
