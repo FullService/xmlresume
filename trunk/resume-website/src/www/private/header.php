@@ -48,7 +48,8 @@ $meta_redirect_delay : the delay prior to redirection (in seconds)
 <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_ZIP_NAME@">Download ZIP</a></p>
 <p><a href="http://prdownloads.sourceforge.net/xmlresume/@RELEASE_TGZ_NAME@">Download GZIP TAR</a></p>
 <p><a href="@WWW_ROOT@/orc">Online R&eacute;sum&eacute; Converter</a></p>
-<p>User Guide (<a href="@WWW_ROOT@/user-guide/index.html">HTML,</a>
+<p>User Guide <br/>
+  (<a href="@WWW_ROOT@/user-guide/index.html">HTML,</a>
    <a href="@WWW_ROOT@/user-guide.pdf">PDF</a>)</p>
 <p><a href="@WWW_ROOT@/examples/index.html">Examples</a></p>
 <p><a href="@WWW_ROOT@/people">People</a></p>
