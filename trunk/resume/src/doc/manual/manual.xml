@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE book
     PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-    "./sgml/docbook-xml-4.1.2/docbookx.dtd" [
-    <!-- "http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd" [ -->
+    "@DOCBOOK_XML_DTD@" [
 
 <!-- Textual entities (content) -->
 <!ENTITY % global.entities  SYSTEM "entities/global.ent">
