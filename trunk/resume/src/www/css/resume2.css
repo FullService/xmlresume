@@ -51,6 +51,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	.pub { font-style: normal }
 	.pubs { font-style: normal }
 	.pubsHeading { font-style: normal; color:green }
+	.refereeHeading { font-style: normal }
+	.refereesHeading { font-weight: bold; color:green }
 	.resume { background-color:#F0F0C0; }
 	.skill { font-style: normal }
 	.skillareaHeading { font-style: normal }
