@@ -152,6 +152,8 @@ $Id$
   <target name="release.build.copy"
     description="Copy files into the staging area"
     depends="release.build.prepare, filter, doc">
+
+    <!-- Documentation -->
     <copy todir="${stage.dir}/doc">
       <fileset dir="${doc.relnotes.build.dir}"/>
     </copy>
@@ -164,6 +166,8 @@ $Id$
     <copy tofile="${stage.dir}/README"
       file="${src.dir}/doc/README.src"
       filtering="yes"/>
+
+    <!-- Examples -->
     <copy todir="${stage.dir}/examples"
       filtering="yes">
       <fileset dir="${basedir}/examples">
@@ -172,6 +176,8 @@ $Id$
         <include name="**/README"/>
       </fileset>
     </copy>
+
+    <!-- Code -->
     <copy todir="${stage.dir}/dtd"
       filtering="yes">
       <fileset dir="${src.dir}/www/dtd"/>
@@ -349,11 +355,23 @@ $Id$
   <!-- <property name="doc.manual.fo.file" value="${doc.manual.build.dir}/manual.fo"/> -->
   <!-- <property name="doc.manual.pdf.file" value="${doc.manual.build.dir}/manual.pdf"/> -->
 
-  <!-- Manual XSL stylesheet locations -->
-  <property name="doc.manual.xsl.dir" value="${doc.manual.build.dir}/sgml"/>
+  <!-- Manual XSL stylesheet locations (XML Resume customized versions) -->
+  <property name="doc.manual.xsl.dir" value="${doc.manual.build.dir}/xsl"/>
   <property name="doc.manual.xsl.html-single" value="${doc.manual.xsl.dir}/html-single.xsl"/>
   <property name="doc.manual.xsl.html-multiple" value="${doc.manual.xsl.dir}/html-multiple.xsl"/>
   <property name="doc.manual.xsl.fo" value="${doc.manual.xsl.dir}/fo.xsl"/>
+
+  <!-- DocBook XML DTD version 4.1.2 system location -->
+  <property name="doc.manual.docbook-xml.file" value="http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"/>
+
+  <!-- DocBook XSL Stylesheets version 1.50 system locations.
+  These are system-dependent, but don't change them here. Instead, override them
+  in your ${user.home}/.ant.properties file. (You probably need to override just
+  the first line.) -->
+  <property name="doc.manual.docbook-xsl.dir" value="/usr/share/sgml/docbook/stylesheet/xsl/nwalsh"/>
+  <property name="doc.manual.docbook-xsl.html-single" value="${doc.manual.docbook-xsl.dir}/html/docbook.xsl"/>
+  <property name="doc.manual.docbook-xsl.html-multiple" value="${doc.manual.docbook-xsl.dir}/html/chunk.xsl"/>
+  <property name="doc.manual.docbook-xsl.fo" value="${doc.manual.docbook-xsl.dir}/fo/docbook.xsl"/>
 
   <!-- Tools -->
   <property name="python" value="python"/>
@@ -417,7 +435,7 @@ $Id$
       </fileset>
     </copy>
     <!-- Copy everything else. Only files that haven't already been copied
-    (i.e. text.resources) will be copied. -->
+    (i.e. all but text.resources) will be copied. -->
     <copy todir="${doc.manual.build.dir}"
       filtering="no">
       <fileset dir="${doc.manual.src.dir}"/>
@@ -442,6 +460,20 @@ $Id$
   <target name="doc.manual.filter"
     description="Define filtering tokens for manual generation"
     depends="filter">
+
+    <filter
+      token="DOCBOOK_XML_DTD"
+      value="${doc.manual.docbook-xml.file}"/>
+
+    <filter
+      token="DOCBOOK_XSL_HTML_MULTIPLE"
+      value="${doc.manual.docbook-xsl.html-multiple}"/>
+    <filter
+      token="DOCBOOK_XSL_HTML_SINGLE"
+      value="${doc.manual.docbook-xsl.html-single}"/>
+    <filter
+      token="DOCBOOK_XSL_FO"
+      value="${doc.manual.docbook-xsl.fo}"/>
 
     <!-- Element reference entity defs -->
     <exec executable="${python}"
@@ -591,7 +623,7 @@ $Id$
       <arg value="-o"/>
       <arg value="${doc.manual.fo.file}.patched-for-fop"/>
       <arg value="${doc.manual.fo.file}"/>
-      <arg value="${doc.manual.build.dir}/sgml/docbook-xsl-1.50.0/fo/fo-patch-for-fop.xsl"/>
+      <arg value="${doc.manual.build.dir}/xsl/docbook-xsl-1.50.0/fo/fo-patch-for-fop.xsl"/>
     </java>
 
     <java

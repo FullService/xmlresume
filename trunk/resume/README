@@ -67,7 +67,7 @@ following:
 
 6. Run "ant release" to create the ZIP and TGZ archives.
 
-7. Run "ant publish" to publish the new release to the
+7. Run "ant install.web" to publish the new release to the
    web server.
 
 8. Upload the ZIP and TGZ archives to
@@ -91,26 +91,26 @@ HTML, and text.)
 
 More information about the XML Resume Project User's Guide
 and the tools required to build it is in
-src/doc/manual/README.
+src/doc/manual/README. If you're going to be writing
+documentation, please read the AUTHORING file in the same
+directory.
 
 Formatting the Examples
 =======================
 
 Formatting the example resumes from the developer's
 edition requires a "make" command line that redefines
-the FO_STYLE, TEXT_STYLE, and HTML_STYLE symbols to
+the fo_style, text_style, and html_style symbols to
 point to the development area's copies and not the
 official copies via HTTP.  Additionally, you should use
 a CATALOG aware processor so that the local copy of the
 DTD is found instead of the last stable release via
 HTTP.  Here's a sample invocation:
 
-make HTML_STYLE=../src/www/xsl/us-html.xsl \
-     FO_STYLE=../src/www/xsl/us-letter.xsl \
-     TXT_STYLE=../src/www/xsl/us-text.xsl \
-     RESUME=my-test \
+make xsl_base=../src/www/xsl/ \
+     resume=my-test \
      clean \
      all
 
-This formats my-test.xml into all three possible
-formats.
+This formats my-test.xml into all four possible
+formats (html, text, fo, pdf).
