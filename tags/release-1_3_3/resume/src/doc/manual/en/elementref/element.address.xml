@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.address">
+  <refnamediv>
+    <refname>address</refname>
+    <refpurpose>A postal address</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">address</sgmltag> element defines a single
+      postal address. It does <emphasis role="bold">not</emphasis> contain
+      information about a person who resides at the address.
+    </para>
+
+    <para>
+      Different countries have different address formatting conventions.
+      Address formatting is controlled by the <link
+      linkend="param.address.format"><parameter>address.format</parameter></link>
+      parameter.
+    </para>
+
+    <para>
+      If an address cannot be specified using <sgmltag
+      class="element">address</sgmltag>'s child elements (<sgmltag
+      class="element">street</sgmltag>, <sgmltag
+      class="element">city</sgmltag>, etc.), it may be specified in untagged
+      format. In this case, the address will be formatted verbatim, with line
+      breaks preserved.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">address</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify an address. The address may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">format</sgmltag></term>
+          <listitem>
+            <para>
+              The address format. This attribute specifies the format of an
+              address, and overrides the global <link
+              linkend="param.address.format"><parameter>address.format</parameter></link>
+              parameter for each address that it appears in.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="param.address.format"><parameter>address.format</parameter></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <!-- =================================================================== -->
+    <example>
+      <title>U.S.-style address</title>
+
+      <programlisting><![CDATA[
+<address>
+  <street>123 Pickle St.</street>
+  <street>Apt. #12</street>
+  <city>Sourville</city>
+  <state>NX</state>
+  <zip>99999-9999</zip>
+</address>
+      ]]></programlisting>
+    
+      <para>Formatted as:</para>
+
+      <literallayout><computeroutput><![CDATA[
+123 Pickle St. Apt. #12
+Sourville, NX 99999-9999
+      ]]></computeroutput></literallayout>
+
+    </example>
+
+    <!-- =================================================================== -->
+    <example>
+      <title>Italian address</title>
+
+      <programlisting><![CDATA[
+<address>
+  <street>Via Garibaldi, 23</street>
+  <city>Sorrento</city>
+  <postalCode>123 456</postalCode>
+  <province>NA</province>
+  <country>Italy</country>
+</address>
+      ]]></programlisting>
+
+    </example>
+
+    <!-- =================================================================== -->
+    <example>
+      <title>Untagged address</title>
+
+      <programlisting><![CDATA[
+<address>Reina #35, apt. 4a, e/ Gervasio y Escobar
+Ciudad de La Habana, CP 11900
+CUBA
+</address>
+      ]]></programlisting>
+
+      <para>Formatted as:</para>
+
+      <literallayout><computeroutput><![CDATA[
+Reina #35, apt. 4a, e/ Gervasio y Escobar
+Ciudad de La Habana, CP 11900
+CUBA
+      ]]></computeroutput></literallayout>
+
+      <warning>
+        <para>
+          You may have noticed that the XML for this address isn't indented as
+          usual. This is because untagged addresses are formatted verbatim,
+          and so any indentation would be preserved in the formatted address.
+          The address text begins on the same line as the start tag for the
+          same reason (we don't want a leading linebreak in the formatted
+          address).
+        </para>
+      </warning>
+
+    </example>
+
+    <!-- =================================================================== -->
+    <para>
+      For additional address examples, look at the XML files in the <filename
+      class="directory">examples/addressing</filename> directory of the
+      &library.name; distribution.
+    </para>
+
+  </refsect1>
+
+</refentry>

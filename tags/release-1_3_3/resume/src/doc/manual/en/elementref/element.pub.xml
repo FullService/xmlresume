@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.pub">
+  <refnamediv>
+    <refname>pub</refname>
+    <refpurpose>A work published by the &resume; <quote>owner</quote></refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">pub</sgmltag> element contains elements
+      that describe a work (like an article, a book, a poem, or a scholarly
+      paper) that was published by the person the &resume; describes.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">pub</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a publication. The
+              publication may then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.citation"><sgmltag class="element">citation</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <example><title>Book with multiple authors</title>
+      <programlisting><![CDATA[
+<pub>
+  <bookTitle>Foundations of Computer Science, C Edition</bookTitle>
+  <author>Alfred V. Aho</author>
+  <author>Jeffrey D. Ullman</author>
+  <pubDate>
+    <year>1995</year>
+  </pubDate>
+  <publisher>Computer Science Press, New York</publisher>
+</pub>
+      ]]></programlisting>
+    </example>
+
+    <example><title>Magazine article</title>
+      <programlisting><![CDATA[
+<pub>
+  <artTitle>Low-Fat Philly Cheese Steaks</bookTitle>
+  <bookTitle>Healthy Cooking</bookTitle>
+  <author>Joe Sixpack</author>
+  <pubDate>
+    <month>June</month>
+    <year>1999</year>
+  </pubDate>
+  <publisher>Healthy Publishing Group</publisher>
+</pub>
+      ]]></programlisting>
+    </example>
+
+  </refsect1>
+
+</refentry>

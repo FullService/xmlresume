@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.degree">
+  <refnamediv>
+    <refname>degree</refname>
+    <refpurpose>Container for information about a degree or similar certification</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">degree</sgmltag> element is a container for
+      information about an academic degree (Bachelor of Science, Doctor of
+      Psychology, etc.) or other similar certification.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">degree</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a degree. The degree may
+              then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<degree>
+  <level>Ph.D</level>
+  <major>Microbiology</major>
+  <annotation>Thesis on effect of hot dogs on canine amino acids</annotation>
+</degree>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<degree>
+  <level>BA</level>
+  <major>Toilet Paper Pattern Design</major>
+  <date>
+    <month>June</month>
+    <year>1745</year>
+  </date>
+  <institution>British Design Academy</institution>
+  <annotation>
+    On dean's list for duration of studies.
+  </annotation>
+</degree>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<degree>
+  <level>BS</level>
+  <major>Computer Science</major>
+  <subjects>
+    <subject>
+      <title>Compilers</title>
+      <result>A-</result>
+    </subject>
+    <subject>
+      <title>Data Structures</title>
+      <result>B</result>
+    <subject>
+  </subjects>
+</degree>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

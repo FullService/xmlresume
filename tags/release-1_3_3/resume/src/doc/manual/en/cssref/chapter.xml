@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<chapter id="cssref">
+  <title>CSS Class Reference</title>
+
+  <para>
+    This section of the manual describes the Cascading Stylesheets classes
+    that are available for formatting HTML output. For more information on
+    CSS, visit the <ulink url="&css.url;">W3C web site</ulink>.
+  </para>
+
+  <section id="cssref.overview">
+    <title>Overview</title>
+
+    <table frame="none">
+      <title>Table of CSS Classes</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Class</entry>
+            <entry>Where Used</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><literal>academicsHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> of the heading for your
+              academics.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>bookTitle</literal></entry>
+            <entry>
+              On the <sgmltag class="element">cite</sgmltag> used to refer to a
+              title of a book in one of your publications.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>citation</literal></entry>
+            <entry>
+              On all HTML <sgmltag class="element">cite</sgmltag>s generated from
+              all XML <sgmltag class="element">citation</sgmltag>s.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>contactHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> of the heading for the
+              contact information.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>copyright</literal></entry>
+            <entry>
+              On the <sgmltag class="element">address</sgmltag> for copyright
+              information.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>degree</literal></entry>
+            <entry>
+              On the <sgmltag class="element">li</sgmltag> for a single degree.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>degrees</literal></entry>
+            <entry>
+              On the <sgmltag class="element">ul</sgmltag> for the list of degrees
+              you hold.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>description</literal></entry>
+            <entry>
+              Around descriptions of items.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>emphasis</literal></entry>
+            <entry>
+              On all HTML <sgmltag class="element">strong</sgmltag>s generated
+              from all XML <sgmltag class="element">emphasis</sgmltag>s.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>employer</literal></entry>
+            <entry>
+              Around all employer names.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>historyHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> of the heading for the
+              employment history.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>job</literal></entry>
+            <entry>
+              On the <sgmltag class="element">p</sgmltag> of the paragraph
+              generating a single employer entry.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>jobTitle</literal></entry>
+            <entry>
+              On the <sgmltag class="element">span</sgmltag> enclosing the title
+              you held at job.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>level</literal></entry>
+            <entry>
+              On the <sgmltag class="element">acronym</sgmltag> for the level
+              attained in a degree.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>membershipsHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> for the memberships
+              heading.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>membershipTitle</literal></entry>
+            <entry>
+              On the position title in a membership.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>miscHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> for the miscellany
+              heading.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>nameHeading</literal></entry>
+            <entry>
+              Around your name at the top of the &resume;.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>note</literal></entry>
+            <entry>
+              On the <sgmltag class="element">div</sgmltag> used as the admonition
+              below the list of held degrees.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>objectiveHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> of the heading for the
+              professional objective.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>organization</literal></entry>
+            <entry>
+              On the name of the organization of which you're a member.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>para</literal></entry>
+            <entry>
+              On all HTML <sgmltag class="element">p</sgmltag>s generated from all
+              XML <sgmltag class="element">para</sgmltag>s.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>pub</literal></entry>
+            <entry>
+              On a single publication.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>pubs</literal></entry>
+            <entry>
+              On the <sgmltag class="element">ul</sgmltag> for the list of
+              publications.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>pubsHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> heading the
+              publications.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>resume</literal></entry>
+            <entry>
+              On the <sgmltag class="element">body</sgmltag> of the entire HTML
+              output.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>skill</literal></entry>
+            <entry>
+              On the <sgmltag class="element">li</sgmltag> for a single skill.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>skillareaHeading</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h2</sgmltag> for a skill area.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>skills</literal></entry>
+            <entry>
+              On the <sgmltag class="element">ul</sgmltag> for a list of skills.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>skillsetTitle</literal></entry>
+            <entry>
+              On the <sgmltag class="element">h3</sgmltag> for a title of a set of
+              skills.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>urlA</literal></entry>
+            <entry>
+              On the <sgmltag class="element">a</sgmltag> of a generated
+              hyperlink.
+            </entry>
+          </row>
+          <row>
+            <entry><literal>urlCode</literal></entry>
+            <entry>
+              On <sgmltag class="element">code</sgmltag> sections used to mark up
+              URLs.
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+  </section>
+
+</chapter>

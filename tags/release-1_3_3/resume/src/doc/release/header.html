@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+  <head>
+    <title>XML Resume Library: Header Formatting</title>
+    <link href="doc.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>XML R&eacute;sum&eacute; Library: Header Formatting</h1>
+
+    <p>The <code>header.format</code> parameter controls the format
+      of the page header.  Possible values are <code>standard</code>
+      and <code>centered</code>.  Examples of each format follow.
+    </p>
+
+    <p>Note that this parameter only affects the HTML and text 
+      formatters.  The PDF formatter produces output similar to 
+      the "centered" option, but with the text left-justified within
+      a centered block.
+    </p>
+
+    <h2>Standard</h2>
+      <p>A centered line with the name and the word "R&eacute;sum&eacute",
+        followed by a left-justified contact information block:
+      </p>
+
+      <p>
+       <pre>
+       <div class="centered">Jo Doe  - R&eacute;sum&eacute</div>
+       Contact Information: 
+       Jo Doe
+       123 Elm #456
+       Garbonzoville, NX 99999-9999
+       Phone: 555.555.5555
+       Email: doe@doe.doe
+       URL: http://doe.com/~doe/
+     </pre></p>
+
+    <h2>Centered</h2>
+      <p>A single centered block with the name and contact information.
+      </p>
+
+      <p><pre>
+       <div class="centered">
+       Jo Doe
+       123 Elm #456
+       Garbonzoville, NX 99999-9999
+       Phone: 555.555.5555
+       Email: doe@doe.doe
+       URL: http://doe.com/~doe/
+       </div>
+     </pre></p>
+
+     <p><a href="index.html">Back to the main documentation page</a></p>
+  </body>
+</html>

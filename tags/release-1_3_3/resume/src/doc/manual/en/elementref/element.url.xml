@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.url">
+  <refnamediv>
+    <refname>url</refname>
+    <refpurpose>A Uniform Resource Locator</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">url</sgmltag> element contains a single
+      Uniform Resource Locator, as specified by <ulink url="&rfc1738.url;">RFC
+      1738</ulink> and <ulink url="&rfc1808.url;">RFC 1808</ulink>.
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        URLs are formatted as un-linked (non-hyperlinked) plain text. In HTML
+        and FO/PDF output formats, they are rendered in a fixed-width typeface.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">url</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="element.link"><sgmltag class="element">link</sgmltag></link></member>
+      </simplelist>.
+      <simplelist type="inline">
+        <member><link linkend="element.uri"><sgmltag class="element">uri</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<para>
+  The Apache XML Project web page is located at
+  <url>http://xml.apache.org/</url>.
+</para>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<skill>
+  Python (see <url>http://www.python.org/</url>)
+</skill>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

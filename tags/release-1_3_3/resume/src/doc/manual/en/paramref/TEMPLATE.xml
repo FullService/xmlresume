@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<refentry id="param.TODO">
+  <refnamediv>
+    <refname><!-- TODO --></refname>
+    <refpurpose><!-- TODO --></refpurpose>
+  </refnamediv>
+
+  <refsect1><title>Applies To</title>
+    <para>
+      <!-- TODO -->
+    </para>
+  </refsect1>
+
+  <refsect1><title>Possible Values</title>
+    <para>
+      Possible values include <!-- TODO <literal>valuename</literal> -->.
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><literal><!-- TODO --></literal></term>
+        <listitem>
+          <para>
+            <!-- TODO -->
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<bookinfo>
+  <title>&book.title;</title>
+
+  <authorgroup>
+    <author>
+      <firstname>Bruce</firstname>
+      <surname>Christensen</surname>
+      <email>&bruce.email;</email>
+    </author>
+  </authorgroup>
+
+  <subtitle>For &library.name; Version &library.version;</subtitle>
+
+  <pubdate>&book.pubdate;</pubdate>
+
+  <copyright>
+    &book.copyright.years;
+    <holder>Bruce Christensen</holder>
+  </copyright>
+
+</bookinfo>

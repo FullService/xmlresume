@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.publisher">
+  <refnamediv>
+    <refname>publisher</refname>
+    <refpurpose>Information about a publisher of a work</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">publisher</sgmltag> element contains
+      the name, and possibly location, of the organization that published a
+      literary, artistic, scholary, or other work.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">publisher</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <example><title>Publisher name only</title>
+      <programlisting><![CDATA[
+<pub>
+  <bookTitle>Deep Thoughts on Stuff</bookTitle>
+  <publisher>Totally Groovy Publishing, Ltd.</publisher>
+</pub>
+      ]]></programlisting>
+    </example>
+
+    <example><title>Publisher name and location</title>
+      <programlisting><![CDATA[
+<pub>
+  <bookTitle>A User's Guide to Dirt</bookTitle>
+  <publisher>Mother Nature Books, Boston, Massachusetts</publisher>
+</pub>
+      ]]></programlisting>
+    </example>
+
+  </refsect1>
+
+</refentry>

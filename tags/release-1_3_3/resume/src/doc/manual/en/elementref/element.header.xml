@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.header">
+  <refnamediv>
+    <refname>header</refname>
+    <refpurpose>Container for information about the person being described in a &resume;</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">header</sgmltag> element is a container for
+      information typically contained in the header at the top of a &resume;.
+      This includes biographic and contact information about the person who
+      the &resume; describes.
+    </para>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">header</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<header>
+  <name>
+    <firstname>Hector</firstname>
+    <surname>Gomez</surname>
+  </name>
+  <address>
+    <street>245 San Bernadino</street>
+    <city>Los Gatos</city>
+    <state>LX</state>
+    <zip>94262</zip>
+  </address>
+  <birth>
+    <date>
+      <dayOfMonth>30</dayOfMonth>
+      <month>April</month>
+      <year>1942</year>
+    </date>
+  </birth>
+  <contact>
+    <phone>555-1212</phone>
+    <email>hector.gomez@xyz.bob</email>
+  </contact>
+</header>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

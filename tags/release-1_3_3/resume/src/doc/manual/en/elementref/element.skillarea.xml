@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.skillarea">
+  <refnamediv>
+    <refname>skillarea</refname>
+    <refpurpose>A group of broadly related skill sets</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">skillarea</sgmltag> element contains one or
+      more <link linkend="element.skillset"><sgmltag
+      class="element">skillset</sgmltag></link>s. Usually the skill sets it
+      contains are related to each other, at least in a general sense.
+    </para>
+
+    <para>
+      For example, a <quote>Computer Skills</quote> skill area may contain
+      skillsets titled <quote>Programming</quote>, <quote>Office
+      Programs</quote>, and <quote>Hardware</quote>.
+    </para>
+
+    <para>
+      It is quite common for a &resume; to contain only one skill area.
+    </para>
+
+    <refsect2><title>Formatting</title>
+      <para>
+        The text of skill area's <link linkend="element.title"><sgmltag
+        class="element">title</sgmltag></link> element is displayed as a
+        top-level heading in all output formats. Then all contained skill sets
+        are displayed sequentially. See <link
+        linkend="element.skillset"><sgmltag
+        class="element">skillset</sgmltag></link> for information about skill
+        set formatting.
+      </para>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">skillarea</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">id</sgmltag></term>
+          <listitem>
+            <para>
+              A string used to uniquely identify a skill area. The skill area
+              may then be referred to by this identifier.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <example>
+      <title>Broad skill area</title>
+      
+      <programlisting><![CDATA[
+<skillarea>
+  <title>Skills</title>
+
+  <skillset>
+    <title>Computers</title>
+    <skills>
+      <skill>Typing (<emphasis>150 WPM!!</emphasis>)</skill>
+      <skill>Dropping little food crumbs in keyboards</skill>
+    </skills>
+  </skillset>
+
+  <skillset>
+    <title>Writing</title>
+    <skills>
+      <skill>Editing</skill>
+      <skill>Cursive</skill>
+    </skills>
+  </skillset>
+</skillarea>
+      ]]></programlisting>
+    
+    </example>
+
+    <example>
+      <title>More focused skill area</title>
+      
+      <programlisting><![CDATA[
+<skillarea>
+  <title>Financial Skills</title>
+
+  <skillset>
+    <title>Investing</title>
+    <skills>
+      <skill>Stocks</skill>
+      <skill>Bonds</skill>
+      <skill>Money market accounts</skill>
+      <skill>Retirement accounts</skill>
+    </skills>
+  </skillset>
+
+  <skillset>
+    <title>Bookkeeping</title>
+    <skills>
+      <skill>Amortization</skill>
+      <skill>Loan schedules</skill>
+      <skill>Book balancing</skill>
+    </skills>
+  </skillset>
+
+  <skillset>
+    <title>Advising</title>
+    <skills>
+      <skill>Retirement investment</skill>
+      <skill>College investment</skill>
+      <skill>Philanthropy</skill>
+    </skills>
+  </skillset>
+</skillarea>
+      ]]></programlisting>
+
+    </example>
+
+  </refsect1>
+
+</refentry>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help vim out: <!DOCTYPE DocBook -->
+
+<partintro>
+  <para>
+    XML &Resume; files are <acronym>XML</acronym> files composed
+    mostly of <glossterm linkend="gloss.element">elements</glossterm>. This
+    section documents the semantics (meaning) and syntax (structure) of all
+    of the elements that you can use to construct a &resume;.
+  </para>
+</partintro>

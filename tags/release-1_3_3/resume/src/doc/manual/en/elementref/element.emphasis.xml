@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Help VIM: <!DOCTYPE DocBook -->
+
+<refentry id="element.emphasis">
+  <refnamediv>
+    <refname>emphasis</refname>
+    <refpurpose>An emphasized block of text</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv><title>Synopsis</title>
+    <refsect2><title>Content Model</title>
+      <synopsis><$CONTENT_MODEL$></synopsis>
+    </refsect2>
+    <refsect2><title>Attributes</title>
+      <$ATTRIBUTES_TABLE$>
+    </refsect2>
+  </refsynopsisdiv>
+
+  <refsect1><title>Description</title>
+    <para>
+      The <sgmltag class="element">emphasis</sgmltag> element is an inline
+      element that indicates that the text it contains should be emphasized.
+    </para>
+
+    <refsect2><title>Presentation</title>
+      <para>
+        The presentation of text contained in this element varies depending on
+        the output format.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>HTML</term>
+          <listitem>
+            <para>
+              Rendered as bold (using the <sgmltag
+              class="starttag">strong</sgmltag> tag) by default.
+              Presentation may be overridden by creating or modifying a CSS
+              stylesheet that formats the <literal>emphasis</literal> class.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Text</term>
+          <listitem>
+            <para>
+              Text is surrounded in *astrisks* by default. May be overridden
+              by specifying the <parameter>text.emphasis.start</parameter>
+              and <parameter>text.emphasis.end</parameter> parameters when
+              processing the &resume; with an XSLT processor like
+              <application>Xalan</application> or
+              <application>Saxon</application>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>XSL-FO/PDF</term>
+          <listitem>
+            <para>
+              Rendered as bold text.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2><title>Parents</title>
+      <para>
+        <sgmltag class="element">emphasis</sgmltag> may be contained in these
+        elements:
+        <$PARENTS$>
+      </para>
+    </refsect2>
+
+    <!-- Use this section to describe element attributes, if any
+    <refsect2><title>Attributes</title>
+      <variablelist>
+
+        <varlistentry>
+          <term><sgmltag class="attribute">ATTRIBUTE_NAME</sgmltag></term>
+          <listitem>
+            <para>
+              DESCRIPTION
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect2>
+    -->
+
+  </refsect1>
+
+  <!-- Use this section for links to other relevant pages
+  <refsect1><title>See Also</title>
+    <para>
+      <simplelist type="inline">
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+        <member><link linkend="ID"><sgmltag class="element">NAME</sgmltag></link></member>
+      </simplelist>.
+    </para>
+  </refsect1>
+  -->
+
+  <refsect1><title>Examples</title>
+
+    <informalexample><programlisting><![CDATA[
+<para>
+  I really, really, <emphasis>really</emphasis> want a job.
+</para>
+    ]]></programlisting></informalexample>
+
+    <informalexample><programlisting><![CDATA[
+<skill>
+  I am <emphasis>extremely</emphasis> at using rocket-powered cheese graters.
+</skill>
+    ]]></programlisting></informalexample>
+
+  </refsect1>
+
+</refentry>

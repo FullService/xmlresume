@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE book
+    PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+    "./sgml/docbook-xml-4.1.2/docbookx.dtd" [
+    <!-- "http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd" [ -->
+
+<!-- Textual entities (content) -->
+<!ENTITY % global.entities  SYSTEM "entities/global.ent">
+
+<!-- File entities (structure):
+     chapters, element refentry's, param refentry's (external entities) -->
+<!ENTITY % division.files SYSTEM "entities/divisions.ent">
+
+%global.entities;
+%division.files;
+]>
+
+<book id="manual" lang="en">
+
+  &bookinfo;
+
+  &intro;
+
+  <part id="guide">
+    <title>Getting Started</title>
+    &guide.overview;
+    &guide.create;
+  </part>
+
+  <part id="ref">
+    <title>Reference</title>
+
+    <reference id="elementref">
+      <title>Element Reference</title>
+      &elementref.intro;
+      <!-- Ant replaces the following line with entities that include all
+      element.*.xml files in the elementref directory. -->
+      @ELEMENTREF_REFPAGES@
+    </reference>
+
+    <reference id="paramref">
+      <title>Parameter Reference</title>
+      &paramref.intro;
+      <!-- Ant replaces the following line with entities that include all
+      param.*.xml files in the paramref directory. -->
+      @PARAMREF_REFPAGES@
+    </reference>
+
+    &cssref;
+
+  </part>
+
+  &glossary;
+
+</book>
