@@ -37,7 +37,7 @@ $Id$
   xmlns:r="http://xmlresume.sourceforge.net/resume/0.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:template name="r:formatPub">
+  <xsl:template name="FormatPub">
     <!-- Format each author, putting separator characters betwixt. -->
     <xsl:apply-templates select="r:author[position() != last()]" mode="internal"/>
     <xsl:apply-templates select="r:author[position() = last()]" mode="final"/>
@@ -53,7 +53,7 @@ $Id$
 
   <!-- Format the all but the last author -->
   <xsl:template match="r:author" mode="internal">
-    <xsl:call-template name="derefAuthor"/>
+    <xsl:call-template name="DerefAuthor"/>
     <xsl:value-of select="$pub.author.separator"/>
   </xsl:template>
 
@@ -63,16 +63,16 @@ $Id$
   out the pub.item.separator.  Does anyone know how we can test for
   $pub.item.separator instead of '.'? -->
   <xsl:template match="r:author[substring(text(), string-length(text()))='.']" mode="final">
-    <xsl:call-template name="derefAuthor"/><xsl:text> </xsl:text>
+    <xsl:call-template name="DerefAuthor"/><xsl:text> </xsl:text>
   </xsl:template>
 
   <!-- Format the last author -->
   <xsl:template match="r:author" mode="final">
-    <xsl:call-template name="derefAuthor"/><xsl:value-of select="$pub.item.separator"/>
+    <xsl:call-template name="DerefAuthor"/><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format an author's name if provided or by reference to the name with the given id. -->
-  <xsl:template name="derefAuthor">
+  <xsl:template name="DerefAuthor">
     <xsl:choose>
       <xsl:when test="@name">
         <xsl:apply-templates select="id(@name)"/>

@@ -562,7 +562,7 @@ $Id$
   <!-- Format a single publication -->
   <xsl:template match="r:pub">
     <li class="pub">
-      <xsl:call-template name="r:formatPub"/>
+      <xsl:call-template name="FormatPub"/>
     </li>
   </xsl:template>
 

@@ -630,7 +630,7 @@ $Id$
       </fo:list-item-label>
       <fo:list-item-body start-indent="body-start()">
         <fo:block>
-          <xsl:call-template name="r:formatPub"/>
+          <xsl:call-template name="FormatPub"/>
         </fo:block>
       </fo:list-item-body>
     </fo:list-item>

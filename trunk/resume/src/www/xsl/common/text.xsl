@@ -711,7 +711,7 @@ In general, each block is responsible for outputting a newline after itself.
 
   <xsl:template match="r:pub">
     <xsl:variable name="Text">   
-      <xsl:call-template name="r:formatPub"/>
+      <xsl:call-template name="FormatPub"/>
     </xsl:variable>
 
     <xsl:call-template name="Indent">
