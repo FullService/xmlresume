@@ -7,8 +7,8 @@
  * http://xmlresume.sourceforge.net
  */
 
-// This dummy style must be here because the xml tags above cause some
-// browsers (Konqueror, Mozilla) to ignore the first style
+/* This dummy style must be here because the xml tags above cause some
+ * browsers (Konqueror, Mozilla) to ignore the first style */
 .dummy { background-color: white }
 
  /* Font Definitions */

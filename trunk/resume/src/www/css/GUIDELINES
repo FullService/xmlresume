@@ -1,0 +1,11 @@
+Notes on creating a new CSS File:
+
+*** Be sure to include the following at the very top of your file:
+
+/* This dummy style must be here because the xml tags above cause some
+ * browsers (Konqueror, Mozilla) to ignore the first style */
+.dummy { background-color: white }
+
+
+*** Be sure to use C-style comments (/* ... */) instead of "//" single 
+line comments.  This aids conformance with CSS inline standards.

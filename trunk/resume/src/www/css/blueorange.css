@@ -10,8 +10,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
  * http://xmlresume.sourceforge.net
  */
 
-// This dummy style must be here because the xml tags above cause some
-// browsers (Konqueror, Mozilla) to ignore the first style
+/* This dummy style must be here because the xml tags above cause some
+ * browsers (Konqueror, Mozilla) to ignore the first style */
 .dummy { background-color: white }
 
 body {
