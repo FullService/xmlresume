@@ -17,8 +17,9 @@ $meta_redirect_delay : the delay prior to redirection (in seconds)
 <html>
   <head>
     <title>XML R&eacute;sum&eacute; Library:: <?php echo $pagetitle?> </title>
+    <meta name="keywords" content="XML, resume, curricula, vitae, DTD, schema, 
+		XSL, B2B, metadata, HTML, XHTML, SGML, CSS"/>
     <meta 
-	name="keywords" content="XML, resume, curricula, vitae, DTD, schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS"
 	<?php if( isset( $meta_redirect_to)) {
 		if( !isset( $meta_redirect_delay)) $meta_redirect_delay = "0";
 		print "http-equiv=\"refresh\" content=\"";
