@@ -391,19 +391,26 @@ $Id$
       <fo:block
           space-after="{$half.space}"
           keep-with-next="always">
-        <fo:inline font-weight="bold">
+        <fo:inline
+            font-style="{$jobtitle.font.style}"
+            font-weight="{$jobtitle.font.weight}">
           <xsl:apply-templates select="r:jobtitle"/>
         </fo:inline>
         <xsl:text> </xsl:text>
         <xsl:value-of select="$bullet.glyph"/>
         <xsl:text> </xsl:text>
-        <fo:inline font-style="italic">
+        <fo:inline
+            font-style="{$employer.font.style}"
+            font-weight="{$employer.font.weight}">
           <xsl:apply-templates select="r:employer"/>
         </fo:inline>
         <xsl:text> </xsl:text>
         <xsl:value-of select="$bullet.glyph"/>
         <xsl:text> </xsl:text>
-        <fo:inline wrap-option="no-wrap" font-style="italic">
+        <fo:inline
+            wrap-option="no-wrap"
+            font-style="{$job-period.font.style}"
+            font-weight="{$job-period.font.weight}">
           <xsl:apply-templates select="r:period"/>
         </fo:inline>
       </fo:block>
@@ -415,13 +422,21 @@ $Id$
       </xsl:if>
       <xsl:if test="r:projects/r:project">
         <fo:block>
-          <fo:inline font-style="italic"><xsl:value-of select="$projects.word"/></fo:inline>
+          <fo:inline
+              font-style="{$job-subheading.font.style}"
+              font-weight="{$job-subheading.font.weight}">
+            <xsl:value-of select="$projects.word"/>
+          </fo:inline>
           <xsl:apply-templates select="r:projects"/>
         </fo:block>
       </xsl:if>
       <xsl:if test="r:achievements/r:achievement">
         <fo:block>
-          <fo:inline font-style="italic"><xsl:value-of select="$achievements.word"/></fo:inline>
+          <fo:inline
+              font-style="{$job-subheading.font.style}"
+              font-weight="{$job-subheading.font.weight}">
+            <xsl:value-of select="$achievements.word"/>
+          </fo:inline>
           <xsl:apply-templates select="r:achievements"/>
         </fo:block>
       </xsl:if>
@@ -453,10 +468,14 @@ $Id$
   <!-- Format academics -->
   <xsl:template match="r:academics">
     <xsl:call-template name="heading">
-      <xsl:with-param name="text"><xsl:value-of select="$academics.word"/></xsl:with-param>
+      <xsl:with-param name="text">
+        <xsl:value-of select="$academics.word"/>
+      </xsl:with-param>
     </xsl:call-template>
     <xsl:apply-templates select="r:degrees"/>
-    <fo:block font-style="italic">
+    <fo:block
+        font-weight="{$degrees-note.font.weight}"
+        font-style="{$degrees-note.font.style}">
       <xsl:apply-templates select="r:note"/>
     </fo:block>
   </xsl:template>
@@ -465,7 +484,10 @@ $Id$
   <xsl:template match="r:degree">
     <fo:block space-after="{$para.break.space}">
       <fo:block keep-with-next="always">
-        <fo:inline font-weight="bold"><xsl:apply-templates select="r:level"/>
+        <fo:inline
+            font-style="{$degree.font.style}"
+            font-weight="{$degree.font.weight}">
+          <xsl:apply-templates select="r:level"/>
           <xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
           <xsl:text> </xsl:text>
           <xsl:apply-templates select="r:major"/>
@@ -562,16 +584,21 @@ $Id$
     </xsl:choose>
   </xsl:template>
 
-  <!-- Format the title of a set of skills in italics. -->
+  <!-- Format the title of a set of skills. -->
   <xsl:template match="r:skillset/r:title" mode="comma">
-    <fo:inline font-style="italic">
+    <fo:inline
+        font-style="{$skillset-heading.font.style}"
+        font-weight="{$skillset-heading.font.weight}">
       <xsl:apply-templates/><xsl:text>: </xsl:text>
     </fo:inline>
   </xsl:template>
 
-  <!-- Format the title of a set of skills in italics. -->
+  <!-- Format the title of a set of skills. -->
   <xsl:template match="r:skillset/r:title" mode="bullet">
-    <fo:block keep-with-next="always" font-style="italic">
+    <fo:block
+        keep-with-next="always"
+        font-style="{$skillset-heading.font.style}"
+        font-weight="{$skillset-heading.font.weight}">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
@@ -664,7 +691,7 @@ $Id$
 
   <!-- Title of book -->
   <xsl:template match="r:bookTitle" priority="1">
-    <fo:inline font-style="italic"><xsl:value-of select="."/></fo:inline><xsl:value-of select="$pub.item.separator"/>
+    <fo:inline font-style="{$citation.font.style}"><xsl:value-of select="."/></fo:inline><xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Format memberships. -->
@@ -753,7 +780,7 @@ $Id$
       <xsl:otherwise> <!-- Block -->
         <fo:block
           space-after="{$para.break.space}"
-          provisional-distance-between-starts="5pt">
+          provisional-distance-between-starts="1em">
           <xsl:apply-templates/>
         </fo:block>
       </xsl:otherwise>
@@ -859,7 +886,7 @@ $Id$
     </fo:inline>
   </xsl:template>
 
-  <!-- Format citations to other works in italics. -->
+  <!-- Format citations to other works. -->
   <xsl:template match="r:citation">
     <fo:inline font-style="{$citation.font.style}">
       <xsl:value-of select="."/>
@@ -920,7 +947,9 @@ $Id$
         space-after="{$para.break.space}">
 
       <fo:block space-after="{$half.space}">
-        <fo:block keep-with-next="always" font-style="italic">
+        <fo:block keep-with-next="always"
+            font-style="{$referee-name.font.style}"
+            font-weight="{$referee-name.font.weight}">
           <xsl:apply-templates select="r:name"/>
         </fo:block>
 

@@ -191,6 +191,32 @@ $Id$
   <xsl:param name="citation.font.style">italic</xsl:param>
   <xsl:param name="url.font.family">monospace</xsl:param>
 
+  <xsl:param name="jobtitle.font.style">normal</xsl:param>
+  <xsl:param name="jobtitle.font.weight">bold</xsl:param>
+
+  <!-- Used on degree major and level -->
+  <xsl:param name="degree.font.style">normal</xsl:param>
+  <xsl:param name="degree.font.weight">bold</xsl:param>
+
+  <xsl:param name="referee-name.font.style">italic</xsl:param>
+  <xsl:param name="referee-name.font.weight">normal</xsl:param>
+
+  <xsl:param name="employer.font.style">italic</xsl:param>
+  <xsl:param name="employer.font.weight">normal</xsl:param>
+
+  <xsl:param name="job-period.font.style">italic</xsl:param>
+  <xsl:param name="job-period.font.weight">normal</xsl:param>
+
+  <!-- Used for "Projects" and "Achievements" -->
+  <xsl:param name="job-subheading.font.style">italic</xsl:param>
+  <xsl:param name="job-subheading.font.weight">normal</xsl:param>
+
+  <xsl:param name="skillset-heading.font.style">italic</xsl:param>
+  <xsl:param name="skillset-heading.font.weight">normal</xsl:param>
+
+  <xsl:param name="degrees-note.font.style">italic</xsl:param>
+  <xsl:param name="degrees-note.font.weight">normal</xsl:param>
+
   <!-- Cascading stylesheet to use -->
   <xsl:param name="css.href">resume.css</xsl:param>
 
