@@ -18,7 +18,43 @@
     </p>
 
     <pre>
+2001-08-02  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/authors/index.html, /cvsroot/xmlresume/resume/src/doc/release/index.html, /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/doc/release/todo/index.html, /cvsroot/xmlresume/resume/src/examples/Makefile, /cvsroot/xmlresume/resume/src/examples/example1.xml, /cvsroot/xmlresume/resume/src/examples/example2.xml, /cvsroot/xmlresume/resume/src/www/xsl/common/a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/common/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/fr-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-text.xsl:
+	Better parameterization support and factoring of common parameters.
+	Added French localization.  Updated documentation for 1.2.3 release.
+
+	* /cvsroot/xmlresume/resume/src/examples/Makefile, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl, /cvsroot/xmlresume/resume/src/doc/release/news/index.html:
+	Support for internationalization: parameters for paper sizes and phrasing,
+	and international addresses.
+
+2001-07-27  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/README:
+	Add a note about building the examples from the developers' edition.
+
+	* /cvsroot/xmlresume/resume/src/examples/Makefile:
+	Have the makefile use the us-letter stylesheet by default.
+
+	* /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd:
+	Add Roel's suggestion to have a date of birth.
+
+	* /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/text.xsl, /cvsroot/xmlresume/resume/src/www/xsl/uk-a4.xsl, /cvsroot/xmlresume/resume/src/www/xsl/us-letter.xsl:
+	Parameteri[zs]e stylesheets for localization.
+
+2001-07-26  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/examples/example1.xml, /cvsroot/xmlresume/resume/src/examples/example2.xml, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/text.xsl:
+	Provide support for international addresses.  Maintain backwards
+	compatibility with resumes using US style address schema.
+
 2001-07-17  Sean Kelly  &lt;kelly@ad1440.net&gt;
+
+	* /cvsroot/xmlresume/resume/src/examples/example2.xml:
+	Fix the system URI.
+
+	* /cvsroot/xmlresume/resume/src/doc/release/changelog/index.html:
+	Update change log for version 1.2.2.
 
 	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/doc/release/news/index.html, /cvsroot/xmlresume/resume/src/examples/example2.xml, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl, /cvsroot/xmlresume/resume/src/www/xsl/params.xsl, /cvsroot/xmlresume/resume/src/www/xsl/text.xsl:
 	Add rich content for publications, such as &lt;bookTitle&gt;, &lt;author&gt;,
@@ -97,6 +133,7 @@
 
 	* /cvsroot/xmlresume/resume/build.xml, /cvsroot/xmlresume/resume/src/www/dtd/iso-lat1.ent, /cvsroot/xmlresume/resume/src/www/dtd/resume.dtd, /cvsroot/xmlresume/resume/src/www/xsl/fo.xsl, /cvsroot/xmlresume/resume/src/www/xsl/html.xsl:
 	New file.
+
     </pre>
   </body>
 </html>
