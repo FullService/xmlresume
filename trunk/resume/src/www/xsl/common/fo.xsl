@@ -376,23 +376,47 @@ $Id$
 
   <!-- Format a skillset's title (if any) and then the skils underneath it. -->
   <xsl:template match="skillset">
-    <xsl:apply-templates select="title"/>
-    <xsl:apply-templates select="skills"/>
+    <xsl:choose>
+      <xsl:when test="$skills.format = 'comma'">
+        <fo:block space-after="{$para.break.space}">
+        <xsl:apply-templates select="title" mode="comma"/>
+        <xsl:apply-templates select="skills" mode="comma"/>
+	</fo:block>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="title" mode="bullet"/>
+        <xsl:apply-templates select="skills" mode="bullet"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="skillset/title" mode="comma">
+    <fo:inline font-style="italic">
+      <xsl:value-of select="."/><xsl:text>: </xsl:text>
+    </fo:inline>
+  </xsl:template>
+
+  <!-- Format skills as a comma separated list. -->
+  <xsl:template match="skills" mode="comma">
+    <xsl:for-each select="skill[position() != last()]">
+      <xsl:apply-templates/><xsl:text>, </xsl:text>
+    </xsl:for-each>
+    <xsl:apply-templates select="skill[position() = last()]"/>
   </xsl:template>
 
   <!-- Format the title of a set of skills in italics. -->
-  <xsl:template match="skillset/title">
+  <xsl:template match="skillset/title" mode="bullet">
     <fo:block font-style="italic">
       <xsl:value-of select="."/>
     </fo:block>
   </xsl:template>
 
-  <!-- Format skills as a list of items. -->
-  <xsl:template match="skills">
+  <!-- Format skills as a bullet list. -->
+  <xsl:template match="skills" mode="bullet">
     <fo:list-block space-after="{$para.break.space}"
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="skill"/>
+      <xsl:apply-templates select="skill" mode="bullet"/>
     </fo:list-block>
   </xsl:template>
 
@@ -412,7 +436,7 @@ $Id$
   </xsl:template>
 
   <!-- Format a single skill as a bullet item. -->
-  <xsl:template match="skill">
+  <xsl:template match="skill" mode="bullet">
     <xsl:call-template name="bulletListItem"/>
   </xsl:template>
 

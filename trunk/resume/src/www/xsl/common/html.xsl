@@ -410,25 +410,52 @@ $Id$
   </xsl:template>
 
   <xsl:template match="skillset">
-    <xsl:apply-templates select="title"/>
-    <xsl:apply-templates select="skills"/>
+    <xsl:choose>
+      <xsl:when test="$skills.format = 'comma'">
+	<p>
+        <xsl:apply-templates select="title" mode="comma"/>
+        <xsl:apply-templates select="skills" mode="comma"/>
+	</p>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="title" mode="bullet"/>
+        <xsl:apply-templates select="skills" mode="bullet"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="skillset/title">
+  <xsl:template match="skillset/title" mode="comma">
+    <span class="skillsetTitle">
+      <xsl:value-of select="title"/><xsl:text>: </xsl:text>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="skillset/title" mode="bullet">
     <h3 class="skillsetTitle"><xsl:value-of select="."/></h3>
   </xsl:template>
 
-  <xsl:template match="skills">
-    <ul class="skills">
-      <xsl:apply-templates select="skill"/>
+
+	<!-- format as a comma-separated list -->
+  <xsl:template match="skills" mode="comma">
+    <span class="skills">
+      <xsl:for-each select="skill[position() != last()]">
+        <xsl:apply-templates/><xsl:text>, </xsl:text>
+      </xsl:for-each>
+      <xsl:apply-templates select="skill[position() = last()]"/>
+    </span>
+  </xsl:template>
+
+        <!-- format as a bullet list -->
+  <xsl:template match="skills" mode="bullet">
+     <ul class="skills">
+     <xsl:for-each select="skill">
+        <li class="skill">
+          <xsl:apply-templates/>
+        </li>
+      </xsl:for-each>
     </ul>
   </xsl:template>
 
-  <xsl:template match="skill">
-    <li class="skill">
-      <xsl:apply-templates/>
-    </li>
-  </xsl:template>
 
   <!-- Format publications -->
   <xsl:template match="pubs">

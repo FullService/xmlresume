@@ -142,4 +142,9 @@ $Id$
   <!-- 'italian' for Italian format (postal code city (province) ). -->
   <xsl:param name="address.format">standard</xsl:param>
 
+  <!-- Format for skills lists; available values are: -->
+  <!-- 'bullet' for bulleted lists -->
+  <!-- 'comma' for comma-separated lists -->
+  <xsl:param name="skills.format">comma</xsl:param>
+
 </xsl:stylesheet>

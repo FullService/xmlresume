@@ -602,6 +602,31 @@ $Id$
   </xsl:template>
 
   <xsl:template match="skillset">
+    <xsl:choose>
+      <xsl:when test="$skills.format = 'comma'">
+        <xsl:apply-templates select="." mode="comma"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="comma"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="skillset" mode="comma">
+    <xsl:call-template name="Indent">
+      <xsl:with-param name="Text">
+        <xsl:if test="title">
+          <xsl:apply-templates select="title"/>
+          <xsl:text>: </xsl:text>
+        </xsl:if>
+        <xsl:apply-templates select="skills" mode="comma"/>
+       </xsl:with-param>
+      <xsl:with-param name="Length" select="2"/>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <xsl:template match="skillset" mode="bullet">
     <xsl:if test="title">
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="title"/>
@@ -609,15 +634,15 @@ $Id$
     </xsl:if>
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
-        <xsl:apply-templates select="skills"/>
+        <xsl:apply-templates select="skills" mode="bullet"/>
        </xsl:with-param>
       <xsl:with-param name="Length" select="2"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-  <!-- Format skills as a bullet list (instead of paragraph) *SE* -->
-  <xsl:template match="skill">
+  <!-- Format individual skill as a bullet list -->
+  <xsl:template match="skill" mode="bullet">
     <xsl:variable name="Text">
       <xsl:apply-templates/>
     </xsl:variable>
@@ -628,6 +653,17 @@ $Id$
       <xsl:with-param name="Width" select="72"/>
     </xsl:call-template>
   </xsl:template>
+
+	<!-- format as a comma-separated list -->
+  <xsl:template match="skills" mode="comma">
+    <span class="skills">
+      <xsl:for-each select="skill[position() != last()]">
+        <xsl:apply-templates/><xsl:text>, </xsl:text>
+      </xsl:for-each>
+      <xsl:apply-templates select="skill[position() = last()]"/>
+    </span>
+  </xsl:template>
+
 
   <!-- Format publications -->
   <xsl:template match="pubs">
