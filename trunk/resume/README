@@ -59,18 +59,21 @@ following:
    Check for any merge problems, and merge and test
    again if necessary.
 
-4. Tag the release with "cvs tag X.Y.Z" where X.Y.Z is
+4. Update the changelog with rcs2log | cltohtml and
+   pasting in the HTML formatted changelog.
+
+5. Tag the release with "cvs tag X.Y.Z" where X.Y.Z is
    the version number.
 
-5. Run "ant release" to create the ZIP and TGZ archives.
+6. Run "ant release" to create the ZIP and TGZ archives.
 
-6. Run "ant publish" to publish the new release to the
+7. Run "ant publish" to publish the new release to the
    web server.
 
-7. Upload the ZIP and TGZ archives to
+8. Upload the ZIP and TGZ archives to
    ftp://ftp.sourceforge.net/pub/incoming/
 
-8. Add a new release to the SourceForge project page.
+9. Add a new release to the SourceForge project page.
 
 Cleaning Up
 ===========
