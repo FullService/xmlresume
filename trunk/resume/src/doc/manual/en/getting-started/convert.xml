@@ -203,13 +203,24 @@
         <filename>myresume.xml</filename>.
       </para>
 
+      <tip>
+        <para>You can also indicate your &resume; filename on the command line
+        when you build your &resume;, e.g.:
+        
+          <informalexample><screen><![CDATA[
+[resume]$ make resume=myresume
+          ]]></screen></informalexample>
+        </para>
+      </tip>
+
       <note>
         <para>
           The DTD and XSL files you've downloaded to your computer aren't used
           by default when building your &resume;. Instead, the versions on the
           &library.name; web site are used. This ensures that you're always
           using the most recent version; however, it also means that builds take
-          longer and that you can't build a &resume; offline.
+          longer (since file have to be downloaded each time you build your
+          &resume;) and that you can't build a &resume; offline.
         </para>
         <para>
           If you'd like to use your local copy of the XSL stylesheets, edit the
@@ -374,6 +385,11 @@ does anyone know what specific .jars are needed?]
   <!-- ==================================================================== -->
   <section id="getting-started.convert.about">
     <title>About this chapter</title>
+
+    <para>
+      This chapter was originally written by Peter Hutnick. It was edited and
+      converted to DocBook format by Bruce Christensen.
+    </para>
 
     <para>
       Please send comments, suggestions, and especially corrections for
