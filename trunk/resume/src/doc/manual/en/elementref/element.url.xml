@@ -21,7 +21,7 @@
       <para>
         The use of the <sgmltag class="element">url</sgmltag> element as a child
         of <sgmltag class="element">publisher</sgmltag> is deprecated as of
-        &library.name; version 1.3.4.
+        &library.name; version 1.4.0.
       </para>
       <para>
         We recommend that you convert all <sgmltag

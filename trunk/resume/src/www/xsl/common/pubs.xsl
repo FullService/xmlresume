@@ -46,7 +46,7 @@ $Id$
     <xsl:apply-templates select="r:bookTitle"/>
     <xsl:apply-templates select="r:publisher"/>
     <xsl:apply-templates select="r:date"/>
-    <xsl:apply-templates select="r:pubDate"/> <!-- Deprecated as of 1.3.4. -->
+    <xsl:apply-templates select="r:pubDate"/> <!-- Deprecated as of 1.4.0. -->
     <xsl:apply-templates select="r:pageNums"/>
     <xsl:apply-templates select="r:url"/>
     <!-- And for those using free-form paragraphs, format those, too. -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-131-134.xsl
-Convert XML Resume from version 1.3.1, 1.3.2, or 1.3.3 to version 1.3.4.
+13x-140.xsl
+Convert XML Resume from version 1.3.1, 1.3.2, or 1.3.3 to version 1.4.0.
 
 Copyright (c) 2002 Sean Kelly, Bruce Christensen
 All rights reserved.
@@ -37,7 +37,7 @@ $Id$
 
   <xsl:output method="xml" omit-xml-declaration="no" indent="yes"
     encoding="UTF-8"
-    doctype-public="-//Sean Kelly//DTD Resume 1.3.4//EN"
+    doctype-public="-//Sean Kelly//DTD Resume 1.4.0//EN"
     doctype-system="http://xmlresume.sourceforge.net/dtd/resume.dtd"
     />
   <xsl:preserve-space elements="*"/>

@@ -73,11 +73,11 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:apply-templates/>
   </xsl:template>
 
-  <!-- Deprecated in 1.3.4 -->
+  <!-- Deprecated in 1.4.0 -->
   <xsl:template match="r:skillareas">
     <xsl:message>
       WARNING: skillareas deprecated
-        The skillareas element is deprecated as of version 1.3.4 of the XML
+        The skillareas element is deprecated as of version 1.4.0 of the XML
         Resume Library. It will be removed in a future version. It is
         recommended that you remove all skillareas elements. skillarea elements
         may now be direct children of resume.
@@ -88,7 +88,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:template name="SkillsDeprecatedMessage">
     <xsl:message>
       WARNING: skills deprecated
-        The skills element is deprecated as of version 1.3.4 of the XML Resume
+        The skills element is deprecated as of version 1.4.0 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you remove all skills elements. skill elements may now be direct
         children of skillset.
@@ -110,7 +110,7 @@ In general, each block is responsible for outputting a newline after itself.
   <xsl:template match="r:pubDate">
     <xsl:message>
       WARNING: pubDate deprecated
-        The pubDate element is deprecated as of version 1.3.4 of the XML Resume
+        The pubDate element is deprecated as of version 1.4.0 of the XML Resume
         Library. It will be removed in a future version. It is recommended that
         you replace pubDate elements with date elements.
     </xsl:message>
@@ -121,7 +121,7 @@ In general, each block is responsible for outputting a newline after itself.
     <xsl:message>
       WARNING: docpath, head, node, tail, label, and uri deprecated
         The docpath, head, node, tail, label, and uri elements are deprecated as
-        of version 1.3.4 of the XML Resume Library. They will be removed in a
+        of version 1.4.0 of the XML Resume Library. They will be removed in a
         future version. It is recommended that you remove all of these elements.
     </xsl:message>
     <xsl:apply-templates/>

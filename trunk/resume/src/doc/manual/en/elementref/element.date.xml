@@ -33,7 +33,7 @@
     <note>
       <para>
         The <sgmltag class="element">month</sgmltag> element was made optional
-        in version 1.3.4 of the &library.name;. It was previously required.
+        in version 1.4.0 of the &library.name;. It was previously required.
       </para>
     </note>
 
