@@ -219,9 +219,7 @@ $Id$
       provisional-distance-between-starts="{$para.break.space}"
       provisional-label-separation="{$bullet.space}">
       <xsl:for-each select="achievement">
-        <xsl:call-template name="bulletListItem">
-          <xsl:with-param name="Text" select="."/>
-        </xsl:call-template>
+        <xsl:call-template name="bulletListItem"/>
       </xsl:for-each>
     </fo:list-block>
   </xsl:template>
@@ -286,8 +284,8 @@ $Id$
     </fo:list-block>
   </xsl:template>
 
+  <!-- Format a single bullet and its text -->
   <xsl:template name="bulletListItem">
-    <xsl:param name="Text"/>
     <fo:list-item>
       <fo:list-item-label start-indent="{$body.indent}"
 	end-indent="label-end()">
@@ -295,7 +293,7 @@ $Id$
       </fo:list-item-label>
       <fo:list-item-body start-indent="body-start()">
         <fo:block>
-          <xsl:value-of select="$Text"/>
+          <xsl:apply-templates/>
         </fo:block>
       </fo:list-item-body>
     </fo:list-item>
@@ -303,9 +301,7 @@ $Id$
 
   <!-- Format a single skill as a bullet item. -->
   <xsl:template match="skill">
-    <xsl:call-template name="bulletListItem">
-       <xsl:with-param name="Text" select="."/>
-    </xsl:call-template>
+    <xsl:call-template name="bulletListItem"/>
   </xsl:template>
 
   <!-- Format the publications section. -->

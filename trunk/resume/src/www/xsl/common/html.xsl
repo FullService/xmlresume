@@ -225,11 +225,13 @@ $Id$
 
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="achievements">
-     <ul>
-     <xsl:for-each select="achievement">
-      <li class="skill"><xsl:value-of select="."/></li>
-     </xsl:for-each>
-     </ul>
+    <ul>
+      <xsl:for-each select="achievement">
+        <li class="skill">
+          <xsl:apply-templates/>
+        </li>
+      </xsl:for-each>
+    </ul>
   </xsl:template>
 
   <!-- Degrees and stuff -->
@@ -297,7 +299,9 @@ $Id$
   </xsl:template>
 
   <xsl:template match="skill">
-    <li class="skill"><xsl:value-of select="."/></li>
+    <li class="skill">
+      <xsl:apply-templates/>
+    </li>
   </xsl:template>
 
   <!-- Format publications -->

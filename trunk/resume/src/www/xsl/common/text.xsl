@@ -322,15 +322,20 @@ $Id$
 
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="achievements">
-      <xsl:call-template name="NewLine"/>
-     <xsl:for-each select="achievement">
-      <xsl:call-template name="FormatBulletListItem">
+     <xsl:call-template name="NewLine"/>
+     <xsl:apply-templates select="achievement"/>
+  </xsl:template>
+
+  <xsl:template match="achievement">
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
-         <xsl:value-of select="normalize-space(.)"/>
+        <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
       <xsl:with-param name="Width" select="64"/>
-      </xsl:call-template>
-     </xsl:for-each>
+    </xsl:call-template>
   </xsl:template>
 		
   <xsl:template match="period">
@@ -435,19 +440,17 @@ $Id$
     <xsl:call-template name="NewLine"/>
   </xsl:template>
 
-
   <!-- Format skills as a bullet list (instead of paragraph) *SE* -->
-  <xsl:template match="skills">
-     <xsl:for-each select="skill">
-      <xsl:call-template name="FormatBulletListItem">
+  <xsl:template match="skill">
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:call-template name="FormatBulletListItem">
       <xsl:with-param name="Text">
-         <xsl:value-of select="normalize-space(.)"/>
+        <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="64"/>
-      </xsl:call-template>
-     </xsl:for-each>
+    </xsl:call-template>
   </xsl:template>
-
 
   <!-- Format publications -->
   <xsl:template match="pubs">
