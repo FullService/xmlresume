@@ -105,7 +105,7 @@ Style
 
     |    <important>
     |      <para>
-    |        This element is deprecated as of &library.name version XXX.
+    |        This element is deprecated as of &library.name; version XXX.
     |        It should not be used.
     |      </para>
     |      (paragraph about why deprecated, and recommended changes, if any)
