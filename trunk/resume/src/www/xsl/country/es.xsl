@@ -4,7 +4,7 @@
 es.xsl
 Parameters for Spanish resumes.
 
-Copyright (c) 2002 Miguel Coca <mcoca@users.sourceforge.net>
+MAINTAINER: Miguel Coca <mcoca@users.sourceforge.net>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

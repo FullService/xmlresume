@@ -4,8 +4,7 @@
 fr.xsl
 Parameters for French resumes.
 
-Copyright (c) 2001-2002 Sean Kelly
-All rights reserved.
+MAINTAINER: Gilles Sadowski <erans@users.sourceforge.net>, Didier Cassirame <faded@users.sourceforge.net>
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are

@@ -2,8 +2,8 @@
 
 <!--
 nl-params.xsl
-Parameters for Dutch resumes courtesy of Andre van Dijk
-<andre@unseen.demon.nl>
+
+MAINTAINER: Andre van Dijk <andre@unseen.demon.nl>
 
 Copyright (c) 2002 Sean Kelly
 All rights reserved.

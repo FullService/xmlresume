@@ -36,7 +36,7 @@ $Id$
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:param name="resume.word">R&#x00e9;sum&#x00e9;</xsl:param>
+  <xsl:param name="resume.word">R&#233;sum&#233;</xsl:param>
   <xsl:param name="page.word">page</xsl:param>
   <!-- Word to use for "Contact Information" -->
   <xsl:param name="contact.word">Contact Information</xsl:param>

@@ -59,8 +59,9 @@ $Id$
   <!-- default to Italian address formatting -->
   <xsl:param name="address.format">italian</xsl:param>
 
-  <xsl:param name="and.word">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="awards.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="and.word">e</xsl:param>
+  <xsl:param name="awards.word">giudizio</xsl:param>
+
   <xsl:param name="fax.home.phrase">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="fax.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="fax.work.phrase">TRANSLATION NEEDED</xsl:param>
@@ -71,15 +72,15 @@ $Id$
   <xsl:param name="im.msn.service">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="im.yahoo.service">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="security-clearances.word">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="interests.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="interests.word">interessi</xsl:param>
   <xsl:param name="minor.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="minors.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="overall-gpa.word">TRANSLATION NEEDED</xsl:param>
   <xsl:param name="major-gpa.word">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="out-of.word">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="last-modified.phrase">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="phone.work.phrase">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="phone.mobile.phrase">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="out-of.word">di</xsl:param>
+  <xsl:param name="last-modified.phrase">Ultimo Modificato</xsl:param>
+  <xsl:param name="phone.work.phrase">Telefono a lavoro</xsl:param>
+  <xsl:param name="phone.mobile.phrase"></xsl:param>
   <xsl:param name="pager.word">TRANSLATION NEEDED</xsl:param>
 </xsl:stylesheet>
 

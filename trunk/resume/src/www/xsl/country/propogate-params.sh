@@ -60,7 +60,7 @@ for country in `ls -1 *.xsl`; do
   diff=`expr $numParams - $untranslated` 
   diff=`expr $diff \* 100`
   percent=`expr $diff / $numParams`
-  echo "$country: $percent percent translated ($untranslated items remain to be translated)"
+  echo "<li>$country: $percent percent translated ($untranslated items remain to be translated)</li>"
 done
 
 echo "Done."
