@@ -961,7 +961,6 @@ In general, each block is responsible for outputting a newline after itself.
         <xsl:apply-templates select="r:award"/>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   
@@ -981,6 +980,7 @@ In general, each block is responsible for outputting a newline after itself.
         </xsl:apply-templates>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
   </xsl:template>
 
   <!-- Format the misc info -->
