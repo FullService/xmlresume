@@ -338,7 +338,7 @@ $Id$
         <fo:block
           space-after="{$para.break.space}"
           provisional-distance-between-starts="5pt">
-          <xsl:apply-templates select="description"/>
+          <xsl:apply-templates select="r:description"/>
         </fo:block>
       </xsl:if>
       <xsl:if test="r:projects/r:project">
@@ -425,7 +425,7 @@ $Id$
       <xsl:for-each select="r:subject">
         <fo:list-item>
           <fo:list-item-label
-              end-indent="label-end()">
+              end-indent="label-end()"
           >
             <fo:block>
               <xsl:value-of select="r:title"/> 
@@ -565,7 +565,7 @@ $Id$
         space-after="{$para.break.space}"
         provisional-distance-between-starts="{$para.break.space}"
         provisional-label-separation="{$bullet.space}">
-      <xsl:apply-templates select="membership"/>
+      <xsl:apply-templates select="r:membership"/>
     </fo:list-block>
   </xsl:template>
 
