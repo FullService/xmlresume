@@ -41,5 +41,6 @@ $Id$
 
   <xsl:param name="resume.word">CV</xsl:param>
   <xsl:param name="phone.word">Telephone</xsl:param>
+  <xsl:param name="referees.word">Referees</xsl:param>
 
 </xsl:stylesheet>

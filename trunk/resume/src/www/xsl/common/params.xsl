@@ -77,6 +77,15 @@ $Id$
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
 
+  <!-- Word to use for the "Achievements:" heading in a job. -->
+  <xsl:param name="achievements.word">Achievements:</xsl:param>
+
+  <!-- Word to use for the "Projects:" heading in a job. -->
+  <xsl:param name="projects.word">Projects:</xsl:param>
+
+  <!-- Word to use for referees. -->
+  <xsl:param name="referees.word">References</xsl:param>
+
   <!-- Default separator between authors in publication details.  -->
   <xsl:param name="pub.author.separator">, </xsl:param>
 
@@ -146,5 +155,10 @@ $Id$
   <!-- 'bullet' for bulleted lists -->
   <!-- 'comma' for comma-separated lists -->
   <xsl:param name="skills.format">comma</xsl:param>
+
+  <!-- Settings for lines around the header of the print resume -->
+  <xsl:param name="header.line.length">3.0in</xsl:param>
+  <xsl:param name="header.line.pattern">rule</xsl:param>
+  <xsl:param name="header.line.thickness">2pt</xsl:param>
 
 </xsl:stylesheet>

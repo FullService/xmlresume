@@ -4,7 +4,7 @@
 it-params.xsl
 Parameters for Italian resumes.
 
-Copyright (c) 2001 Sean Kelly
+Copyright (c) 2001-2002 Stewart Evans
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -51,6 +51,9 @@ $Id$
   <xsl:param name="phone.word">Telefono</xsl:param>
   <xsl:param name="email.word">Email</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
+  <xsl:param name="achievements.word">Successos:</xsl:param>
+  <xsl:param name="projects.word">Progettos:</xsl:param>
+  <xsl:param name="referees.word">Riferimentos</xsl:param>
 
   <!-- default to Italian address formatting -->
   <xsl:param name="address.format">italian</xsl:param>

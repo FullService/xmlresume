@@ -4,7 +4,7 @@
 fr-params.xsl
 Parameters for French resumes.
 
-Copyright (c) 2001 Sean Kelly
+Copyright (c) 2001-2002 Sean Kelly
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -51,6 +51,9 @@ $Id$
   <xsl:param name="phone.word">T&#x00e9;l&#x00e9;phone</xsl:param>
   <xsl:param name="email.word">Courrier &#x00e9;lectronique</xsl:param>
   <xsl:param name="url.word">URL</xsl:param>
+  <xsl:param name="achievements.word">Exploits:</xsl:param>
+  <xsl:param name="projects.word">Projets:</xsl:param>
+  <xsl:param name="referees.word">R&#x00e9;f&#x00e9;rences</xsl:param>
 
   <!-- default is European address formatting.  For countries other -->
   <!-- than France (e.g. Canada) "standard" formatting may be more correct. -->

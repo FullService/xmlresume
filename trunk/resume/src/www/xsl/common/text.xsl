@@ -492,13 +492,39 @@ $Id$
       <xsl:apply-templates select="period"/>
       <xsl:call-template name="NewLine"/>
       <xsl:apply-templates select="description"/>
-      <xsl:apply-templates select="achievements"/>
+      <xsl:call-template name="NewLine"/>
+      <xsl:if test="projects/project">
+        <xsl:apply-templates select="projects"/>
+      </xsl:if>
+      <xsl:if test="achievements/achievement">
+        <xsl:apply-templates select="achievements"/>
+      </xsl:if>
       <xsl:call-template name="NewLine"/>
       <xsl:call-template name="NewLine"/>
   </xsl:template>
 
+  <!-- Format the projects section as a bullet list -->
+  <xsl:template match="projects">
+     <xsl:call-template name="NewLine"/><xsl:value-of select="$projects.word"/>
+     <xsl:call-template name="NewLine"/>
+     <xsl:apply-templates select="project"/>
+  </xsl:template>
+
+  <xsl:template match="project">
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:call-template name="FormatBulletListItem">
+      <xsl:with-param name="Text">
+        <xsl:value-of select="normalize-space($Text)"/>
+      </xsl:with-param>
+      <xsl:with-param name="Width" select="64"/>
+    </xsl:call-template>
+  </xsl:template>
+
   <!-- Format the achievements section as a bullet list *SE* -->
   <xsl:template match="achievements">
+     <xsl:call-template name="NewLine"/><xsl:value-of select="$achievements.word"/>
      <xsl:call-template name="NewLine"/>
      <xsl:apply-templates select="achievement"/>
   </xsl:template>
@@ -562,7 +588,7 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="subject"/>
+      <xsl:value-of select="major"/>
       <xsl:text>, </xsl:text>
       <xsl:apply-templates select="date"/>
       <xsl:text>, </xsl:text><xsl:call-template name="NewLine"/>
@@ -806,7 +832,7 @@ $Id$
 
   <!-- para -> p -->
   <xsl:template match="para">
-      <!-- Format Paragraph -->
+    <!-- Format Paragraph -->
     <xsl:variable name="Text">
          <xsl:apply-templates/>
     </xsl:variable>
@@ -834,5 +860,45 @@ $Id$
   <xsl:template match="citation">
     <xsl:value-of select="."/>
   </xsl:template>
+
+  <!-- Format the referees -->
+  <xsl:template match="referees">
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+    <xsl:value-of select="$referees.word"/>
+    <xsl:text>:</xsl:text>
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Indent">
+       <xsl:with-param name="Text">
+         <xsl:apply-templates select="referee"/>
+       </xsl:with-param>
+    </xsl:call-template>
+    <xsl:call-template name="NewLine"/>
+  </xsl:template>
+
+  <xsl:template match="referee">
+    <!-- Your name, address, and stuff. -->
+      <xsl:apply-templates select="name"/><xsl:call-template name="NewLine"/>
+      <xsl:apply-templates select="address"/><xsl:call-template name="NewLine"/>
+
+      <!-- Don't print phone/email labels if fields are empty. *SE -->
+      <xsl:if test="contact/phone">
+        <xsl:value-of select="$phone.word"/><xsl:text>: </xsl:text>
+	<xsl:value-of select="contact/phone"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:if test="contact/email">
+        <xsl:value-of select="$email.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/email"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:if test="contact/url">
+        <xsl:value-of select="$url.word"/><xsl:text>: </xsl:text> 
+	<xsl:value-of select="contact/url"/>
+	<xsl:call-template name="NewLine"/>
+      </xsl:if>
+      <xsl:call-template name="NewLine"/>
+   </xsl:template>
 
 </xsl:stylesheet>

@@ -101,15 +101,19 @@ $Id$
       <xsl:value-of select="$text"/>
     </fo:block>
   </xsl:template>
-
+  
   <!-- Header information -->
   <xsl:template match="header">
-    <fo:block>
+    <fo:block space-after="{$para.break.space}">
+      <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
+	rule-thickness="{$header.line.thickness}"/>
       <fo:block font-weight="{$header.name.font.weight}">
 	<xsl:apply-templates select="name"/>
       </fo:block>
       <xsl:apply-templates select="address"/>
       <xsl:apply-templates select="contact"/>
+      <fo:leader leader-length="{$header.line.length}" leader-pattern="{$header.line.pattern}"
+	rule-thickness="{$header.line.thickness}"/>
     </fo:block>
   </xsl:template>
 
@@ -274,7 +278,7 @@ $Id$
   <!-- Format contact information. -->
 
   <xsl:template match="contact">
-    <fo:block space-after="{$para.break.space}">
+    <fo:block>
       <xsl:call-template name="contact">
          <xsl:with-param name="field" select="phone"/>
          <xsl:with-param name="label" select="$phone.word"/>
@@ -319,12 +323,30 @@ $Id$
           <xsl:apply-templates select="description"/>
         </fo:block>
       </xsl:if>
+      <xsl:if test="projects/project">
+        <fo:block>
+	  <fo:inline font-style="italic"><xsl:value-of select="$projects.word"/></fo:inline>
+          <xsl:apply-templates select="projects"/>
+        </fo:block>
+      </xsl:if>
       <xsl:if test="achievements/achievement">
         <fo:block>
+          <fo:inline font-style="italic"><xsl:value-of select="$achievements.word"/></fo:inline>
           <xsl:apply-templates select="achievements"/>
         </fo:block>
       </xsl:if>
     </fo:block>
+  </xsl:template>
+
+  <!-- Format the projects section as a bullet list -->
+  <xsl:template match="projects">
+    <fo:list-block space-after="{$para.break.space}"
+      provisional-distance-between-starts="{$para.break.space}"
+      provisional-label-separation="{$bullet.space}">
+      <xsl:for-each select="project">
+        <xsl:call-template name="bulletListItem"/>
+      </xsl:for-each>
+    </fo:list-block>
   </xsl:template>
 
   <!-- Format the achievements section as a bullet list *SE* -->
@@ -355,13 +377,42 @@ $Id$
       <fo:inline font-weight="bold"><xsl:value-of select="level"/>
 	<xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
 	<xsl:text> </xsl:text>
-        <xsl:value-of select="subject"/></fo:inline>,
+        <xsl:value-of select="major"/></fo:inline>,
       <xsl:apply-templates select="date"/>,
       <xsl:apply-templates select="annotation"/>
     </fo:block>
-    <fo:block>
+    <fo:block space-after="{$para.break.space}">
       <xsl:value-of select="institution"/>
     </fo:block>
+    <xsl:if test="subjects/subject">
+      <fo:block space-after="{$para.break.space}">
+        <xsl:apply-templates select="subjects"/>
+      </fo:block>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Format the subjects section as a table -->
+  <xsl:template match="subjects">
+    <fo:table>
+      <fo:table-column column-width="50pt" column-number="1"/>
+      <fo:table-column column-width="200pt" column-number="2"/>
+      <fo:table-column column-width="150pt" column-number="3"/>
+      <fo:table-body>
+        <xsl:for-each select="subject">
+          <fo:table-row>
+	    <fo:table-cell>
+              <fo:block></fo:block>
+	    </fo:table-cell>
+	    <fo:table-cell>
+              <fo:block><xsl:value-of select="title"/></fo:block>
+	    </fo:table-cell>
+	    <fo:table-cell>
+              <fo:block><xsl:value-of select="result"/></fo:block>
+	   </fo:table-cell>
+          </fo:table-row>
+        </xsl:for-each>
+      </fo:table-body>
+    </fo:table>
   </xsl:template>
 
   <!-- Format a skill area's title and the skillsets underneath it. -->
@@ -408,7 +459,7 @@ $Id$
 
   <!-- Format the title of a set of skills in italics. -->
   <xsl:template match="skillset/title" mode="bullet">
-    <fo:block font-style="italic">
+    <fo:block keep-with-next="always" font-style="italic">
       <xsl:value-of select="."/>
     </fo:block>
   </xsl:template>
@@ -515,7 +566,7 @@ $Id$
 
   <!-- Format legalese. -->
   <xsl:template match="copyright">
-    <fo:block>
+    <fo:block start-indent="{$heading.indent}">
       <xsl:value-of select="$copyright.word"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="year"/>
@@ -579,4 +630,23 @@ $Id$
   <!-- Suppress items not needed for print presentation -->
   <xsl:template match="docpath"/>
   <xsl:template match="keywords"/>
+
+  <!-- Format the referees -->
+  <xsl:template match="referees">
+    <xsl:call-template name="heading">
+      <xsl:with-param name="text"><xsl:value-of select="$referees.word"/></xsl:with-param>
+    </xsl:call-template>
+    <xsl:apply-templates select="referee"/>
+  </xsl:template>
+
+  <xsl:template match="referee">
+    <fo:block space-after="{$para.break.space}">
+      <fo:block keep-with-next="always" font-style="italic">
+	<xsl:apply-templates select="name"/>
+      </fo:block>
+      <xsl:apply-templates select="address"/>
+      <xsl:apply-templates select="contact"/>
+    </fo:block>
+  </xsl:template>
+
 </xsl:stylesheet>

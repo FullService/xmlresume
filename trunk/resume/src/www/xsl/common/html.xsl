@@ -328,9 +328,27 @@ $Id$
       <xsl:apply-templates select="period"/>
     </p>
     <xsl:apply-templates select="description"/>
-    <xsl:apply-templates select="achievements"/>
+    <xsl:if test="projects/project">
+      <xsl:value-of select="$projects.word"/>
+      <xsl:apply-templates select="projects"/>
+    </xsl:if>
+    <xsl:if test="achievements/achievement">
+      <xsl:value-of select="$achievements.word"/>
+      <xsl:apply-templates select="achievements"/>
+    </xsl:if>
   </xsl:template>
 		
+  <!-- Format the projects section as a bullet list -->
+  <xsl:template match="projects">
+    <ul>
+      <xsl:for-each select="project">
+        <li class="skill">
+          <xsl:apply-templates/>
+        </li>
+      </xsl:for-each>
+    </ul>
+  </xsl:template>
+
   <xsl:template match="period">
     <xsl:apply-templates select="from"/>-<xsl:apply-templates select="to"/>
   </xsl:template>
@@ -382,14 +400,35 @@ $Id$
       <xsl:text> </xsl:text>
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="subject"/>
+      <xsl:value-of select="major"/>
       <xsl:text>, </xsl:text>
       <xsl:apply-templates select="date"/>
       <xsl:text>, </xsl:text>
       <xsl:value-of select="institution"/>
       <xsl:text>.</xsl:text>     
+      <xsl:if test="subjects/subject">
+        <xsl:apply-templates select="subjects"/>
+      </xsl:if>
       <xsl:apply-templates select="annotation"/>
     </li>
+  </xsl:template>
+
+  <!-- Format the subjects -->
+  <xsl:template match="subjects">
+    <table>
+      <xsl:for-each select="subject">
+        <tr>
+          <td width="100"></td>
+	  <td>
+            <xsl:value-of select="title"/>
+	  </td>
+          <td width="10"></td>
+	  <td>
+            <xsl:value-of select="result"/>
+	  </td>
+        </tr>
+      </xsl:for-each>
+    </table>
   </xsl:template>
 
   <!-- Format the open-ended skills -->
@@ -558,6 +597,41 @@ $Id$
   <!-- citation -> cite -->
   <xsl:template match="citation">
     <cite class="citation"><xsl:value-of select="."/></cite>
+  </xsl:template>
+
+  <!-- Format the referees -->
+  <xsl:template match="referees">
+    <h2 class="refereesHeading"><xsl:value-of select="$referees.word"/></h2>
+    <xsl:apply-templates select="referee"/>
+  </xsl:template>
+
+  <xsl:template match="referee">
+    <h3 class="refereeHeading"><xsl:apply-templates select="name"/></h3>
+    <p>
+      <xsl:apply-templates select="address"/><br/>
+      
+      <!-- Don't print the label if the field value is empty *SE* -->
+      <xsl:if test="contact/phone">
+        <xsl:value-of select="$phone.word"/>: <xsl:value-of select="contact/phone"/><br/>
+      </xsl:if>
+      <xsl:if test="contact/email">
+        <xsl:value-of select="$email.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:text>mailto:</xsl:text>
+            <xsl:value-of select="contact/email"/>
+          </xsl:attribute>
+          <xsl:value-of select="contact/email"/>
+        </a><br/>
+      </xsl:if>
+      <xsl:if test="contact/url">
+        <xsl:value-of select="$url.word"/>: <a>
+          <xsl:attribute name="href">
+            <xsl:value-of select="contact/url"/>
+          </xsl:attribute>
+          <xsl:value-of select="contact/url"/>
+        </a>
+      </xsl:if>
+    </p>
   </xsl:template>
 
 </xsl:stylesheet>
