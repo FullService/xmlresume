@@ -36,9 +36,8 @@ p {
     margin-bottom: 0.05cm;
     margin-top: 0.15cm;
 }
-em {
-    font-weight: bold;
-}
+em { font-weight: bold; }
+ul { margin-top: 0.1cm; }
 
 .projects p { font-style: italic }
 ul.degrees { padding-left: 0.2cm; }
