@@ -268,3 +268,116 @@ chance to remove it from their resumes. It was deprecated in version 1.4.0. -->
 <!ELEMENT dayOfMonth (#PCDATA)>
 <!ELEMENT present EMPTY>
 <!ELEMENT title (#PCDATA)>
+
+<!-- The following adds the special attribute "targets" to each and 
+     every element of the DTD.  It is best to regenerate it with the
+     command:
+grep '<\!ELEMENT ' resume.dtd | \
+ awk '{print "<\!ATTLIST " $2 " targets CDATA #IMPLIED\>"}'
+     and then pasting the results back into this file.		-->
+<!ATTLIST resumes targets CDATA #IMPLIED>
+<!ATTLIST resume targets CDATA #IMPLIED>
+<!ATTLIST docpath targets CDATA #IMPLIED>
+<!ATTLIST head targets CDATA #IMPLIED>
+<!ATTLIST node targets CDATA #IMPLIED>
+<!ATTLIST tail targets CDATA #IMPLIED>
+<!ATTLIST label targets CDATA #IMPLIED>
+<!ATTLIST uri targets CDATA #IMPLIED>
+<!ATTLIST header targets CDATA #IMPLIED>
+<!ATTLIST name targets CDATA #IMPLIED>
+<!ATTLIST firstname targets CDATA #IMPLIED>
+<!ATTLIST middlenames targets CDATA #IMPLIED>
+<!ATTLIST surname targets CDATA #IMPLIED>
+<!ATTLIST suffix targets CDATA #IMPLIED>
+<!ATTLIST birth targets CDATA #IMPLIED>
+<!ATTLIST address targets CDATA #IMPLIED>
+<!ATTLIST location targets CDATA #IMPLIED>
+<!ATTLIST street targets CDATA #IMPLIED>
+<!ATTLIST street2 targets CDATA #IMPLIED>
+<!ATTLIST suburb targets CDATA #IMPLIED>
+<!ATTLIST ward targets CDATA #IMPLIED>
+<!ATTLIST city targets CDATA #IMPLIED>
+<!ATTLIST state targets CDATA #IMPLIED>
+<!ATTLIST province targets CDATA #IMPLIED>
+<!ATTLIST county targets CDATA #IMPLIED>
+<!ATTLIST prefecture targets CDATA #IMPLIED>
+<!ATTLIST zip targets CDATA #IMPLIED>
+<!ATTLIST postalCode targets CDATA #IMPLIED>
+<!ATTLIST country targets CDATA #IMPLIED>
+<!ATTLIST break targets CDATA #IMPLIED>
+<!ATTLIST contact targets CDATA #IMPLIED>
+<!ATTLIST phone targets CDATA #IMPLIED>
+<!ATTLIST fax targets CDATA #IMPLIED>
+<!ATTLIST pager targets CDATA #IMPLIED>
+<!ATTLIST email targets CDATA #IMPLIED>
+<!ATTLIST url targets CDATA #IMPLIED>
+<!ATTLIST instantMessage targets CDATA #IMPLIED>
+<!ATTLIST link targets CDATA #IMPLIED>
+<!ATTLIST objective targets CDATA #IMPLIED>
+<!ATTLIST history targets CDATA #IMPLIED>
+<!ATTLIST job targets CDATA #IMPLIED>
+<!ATTLIST jobtitle targets CDATA #IMPLIED>
+<!ATTLIST employer targets CDATA #IMPLIED>
+<!ATTLIST period targets CDATA #IMPLIED>
+<!ATTLIST from targets CDATA #IMPLIED>
+<!ATTLIST to targets CDATA #IMPLIED>
+<!ATTLIST description targets CDATA #IMPLIED>
+<!ATTLIST projects targets CDATA #IMPLIED>
+<!ATTLIST project targets CDATA #IMPLIED>
+<!ATTLIST achievements targets CDATA #IMPLIED>
+<!ATTLIST achievement targets CDATA #IMPLIED>
+<!ATTLIST academics targets CDATA #IMPLIED>
+<!ATTLIST degrees targets CDATA #IMPLIED>
+<!ATTLIST degree targets CDATA #IMPLIED>
+<!ATTLIST level targets CDATA #IMPLIED>
+<!ATTLIST major targets CDATA #IMPLIED>
+<!ATTLIST minor targets CDATA #IMPLIED>
+<!ATTLIST institution targets CDATA #IMPLIED>
+<!ATTLIST gpa targets CDATA #IMPLIED>
+<!ATTLIST score targets CDATA #IMPLIED>
+<!ATTLIST possible targets CDATA #IMPLIED>
+<!ATTLIST subjects targets CDATA #IMPLIED>
+<!ATTLIST subject targets CDATA #IMPLIED>
+<!ATTLIST result targets CDATA #IMPLIED>
+<!ATTLIST annotation targets CDATA #IMPLIED>
+<!ATTLIST note targets CDATA #IMPLIED>
+<!ATTLIST skillareas targets CDATA #IMPLIED>
+<!ATTLIST skillarea targets CDATA #IMPLIED>
+<!ATTLIST skillset targets CDATA #IMPLIED>
+<!ATTLIST skills targets CDATA #IMPLIED>
+<!ATTLIST skill targets CDATA #IMPLIED>
+<!ATTLIST pubs targets CDATA #IMPLIED>
+<!ATTLIST pub targets CDATA #IMPLIED>
+<!ATTLIST artTitle targets CDATA #IMPLIED>
+<!ATTLIST bookTitle targets CDATA #IMPLIED>
+<!ATTLIST author targets CDATA #IMPLIED>
+<!ATTLIST pubDate targets CDATA #IMPLIED>
+<!ATTLIST publisher targets CDATA #IMPLIED>
+<!ATTLIST pageNums targets CDATA #IMPLIED>
+<!ATTLIST memberships targets CDATA #IMPLIED>
+<!ATTLIST membership targets CDATA #IMPLIED>
+<!ATTLIST organization targets CDATA #IMPLIED>
+<!ATTLIST interests targets CDATA #IMPLIED>
+<!ATTLIST interest targets CDATA #IMPLIED>
+<!ATTLIST awards targets CDATA #IMPLIED>
+<!ATTLIST award targets CDATA #IMPLIED>
+<!ATTLIST clearances targets CDATA #IMPLIED>
+<!ATTLIST clearance targets CDATA #IMPLIED>
+<!ATTLIST misc targets CDATA #IMPLIED>
+<!ATTLIST lastModified targets CDATA #IMPLIED>
+<!ATTLIST copyright targets CDATA #IMPLIED>
+<!ATTLIST company targets CDATA #IMPLIED>
+<!ATTLIST legalnotice targets CDATA #IMPLIED>
+<!ATTLIST keywords targets CDATA #IMPLIED>
+<!ATTLIST keyword targets CDATA #IMPLIED>
+<!ATTLIST referees targets CDATA #IMPLIED>
+<!ATTLIST referee targets CDATA #IMPLIED>
+<!ATTLIST para targets CDATA #IMPLIED>
+<!ATTLIST emphasis targets CDATA #IMPLIED>
+<!ATTLIST citation targets CDATA #IMPLIED>
+<!ATTLIST date targets CDATA #IMPLIED>
+<!ATTLIST month targets CDATA #IMPLIED>
+<!ATTLIST year targets CDATA #IMPLIED>
+<!ATTLIST dayOfMonth targets CDATA #IMPLIED>
+<!ATTLIST present targets CDATA #IMPLIED>
+<!ATTLIST title targets CDATA #IMPLIED>
