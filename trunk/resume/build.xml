@@ -25,7 +25,7 @@ $Id$
   <property name="www.src.dir" value="${src.dir}/www"/>
 
   <!-- Where generated test target data should go -->
-  <property name="target.data.dir" value="${java.src.dir}/net/sourceforge/xmlresume/targetdata"/>
+  <property name="target.data.dir" value="${java.src.dir}/net/sourceforge/xmlresume/targetData"/>
 
   <!-- Web server's directory; where to install web-accessible files -->
   <property name="resume.web.publish.dir" value="${user.home}/htdocs"/>
