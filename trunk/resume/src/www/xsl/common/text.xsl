@@ -338,9 +338,34 @@ In general, each block is responsible for outputting a newline after itself.
 
   </xsl:template>
 
-  <!-- Format the job description -->
-  <xsl:template match="r:description">
-    <xsl:apply-templates/>
+  <!-- Format a description as either a block or a single line -->
+  <xsl:template match="r:description" name="r:description">
+    <!-- Possible values: 'block', 'single-line' -->
+    <xsl:param name="paragraph.format">block</xsl:param>
+    <xsl:param name="Width" select="$text.width"/>
+
+    <xsl:choose>
+      <xsl:when test="$paragraph.format = 'single-line'">
+        <xsl:call-template name="Wrap">
+          <xsl:with-param name="Width" select="$Width"/>
+          <xsl:with-param name="Text">
+            <xsl:for-each select="r:para">
+              <xsl:apply-templates/>
+
+              <xsl:if test="following-sibling::*">
+                <xsl:value-of select="$description.para.separator.text"/>
+              </xsl:if>
+
+            </xsl:for-each>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+
+      <xsl:otherwise> <!-- block -->
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
 
   <!-- Format the projects section as a bullet list -->
@@ -632,7 +657,7 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
-      <xsl:with-param name="Width" select="72"/>
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
     </xsl:call-template>
     <xsl:call-template name="NewLine"/>
   </xsl:template>
@@ -718,9 +743,11 @@ In general, each block is responsible for outputting a newline after itself.
   <!-- Format interests section. -->
   <xsl:template match="r:interests">
 
-    <xsl:call-template name="InterestsTitle"/>
-    <xsl:text>:</xsl:text>
-    <xsl:call-template name="NewLine"/>
+    <xsl:call-template name="Heading">
+      <xsl:with-param name="Text">
+        <xsl:call-template name="InterestsTitle"/>
+      </xsl:with-param>
+    </xsl:call-template>
 
     <xsl:call-template name="Indent">
       <xsl:with-param name="Text">
@@ -736,25 +763,49 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:with-param name="Text">
         <xsl:apply-templates select="r:title"/>
 
-        <xsl:if test="$interest.description.format = 'single-line' and r:description">
-          <xsl:text>. </xsl:text>
+        <xsl:variable name="Description">
+          <xsl:apply-templates select="r:description"/>
+        </xsl:variable>
+
+        <xsl:if test="r:description">
+          <xsl:choose>
+            <xsl:when test="$interest.description.format = 'single-line'">
+              <xsl:text>. </xsl:text>
+              <!-- We need to normalize this space because FormatBulletListItem
+              leaves newlines intact, and single-line-formatted descriptions are
+              already Wrap-ed (and thus contain newlines). Since we output the
+              title before the description, the first line is too long, and so
+              gets wrapped. However, the second line is also too long.
+              -->
+              <xsl:value-of select="normalize-space($Description)"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="NewLine"/>
+              <xsl:value-of select="$Description"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:if>
 
-        <xsl:apply-templates select="r:description"/>
       </xsl:with-param>
     </xsl:call-template>
+
+    <xsl:if test="$interest.description.format = 'single-line'">
+      <xsl:call-template name="NewLine"/>
+      <!-- Block-formatted descriptions already provide their own trailing
+      newline, courtesy of the r:para template. -->
+    </xsl:if>
+
   </xsl:template>
 
   <!-- Format an interest description -->
-  <!--
   <xsl:template match="r:interest/r:description">
     <xsl:call-template name="r:description">
+      <xsl:with-param name="Width"
+        select="$text.width - $text.indent.width"/>
       <xsl:with-param name="paragraph.format"
         select="$interest.description.format"/>
-      <xsl:with-param name="css.class">interestDescription</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  -->
 
   <!-- Format the misc info -->
   <xsl:template match="r:misc">
@@ -811,7 +862,7 @@ In general, each block is responsible for outputting a newline after itself.
       <xsl:apply-templates/>
     </xsl:variable>
     <xsl:call-template name="Wrap">
-      <xsl:with-param name="Width" select="72"/>
+      <xsl:with-param name="Width" select="$text.width - $text.indent.width"/>
       <xsl:with-param name="Text">
         <xsl:value-of select="normalize-space($Text)"/>
       </xsl:with-param>
