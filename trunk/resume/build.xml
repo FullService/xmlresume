@@ -290,6 +290,12 @@ $Id$
       <fileset dir="${src.dir}/www"/>
     </copy>
 
+    <!-- Copy Release Documentation files -->
+    <mkdir dir="${resume.web.publish.dir}/release"/>
+    <copy todir="${resume.web.publish.dir}" filtering="yes">
+      <fileset dir="${src.dir}/doc/release/"/>
+    </copy>
+
     <!-- Copy user guide -->
     <mkdir dir="${resume.web.publish.dir}/user-guide"/>
     <!-- The user guide should have been filtered when it was built, so we don't
