@@ -626,7 +626,7 @@ $Id$
       <arg value="${doc.manual.build.dir}/xsl/docbook-xsl-1.50.0/fo/fo-patch-for-fop.xsl"/>
     </java>
 
-    <java
+    <java 
       classname="org.apache.fop.apps.Fop"
       fork="yes"
       failonerror="yes"
