@@ -37,7 +37,7 @@ USAGE:
      Processing Software:
 ================================================================ -->
   <property name="xsl.processor" value="org.apache.xalan.xslt.Process"/>
-  <property name="fo.processor" value="org.apache.fop.apps.Fop"/>
+  <property name="pdf.processor" value="org.apache.fop.apps.Fop"/>
 <!-- 
 RTF generation currently requires you download a separate, 
 closed-source jar file and add it to your java classpath: 
@@ -57,7 +57,7 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
  feel for how the filter works. -->
   <property name="filter.processor" value="net.sourceforge.xmlresume.filter.Filter"/>
   <property name="filter.targets" value="foodservice carpentry"/>
-  <property name="filtered.extension" value="-filtered"/>
+  <property name="filter.extension" value="-filtered"/>
 <!--
 ================================================================
      Stylesheets:
@@ -104,7 +104,7 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
   </target>
 <!-- 		Target PDF 		-->
   <target depends="fo" name="pdf" description="Makes a PDF version of the resume.">
-    <java classname="${fo.processor}">
+    <java classname="${pdf.processor}">
       <arg value="-fo"/>
       <arg value="${resume}.fo"/>
       <arg value="-pdf"/>
@@ -113,12 +113,12 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
   </target>
 <!-- 		Target filter 		-->
   <target name="filter" description="Makes a filtered version of a resume.">
-    <echo message="Writing filtered resume to ${resume}${filtered.extension}"/>
+    <echo message="Writing filtered resume to ${resume}${filter.extension}"/>
     <java classname="${filter.processor}">
       <arg value="-in"/>
       <arg value="${resume}.${resume.extension}"/>
       <arg value="-out"/>
-      <arg value="${resume}${filtered.extension}.${resume.extension}"/>
+      <arg value="${resume}${filter.extension}.${resume.extension}"/>
       <arg value="${filter.targets}"/>
     </java>
   </target>
@@ -133,10 +133,10 @@ http://www.xmlmind.com/foconverter/downloadperso.shtml -->
     <delete file="${resume}.html"/>
     <delete file="${resume}.fo"/>
     <delete file="${resume}.pdf"/>
-    <delete file="${resume}${filtered.extension}.txt"/>
-    <delete file="${resume}${filtered.extension}.html"/>
-    <delete file="${resume}${filtered.extension}.fo"/>
-    <delete file="${resume}${filtered.extension}.pdf"/>
-    <delete file="${resume}${filtered.extension}.${resume.extension}"/>
+    <delete file="${resume}${filter.extension}.txt"/>
+    <delete file="${resume}${filter.extension}.html"/>
+    <delete file="${resume}${filter.extension}.fo"/>
+    <delete file="${resume}${filter.extension}.pdf"/>
+    <delete file="${resume}${filter.extension}.${resume.extension}"/>
   </target>
 </project>

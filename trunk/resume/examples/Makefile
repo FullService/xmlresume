@@ -75,8 +75,8 @@ make = gmake
 xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $(in) -xsl $(xsl) -out $(out)
 #xsl_proc = java com.icl.saxon.StyleSheet $(xsl_flags) -o $(out) $(in) $(xsl) $(xsl_params)
 
-fo_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
-#fo_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
+pdf_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
+#pdf_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
 
 # RTF generation currently requires you download a separate, closed source jar 
 # file and add it to your java classpath: 	
@@ -144,7 +144,7 @@ $(resume).fo: $(resume).xml
 $(resume).pdf: in = $(resume).fo
 $(resume).pdf: out = $(resume).pdf
 $(resume).pdf: $(resume).fo
-	$(fo_proc)
+	$(pdf_proc)
 
 $(resume).rtf: in = $(resume).fo
 $(resume).rtf: out = $(resume).rtf
