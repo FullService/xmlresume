@@ -404,7 +404,9 @@ In general, each block is responsible for outputting a newline after itself.
                 
   <xsl:template match="r:period">
     <xsl:apply-templates select="r:from"/>-<xsl:apply-templates select="r:to"/>
-    <xsl:call-template name="NewLine"/>
+    <xsl:if test="parent::r:job">
+      <xsl:call-template name="NewLine"/>
+    </xsl:if>
   </xsl:template>
 
   <!-- Format a date. -->
@@ -465,9 +467,9 @@ In general, each block is responsible for outputting a newline after itself.
         <xsl:value-of select="$in.word"/>
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="r:major"/>
-        <xsl:if test="r:date">     
+        <xsl:if test="r:date|r:period">     
           <xsl:text>, </xsl:text>
-          <xsl:apply-templates select="r:date"/>
+          <xsl:apply-templates select="r:date|r:period"/>
         </xsl:if>
         <xsl:if test="r:institution">
           <xsl:text>, </xsl:text>

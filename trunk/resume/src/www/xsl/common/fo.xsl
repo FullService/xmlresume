@@ -452,9 +452,9 @@ $Id$
         <xsl:text> </xsl:text><xsl:value-of select="$in.word"/>
         <xsl:text> </xsl:text>
         <xsl:apply-templates select="r:major"/></fo:inline>
-      <xsl:if test="r:date">
+      <xsl:if test="r:date|r:period">
         <xsl:text>, </xsl:text>
-        <xsl:apply-templates select="r:date"/>
+        <xsl:apply-templates select="r:date|r:period"/>
       </xsl:if>
       <xsl:if test="r:annotation">
         <xsl:text>. </xsl:text>

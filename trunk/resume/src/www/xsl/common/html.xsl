@@ -401,9 +401,9 @@ $Id$
       <xsl:value-of select="$in.word"/>
       <xsl:text> </xsl:text>
       <xsl:apply-templates select="r:major"/>
-      <xsl:if test="r:date">
+      <xsl:if test="r:date|r:period">
 	<xsl:text>, </xsl:text>
-	<xsl:apply-templates select="r:date"/>
+	<xsl:apply-templates select="r:date|r:period"/>
       </xsl:if>
       <xsl:if test="r:institution">
 	<xsl:text>, </xsl:text>
