@@ -1,77 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-  <head>
-    <title>XML Resume Library</title>
-    <meta name="keywords" content="XML, resume, curricula, vitae, DTD,
-    schema, XSL, B2B, metadata, HTML, XHTML, SGML, CSS">
-    <link rel="stylesheet" href="site.css" type="text/css">
-  </head>
-  <body>
-    <h1 class="pageTitle">
-      <a href="/" class="pageTitle"
-      ><span style="color: red;">XML</span
-      ><span style="font-weight: bold;">R&eacute;sum&eacute;</span
-      ><span style="color: red;">Library</span></a>
-    </h1>
-    <table cellpadding="4">
-      <tbody>
-	<tr valign="top">
-	  <td class="quicklinks">
-            <?php include("./private/quicklinks.html"); ?>
-	  </td>
-	  <td>
-	    <h2>What is it?</h2>
-	    <p>The XML R&eacute;sum&eacute; Library is an XML and XSL
-	      based system for marking up, adding metadata to, and
-	      formatting r&eacute;sum&eacute;s and curricula vitae.  
-	    </p>
+<?php
+$title = "Welcome";
+include_once("private/header.php");
+?>
 
-	    <p>It consists of these components:</p>
-	    <ul>
-	      <li>An <strong>XML Document Type Definition (DTD)</strong> for describing
-		r&eacute;sum&eacute;s.</li>
-	      <li><strong>Three XSL stylesheets</strong> to transform an XML
-		r&eacute;sum&eacute; into:
-		<ul>
-		  <li>Web-ready HTML,</li>
-		  <li>Print-ready PDF, or</li>
-		  <li>Plain, unformatted text</li>
-		  <li>RTF transforms (requires third-party software)</li>
-		</ul>
-	      </li>
-	      <li>
-		A targeting filter that allows you to
-		focus your r&eacute;sum&eacute;s to a particular 
-		employer without manually editing your source resume
-		file.
-	      </li>
-	    </ul>
+	    
+<h2>What is it?</h2> 
 
-	    <h2>Applications</h2>
+<p>The XML R&eacute;sum&eacute; Library is an XML and XSL based
+system for marking up, adding metadata to, and formatting
+r&eacute;sum&eacute;s and curricula vitae.</p>
 
-	    <ul>
+<p>It consists of these components:</p>
+<ul>
+  <li>An <strong>XML Document Type Definition (DTD)</strong> for
+        describing r&eacute;sum&eacute;s.</li>
+  <li><strong>Three XSL stylesheets</strong> to transform an XML
+        r&eacute;sum&eacute; into:
+    <ul>
+      <li>Web-ready HTML,</li>
+      <li>Print-ready PDF, or</li>
+      <li>Plain, unformatted text</li>
+      <li>RTF transforms (requires third-party software)</li>
+    </ul>
+  </li>
+  <li> A targeting filter that allows you to focus your
+r&eacute;sum&eacute;s to a particular employer without manually
+editing your source resume file.</li>
+</ul>
 
-	      <li><strong>R&eacute;sum&eacute; production:</strong>
-		produce web and print r&eacute;sum&eacute;s from a
-		<em>single</em> source file.
-	      </li>
+<h2>Applications</h2>
+<ul>
+  <li><strong>R&eacute;sum&eacute; production:</strong> produce
+web and print r&eacute;sum&eacute;s from a <em>single</em> source
+file.</li>
+  <li><strong>B2B (business-to-business):</strong> transfer
+r&eacute;sum&eacute;s between human resources and other company
+divisions, or between recruiters and employers.</li>
+  <li><strong>Search and retrieval:</strong> increase precision
+in locating employees using r&eacute;sum&eacute; metadata.</li>
+</ul>
 
-	      <li><strong>B2B (business-to-business):</strong>
-		transfer r&eacute;sum&eacute;s between human resources
-		and other company divisions, or between recruiters and
-		employers.
-	      </li>
-
-	      <li><strong>Search and retrieval:</strong> increase
-		precision in locating employees using
-		r&eacute;sum&eacute; metadata.
-	      </li>
-	    </ul>
-
-	    <h2>An example</h2>
-
-	    <p>This fragment:</p>
-	    <div class="xml">
+<h2>An example</h2>
+<p>This fragment:</p>
+<div class="xml">
 <span class="elem">&lt;job&gt;</span><br>
 &nbsp;&nbsp;<span class="elem">&lt;jobtitle&gt;</span>Manager<span class="elem">&lt;/jobtitle&gt;</span><br>
 &nbsp;&nbsp;<span class="elem">&lt;employer&gt;</span>Acme, Inc.<span class="elem">&lt;/employer&gt;</span><br>
@@ -87,148 +58,144 @@
 &nbsp;&nbsp;&nbsp;&nbsp;customer.<span class="elem">&lt;/para&gt;</span><br>
 &nbsp;&nbsp;<span class="elem">&lt;/description&gt;</span><br>
 <span class="elem">&lt;/job&gt;</span>
-	    </div>
+</div>
 
-	    <p>Gives you this HTML:</p>
+<p>Gives you this HTML:</p>
+<div class="output">
+  Manager<br/>
+  Acme, Inc.<br/>
+  June 1992-August 1998<br/><br/>
+  Oversaw production of large magnets and rocket skates for a
+  <b>single</b> customer.
+</div>
 
-	    <div class="output">
-	      Manager<br>
-	      Acme, Inc.<br>
-	      June 1992-August 1998<br><br>
-	      Oversaw production of large magnets and rocket skates for a <b>single</b> customer.
-	    </div>
+<p>Or this PDF:</p>
+<img src="shot.jpg" alt="Screenshot of PDF output"/>
 
-	    <p>Or this PDF:</p>
+<p>Or this plain text:</p>
+  <div class="output">
+    <code>
+      Manager<br/>
+      Acme, Inc.<br/>
+      June 1992-August 1998<br/><br/>
+      Oversaw production of large magnets and rocket skates 
+      for a *single* customer.
+    </code>
+  </div>
+</td>
 
-	    <img src="shot.jpg" alt="Screenshot of PDF output">
+<td class="news"> 
+  <h2>
+    <span style="font-weight: normal; color: red;">News</span>
+    <span style="font-weight: bold;">Items</span>
+  </h2>
 
-	    <p>Or this plain text:</p>
+  <p><span class="date">08-November-2002:</span> Release 1.5.0 is
+available.  This release provides improved localization support
+(including <b>Spanish</b>, Italian, French, and Brazilian), more
+formatting options, an updated user-guide, and the brand-new Java
+<a
+href="http://xmlresume.sourceforge.net/user-guide/getting-started.explore.features.html">Targeting
+Filter</a>.
+  </p>
 
-	    <div class="output">
-	      <code>
-		Manager<br>
-		Acme, Inc.<br>
-		June 1992-August 1998<br><br>
-		Oversaw production of large magnets and rocket skates for a *single* customer.
-	      </code>
-	    </div>
+  <p><span class="date">16-July-2002:</span> Release 1.4.2 is
+available. It is primarily a bug fix release, although it does
+include new support for formatting degree subjects as a
+comma-formatted list, as well as a new CSS stylesheet.
+  </p>
 
-	  </td>
-	  <td class="news"> 
-	    <h2><span style="font-weight: normal; color: red;">
-		News</span><span style="font-weight: bold;">Items</span></h2>
-	    <p><span class="date">08-November-2002:</span> Release 1.5.0
-		is available.  This release provides improved localization 
-		support (including <b>Spanish</b>, Italian, French, and Brazilian), 
-		more formatting options, an updated user-guide, and the 
-		brand-new Java <a 
-href="http://xmlresume.sourceforge.net/user-guide/getting-started.explore.features.html"
-		>Targeting Filter</a>.</p>
+  <p><span class="date">15-June-2002:</span> Release 1.4.1 goes
+out. We now have support for <strong>security clearances</strong>,
+job locations, and Dutch localization.
+  </p>
 
-            <p><span class="date">16-July-2002:</span> Release 1.4.2
-              is available. It is primarily a bug fix release, although it does
-              include new support for formatting degree subjects as a
-              comma-formatted list, as well as a new CSS stylesheet.
-            </p>
+  <p><span class="date">08-June-2002:</span> The <a
+href="user-guide/">user guide</a> is now available on this web
+site.
+  </p>
 
-            <p><span class="date">15-June-2002:</span> Release 1.4.1
-              goes out. We now have support for <strong>security
-              clearances</strong>, job locations, and Dutch localization.
-            </p>
+  <p><span class="date">24-May-2002:</span> Release 1.4.0 goes
+out. This release has many new elements, including
+<strong>awards</strong> and <strong>interests</strong>. Also new
+is <strong>German and Portuguese</strong> language support. Peter
+Hutnick has written a <strong>new tutorial</strong> on converting
+your r&eacute;sum&eacute; from XML to other formats.
+  </p>
 
-            <p><span class="date">08-June-2002:</span> The
-              <a href="user-guide/">user guide</a> is now available on this web
-              site.
-            </p>
+  <p><span class="date">16-Apr-2002:</span> Release 1.3.3 goes out
+with a <strong>new user guide</strong> and <strong>compatibility
+with FOP 0.20.3</strong>.
+  </p>
 
-            <p><span class="date">24-May-2002:</span> Release 1.4.0
-              goes out. This release has many new elements, including
-              <strong>awards</strong> and <strong>interests</strong>. Also new
-              is <strong>German and Portuguese</strong> language support.
-              Peter Hutnick has written a <strong>new tutorial</strong> on
-              converting your r&eacute;sum&eacute; from XML to other formats.
-            </p>
+  <p><span class="date">15-Feb-2002:</span> Bug fixes in
+formatting academics go out today in release 1.3.2. In addition,
+we have some <a
+href="http://sourceforge.net/docman/display_doc.php?docid=9529&amp;group_id=29512">HOW-TO
+documentation</a> generously contributed by Heidi Hansen.  
+Thanks, Heidi!
+  </p>
+	    
+  <p><span class="date">16-Jan-2002:</span> Release 1.3.1 goes out
+today with a fix to a minor problem with the catalog file.  If you
+weren't using it, you don't need to upgrade at this time.  But you
+might want to grab the new release for an HTML transformation
+enhancement: a <code>div</code> block around descriptions so you
+can CSS them way you want.
+  </p>
 
-            <p><span class="date">16-Apr-2002:</span> Release 1.3.3
-              goes out with a <strong>new user guide</strong> and
-              <strong>compatibility with FOP 0.20.3</strong>.
-            </p>
+  <p><span class="date">15-Jan-2002:</span> Releases now go
+<strong>monthly</strong> so we can more quickly respond to feature
+requests and fix bugs.  Also, <strong>version 1.3.0</strong> is
+now available! We've added a ton of new features.  Check it out!
+  </p>
 
-	    <p><span class="date">15-Feb-2002:</span> Bug fixes in
-	      formatting academics go out today in release 1.3.2.
-	      In addition, we have some <a
-	      href="http://sourceforge.net/docman/display_doc.php?docid=9529&amp;group_id=29512">HOW-TO
-	      documentation</a> generously contributed by Heidi
-	      Hansen.  Thanks, Heidi!
-	    </p>
+  <p><span class="date">3-Sep-2001:</span> Lots of bug fixes and
+new features in this release, job achievements, cascading
+stylesheet support, and real bullet lists in the plain text
+formatting.
+  </p>
 
-	    <p><span class="date">16-Jan-2002:</span> Release
-              1.3.1 goes out today with a fix to a minor problem
-              with the catalog file.  If you weren't using it,
-              you don't need to upgrade at this time.  But you might
-              want to grab the new release for an HTML transformation
-              enhancement: a <code>div</code> block around descriptions
-              so you can CSS them way you want.
-            </p>
+  <p><span class="date">2-Aug-2001:</span> World class
+r&eacute;sum&eacute;s at last!  Version 1.2.3 gives you
+international addresses, plus French, UK English, and US English
+localizations.  We're taking over the world!
+  </p>
 
-	    <p><span class="date">15-Jan-2002:</span> Releases now
-              go <strong>monthly</strong> so we can more quickly respond
-              to feature requests and fix bugs.  Also,
-              <strong>version 1.3.0</strong> is now available!
-              We've added a ton of new features.  Check it out!
-	    </p>
+  <p><span class="date">17-Jul-2001:</span> Grab it while
+it's hot: version 1.2.2 adds rich markup of your
+publications which you can use in addition to free-form
+paragraphs.
+  </p>
 
-	    <p><span class="date">3-Sep-2001:</span> Lots of bug fixes
-	      and new features in this release, job achievements,
-	      cascading stylesheet support, and real bullet lists in
-	      the plain text formatting.
-	    </p>
+  <p><span class="date">6-Jul-2001:</span> Version 1.2.1 is
+out: now compatible with FOP 1.19 and fixes some minor
+bugs.
+  </p>
 
-	    <p><span class="date">2-Aug-2001:</span> World class
-	      r&eacute;sum&eacute;s at last!  Version 1.2.3 gives you
-	      international addresses, plus French, UK English, and US
-	      English localizations.  We're taking over the world!
-	    </p>
+  <p><span class="date">17-Jun-2001:</span> The XML
+R&eacute;sum&eacute; project is now hosted on <a
+href="http://sourceforge.net">SourceForge</a>.
+  </p>
 
-	    <p><span class="date">17-Jul-2001:</span> Grab it while
-	      it's hot: version 1.2.2 adds rich markup of your
-	      publications which you can use in addition to free-form
-	      paragraphs.
-	    </p>
+  <p><span class="date">30-Apr-2001:</span> Joseph Feller, editor
+of <a href="http://www.elementkjournals.com/ixs">Inside XML
+Solutions</a>, wrote a great article covering the XML
+R&eacute;sum&eacute; Library in the April 2001 issue. Thanks Joe!
+  </p>
 
-	    <p><span class="date">6-Jul-2001:</span> Version 1.2.1 is
-	      out: now compatible with FOP 1.19 and fixes some minor
-	      bugs.
-	    </p>
+  <h2><span style="font-weight: normal; color: red;">Good</span>
+     <span style="font-weight: bold;">Words</span>
+  </h2>
 
-	    <p><span class="date">17-Jun-2001:</span> The XML
-	      R&eacute;sum&eacute; project is now hosted on <a
-		href="http://sourceforge.net">SourceForge</a>.
-	    </p>
+  <p>Olivier E.&nbsp;of Canada says, "Very cool."  Thanks, Olivier!
+  </p>
 
-	    <p><span class="date">30-Apr-2001:</span> Joseph Feller,
-	      editor of <a
-	      href="http://www.elementkjournals.com/ixs">Inside XML
-	      Solutions</a>, wrote a great article covering the XML
-	      R&eacute;sum&eacute; Library in the April 2001 issue.
-	      Thanks Joe!
-	    </p>
+  <p>Ricardo A.&nbsp;of Ecuador writes: "I saw your XML
+R&eacute;sum&eacute; Library, and I think [it's] great!" Thanks
+for the comments, Ricardo!
+  </p>
 
-	    <h2><span style="font-weight: normal; color: red;">Good</span><span style="font-weight: bold;">Words</span></h2>
+  <p>Stewart B. of Canada says it's "cool work."  Thanks, Stewart!</p>
 
-	    <p>Olivier E.&nbsp;of Canada says, "Very cool."  Thanks,
-	      Olivier!</p>
-
-	    <p>Ricardo A.&nbsp;of Ecuador writes: "I saw your XML
-	      R&eacute;sum&eacute; Library, and I think [it's] great!"
-	      Thanks for the comments, Ricardo!
-	    </p>
-
-	    <p>Stewart B. of Canada says it's "cool work."  Thanks, Stewart!</p>
-
-	  </td>
-	</tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+<?php include_once("./private/footer.php"); ?>
