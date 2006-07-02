@@ -2,7 +2,7 @@
 #
 # Makefile for resumes
 #
-# Copyright (c) 2002 Bruce Christensen
+# Copyright (c) 2002, 2006 Bruce Christensen and Nicholas Shectman
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@
 # To generate just the html version of cv.xml with UK localization, use this
 # command:
 #
-# 	gmake html resume=cv country=uk
+# 	gmake cv.html country=uk
 #
 # To remove all generated files, run:
 #
@@ -70,19 +70,18 @@ upgrade_13x_140_style = $(xsl_base)/misc/13x-140.xsl
 #------------------------------------------------------------------------------
 # Processing software
 #------------------------------------------------------------------------------
-make = gmake
 
-xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $(in) -xsl $(xsl) -out $(out)
-#xsl_proc = java com.icl.saxon.StyleSheet $(xsl_flags) -o $(out) $(in) $(xsl) $(xsl_params)
+xsl_proc = java org.apache.xalan.xslt.Process $(xsl_flags) -in $< -out $@ -xsl
+#xsl_proc = java com.icl.saxon.StyleSheet $(xsl_flags) -o $@ $<
 
-pdf_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $(in) -pdf $(out)
-#pdf_proc = ~/bin/xep/run.sh $(fo_flags) $(in) $(out)
+pdf_proc = java org.apache.fop.apps.Fop -fo $(fo_flags) $< -pdf $@ -q
+#pdf_proc = ~/bin/xep/run.sh $(fo_flags) $< $@
 
 # RTF generation currently requires you download a separate, closed source jar 
 # file and add it to your java classpath: 	
 # http://www.xmlmind.com/foconverter/downloadperso.shtml
-rtf_proc = java com.xmlmind.fo.converter.Driver $(in) $(out)
-#rtf_proc = java ch.codeconsult.jfor.main.CmdLineConverter $(in) $(out)
+rtf_proc = java com.xmlmind.fo.converter.Driver $< $@
+#rtf_proc = java ch.codeconsult.jfor.main.CmdLineConverter $< $@
 
 # Target filtering allows you to create targeted resumes.  
 # You can create your own targets; just specify them in your resume.xml 
@@ -100,8 +99,10 @@ includeTargets = "foodservice carpentry"
 excludeElements = "email referees"
 excludeAttributes = ""
 
-filter_proc = java net.sourceforge.xmlresume.filter.Main -in $(in) \
-	-out $(out) -includeTargets $(includeTargets) \
+# '-cp $(CLASSPATH)' looks redundant but is needed for cygwin
+filter_proc = java -cp $(CLASSPATH) net.sourceforge.xmlresume.filter.Filter \
+	-in $< -out $@ \
+	-includeTargets $(includeTargets) \
 	-excludeElements $(excludeElements) \
 	-excludeAttributes $(excludeAttributes)
 
@@ -109,66 +110,39 @@ filter_proc = java net.sourceforge.xmlresume.filter.Main -in $(in) \
 # End configurable parameters
 #------------------------------------------------------------------------------
 
-.PHONY: all html text fo pdf clean 13x-140
+# don't delete intermediate targets:
+.SECONDARY:
 
-all: html text fo pdf
-html: $(resume).html
-text: $(resume).txt
-fo: $(resume).fo
-pdf: $(resume).pdf
-13x-140: $(resume)-140.xml
-rtf: $(resume).rtf
-filter: $(resume)-filtered.xml
-
+all: $(resume).all
+#%.all: %.html %.txt %.pdf %.rtf
+%.all: %.html %.txt %.pdf
+	
+13x-140: $(resume).13x-140
+%.13x-140: %-140.all
+	
+filter: $(resume).filter
+%.filter: %-filtered.all
+	
 clean:
-	rm -f $(resume).html
-	rm -f $(resume).txt
-	rm -f $(resume).fo
-	rm -f $(resume).pdf
-	rm -f $(resume).rtf
-	rm -f $(resume)-filtered.xml
-	rm -f $(resume)-filtered.html
-	rm -f $(resume)-filtered.txt
-	rm -f $(resume)-filtered.pdf
-	rm -f $(resume)-filtered.fo
-	rm -f $(resume)-filtered.rtf
+	rm -f *.html *.txt *.fo *.rtf *.pdf *-filtered.xml *-140.xml
 
-$(resume).html: in = $(resume).xml
-$(resume).html: out = $(resume).html
-$(resume).html: xsl = $(html_style)
-$(resume).html: $(resume).xml
-	$(xsl_proc)
+%.html: %.xml
+	$(xsl_proc) $(html_style)
 
-$(resume).txt: in = $(resume).xml
-$(resume).txt: out = $(resume).txt
-$(resume).txt: xsl = $(text_style)
-$(resume).txt: $(resume).xml
-	$(xsl_proc)
+%.txt: %.xml
+	$(xsl_proc) $(text_style)
 
-$(resume).fo: in = $(resume).xml
-$(resume).fo: out = $(resume).fo
-$(resume).fo: xsl = $(fo_style)
-$(resume).fo: $(resume).xml
-	$(xsl_proc)
+%.fo: %.xml
+	$(xsl_proc) $(fo_style)
 
-$(resume).pdf: in = $(resume).fo
-$(resume).pdf: out = $(resume).pdf
-$(resume).pdf: $(resume).fo
+%.pdf: %.fo
 	$(pdf_proc)
 
-$(resume).rtf: in = $(resume).fo
-$(resume).rtf: out = $(resume).rtf
-$(resume).rtf: $(resume).fo
+%.rtf: %.fo
 	$(rtf_proc)
 
-$(resume)-140.xml: in = $(resume).xml
-$(resume)-140.xml: out = $(resume)-140.xml
-$(resume)-140.xml: xsl = $(upgrade_13x_140_style)
-$(resume)-140.xml: $(resume).xml
-	$(xsl_proc)
+%-140.xml: %.xml
+	$(xsl_proc) $(upgrade_13x_140_style)
 
-$(resume)-filtered.xml: in = $(resume).xml
-$(resume)-filtered.xml: out = $(resume)-filtered.xml
-$(resume)-filtered.xml: $(resume).xml
+%-filtered.xml: %.xml
 	$(filter_proc)
-	$(make) all resume=$(resume)-filtered
