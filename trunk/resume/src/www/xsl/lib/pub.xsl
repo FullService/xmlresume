@@ -88,14 +88,20 @@ $Id$
 
   <!-- Title of book -->
   <xsl:template match="r:bookTitle">
-    <xsl:apply-templates/>
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:value-of select="normalize-space($Text)"/>
     <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
 
   <!-- Title of article -->
   <xsl:template match="r:artTitle">
     <xsl:text>&quot;</xsl:text>
-    <xsl:apply-templates/>
+    <xsl:variable name="Text">
+      <xsl:apply-templates/>
+    </xsl:variable>
+    <xsl:value-of select="normalize-space($Text)"/>
     <xsl:text>&quot;</xsl:text>
     <xsl:value-of select="$pub.item.separator"/>
   </xsl:template>
