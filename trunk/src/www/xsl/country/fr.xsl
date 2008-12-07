@@ -36,7 +36,7 @@ $Id$
 
 <!-- French language notes (correct us if we're wrong:
  * Not all the words are capitalized in titles, only the first one. 
- * It's Téléphone privé, not privé Téléphone
+ * It's T'el'ephone priv'e, not priv'e T'el'ephone
 -->
 
   <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
