@@ -3,7 +3,6 @@
 
 <chapter id="getting-started.explore">
   <chapterinfo>
-    <title>Exploring the Features of &library.name;</title>
     <authorgroup>
       <author>
         <firstname>Peter</firstname>
@@ -26,6 +25,8 @@
       <holder>Peter Hutnick</holder>
     </copyright>
   </chapterinfo>
+
+  <title>Exploring the Features of &library.name;</title>
 
   <!-- ==================================================================== -->
   <para>

@@ -59,23 +59,21 @@
           </para>
 
           <para>
-          
             For example, the XML above would be formatted similar to the
             following:
-
-            <informalexample>
-              <bridgehead formatas="sect2">Interests</bridgehead>
-              <itemizedlist spacing="compact">
-                <listitem><para>Scuba diving</para></listitem>
-                <listitem><para>
-                  Flying. I have my pilot's license, and have logged over 1000
-                  in-flight hours. &mdash; I have also constructed my own
-                  airplane from a kit.
-                </para></listitem>
-              </itemizedlist>
-            </informalexample>
-
           </para>
+
+          <bridgehead renderas="sect2">Interests</bridgehead>
+          <informalexample>
+            <itemizedlist spacing="compact">
+              <listitem><para>Scuba diving</para></listitem>
+              <listitem><para>
+                Flying. I have my pilot's license, and have logged over 1000
+                in-flight hours. &mdash; I have also constructed my own
+                airplane from a kit.
+              </para></listitem>
+            </itemizedlist>
+          </informalexample>
 
         </listitem>
       </varlistentry>
@@ -88,28 +86,26 @@
           </para>
 
           <para>
-          
             For example, the XML above would be formatted similar to the
             following:
-
-            <informalexample>
-              <bridgehead formatas="sect2">Interests</bridgehead>
-              <itemizedlist spacing="compact">
-                <listitem><para>Scuba diving</para></listitem>
-                <listitem>
-                  <para>Flying</para>
-                  <para>
-                    I have my pilot's license, and have logged over 1000
-                    in-flight hours.
-                  </para>
-                  <para>
-                    I have also constructed my own airplane from a kit.
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </informalexample>
-
           </para>
+
+          <bridgehead renderas="sect2">Interests</bridgehead>
+          <informalexample>
+            <itemizedlist spacing="compact">
+              <listitem><para>Scuba diving</para></listitem>
+              <listitem>
+                <para>Flying</para>
+                <para>
+                  I have my pilot's license, and have logged over 1000
+                  in-flight hours.
+                </para>
+                <para>
+                  I have also constructed my own airplane from a kit.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </informalexample>
 
         </listitem>
       </varlistentry>

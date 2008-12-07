@@ -47,19 +47,18 @@
         <listitem>
           <para>
             Formats skills as a bulleted list, one skill per line:
-
-            <informalexample>
-              <bridgehead renderas="sect2">Technical Skills</bridgehead>
-              <bridgehead renderas="sect3">Programming Languages</bridgehead>
-              <itemizedlist spacing="compact">
-                <listitem><para>Java</para></listitem>
-                <listitem><para>C++</para></listitem>
-                <listitem><para>C</para></listitem>
-                <listitem><para>Perl</para></listitem>
-              </itemizedlist>
-            </informalexample>
-
           </para>
+
+          <bridgehead renderas="sect2">Technical Skills</bridgehead>
+          <bridgehead renderas="sect3">Programming Languages</bridgehead>
+          <informalexample>
+            <itemizedlist spacing="compact">
+              <listitem><para>Java</para></listitem>
+              <listitem><para>C++</para></listitem>
+              <listitem><para>C</para></listitem>
+              <listitem><para>Perl</para></listitem>
+            </itemizedlist>
+          </informalexample>
 
         </listitem>
       </varlistentry>
@@ -69,14 +68,14 @@
         <listitem>
           <para>
             Produces a comma-separated list on a single line:
-
-            <informalexample>
-              <bridgehead renderas="sect2">Technical Skills</bridgehead>
-              <para>
-                Programming Languages: Java, C++, C, Perl
-              </para>
-            </informalexample>
           </para>
+
+          <bridgehead renderas="sect2">Technical Skills</bridgehead>
+          <informalexample>
+            <para>
+              Programming Languages: Java, C++, C, Perl
+            </para>
+          </informalexample>
 
         </listitem>
       </varlistentry>

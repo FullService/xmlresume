@@ -12,7 +12,7 @@
       <synopsis><?resumevar CONTENT_MODEL?></synopsis>
     </refsect2>
     <refsect2><title>Attributes</title>
-      <?resumevar ATTRIBUTES_TABLE?>
+      <synopsis><?resumevar ATTRIBUTES_TABLE?></synopsis>
     </refsect2>
   </refsynopsisdiv>
 
@@ -55,7 +55,6 @@
       </simplelist>.
     </para>
   </refsect1>
-  -->
 
   <refsect1><title>Examples</title>
 

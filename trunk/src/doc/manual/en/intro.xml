@@ -2,9 +2,7 @@
 <!-- Help vim out: <!DOCTYPE DocBook -->
 
 <preface id="intro">
-  <prefaceinfo>
-    <title>Introduction</title>
-  </prefaceinfo>
+  <title>Introduction</title>
 
   <section id="intro.what-is">
     <title>What is the &library.name;?</title>

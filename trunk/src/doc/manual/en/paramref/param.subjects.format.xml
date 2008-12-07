@@ -66,9 +66,8 @@
             in the second column:
           </para>
 
+          <bridgehead renderas="sect3">Subjects</bridgehead>
           <informalexample>
-            <bridgehead renderas="sect3">Subjects</bridgehead>
-
             <informaltable frame="none">
               <tgroup cols="2">
                 <tbody>

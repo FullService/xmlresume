@@ -12,7 +12,7 @@
       <synopsis><?resumevar CONTENT_MODEL?></synopsis>
     </refsect2>
     <refsect2><title>Attributes</title>
-      <?resumevar ATTRIBUTES_TABLE?>
+      <synopsis><?resumevar ATTRIBUTES_TABLE?></synopsis>
     </refsect2>
   </refsynopsisdiv>
 
@@ -144,18 +144,18 @@ Ciudad de La Habana, CP 11900
 CUBA
       ]]></computeroutput></literallayout>
 
-      <warning>
-        <para>
-          You may have noticed that the XML for this address isn't indented as
-          usual. This is because untagged addresses are formatted verbatim,
-          and so any indentation would be preserved in the formatted address.
-          The address text begins on the same line as the start tag for the
-          same reason (we don't want a leading linebreak in the formatted
-          address).
-        </para>
-      </warning>
-
     </example>
+
+    <warning>
+      <para>
+        You may have noticed that the XML for this address isn't indented as
+        usual. This is because untagged addresses are formatted verbatim,
+        and so any indentation would be preserved in the formatted address.
+        The address text begins on the same line as the start tag for the
+        same reason (we don't want a leading linebreak in the formatted
+        address).
+      </para>
+    </warning>
 
     <!-- =================================================================== -->
     <para>
