@@ -48,17 +48,17 @@
 # Basename (filename minus .xml extension) of resume to process
 # For example, put "myresume" here to process "myresume.xml".
 #------------------------------------------------------------------------------
-resume = resume
+resume ?= resume
 
 #------------------------------------------------------------------------------
 # Stylesheets
 #------------------------------------------------------------------------------
 # Options: br de fr it nl uk us es
-country = us
+country ?= us
 # Options: letter for country=us, a4 for others
-papersize = letter
+papersize ?= letter
 
-xsl_base = http://xmlresume.sourceforge.net/xsl
+xsl_base ?= http://xmlresume.sourceforge.net/xsl
 #xsl_base = ../xsl
 #xsl_base = ../src/www/xsl
 
@@ -124,7 +124,7 @@ filter: $(resume).filter
 %.filter: %-filtered.all
 	
 clean:
-	rm -f *.html *.txt *.fo *.rtf *.pdf *-filtered.xml *-140.xml
+	$(RM) *.html *.txt *.fo *.rtf *.pdf *-filtered.xml *-140.xml
 
 %.html: %.xml
 	$(xsl_proc) $(html_style)
