@@ -52,10 +52,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <xsl:template name="header.navigation">
     <xsl:param name="prev" select="/foo"/>
     <xsl:param name="next" select="/foo"/>
+    <xsl:param name="suppress.pageTitle" select="0"/>
     <xsl:variable name="home" select="/*[1]"/>
     <xsl:variable name="up" select="parent::*"/>
-
-    <xsl:param name="suppress.pageTitle" select="0"/>
 
     <xsl:if test="$suppress.pageTitle = '0'">
       <h1 class="pageTitle">
