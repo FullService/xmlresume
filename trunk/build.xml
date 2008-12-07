@@ -495,8 +495,8 @@ $Id$
   <property name="doc.manual.xsl.html-multiple.web" value="${doc.manual.xsl.dir}/html-multiple.web.xsl"/>
   <property name="doc.manual.xsl.fo" value="${doc.manual.xsl.dir}/fo.xsl"/>
 
-  <!-- DocBook XML DTD version 4.1.2 system location -->
-  <property name="doc.manual.docbook-xml.file" value="http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"/>
+  <!-- DocBook XML DTD version 4.5 system location -->
+  <property name="doc.manual.docbook-xml.file" value="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"/>
 
   <!-- DocBook XSL Stylesheets version 1.50 system locations.
   These are system-dependent, but don't change them here. Instead, override them
@@ -805,19 +805,6 @@ $Id$
   <target name="doc.manual.pdf"
     description="Generate PDF version of the manual"
     depends="doc.manual.fo">
-
-    <!-- This section isn't needed with docbook-xsl-1.52.2 and FOP 0.20.3 -->
-    <java
-      classname="com.icl.saxon.StyleSheet"
-      classpathref="saxon.classpath"
-      fork="yes"
-      failonerror="yes"
-      dir="${doc.manual.build.dir}">
-      <arg value="-o"/>
-      <arg value="${doc.manual.fo.file}.patched-for-fop"/>
-      <arg value="${doc.manual.fo.file}"/>
-      <arg value="${doc.manual.docbook-xsl.dir}/fo/fo-patch-for-fop.xsl"/>
-    </java>
 
     <java 
       classname="org.apache.fop.apps.Fop"
