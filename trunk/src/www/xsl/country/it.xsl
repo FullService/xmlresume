@@ -5,6 +5,7 @@ it.xsl
 Parameters for Italian resumes.
 
 Copyright (c) 2001-2002 Stewart Evans
+Copyright (c) 2008 Francesco Poli <frx@firenze.linux.it>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -37,12 +38,12 @@ $Id$
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:param name="resume.word">Curriculum Vitae</xsl:param>
-  <xsl:param name="page.word">page</xsl:param>
+  <xsl:param name="page.word">pagina</xsl:param>
   <xsl:param name="contact.word">Contatti</xsl:param>
   <xsl:param name="objective.word">Obiettivi</xsl:param>
   <xsl:param name="history.word">Esperienze Professionali</xsl:param>
   <xsl:param name="academics.word">Istruzione</xsl:param>
-  <xsl:param name="publications.word">Documenti</xsl:param>
+  <xsl:param name="publications.word">Pubblicazioni</xsl:param>
   <xsl:param name="miscellany.word">Varie</xsl:param>
   <xsl:param name="in.word">in</xsl:param>
   <xsl:param name="copyright.word">Copyright &#169;</xsl:param>
@@ -56,7 +57,7 @@ $Id$
   <xsl:param name="url.word">URL</xsl:param>
   <xsl:param name="achievements.word">Conseguimenti</xsl:param>
   <xsl:param name="projects.word">Progetti</xsl:param>
-  <xsl:param name="referees.word">Riferimenti</xsl:param>
+  <xsl:param name="referees.word">Referenze</xsl:param>
 
   <!-- default to Italian address formatting -->
   <xsl:param name="address.format">italian</xsl:param>
@@ -75,14 +76,14 @@ $Id$
   <xsl:param name="referees.hidden.phrase">Disponibile su richiesta</xsl:param>
   <xsl:param name="security-clearances.word">Autorizzazioni speciali</xsl:param>
   <xsl:param name="interests.word">Interessi</xsl:param>
-  <xsl:param name="minor.word">TRANSLATION NEEDED</xsl:param>
-  <xsl:param name="minors.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="minor.word">e</xsl:param>
+  <xsl:param name="minors.word">e</xsl:param>
   <xsl:param name="overall-gpa.word">Voto</xsl:param>
   <xsl:param name="major-gpa.word">Voto</xsl:param>
   <xsl:param name="out-of.word"> su </xsl:param>
   <xsl:param name="last-modified.phrase">Ultima modifica</xsl:param>
   <xsl:param name="phone.work.phrase">Telefono ufficio</xsl:param>
   <xsl:param name="phone.mobile.phrase">Telefono cellulare</xsl:param>
-  <xsl:param name="pager.word">TRANSLATION NEEDED</xsl:param>
+  <xsl:param name="pager.word">Cercapersone</xsl:param>
 </xsl:stylesheet>
 
